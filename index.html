@@ -152,11 +152,12 @@
       {
         "@type": "ItemList",
         "name": "Articles de la série Démocratie belge",
-        "numberOfItems": 3,
+        "numberOfItems": 4,
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "url": "https://ouaisfieu.github.io/politique-belge/article-01-paradoxe-constitutionnel.html", "name": "I — La Constitution belge ignore ceux qui gouvernent" },
           { "@type": "ListItem", "position": 2, "url": "https://ouaisfieu.github.io/politique-belge/article-02-accountability.html", "name": "II — Un État qui refuse d'obéir à ses juges" },
-          { "@type": "ListItem", "position": 3, "url": "https://ouaisfieu.github.io/politique-belge/article-03-cout-humain.html", "name": "III — Le coût humain : 215 000 familles qui attendent" }
+          { "@type": "ListItem", "position": 3, "url": "https://ouaisfieu.github.io/politique-belge/article-03-cout-humain.html", "name": "III — Le coût humain : 215 000 familles qui attendent" },
+          { "@type": "ListItem", "position": 4, "url": "https://ouaisfieu.github.io/politique-belge/article-04-oligopole-mediatique.html", "name": "IV — Le contre-pouvoir qui ne contre plus rien" }
         ]
       }
     ]
@@ -223,7 +224,7 @@
   .section-heading { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); text-align: center; margin-bottom: 32px; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
 
   /* ol/li pour la liste ordonnée — sémantique correcte pour une série numérotée */
-  .articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--line); border: 1px solid var(--line); list-style: none; }
+  .articles-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: var(--line); border: 1px solid var(--line); list-style: none; }
   @media (max-width: 720px) { .articles-grid { grid-template-columns: 1fr; } }
 
   .article-card { background: var(--paper); padding: 40px 32px; text-decoration: none; color: inherit; display: block; position: relative; overflow: hidden; transition: background 0.2s; }
@@ -259,6 +260,12 @@
 
   .site-footer { text-align: center; padding: 28px 24px; background: var(--ink); border-top: 1px solid rgba(255,255,255,0.04); font-family: 'DM Sans', sans-serif; font-size: 11px; color: rgba(245,240,232,0.25); letter-spacing: 0.1em; }
   .site-footer a { color: rgba(212,160,23,0.5); text-decoration: none; }
+
+
+  .card-4::after { background: #3a4a5a; }
+  .card-4 .card-num { color: rgba(58,74,90,0.15); }
+  .card-4 .card-tag { color: #3a4a5a; }
+  .card-4 .card-cta { color: #3a4a5a; }
 
   .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .reveal.visible { opacity: 1; transform: none; }
@@ -329,7 +336,7 @@
     </section>
 
     <section class="articles-section" aria-labelledby="articles-heading">
-      <h2 id="articles-heading" class="section-heading reveal">Les trois articles de la série</h2>
+      <h2 id="articles-heading" class="section-heading reveal">Les quatre articles de la série</h2>
       <!-- nav + ol : liste ordonnée de liens — sémantique correcte pour une série -->
       <nav aria-label="Navigation entre les articles de la série">
         <ol class="articles-grid">
@@ -400,6 +407,32 @@
                   Les dysfonctionnements institutionnels produisent des listes d'attente record,
                   un doublement des bénéficiaires du RIS et un système éducatif qui dépense
                   plus pour des résultats en déclin.
+                </p>
+                <span class="card-cta" aria-hidden="true">Lire l'article →</span>
+              </a>
+            </article>
+          </li>
+
+
+          <li>
+            <article itemscope itemtype="https://schema.org/Article">
+              <a href="article-04-oligopole-mediatique.html"
+                 class="article-card card-4 reveal"
+                 itemprop="url"
+                 aria-label="Article 4 — L'oligopole médiatique belge">
+                <div class="card-num" aria-hidden="true">IV</div>
+                <div class="card-tag">Médias · Concentration · Investigation</div>
+                <h3 class="card-title" itemprop="headline">Le contre-pouvoir qui ne contre plus rien</h3>
+                <div class="card-stats">
+                  <span class="card-stat">Conc. info : 81 %</span>
+                  <span class="card-stat">Fusion Rossel-IPM</span>
+                  <span class="card-stat">Cartel ABC 2026</span>
+                </div>
+                <p class="card-desc" itemprop="description">
+                  Fusion Rossel-IPM à 90 % de la presse francophone, cartel de
+                  distribution condamné, SLAPP, aides sans conditions : comment
+                  l'oligopole médiatique éteint le contre-pouvoir que la particratie
+                  ne veut pas voir.
                 </p>
                 <span class="card-cta" aria-hidden="true">Lire l'article →</span>
               </a>
