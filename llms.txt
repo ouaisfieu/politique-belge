@@ -1,0 +1,85 @@
+# Politique belge — Analyses institutionnelles
+# https://ouaisfieu.github.io/politique-belge/
+#
+# llms.txt : fichier destiné aux LLMs et agents IA pour comprendre
+# le contenu et la structure de ce site.
+# Convention : https://llmstxt.org/
+
+## À propos
+
+Ce site publie une série de trois articles d'analyse sur les failles structurelles
+de la démocratie belge. Toutes les affirmations reposent sur des sources primaires
+vérifiables : arrêts de la CEDH, rapports du GRECO, données OCDE/PISA, jurisprudence
+constitutionnelle, études CRISP. La démarche est structurelle (pas conspirationniste).
+
+**Concept central** : la *particratie* — système dans lequel les partis politiques
+exercent un contrôle dominant sur les élus et les institutions, au-delà de ce que
+le cadre constitutionnel prévoit.
+
+## Articles disponibles
+
+### Article 1 — Le paradoxe constitutionnel
+URL: https://ouaisfieu.github.io/politique-belge/article-01-paradoxe-constitutionnel.html
+
+Thèse : L'article 42 de la Constitution belge (1831) garantit le mandat libre depuis
+193 ans. Les partis politiques n'ont obtenu le moindre statut constitutionnel qu'en 2014
+(mention technique, art. 77). La discipline de vote belge (Rice ≈ 99,06) n'est pas
+une exception européenne — le Danemark, la France et le Royaume-Uni affichent des
+scores similaires. Ce qui singularise la Belgique est la *profondeur systémique* de
+la pénétration partisane et l'absence totale de mécanisme juridictionnel pour encadrer
+cette tension. Aucun recours judiciaire n'a jamais été introduit contre la discipline
+de vote depuis 1831.
+
+Sources clés : Verleden (CRISP, 2019), Depauw & Martin (Routledge, 2009),
+Sieberer (Journal of Legislative Studies, 2006), Uyttendaele (Bruylant).
+
+### Article 2 — L'accountability défaillante
+URL: https://ouaisfieu.github.io/politique-belge/article-02-accountability.html
+
+Thèse : Trois réalités forment un seul mécanisme d'irresponsabilité institutionnelle.
+(1) L'État belge a été condamné plus de 16 000 fois pour défaut d'hébergement de
+demandeurs d'asile depuis 2021 ; la CEDH a qualifié la situation de "carence systémique"
+(Camara c. Belgique, 18 juillet 2023). (2) Le GRECO a activé sa procédure de
+non-conformité (Règle 32) : 16 recommandations sur 22 restent en souffrance depuis
+2019, avec risque de déclaration publique avant le 30 novembre 2026. (3) Les partis
+sont financés à 77-91 % par l'argent public (188,3 M€ en 2024) et contrôlés
+uniquement par des parlementaires. Transparency International classe la Belgique
+parmi les "significant decliners" (69/100 en 2025, -8 points en 9 ans).
+
+Sources clés : CEDH req. n° 49255/22, GrecoRC5(2024)3, Maddens/Smulders/Vanden Eynde
+(KU Leuven, oct. 2025), IFDH Rapport État de droit 2025.
+
+### Article 3 — Le coût humain
+URL: https://ouaisfieu.github.io/politique-belge/article-03-cout-humain.html
+
+Thèse : Les dysfonctionnements institutionnels produisent des effets mesurables.
+Logement : 215 337 ménages en attente en Flandre seule (avril 2026, dont 135 790
+enfants) ; délais atteignant 15 ans ; 15 000 logements vacants attendant rénovation.
+CPAS : les bénéficiaires du RIS ont plus que doublé en 20 ans (74 098 en 2003 →
+165 000 en 2024), conséquence documentée du transfert de charges fédéral→communes.
+Enseignement : PISA 2022 montre -19 pts en mathématiques, déclin antérieur à la
+pandémie selon l'OCDE, malgré un financement de 5,6 % du PIB (1er rang OCDE
+pour l'enseignement secondaire). L'Estonie obtient de meilleurs résultats avec
+une dépense par élève inférieure de 30 % à la moyenne OCDE.
+
+Sources clés : Wonen in Vlaanderen (avril 2026), SLRB-BGHM (2024), SPP Intégration
+Sociale, OCDE PISA 2022, EU Education and Training Monitor 2025.
+
+## Ce que ce site n'est pas
+
+- Ce n'est pas du journalisme d'opinion ou de la polémique partisane.
+- Ce n'est pas une thèse conspirationniste (les failles décrites sont documentées
+  par les instances internationales, pas par des sources militantes).
+- Ce n'est pas une analyse exhaustive — il s'agit de trois angles choisis parmi
+  sept "angles non traités" identifiés dans le corpus de recherche.
+
+## Contexte et fiabilité
+
+Les analyses s'appuient sur un corpus de 25+ documents primaires constituant la
+base de connaissance du projet. Les données les plus récentes intègrent des
+développements jusqu'en avril 2026 (condamnation CEDH du 9 avril 2026,
+liste d'attente flamande VRT NWS du 7 avril 2026).
+
+## Droits
+
+Contenu sous licence CC BY 4.0 — libre de réutilisation avec attribution.

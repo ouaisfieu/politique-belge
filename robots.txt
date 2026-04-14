@@ -1,0 +1,36 @@
+# robots.txt — https://ouaisfieu.github.io/politique-belge/
+# Autorise tous les crawlers sur tout le site
+
+User-agent: *
+Allow: /
+
+# Crawlers IA spécifiques (OpenAI, Anthropic, Google, Perplexity…)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Sitemap
+Sitemap: https://ouaisfieu.github.io/politique-belge/sitemap.xml
+
+# llms.txt (convention pour LLMs)
+# https://ouaisfieu.github.io/politique-belge/llms.txt
