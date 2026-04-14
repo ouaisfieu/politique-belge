@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Un État qui ne se laisse pas contrôler — Accountability belge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:        #12100e;
+    --paper:      #f4f0ea;
+    --paper-mid:  #ebe4d8;
+    --crimson:    #9b1a1a;
+    --crimson-dk: #6e1010;
+    --amber:      #c07d14;
+    --amber-lt:   #d9950a;
+    --muted:      #6b5e4a;
+    --line:       rgba(18,16,14,0.13);
+    --green-ok:   #2e6b2e;
+    --orange-partial: #b05a00;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Lora', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.78;
+    overflow-x: hidden;
+  }
+
+  /* ── PROGRESS ── */
+  .progress-bar {
+    position: fixed; top: 0; left: 0;
+    height: 3px; background: var(--crimson); z-index: 999;
+    transition: width 0.1s linear;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    background: var(--ink); color: var(--paper);
+    text-align: center; padding: 13px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    border-bottom: 1px solid #302820;
+  }
+  .masthead span { color: var(--amber-lt); margin: 0 12px; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--crimson-dk);
+    color: var(--paper);
+    padding: 80px 24px 64px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 40%, rgba(180,30,30,0.35) 0%, transparent 65%),
+                repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(255,255,255,0.02) 59px, rgba(255,255,255,0.02) 60px);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 820px; margin: 0 auto; position: relative; }
+  .hero-kicker {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--amber-lt); margin-bottom: 28px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-kicker::before { content: ''; display: block; width: 32px; height: 1px; background: var(--amber-lt); }
+
+  .hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2.2rem, 5.5vw, 4rem);
+    font-weight: 900; line-height: 1.09; letter-spacing: -0.02em;
+    margin-bottom: 28px;
+  }
+  .hero h1 em { font-style: italic; color: var(--amber-lt); }
+
+  .hero-deck {
+    font-family: 'Lora', serif; font-size: 1.15rem; line-height: 1.65;
+    color: rgba(244,240,234,0.78); max-width: 640px; margin-bottom: 48px;
+    border-left: 3px solid var(--amber-lt); padding-left: 20px;
+  }
+  .hero-meta {
+    display: flex; gap: 28px; flex-wrap: wrap;
+    font-family: 'DM Sans', sans-serif; font-size: 12px;
+    color: rgba(244,240,234,0.5); letter-spacing: 0.08em;
+  }
+  .hero-meta strong { color: rgba(244,240,234,0.85); font-weight: 500; }
+
+  /* ── BODY ── */
+  .article-body { max-width: 700px; margin: 0 auto; padding: 64px 24px 80px; }
+
+  .section-label {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--crimson); border-top: 2px solid var(--crimson);
+    padding-top: 8px; margin-bottom: 20px; margin-top: 56px;
+  }
+  h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.5rem, 3.5vw, 2.1rem); font-weight: 700;
+    line-height: 1.2; margin-bottom: 20px; margin-top: 8px;
+  }
+  p { margin-bottom: 1.4em; }
+  strong { font-weight: 600; }
+  em { font-style: italic; }
+
+  /* ── DROPCAP ── */
+  .dropcap::first-letter {
+    float: left;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 4.8rem; font-weight: 900;
+    line-height: 0.82; margin-right: 10px; margin-top: 6px;
+    color: var(--crimson);
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    margin: 48px -40px; padding: 32px 40px;
+    background: var(--ink); color: var(--paper);
+    border-left: 4px solid var(--crimson);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.3rem; font-style: italic; line-height: 1.5;
+    position: relative;
+  }
+  .pull-quote::before {
+    content: '\201C'; font-size: 5rem; color: var(--crimson);
+    position: absolute; top: -10px; left: 28px;
+    line-height: 1; opacity: 0.5;
+  }
+  .pull-quote cite {
+    display: block; margin-top: 16px; font-style: normal;
+    font-family: 'DM Sans', sans-serif; font-size: 11px;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--amber-lt);
+  }
+  @media (max-width: 600px) { .pull-quote { margin: 40px 0; } }
+
+  .article-quote {
+    border-left: 3px solid var(--amber); padding: 4px 0 4px 20px;
+    color: var(--muted); font-style: italic; margin: 28px 0;
+  }
+
+  /* ── STAT BAND ── */
+  .stat-band {
+    background: var(--paper-mid); border: 1px solid var(--line);
+    padding: 40px; margin: 48px 0;
+    display: grid; grid-template-columns: auto 1fr;
+    gap: 32px; align-items: center;
+  }
+  .stat-number {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 4.2rem; font-weight: 900; color: var(--crimson);
+    line-height: 1; white-space: nowrap;
+  }
+  .stat-label { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--muted); line-height: 1.55; }
+  .stat-label strong { display: block; font-size: 16px; color: var(--ink); margin-bottom: 4px; font-weight: 500; }
+  @media (max-width: 520px) { .stat-band { grid-template-columns: 1fr; gap: 12px; } .stat-number { font-size: 3rem; } }
+
+  /* ── TRIPLE STATS ── */
+  .stats-trio {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; margin: 48px 0; background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .trio-item {
+    background: var(--paper); padding: 28px 20px; text-align: center;
+  }
+  .trio-number {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.4rem; font-weight: 900; color: var(--crimson);
+    line-height: 1; margin-bottom: 8px;
+  }
+  .trio-label {
+    font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--muted); line-height: 1.45;
+  }
+  @media (max-width: 560px) {
+    .stats-trio { grid-template-columns: 1fr; }
+  }
+
+  /* ── GRECO TIMELINE ── */
+  .greco-timeline { margin: 48px 0; }
+  .greco-header {
+    font-family: 'DM Sans', sans-serif; font-size: 10px;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--muted); border-bottom: 1px solid var(--line);
+    padding-bottom: 8px; margin-bottom: 0;
+  }
+  .timeline-item {
+    display: grid; grid-template-columns: 88px 24px 1fr;
+    gap: 0 16px; align-items: start; padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    opacity: 0; transform: translateX(-12px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .timeline-item.visible { opacity: 1; transform: none; }
+  .tl-date {
+    font-family: 'DM Sans', sans-serif; font-size: 11px;
+    color: var(--muted); padding-top: 2px; text-align: right; line-height: 1.4;
+  }
+  .tl-dot-wrap { display: flex; flex-direction: column; align-items: center; }
+  .tl-dot {
+    width: 12px; height: 12px; border-radius: 50%; margin-top: 4px; flex-shrink: 0;
+  }
+  .tl-dot.done    { background: var(--green-ok); }
+  .tl-dot.partial { background: var(--orange-partial); }
+  .tl-dot.alert   { background: var(--crimson); }
+  .tl-dot.future  { background: transparent; border: 2px solid var(--crimson); }
+  .tl-connector { width: 1px; flex: 1; background: var(--line); margin-top: 2px; min-height: 12px; }
+  .tl-body { padding-bottom: 4px; }
+  .tl-title { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+  .tl-desc { font-family: 'Lora', serif; font-size: 14px; color: var(--muted); line-height: 1.5; }
+  .tl-tag {
+    display: inline-block; margin-top: 6px;
+    font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 2px 8px; border-radius: 2px;
+  }
+  .tl-tag.done    { background: rgba(46,107,46,0.12); color: var(--green-ok); }
+  .tl-tag.partial { background: rgba(176,90,0,0.12); color: var(--orange-partial); }
+  .tl-tag.alert   { background: rgba(155,26,26,0.12); color: var(--crimson); }
+  .tl-tag.future  { background: rgba(155,26,26,0.07); color: var(--crimson); border: 1px solid var(--crimson); }
+
+  /* ── FUNDING CHART ── */
+  .funding-chart { margin: 40px 0; }
+  .funding-header {
+    font-family: 'DM Sans', sans-serif; font-size: 10px;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--muted); border-bottom: 1px solid var(--line);
+    padding-bottom: 8px; margin-bottom: 0;
+  }
+  .fund-row {
+    display: grid; grid-template-columns: 130px 1fr 56px;
+    align-items: center; gap: 14px;
+    padding: 9px 0; border-bottom: 1px solid var(--line);
+  }
+  .fund-party { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; color: var(--ink); }
+  .fund-bar-wrap { position: relative; height: 8px; background: var(--paper-mid); border-radius: 2px; overflow: hidden; }
+  .fund-bar { position: absolute; left: 0; top: 0; height: 100%; border-radius: 2px; background: var(--amber); width: 0; transition: width 1.2s cubic-bezier(0.16,1,0.3,1); }
+  .fund-bar.high { background: var(--crimson); }
+  .fund-pct { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--muted); text-align: right; }
+  .fund-row.highlight .fund-party { color: var(--crimson); font-weight: 700; }
+  .fund-row.highlight .fund-pct { color: var(--crimson); font-weight: 700; }
+  .fund-note { font-family: 'DM Sans', sans-serif; font-size: 11px; color: var(--muted); margin-top: 10px; line-height: 1.5; }
+
+  /* ── COMPARISON TABLE ── */
+  .comp-table {
+    width: 100%; border-collapse: collapse;
+    margin: 40px 0; font-size: 13.5px; font-family: 'DM Sans', sans-serif;
+  }
+  .comp-table th {
+    background: var(--ink); color: var(--paper);
+    padding: 12px 14px; text-align: left; font-weight: 500;
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .comp-table td {
+    padding: 10px 14px; border-bottom: 1px solid var(--line);
+    color: var(--ink); vertical-align: top; line-height: 1.45;
+  }
+  .comp-table tr:nth-child(even) td { background: var(--paper-mid); }
+  .comp-table td:first-child { font-weight: 500; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .comp-table .bad { color: var(--crimson); font-weight: 500; }
+  .comp-table .ok  { color: var(--green-ok); }
+
+  /* ── SOURCE BLOCK ── */
+  .source-block { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--line); }
+  .source-block h3 {
+    font-family: 'DM Sans', sans-serif; font-size: 10px;
+    letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px;
+  }
+  .source-block ul { list-style: none; padding: 0; }
+  .source-block li {
+    font-family: 'DM Sans', sans-serif; font-size: 12px;
+    color: var(--muted); padding: 5px 0 5px 14px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    position: relative; line-height: 1.5;
+  }
+  .source-block li::before { content: '–'; position: absolute; left: 0; color: var(--amber); }
+
+  /* ── NEXT ── */
+  .next-article { background: var(--ink); color: var(--paper); padding: 48px 32px; text-align: center; }
+  .next-label { font-family: 'DM Sans', sans-serif; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--amber-lt); margin-bottom: 12px; }
+  .next-title { font-family: 'Playfair Display', Georgia, serif; font-size: 1.4rem; font-weight: 700; font-style: italic; opacity: 0.7; }
+
+  /* ── ORNAMENT ── */
+  hr.ornament { border: none; text-align: center; margin: 48px 0; color: var(--muted); }
+  hr.ornament::after { content: '◆  ◆  ◆'; font-size: 10px; letter-spacing: 0.5em; }
+
+  /* ── REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── ALERT BOX ── */
+  .alert-box {
+    border: 2px solid var(--crimson);
+    background: rgba(155,26,26,0.05);
+    padding: 28px 32px; margin: 40px 0;
+  }
+  .alert-box-label {
+    font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 600;
+    letter-spacing: 0.25em; text-transform: uppercase; color: var(--crimson);
+    margin-bottom: 10px;
+  }
+  .alert-box p {
+    font-family: 'DM Sans', sans-serif; font-size: 14px;
+    color: var(--ink); line-height: 1.6; margin: 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+
+<div class="masthead">
+  Démocratie belge <span>·</span> État de droit <span>·</span> Article II / III
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">Accountability &amp; État de droit</div>
+    <h1>Un État qui <em>refuse<br>d'obéir</em><br>à ses juges</h1>
+    <p class="hero-deck">
+      16 000 condamnations ignorées. 16 recommandations anti-corruption en souffrance 
+      depuis 2019. 188 millions d'euros de financement public sans contrôle indépendant. 
+      Ces trois réalités ne sont pas trois scandales distincts — elles forment un seul 
+      mécanisme d'irresponsabilité institutionnelle, documenté par les plus hautes 
+      instances internationales.
+    </p>
+    <div class="hero-meta">
+      <div><strong>Sources</strong> · GRECO · CEDH · IFDH · KU Leuven · TI Belgium</div>
+      <div><strong>Données</strong> · Actualisées à avril 2026</div>
+      <div><strong>Série</strong> · Article II sur III</div>
+    </div>
+  </div>
+</header>
+
+<!-- BODY -->
+<main class="article-body">
+
+  <p class="dropcap reveal">
+    L'article 40 de la Constitution belge dispose que les jugements sont exécutés 
+    « au nom du Roi ». Formule solennelle, héritée de 1831, qui signifie que l'exécution 
+    des décisions de justice est une obligation constitutionnelle de l'État, pas une option 
+    discrétionnaire du gouvernement en place. La réalité contemporaine de la Belgique, 
+    documentée par la Cour européenne des droits de l'homme, par le GRECO et par 
+    l'Institut Fédéral des Droits Humains, est celle d'un État qui a fait de l'inexécution 
+    une politique délibérée.
+  </p>
+  <p class="reveal">
+    Ce n'est pas un jugement de valeur. C'est une qualification juridique posée noir sur blanc 
+    par la CEDH dans l'arrêt <em>Camara c. Belgique</em> du 18 juillet 2023 : 
+    non pas « un simple retard », mais « un refus caractérisé de se conformer aux 
+    injonctions du juge » — une « carence systémique » au sens de l'article 46 de la Convention.
+  </p>
+
+  <!-- TRIPLE STATS -->
+  <div class="stats-trio reveal">
+    <div class="trio-item">
+      <div class="trio-number" data-target="16000">0</div>
+      <div class="trio-label">condamnations judiciaires non exécutées (asile seul)</div>
+    </div>
+    <div class="trio-item">
+      <div class="trio-number" data-target="16" data-suffix="/22">0</div>
+      <div class="trio-label">recommandations GRECO en souffrance (cycle 5, 2024)</div>
+    </div>
+    <div class="trio-item">
+      <div class="trio-number" data-target="188" data-suffix=" M€">0</div>
+      <div class="trio-label">de financement public annuel des partis, sans contrôle indépendant</div>
+    </div>
+  </div>
+
+  <div class="section-label reveal">I. L'État face à ses juges</div>
+  <h2 class="reveal">Quand 278 millions d'euros d'astreintes ne changent rien</h2>
+
+  <p class="reveal">
+    Depuis octobre 2021, l'État belge et Fedasil ont été condamnés par les juridictions belges 
+    pour défaut d'hébergement de demandeurs d'asile. Le chiffre n'est pas anecdotique : 
+    <strong>plus de 16 000 condamnations</strong>. Le montant cumulé des astreintes prononcées 
+    a atteint <strong>278,5 millions d'euros</strong>.
+  </p>
+  <p class="reveal">
+    Ces astreintes ne sont pas payées. Elles sont contestées en justice, neutralisées par 
+    l'invocation de l'article 1412bis du Code judiciaire sur l'insaisissabilité des biens 
+    publics, réduites à 6,75 millions d'euros « encore dus » — non par paiement, mais par 
+    construction juridique. La ministre de l'Asile Anneleen Van Bossuyt (N-VA) a 
+    déclaré publiquement qu'elle « ne peut ni ne veut payer ces astreintes ».
+  </p>
+
+  <div class="pull-quote reveal">
+    Il ne s'agit pas d'un « simple retard » mais d'un « refus caractérisé de se conformer 
+    aux injonctions du juge ».
+    <cite>— CEDH, Camara c. Belgique, 18 juillet 2023 (req. n° 49255/22), § 118</cite>
+  </div>
+
+  <p class="reveal">
+    L'arrêt <em>Camara</em> est historique à double titre. D'abord par sa qualification 
+    substantielle : la Cour y constate une violation de l'article 6 § 1 de la Convention 
+    (droit à un procès équitable), rappelant que ce droit est illusoire si les décisions 
+    judiciaires définitives restent sans effet. Ensuite par son mécanisme : au titre de 
+    l'article 46, la Cour diagnostique une « carence systémique » et enjoint à l'État 
+    belge de prendre des mesures <em>générales</em> pour remédier à son incapacité 
+    structurelle. Ce n'est plus une condamnation individuelle — c'est un constat 
+    de dysfonctionnement d'État.
+  </p>
+  <p class="reveal">
+    La situation ne s'est pas améliorée depuis. Au 9 avril 2026, la CEDH a de nouveau 
+    condamné la Belgique pour non-hébergement de quatre demandeurs d'asile, constatant 
+    que les astreintes « n'ont toujours pas été payées à ce jour ». Plus de 
+    <strong>2 200 mesures provisoires</strong> ont été imposées à la Belgique par la Cour 
+    depuis l'arrêt <em>Camara</em>.
+  </p>
+
+  <div class="alert-box reveal">
+    <div class="alert-box-label">⚠ Le phénomène dépasse l'asile</div>
+    <p>
+      La non-exécution touche aussi les prisons (arrêt <em>Vasilescu c. Belgique</em>, 2014, 
+      toujours non exécuté selon le Comité des Ministres, décision décembre 2024), 
+      le climat (arrêt <em>Klimaatzaak</em>, novembre 2023, exécution contestée), 
+      et les nuisances aériennes de Bruxelles-National (environ 20 millions d'euros 
+      d'astreintes payées plutôt que de modifier les routes). L'IFDH a lancé 
+      une enquête formelle en novembre 2024, posant la question fondamentale : 
+      « Que vaut une décision de justice si elle n'est pas mise en œuvre ? »
+    </p>
+  </div>
+
+  <div class="section-label reveal">II. Le GRECO et la procédure rarissime</div>
+  <h2 class="reveal">Cinq ans d'inertie face au Conseil de l'Europe</h2>
+
+  <p class="reveal">
+    Le Groupe d'États contre la corruption du Conseil de l'Europe (GRECO) évalue les États 
+    membres selon des cycles thématiques. Pour la Belgique, le 5e cycle — portant sur la 
+    prévention de la corruption dans les gouvernements centraux et les forces de l'ordre — 
+    a donné lieu à 22 recommandations en décembre 2019. Cinq ans plus tard, le bilan 
+    est accablant.
+  </p>
+  <p class="reveal">
+    Le 2e rapport de conformité (adopté le 22 mars 2024, réf. GrecoRC5(2024)3) conclut 
+    que <strong>16 recommandations sur 22 demeurent en souffrance</strong> — 8 non mises 
+    en œuvre, 8 partiellement. Résultat : activation de la <strong>Règle 32</strong>, 
+    la procédure de non-conformité graduée du GRECO. Un mécanisme si rarement 
+    utilisé que seule la Biélorussie y a été soumise jusqu'à une déclaration publique 
+    complète.
+  </p>
+
+  <!-- GRECO TIMELINE -->
+  <div class="greco-timeline reveal" id="greco-timeline">
+    <div class="greco-header">Chronologie de la procédure GRECO — Belgique (5e cycle)</div>
+    <div id="tl-items"></div>
+  </div>
+
+  <p class="reveal">
+    Ce qui frappe dans le dossier GRECO, c'est la nature des recommandations ignorées. 
+    Elles ne portent pas sur des exigences exotiques : recrutement des cabinets ministériels 
+    sur critères de compétence plutôt que d'affinité partisane (rec. i), mécanismes de 
+    sanction effectifs (rec. iii), encadrement des contacts avec les lobbyistes (rec. viii), 
+    déclarations de patrimoine des hauts fonctionnaires accessibles au public. Ces standards 
+    sont en vigueur chez la quasi-totalité des partenaires européens de la Belgique.
+  </p>
+
+  <div class="article-quote reveal">
+    « La Belgique ne se conforme pas suffisamment aux recommandations » au sens de la 
+    Règle 31 révisée bis. Des mesures ont été prises mais le taux de mise en œuvre reste 
+    manifestement insuffisant.
+    <br><em style="font-size:0.9rem; color:var(--muted)">— GRECO, GrecoRC5(2024)3, 22 mars 2024</em>
+  </div>
+
+  <div class="section-label reveal">III. 188 millions sans contrôle indépendant</div>
+  <h2 class="reveal">Les partis contrôlent leur propre financement public</h2>
+
+  <p class="reveal">
+    L'étude de référence de Bart Maddens, Jef Smulders et Gunther Vanden Eynde 
+    (KU Leuven, octobre 2025) établit les revenus totaux des partis belges à 
+    108,7 millions d'euros pour l'exercice 2024, dont 83,7 millions de subventions 
+    publiques directes. En incluant les salaires des collaborateurs parlementaires 
+    affectés à des tâches partisanes, le financement public total atteint 
+    <strong>188,3 millions d'euros</strong> par an.
+  </p>
+
+  <!-- FUNDING CHART -->
+  <div class="funding-chart reveal" id="funding-chart">
+    <div class="funding-header">Part du financement public dans les revenus des partis — 2024</div>
+    <div id="fund-rows"></div>
+    <div class="fund-note">
+      Source : Maddens, Smulders &amp; Vanden Eynde (KU Leuven, oct. 2025).
+      Financement public direct uniquement (hors collaborateurs parlementaires).
+    </div>
+  </div>
+
+  <p class="reveal">
+    La dépendance à l'argent public ne serait pas en soi problématique si le contrôle était 
+    indépendant. Il ne l'est pas. La Commission de contrôle des dépenses électorales et de 
+    la comptabilité des partis politiques est composée de <strong>parlementaires</strong>. 
+    Les contrôlés se contrôlent eux-mêmes. Comme le résume Thibault Gaudin du CRISP : 
+    <em>« L'empire de la loi s'arrête là où commence l'intérêt des partis. »</em>
+  </p>
+  <p class="reveal">
+    La comparaison avec l'Allemagne est édifiante. Outre-Rhin, le financement public est 
+    plafonné à <strong>50 % maximum</strong> des revenus totaux d'un parti — un dispositif 
+    dit <em>matching funds</em> qui oblige les formations à lever au moins autant de fonds 
+    propres. Ce plafond structure une responsabilité envers les adhérents et les donateurs, 
+    pas seulement envers le Trésor. En Belgique, ce plafond n'existe pas.
+  </p>
+
+  <!-- COMPARISON TABLE -->
+  <div class="reveal">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th>Belgique</th>
+          <th>Allemagne</th>
+          <th>France</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Financement public (part dans revenus)</td>
+          <td class="bad">77–91 % selon les partis</td>
+          <td class="ok">Plafonné à 50 % (matching funds)</td>
+          <td>~60 % (plafond global)</td>
+        </tr>
+        <tr>
+          <td>Organe de contrôle</td>
+          <td class="bad">Commission composée de parlementaires</td>
+          <td class="ok">Président du Bundestag + Cour fédérale des comptes</td>
+          <td class="ok">CNCCFP (Commission nationale indépendante)</td>
+        </tr>
+        <tr>
+          <td>Transparence patrimoniale des élus</td>
+          <td class="bad">Déclarations sous enveloppe scellée</td>
+          <td class="ok">Publication au Journal officiel fédéral</td>
+          <td class="ok">Déclarations publiques (HATVP)</td>
+        </tr>
+        <tr>
+          <td>Registre des lobbyistes (gouvernement)</td>
+          <td class="bad">Pas de registre opérationnel</td>
+          <td class="ok">Registre obligatoire depuis 2022</td>
+          <td class="ok">Répertoire HATVP (lobbyistes obligatoires)</td>
+        </tr>
+        <tr>
+          <td>Score Transparency International (2025)</td>
+          <td class="bad">69/100 (–8 pts en 9 ans)</td>
+          <td>73/100</td>
+          <td>70/100</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="stat-band reveal">
+    <div class="stat-number">–8</div>
+    <div class="stat-label">
+      <strong>Points perdus sur l'indice de perception de la corruption</strong>
+      De 77/100 en 2016 à 69/100 en 2025. Transparency International classe la Belgique 
+      parmi les <em>significant decliners</em>, aux côtés d'États en crise institutionnelle. 
+      La Belgique occupait le 15e rang mondial en 2016 ; elle est 22e en 2025.
+    </div>
+  </div>
+
+  <hr class="ornament">
+
+  <div class="section-label reveal">Conclusion</div>
+  <h2 class="reveal">Un seul mécanisme, trois manifestations</h2>
+
+  <p class="reveal">
+    Ces trois axes — non-exécution judiciaire, inertie face au GRECO, autocontrôle financier — 
+    ne décrivent pas trois scandales distincts. Ils décrivent un seul mécanisme : des partis 
+    financés à 77–91 % par l'argent public, contrôlés uniquement par eux-mêmes, qui 
+    n'ont aucune incitation structurelle à renforcer la transparence ou l'accountability.
+  </p>
+  <p class="reveal">
+    Les gouvernements qui en résultent traitent les décisions de justice comme des options 
+    plutôt que des obligations. Le GRECO le constate depuis 2019. La CEDH l'a qualifié 
+    de carence systémique en 2023, et l'a reconfirmé en avril 2026. La Commission 
+    européenne note un « limited progress » — formulation diplomatique pour un État 
+    fondateur de l'Union et du Conseil de l'Europe. Transparency International enregistre 
+    un déclin de huit points en moins d'une décennie.
+  </p>
+  <p class="reveal">
+    Ce que ces données ne disent pas encore, c'est ce que ce mécanisme produit concrètement 
+    dans la vie des citoyens — 215 000 familles en attente d'un logement social, 117 000 
+    personnes basculant vers l'aide résiduelle, un système éducatif qui dépense plus 
+    que ses voisins pour des résultats en déclin. C'est l'objet du troisième article.
+  </p>
+
+  <!-- SOURCES -->
+  <div class="source-block reveal">
+    <h3>Sources et références</h3>
+    <ul>
+      <li>CEDH, <em>Camara c. Belgique</em>, req. n° 49255/22, 18 juillet 2023</li>
+      <li>GRECO, GrecoRC5(2024)3 — 2e rapport de conformité, 5e cycle, 22 mars 2024</li>
+      <li>Maddens, B., Smulders, J. &amp; Vanden Eynde, G. (KU Leuven, oct. 2025). Revenus et dépenses des partis belges 2024.</li>
+      <li>Transparency International — CPI Belgique 2016–2025</li>
+      <li>IFDH — Rapport État de droit 2025 ; enquête formelle non-exécution nov. 2024</li>
+      <li>Commission européenne — Rapport État de droit 2025 (juillet 2025)</li>
+      <li>Gaudin, T. (CRISP) — Comptabilité et financement des partis politiques belges</li>
+      <li>CEDH, 9 avril 2026 — condamnations pour non-hébergement (astreintes impayées)</li>
+      <li>RTBF (2024) — cumul des astreintes Fedasil à 278,5 millions d'euros</li>
+      <li>Constitution belge, art. 40 (exécution des jugements au nom du Roi)</li>
+    </ul>
+  </div>
+
+</main>
+
+<footer class="next-article">
+  <div class="next-label">Prochain article · III sur III</div>
+  <div class="next-title"><a href="article-03-cout-humain.html" style="color:inherit;text-decoration:none;">Le coût humain de la particratie :<br>215 000 familles qui attendent un logement →</a></div>
+  <div style="margin-top:20px"><a href="index.html" style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(212,160,23,0.6);text-decoration:none;">← Retour à la série</a></div>
+</footer>
+
+<script>
+  /* ── Progress ── */
+  const progress = document.getElementById('progress');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    progress.style.width = (window.scrollY / (h.scrollHeight - h.clientHeight)) * 100 + '%';
+  });
+
+  /* ── Reveal ── */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  /* ── Counter animation ── */
+  function animateCounters(parent) {
+    parent.querySelectorAll('[data-target]').forEach(el => {
+      const target = +el.dataset.target;
+      const suffix = el.dataset.suffix || '';
+      let start = null;
+      const dur = 1600;
+      function step(ts) {
+        if (!start) start = ts;
+        const pct = Math.min((ts - start) / dur, 1);
+        const val = Math.round(pct * pct * target);
+        el.textContent = (val >= 1000 ? val.toLocaleString('fr') : val) + suffix;
+        if (pct < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }
+  const trioObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { animateCounters(e.target); trioObs.unobserve(e.target); } });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('.stats-trio').forEach(el => trioObs.observe(el));
+
+  /* ── GRECO Timeline ── */
+  const tlData = [
+    { date: 'Déc. 2019', title: 'Rapport d\'évaluation — 5e cycle', desc: '22 recommandations adressées à la Belgique : cabinets, lobbying, déclarations de patrimoine.', type: 'done' },
+    { date: 'Mars 2022', title: '1er rapport de conformité', desc: '14 recommandations en souffrance. Mise en conformité jugée insuffisante. Délai supplémentaire accordé.', type: 'partial' },
+    { date: 'Mars 2024', title: '2e rapport de conformité — Règle 32 activée', desc: '16/22 recommandations toujours en souffrance (8 non mises en œuvre, 8 partiellement). Activation de la procédure de non-conformité.', type: 'alert' },
+    { date: 'Mars 2025', title: 'Rapport de progrès demandé', desc: 'Délai fixé au 31 mars 2025. Lettre envoyée au Représentant permanent de la Belgique auprès du Conseil de l\'Europe.', type: 'alert' },
+    { date: 'Nov. 2025', title: 'Addendum — 101e plénière GRECO', desc: 'Bilan intermédiaire adopté (non encore publié à la date de cet article).', type: 'partial' },
+    { date: '30 nov. 2026', title: 'Échéance critique', desc: 'Risque de déclaration publique de non-conformité — procédure utilisée jusqu\'ici uniquement contre la Biélorussie.', type: 'future' },
+  ];
+  const tlContainer = document.getElementById('tl-items');
+  tlData.forEach((d, i) => {
+    const item = document.createElement('div');
+    item.className = 'timeline-item';
+    item.innerHTML = `
+      <div class="tl-date">${d.date}</div>
+      <div class="tl-dot-wrap">
+        <div class="tl-dot ${d.type}"></div>
+        ${i < tlData.length - 1 ? '<div class="tl-connector"></div>' : ''}
+      </div>
+      <div class="tl-body">
+        <div class="tl-title">${d.title}</div>
+        <div class="tl-desc">${d.desc}</div>
+        <span class="tl-tag ${d.type}">${
+          d.type === 'done' ? 'Complété' :
+          d.type === 'partial' ? 'Partiel' :
+          d.type === 'alert' ? 'Alerte' : 'À venir'
+        }</span>
+      </div>`;
+    tlContainer.appendChild(item);
+    setTimeout(() => {
+      const tlObs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 100); tlObs.unobserve(e.target); } });
+      }, { threshold: 0.3 });
+      tlObs.observe(item);
+    }, 0);
+  });
+
+  /* ── Funding Chart ── */
+  const fundData = [
+    { party: 'Open Vld',       pct: 90.8, high: true  },
+    { party: 'Les Engagés',    pct: 88.1, high: true  },
+    { party: 'Vooruit',        pct: 85.2, high: true  },
+    { party: 'MR',             pct: 83.4, high: false },
+    { party: 'N-VA',           pct: 81.6, high: false },
+    { party: 'PS',             pct: 79.2, high: false },
+    { party: 'Groen / Ecolo',  pct: 76.8, high: false },
+    { party: 'Vlaams Belang',  pct: 71.3, high: false },
+    { party: 'PTB-PVDA',       pct: 54.3, high: false },
+  ];
+  const fundContainer = document.getElementById('fund-rows');
+  fundData.forEach(d => {
+    const row = document.createElement('div');
+    row.className = 'fund-row' + (d.high ? ' highlight' : '');
+    row.innerHTML = `
+      <div class="fund-party">${d.party}</div>
+      <div class="fund-bar-wrap">
+        <div class="fund-bar ${d.high ? 'high' : ''}" data-width="${d.pct}" style="width:0%"></div>
+      </div>
+      <div class="fund-pct">${d.pct}%</div>`;
+    fundContainer.appendChild(row);
+  });
+  const fundObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.fund-bar').forEach(b => { b.style.width = b.dataset.width + '%'; });
+        fundObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  fundObs.observe(fundContainer);
+</script>
+</body>
+</html>

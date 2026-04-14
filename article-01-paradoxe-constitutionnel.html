@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le paradoxe constitutionnel belge — Particratie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1510;
+    --paper: #f5f0e8;
+    --paper-mid: #ede6d6;
+    --gold: #b8860b;
+    --gold-light: #d4a017;
+    --rust: #8b2c0a;
+    --muted: #6b5e4a;
+    --line: rgba(26,21,16,0.15);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Lora', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* ─── MASTHEAD ─── */
+  .masthead {
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    padding: 14px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    border-bottom: 1px solid #3a3028;
+  }
+  .masthead span { color: var(--gold-light); margin: 0 12px; }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 80px 24px 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 39px,
+        rgba(255,255,255,0.025) 39px,
+        rgba(255,255,255,0.025) 40px
+      );
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 820px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .hero-kicker {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-kicker::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold-light);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+  .hero-deck {
+    font-family: 'Lora', serif;
+    font-size: 1.2rem;
+    line-height: 1.65;
+    color: rgba(245,240,232,0.78);
+    max-width: 640px;
+    margin-bottom: 48px;
+    border-left: 3px solid var(--gold);
+    padding-left: 20px;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: rgba(245,240,232,0.5);
+    letter-spacing: 0.08em;
+  }
+  .hero-meta strong { color: rgba(245,240,232,0.85); font-weight: 500; }
+
+  /* ─── ARTICLE LAYOUT ─── */
+  .article-body {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 64px 24px 80px;
+  }
+
+  /* ─── SECTION LABELS ─── */
+  .section-label {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--rust);
+    border-top: 2px solid var(--rust);
+    padding-top: 8px;
+    margin-bottom: 20px;
+    margin-top: 56px;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 20px;
+    margin-top: 8px;
+  }
+
+  p { margin-bottom: 1.4em; }
+
+  p + p { text-indent: 0; }
+
+  /* ─── PULL QUOTE ─── */
+  .pull-quote {
+    margin: 48px -40px;
+    padding: 32px 40px;
+    background: var(--ink);
+    color: var(--paper);
+    border-left: 4px solid var(--gold);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.35rem;
+    font-style: italic;
+    line-height: 1.5;
+    position: relative;
+  }
+  .pull-quote::before {
+    content: '\201C';
+    font-size: 5rem;
+    color: var(--gold);
+    position: absolute;
+    top: -10px;
+    left: 28px;
+    line-height: 1;
+    opacity: 0.5;
+  }
+  .pull-quote cite {
+    display: block;
+    margin-top: 16px;
+    font-style: normal;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+  @media (max-width: 600px) {
+    .pull-quote { margin: 40px 0; }
+  }
+
+  /* ─── ARTICLE QUOTE ─── */
+  .article-quote {
+    border-left: 3px solid var(--gold);
+    padding: 4px 0 4px 20px;
+    color: var(--muted);
+    font-style: italic;
+    margin: 28px 0;
+  }
+
+  /* ─── DATA CARD: KEY STAT ─── */
+  .stat-band {
+    background: var(--paper-mid);
+    border: 1px solid var(--line);
+    padding: 40px;
+    margin: 48px 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  .stat-number {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 4.5rem;
+    font-weight: 900;
+    color: var(--rust);
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .stat-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .stat-label strong {
+    display: block;
+    font-size: 16px;
+    color: var(--ink);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  @media (max-width: 520px) {
+    .stat-band { grid-template-columns: 1fr; gap: 12px; }
+    .stat-number { font-size: 3.2rem; }
+  }
+
+  /* ─── RICE TABLE ─── */
+  .rice-section {
+    margin: 48px 0;
+  }
+  .rice-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 8px;
+  }
+  .rice-row {
+    display: grid;
+    grid-template-columns: 140px 1fr 60px;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    transition: background 0.15s;
+  }
+  .rice-row:hover { background: var(--paper-mid); padding-left: 8px; margin-left: -8px; }
+  .rice-country {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .rice-bar-wrap { position: relative; height: 8px; background: var(--paper-mid); border-radius: 2px; }
+  .rice-bar {
+    position: absolute;
+    left: 0; top: 0; height: 100%;
+    border-radius: 2px;
+    background: var(--muted);
+    transition: width 1.2s cubic-bezier(0.16,1,0.3,1);
+  }
+  .rice-row.highlight .rice-bar { background: var(--rust); }
+  .rice-row.highlight .rice-country { color: var(--rust); font-weight: 700; }
+  .rice-row.highlight .rice-score { color: var(--rust); font-weight: 700; }
+  .rice-score {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--muted);
+    text-align: right;
+  }
+  .rice-note {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 10px;
+    line-height: 1.5;
+  }
+
+  /* ─── COMPARISON TABLE ─── */
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 40px 0;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .comp-table th {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 12px 14px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .comp-table td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink);
+    vertical-align: top;
+    line-height: 1.45;
+  }
+  .comp-table tr:nth-child(even) td { background: var(--paper-mid); }
+  .comp-table td:first-child { font-weight: 500; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .comp-table .yes { color: #3a6b3a; }
+  .comp-table .no { color: var(--rust); font-weight: 500; }
+
+  /* ─── FOOTNOTE / SOURCE ─── */
+  .source-block {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+  .source-block h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .source-block ul {
+    list-style: none;
+    padding: 0;
+  }
+  .source-block li {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    padding-left: 14px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .source-block li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+  }
+
+  /* ─── SCROLL ANIMATIONS ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ─── PROGRESS BAR ─── */
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--gold);
+    z-index: 999;
+    transition: width 0.1s linear;
+  }
+
+  /* ─── NEXT ARTICLE ─── */
+  .next-article {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 48px 32px;
+    text-align: center;
+  }
+  .next-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 12px;
+  }
+  .next-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    font-style: italic;
+    opacity: 0.7;
+  }
+
+  /* ─── DROPCAP ─── */
+  .dropcap::first-letter {
+    float: left;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 4.8rem;
+    font-weight: 900;
+    line-height: 0.82;
+    margin-right: 10px;
+    margin-top: 6px;
+    color: var(--rust);
+  }
+
+  strong { font-weight: 600; }
+  em { font-style: italic; }
+
+  .text-center { text-align: center; }
+
+  hr.ornament {
+    border: none;
+    text-align: center;
+    margin: 48px 0;
+    color: var(--muted);
+  }
+  hr.ornament::after {
+    content: '◆  ◆  ◆';
+    font-size: 10px;
+    letter-spacing: 0.5em;
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+
+<div class="masthead">
+  Démocratie belge <span>·</span> Analyse institutionnelle <span>·</span> Article I / III
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">Le paradoxe constitutionnel</div>
+    <h1>La Constitution belge<br>ignore <em>ceux<br>qui gouvernent</em></h1>
+    <p class="hero-deck">
+      Depuis 1831, l'article 42 garantit aux parlementaires belges un mandat libre, 
+      représentant la Nation entière. Depuis 1831, des structures appelées partis 
+      politiques exercent un contrôle sans contrepoids sur chaque vote, chaque nomination, 
+      chaque couloir du pouvoir. Ces structures n'ont obtenu le moindre statut 
+      constitutionnel qu'en 2014 — pour une mention technique.
+    </p>
+    <div class="hero-meta">
+      <div><strong>Analyse</strong> · Démocratie &amp; institutions</div>
+      <div><strong>Sources</strong> · CRISP · Cour constitutionnelle · CEDH · doctrine</div>
+      <div><strong>Série</strong> · Article I sur III</div>
+    </div>
+  </div>
+</header>
+
+<!-- ARTICLE BODY -->
+<main class="article-body">
+
+  <p class="dropcap reveal">
+    Il existe, au cœur de l'État belge, une contradiction que presque personne ne nomme 
+    directement. La Constitution de 1831, l'une des plus avancées de son époque, a gravé dans 
+    son article 42 un principe fondateur : les parlementaires « représentent la Nation, et non 
+    uniquement ceux qui les ont élus ». En d'autres termes, nul — ni électeur, ni groupe 
+    d'intérêt, ni organisation politique — ne peut imposer à un élu comment voter. C'est 
+    l'interdiction absolue du mandat impératif.
+  </p>
+  <p class="reveal">
+    La réalité institutionnelle est aux antipodes. Sur les textes émanant du gouvernement, la 
+    discipline de vote au sein de la majorité dépasse <strong>99,73 %</strong>. Certains partis, 
+    comme le PTB-PVDA, n'ont documenté aucun vote dissident en séance plénière depuis leur 
+    entrée au Parlement. Le parlementaire belge, théoriquement libre depuis 1831, est en 
+    pratique le porte-voix d'une consigne négociée à huis clos entre présidents de parti.
+  </p>
+
+  <div class="stat-band reveal">
+    <div class="stat-number" id="counter-main">99,7%</div>
+    <div class="stat-label">
+      <strong>Discipline de vote au sein de la majorité</strong>
+      Taux d'alignement des parlementaires sur les textes gouvernementaux. Source : 
+      initiative « Engagement sur l'Honneur », données CRISP.
+    </div>
+  </div>
+
+  <div class="section-label reveal">I. Le paradoxe originel</div>
+  <h2 class="reveal">Une Constitution muette sur ses véritables maîtres</h2>
+
+  <p class="reveal">
+    Le constituant de 1831 n'a pas ignoré la question par inadvertance. Dans son esprit, 
+    les partis politiques tels que nous les connaissons n'existaient pas encore : il y avait 
+    des hommes, des familles, des réseaux notabiliaires — mais pas d'appareils bureaucratiques 
+    capables de surveiller chaque vote, de contrôler chaque investiture, de nominer chaque 
+    directeur général d'intercommunale.
+  </p>
+  <p class="reveal">
+    La montée en puissance des partis comme structures organisées est un phénomène du XX<sup>e</sup> 
+    siècle. Et pourtant, la Constitution belge l'a ignorée pendant 183 ans. Ce n'est qu'en 
+    <strong>2014</strong> — révision constitutionnelle du 6 janvier — que les partis politiques 
+    ont fait leur première apparition dans le texte fondamental. Leur entrée dans la Constitution 
+    a été… une mention administrative, à l'article 77, alinéa 5° : 
+    <em>« les lois concernant le financement des partis politiques et le contrôle des dépenses électorales »</em>.
+  </p>
+  <p class="reveal">
+    C'est tout. Les entités qui tiennent réellement les rênes de l'État belge n'y apparaissent 
+    que pour une question de comptabilité électorale. Comme le note le constitutionnaliste 
+    Marc Uyttendaele dans ses <em>Trente leçons de droit constitutionnel</em>, cette tension entre 
+    mandat libre et discipline de parti reste, à ce jour, « irrésolue » en droit belge.
+  </p>
+
+  <div class="pull-quote reveal">
+    Les partis qui dominent chaque rouage de l'État n'ont aucun statut constitutionnel.
+    <cite>— Paradoxe fondateur du système politique belge</cite>
+  </div>
+
+  <div class="section-label reveal">II. La comparaison européenne</div>
+  <h2 class="reveal">La Belgique n'est pas le cas pathologique que l'on croit</h2>
+
+  <p class="reveal">
+    Avant d'analyser ce qui singularise réellement la Belgique, il faut dissiper un mythe 
+    tenace : celui de l'exceptionnalisme négatif. La discipline de vote belge — quasi parfaite — 
+    est souvent présentée comme une anomalie sur le continent. Les données empiriques 
+    comparatives démontrent que c'est faux.
+  </p>
+  <p class="reveal">
+    L'étude de référence de <strong>Sam Depauw et Shane Martin (2009)</strong>, publiée dans 
+    <em>Intra-Party Politics and Coalition Governments</em> (Routledge), établit les indices Rice 
+    — mesure standard de la cohésion partisane, de 0 à 100 — pour les démocraties d'Europe 
+    occidentale sur les années 1990. Le résultat est sans appel.
+  </p>
+
+  <!-- RICE TABLE -->
+  <div class="rice-section reveal">
+    <div class="rice-title">Indice Rice moyen — Europe occidentale (années 1990)</div>
+    <div id="rice-chart"></div>
+    <div class="rice-note">
+      Source : Depauw &amp; Martin (2009), Routledge ; Sieberer (2006), <em>Journal of Legislative Studies</em> ; 
+      données complémentaires Saalfeld (1995), Hagevi (1999), Willumsen &amp; Öhberg (2017). 
+      Suisse : données 2025, parlement.ch.
+    </div>
+  </div>
+
+  <p class="reveal">
+    L'écart entre le Danemark (premier) et la Belgique dans cet échantillon est de 
+    <strong>0,87 point</strong>. Comme le note Ulrich Sieberer (Université de Bamberg), 
+    la Belgique et le Danemark sont précisément les pays où la dissidence est « si rare que 
+    l'indice Rice ne peut plus capturer les variations » — les deux systèmes se trouvent au 
+    plafond de la mesure.
+  </p>
+  <p class="reveal">
+    Ce constat est corroboré par l'Assemblée parlementaire du Conseil de l'Europe elle-même, 
+    dans son rapport de 2016 (Doc. 14077) : <em>« Il existe une sorte de "mandat impératif" 
+    opérant dans les institutions parlementaires, par la menace de suspension ou d'exclusion 
+    du parti ou du groupe politique. »</em> Ce diagnostic vaut pour <strong>l'ensemble des 
+    démocraties étudiées</strong>, pas spécifiquement pour la Belgique.
+  </p>
+  <p class="reveal">
+    Seule la <strong>Suisse</strong> se démarque véritablement par le bas — avec des scores 
+    allant de 85 % (PLR) à 97,2 % (PS) en 2025. Mais c'est une exception structurelle : le 
+    système de concordance helvétique, l'absence de vote de confiance et la démocratie directe 
+    créent des incitations fondamentalement différentes. Comparer la Suisse aux autres 
+    démocraties parlementaires européennes, c'est comparer des architectures incomparables.
+  </p>
+
+  <hr class="ornament">
+
+  <div class="section-label reveal">III. La singularité belge</div>
+  <h2 class="reveal">Ce qui distingue vraiment la Belgique : la profondeur de pénétration</h2>
+
+  <p class="reveal">
+    Si la discipline de vote n'est pas une exception, que reste-t-il de la singularité belge ? 
+    L'analyse comparative révèle que la véritable différence ne se mesure pas dans les 
+    hémicycles, mais dans l'étendue du contrôle partisan au-delà du vote parlementaire.
+  </p>
+  <p class="reveal">
+    La <em>particratie</em> belge — terme consacré par le CRISP et théorisé notamment par 
+    Wilfried Dewachter dans <em>De trukendoos van de Belgische particratie</em> (2014) — 
+    ne désigne pas simplement la cohésion des votes. Elle désigne un système où les partis 
+    ont colonisé l'ensemble des rouages de l'État : nominations aux cabinets ministériels, 
+    conseils d'administration des intercommunales, directions des entreprises publiques, 
+    postes dans la magistrature et les administrations.
+  </p>
+
+  <div class="article-quote reveal">
+    « Les associations de fait ne peuvent en principe ni contracter, ni ester en justice, 
+    ni disposer d'un patrimoine propre. » Et pourtant, ce sont ces mêmes associations — 
+    les partis — qui gouvernent la Belgique.
+    <br><em style="font-size:0.9rem; color: var(--muted)">— Thibault Gaudin, CRISP, Courrier hebdomadaire n° 2483-2484 (2020)</em>
+  </div>
+
+  <p class="reveal">
+    La singularité prend une dimension juridique troublante : les partis belges sont, en droit, 
+    des <strong>associations de fait sans personnalité juridique</strong>. Ils ne peuvent pas 
+    être poursuivis en justice en tant que tels. C'est précisément ce qui a empêché la 
+    dissolution directe du Vlaams Blok en 2004 : seules ses ASBL satellites ont été condamnées. 
+    Des entités juridiquement inexistantes exercent un pouvoir réel sur un État constitutionnel.
+  </p>
+
+  <!-- COMPARISON TABLE -->
+  <div class="reveal">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th>Belgique (art. 42)</th>
+          <th>Allemagne (art. 38 GG)</th>
+          <th>France (art. 27)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Interdiction du mandat impératif</td>
+          <td class="yes">Oui — représentation de la Nation</td>
+          <td class="yes">Oui — soumis à la seule conscience</td>
+          <td class="yes">Oui — tout mandat impératif est nul</td>
+        </tr>
+        <tr>
+          <td>Statut constitutionnel des partis</td>
+          <td class="no">Non (mention technique, 2014 seulement)</td>
+          <td class="yes">Oui — art. 21 GG, rôle encadré</td>
+          <td class="yes">Oui — art. 4 Const.</td>
+        </tr>
+        <tr>
+          <td>Contrôle juridictionnel de la discipline interne</td>
+          <td class="no">Inexistant — espace jurisprudentiel vierge</td>
+          <td class="yes">Équilibré par la Cour constitutionnelle fédérale</td>
+          <td>Partiellement encadré</td>
+        </tr>
+        <tr>
+          <td>Personnalité juridique des partis</td>
+          <td class="no">Associations de fait (pas de personnalité juridique)</td>
+          <td class="yes">Entités juridiques reconnues</td>
+          <td class="yes">Associations loi 1901 / entités reconnues</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="reveal">
+    La comparaison avec l'Allemagne est particulièrement instructive. L'article 38 du 
+    <em>Grundgesetz</em> garantit, tout comme l'article 42 belge, que les parlementaires 
+    « ne sont soumis qu'à leur conscience ». Mais l'article 21 GG reconnaît formellement 
+    le rôle des partis dans la démocratie et la Cour constitutionnelle fédérale de Karlsruhe 
+    a développé une jurisprudence nuancée pour concilier mandat libre et cohésion partisane 
+    (<em>Fraktionsdisziplin</em>). En Belgique, ce travail d'équilibrage n'a jamais eu lieu.
+  </p>
+
+  <div class="pull-quote reveal">
+    Aucune juridiction belge n'a jamais sanctionné la discipline de vote comme violation 
+    de l'article 42. Aucun parlementaire n'a jamais contesté en justice 
+    la discipline qui lui était imposée.
+    <cite>— État de la jurisprudence, 2026</cite>
+  </div>
+
+  <div class="section-label reveal">IV. Le vide juridictionnel</div>
+  <h2 class="reveal">Une tension cantonnée aux conventions non écrites</h2>
+
+  <p class="reveal">
+    Ce qui distingue la Belgique de ses voisins, c'est finalement moins le niveau de 
+    discipline que <strong>l'absence totale de mécanisme de régulation</strong>. En 
+    Allemagne, la Cour constitutionnelle a tracé une ligne entre cohésion partisane 
+    acceptable et mandat impératif illicite. En Belgique, cette ligne n'existe pas — 
+    ni dans la jurisprudence, ni dans la loi, ni dans la Constitution.
+  </p>
+  <p class="reveal">
+    La Cour constitutionnelle belge ne peut contrôler que des normes législatives, 
+    or la discipline de vote est une pratique factuelle d'associations privées. Le 
+    Conseil d'État ne peut connaître que d'actes d'autorités administratives, 
+    or les partis sont des associations de fait. Les juridictions civiles, 
+    enfin, ont laissé cette question en jachère.
+  </p>
+  <p class="reveal">
+    L'affaire <strong>Emir Kir</strong> illustre ce vide avec une clarté presque caricaturale. 
+    Exclu du PS le 18 janvier 2020 pour « rupture du cordon sanitaire » après avoir reçu 
+    des maires turcs du MHP, Kir a continué à siéger à la Chambre comme indépendant. 
+    L'article 42 a tenu — le siège ne peut être repris — mais la sanction partisane, 
+    elle, était pleinement effective : exclusion, marginalisation, fin de carrière 
+    parlementaire programmée. La lettre de la Constitution a survécu ; son esprit avait 
+    depuis longtemps capitulé.
+  </p>
+
+  <div class="stat-band reveal">
+    <div class="stat-number">1831</div>
+    <div class="stat-label">
+      <strong>L'article 42 n'a jamais été appliqué en justice</strong>
+      Depuis la Constitution originelle, aucun recours judiciaire n'a été introduit 
+      devant une juridiction belge pour contester la discipline de vote imposée par 
+      les partis à leurs parlementaires.
+    </div>
+  </div>
+
+  <div class="section-label reveal">Conclusion</div>
+  <h2 class="reveal">Une singularité de profondeur, pas de discipline</h2>
+
+  <p class="reveal">
+    La leçon du corpus est contre-intuitive mais rigoureuse : la Belgique ne se distingue 
+    pas par le fait que ses parlementaires obéissent à leur parti — tous le font en Europe. 
+    Elle se distingue par le fait que cette obéissance n'est jamais régulée, jamais 
+    équilibrée par une reconnaissance constitutionnelle des partis qui permettrait 
+    simultanément de les encadrer.
+  </p>
+  <p class="reveal">
+    La singularité belge est celle d'un État dont la Constitution reconnaît formellement 
+    le mandat libre depuis 193 ans, mais n'a jamais doté ce principe des instruments 
+    nécessaires à son effectivité. Les partis gouvernent dans un angle mort du droit 
+    constitutionnel. Ils sont les maîtres réels d'un État dont la loi fondamentale les 
+    ignore — sauf, depuis 2014, pour une question de comptabilité électorale.
+  </p>
+  <p class="reveal">
+    Cette lacune n'est pas un oubli : c'est un arrangement. Un arrangement commode pour 
+    ceux qui le perpétuent, et dont le coût — institutionnel, démocratique, humain — 
+    sera l'objet des deux prochains articles de cette série.
+  </p>
+
+  <!-- SOURCES -->
+  <div class="source-block reveal">
+    <h3>Sources et références</h3>
+    <ul>
+      <li>Constitution belge, art. 33, 42, 77, 5° (révision du 6 janvier 2014)</li>
+      <li>Depauw, S. &amp; Martin, S. (2009). <em>Intra-Party Politics and Coalition Governments</em>. Routledge.</li>
+      <li>Sieberer, U. (2006). Party Unity in Parliamentary Democracies. <em>Journal of Legislative Studies</em>, 12(2).</li>
+      <li>Verleden, F. (2019). <em>Aux sources de la particratie</em>. CRISP, Courrier hebdomadaire n° 2501-2504.</li>
+      <li>Gaudin, T. (2020). CRISP, Courrier hebdomadaire n° 2483-2484.</li>
+      <li>Dewachter, W. (2014). <em>De trukendoos van de Belgische particratie</em>.</li>
+      <li>Uyttendaele, M. <em>Trente leçons de droit constitutionnel</em>. Bruylant, p. 157.</li>
+      <li>Assemblée parlementaire du Conseil de l'Europe, Doc. 14077 (2016).</li>
+      <li>Grundgesetz, art. 21, 38 ; Constitution française, art. 27 ; Constitution belge, art. 42.</li>
+      <li>Willumsen, D. &amp; Öhberg, P. (2017). <em>West European Politics</em>, 40(5).</li>
+    </ul>
+  </div>
+
+</main>
+
+<footer class="next-article">
+  <div class="next-label">Prochain article · II sur III</div>
+  <div class="next-title"><a href="article-02-accountability.html" style="color:inherit;text-decoration:none;">Un État qui ne se laisse pas contrôler :<br>GRECO, CEDH et l'accountability sans dents →</a></div>
+  <div style="margin-top:20px"><a href="index.html" style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(212,160,23,0.6);text-decoration:none;">← Retour à la série</a></div>
+</footer>
+
+<script>
+  // Progress bar
+  const progress = document.getElementById('progress');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const pct = (window.scrollY / (h.scrollHeight - h.clientHeight)) * 100;
+    progress.style.width = pct + '%';
+  });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), 0);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => obs.observe(el));
+
+  // Rice chart
+  const riceData = [
+    { country: 'Danemark',      score: 99.93, highlight: false },
+    { country: 'France',        score: 99.33, highlight: false },
+    { country: 'Royaume-Uni',   score: 99.25, highlight: false },
+    { country: 'Belgique',      score: 99.06, highlight: true  },
+    { country: 'Allemagne',     score: 97.0,  highlight: false },
+    { country: 'Suède',         score: 96.5,  highlight: false },
+    { country: 'Pays-Bas',      score: 95.8,  highlight: false },
+    { country: 'Italie',        score: 93.0,  highlight: false },
+    { country: 'Suisse',        score: 91.1,  highlight: false },
+  ];
+  const max = 100;
+  const chart = document.getElementById('rice-chart');
+  riceData.forEach(d => {
+    const row = document.createElement('div');
+    row.className = 'rice-row' + (d.highlight ? ' highlight' : '');
+    row.innerHTML = `
+      <div class="rice-country">${d.country}</div>
+      <div class="rice-bar-wrap">
+        <div class="rice-bar" data-width="${(d.score / max) * 100}" style="width:0%"></div>
+      </div>
+      <div class="rice-score">${d.score.toFixed(2)}</div>
+    `;
+    chart.appendChild(row);
+  });
+
+  // Animate bars when in view
+  const barObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.rice-bar').forEach(bar => {
+          bar.style.width = bar.dataset.width + '%';
+        });
+        barObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  barObs.observe(chart);
+</script>
+</body>
+</html>

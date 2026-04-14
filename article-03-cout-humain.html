@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le coût humain de la particratie — Série Démocratie belge III/III</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:       #0f0d0a;
+    --paper:     #f6f1e9;
+    --paper-mid: #ede5d5;
+    --terra:     #7a3b1e;
+    --terra-lt:  #a04a28;
+    --ochre:     #b07d2a;
+    --ochre-lt:  #c8921e;
+    --forest:    #2d5a3d;
+    --muted:     #6a5d49;
+    --line:      rgba(15,13,10,0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Lora', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.78;
+    overflow-x: hidden;
+  }
+
+  /* ── PROGRESS ── */
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--terra); z-index: 999; transition: width 0.1s linear; }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    background: var(--ink); color: var(--paper);
+    text-align: center; padding: 13px 24px;
+    font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    border-bottom: 1px solid #2e2820;
+  }
+  .masthead span { color: var(--ochre-lt); margin: 0 12px; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--ink); color: var(--paper);
+    padding: 80px 24px 72px; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 80%, rgba(122,59,30,0.4) 0%, transparent 60%),
+      repeating-linear-gradient(45deg, transparent, transparent 49px, rgba(255,255,255,0.018) 49px, rgba(255,255,255,0.018) 50px);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 820px; margin: 0 auto; position: relative; }
+  .hero-kicker {
+    font-family: 'DM Sans', sans-serif; font-size: 11px;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--ochre-lt); margin-bottom: 28px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-kicker::before { content: ''; display: block; width: 32px; height: 1px; background: var(--ochre-lt); }
+  .hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2.2rem, 5.5vw, 4rem);
+    font-weight: 900; line-height: 1.09; letter-spacing: -0.02em; margin-bottom: 28px;
+  }
+  .hero h1 em { font-style: italic; color: var(--ochre-lt); }
+  .hero-deck {
+    font-family: 'Lora', serif; font-size: 1.15rem; line-height: 1.65;
+    color: rgba(246,241,233,0.78); max-width: 640px; margin-bottom: 48px;
+    border-left: 3px solid var(--terra); padding-left: 20px;
+  }
+  .hero-meta { display: flex; gap: 28px; flex-wrap: wrap; font-family: 'DM Sans', sans-serif; font-size: 12px; color: rgba(246,241,233,0.5); letter-spacing: 0.08em; }
+  .hero-meta strong { color: rgba(246,241,233,0.85); font-weight: 500; }
+
+  /* ── ARTICLE BODY ── */
+  .article-body { max-width: 700px; margin: 0 auto; padding: 64px 24px 80px; }
+  .section-label {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--terra); border-top: 2px solid var(--terra);
+    padding-top: 8px; margin-bottom: 20px; margin-top: 56px;
+  }
+  h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.5rem, 3.5vw, 2.1rem); font-weight: 700; line-height: 1.2; margin-bottom: 20px; margin-top: 8px; }
+  p { margin-bottom: 1.4em; }
+  strong { font-weight: 600; }
+  em { font-style: italic; }
+
+  .dropcap::first-letter {
+    float: left;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 4.8rem; font-weight: 900; line-height: 0.82;
+    margin-right: 10px; margin-top: 6px; color: var(--terra);
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    margin: 48px -40px; padding: 32px 40px;
+    background: var(--terra); color: var(--paper);
+    border-left: 4px solid var(--ochre-lt);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.3rem; font-style: italic; line-height: 1.5;
+    position: relative;
+  }
+  .pull-quote::before { content: '\201C'; font-size: 5rem; color: rgba(200,146,30,0.5); position: absolute; top: -10px; left: 28px; line-height: 1; }
+  .pull-quote cite { display: block; margin-top: 16px; font-style: normal; font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ochre-lt); }
+  @media (max-width: 600px) { .pull-quote { margin: 40px 0; } }
+
+  .article-quote { border-left: 3px solid var(--ochre); padding: 4px 0 4px 20px; color: var(--muted); font-style: italic; margin: 28px 0; }
+
+  /* ── HOUSING MAP ── */
+  .housing-regions {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; margin: 48px 0; background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .region-card {
+    background: var(--paper); padding: 28px 20px;
+    position: relative; overflow: hidden;
+  }
+  .region-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+    height: 4px; background: var(--terra);
+  }
+  .region-name { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .region-number { font-family: 'Playfair Display', Georgia, serif; font-size: 2.2rem; font-weight: 900; color: var(--terra); line-height: 1; margin-bottom: 6px; }
+  .region-sub { font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--muted); line-height: 1.45; }
+  @media (max-width: 560px) { .housing-regions { grid-template-columns: 1fr; } }
+
+  /* ── STAT BAND ── */
+  .stat-band { background: var(--paper-mid); border: 1px solid var(--line); padding: 40px; margin: 48px 0; display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: center; }
+  .stat-number { font-family: 'Playfair Display', Georgia, serif; font-size: 4rem; font-weight: 900; color: var(--terra); line-height: 1; white-space: nowrap; }
+  .stat-label { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--muted); line-height: 1.55; }
+  .stat-label strong { display: block; font-size: 16px; color: var(--ink); margin-bottom: 4px; font-weight: 500; }
+  @media (max-width: 520px) { .stat-band { grid-template-columns: 1fr; gap: 12px; } .stat-number { font-size: 3rem; } }
+
+  /* ── PISA CHART ── */
+  .pisa-chart { margin: 40px 0; }
+  .chart-header { font-family: 'DM Sans', sans-serif; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 0; }
+  .pisa-row { display: grid; grid-template-columns: 100px 1fr 56px; align-items: center; gap: 14px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+  .pisa-country { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; color: var(--ink); }
+  .pisa-bar-wrap { position: relative; height: 10px; background: var(--paper-mid); border-radius: 2px; overflow: hidden; }
+  .pisa-bar { position: absolute; left: 0; top: 0; height: 100%; border-radius: 2px; background: var(--forest); width: 0; transition: width 1.2s cubic-bezier(0.16,1,0.3,1); }
+  .pisa-bar.highlight { background: var(--terra); }
+  .pisa-score { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--muted); text-align: right; }
+  .pisa-row.highlight .pisa-country { color: var(--terra); font-weight: 700; }
+  .pisa-row.highlight .pisa-score { color: var(--terra); font-weight: 700; }
+  .chart-note { font-family: 'DM Sans', sans-serif; font-size: 11px; color: var(--muted); margin-top: 10px; line-height: 1.5; }
+
+  /* ── RIS EVOLUTION ── */
+  .ris-chart { margin: 40px 0; }
+  .ris-bars { display: flex; align-items: flex-end; gap: 4px; height: 100px; margin: 12px 0 8px; }
+  .ris-bar-item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .ris-bar-fill { width: 100%; background: var(--muted); border-radius: 2px 2px 0 0; transition: height 1.2s cubic-bezier(0.16,1,0.3,1); }
+  .ris-bar-fill.last { background: var(--terra); }
+  .ris-bar-year { font-family: 'DM Sans', sans-serif; font-size: 9px; color: var(--muted); }
+  .ris-axis { display: flex; justify-content: space-between; }
+  .ris-axis-label { font-family: 'DM Sans', sans-serif; font-size: 10px; color: var(--muted); }
+
+  /* ── COMPARISON TABLE ── */
+  .comp-table { width: 100%; border-collapse: collapse; margin: 40px 0; font-size: 13.5px; font-family: 'DM Sans', sans-serif; }
+  .comp-table th { background: var(--ink); color: var(--paper); padding: 12px 14px; text-align: left; font-weight: 500; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .comp-table td { padding: 10px 14px; border-bottom: 1px solid var(--line); color: var(--ink); vertical-align: top; line-height: 1.45; }
+  .comp-table tr:nth-child(even) td { background: var(--paper-mid); }
+  .comp-table td:first-child { font-weight: 500; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .comp-table .bad { color: var(--terra); font-weight: 500; }
+  .comp-table .good { color: var(--forest); font-weight: 500; }
+
+  /* ── CAUSAL SCHEMA ── */
+  .causal-schema { margin: 48px 0; }
+  .causal-step {
+    display: grid; grid-template-columns: 40px 1fr;
+    gap: 16px; margin-bottom: 0; padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+    opacity: 0; transform: translateX(-14px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .causal-step.visible { opacity: 1; transform: none; }
+  .step-num { font-family: 'Playfair Display', Georgia, serif; font-size: 2rem; font-weight: 900; color: var(--ochre); line-height: 1; padding-top: 2px; }
+  .step-body {}
+  .step-title { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 5px; }
+  .step-desc { font-family: 'Lora', serif; font-size: 14.5px; color: var(--muted); line-height: 1.55; }
+
+  /* ── FINAL NUMBERS ── */
+  .final-numbers {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 2px; margin: 48px 0; background: var(--ink);
+  }
+  .fn-item { background: var(--ink); padding: 32px 20px; text-align: center; }
+  .fn-number { font-family: 'Playfair Display', Georgia, serif; font-size: 2.2rem; font-weight: 900; color: var(--ochre-lt); line-height: 1.1; margin-bottom: 10px; }
+  .fn-label { font-family: 'DM Sans', sans-serif; font-size: 12px; color: rgba(246,241,233,0.6); line-height: 1.45; }
+  @media (max-width: 560px) { .final-numbers { grid-template-columns: 1fr; } }
+
+  /* ── SOURCE ── */
+  .source-block { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--line); }
+  .source-block h3 { font-family: 'DM Sans', sans-serif; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+  .source-block ul { list-style: none; padding: 0; }
+  .source-block li { font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--muted); padding: 5px 0 5px 14px; border-bottom: 1px solid rgba(0,0,0,0.06); position: relative; line-height: 1.5; }
+  .source-block li::before { content: '–'; position: absolute; left: 0; color: var(--ochre); }
+
+  /* ── SERIES END ── */
+  .series-end { background: var(--ink); color: var(--paper); padding: 56px 32px; text-align: center; }
+  .series-end-label { font-family: 'DM Sans', sans-serif; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ochre-lt); margin-bottom: 20px; }
+  .series-end-title { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; font-style: italic; line-height: 1.4; max-width: 600px; margin: 0 auto; opacity: 0.75; }
+  .series-pills { display: flex; justify-content: center; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
+  .series-pill { font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 8px 18px; border: 1px solid rgba(255,255,255,0.2); color: rgba(246,241,233,0.6); border-radius: 2px; }
+
+  hr.ornament { border: none; text-align: center; margin: 48px 0; color: var(--muted); }
+  hr.ornament::after { content: '◆  ◆  ◆'; font-size: 10px; letter-spacing: 0.5em; }
+
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+
+<div class="masthead">
+  Démocratie belge <span>·</span> Impact citoyen <span>·</span> Article III / III
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">Le coût humain</div>
+    <h1>215 000 familles<br>qui attendent<br><em>un logement</em></h1>
+    <p class="hero-deck">
+      Les failles structurelles de l'État belge ne sont pas des abstractions académiques. 
+      Elles produisent des effets mesurables et documentés dans la vie des citoyens : 
+      des files d'attente qui s'allongent depuis vingt ans, un système d'aide sociale 
+      qui double sa charge sans doublement de ses moyens, un système éducatif qui 
+      dépense plus que ses voisins pour des résultats en déclin. Ce qui distingue 
+      la Belgique n'est pas l'existence de ces difficultés. C'est son incapacité 
+      structurelle à les corriger.
+    </p>
+    <div class="hero-meta">
+      <div><strong>Sources</strong> · OCDE · PISA 2022 · SWL · SLRB · SPP IS</div>
+      <div><strong>Données</strong> · Actualisées à avril 2026</div>
+      <div><strong>Série</strong> · Article III sur III — Conclusion</div>
+    </div>
+  </div>
+</header>
+
+<!-- BODY -->
+<main class="article-body">
+
+  <p class="dropcap reveal">
+    Un chiffre pour commencer. En avril 2026, la liste d'attente pour un logement social 
+    en Flandre atteignait 215 337 ménages. Parmi eux, 135 790 enfants. Pendant ce temps, 
+    15 000 logements sociaux restaient vides dans la même région — en attente de rénovation 
+    climatique, bloqués par une gouvernance fragmentée entre communes, agences régionales et 
+    niveaux de pouvoir qui ne se parlent pas. Un toit disponible, une famille qui attend. 
+    Ce n'est pas une malchance. C'est le produit mesurable d'une architecture institutionnelle.
+  </p>
+  <p class="reveal">
+    Les deux premiers articles de cette série ont documenté le paradoxe constitutionnel 
+    belge et la défaillance de l'accountability. Celui-ci descend à l'étage des 
+    conséquences concrètes : logement, aide sociale, enseignement. Trois domaines 
+    où les dysfonctionnements institutionnels — particratie, fragmentation, opacité, 
+    transfert de charges sans transfert de moyens — produisent des effets qui se mesurent 
+    en ménages, en bénéficiaires, en points PISA.
+  </p>
+
+  <div class="section-label reveal">I. Le logement social</div>
+  <h2 class="reveal">Quand la fragmentation produit des files d'attente record</h2>
+
+  <p class="reveal">
+    La Belgique dispose d'environ 301 872 logements sociaux — à peine 6,5 % 
+    du parc résidentiel total, l'un des taux les plus bas d'Europe occidentale. Cette 
+    proportion stagne depuis des décennies. Les trois régions cumulent aujourd'hui 
+    une liste d'attente qui dépasse largement les 315 000 ménages.
+  </p>
+
+  <div class="housing-regions reveal">
+    <div class="region-card">
+      <div class="region-name">Flandre</div>
+      <div class="region-number">215 337</div>
+      <div class="region-sub">ménages en attente (avril 2026)<br>dont 135 790 enfants</div>
+    </div>
+    <div class="region-card">
+      <div class="region-name">Bruxelles</div>
+      <div class="region-number">60 159</div>
+      <div class="region-sub">ménages en attente (nov. 2024)<br>délai moyen : 10–12 ans</div>
+    </div>
+    <div class="region-card">
+      <div class="region-name">Wallonie</div>
+      <div class="region-number">44 491</div>
+      <div class="region-sub">candidats-locataires (2023)<br>besoin réel estimé : ~98 000</div>
+    </div>
+  </div>
+
+  <p class="reveal">
+    L'expert Filip Canfyn a calculé qu'au rythme actuel de construction — environ 2 000 
+    nouveaux logements sociaux par an en Flandre depuis plus de vingt ans — il faudrait 
+    <strong>plus de 80 ans</strong> pour résorber la liste d'attente flamande actuelle. 
+    Si la liste continue d'augmenter au même rythme qu'entre 2022 et 2026 (+39 000 ménages 
+    en quatre ans), ce délai n'est pas même une borne supérieure : c'est une projection 
+    optimiste.
+  </p>
+
+  <div class="pull-quote reveal">
+    « Ce n'est pas l'ambition du gouvernement flamand d'avoir autant de logements sociaux 
+    que possible. »
+    <cite>— Matthias Diependaele (N-VA), ministre flamand du Logement, face aux caméras de Pano (VRT)</cite>
+  </div>
+
+  <p class="reveal">
+    Cette déclaration n'est pas un dérapage. C'est une politique. Et c'est précisément 
+    ce que permet la particratie : un parti peut bloquer une politique publique essentielle 
+    pendant une législature entière sans contre-pouvoir effectif. Le Parlement — verrouillé 
+    par la discipline de vote — ne corrige pas. Les intercommunales de logement — dont 
+    les conseils d'administration ont « historiquement reflété les équilibres partitocratiques » 
+    selon le CRISP — n'alertent pas. La Cour des comptes constate, sans pouvoir contraindre.
+  </p>
+  <p class="reveal">
+    Le contraste avec Vienne est saisissant. La capitale autrichienne consacre environ 
+    0,25 % de son PIB au logement social, dispose de 220 000 logements municipaux et d'un 
+    parc qui couvre <strong>40 % du résidentiel viennois</strong>. Plus de 60 % des 
+    1,8 million d'habitants y vivent dans une forme de logement subventionné, à des loyers 
+    de 6,67 €/m² contre 12–22 € sur le marché privé. Ce résultat n'est pas une 
+    dotation géographique — c'est le produit de cent ans de choix institutionnels cohérents 
+    et d'une gouvernance municipale intégrée. La Belgique n'a pas de déficit de richesse : 
+    elle a un déficit d'architecture institutionnelle.
+  </p>
+
+  <div class="section-label reveal">II. Les CPAS et l'aide sociale</div>
+  <h2 class="reveal">Le transfert de charges comme symptôme de la fragmentation</h2>
+
+  <p class="reveal">
+    Le nombre de bénéficiaires du Revenu d'Intégration Sociale (RIS) a plus que doublé en 
+    vingt ans : de 74 098 en 2003 à <strong>165 000</strong> en 2024, soit 1,41 % de 
+    la population belge. Le Bureau fédéral du Plan qualifie cette tendance de « défavorable » 
+    au regard des objectifs de développement durable.
+  </p>
+
+  <!-- RIS evolution chart -->
+  <div class="ris-chart reveal" id="ris-chart">
+    <div class="chart-header">Bénéficiaires du RIS — évolution 2003–2024 (en milliers)</div>
+    <div class="ris-bars" id="ris-bars"></div>
+    <div class="ris-axis">
+      <span class="ris-axis-label">2003 · 74 000</span>
+      <span class="ris-axis-label">2024 · 165 000</span>
+    </div>
+    <div class="chart-note">Source : SPP Intégration Sociale ; Bureau fédéral du Plan.</div>
+  </div>
+
+  <p class="reveal">
+    Ce doublement ne reflète pas une pauvreté qui aurait spontanément doublé. Il reflète 
+    un mécanisme institutionnel précis : le transfert de charges de l'État fédéral vers 
+    les 581 communes, chacune dotée d'un CPAS. L'assurance-chômage est fédérale — 
+    un droit contributif financé par les cotisations. L'aide sociale via le RIS est 
+    communale — une assistance résiduelle soumise à enquête sur les ressources du ménage. 
+    Quand le fédéral restreint l'accès au chômage, les exclus basculent vers les CPAS 
+    communaux, qui absorbent le coût sans décision de leur part.
+  </p>
+
+  <div class="article-quote reveal">
+    « On ne peut percevoir un RIS que quand on n'a pas (ou plus) accès aux prestations 
+    de la sécurité sociale. »
+    <br><em style="font-size:0.9rem; color:var(--muted)">— IWEPS (Institut Wallon de l'Évaluation, de la Prospective et de la Statistique)</em>
+  </div>
+
+  <p class="reveal">
+    La réforme de 2025 amplifie ce phénomène. Une loi de juillet 2025 transfère aux CPAS 
+    une partie des personnes protégées dans d'autres États membres, touchant plus de 
+    3 200 personnes. À Bruxelles, l'OBSS estime le besoin à 780 ETP supplémentaires 
+    dans les 19 CPAS bruxellois, pour un coût de personnel de 46,8 millions d'euros. 
+    La Fédération des CPAS évalue le coût total sur la législature 2026–2029 à 
+    <strong>493 à 631 millions d'euros</strong> — dont la compensation fédérale sera 
+    dégressive à partir de 2027.
+  </p>
+
+  <div class="stat-band reveal">
+    <div class="stat-number">×2,2</div>
+    <div class="stat-label">
+      <strong>Hausse du nombre de bénéficiaires du RIS en 20 ans</strong>
+      De 74 098 (2003) à ~165 000 (2024). Ce doublement n'est pas la conséquence 
+      d'une pauvreté spontanée : c'est le produit documenté d'un transfert de charges 
+      du niveau fédéral vers les communes, inscrit dans l'architecture même 
+      du fédéralisme belge.
+    </div>
+  </div>
+
+  <div class="section-label reveal">III. L'enseignement</div>
+  <h2 class="reveal">Le paradoxe d'un système coûteux qui décroche</h2>
+
+  <p class="reveal">
+    Les résultats PISA 2022 confirment une dégradation profonde et, selon l'OCDE, 
+    antérieure à la pandémie. La Belgique a perdu 19 points en mathématiques par rapport 
+    à 2018. La Communauté flamande a enregistré sa plus forte chute historique en 
+    mathématiques. La FWB affiche une baisse encore plus marquée. L'OCDE classe 
+    explicitement la Belgique parmi les pays où « le déclin a débuté avant 2018 » — 
+    un problème structurel, pas conjoncturel.
+  </p>
+  <p class="reveal">
+    Ce qui rend cette dégradation remarquable, c'est qu'elle se produit malgré un 
+    financement <em>supérieur</em> à la moyenne européenne. La Belgique consacre 
+    5,6 % de son PIB à l'éducation contre 4,7 % en moyenne OCDE. Sa dépense par élève 
+    atteint 16 429 USD contre 12 647 USD en moyenne. Elle se classe au premier rang 
+    des 39 pays de l'OCDE pour les dépenses en enseignement secondaire rapportées 
+    au PIB. Dépenser plus ne suffit pas quand le problème est de gouvernance.
+  </p>
+
+  <!-- PISA chart -->
+  <div class="pisa-chart reveal" id="pisa-chart">
+    <div class="chart-header">Scores PISA 2022 — Mathématiques (sélection)</div>
+    <div id="pisa-rows"></div>
+    <div class="chart-note">
+      Source : OCDE, PISA 2022. Pour la Belgique : score national agrégé. 
+      FWB : 474 (–21 pts vs 2018) ; Flandre : ~500 (–17 pts).
+    </div>
+  </div>
+
+  <p class="reveal">
+    L'Estonie est le révélateur le plus cinglant. Première d'Europe dans les trois 
+    domaines PISA en 2022 (510 en mathématiques, 511 en lecture, 526 en sciences), 
+    elle y parvient avec une dépense par élève <strong>inférieure de 30 % à la 
+    moyenne OCDE</strong>. Pas de filiarisation précoce, autonomie scolaire dans un 
+    cadre national cohérent, équité systémique : l'origine socio-économique n'explique 
+    que 13 % de la variance des performances contre 19,3 % en Belgique. 
+    Tous les enseignants sont titulaires d'un master, avec 160 heures de formation 
+    continue obligatoires tous les cinq ans.
+  </p>
+  <p class="reveal">
+    En FWB, en 2024, <strong>25 % des enseignants nouvellement recrutés</strong> ne 
+    disposaient d'aucune qualification disciplinaire ou pédagogique pertinente — un 
+    chiffre plus que doublé depuis 2016. Le Pacte pour un enseignement d'excellence, 
+    lancé en 2015, a vu son déploiement ralenti en 2023 face à l'épuisement du terrain 
+    et à la résistance syndicale, puis ses lignes directrices infléchies par le 
+    changement de majorité politique en 2024. La discontinuité gouvernementale — 
+    elle-même produit de la particratie — empêche toute réforme structurelle de long terme.
+  </p>
+
+  <!-- Comparison table -->
+  <div class="reveal">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Indicateur</th>
+          <th>Belgique</th>
+          <th>Estonie</th>
+          <th>Moyenne OCDE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Score PISA mathématiques (2022)</td>
+          <td class="bad">489 (–19 pts vs 2018)</td>
+          <td class="good">510 (1er UE)</td>
+          <td>472</td>
+        </tr>
+        <tr>
+          <td>Dépense éducation (% PIB)</td>
+          <td class="bad">5,6 % (1er OCDE secondaire)</td>
+          <td class="good">~5,5 % (dépense/élève –30 %)</td>
+          <td>4,7 %</td>
+        </tr>
+        <tr>
+          <td>Part de la variance expliquée par le statut socio-éco</td>
+          <td class="bad">~19 % (inégalités élevées)</td>
+          <td class="good">13 % (parmi les plus équitables)</td>
+          <td>~15 %</td>
+        </tr>
+        <tr>
+          <td>Enseignants (qualification)</td>
+          <td class="bad">25 % sans qualification en FWB (2024)</td>
+          <td class="good">100 % master + 160 h/5 ans</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>Continuité des réformes</td>
+          <td class="bad">Interrompue à chaque alternance</td>
+          <td class="good">Stable depuis 1991</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="ornament">
+
+  <div class="section-label reveal">Conclusion</div>
+  <h2 class="reveal">Un schéma causal en quatre temps</h2>
+
+  <p class="reveal">
+    L'analyse de ces trois domaines fait apparaître un schéma récurrent. Ce n'est pas 
+    le hasard qui produit des listes d'attente de logement record, un doublement des 
+    bénéficiaires du RIS et un déclin éducatif malgré un surfinancement. C'est un 
+    mécanisme institutionnel identifiable en quatre étapes.
+  </p>
+
+  <div class="causal-schema reveal" id="causal-schema">
+    <div class="causal-step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">Fragmentation institutionnelle</div>
+        <div class="step-desc">Les compétences sont dispersées entre fédéral, régions, communautés et 581 communes. Aucun acteur n'assume la responsabilité globale. Aucune stratégie intégrée n'est possible.</div>
+      </div>
+    </div>
+    <div class="causal-step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-title">Colonisation partisane de la gouvernance sectorielle</div>
+        <div class="step-desc">Les conseils d'administration des sociétés de logement, les administrations scolaires, les cabinets ministériels sont peuplés selon les équilibres partitocratiques. La logique partisane remplace la logique d'efficacité.</div>
+      </div>
+    </div>
+    <div class="causal-step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-title">Opacité et contrôle verrouillé</div>
+        <div class="step-desc">Les parlements, disciplinés à 99,7 %, ne corrigent pas. La Cour des comptes constate sans contraindre. L'accès aux documents est limité. Les dysfonctionnements ne peuvent pas être corrigés de l'intérieur.</div>
+      </div>
+    </div>
+    <div class="causal-step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <div class="step-title">Transfert de responsabilités sans transfert de moyens</div>
+        <div class="step-desc">Le fédéral restreint l'accès au chômage : les communes absorbent. Le national confie l'enseignement aux communautés : la coordination disparaît. Les décideurs se soustraient à la redevabilité en déplaçant les coûts vers le bas.</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="reveal">
+    Ce qui distingue la Belgique de ses voisins — Amsterdam connaît aussi la pénurie 
+    de logements, la Finlande connaît aussi le déclin PISA, la pression sur l'aide 
+    sociale est européenne — c'est l'<strong>incapacité structurelle à corriger ces 
+    problèmes</strong>. Vienne a fait des choix institutionnels différents sur le logement. 
+    L'Estonie a fait des choix différents sur l'enseignement. L'Allemagne a intégré 
+    son système de protection sociale de manière à éviter le transfert de charges vers 
+    les communes. Ces choix n'étaient pas dictés par la géographie ou la prospérité : 
+    ils étaient dictés par une architecture de gouvernance qui rend les décideurs 
+    redevables des conséquences de leurs décisions.
+  </p>
+
+  <!-- FINAL NUMBERS -->
+  <div class="final-numbers reveal">
+    <div class="fn-item">
+      <div class="fn-number">315 000+</div>
+      <div class="fn-label">ménages en attente d'un logement social dans les trois régions</div>
+    </div>
+    <div class="fn-item">
+      <div class="fn-number">165 000</div>
+      <div class="fn-label">bénéficiaires du RIS — plus du double qu'en 2003</div>
+    </div>
+    <div class="fn-item">
+      <div class="fn-number">–19 pts</div>
+      <div class="fn-label">en mathématiques PISA 2022 — déclin antérieur à la pandémie</div>
+    </div>
+  </div>
+
+  <p class="reveal">
+    Ces chiffres ne sont pas des fatalités. Ils sont les conséquences documentées 
+    de choix institutionnels. Un État dont la Constitution garantit formellement le 
+    mandat libre depuis 1831 mais n'a jamais sanctionné sa violation (article I). 
+    Un État dont les instances de contrôle international dressent un bilan d'échec 
+    depuis des années sans que rien ne change (article II). Un État dont les 
+    dysfonctionnements se mesurent finalement en ménages qui attendent, en familles 
+    qui basculent, en enfants qui décrochent (article III).
+  </p>
+  <p class="reveal">
+    La particratie n'est pas seulement un concept académique. C'est le mécanisme par 
+    lequel des partis qui gouvernent dans un angle mort du droit constitutionnel 
+    reproduisent les conditions de leur propre irresponsabilité — au coût humain 
+    documenté ici.
+  </p>
+
+  <!-- SOURCES -->
+  <div class="source-block reveal">
+    <h3>Sources et références</h3>
+    <ul>
+      <li>Wonen in Vlaanderen / VRT NWS, 7 avril 2026 — liste d'attente flamande 215 337</li>
+      <li>SLRB-BGHM — Rapport statistiques SISP 2024 ; La DH, 7 décembre 2024 (Bruxelles)</li>
+      <li>SWL (Société Wallonne du Logement) — rapport 2023 ; UVCW (La Libre Belgique, fév. 2024)</li>
+      <li>VRT Pano, mars 2024 — vacance et wanbeleid à Woonsprong (Ostende)</li>
+      <li>Deloitte (2024) — loyers Vienne ; CCE (2022) — doublement du parc nécessaire</li>
+      <li>SPP Intégration Sociale / Bureau fédéral du Plan — évolution RIS 2003–2024</li>
+      <li>IWEPS — mécanisme d'exclusion ONEM / CPAS</li>
+      <li>OCDE, PISA 2022 — résultats mathématiques, sciences, lecture</li>
+      <li>La Libre Belgique, avril 2025 ; Ligue de l'Enseignement / Lafontaine (ULiège) — pénurie enseignants</li>
+      <li>EU Education and Training Monitor 2025 — écart socio-économique Belgique</li>
+      <li>Dewachter, W. (2014). <em>De trukendoos van de Belgische particratie</em>.</li>
+      <li>Deschouwer, K. (2012). <em>The Politics of Belgium</em>. Palgrave Macmillan.</li>
+    </ul>
+  </div>
+
+</main>
+
+<footer class="series-end">
+  <div class="series-end-label">Fin de la série · III articles sur la démocratie belge</div>
+  <div class="series-end-title">
+    « Ces failles ne sont ni isolées ni conjoncturelles. Elles forment un système. »
+  </div>
+  <div class="series-pills">
+    <a href="article-01-paradoxe-constitutionnel.html" style="text-decoration:none"><div class="series-pill">I · Le paradoxe constitutionnel</div></a>
+    <a href="article-02-accountability.html" style="text-decoration:none"><div class="series-pill">II · L'accountability sans dents</div></a>
+    <div class="series-pill" style="border-color:rgba(200,146,30,0.6);color:rgba(200,146,30,0.9);">III · Le coût humain</div>
+  </div>
+  <div style="margin-top:28px"><a href="index.html" style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(200,146,30,0.5);text-decoration:none;">← Page d'accueil de la série</a></div>
+</footer>
+
+<script>
+  /* ── Progress ── */
+  const prog = document.getElementById('progress');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    prog.style.width = (window.scrollY / (h.scrollHeight - h.clientHeight)) * 100 + '%';
+  });
+
+  /* ── Reveal ── */
+  const revObs = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+  /* ── RIS bars ── */
+  const risData = [
+    { year: '2003', val: 74 }, { year: '2007', val: 88 }, { year: '2010', val: 102 },
+    { year: '2013', val: 118 }, { year: '2016', val: 128 }, { year: '2019', val: 139 },
+    { year: '2022', val: 152 }, { year: '2024', val: 165 },
+  ];
+  const maxRis = 165;
+  const risContainer = document.getElementById('ris-bars');
+  risData.forEach((d, i) => {
+    const item = document.createElement('div');
+    item.className = 'ris-bar-item';
+    const fill = document.createElement('div');
+    fill.className = 'ris-bar-fill' + (i === risData.length - 1 ? ' last' : '');
+    fill.style.height = '0px';
+    fill.dataset.target = (d.val / maxRis) * 100;
+    const label = document.createElement('div');
+    label.className = 'ris-bar-year';
+    label.textContent = d.year;
+    item.appendChild(fill);
+    item.appendChild(label);
+    risContainer.appendChild(item);
+  });
+  const risObs = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (e.isIntersecting) {
+        document.querySelectorAll('.ris-bar-fill').forEach(b => {
+          b.style.height = b.dataset.target + 'px';
+        });
+        risObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  risObs.observe(risContainer);
+
+  /* ── PISA bars ── */
+  const pisaData = [
+    { country: 'Estonie',      score: 510, highlight: false },
+    { country: 'Japon',        score: 536, highlight: false },
+    { country: 'Pays-Bas',     score: 493, highlight: false },
+    { country: 'Belgique',     score: 489, highlight: true  },
+    { country: 'Allemagne',    score: 475, highlight: false },
+    { country: 'Moy. OCDE',    score: 472, highlight: false },
+    { country: 'FWB (Belg.)',  score: 474, highlight: true  },
+    { country: 'France',       score: 474, highlight: false },
+  ];
+  const pisaMin = 420, pisaMax = 540;
+  const pisaContainer = document.getElementById('pisa-rows');
+  pisaData.forEach(d => {
+    const row = document.createElement('div');
+    row.className = 'pisa-row' + (d.highlight ? ' highlight' : '');
+    row.innerHTML = `
+      <div class="pisa-country">${d.country}</div>
+      <div class="pisa-bar-wrap">
+        <div class="pisa-bar ${d.highlight ? 'highlight' : ''}" data-width="${((d.score - pisaMin) / (pisaMax - pisaMin)) * 100}" style="width:0%"></div>
+      </div>
+      <div class="pisa-score">${d.score}</div>`;
+    pisaContainer.appendChild(row);
+  });
+  const pisaObs = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.pisa-bar').forEach(b => { b.style.width = b.dataset.width + '%'; });
+        pisaObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  pisaObs.observe(pisaContainer);
+
+  /* ── Causal schema stagger ── */
+  const steps = document.querySelectorAll('.causal-step');
+  const schemaObs = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (e.isIntersecting) {
+        steps.forEach((s, i) => setTimeout(() => s.classList.add('visible'), i * 160));
+        schemaObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  if (document.getElementById('causal-schema')) schemaObs.observe(document.getElementById('causal-schema'));
+</script>
+</body>
+</html>
