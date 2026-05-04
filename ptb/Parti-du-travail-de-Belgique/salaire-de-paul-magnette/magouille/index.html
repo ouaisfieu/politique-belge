@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Optimisation SEO -->
+    <title>Décryptage : Comprendre le Système Politique Belge</title>
+    <meta name="description" content="Découvrez nos vidéos et analyses pour comprendre les rouages de la politique en Belgique, le financement des partis et les enjeux démocratiques actuels.">
+    <meta name="keywords" content="politique belge, démocratie, système politique, vidéos explicatives, institutions, citoyenneté">
+    <meta name="author" content="Observatoire Citoyen">
+    
+    <!-- Polices Google : Modernes et lisibles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* === RESET ET VARIABLES === */
+        :root {
+            --bg-color: #f8fafc;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --radius: 16px;
+            --shadow: 0 10px 40px -10px rgba(0,0,0,0.08);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(217,100%,94%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 100%, hsla(210,100%,90%,1) 0, transparent 50%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* === HEADER / HERO SECTION === */
+        header {
+            text-align: center;
+            padding: 80px 20px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e0e7ff;
+            color: var(--primary);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 6px 16px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        header h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #0f172a;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* === MAIN CONTENT === */
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+
+        /* === SECTION VIDÉOS === */
+        .video-section {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: 60px;
+        }
+
+        .video-section-header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .video-section-header h2 {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .video-card {
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+            position: relative;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* Ratio 16:9 parfait */
+            height: 0;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* === SECTION INFORMATIONS === */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .info-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+            color: #0f172a;
+        }
+
+        .info-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* === FOOTER === */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        /* Responsive / Mobile */
+        @media (max-width: 768px) {
+            .video-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <span class="badge">Analyse Citoyenne</span>
+        <h1>Décrypter le Système Belge</h1>
+        <p>Une plongée claire, visuelle et sans jargon dans les rouages de nos institutions démocratiques pour mieux comprendre les enjeux de demain.</p>
+    </header>
+
+    <main>
+        <!-- Bloc Vidéos (YouTube Embeds) -->
+        <section class="video-section">
+            <div class="video-section-header">
+                <h2>Ressources Vidéos</h2>
+                <p style="color: var(--text-muted);">Visionnez ces deux documentaires pour saisir la complexité du paysage politique.</p>
+            </div>
+            
+            <div class="video-grid">
+                <!-- Vidéo 1 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/Rpys2gs9uKQ" 
+                            title="Comprendre les institutions belges - Partie 1" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+                
+                <!-- Vidéo 2 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/PpVXPa74Xmk" 
+                            title="Comprendre les institutions belges - Partie 2" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bloc Texte Synthétique et Grand Public -->
+        <section class="info-grid">
+            <div class="info-card">
+                <h3>S'informer pour agir</h3>
+                <p>Comprendre le fonctionnement des instances décisionnelles est la première étape vers un engagement citoyen éclairé. Ces contenus vidéo ont été sélectionnés pour leur approche pédagogique et leur neutralité, permettant à chacun de se forger sa propre opinion sur l'état de notre démocratie.</p>
+            </div>
+            
+            <div class="info-card">
+                <h3>Des enjeux contemporains</h3>
+                <p>Du financement de la vie publique à la représentativité des élus, les défis structurels sont nombreux. En rendant ces concepts accessibles, nous espérons encourager le débat public et offrir des clés de lecture essentielles pour la société de demain.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Plateforme d'information démocratique. Construit avec soin pour une lecture optimale.</p>
+    </footer>
+
+</body>
+</html>
