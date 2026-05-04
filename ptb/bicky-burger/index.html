@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprendre la Particratie Belge</title>
+    
+    <!-- Polices professionnelles et modernes -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* === RESET & VARIABLES === */
+        :root {
+            --bg-body: #f4f7f6;
+            --color-primary: #1a2b4c; /* Bleu institutionnel profond */
+            --color-accent: #c0392b;  /* Rouge élégant */
+            --color-text: #334155;
+            --color-text-light: #64748b;
+            --bg-card: #ffffff;
+            --shadow-subtle: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.1);
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--color-text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* === HEADER / HERO SECTION === */
+        header {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 100px 20px 60px;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+
+        h1 {
+            font-family: 'Merriweather', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            font-weight: 300;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* === CONTENEUR PRINCIPAL === */
+        .container {
+            max-width: 1200px;
+            margin: -40px auto 40px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* === CARTES D'INFORMATION === */
+        .grid-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: var(--shadow-subtle);
+            transition: var(--transition);
+            border-top: 4px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-top: 4px solid var(--color-accent);
+        }
+
+        .card h2 {
+            font-family: 'Merriweather', serif;
+            color: var(--color-primary);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Stylisation discrète des citations obligatoires */
+        .citation {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            vertical-align: super;
+            margin-left: 2px;
+        }
+
+        /* === SECTION VIDÉOS === */
+        .video-section-title {
+            text-align: center;
+            font-family: 'Merriweather', serif;
+            color: var(--color-primary);
+            font-size: 2rem;
+            margin: 60px 0 30px;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* Ratio 16:9 */
+            height: 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-subtle);
+            transition: var(--transition);
+            background: #000;
+        }
+
+        .video-wrapper:hover {
+            box-shadow: var(--shadow-hover);
+            transform: scale(1.02);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* === FOOTER === */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+            margin-top: 60px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        /* === ANIMATIONS (Scroll Reveal) === */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+            .card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Démocratie en Question</h1>
+        <p class="subtitle">Analyse juridique et politique du système belge : de la Constitution aux réalités du financement partisan.</p>
+    </header>
+
+    <main class="container">
+        
+        <!-- Section Textuelle -->
+        <div class="grid-info reveal">
+            <div class="card">
+                <h2>La Dérive Particratique</h2>
+                <p>L'État de droit en Belgique traverse une tension systémique où la souveraineté nationale, garantie par la Constitution, est progressivement captée par les états-majors des partis politiques<span class="citation">[cite: 6]</span>. Les élus se retrouvent souvent soumis à une stricte discipline de groupe, affaiblissant ainsi le mandat représentatif libre.</p>
+            </div>
+            
+            <div class="card">
+                <h2>L'Enjeu du Financement</h2>
+                <p>Le système s'appuie sur une dotation publique massive, injectant plus de 108 millions d'euros par an dans les caisses des partis<span class="citation">[cite: 6]</span>. Cette rente financière verrouille le paysage démocratique et pousse les juristes à utiliser la voie préjudicielle pour exiger des réformes et protéger l'indépendance parlementaire<span class="citation">[cite: 6]</span>.</p>
+            </div>
+        </div>
+
+        <!-- Section Vidéos -->
+        <h2 class="video-section-title reveal">Ressources Vidéos</h2>
+        
+        <div class="video-grid reveal">
+            <!-- Vidéo 1 -->
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/Rpys2gs9uKQ" 
+                    title="Analyse Particratie Belge - Vidéo 1" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            
+            <!-- Vidéo 2 -->
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/PpVXPa74Xmk" 
+                    title="Analyse Particratie Belge - Vidéo 2" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Plateforme d'analyse institutionnelle et juridique.</p>
+    </footer>
+
+    <!-- Script pour l'animation d'apparition au défilement -->
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // Déclenchement initial au chargement
+        reveal();
+    </script>
+</body>
+</html>
