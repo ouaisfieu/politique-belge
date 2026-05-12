@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Serment Trahi | Quand jurer de respecter la Constitution devient une formalité vide</title>
+  <meta name="description" content="En Belgique, le Roi, les ministres et chaque parlementaire jurent de respecter la Constitution. Puis ils l'ignorent systématiquement. Article par article, voici la preuve.">
+  <meta name="keywords" content="serment constitutionnel belge, roi Philippe serment, parlementaires belges serment, violation article 42, particratie serment, constitution belge violation">
+  <link rel="canonical" href="https://ouaisfieu.github.io/politique-belge/serment/">
+  <meta property="og:title" content="Le Serment Trahi — Constitution belge : la promesse que personne ne tient">
+  <meta property="og:description" content="Roi, ministres, parlementaires : tous jurent de respecter la Constitution. Tous l'ignorent. Les preuves, article par article.">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="fr_BE">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --vellum: #f2ead8;
+      --ink: #1a1410;
+      --blood: #8b1a1a;
+      --gold: #b8860b;
+      --ash: #4a4035;
+      --pale: #faf7f0;
+      --smoke: #e8e0cc;
+      --border: #c8b89a;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      background: var(--pale);
+      color: var(--ink);
+      line-height: 1.75;
+    }
+
+    /* ─── TOPBAR ─── */
+    .topbar {
+      background: var(--ink);
+      color: var(--vellum);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      padding: 0.45rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      opacity: 0.9;
+    }
+    .topbar a { color: var(--gold); text-decoration: none; }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: var(--ink);
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 39px,
+        rgba(255,255,255,0.025) 40px
+      );
+      pointer-events: none;
+    }
+    .hero-stamp {
+      display: inline-block;
+      border: 2px solid var(--blood);
+      color: var(--blood);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      padding: 0.3rem 0.8rem;
+      margin-bottom: 2.5rem;
+      opacity: 0.9;
+      text-transform: uppercase;
+      transform: rotate(-1.5deg);
+    }
+    .hero h1 {
+      font-family: 'IM Fell English', Georgia, serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      color: var(--vellum);
+      line-height: 1.1;
+      max-width: 850px;
+      margin: 0 auto 1.5rem;
+    }
+    .hero h1 em {
+      color: var(--blood);
+      font-style: italic;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(242,234,216,0.65);
+      max-width: 640px;
+      margin: 0 auto;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    /* ─── OATH SCROLL ─── */
+    .oath-section {
+      background: var(--vellum);
+      border-top: 4px solid var(--gold);
+      border-bottom: 4px solid var(--gold);
+      padding: 4rem 2rem;
+      position: relative;
+    }
+    .oath-section::before {
+      content: '§';
+      font-family: 'IM Fell English', serif;
+      font-size: 8rem;
+      color: var(--gold);
+      opacity: 0.08;
+      position: absolute;
+      top: 1rem;
+      left: 2rem;
+      line-height: 1;
+    }
+    .oath-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .oath-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    .oath-card {
+      background: white;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 24px rgba(26,20,16,0.1), inset 0 0 0 6px var(--pale);
+      padding: 2.5rem 3rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    .oath-card::before {
+      content: attr(data-who);
+      position: absolute;
+      top: -0.7rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--ink);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      padding: 0.2rem 0.8rem;
+      white-space: nowrap;
+    }
+    .oath-text {
+      font-family: 'IM Fell English', serif;
+      font-size: 1.25rem;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.7;
+    }
+    .oath-source {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--ash);
+      margin-top: 1rem;
+      opacity: 0.7;
+    }
+    .oath-card.broken {
+      position: relative;
+      overflow: hidden;
+    }
+    .oath-card.broken::after {
+      content: 'VIOLÉ';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-20deg);
+      font-family: 'Space Mono', monospace;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--blood);
+      opacity: 0.12;
+      letter-spacing: 0.2em;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    /* ─── CONTENT WRAP ─── */
+    .container { max-width: 860px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ─── SECTION HEADING ─── */
+    .sec-heading {
+      font-family: 'IM Fell English', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--ink);
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+    .sec-mono {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--blood);
+      margin-bottom: 1.2rem;
+    }
+
+    /* ─── VIOLATION CARDS ─── */
+    .violations-section {
+      padding: 5rem 0;
+      border-bottom: 2px solid var(--smoke);
+    }
+    .violation-block {
+      border-left: 4px solid var(--blood);
+      margin-bottom: 3.5rem;
+      padding-left: 2rem;
+    }
+    .violation-block:last-child { margin-bottom: 0; }
+
+    .v-article {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--blood);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+    .v-title {
+      font-family: 'IM Fell English', serif;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .v-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.2rem;
+    }
+    @media(max-width:650px) { .v-grid { grid-template-columns: 1fr; } }
+
+    .v-col-promise {
+      background: #f0f7f0;
+      border: 1px solid #b8d4b8;
+      padding: 1.2rem;
+    }
+    .v-col-reality {
+      background: #f7f0f0;
+      border: 1px solid #d4b8b8;
+      padding: 1.2rem;
+    }
+    .v-col-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .v-col-promise .v-col-label { color: #2a6a2a; }
+    .v-col-reality .v-col-label { color: var(--blood); }
+    .v-col-text {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--ash);
+    }
+    .v-col-text strong { color: var(--ink); }
+
+    .v-proof {
+      background: var(--ink);
+      color: var(--vellum);
+      padding: 1rem 1.2rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      line-height: 1.6;
+    }
+    .v-proof strong { color: var(--gold); }
+
+    /* ─── ROI SECTION ─── */
+    .roi-section {
+      padding: 5rem 0;
+      background: var(--vellum);
+      border-top: 2px solid var(--border);
+      border-bottom: 2px solid var(--border);
+    }
+    .roi-pull {
+      font-family: 'IM Fell English', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-style: italic;
+      color: var(--ash);
+      border-left: 3px solid var(--gold);
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      line-height: 1.6;
+    }
+    .roi-pull strong { color: var(--ink); font-style: normal; }
+
+    /* ─── PARADOX SECTION ─── */
+    .paradox-section {
+      padding: 5rem 0;
+      border-bottom: 2px solid var(--smoke);
+    }
+    .paradox-box {
+      background: var(--ink);
+      color: var(--vellum);
+      padding: 2.5rem 2.5rem;
+      border-left: 6px solid var(--gold);
+      margin: 2rem 0;
+    }
+    .paradox-box h3 {
+      font-family: 'IM Fell English', serif;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--gold);
+    }
+    .paradox-box p {
+      font-size: 0.95rem;
+      color: rgba(242,234,216,0.8);
+      line-height: 1.75;
+    }
+    .paradox-box p strong { color: var(--vellum); }
+
+    /* ─── COUNTER ─── */
+    .counter-section {
+      padding: 4rem 0;
+      background: var(--blood);
+      color: var(--vellum);
+    }
+    .counter-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+    .counter-item {}
+    .counter-num {
+      font-family: 'IM Fell English', serif;
+      font-size: 3.5rem;
+      display: block;
+      color: var(--vellum);
+      line-height: 1;
+    }
+    .counter-desc {
+      font-size: 0.8rem;
+      color: rgba(242,234,216,0.7);
+      font-style: italic;
+      line-height: 1.5;
+      margin-top: 0.4rem;
+    }
+
+    /* ─── FOOTNOTE / NUANCE ─── */
+    .nuance-section {
+      padding: 4rem 0;
+      border-bottom: 2px solid var(--smoke);
+    }
+    .nuance-box {
+      background: var(--smoke);
+      border: 1px solid var(--border);
+      padding: 1.5rem 1.8rem;
+      font-size: 0.9rem;
+      color: var(--ash);
+      line-height: 1.7;
+    }
+    .nuance-box strong { color: var(--ink); }
+
+    /* ─── FINAL CTA ─── */
+    .final-cta {
+      padding: 5rem 0;
+      text-align: center;
+      background: var(--vellum);
+      border-top: 4px double var(--ink);
+    }
+    .final-cta h2 {
+      font-family: 'IM Fell English', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      margin-bottom: 1rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .final-cta p {
+      font-size: 1rem;
+      color: var(--ash);
+      font-style: italic;
+      max-width: 560px;
+      margin: 0 auto 2rem;
+    }
+    .cta-links { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+    .btn-primary {
+      display: inline-block;
+      background: var(--ink);
+      color: var(--vellum);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      padding: 0.9rem 2rem;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .btn-primary:hover { background: var(--blood); }
+    .btn-ghost {
+      display: inline-block;
+      border: 1px solid var(--ink);
+      color: var(--ink);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      padding: 0.9rem 2rem;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+    .btn-ghost:hover { background: var(--ink); color: var(--vellum); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--ink);
+      color: rgba(242,234,216,0.5);
+      padding: 2rem;
+      text-align: center;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.06em;
+      line-height: 2;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* misc */
+    p { margin-bottom: 1.1rem; }
+    p:last-child { margin-bottom: 0; }
+
+    /* Fade-in */
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .appear { animation: appear 0.7s ease forwards; }
+    .appear-2 { animation: appear 0.7s 0.2s ease both; }
+    .appear-3 { animation: appear 0.7s 0.4s ease both; }
+  </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <a href="https://ouaisfieu.github.io/politique-belge/">← politique-belge</a>
+  <span>Serment constitutionnel · Analyse critique</span>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-stamp">Document critique · Belgique 2026</div>
+  <h1 class="appear">Ils ont tous juré.<br>Ils ont tous <em>menti.</em></h1>
+  <p class="hero-sub appear-2">Le Roi, les ministres, chaque parlementaire — tous ont prêté serment de respecter la Constitution. Voici, article par article, la réalité de ce serment.</p>
+</section>
+
+<!-- LES SERMENTS -->
+<section class="oath-section">
+  <div class="oath-inner">
+    <div class="oath-label">Les serments officiels · Sources : Constitution belge</div>
+
+    <div class="oath-card broken" data-who="Le Roi · Art. 91 de la Constitution">
+      <p class="oath-text">« Je jure d'observer la Constitution et les lois du peuple belge, de maintenir l'indépendance nationale et l'intégrité du territoire. »</p>
+      <p class="oath-source">Prestation devant les Chambres réunies · Art. 91, Constitution coordonnée du 17 février 1994</p>
+    </div>
+
+    <div class="oath-card broken" data-who="Les Membres du Gouvernement · Art. 96 + loi du 31 décembre 1983">
+      <p class="oath-text">« Je jure fidélité au Roi, obéissance à la Constitution et aux lois du peuple belge. »</p>
+      <p class="oath-source">Prestation devant le Roi · Loi du 31 décembre 1983 relative aux régimes linguistiques dans la fonction publique</p>
+    </div>
+
+    <div class="oath-card broken" data-who="Les Parlementaires · Art. 462 Code électoral">
+      <p class="oath-text">« Je jure fidélité au Roi, obéissance à la Constitution et aux lois du peuple belge. »</p>
+      <p class="oath-source">Prestation avant d'entrer en fonction · Art. 462 Code électoral · Répétée à chaque nouvelle législature</p>
+    </div>
+
+    <div class="oath-card broken" data-who="Les Élus locaux et régionaux">
+      <p class="oath-text">« Je jure fidélité au Roi, obéissance à la Constitution et aux lois du peuple belge. »</p>
+      <p class="oath-source">Art. 70 de la loi communale / législations analogues régionales · Des milliers de prestations par an</p>
+    </div>
+  </div>
+</section>
+
+<!-- VIOLATIONS ARTICLE PAR ARTICLE -->
+<section class="violations-section">
+  <div class="container">
+    <div class="sec-mono">Le diagnostic · Clause par clause</div>
+    <h2 class="sec-heading">Ce que le serment promet.<br>Ce que la réalité documente.</h2>
+    <p style="color:var(--ash); font-style:italic; margin-bottom:3rem;">Aucun jugement de valeur. Uniquement des faits issus de sources officielles : Constitution, rapports du GRECO, jurisprudence de la CEDH, données académiques vérifiées.</p>
+
+    <!-- VIOLATION 1 : Art. 42 -->
+    <div class="violation-block">
+      <div class="v-article">Article 42 de la Constitution · Mandat libre</div>
+      <div class="v-title">« Les membres des deux Chambres représentent la Nation, et non uniquement ceux qui les ont élus. »</div>
+      <div class="v-grid">
+        <div class="v-col-promise">
+          <div class="v-col-label">Ce que ça devrait signifier</div>
+          <div class="v-col-text">Chaque député vote selon sa conscience, indépendamment des instructions de son parti. C'est le principe du <em>mandat libre</em>, interdit au mandat impératif depuis 1831. Le serment engage les parlementaires à respecter ce principe.</div>
+        </div>
+        <div class="v-col-reality">
+          <div class="v-col-label">La réalité documentée</div>
+          <div class="v-col-text">Le taux d'alignement partisan atteint <strong>99,73 %</strong> sous le gouvernement Wilmès II (Maddens, KU Leuven, 2024). Certains partis n'ont enregistré <strong>zéro vote dissident</strong> sur l'entièreté d'une législature. Les présidents de parti dictent les votes en comité restreint, avant que l'hémicycle ne les entérine à l'unanimité.</div>
+        </div>
+      </div>
+      <div class="v-proof">
+        <strong>Preuve :</strong> Bart Maddens et al., « De kolonisten van de Wetstraat », KU Leuven, 2024 · CEDH, <em>Tomenko c. Ukraine</em>, 2025 : « La suprématie du parti sur l'élu place les partis au-dessus de l'électorat souverain » · Cour constitutionnelle, arrêt 130/2016 : rappel du caractère inaliénable du mandat libre.
+      </div>
+    </div>
+
+    <!-- VIOLATION 2 : Art. 33 -->
+    <div class="violation-block">
+      <div class="v-article">Article 33 de la Constitution · Souveraineté nationale</div>
+      <div class="v-title">« Tous les pouvoirs émanent de la Nation. »</div>
+      <div class="v-grid">
+        <div class="v-col-promise">
+          <div class="v-col-label">Ce que ça devrait signifier</div>
+          <div class="v-col-text">Les décisions politiques émanent de la volonté nationale exprimée à travers les élus. Le gouvernement, issu du vote des citoyens, est le seul lieu légitime de décision collective.</div>
+        </div>
+        <div class="v-col-reality">
+          <div class="v-col-label">La réalité documentée</div>
+          <div class="v-col-text">Les décisions politiques réelles sont prises au <strong>Kern</strong> — réunion informelle des présidents de partis de la coalition — qui n'a <strong>aucune base constitutionnelle</strong>, ne rédige aucun procès-verbal officiel, et n'est soumis à aucun contrôle démocratique. Les parlementaires n'y siègent pas.</div>
+        </div>
+      </div>
+      <div class="v-proof">
+        <strong>Preuve :</strong> Conseil d'État, avis 72.732/2 (30 janvier 2023) : le Kern est constitutionnellement non encadré · Doctrine : Francis Delpérée (UCLouvain), Marc Uyttendaele (ULB) documentent la capture des décisions par les états-majors de partis · CRISP, Verleden, « Aux sources de la particratie » (2019).
+      </div>
+    </div>
+
+    <!-- VIOLATION 3 : Art. 40 -->
+    <div class="violation-block">
+      <div class="v-article">Article 40 de la Constitution · Exécution des jugements</div>
+      <div class="v-title">« Les jugements et arrêts sont exécutés au nom du Roi. »</div>
+      <div class="v-grid">
+        <div class="v-col-promise">
+          <div class="v-col-label">Ce que ça devrait signifier</div>
+          <div class="v-col-text">Toute décision de justice est exécutoire. L'État — et le Roi en son nom — garantit que les jugements sont appliqués. C'est l'un des piliers de l'État de droit.</div>
+        </div>
+        <div class="v-col-reality">
+          <div class="v-col-label">La réalité documentée</div>
+          <div class="v-col-text">L'État belge a été condamné <strong>plus de 11 000 fois</strong> pour refus d'exécuter des ordonnances de justice sur l'accueil des demandeurs d'asile. Des astreintes dépassant <strong>500 millions d'euros</strong> ont été ignorées. La CEDH qualifie cela de « <strong>carence systémique incompatible avec l'État de droit</strong> ».</div>
+        </div>
+      </div>
+      <div class="v-proof">
+        <strong>Preuve :</strong> CEDH, <em>Camara c. Belgique</em>, 2023 · IFDH, enquête formelle, 18 novembre 2024 · Comité des Ministres du Conseil de l'Europe, 1537e réunion, septembre 2025 · Commission européenne, Rapport État de droit 2025 : « limited progress » sur le respect des arrêts.
+      </div>
+    </div>
+
+    <!-- VIOLATION 4 : Art. 66 -->
+    <div class="violation-block">
+      <div class="v-article">Article 66 de la Constitution · Indemnité parlementaire</div>
+      <div class="v-title">« Les membres de la Chambre des représentants reçoivent une indemnité annuelle. »</div>
+      <div class="v-grid">
+        <div class="v-col-promise">
+          <div class="v-col-label">Ce que ça devrait signifier</div>
+          <div class="v-col-text">L'indemnité parlementaire garantit l'indépendance de l'élu — il ne dépend financièrement d'aucune organisation privée, y compris son parti. C'est la condition économique du mandat libre.</div>
+        </div>
+        <div class="v-col-reality">
+          <div class="v-col-label">La réalité documentée</div>
+          <div class="v-col-text">Tous les partis imposent des <strong>rétrocessions</strong> : PTB-PVDA 60–70 % du revenu net, Écolo ~40 %, Groen 25 % du brut, N-VA 7,5–10 %, PS/Vooruit ~10 %, MR 125–580 €/mois. L'indemnité censée libérer l'élu est transformée en dîme pour le financement privé du parti.</div>
+        </div>
+      </div>
+      <div class="v-proof">
+        <strong>Preuve :</strong> Jean Faniel, CRISP, 2024 · Maddens et al., KU Leuven, 2024 · Transparency International Belgique, évaluation du Système national d'intégrité, 2024.
+      </div>
+    </div>
+
+    <!-- VIOLATION 5 : GRECO -->
+    <div class="violation-block">
+      <div class="v-article">Obligations anti-corruption · Engagement international</div>
+      <div class="v-title">La Belgique s'est engagée à respecter les normes du Conseil de l'Europe contre la corruption.</div>
+      <div class="v-grid">
+        <div class="v-col-promise">
+          <div class="v-col-label">Ce que ça devrait signifier</div>
+          <div class="v-col-text">En rejoignant le GRECO en 1999, la Belgique s'est engagée à mettre en œuvre ses recommandations sur la transparence, le lobbying, les déclarations de patrimoine et l'intégrité des élus.</div>
+        </div>
+        <div class="v-col-reality">
+          <div class="v-col-label">La réalité documentée</div>
+          <div class="v-col-text">Sur 22 recommandations du 5e cycle : <strong>6 mises en œuvre, 8 partiellement, 8 complètement ignorées</strong>. La procédure de non-conformité « Règle 32 » — le niveau de honte diplomatique le plus élevé du Conseil de l'Europe — a été activée deux fois en cinq ans.</div>
+        </div>
+      </div>
+      <div class="v-proof">
+        <strong>Preuve :</strong> GRECO, 2e Rapport de conformité du 5e cycle, réf. GrecoRC5(2024)3, 22 mars 2024 · Score CPI Transparency International : 76/100 en 2015 → <strong>69/100 en 2025</strong> — dégradation continue.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPTEUR -->
+<section class="counter-section">
+  <div class="container">
+    <div style="font-family:'Space Mono',monospace; font-size:0.62rem; letter-spacing:0.3em; text-transform:uppercase; color:rgba(242,234,216,0.5); text-align:center; margin-bottom:2.5rem;">Le coût chiffré d'un serment vide</div>
+    <div class="counter-grid">
+      <div class="counter-item">
+        <span class="counter-num">4 Mrd€</span>
+        <div class="counter-desc">versés aux partis depuis 1989 sans mécanisme garantissant le respect de l'art. 42</div>
+      </div>
+      <div class="counter-item">
+        <span class="counter-num">+11 000</span>
+        <div class="counter-desc">jugements ignorés par l'État — rendu « au nom du Roi » (art. 40)</div>
+      </div>
+      <div class="counter-item">
+        <span class="counter-num">99,73%</span>
+        <div class="counter-desc">discipline de vote — le serment de voter librement (art. 42) respecté 0,27 % du temps</div>
+      </div>
+      <div class="counter-item">
+        <span class="counter-num">0</span>
+        <div class="counter-desc">sanction légale prévue pour un parlementaire qui viole son serment en votant sous contrainte partisane</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LE ROI -->
+<section class="roi-section">
+  <div class="container">
+    <div class="sec-mono">Le cas particulier</div>
+    <h2 class="sec-heading">Le Roi : le seul qui a juré… et le seul dont personne n'exige rien</h2>
+
+    <p>Le Roi des Belges est dans une position constitutionnelle unique. Contrairement aux ministres et parlementaires qui jurent fidélité au Roi et à la Constitution, <strong>le Roi jure directement d'observer la Constitution</strong> — pas devant un supérieur, mais devant les Chambres réunies, au nom de la Nation.</p>
+
+    <div class="roi-pull">
+      Art. 91 : <strong>« Je jure d'observer la Constitution et les lois du peuple belge. »</strong><br>
+      Art. 40 : <strong>« Les jugements et arrêts sont exécutés au nom du Roi. »</strong><br>
+      Art. 36 : le Roi est l'une des trois branches du pouvoir législatif.
+    </div>
+
+    <p>Cette architecture signifie que lorsque 11 000 jugements sont inexécutés — au nom du Roi, rappelons-le — et que le Roi garde le silence, un problème constitutionnel sérieux se pose. Walter Bagehot (<em>The English Constitution</em>, 1867) avait défini la magistrature royale comme le <em>droit d'être consulté, d'encourager et de mettre en garde</em>. La doctrine belge (Francis Delpérée, Marc Uyttendaele) reconnaît ce rôle — exercé dans la discrétion du colloque singulier.</p>
+
+    <p>Les précédents historiques montrent que ce rôle <em>peut</em> être exercé : la résolution de la Question royale (1951), la crise de 541 jours (2010-2011), les crises gouvernementales à répétition. Le Roi a chaque fois joué un rôle dans le déblocage.</p>
+
+    <div class="roi-pull" style="border-color: var(--blood); color: var(--blood);">
+      <strong>La question qui reste sans réponse :</strong> Le Roi, qui a juré d'observer une Constitution systématiquement violée, a-t-il exercé son droit de mettre en garde à propos de l'article 42, des 11 000 jugements ignorés, des 16 recommandations GRECO non appliquées ? Personne ne le sait. Les colloques singuliers ne laissent aucune trace publique.
+    </div>
+
+    <p>Ce n'est pas une accusation — c'est un constat sur l'architecture de l'impunité. L'inviolabilité royale (art. 88) est absolue et ne peut être levée. La conséquence est que le gardien constitutionnel ultime est aussi le seul acteur institutionnel pour lequel toute vérification du respect de son serment est structurellement impossible.</p>
+  </div>
+</section>
+
+<!-- LE PARADOXE JURIDIQUE -->
+<section class="paradox-section">
+  <div class="container">
+    <div class="sec-mono">Le verrou juridique</div>
+    <h2 class="sec-heading">Le paradoxe : l'immunité protège le mensonge</h2>
+
+    <p>La Constitution a créé un mécanisme apparemment contradictoire. L'article 58 garantit l'irresponsabilité absolue des parlementaires pour leurs votes et opinions émis dans l'exercice de leur mandat.</p>
+
+    <div class="paradox-box">
+      <h3>Comment l'immunité parlementaire protège la violation du serment</h3>
+      <p>L'article 58 a été conçu précisément pour garantir la liberté de vote : aucun juge ne peut poursuivre un parlementaire pour ce qu'il a dit ou voté dans l'hémicycle. C'est la protection du mandat libre.</p>
+      <p style="margin-top:1rem;">Mais dans la pratique particratique contemporaine, ce même article produit l'effet inverse : <strong>aucun magistrat ne peut convoquer un élu pour lui demander : « Avez-vous voté ce texte par conviction intellectuelle ou parce que votre président de parti vous a menacé de vous rayer des listes ? »</strong></p>
+      <p style="margin-top:1rem;">Le bouclier protecteur de la liberté devient ainsi le bouclier de l'impunité de la servitude. La discipline partisane peut s'exercer en toute violation constitutionnelle, à l'abri de toute investigation judiciaire. <strong>Le serment est garanti incontrôlable par le droit lui-même.</strong></p>
+    </div>
+
+    <p>Cette architecture n'est pas un accident. Elle découle logiquement d'un système où les partis ont écrit les règles du jeu à leur avantage. La loi de 1989 sur le financement des partis prévoit une sanction pour les partis hostiles à la CEDH — mais aucune pour ceux qui violent l'article 42. Pas par oubli : par choix politique délibéré de ceux qui ont voté la loi.</p>
+
+    <p>C'est ce que la doctrine constitutionnelle appelle une <em>lacune extrinsèque inconstitutionnelle</em> — une absence voulue, une protection de l'impunité par la loi elle-même.</p>
+  </div>
+</section>
+
+<!-- NUANCE IMPORTANTE -->
+<section class="nuance-section">
+  <div class="container">
+    <div class="sec-mono">Pour être rigoureux</div>
+    <h2 class="sec-heading">Ce que ce constat n'est pas</h2>
+    <div class="nuance-box">
+      <p><strong>1. Ce n'est pas une théorie du complot.</strong> Chacun des faits documentés ici provient de sources officielles vérifiables : textes constitutionnels, rapports du GRECO, arrêts de la CEDH, publications académiques peer-reviewed. La particratie belge est un objet d'étude universitaire depuis les années 1980 (CRISP, UCLouvain, KU Leuven).</p>
+      <p style="margin-top:0.8rem;"><strong>2. Ce n'est pas une exception belge scandaleuse.</strong> La discipline de parti est une réalité dans la plupart des démocraties occidentales. Ce qui distingue la Belgique est l'intensité du phénomène (99,73 % est exceptionnel en Europe), l'ampleur du financement public sans contrôle effectif, et le refus persistant depuis 2019 de mettre en œuvre les recommandations anti-corruption internationales.</p>
+      <p style="margin-top:0.8rem;"><strong>3. Ce n'est pas sans issue.</strong> La Cour constitutionnelle, le Conseil d'État, la CEDH et depuis 2019 des dispositifs délibératifs institutionnalisés offrent des canaux réels. Le modèle Klimaatzaak (70 000 co-demandeurs, condamnation confirmée en appel) montre qu'une action collective peut forcer l'État à rendre des comptes, même quand les voies directes sont verrouillées.</p>
+      <p style="margin-top:0.8rem;"><strong>4. La doctrine distingue contrainte juridique et loyauté politique.</strong> Voter dans le sens de son parti n'est pas <em>juridiquement</em> une violation de l'article 42 tant qu'aucun mécanisme de droit ne force le vote ou ne permet la révocation. C'est la contorsion intellectuelle que la doctrine maintient pour préserver l'apparence de la constitutionnalité. Mais cette distinction, techniquement correcte, ne change pas la réalité empirique.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <h2>Un serment qui ne lie personne<br>n'est plus un serment.</h2>
+    <p>Si ces faits vous semblent importants, les voies d'action juridiques et citoyennes sont documentées. Elles sont difficiles — mais elles existent.</p>
+    <div class="cta-links">
+      <a href="../contre-attaque/action/" class="btn-primary">GUIDE DES RECOURS JURIDIQUES →</a>
+      <a href="../" class="btn-ghost">← Accueil</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Sources : Constitution belge (17 février 1994) · GRECO, GrecoRC5(2024)3 · CEDH, Mugemangango, Camara, Tomenko · Maddens et al. KU Leuven 2024 · Jean Faniel CRISP 2024 · IFDH 2024 · Commission européenne, Rapport État de droit 2025</p>
+  <p style="margin-top:0.4rem;"><a href="../contre-attaque/action/">Guide juridique</a> · <a href="../">Accueil</a></p>
+  <p style="margin-top:0.8rem; opacity:0.4;">Contenu informatif et citoyen · Ne constitue pas un avis juridique · Mai 2026</p>
+</footer>
+
+</body>
+</html>
