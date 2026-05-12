@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>La Particratie Belge | Les citoyens ont le droit de savoir — et d'agir</title>
+  <meta name="description" content="Comprendre et contester la particratie belge : tout ce que les partis ne veulent pas que vous lisiez. Preuves chiffrées, recours juridiques, vidéos, sources primaires.">
+  <meta name="keywords" content="particratie belge, démocratie belge, GRECO, financement partis, article 42 constitution, action en justice, contre-attaque citoyenne">
+  <link rel="canonical" href="https://ouaisfieu.github.io/politique-belge/">
+  <meta property="og:title" content="La Particratie Belge — Les citoyens ont le droit de savoir et d'agir">
+  <meta property="og:description" content="Comprendre et contester la particratie belge : preuves chiffrées, recours juridiques, vidéos, sources primaires vérifiées.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ouaisfieu.github.io/politique-belge/">
+  <meta property="og:locale" content="fr_BE">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebSite","name":"La Particratie Belge","url":"https://ouaisfieu.github.io/politique-belge/","description":"Documentation citoyenne sur les failles démocratiques de la Belgique","inLanguage":"fr-BE"}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300;1,9..144,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --white: #f4f0e6;
+      --red: #c8102e;
+      --red-dark: #8b0a1e;
+      --gold: #c8960a;
+      --mid: #3a3a3a;
+      --muted: #888;
+      --border: #e0dac8;
+      --section-bg: #f9f5ed;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Fraunces', Georgia, serif;
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.65;
+    }
+
+    /* ─── TOPBAR ─── */
+    .topbar {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      padding: 0.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .topbar-right { color: var(--gold); }
+
+    /* ─── MASTHEAD ─── */
+    .masthead {
+      border-bottom: 4px double var(--black);
+      padding: 2.5rem 2rem 1.5rem;
+      text-align: center;
+      position: relative;
+    }
+    .masthead-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+    .masthead h1 {
+      font-family: 'Bebas Neue', Impact, sans-serif;
+      font-size: clamp(3.5rem, 10vw, 8rem);
+      line-height: 0.92;
+      letter-spacing: 0.02em;
+      color: var(--black);
+    }
+    .masthead h1 .accent { color: var(--red); }
+    .masthead-sub {
+      font-size: 1.1rem;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--mid);
+      max-width: 600px;
+      margin: 1rem auto 0;
+    }
+    .masthead-rule {
+      height: 1px;
+      background: var(--black);
+      margin: 1.5rem 0 0;
+    }
+
+    /* ─── NAV PILLS ─── */
+    .nav-pills {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--section-bg);
+    }
+    .pill {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      padding: 0.4rem 1rem;
+      border: 1px solid var(--black);
+      color: var(--black);
+      transition: all 0.15s;
+    }
+    .pill:hover, .pill.active {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    /* ─── CONTAINER ─── */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+    .wrap-narrow { max-width: 780px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ─── SECTION LABEL ─── */
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .section-label::before, .section-label::after {
+      content: '';
+      height: 1px;
+      flex: 1;
+      background: var(--red);
+      opacity: 0.4;
+    }
+
+    /* ─── HERO SECTION ─── */
+    .hero {
+      padding: 4rem 0 3rem;
+      border-bottom: 2px solid var(--black);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    @media(max-width: 700px) { .hero-grid { grid-template-columns: 1fr; gap: 2rem; } }
+
+    .hero-left h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1;
+      margin-bottom: 1.2rem;
+    }
+    .hero-left h2 em { font-style: italic; font-family: 'Fraunces', serif; color: var(--red); }
+    .hero-left p {
+      font-size: 1rem;
+      color: var(--mid);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .hero-right {
+      background: var(--black);
+      color: var(--white);
+      padding: 2rem;
+    }
+    .ticker-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+    .ticker-item {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .ticker-item:last-child { border-bottom: none; }
+    .ticker-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: var(--red);
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .ticker-desc {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.4;
+    }
+    .ticker-desc strong { color: var(--white); }
+
+    /* ─── CTA BANNER ─── */
+    .cta-banner {
+      background: var(--red);
+      color: var(--white);
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .cta-banner p {
+      font-size: 1.1rem;
+      font-style: italic;
+      font-weight: 300;
+    }
+    .cta-banner strong { font-style: normal; font-weight: 700; }
+    .cta-btn {
+      display: inline-block;
+      background: var(--white);
+      color: var(--red);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      flex-shrink: 0;
+      transition: all 0.15s;
+    }
+    .cta-btn:hover { background: var(--black); color: var(--white); }
+
+    /* ─── VIDÉOS SECTION ─── */
+    .videos-section {
+      padding: 4rem 0;
+      background: var(--section-bg);
+      border-bottom: 2px solid var(--black);
+    }
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    @media(max-width: 650px) { .videos-grid { grid-template-columns: 1fr; } }
+
+    .video-card {
+      background: var(--black);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .video-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* Gradient backgrounds as placeholders */
+    .video-card:nth-child(1) .video-thumb { background: linear-gradient(135deg, #1a0505 0%, #2d0a0a 50%, #0a0a1a 100%); }
+    .video-card:nth-child(2) .video-thumb { background: linear-gradient(135deg, #0a1a0a 0%, #0a2a1a 50%, #0a0a0a 100%); }
+    .video-card:nth-child(3) .video-thumb { background: linear-gradient(135deg, #1a0a00 0%, #2a1500 50%, #0a0a0a 100%); }
+    .video-card:nth-child(4) .video-thumb { background: linear-gradient(135deg, #0a0a1a 0%, #12103a 50%, #0a0a0a 100%); }
+
+    /* Decorative grid lines on thumb */
+    .video-thumb::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+
+    .video-play {
+      width: 56px;
+      height: 56px;
+      background: rgba(200,16,46,0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .video-card:hover .video-play { transform: scale(1.1); background: var(--red); }
+    .video-play svg { width: 20px; height: 20px; fill: white; margin-left: 3px; }
+
+    .video-duration {
+      position: absolute;
+      bottom: 0.5rem;
+      right: 0.5rem;
+      background: rgba(0,0,0,0.8);
+      color: white;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      padding: 0.15rem 0.4rem;
+      z-index: 2;
+    }
+
+    .video-meta {
+      padding: 1rem;
+      border-top: 2px solid var(--red);
+    }
+    .video-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+    .video-title {
+      font-family: 'Fraunces', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.3;
+      margin-bottom: 0.4rem;
+    }
+    .video-desc {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.5;
+    }
+    .video-id-note {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      color: rgba(255,255,255,0.3);
+      margin-top: 0.5rem;
+    }
+
+    /* Real embed modal */
+    .video-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .video-modal.active { display: flex; }
+    .video-modal-inner {
+      width: 100%;
+      max-width: 900px;
+      position: relative;
+    }
+    .video-modal-close {
+      position: absolute;
+      top: -2.5rem;
+      right: 0;
+      background: none;
+      border: none;
+      color: white;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      cursor: pointer;
+      letter-spacing: 0.1em;
+    }
+    .video-modal iframe {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border: none;
+    }
+
+    /* ─── SOURCES SECTION ─── */
+    .sources-section {
+      padding: 5rem 0;
+      border-bottom: 2px solid var(--black);
+    }
+    .sources-intro {
+      font-size: 1.05rem;
+      color: var(--mid);
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      text-align: center;
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .sources-categories {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+      justify-content: center;
+    }
+    .cat-btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      padding: 0.4rem 0.8rem;
+      border: 1px solid var(--black);
+      background: none;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .cat-btn:hover, .cat-btn.active {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .sources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .source-card {
+      border: 1px solid var(--border);
+      padding: 1.3rem 1.4rem;
+      background: var(--white);
+      transition: box-shadow 0.15s, border-color 0.15s;
+      position: relative;
+    }
+    .source-card:hover { box-shadow: 4px 4px 0 var(--black); border-color: var(--black); }
+
+    .source-type {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .source-type.type-constitution { color: #1a6b2a; }
+    .source-type.type-cedh         { color: #1a3d8f; }
+    .source-type.type-greco        { color: var(--red); }
+    .source-type.type-ue           { color: #0052cc; }
+    .source-type.type-national     { color: #7a3a00; }
+    .source-type.type-academique   { color: #5a1a7a; }
+    .source-type.type-onu          { color: #006b8f; }
+
+    .source-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      line-height: 1.35;
+      margin-bottom: 0.6rem;
+      color: var(--black);
+    }
+    .source-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--muted);
+      margin-bottom: 0.7rem;
+    }
+    .source-insight {
+      font-size: 0.85rem;
+      color: var(--mid);
+      line-height: 1.6;
+      border-left: 2px solid var(--border);
+      padding-left: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+    .source-insight strong { color: var(--black); }
+
+    .source-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--red);
+      text-decoration: none;
+      word-break: break-all;
+      display: block;
+    }
+    .source-link:hover { text-decoration: underline; }
+
+    /* ─── CONTRE-ATTAQUE PREVIEW ─── */
+    .action-section {
+      padding: 4rem 0;
+      background: var(--black);
+      color: var(--white);
+    }
+    .action-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    @media(max-width: 700px) { .action-grid { grid-template-columns: 1fr; } }
+
+    .action-left h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .action-left h2 .accent { color: var(--red); }
+    .action-left p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .axes-list {
+      list-style: none;
+      padding: 0;
+    }
+    .axes-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+    }
+    .axes-list li span {
+      width: 28px;
+      height: 28px;
+      background: var(--red);
+      color: white;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .action-cta {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      margin-top: 1.5rem;
+      transition: background 0.15s;
+    }
+    .action-cta:hover { background: var(--red-dark); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--section-bg);
+      border-top: 2px solid var(--black);
+      padding: 2rem;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      line-height: 2;
+    }
+    footer a { color: var(--red); text-decoration: none; }
+
+    /* ─── UTILS ─── */
+    .separator {
+      height: 2px;
+      background: var(--black);
+    }
+
+    /* Animation on scroll */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up {
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+    .fade-up:nth-child(1) { animation-delay: 0.05s; }
+    .fade-up:nth-child(2) { animation-delay: 0.15s; }
+    .fade-up:nth-child(3) { animation-delay: 0.25s; }
+    .fade-up:nth-child(4) { animation-delay: 0.35s; }
+    .fade-up:nth-child(5) { animation-delay: 0.45s; }
+    .fade-up:nth-child(6) { animation-delay: 0.55s; }
+  </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <span>ouaisfieu.github.io / politique-belge</span>
+  <span class="topbar-right">Dernière mise à jour : mai 2026</span>
+</div>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="masthead-eyebrow">Documentation citoyenne · Belgique 2024–2026</div>
+  <h1>La <span class="accent">Particratie</span><br>Belge</h1>
+  <p class="masthead-sub">Les preuves que les partis ne veulent pas que vous lisiez — et comment agir.</p>
+  <div class="masthead-rule"></div>
+</header>
+
+<!-- NAV -->
+<nav class="nav-pills" aria-label="Navigation principale">
+  <a href="#comprendre" class="pill">Comprendre</a>
+  <a href="#videos" class="pill">Vidéos</a>
+  <a href="#sources" class="pill">Sources primaires</a>
+  <a href="#agir" class="pill active">Contre-attaque</a>
+  <a href="contre-attaque/action/" class="pill">Guide juridique →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="comprendre">
+  <div class="wrap">
+    <div class="section-label">Le diagnostic</div>
+    <div class="hero-grid">
+      <div class="hero-left">
+        <h2>Les partis ont <em>confisqué</em> la démocratie belge.<br>Ce n'est pas une opinion.</h2>
+        <p>La Constitution de 1831 garantit que vos élus votent librement selon leur conscience (art. 42). En réalité, la discipline de vote dépasse 99 % dans tous les partis. Vos représentants ne vous représentent pas : ils représentent leur parti.</p>
+        <p>Les partis belges captent <strong>108,7 millions d'euros</strong> de fonds publics par an — soit 7,1 €/habitant/an, deux à sept fois plus que leurs homologues européens. En retour, ils refusent depuis 2019 de mettre en œuvre les recommandations anti-corruption du GRECO.</p>
+        <p>Ce n'est pas une accusation idéologique. C'est ce que disent les rapports officiels du Conseil de l'Europe, de la Commission européenne, de la Cour des comptes belge et des universités UCLouvain, KU Leuven et ULB.</p>
+      </div>
+      <div class="hero-right">
+        <div class="ticker-label">● Les chiffres clés (sources vérifiées)</div>
+        <div class="ticker-item">
+          <div class="ticker-num">99,7%</div>
+          <div class="ticker-desc"><strong>discipline de vote</strong> mesurée sous Wilmès II — zéro vote dissident dans plusieurs partis sur 5 ans (source : Maddens, KU Leuven, 2024)</div>
+        </div>
+        <div class="ticker-item">
+          <div class="ticker-num">188M€</div>
+          <div class="ticker-desc"><strong>financement total des partis</strong> (dotations directes + avantages indirects) en 2025 selon KU Leuven</div>
+        </div>
+        <div class="ticker-item">
+          <div class="ticker-num">16/22</div>
+          <div class="ticker-desc"><strong>recommandations GRECO ignorées</strong> — procédure de non-conformité « Règle 32 » activée, 5e cycle (22 mars 2024)</div>
+        </div>
+        <div class="ticker-item">
+          <div class="ticker-num">+11 000</div>
+          <div class="ticker-desc"><strong>condamnations judiciaires</strong> non exécutées par l'État sur la crise d'accueil (IFDH, novembre 2024)</div>
+        </div>
+        <div class="ticker-item">
+          <div class="ticker-num">69/100</div>
+          <div class="ticker-desc"><strong>Indice de Perception de la Corruption</strong> de Transparency International (2025) — en chute par rapport à 76/100 en 2015</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <p><strong>Vous pensez que votre vote compte ?</strong> Lisez d'abord comment fonctionne réellement le système.</p>
+  <a href="contre-attaque/action/" class="cta-btn">VOIR LE GUIDE JURIDIQUE →</a>
+</div>
+
+<!-- VIDÉOS -->
+<section class="videos-section" id="videos">
+  <div class="wrap">
+    <div class="section-label">Pour aller plus loin</div>
+    <h2 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(1.8rem,4vw,2.8rem); margin-bottom:0.5rem;">Décryptages vidéo</h2>
+    <p style="color:var(--muted); font-size:0.9rem; margin-bottom:2rem; font-style:italic;">Quatre éclairages essentiels sur la démocratie belge — cliquez pour visionner</p>
+
+    <div class="videos-grid">
+
+      <!-- VIDEO 1 -->
+      <article class="video-card fade-up" data-videoid="REMPLACEZ_PAR_ID_YT_1" role="button" tabindex="0" aria-label="Visionner la vidéo">
+        <div class="video-thumb">
+          <div class="video-play">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <span class="video-duration">À définir</span>
+        </div>
+        <div class="video-meta">
+          <div class="video-tag">Fondements · Politique belge</div>
+          <div class="video-title">Qu'est-ce que la particratie ? Explication en 10 minutes</div>
+          <div class="video-desc">Comment les partis ont progressivement capturé l'État, les nominations, le budget et la justice. Le mécanisme expliqué simplement.</div>
+          <div class="video-id-note">→ Remplacer REMPLACEZ_PAR_ID_YT_1 par l'ID YouTube</div>
+        </div>
+      </article>
+
+      <!-- VIDEO 2 -->
+      <article class="video-card fade-up" data-videoid="REMPLACEZ_PAR_ID_YT_2" role="button" tabindex="0" aria-label="Visionner la vidéo">
+        <div class="video-thumb">
+          <div class="video-play">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <span class="video-duration">À définir</span>
+        </div>
+        <div class="video-meta">
+          <div class="video-tag">Financement · Argent public</div>
+          <div class="video-title">4 milliards d'euros aux partis — qui paie, qui contrôle ?</div>
+          <div class="video-desc">Anatomie du financement public des partis belges depuis 1989 : dotations, ASBL satellites, cabinets, rétrocessions.</div>
+          <div class="video-id-note">→ Remplacer REMPLACEZ_PAR_ID_YT_2 par l'ID YouTube</div>
+        </div>
+      </article>
+
+      <!-- VIDEO 3 -->
+      <article class="video-card fade-up" data-videoid="REMPLACEZ_PAR_ID_YT_3" role="button" tabindex="0" aria-label="Visionner la vidéo">
+        <div class="video-thumb">
+          <div class="video-play">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <span class="video-duration">À définir</span>
+        </div>
+        <div class="video-meta">
+          <div class="video-tag">GRECO · État de droit</div>
+          <div class="video-title">La Belgique épinglée par le Conseil de l'Europe — pourquoi ?</div>
+          <div class="video-desc">Décryptage du rapport GRECO 2024 et de la procédure de non-conformité : ce que la Belgique refuse de faire depuis 5 ans.</div>
+          <div class="video-id-note">→ Remplacer REMPLACEZ_PAR_ID_YT_3 par l'ID YouTube</div>
+        </div>
+      </article>
+
+      <!-- VIDEO 4 -->
+      <article class="video-card fade-up" data-videoid="REMPLACEZ_PAR_ID_YT_4" role="button" tabindex="0" aria-label="Visionner la vidéo">
+        <div class="video-thumb">
+          <div class="video-play">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <span class="video-duration">À définir</span>
+        </div>
+        <div class="video-meta">
+          <div class="video-tag">Recours · Action citoyenne</div>
+          <div class="video-title">Comment Klimaatzaak a condamné l'État belge — et comment faire pareil</div>
+          <div class="video-desc">70 000 citoyens, un procès, une condamnation. Le modèle Klimaatzaak et ce qu'il ouvre comme possibilités pour la démocratie.</div>
+          <div class="video-id-note">→ Remplacer REMPLACEZ_PAR_ID_YT_4 par l'ID YouTube</div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO MODAL -->
+<div class="video-modal" id="videoModal" role="dialog" aria-modal="true">
+  <div class="video-modal-inner">
+    <button class="video-modal-close" id="modalClose">✕ FERMER</button>
+    <iframe id="modalIframe" src="" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+  </div>
+</div>
+
+<!-- SOURCES PRIMAIRES -->
+<section class="sources-section" id="sources">
+  <div class="wrap">
+    <div class="section-label">Base documentaire</div>
+    <h2 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(1.8rem,4vw,2.8rem); text-align:center; margin-bottom:0.5rem;">Sources primaires &amp; leurs insights</h2>
+    <p class="sources-intro">Toutes les affirmations de ce site reposent sur des sources officielles, académiques ou jurisprudentielles vérifiables. Voici l'inventaire commenté.</p>
+
+    <div class="sources-categories">
+      <button class="cat-btn active" data-cat="all">Toutes (22)</button>
+      <button class="cat-btn" data-cat="constitution">Constitution &amp; lois</button>
+      <button class="cat-btn" data-cat="cedh">CEDH</button>
+      <button class="cat-btn" data-cat="greco">GRECO / CE</button>
+      <button class="cat-btn" data-cat="ue">UE &amp; CJUE</button>
+      <button class="cat-btn" data-cat="national">Juridictions nationales</button>
+      <button class="cat-btn" data-cat="academique">Académique &amp; institutionnel</button>
+      <button class="cat-btn" data-cat="onu">ONU</button>
+    </div>
+
+    <div class="sources-grid" id="sourcesGrid">
+
+      <!-- CONSTITUTION & LOIS -->
+      <div class="source-card" data-cat="constitution">
+        <div class="source-type type-constitution">Constitution · Loi fondamentale</div>
+        <div class="source-title">Constitution de la Belgique coordonnée du 17 février 1994</div>
+        <div class="source-date">En vigueur depuis 1994 (base 1831)</div>
+        <div class="source-insight">Art. 33 : « Tous les pouvoirs émanent de la Nation. » Art. 42 : interdiction absolue du mandat impératif — les élus représentent la Nation, pas leur parti. Art. 66 : l'indemnité garantit l'indépendance. Art. 28 : droit de pétition. Art. 32 : droit d'accès aux documents. <strong>Chacun de ces articles est systématiquement contourné en pratique.</strong></div>
+        <a href="https://www.const-court.be/documents/fr/grondwet.pdf" class="source-link" target="_blank">const-court.be/documents/fr/grondwet.pdf</a>
+      </div>
+
+      <div class="source-card" data-cat="constitution">
+        <div class="source-type type-constitution">Loi fédérale</div>
+        <div class="source-title">Loi du 4 juillet 1989 sur le financement et la comptabilité ouverte des partis politiques</div>
+        <div class="source-date">1989, dernière modification 2024</div>
+        <div class="source-insight">Fondement légal de l'injection de fonds publics dans les partis. Art. 15ter : sanction possible pour hostilité à la CEDH, mais <strong>aucune sanction prévue pour violation de l'art. 42</strong> — c'est la lacune extrinsèque clé de toute stratégie contentieuse. La Commission de contrôle est composée de parlementaires, soit les contrôleurs contrôlés.</div>
+        <a href="https://www.lachambre.be/kvvcr/pdf_sections/financement_partis/loi4juill1989.pdf" class="source-link" target="_blank">lachambre.be → loi4juill1989.pdf</a>
+      </div>
+
+      <div class="source-card" data-cat="constitution">
+        <div class="source-type type-constitution">Loi fédérale</div>
+        <div class="source-title">Loi du 12 mai 2024 relative à la publicité de l'administration</div>
+        <div class="source-date">En vigueur le 15 juillet 2024</div>
+        <div class="source-insight">Étend le droit d'accès aux documents aux <strong>cabinets ministériels</strong> — mais neutralise immédiatement cette avancée par une exception absolue pour « les documents portant sur l'exécution d'une stratégie politique ». Le Conseil d'État (avis 72.732/2, 30 janvier 2023) a lui-même questionné cette exception. <strong>C'est cette exception qui est attaquable.</strong></div>
+        <a href="https://www.ejustice.just.fgov.be/eli/loi/2024/05/12" class="source-link" target="_blank">ejustice.just.fgov.be</a>
+      </div>
+
+      <div class="source-card" data-cat="constitution">
+        <div class="source-type type-constitution">Loi fédérale</div>
+        <div class="source-title">Loi du 2 mai 2019 relative aux pétitions à la Chambre</div>
+        <div class="source-date">2019</div>
+        <div class="source-insight"><strong>25 000 signatures</strong> (avec répartition régionale) obligent le Parlement fédéral à examiner la pétition et à auditionner le pétitionnaire en commission. Plateforme : lachambre.be/Adolphe. <strong>Mécanisme sous-utilisé mais légalement contraignant.</strong></div>
+        <a href="https://www.lachambre.be/kvvcr/pdf_sections/petitions/guide_petitions.pdf" class="source-link" target="_blank">lachambre.be → guide_petitions.pdf</a>
+      </div>
+
+      <div class="source-card" data-cat="constitution">
+        <div class="source-type type-constitution">Loi fédérale</div>
+        <div class="source-title">Loi du 28 novembre 2022 sur la protection des lanceurs d'alerte</div>
+        <div class="source-date">2022 — transposition directive UE 2019/1937</div>
+        <div class="source-insight">Protection étendue au secteur public ET privé. Représailles interdites et sanctionnées. <strong>Médiateur fédéral = autorité externe désignée.</strong> Antécédent décisif : Cédric Halin (Publifin), agents Fedasil (2025). Combinable avec la directive UE anti-SLAPP (2024) contre les procédures-bâillons.</div>
+        <a href="https://www.ejustice.just.fgov.be/eli/loi/2022/11/28" class="source-link" target="_blank">ejustice.just.fgov.be</a>
+      </div>
+
+      <!-- CEDH -->
+      <div class="source-card" data-cat="cedh">
+        <div class="source-type type-cedh">CEDH · Grande Chambre</div>
+        <div class="source-title">Mugemangango c. Belgique, n° 310/15</div>
+        <div class="source-date">13 octobre 2020</div>
+        <div class="source-insight">La Belgique condamnée pour auto-jugement parlementaire entaché de partialité partisane. Principe établi : <strong>les partis ne peuvent être seuls juges de leurs propres règles de financement</strong>. Art. 3 Protocole n°1 (droit à des élections libres). Arrêt de Grande Chambre — autorité maximale.</div>
+        <a href="https://hudoc.echr.coe.int/eng?i=001-203935" class="source-link" target="_blank">hudoc.echr.coe.int — 001-203935</a>
+      </div>
+
+      <div class="source-card" data-cat="cedh">
+        <div class="source-type type-cedh">CEDH · Chambre</div>
+        <div class="source-title">Camara c. Belgique, req. n° 49255/22</div>
+        <div class="source-date">2023 + suivi Comité des Ministres 2025</div>
+        <div class="source-insight">Refus obstiné de l'État d'exécuter des ordonnances judiciaires sur l'accueil qualifié de <strong>« carence systémique » incompatible avec l'État de droit</strong>. Violation de l'art. 6§1. La 1537e réunion du Comité des Ministres (sept. 2025) note les progrès insuffisants.</div>
+        <a href="https://hudoc.echr.coe.int/fre?i=001-225884" class="source-link" target="_blank">hudoc.echr.coe.int — 001-225884</a>
+      </div>
+
+      <div class="source-card" data-cat="cedh">
+        <div class="source-type type-cedh">CEDH · Chambre</div>
+        <div class="source-title">Tomenko c. Ukraine, CEDH, 2025</div>
+        <div class="source-date">2025</div>
+        <div class="source-insight">La suprématie du parti sur le libre arbitre de l'élu place <strong>« les partis politiques au-dessus de l'électorat souverain »</strong> — violation de l'art. 3 Protocole n°1. Interdit tout mécanisme coercitif conduisant à la destitution d'un élu pour vote dissident. <strong>Jurisprudence directement transposable à la Belgique.</strong></div>
+        <a href="https://hudoc.echr.coe.int/ukr?i=001-244007" class="source-link" target="_blank">hudoc.echr.coe.int — 001-244007</a>
+      </div>
+
+      <div class="source-card" data-cat="cedh">
+        <div class="source-type type-cedh">CEDH · Grande Chambre</div>
+        <div class="source-title">Karácsony et autres c. Hongrie, req. n° 42461/13</div>
+        <div class="source-date">17 mai 2016</div>
+        <div class="source-insight">Les sanctions disciplinaires contre un élu dans l'hémicycle doivent être <strong>proportionnées et entourées de garanties procédurales indépendantes</strong>. Art. 10 CEDH (liberté d'expression). Fondement pour contester les mécanismes de discipline de groupe parlementaire.</div>
+        <a href="https://hudoc.echr.coe.int/eng?i=002-10164" class="source-link" target="_blank">hudoc.echr.coe.int — 002-10164</a>
+      </div>
+
+      <!-- GRECO -->
+      <div class="source-card" data-cat="greco">
+        <div class="source-type type-greco">GRECO · Conseil de l'Europe</div>
+        <div class="source-title">2e Rapport de conformité du 5e cycle d'évaluation — Belgique</div>
+        <div class="source-date">22 mars 2024 · Réf. GrecoRC5(2024)3</div>
+        <div class="source-insight">Sur 22 recommandations : 6 mises en œuvre, 8 partiellement, <strong>8 complètement ignorées</strong>. Procédure « Règle 32 » (non-conformité) activée — niveau de sanction réservé aux États les plus défaillants. Recommandations clés en souffrance : registre des lobbyistes, déclarations de patrimoine, indépendance des cabinets.</div>
+        <a href="https://rm.coe.int/grecorc5-2025-22-final-fra-add-au-2e-rapport-de-conformite-belgique-pu/488029e010" class="source-link" target="_blank">rm.coe.int → GrecoRC5(2024)3</a>
+      </div>
+
+      <div class="source-card" data-cat="greco">
+        <div class="source-type type-greco">GRECO · Conseil de l'Europe</div>
+        <div class="source-title">Rapport d'évaluation du 5e cycle — Belgique (1er rapport)</div>
+        <div class="source-date">Janvier 2020</div>
+        <div class="source-insight">Premier diagnostic systématique du cycle : absence de plafonds réels sur les dotations, <strong>contrôle exercé par les contrôlés</strong>, pas de registre des lobbyistes au niveau gouvernemental, déclarations de patrimoine sous enveloppe scellée. Base de référence pour mesurer le recul depuis 2020.</div>
+        <a href="https://justitie.belgium.be/sites/default/files/downloads/2020-01_grecoeval5rep3-en-belgium.pdf" class="source-link" target="_blank">justitie.belgium.be → grecoeval5rep3</a>
+      </div>
+
+      <!-- UE & CJUE -->
+      <div class="source-card" data-cat="ue">
+        <div class="source-type type-ue">Commission européenne</div>
+        <div class="source-title">Rapport sur l'état de droit 2025 — Belgique (chapitre pays)</div>
+        <div class="source-date">2025</div>
+        <div class="source-insight">Six recommandations dont aucune pleinement satisfaite. Note un « <strong>limited progress</strong> » sur le respect des arrêts judiciaires — formulation diplomatique pour un État fondateur de l'UE. Première source formelle pour activer le mécanisme de conditionnalité financière (règlement 2020/2092).</div>
+        <a href="https://www.senate.be/web/fr/article/1611/raw" class="source-link" target="_blank">senate.be → Rapport État de droit 2025</a>
+      </div>
+
+      <div class="source-card" data-cat="ue">
+        <div class="source-type type-ue">Règlement UE</div>
+        <div class="source-title">Règlement (UE) 2020/2092 — Conditionnalité État de droit</div>
+        <div class="source-date">16 décembre 2020</div>
+        <div class="source-insight">Permet à la Commission de <strong>geler les fonds européens</strong> destinés à un État membre dont les défaillances systémiques en matière d'état de droit affectent la bonne gestion des fonds. Appliqué à la Hongrie (2022) et la Pologne (2023). La Belgique accumule les signaux d'alerte.</div>
+        <a href="https://eur-lex.europa.eu/eli/reg/2020/2092/oj" class="source-link" target="_blank">eur-lex.europa.eu → règl. 2020/2092</a>
+      </div>
+
+      <div class="source-card" data-cat="ue">
+        <div class="source-type type-ue">CJUE · Arrêt</div>
+        <div class="source-title">CJUE, Flachglas Torgau GmbH, C-204/09</div>
+        <div class="source-date">14 février 2012</div>
+        <div class="source-insight">Les décisions exécutives ordinaires (arrêtés royaux, protocoles, aides d'État) prises au sein du Kern <strong>ne sont pas couvertes</strong> par l'exemption « pouvoirs législatifs » de la directive 2003/4/CE sur l'information environnementale. Ouvre la voie aux demandes d'accès aux documents du Kern via la Convention d'Aarhus.</div>
+        <a href="https://curia.europa.eu/juris/document/document.jsf?docid=119762" class="source-link" target="_blank">curia.europa.eu → C-204/09</a>
+      </div>
+
+      <!-- JURIDICTIONS NATIONALES -->
+      <div class="source-card" data-cat="national">
+        <div class="source-type type-national">Cour d'appel de Bruxelles</div>
+        <div class="source-title">Klimaatzaak / État belge et Régions</div>
+        <div class="source-date">30 novembre 2023</div>
+        <div class="source-insight">Condamnation confirmée de l'État belge pour faute climatique (art. 1382 Code civil + arts. 2 et 8 CEDH). <strong>~70 000 co-demandeurs</strong>. Injonction d'atteindre -55% d'émissions d'ici 2030 pour l'État fédéral et la Flandre. Modèle d'action collective directement transposable à d'autres causes systémiques.</div>
+        <a href="https://affaire-climat.be/fr/le-proces" class="source-link" target="_blank">affaire-climat.be → le-proces</a>
+      </div>
+
+      <div class="source-card" data-cat="national">
+        <div class="source-type type-national">Cour constitutionnelle belge</div>
+        <div class="source-title">Arrêt n° 35/2024</div>
+        <div class="source-date">21 mars 2024</div>
+        <div class="source-insight">Acceptation par la Cour d'un recours sur des manipulations de listes électorales. Confirme que les règles du jeu électoral sont <strong>attaquables devant la Cour constitutionnelle</strong>. Précédent pour contester les mécanismes de liste bloquée et d'accès asymétrique aux dotations.</div>
+        <a href="https://curia.europa.eu/site/jcms/p1_1000083328/fr/" class="source-link" target="_blank">curia.europa.eu → arrêt 35/2024</a>
+      </div>
+
+      <div class="source-card" data-cat="national">
+        <div class="source-type type-national">Conseil d'État belge</div>
+        <div class="source-title">Avis 72.732/2 du 30 janvier 2023</div>
+        <div class="source-date">30 janvier 2023</div>
+        <div class="source-insight">Le Conseil d'État lui-même questionne la légalité de l'exception « stratégie politique » qui couvrirait les décisions du Kern. <strong>Fournit un levier juridique pour contester le mur d'opacité</strong> lors d'un recours en annulation devant lui-même en cas de refus CADA.</div>
+        <a href="https://www.raadvst-consetat.be/?action=doc&doc=929" class="source-link" target="_blank">raadvst-consetat.be</a>
+      </div>
+
+      <!-- ACADÉMIQUE & INSTITUTIONNEL -->
+      <div class="source-card" data-cat="academique">
+        <div class="source-type type-academique">Académique · KU Leuven</div>
+        <div class="source-title">Maddens B. et al. — « De kolonisten van de Wetstraat » (2024)</div>
+        <div class="source-date">KU Leuven, 2024</div>
+        <div class="source-insight">Étude de référence sur le financement des partis belges. Chiffre le financement total à <strong>188,3 M€</strong>, soit 7,1 €/habitant/an (2× à 7× la moyenne européenne). Documente les taux de rétrocession des indemnités : PTB 60-70%, Écolo ~40%, N-VA 7,5-10%. Base chiffrée pour toute action contentieuse sur le financement.</div>
+        <a href="https://www.kuleuven.be/politica" class="source-link" target="_blank">kuleuven.be/politica</a>
+      </div>
+
+      <div class="source-card" data-cat="academique">
+        <div class="source-type type-academique">Académique · CRISP</div>
+        <div class="source-title">Jean Faniel — Rétrocessions des indemnités parlementaires (CRISP)</div>
+        <div class="source-date">CRISP, 2024</div>
+        <div class="source-insight">Documentation systématique des pratiques de rétrocession dans tous les partis belges. Montre que <strong>l'indemnité constitutionnelle (art. 66) censée garantir l'indépendance est transformée en mécanisme de financement du parti</strong>. Source primaire pour l'argument de violation de l'art. 66.</div>
+        <a href="https://www.crisp.be" class="source-link" target="_blank">crisp.be</a>
+      </div>
+
+      <div class="source-card" data-cat="academique">
+        <div class="source-type type-academique">Institutionnel · IFDH</div>
+        <div class="source-title">Institut fédéral des droits humains — Enquête formelle sur la non-exécution des jugements</div>
+        <div class="source-date">18 novembre 2024</div>
+        <div class="source-insight">Enquête formelle lancée sur la pratique systématique de l'État de ne pas exécuter les décisions judiciaires définitives. La directrice de l'IFDH : <strong>« Que vaut une décision de justice si elle n'est pas mise en œuvre ? »</strong> Premier document institutionnel belge qualifiant cette pratique de problème systémique.</div>
+        <a href="https://institutfederaldroitshumains.be" class="source-link" target="_blank">institutfederaldroitshumains.be</a>
+      </div>
+
+      <div class="source-card" data-cat="academique">
+        <div class="source-type type-academique">Institutionnel · Cour des comptes</div>
+        <div class="source-title">Rapport Cour des comptes sur le registre de transparence du lobbying (2024)</div>
+        <div class="source-date">2024</div>
+        <div class="source-insight">Constate des <strong>« inexactitudes massives, doublons, champs vides, données financières invraisemblables »</strong> dans le registre de transparence. L'absence de contrôle proactif transforme l'outil en façade éthique. Corrobore les recommandations GRECO non respectées sur le lobbying.</div>
+        <a href="https://www.ccrek.be" class="source-link" target="_blank">ccrek.be</a>
+      </div>
+
+      <!-- ONU -->
+      <div class="source-card" data-cat="onu">
+        <div class="source-type type-onu">ONU · Mécanisme de droits humains</div>
+        <div class="source-title">Examen Périodique Universel (EPU) — Belgique, cycle 2026-2027</div>
+        <div class="source-date">Prochain cycle 2026-2027</div>
+        <div class="source-insight">Chaque État membre est examiné tous les 4-5 ans par le Conseil des droits de l'homme de l'ONU. <strong>Les ONG et citoyens peuvent y soumettre des rapports parallèles</strong> qui forcent l'État à répondre devant 192 pays. La Ligue des droits humains, CNCD-11.11.11, FIDH compilent ces contributions. Fenêtre d'opportunité en 2026.</div>
+        <a href="https://www.ohchr.org/en/hr-bodies/upr/be-index" class="source-link" target="_blank">ohchr.org → upr/be-index</a>
+      </div>
+
+    </div><!-- /sources-grid -->
+  </div>
+</section>
+
+<!-- CONTRE-ATTAQUE SECTION -->
+<section class="action-section" id="agir">
+  <div class="wrap">
+    <div class="action-grid">
+      <div class="action-left">
+        <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.3em;color:var(--red);margin-bottom:1rem;text-transform:uppercase;">● Contre-attaque citoyenne</div>
+        <h2>11 façons d'<span class="accent">agir</span> contre la particratie</h2>
+        <p>La page d'action juridique documente en détail chacune de ces voies — fondements légaux, obstacles, jurisprudence applicable, qui peut agir et comment.</p>
+        <a href="contre-attaque/action/" class="action-cta">LIRE LE GUIDE COMPLET →</a>
+      </div>
+      <div class="action-right">
+        <ul class="axes-list">
+          <li><span>1</span>Responsabilité civile de l'État + question préjudicielle</li>
+          <li><span>2</span>Contentieux électoral — Cour constitutionnelle</li>
+          <li><span>3</span>Recours à la CEDH (Strasbourg)</li>
+          <li><span>4</span>Demandes CADA + recours Conseil d'État</li>
+          <li><span>5</span>Dossier précontentieux documenté</li>
+          <li><span>6</span>Action collective Klimaatzaak</li>
+          <li><span>7</span>Plainte pénale contre ministres / élus</li>
+          <li><span>8</span>Recours supranationaux (CEDS, ONU, CJUE)</li>
+          <li><span>9</span>Pétitions et démocratie directe</li>
+          <li><span>10</span>Lanceurs d'alerte + protection anti-SLAPP</li>
+          <li><span>11</span>Soutien aux ONG de contentieux stratégique</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Sources : GRECO (Conseil de l'Europe) · Commission européenne · CEDH · KU Leuven · CRISP · Cour des comptes belge · IFDH · Klimaatzaak ASBL</p>
+  <p style="margin-top:0.4rem;">
+    <a href="contre-attaque/action/">Guide juridique</a> ·
+    <a href="#sources">Sources primaires</a> ·
+    <a href="#videos">Vidéos</a>
+  </p>
+  <p style="margin-top:0.8rem; font-size:0.6rem; color:#bbb;">Contenu informatif et citoyen. Ne constitue pas un avis juridique. Pour toute action en justice, consulter un avocat. · Mai 2026</p>
+</footer>
+
+<script>
+  // ─── YouTube lazy-load on click ───
+  const cards = document.querySelectorAll('.video-card');
+  const modal = document.getElementById('videoModal');
+  const iframe = document.getElementById('modalIframe');
+  const closeBtn = document.getElementById('modalClose');
+
+  cards.forEach(card => {
+    const open = () => {
+      const vid = card.getAttribute('data-videoid');
+      if (vid && !vid.startsWith('REMPLACEZ')) {
+        iframe.src = `https://www.youtube-nocookie.com/embed/${vid}?autoplay=1&rel=0`;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      } else {
+        alert('Remplacez l\'ID YouTube dans le code HTML par l\'identifiant de la vidéo souhaitée (ex: dQw4w9WgXcQ).');
+      }
+    };
+    card.addEventListener('click', open);
+    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') open(); });
+  });
+
+  const closeModal = () => {
+    modal.classList.remove('active');
+    iframe.src = '';
+    document.body.style.overflow = '';
+  };
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // ─── Sources filter ───
+  const catBtns = document.querySelectorAll('.cat-btn');
+  const sourceCards = document.querySelectorAll('.source-card');
+
+  catBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      catBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.getAttribute('data-cat');
+      sourceCards.forEach(card => {
+        const show = cat === 'all' || card.getAttribute('data-cat') === cat;
+        card.style.display = show ? '' : 'none';
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
