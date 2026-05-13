@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sire — Ce que les chiffres disent de votre Royaume</title>
+  <meta name="description" content="Lettre ouverte au Roi des Belges. Un état des lieux factuel et documenté des failles structurelles de la démocratie belge, faille par faille, responsable par responsable.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #0d0d0d;
+      --white: #f5f3ee;
+      --red: #c0392b;
+      --gold: #b8860b;
+      --grey: #5a5a5a;
+      --border: #d4cfc6;
+      --bg-callout: #1a1a1a;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 18px; scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--white);
+      color: var(--black);
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 300;
+      line-height: 1.75;
+    }
+
+    /* HEADER */
+    header {
+      background: var(--black);
+      color: var(--white);
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg, transparent, transparent 39px, rgba(255,255,255,0.03) 40px
+      );
+    }
+    .header-label {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto 1.5rem;
+    }
+    header h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .header-sub {
+      font-size: 1rem;
+      color: rgba(245,243,238,0.6);
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* INTRO BAND */
+    .intro-band {
+      background: var(--red);
+      color: var(--white);
+      text-align: center;
+      padding: 1.25rem 2rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* MAIN LAYOUT */
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    /* INTRO */
+    .intro {
+      font-size: 1.15rem;
+      line-height: 1.85;
+      margin-bottom: 3rem;
+      border-left: 3px solid var(--gold);
+      padding-left: 1.5rem;
+      color: #2a2a2a;
+    }
+
+    /* SECTION */
+    section {
+      margin-bottom: 3.5rem;
+      border-top: 1px solid var(--border);
+      padding-top: 2.5rem;
+    }
+
+    .section-number {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.4rem;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    h3 {
+      font-family: 'Source Serif 4', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin: 2rem 0 0.75rem;
+      color: var(--grey);
+    }
+
+    p { margin-bottom: 1.2rem; }
+    p:last-child { margin-bottom: 0; }
+
+    /* STAT CALLOUT */
+    .stat {
+      background: var(--bg-callout);
+      color: var(--white);
+      padding: 1.5rem 2rem;
+      margin: 2rem 0;
+      border-left: 4px solid var(--red);
+    }
+    .stat .number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--red);
+      line-height: 1;
+      display: block;
+    }
+    .stat .label {
+      font-size: 0.85rem;
+      color: rgba(245,243,238,0.75);
+      margin-top: 0.4rem;
+      display: block;
+    }
+
+    /* STAT GRID */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      margin: 2rem 0;
+      border: 1px solid var(--border);
+    }
+    .stat-cell {
+      background: var(--white);
+      padding: 1.25rem;
+      text-align: center;
+    }
+    .stat-cell .n {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--red);
+      display: block;
+    }
+    .stat-cell .d {
+      font-size: 0.8rem;
+      color: var(--grey);
+      line-height: 1.4;
+    }
+
+    /* RESPONSIBLE BOX */
+    .responsible {
+      border: 1px solid var(--border);
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      background: #faf9f6;
+    }
+    .responsible strong {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--red);
+      margin-bottom: 0.5rem;
+    }
+    .responsible p {
+      font-size: 0.92rem;
+      color: #333;
+      margin: 0;
+    }
+
+    /* VERDICT */
+    .verdict {
+      background: var(--red);
+      color: var(--white);
+      padding: 1.25rem 1.75rem;
+      margin: 2rem 0;
+      font-size: 0.9rem;
+      font-style: italic;
+      line-height: 1.6;
+    }
+    .verdict::before {
+      content: '⚖ Verdict — ';
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    /* FINAL SECTION */
+    .final {
+      background: var(--black);
+      color: var(--white);
+      padding: 3rem 2rem;
+      margin: 3rem -1.5rem -5rem;
+    }
+    .final h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+    .final p {
+      color: rgba(245,243,238,0.8);
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+    .final .punch {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      color: var(--white);
+      font-weight: 700;
+      font-style: italic;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      margin-top: 2rem;
+      padding-top: 2rem;
+      line-height: 1.5;
+    }
+    .final .meta {
+      margin-top: 2.5rem;
+      font-size: 0.8rem;
+      color: rgba(245,243,238,0.4);
+      letter-spacing: 0.05em;
+    }
+
+    /* TABLE */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin: 1.5rem 0;
+    }
+    th {
+      background: var(--black);
+      color: var(--white);
+      text-align: left;
+      padding: 0.6rem 0.9rem;
+      font-weight: 600;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    td {
+      padding: 0.7rem 0.9rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    tr:nth-child(even) td { background: #f0ede8; }
+    .status-critical { color: var(--red); font-weight: 700; }
+    .status-bad { color: var(--gold); font-weight: 600; }
+
+    /* QUOTE */
+    blockquote {
+      border-left: 3px solid var(--gold);
+      padding: 0.5rem 0 0.5rem 1.5rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: #333;
+    }
+    blockquote cite {
+      display: block;
+      font-style: normal;
+      font-size: 0.8rem;
+      color: var(--grey);
+      margin-top: 0.4rem;
+    }
+
+    /* FOOTNOTE */
+    .sources {
+      font-size: 0.8rem;
+      color: var(--grey);
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      header { padding: 3rem 1.25rem 2rem; }
+      main { padding: 2rem 1.25rem 4rem; }
+      .final { margin: 3rem -1.25rem -4rem; padding: 2.5rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <p class="header-label">Lettre ouverte — Belgique, mai 2026</p>
+  <h1><em>Sire,</em><br>voici ce que les chiffres disent de votre Royaume</h1>
+  <p class="header-sub">Un état des lieux factuel, faille par faille, source par source, responsable par responsable.</p>
+</header>
+
+<div class="intro-band">Ce document n'est pas une opinion. Chaque chiffre est sourcé. Chaque responsabilité est nommée.</div>
+
+<main>
+
+  <div class="intro">
+    La Belgique se présente au monde comme une démocratie mature, pays fondateur de l'Union européenne, siège des institutions européennes, modèle de cohabitation intercommunautaire. Cette image est inexacte. Elle repose sur un décalage de plus en plus documenté entre le texte constitutionnel de 1831 et les pratiques institutionnelles réelles de 2026. Ce décalage n'est plus seulement académique. Il est chiffré, sanctionné et en accélération.
+  </div>
+
+  <!-- FAILLE 1 -->
+  <section>
+    <p class="section-number">Faille n°1</p>
+    <h2>La Constitution dit une chose. Les partis en font une autre.</h2>
+
+    <p>L'article 42 de la Constitution belge est sans ambiguïté : <em>« Les membres des deux Chambres représentent la Nation, et non uniquement ceux qui les ont élus. »</em> Combiné à l'article 33 — <em>« Tous les pouvoirs émanent de la Nation »</em> — ce texte consacre le mandat représentatif libre. Un parlementaire n'est juridiquement lié par aucune instruction de parti.</p>
+
+    <p>La réalité mesurée par les chercheurs est à l'opposé. L'indice de cohésion partisane belge — le taux auquel les parlementaires d'un même parti votent à l'unisson — est l'un des plus élevés d'Europe occidentale, autour de 99 % (indice de Rice). Frederik Verleden, dans son étude fondatrice publiée par le CRISP en 2019, conclut que cette cohésion est <em>«&nbsp;pratiquement la plus forte d'Europe occidentale&nbsp;»</em>.</p>
+
+    <div class="stat">
+      <span class="number">~99 %</span>
+      <span class="label">Cohésion partisane belge (indice de Rice) — CRISP, Courrier hebdomadaire n° 2501-2504, 2019</span>
+    </div>
+
+    <p>Ce n'est pas de la discipline volontaire. Les partis contrôlent les carrières : l'accès aux listes électorales, les promotions internes, les nominations dans les intercommunales, les cabinets, les organismes publics. Un parlementaire qui vote contre la ligne de son parti s'expose à ne plus jamais figurer sur une liste.</p>
+
+    <div class="responsible">
+      <strong>Qui en est responsable</strong>
+      <p>Les présidents de partis et leurs états-majors, qui exercent une coercition non formalisée mais structurelle. Le législateur lui-même, qui perçoit 75 millions d'euros par an de fonds publics sans que la loi lui impose le moindre respect du mandat libre. La Commission de contrôle du financement des partis, composée de parlementaires — c'est-à-dire des bénéficiaires du système — qui contrôlent… le système.</p>
+    </div>
+
+    <div class="verdict">Les partis politiques ne figurent dans la Constitution que depuis 2014, dans un unique article technique sur le financement. Ils n'y ont aucun statut, aucune obligation, aucun contrôle démocratique interne. Mais ils commandent tout.</div>
+  </section>
+
+  <!-- FAILLE 2 -->
+  <section>
+    <p class="section-number">Faille n°2</p>
+    <h2>Le financement public des partis : 78 millions par an, contrôle quasi nul</h2>
+
+    <p>La loi du 4 juillet 1989 a instauré le financement public des partis politiques belges. En 2026, ce système représente une enveloppe de <strong>78,3 millions d'euros par an</strong> de dotation publique directe (source : KU Leuven, Maddens, Smulders et al., 2024). Il s'agit du financement public per capita parmi les plus élevés d'Europe — environ le double de ce qui se pratique en Allemagne.</p>
+
+    <div class="stat-grid">
+      <div class="stat-cell"><span class="n">78,3 M€</span><span class="d">Dotation publique directe annuelle aux partis (2024)</span></div>
+      <div class="stat-cell"><span class="n">84,4 M€</span><span class="d">Masse salariale des 1 008 collaborateurs parlementaires (2021) — travaillant de plus en plus pour les partis</span></div>
+      <div class="stat-cell"><span class="n">161 M€</span><span class="d">Patrimoine cumulé des partis en 2017 — multiplié par 2 depuis 1999</span></div>
+      <div class="stat-cell"><span class="n">74 %</span><span class="d">Part des revenus des partis issus de fonds publics</span></div>
+    </div>
+
+    <p>À ce financement direct s'ajoutent des flux parallèles que la Cour des comptes et les chercheurs de la KU Leuven ont identifiés : détachements à titre gratuit de fonctionnaires dans les cabinets (14,8 M€/an non inscrits au budget wallon en 2021), fondations partisanes non soumises aux plafonds (Centre Jean Gol, Institut Émile Vandervelde, CEPESS, Stichting Mens &amp; Politiek, etc.), subventions aux groupes parlementaires non plafonnées.</p>
+
+    <p>Le contrôle de ce financement est assuré par une Commission de contrôle composée de membres désignés par les partis eux-mêmes. Elle dispose d'un pouvoir de sanction théorique mais ne sanctionne quasi jamais. L'Eurobaromètre 2024 indique que <strong>deux tiers des Belges considèrent la corruption comme répandue</strong>.</p>
+
+    <div class="responsible">
+      <strong>Qui en est responsable</strong>
+      <p>Le législateur fédéral, qui a construit ce système et refuse de le réformer. Tous les partis représentés au Parlement fédéral en bénéficient. La Commission de contrôle parlementaire du financement des partis, structure de contrôle mutuel sans indépendance réelle. La Cour des comptes, dont les alertes répétées sont restées sans suite législative.</p>
+    </div>
+  </section>
+
+  <!-- FAILLE 3 -->
+  <section>
+    <p class="section-number">Faille n°3</p>
+    <h2>Les cabinets ministériels : un gouvernement parallèle hors de tout contrôle</h2>
+
+    <p>La Belgique dispose d'un système de cabinets ministériels sans équivalent en Europe occidentale. Ces structures — composées de collaborateurs politiques nommés par les ministres, sans concours, sans transparence sur leurs missions — constituent le véritable centre de décision politique, en parallèle et souvent en remplacement de l'administration publique.</p>
+
+    <p>Le Conseil de l'Europe et la Commission européenne ont documenté que ces cabinets échappaient, jusqu'à la loi du 12 mai 2024, au champ de la publicité administrative. Un code de déontologie a été adopté en 2023, mais sans registre commun des contacts avec les lobbyistes ni transparence sur les cadeaux.</p>
+
+    <div class="stat-grid">
+      <div class="stat-cell"><span class="n">2,5 Mds€</span><span class="d">Externalisation aux cabinets de conseil sur 3 ans (État fédéral)</span></div>
+      <div class="stat-cell"><span class="n">78 %</span><span class="d">Dossiers de consultants non justifiés selon les audits disponibles</span></div>
+      <div class="stat-cell"><span class="n">14,8 M€</span><span class="d">Détachements gratuits non budgétisés dans les cabinets wallons (2021) — Cour des comptes</span></div>
+    </div>
+
+    <p>Par ailleurs, le <strong>Kern</strong> — Comité ministériel restreint réunissant les vice-Premiers ministres — est l'organe où se prennent les décisions politiques réelles du gouvernement fédéral. Il ne figure dans aucun texte constitutionnel ou légal. Ses réunions ne font l'objet d'aucun procès-verbal public. Ses décisions ne sont soumises à aucun contrôle parlementaire direct. Il est constitutionnellement invisible mais politiquement omnipotent.</p>
+
+    <div class="responsible">
+      <strong>Qui en est responsable</strong>
+      <p>Tous les gouvernements fédéraux successifs depuis la création informelle du Kern. Le Parlement fédéral, qui n'a jamais légiféré pour encadrer cet organe. Les présidents de partis qui y siègent de facto via leurs vice-Premiers.</p>
+    </div>
+
+    <div class="verdict">Un gouvernement qui décide dans un organe sans existence légale, assisté de cabinets qui échappent à l'administration publique, financé par des consultants non justifiés. Ce n'est pas une zone grise. C'est une architecture délibérée d'opacité.</div>
+  </section>
+
+  <!-- FAILLE 4 -->
+  <section>
+    <p class="section-number">Faille n°4</p>
+    <h2>L'État belge condamné 16 000 fois. Il n'exécute pas.</h2>
+
+    <p>L'article 40 de la Constitution dispose que les jugements sont exécutés au nom du Roi. Ce principe fondamental de l'État de droit est systématiquement violé par l'exécutif belge dans un dossier emblématique : l'accueil des demandeurs d'asile.</p>
+
+    <p>Fedasil, l'Agence fédérale pour l'accueil des demandeurs d'asile, a été condamnée plus de <strong>16 000 fois</strong> par les juridictions belges pour non-respect de son obligation légale d'accueil. Les astreintes cumulées non payées dépassent <strong>278,5 millions d'euros</strong> selon les données les plus récentes.</p>
+
+    <div class="stat">
+      <span class="number">16 000+</span>
+      <span class="label">Condamnations judiciaires contre l'État belge (dossier accueil Fedasil) — non exécutées</span>
+    </div>
+
+    <div class="stat">
+      <span class="number">278,5 M€</span>
+      <span class="label">Astreintes accumulées non payées par l'État belge — données 2025-2026</span>
+    </div>
+
+    <p>En 2023, dans l'arrêt <em>Camara c. Belgique</em>, la Cour européenne des droits de l'homme a qualifié cette situation de <strong>« carence systémique »</strong>. Ce n'est pas un terme ordinaire dans la jurisprudence strasbourgeoise. Il désigne un dysfonctionnement structurel de l'État, et non une erreur ponctuelle.</p>
+
+    <p>Ce phénomène ne se limite pas au dossier asile. Le mémorandum conjoint de juillet 2024, signé par les chefs de corps de la Cour constitutionnelle, de la Cour de cassation et du Conseil d'État — les trois plus hautes juridictions du Royaume — qualifie l'inexécution des décisions de justice de comportement <strong>« non seulement préoccupant, mais tout simplement inacceptable »</strong>.</p>
+
+    <blockquote>
+      « Dans une démocratie libérale, l'État n'est pas au-dessus des lois et doit être le premier à exécuter purement et simplement les décisions judiciaires. »
+      <cite>— Mémorandum commun des trois hautes juridictions belges, juillet 2024</cite>
+    </blockquote>
+
+    <div class="responsible">
+      <strong>Qui en est responsable</strong>
+      <p>Le gouvernement fédéral Arizona (De Wever I, depuis octobre 2024), qui poursuit la politique de non-exécution. Les gouvernements précédents — en particulier les coalitions incluant la N-VA et le MR — qui ont institutionnalisé cette pratique. Le secrétaire d'État à l'Asile, dont la politique délibérée de non-accueil a été documentée comme un choix électoral assumé face à la concurrence de l'extrême droite, au détriment de l'État de droit.</p>
+    </div>
+  </section>
+
+  <!-- FAILLE 5 -->
+  <section>
+    <p class="section-number">Faille n°5</p>
+    <h2>Le GRECO : 6 recommandations sur 22 suivies. La Belgique sous procédure d'alerte.</h2>
+
+    <p>Le Groupe d'États contre la Corruption du Conseil de l'Europe — le GRECO — évalue régulièrement ses 49 États membres sur leur respect des standards anti-corruption. La Belgique est membre fondateur depuis 1999. C'est elle qui a contribué à bâtir ces standards. Elle ne les respecte pas.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Cycle</th>
+          <th>Recommandations formulées</th>
+          <th>Entièrement suivies</th>
+          <th>Taux de conformité</th>
+          <th>Statut</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>4e cycle (Parlement, juges, procureurs)</td>
+          <td>15</td>
+          <td>8 (dont 2/8 pour le Parlement)</td>
+          <td class="status-bad">53 %</td>
+          <td>Clôturé nov. 2025</td>
+        </tr>
+        <tr>
+          <td>5e cycle (Exécutif, services répressifs)</td>
+          <td>22</td>
+          <td>8</td>
+          <td class="status-critical">36 %</td>
+          <td class="status-critical">Règle 32 activée</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Pour le 5e cycle, lors de la 101e plénière du GRECO (novembre 2025), la procédure de non-conformité (<strong>Règle 32</strong>) a été activée. Cette procédure est rare. Elle signale à la communauté internationale qu'un État membre bloque activement la lutte contre la corruption.</p>
+
+    <p>Le GRECO a pris une mesure supplémentaire : il a <strong>invité le Secrétaire général du Conseil de l'Europe à écrire personnellement au Ministre des Affaires étrangères belge</strong> pour exiger des progrès tangibles. Un rapport de conformité est exigé au plus tard le 30 novembre 2026. Au-delà : déclaration publique de non-conformité — la sanction ultime.</p>
+
+    <p>Quatre domaines concentrent les lacunes les plus critiques, toutes non résolues :</p>
+    <ul style="margin: 1rem 0 1rem 1.5rem; line-height: 2;">
+      <li><strong>Registre des lobbyistes</strong> : inexistant au gouvernement, au Sénat et dans toutes les entités fédérées — recommandation non mise en œuvre.</li>
+      <li><strong>Déclarations de patrimoine des élus</strong> : envoyées sous pli fermé, consultables uniquement dans le cadre d'une enquête pénale, détruites au bout de 5 ans — recommandations xii et xiii non mises en œuvre.</li>
+      <li><strong>Période de carence (cooling-off)</strong> pour les anciens ministres rejoignant le privé : aucune interdiction légale — recommandation non mise en œuvre.</li>
+      <li><strong>Transparence des cabinets</strong> : pas de registre commun des contacts lobbyistes, pas de registre des cadeaux.</li>
+    </ul>
+
+    <div class="responsible">
+      <strong>Qui en est responsable</strong>
+      <p>Le Parlement fédéral, qui n'a pas légiféré sur ces quatre points depuis des années. Le gouvernement De Wever, en place depuis octobre 2024, qui n'a introduit aucune des réformes demandées. L'ensemble des majorités gouvernementales depuis 2014, date du premier rapport du 4e cycle. L'Indice de Perception de la Corruption de Transparency International enregistre la chute de la Belgique de 77/100 en 2016 à 69/100 en 2024 — son plus bas niveau historique.</p>
+    </div>
+  </section>
+
+  <!-- FAILLE 6 -->
+  <section>
+    <p class="section-number">Faille n°6</p>
+    <h2>Le tableau de bord international : la Belgique décrochée</h2>
+
+    <p>L'évaluation internationale de l'état de droit en Belgique est unanime sur un point : la trajectoire est négative sur tous les indicateurs mesurés.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Indicateur</th>
+          <th>Organisme</th>
+          <th>Score / statut</th>
+          <th>Tendance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Democracy Index</td>
+          <td>Economist Intelligence Unit</td>
+          <td class="status-bad">7,64/10 — « démocratie défaillante »</td>
+          <td>↓ 34e mondial</td>
+        </tr>
+        <tr>
+          <td>Indice de Perception de la Corruption</td>
+          <td>Transparency International</td>
+          <td class="status-bad">69/100 (2024) — record bas</td>
+          <td>↓ depuis 77 en 2016</td>
+        </tr>
+        <tr>
+          <td>Espace civique</td>
+          <td>CIVICUS Monitor</td>
+          <td class="status-bad">« Narrowed » depuis 2023</td>
+          <td>↓ déclassé de « Open »</td>
+        </tr>
+        <tr>
+          <td>État de droit (rapport annuel)</td>
+          <td>Commission européenne</td>
+          <td class="status-critical">6 recommandations — aucune pleinement satisfaite</td>
+          <td>↓ 2025</td>
+        </tr>
+        <tr>
+          <td>Budget justice</td>
+          <td>Commission européenne</td>
+          <td class="status-critical">&lt; 0,25 % du PIB — 22e/27 dans l'UE</td>
+          <td>Stagnation</td>
+        </tr>
+        <tr>
+          <td>Classement État de droit (Sliders)</td>
+          <td>Liberties.eu</td>
+          <td class="status-critical">Belgique parmi les « Sliders » — pays en recul</td>
+          <td>↓ 2026</td>
+        </tr>
+        <tr>
+          <td>Liberté de la presse</td>
+          <td>Media Pluralism Monitor</td>
+          <td class="status-bad">« Risque moyen » — 55,8 % des journalistes visés par comportements transgressifs</td>
+          <td>→ stagnation</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>La Commission européenne a adressé à la Belgique en 2025 six recommandations explicites. Aucune n'est pleinement satisfaite. L'EIU, en 2024, a officiellement reclassé la Belgique parmi les « démocraties défaillantes » (flawed democracies). Ce n'est pas un constat d'ONG militante. C'est le verdict d'organismes de référence dont la Belgique reconnaît l'autorité.</p>
+
+    <div class="responsible">
+      <strong>Qui en est responsable</strong>
+      <p>Le gouvernement fédéral, pour la non-exécution des jugements et le blocage des réformes GRECO. Le Parlement, pour l'absence de législation sur la transparence. Les entités fédérées (Wallonie, Flandre, Bruxelles, FWB), pour l'absence de registre des lobbyistes à leur niveau. La structure institutionnelle belge dans son ensemble, qui organise l'impunité en fragmentant les responsabilités entre six gouvernements et neuf parlements.</p>
+    </div>
+  </section>
+
+  <!-- FAILLE 7 -->
+  <section>
+    <p class="section-number">Faille n°7</p>
+    <h2>Les recours citoyens : une architecture conçue pour épuiser</h2>
+
+    <p>Un citoyen belge qui veut contester une décision abusive fait face à une architecture procédurale dont les obstacles s'accumulent à chaque étage.</p>
+
+    <p>Le Conseil d'État — juridiction administrative suprême — impose un délai de forclusion de 60 jours, un formalisme procédural exigeant des avocats spécialisés dont les honoraires sont prohibitifs pour la majorité de la population, et des délais de traitement qui dépassent souvent plusieurs années. Le résultat documenté est un phénomène massif de <strong>non-recours</strong> : les citoyens les plus vulnérables, les premiers touchés par les dysfonctionnements, sont précisément ceux qui ne peuvent pas saisir les juridictions.</p>
+
+    <p>Les Commissions d'Accès aux Documents Administratifs (CADA) émettent des avis purement consultatifs. Elles n'ont aucun pouvoir contraignant. Une administration peut ignorer leur avis sans sanction.</p>
+
+    <p>Au niveau communal et intercommunal, des dizaines de milliards d'euros circulent via des structures hybrides — intercommunales, ASBL parapubliques, filiales privées — dont le contrôle parlementaire est dégradé. Les affaires Publifin/Nethys (Liège), Samusocial (Bruxelles), GIAL, Igretec ont exposé le mécanisme : des élus cumulant des mandats rémunérés dans des comités sans obligation de présence, sans procès-verbal, sans sanction.</p>
+
+    <div class="responsible">
+      <strong>Qui en est responsable</strong>
+      <p>Le législateur, qui maintient des délais et coûts de procédure inchangés depuis des décennies. Les Régions, qui supervisent des intercommunales sans exercer leur tutelle. Les partis politiques, qui colonisent ces structures para-étatiques comme réservoir de mandats rémunérés pour leurs cadres. La base de données Cumuleo documente plus de 1,46 million de mandats exercés par plus de 37 400 politiciens et hauts fonctionnaires depuis 2004.</p>
+    </div>
+  </section>
+
+  <!-- FINAL -->
+  <div class="final">
+    <h2>Sire, voilà où en est votre Royaume.</h2>
+
+    <p>Ce document ne contient pas d'opinion. Il contient des arrêts de la Cour européenne des droits de l'homme, des rapports du Conseil de l'Europe, des études de la KU Leuven, des audits de la Cour des comptes, des indices de Transparency International, des recommandations de la Commission européenne. Des chiffres. Des noms d'institutions. Des faits.</p>
+
+    <p>Les institutions qui pourraient corriger ces failles sont tenues par les bénéficiaires du système. Les partis qui pourraient réformer leur financement sont ceux qui le perçoivent. Les parlementaires qui pourraient encadrer la discipline de vote sont ceux qui la subissent — sous peine de disparaître des listes. Le gouvernement qui pourrait exécuter les jugements est celui qui a choisi de les ignorer.</p>
+
+    <p>Les recours judiciaires existent en théorie. Ils épuisent en pratique quiconque ose les engager sans ressources ni soutien institutionnel. Les instances internationales documentent, recommandent, activent leurs procédures d'alerte — et la Belgique reporte, minimise, et attend que ça passe.</p>
+
+    <p>La Constitution vous confère, Sire, une magistrature d'influence. Le droit de consulter. Le droit d'encourager. Le droit de mettre en garde. C'est constitutionnellement insuffisant pour forcer quoi que ce soit. Mais c'est ce qu'il reste comme levier institutionnel qui ne soit pas aux mains des partis.</p>
+
+    <p>Ce document vous a été adressé parce que vous avez prêté serment d'observer la Constitution et les lois du peuple belge. Et parce que les jugements sont exécutés en votre nom.</p>
+
+    <p class="punch">On a lu les textes. On a suivi les procédures. On a documenté, référencé, publié. On a compris comment le système fonctionne — et pourquoi il est conçu pour se perpétuer. On ne sait plus quoi faire dans ce cadre-là. Alors on va faire n'importe quoi. Mais on va le faire à fond.</p>
+
+    <p class="meta">Bruxelles, mai 2026 — Document produit à partir de sources primaires publiques : CEDH, GRECO, Commission européenne, KU Leuven, CRISP, Transparency International, EIU, CIVICUS, Cour des comptes belge, mémorandum des hautes juridictions de juillet 2024.</p>
+  </div>
+
+</main>
+</body>
+</html>
