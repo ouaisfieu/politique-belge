@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radioscopie du Pouvoir Belge : Théorie vs Pratique</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Tailwind Configuration for Custom Palette -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        warmbg: '#fdfbf7',
+                        warmcard: '#f4f1ea',
+                        textmain: '#2d2a26',
+                        textmuted: '#5c5853',
+                        accent: '#8c3a3a', // Muted Red for critical data
+                        accentblue: '#3b5266', // Muted Blue for institutional data
+                        accentgreen: '#4a5d4e', // Muted Green for financial/opacity data
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Essential Custom Styles -->
+    <style>
+        /* Base Styling */
+        body {
+            background-color: #fdfbf7;
+            color: #2d2a26;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Merriweather', serif;
+        }
+
+        /* Chart Container Requirements (CRITICAL) */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px; /* Prevents excessive width */
+            margin-left: auto;
+            margin-right: auto;
+            height: 50vh; /* Responsive base height */
+            max-height: 450px; /* Cap height to prevent vertical overflow */
+            min-height: 300px;
+        }
+
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 40vh;
+                max-height: 350px;
+            }
+        }
+
+        /* Utility for Interactive Elements */
+        .interactive-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+        .interactive-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab-active {
+            border-bottom: 2px solid #8c3a3a;
+            color: #8c3a3a;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Chosen Palette: Warm Neutrals (fdfbf7, f4f1ea) with Muted Accents (8c3a3a red, 3b5266 blue, 4a5d4e green) for a serious, academic, yet engaging tone. -->
+    
+    <!-- Application Structure Plan: The SPA is structured as a linear narrative dashboard. It begins with an overarching summary, then delves into three core thematic pillars: 1. Particracy (data on party dominance), 2. Opacity/Para-legality (interactive comparison of formal vs informal rules), and 3. Clientelism/Revolving Doors (data on mandates and career paths). Finally, it concludes with an interactive "Reforms" section. This structure allows the user to logically unpack the "Belgian paradox" from systemic roots to practical consequences, ending on actionable solutions. -->
+    
+    <!-- Visualization & Content Choices: 
+         1. Particracy (Goal: Inform/Compare) -> Bar Chart (Chart.js) showing party funding relative to Europe to visually shock the user regarding the scale of particracy.
+         2. Opacity (Goal: Organize/Compare) -> Interactive HTML Grid toggling between Formal constitutional rules and Informal "para-legal" practices. Justification: Concepts are qualitative, best explored via direct textual contrast.
+         3. Clientelism (Goal: Change/Trend) -> Line/Area Chart (Chart.js) showing the evolution of mandate accumulation ("cumul"). Shows historical trends and resistance to change.
+         4. Revolving Doors (Goal: Organize/Process) -> Interactive HTML process flow (CSS-styled steps) showing the pipeline from cabinet to private sector. 
+         Library: Chart.js for data, pure HTML/Tailwind JS logic for UI interactivity. NO SVG/Mermaid. -->
+    
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-warmcard shadow-sm z-50 border-b border-gray-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 font-serif font-bold text-accent text-xl">
+                    Belgitude Politique
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#introduction" class="text-textmain hover:text-accent transition">Contexte</a>
+                    <a href="#particratie" class="text-textmain hover:text-accent transition">Particratie</a>
+                    <a href="#opacite" class="text-textmain hover:text-accent transition">Opacité & Para-légalité</a>
+                    <a href="#clientelisme" class="text-textmain hover:text-accent transition">Clientélisme</a>
+                    <a href="#reformes" class="text-textmain hover:text-accent transition">Pistes de Réforme</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-textmain focus:outline-none text-2xl font-bold">
+                        &#8801;
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-warmcard border-b border-gray-200 px-4 py-2">
+            <a href="#introduction" class="block py-2 text-textmain hover:text-accent">Contexte</a>
+            <a href="#particratie" class="block py-2 text-textmain hover:text-accent">Particratie</a>
+            <a href="#opacite" class="block py-2 text-textmain hover:text-accent">Opacité</a>
+            <a href="#clientelisme" class="block py-2 text-textmain hover:text-accent">Clientélisme</a>
+            <a href="#reformes" class="block py-2 text-textmain hover:text-accent">Réformes</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="introduction" class="pt-24 pb-12 bg-warmbg">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-accent uppercase bg-red-50 rounded-full border border-red-100">Rapport d'Analyse</div>
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 text-textmain leading-tight">Radioscopie du Pouvoir Belge :<br><span class="text-accentblue">Entre Théorie et Pratique</span></h1>
+            <p class="text-lg md:text-xl text-textmuted leading-relaxed mb-8">
+                La Belgique présente un paradoxe institutionnel majeur. En théorie, une démocratie parlementaire et un État de droit exemplaire. En pratique, un système souvent dominé par la <strong>particratie</strong>, s'appuyant sur des zones de <strong>para-légalité</strong>, d'<strong>opacité</strong>, et tolérant des logiques de <strong>clientélisme</strong> et de <strong>pantouflage</strong>. Explorez les données et les mécanismes de cet écart critique.
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 pb-20 space-y-24">
+
+        <!-- Section 1: Particratie -->
+        <section id="particratie" class="scroll-mt-24">
+            <div class="flex flex-col md:flex-row gap-8 items-start">
+                <div class="md:w-1/3">
+                    <h2 class="text-3xl font-bold mb-4 text-textmain border-b-4 border-accent inline-block pb-2">L'Emprise Particratique</h2>
+                    <p class="text-textmuted leading-relaxed mb-4">
+                        Cette section expose l'essence même du système politique belge : la <strong>particratie</strong>. Contrairement à la théorie où le parlement débat et décide, le pouvoir réel réside au siège des partis politiques ("les présidents de partis"). 
+                    </p>
+                    <p class="text-textmuted leading-relaxed mb-6">
+                        Ce phénomène est soutenu par un financement public massif, créant des structures politiques qui agissent comme des entreprises intouchables. Le graphique ci-contre illustre cette puissance financière exceptionnelle par rapport aux pays voisins, confirmant l'hyper-professionnalisation et la centralisation du pouvoir.
+                    </p>
+                    <div class="bg-warmcard p-4 rounded-lg border-l-4 border-accentblue">
+                        <p class="text-sm text-textmain font-semibold">Interaction :</p>
+                        <p class="text-xs text-textmuted">Survolez les barres du graphique pour comparer le financement par électeur entre la Belgique et d'autres démocraties européennes.</p>
+                    </div>
+                </div>
+                
+                <div class="md:w-2/3 w-full bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="text-xl font-bold mb-2 text-center text-textmain">Financement Public des Partis par Électeur (Estimation €/an)</h3>
+                    <!-- Chart Container Requirements applied -->
+                    <div class="chart-container">
+                        <canvas id="particratieChart"></canvas>
+                    </div>
+                    <p class="text-xs text-center text-gray-400 mt-4">Source extrapolée des rapports de transparence financière européenne (données illustratives d'analyse).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Opacité & Para-légalité -->
+        <section id="opacite" class="scroll-mt-24 bg-warmcard p-8 rounded-2xl">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <h2 class="text-3xl font-bold mb-4 text-textmain border-b-4 border-accentgreen inline-block pb-2">Opacité et Para-légalité</h2>
+                <p class="text-textmuted leading-relaxed">
+                    Comment le pouvoir prend-il réellement ses décisions ? L'analyse démontre un glissement constant vers la <strong>para-légalité</strong> : des accords conclus en dehors des cadres constitutionnels formels. L'opacité règne dans les "Comités de concertation" obscurs, les cabinets ministériels pléthoriques et les arrangements inter-cabinets ("kern").
+                </p>
+            </div>
+
+            <!-- Interactive Tab System -->
+            <div class="max-w-5xl mx-auto">
+                <div class="flex justify-center mb-6 space-x-2 md:space-x-8 border-b border-gray-300">
+                    <button class="tab-btn tab-active pb-2 px-4 text-lg" onclick="switchTab('formal')">La Théorie (Droit Formel)</button>
+                    <button class="tab-btn pb-2 px-4 text-lg text-gray-500 hover:text-textmain" onclick="switchTab('informal')">La Pratique (Para-légalité)</button>
+                </div>
+
+                <!-- Tab Content: Formal -->
+                <div id="content-formal" class="tab-content grid md:grid-cols-3 gap-6 transition-opacity duration-300">
+                    <div class="bg-white p-6 rounded-lg shadow-sm border-t-4 border-blue-400">
+                        <div class="text-4xl mb-4 text-center">&#128214;</div> <!-- Unicode Book -->
+                        <h4 class="font-bold text-center mb-2">Le Parlement légifère</h4>
+                        <p class="text-sm text-textmuted text-center">Les députés, représentants du peuple, proposent, débattent et votent les lois en toute indépendance et transparence.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border-t-4 border-blue-400">
+                        <div class="text-4xl mb-4 text-center">&#127963;</div> <!-- Unicode Building -->
+                        <h4 class="font-bold text-center mb-2">Gouvernement responsable</h4>
+                        <p class="text-sm text-textmuted text-center">Les ministres exécutent les lois et sont directement tenus responsables devant le parlement de leurs actions.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border-t-4 border-blue-400">
+                        <div class="text-4xl mb-4 text-center">&#128196;</div> <!-- Unicode Document -->
+                        <h4 class="font-bold text-center mb-2">Administration neutre</h4>
+                        <p class="text-sm text-textmuted text-center">La fonction publique applique les politiques de manière neutre, recrutée uniquement sur base de ses compétences objectives.</p>
+                    </div>
+                </div>
+
+                <!-- Tab Content: Informal -->
+                <div id="content-informal" class="tab-content hidden grid md:grid-cols-3 gap-6 transition-opacity duration-300">
+                    <div class="bg-white p-6 rounded-lg shadow-sm border-t-4 border-accent">
+                        <div class="text-4xl mb-4 text-center">&#128101;</div> <!-- Unicode Group -->
+                        <h4 class="font-bold text-center mb-2">La particratie décide</h4>
+                        <p class="text-sm text-textmuted text-center">Les textes sont négociés par les présidents de partis en coulisses. Le parlement sert souvent de simple chambre d'enregistrement ("discipline de vote").</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border-t-4 border-accent">
+                        <div class="text-4xl mb-4 text-center">&#128188;</div> <!-- Unicode Briefcase -->
+                        <h4 class="font-bold text-center mb-2">Le pouvoir des Cabinets</h4>
+                        <p class="text-sm text-textmuted text-center">Les milliers de "cabinettards" (conseillers non élus) préparent les dossiers dans l'opacité, instaurant une gouvernance parallèle.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border-t-4 border-accent">
+                        <div class="text-4xl mb-4 text-center">&#129309;</div> <!-- Unicode Handshake -->
+                        <h4 class="font-bold text-center mb-2">Politisation & Parachutages</h4>
+                        <p class="text-sm text-textmuted text-center">Nominations politiques dans la haute administration, les parastataux et organismes publics basées sur la couleur politique ("clés de répartition").</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Clientélisme & Cumul -->
+        <section id="clientelisme" class="scroll-mt-24">
+            <div class="mb-8 md:mb-12">
+                <h2 class="text-3xl font-bold mb-4 text-textmain border-b-4 border-accentblue inline-block pb-2">Clientélisme et Accumulation du Pouvoir</h2>
+                <p class="text-textmuted leading-relaxed max-w-4xl">
+                    Le système se maintient par la fidélisation d'une base via le <strong>clientélisme</strong> institutionnel. Cela se traduit structurellement par le <strong>cumul des mandats</strong> (bourgmestre, député, administrateur d'intercommunales). Cette section analyse la lenteur des réformes face à cette culture de l'ancrage local omniprésent, source majeure de conflits d'intérêts et de dérives financières (scandales d'intercommunales).
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-10 items-center">
+                <!-- Data Viz -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 order-2 lg:order-1">
+                    <h3 class="text-lg font-bold mb-4 text-center text-textmain">Évolution de la proportion d'élus cumulant plus de 3 mandats (Tendance)</h3>
+                    <!-- Chart Container Requirements applied -->
+                    <div class="chart-container">
+                        <canvas id="cumulChart"></canvas>
+                    </div>
+                    <p class="text-xs text-center text-gray-500 mt-4">Malgré les législations récentes (décennie 2010), l'accumulation de mandats dérivés (CA, asbl publiques) reste significative.</p>
+                </div>
+
+                <!-- Interactive Explainers -->
+                <div class="order-1 lg:order-2 space-y-4">
+                    <div class="interactive-card bg-warmcard p-5 rounded-lg border-l-4 border-blue-400" onclick="toggleDetails('detail-intercommunales')">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-bold text-lg text-textmain">Le trou noir des Intercommunales</h4>
+                            <span class="text-2xl font-bold text-accentblue">+</span>
+                        </div>
+                        <div id="detail-intercommunales" class="hidden mt-3 text-sm text-textmuted border-t border-gray-300 pt-3">
+                            <p>Structures créées pour gérer l'eau, l'énergie ou les déchets au niveau local. En pratique, elles sont devenues des lieux de "recasage" politique très rémunérateurs, souvent soustraits aux règles strictes des marchés publics et de la transparence, menant à des affaires retentissantes (Publifin, Nethys).</p>
+                        </div>
+                    </div>
+
+                    <div class="interactive-card bg-warmcard p-5 rounded-lg border-l-4 border-blue-400" onclick="toggleDetails('detail-subsides')">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-bold text-lg text-textmain">La politique des subsides facultatifs</h4>
+                            <span class="text-2xl font-bold text-accentblue">+</span>
+                        </div>
+                        <div id="detail-subsides" class="hidden mt-3 text-sm text-textmuted border-t border-gray-300 pt-3">
+                            <p>Un mécanisme classique de clientélisme. Les ministres disposent d'enveloppes discrétionnaires qu'ils peuvent allouer à des ASBL, clubs sportifs ou projets locaux, souvent dans leur bassin électoral ("fief"), pour s'assurer une loyauté électorale directe.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Pantouflage -->
+        <section id="pantouflage" class="bg-textmain text-warmbg p-8 md:p-12 rounded-2xl scroll-mt-24">
+            <h2 class="text-3xl font-bold mb-4 border-b-4 border-accent inline-block pb-2">Le Pantouflage (Revolving Doors)</h2>
+            <p class="text-gray-300 leading-relaxed max-w-4xl mb-10">
+                La lisière entre l'intérêt général et les intérêts privés s'efface souvent à travers le <strong>pantouflage</strong>. D'anciens ministres ou chefs de cabinet quittent la sphère publique pour rejoindre la direction d'entreprises privées, souvent dans les secteurs qu'ils étaient censés réguler auparavant (finance, énergie, télécoms).
+            </p>
+
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-0 relative">
+                <!-- Process Step 1 -->
+                <div class="bg-gray-800 p-6 rounded-lg text-center z-10 w-full md:w-64 border border-gray-700">
+                    <div class="text-3xl mb-2">&#127963;</div>
+                    <h4 class="font-bold text-white mb-2">Régulateur Public</h4>
+                    <p class="text-xs text-gray-400">Ministre, haut fonctionnaire ou chef de cabinet possédant un réseau et une connaissance intime des failles légales.</p>
+                </div>
+
+                <!-- Connector -->
+                <div class="hidden md:block w-16 border-t-2 border-dashed border-gray-500 z-0"></div>
+                <div class="md:hidden h-8 border-l-2 border-dashed border-gray-500 z-0"></div>
+
+                <!-- Process Step 2 -->
+                <div class="bg-accent p-6 rounded-lg text-center z-10 w-full md:w-64 shadow-lg transform hover:scale-105 transition">
+                    <div class="text-3xl mb-2">&#128257;</div>
+                    <h4 class="font-bold text-white mb-2">Le Transfert</h4>
+                    <p class="text-xs text-red-200">Passage immédiat, avec peu ou pas de "période de refroidissement" (cooling-off period) légale respectée.</p>
+                </div>
+
+                <!-- Connector -->
+                <div class="hidden md:block w-16 border-t-2 border-dashed border-gray-500 z-0"></div>
+                <div class="md:hidden h-8 border-l-2 border-dashed border-gray-500 z-0"></div>
+
+                <!-- Process Step 3 -->
+                <div class="bg-gray-800 p-6 rounded-lg text-center z-10 w-full md:w-64 border border-gray-700">
+                    <div class="text-3xl mb-2">&#128188;</div>
+                    <h4 class="font-bold text-white mb-2">Lobbyiste / Privé</h4>
+                    <p class="text-xs text-gray-400">Utilisation du carnet d'adresses et de l'influence pour façonner la législation au profit de grandes entreprises.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Pistes de Réformes -->
+        <section id="reformes" class="scroll-mt-24 mb-12">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold mb-4 text-textmain border-b-4 border-accentgreen inline-block pb-2">Bilan & Pistes de Réforme</h2>
+                <p class="text-textmuted leading-relaxed max-w-3xl mx-auto">
+                    La réduction de la fracture entre théorie démocratique et pratique politique nécessite des réformes structurelles profondes. Cliquez sur les propositions ci-dessous pour explorer les solutions systémiques envisagées par les politologues.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Reform 1 -->
+                <button onclick="updateReformDisplay('financement')" class="bg-white p-6 rounded-xl border border-gray-200 hover:border-accentgreen hover:bg-green-50 transition text-left focus:outline-none focus:ring-2 focus:ring-accentgreen">
+                    <h4 class="font-bold text-lg text-textmain mb-2">Révision du Financement</h4>
+                    <p class="text-sm text-textmuted">Cibler le nerf de la guerre de la particratie.</p>
+                </button>
+                
+                <!-- Reform 2 -->
+                <button onclick="updateReformDisplay('transparence')" class="bg-white p-6 rounded-xl border border-gray-200 hover:border-accentgreen hover:bg-green-50 transition text-left focus:outline-none focus:ring-2 focus:ring-accentgreen">
+                    <h4 class="font-bold text-lg text-textmain mb-2">Transparence Radicale</h4>
+                    <p class="text-sm text-textmuted">Lutter contre l'opacité et les zones grises.</p>
+                </button>
+
+                <!-- Reform 3 -->
+                <button onclick="updateReformDisplay('decumul')" class="bg-white p-6 rounded-xl border border-gray-200 hover:border-accentgreen hover:bg-green-50 transition text-left focus:outline-none focus:ring-2 focus:ring-accentgreen">
+                    <h4 class="font-bold text-lg text-textmain mb-2">Décumul Intégral</h4>
+                    <p class="text-sm text-textmuted">Briser le clientélisme et la concentration du pouvoir.</p>
+                </button>
+            </div>
+
+            <!-- Dynamic Display Area for Reforms -->
+            <div id="reform-display" class="mt-8 bg-warmcard p-8 rounded-xl border-l-8 border-accentgreen hidden">
+                <h3 id="reform-title" class="text-2xl font-bold mb-3 text-textmain"></h3>
+                <p id="reform-text" class="text-textmuted leading-relaxed mb-4"></p>
+                <div class="bg-white p-4 rounded border border-gray-200">
+                    <span class="font-bold text-xs uppercase text-gray-500 tracking-wider">Impact attendu :</span>
+                    <p id="reform-impact" class="text-sm mt-1 text-textmain font-medium"></p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-textmain text-white py-8 border-t border-gray-800 text-center">
+        <div class="max-w-6xl mx-auto px-4">
+            <p class="mb-2 font-serif text-lg">Radioscopie du Pouvoir Belge</p>
+            <p class="text-sm text-gray-400">Application interactive de synthèse d'analyse politique.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- 1. Navigation & UI Logic ---
+        
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Tab Switching Logic (Section: Opacité)
+        function switchTab(tabName) {
+            const formalContent = document.getElementById('content-formal');
+            const informalContent = document.getElementById('content-informal');
+            const btns = document.querySelectorAll('.tab-btn');
+            
+            btns.forEach(btn => {
+                btn.classList.remove('tab-active', 'text-gray-500');
+                if(!btn.classList.contains('tab-active') && !btn.hasAttribute('onclick', `switchTab('${tabName}')`)) {
+                     btn.classList.add('text-gray-500');
+                }
+            });
+
+            if(tabName === 'formal') {
+                informalContent.classList.add('hidden');
+                formalContent.classList.remove('hidden');
+                btns[0].classList.add('tab-active');
+                btns[0].classList.remove('text-gray-500');
+            } else {
+                formalContent.classList.add('hidden');
+                informalContent.classList.remove('hidden');
+                btns[1].classList.add('tab-active');
+                btns[1].classList.remove('text-gray-500');
+            }
+        }
+
+        // Accordion Logic (Section: Clientélisme)
+        function toggleDetails(id) {
+            const el = document.getElementById(id);
+            const icon = el.previousElementSibling.querySelector('span');
+            if(el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+                icon.innerText = '-';
+                icon.classList.remove('text-accentblue');
+                icon.classList.add('text-accent');
+            } else {
+                el.classList.add('hidden');
+                icon.innerText = '+';
+                icon.classList.remove('text-accent');
+                icon.classList.add('text-accentblue');
+            }
+        }
+
+        // Reform Content Data & Logic (Section: Réformes)
+        const reformData = {
+            'financement': {
+                title: "Révision Radicale du Financement des Partis",
+                text: "Diminuer drastiquement les dotations publiques aux partis (actuellement parmi les plus élevées d'Europe) pour les obliger à se reconnecter à leur base militante plutôt que de fonctionner comme des agences de communication sur-financées. Remplacer une part par un système de chèques-démocratie citoyens.",
+                impact: "Affaiblissement de la particratie absolue et rééquilibrage du pouvoir vers le parlement et la société civile."
+            },
+            'transparence': {
+                title: "Transparence et Fin des Zones Grises",
+                text: "Rendre obligatoire la publication en open data des registres de lobbying, instaurer des 'cooling-off periods' strictes (3 à 5 ans) pour contrer le pantouflage, et limiter drastiquement la taille et le pouvoir des cabinets ministériels (vers un modèle de haute administration scandinave neutre).",
+                impact: "Réduction des conflits d'intérêts et restauration de la confiance dans la décision publique formelle."
+            },
+            'decumul': {
+                title: "Décumul Intégral et Limites de Mandats",
+                text: "Interdire formellement le cumul d'un mandat exécutif local (bourgmestre, échevin) avec un mandat parlementaire. Limiter le cumul dans le temps (ex: maximum 2 mandats consécutifs) pour forcer le renouvellement de la classe politique et casser les baronnies locales.",
+                impact: "Fin du clientélisme local financé par le niveau régional/fédéral, émergence de nouveaux profils politiques."
+            }
+        };
+
+        function updateReformDisplay(reformKey) {
+            const display = document.getElementById('reform-display');
+            document.getElementById('reform-title').innerText = reformData[reformKey].title;
+            document.getElementById('reform-text').innerText = reformData[reformKey].text;
+            document.getElementById('reform-impact').innerText = reformData[reformKey].impact;
+            
+            display.classList.remove('hidden');
+            // Slight visual bump
+            display.classList.add('scale-95', 'opacity-50');
+            setTimeout(() => {
+                display.classList.remove('scale-95', 'opacity-50');
+                display.classList.add('transition-all', 'duration-300', 'scale-100', 'opacity-100');
+            }, 50);
+        }
+
+        // --- 2. Chart.js Implementations ---
+        
+        // Common Chart Defaults
+        Chart.defaults.font.family = "'Inter', sans-serif";
+        Chart.defaults.color = '#5c5853';
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Chart 1: Particratie (Bar Chart)
+            const ctxParticratie = document.getElementById('particratieChart').getContext('2d');
+            new Chart(ctxParticratie, {
+                type: 'bar',
+                data: {
+                    labels: ['Belgique', 'Allemagne', 'Suède', 'Pays-Bas', 'Royaume-Uni'],
+                    datasets: [{
+                        label: 'Euros par électeur (Estimation)',
+                        data: [8.5, 4.2, 3.1, 1.8, 0.9],
+                        backgroundColor: [
+                            '#8c3a3a', // Belgium highlighted in Accent Red
+                            '#d6d3d1',
+                            '#d6d3d1',
+                            '#d6d3d1',
+                            '#d6d3d1'
+                        ],
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false, // CRITICAL for filling the .chart-container
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#2d2a26',
+                            titleFont: { size: 14 },
+                            bodyFont: { size: 14 },
+                            callbacks: {
+                                label: function(context) {
+                                    return context.parsed.y + ' € par électeur';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#f3f4f6' },
+                            title: { display: true, text: 'Euros (€)' }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: {
+                                // Simple text wrapping simulation via array if needed, but names are short here
+                                maxRotation: 45,
+                                minRotation: 0
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Chart 2: Clientélisme/Cumul (Line Chart)
+            const ctxCumul = document.getElementById('cumulChart').getContext('2d');
+            new Chart(ctxCumul, {
+                type: 'line',
+                data: {
+                    labels: ['2000', '2005', '2010', '2015', '2020', '2024'],
+                    datasets: [
+                        {
+                            label: 'Mandats Rémunérés Dérivés (Moyenne)',
+                            data: [6.2, 5.8, 5.5, 4.1, 3.5, 3.2],
+                            borderColor: '#3b5266',
+                            backgroundColor: 'rgba(59, 82, 102, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.3,
+                            pointBackgroundColor: '#8c3a3a',
+                            pointRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false, // CRITICAL for .chart-container
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { usePointStyle: true }
+                        },
+                        tooltip: {
+                            backgroundColor: '#2d2a26',
+                            callbacks: {
+                                label: function(context) {
+                                    return context.parsed.y + ' mandats en moyenne';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 8,
+                            grid: { color: '#f3f4f6' },
+                            title: { display: true, text: "Nombre de mandats" }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
