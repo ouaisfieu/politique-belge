@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAS LE BOL — Manifeste citoyen · Belgique 2026</title>
+<meta name="description" content="Le manifeste du Belge qui en a marre. Faits documentés, ton libre. Open source, à diffuser, à imprimer, à coller.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#0a0807;
+  --noir-soft:#161210;
+  --noir-mute:#2a241f;
+  --paper:#f3eee0;
+  --paper-mute:#c4bba8;
+  --rouge:#d61f1f;
+  --rouge-deep:#9b1414;
+  --jaune:#ffd60a;
+  --jaune-soft:#f7d100;
+  --gris:#7a716a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'IBM Plex Sans',-apple-system,sans-serif;background:var(--noir);color:var(--paper);line-height:1.55;font-weight:400;font-size:17px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--jaune);color:var(--noir)}
+.wrap{max-width:1280px;margin:0 auto;padding:0 28px;position:relative}
+.wrap-narrow{max-width:900px;margin:0 auto;padding:0 28px}
+a{color:var(--jaune);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px;font-weight:600}
+a:hover{background:var(--jaune);color:var(--noir);text-decoration:none;padding:0 3px}
+
+/* —— Bandeau supérieur —— */
+.topbar{border-bottom:2px solid var(--rouge);padding:12px 0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:var(--paper-mute);text-transform:uppercase;position:sticky;top:0;z-index:100;background:rgba(10,8,7,0.97);backdrop-filter:blur(10px)}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.topbar .brand{color:var(--rouge);font-weight:700;letter-spacing:0.14em;font-size:13px}
+.topbar a{color:var(--paper-mute);text-decoration:none}
+.topbar a:hover{color:var(--jaune);background:transparent;padding:0}
+.topbar nav{display:flex;gap:16px;flex-wrap:wrap}
+.topbar .scroll-hint{color:var(--jaune);font-weight:700;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+
+/* —— HERO MANIFESTE —— */
+.hero{padding:80px 0 88px;position:relative;overflow:hidden;background:radial-gradient(at 80% 20%,rgba(214,31,31,0.15) 0%,transparent 50%),var(--noir)}
+.hero::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:repeating-linear-gradient(45deg,var(--rouge) 0,var(--rouge) 20px,var(--noir) 20px,var(--noir) 40px)}
+.kicker{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.3em;color:var(--rouge);text-transform:uppercase;margin-bottom:24px;font-weight:700;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.kicker::before{content:"●";color:var(--rouge);animation:pulse 1.5s infinite}
+h1.titre{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(72px,14vw,200px);line-height:0.85;letter-spacing:-0.02em;color:var(--paper);margin-bottom:32px;text-transform:uppercase}
+h1.titre span.rouge{color:var(--rouge);display:inline-block}
+h1.titre span.jaune{background:var(--jaune);color:var(--noir);display:inline-block;padding:0 12px;transform:skew(-4deg);margin:0 4px}
+h1.titre em{font-family:'Fraunces',serif;font-style:italic;color:var(--jaune);text-transform:none;font-weight:300;font-variation-settings:"opsz" 144,"SOFT" 70,"WONK" 1;letter-spacing:-0.04em;font-size:0.95em}
+.subtitle{font-family:'Fraunces',serif;font-style:italic;font-weight:350;font-size:clamp(20px,2.4vw,28px);line-height:1.35;color:var(--paper);max-width:880px;margin-bottom:40px;font-variation-settings:"opsz" 36}
+.subtitle strong{color:var(--jaune);font-weight:500;font-style:normal}
+.intro-body{max-width:820px;font-size:19px;line-height:1.7;color:var(--paper);font-weight:400}
+.intro-body p{margin-bottom:20px}
+.intro-body p strong{color:var(--jaune);font-weight:600}
+.intro-body p em{color:var(--rouge);font-style:italic;font-weight:500}
+.intro-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:40px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 24px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.14em;text-decoration:none;text-transform:uppercase;border:none;cursor:pointer;transition:transform 0.15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.rouge{background:var(--rouge);color:var(--paper)}
+.btn.rouge:hover{background:var(--paper);color:var(--noir)}
+.btn.jaune{background:var(--jaune);color:var(--noir)}
+.btn.jaune:hover{background:var(--paper);color:var(--noir)}
+.btn.outline{background:transparent;color:var(--paper);border:2px solid var(--paper)}
+.btn.outline:hover{background:var(--paper);color:var(--noir)}
+
+/* —— Sceau / tampon —— */
+.tampon{position:absolute;top:96px;right:32px;transform:rotate(8deg);border:4px solid var(--jaune);color:var(--jaune);padding:18px 22px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;line-height:1.4;text-align:center;background:rgba(10,8,7,0.4)}
+.tampon strong{display:block;font-size:18px;letter-spacing:0.1em;margin-bottom:6px;color:var(--paper)}
+
+/* —— SECTIONS —— */
+section{padding:88px 0;position:relative}
+.bandeau{background:var(--rouge);color:var(--paper);padding:18px 0;font-family:'IBM Plex Mono',monospace;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;font-size:13px;overflow:hidden;border-top:2px solid var(--paper);border-bottom:2px solid var(--paper)}
+.bandeau .scroller{display:flex;gap:48px;white-space:nowrap;animation:scroll 30s linear infinite}
+.bandeau .scroller span::before{content:"⚡ ";color:var(--jaune)}
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+.section-num{font-family:'IBM Plex Mono',monospace;font-size:14px;letter-spacing:0.2em;color:var(--rouge);text-transform:uppercase;font-weight:700;margin-bottom:24px;display:flex;align-items:baseline;gap:14px}
+.section-num span.big{font-family:'Anton',sans-serif;font-size:64px;line-height:0.9;color:var(--rouge);letter-spacing:-0.02em}
+h2{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(48px,7vw,96px);line-height:0.95;letter-spacing:-0.02em;color:var(--paper);margin-bottom:24px;text-transform:uppercase;max-width:1100px}
+h2 em{font-family:'Fraunces',serif;font-style:italic;color:var(--jaune);text-transform:none;font-weight:300;font-variation-settings:"opsz" 96,"SOFT" 60,"WONK" 1}
+h2 .surligne{background:var(--jaune);color:var(--noir);padding:0 8px}
+.section-intro{font-family:'Fraunces',serif;font-weight:350;font-size:clamp(20px,2.2vw,26px);line-height:1.4;color:var(--paper);max-width:840px;margin-bottom:48px;font-variation-settings:"opsz" 36}
+.section-intro strong{color:var(--jaune);font-weight:500}
+.section-intro em{color:var(--rouge);font-style:italic}
+
+/* —— Gifles (faits-claques) —— */
+.gifles{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:3px solid var(--paper);margin-top:32px}
+.gifle{padding:36px 32px;border-right:1px solid var(--paper);border-bottom:1px solid var(--paper);background:var(--noir-soft);position:relative}
+.gifle:nth-child(2n){border-right:none}
+.gifle:nth-last-child(-n+2){border-bottom:none}
+.gifle .nbr{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--rouge);font-weight:700;letter-spacing:0.16em;margin-bottom:16px}
+.gifle .punch{font-family:'Anton',sans-serif;font-size:clamp(32px,4vw,52px);line-height:0.95;color:var(--paper);text-transform:uppercase;letter-spacing:-0.01em;margin-bottom:20px}
+.gifle .punch span.r{color:var(--rouge)}
+.gifle .punch span.j{background:var(--jaune);color:var(--noir);padding:0 6px;display:inline-block}
+.gifle .punch em{font-family:'Fraunces',serif;font-style:italic;color:var(--jaune);text-transform:none;font-weight:300;font-variation-settings:"opsz" 72,"SOFT" 60,"WONK" 1;font-size:0.95em}
+.gifle .src{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--paper-mute);letter-spacing:0.08em;line-height:1.5}
+.gifle .src strong{color:var(--paper);font-weight:600}
+
+/* —— Mécanisme étapes —— */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:32px;border:3px solid var(--paper)}
+.step{padding:32px 28px;border-right:2px solid var(--paper);background:var(--noir-soft);position:relative}
+.step:last-child{border-right:none}
+.step .nbr{font-family:'Anton',sans-serif;font-size:84px;line-height:0.85;color:var(--rouge);margin-bottom:14px;letter-spacing:-0.02em}
+.step h3{font-family:'Anton',sans-serif;font-weight:400;font-size:24px;line-height:1.1;color:var(--paper);text-transform:uppercase;letter-spacing:-0.005em;margin-bottom:16px}
+.step h3 em{font-family:'Fraunces',serif;font-style:italic;color:var(--jaune);text-transform:none;font-weight:400}
+.step p{font-size:15px;color:var(--paper);line-height:1.6}
+.step p strong{color:var(--jaune);font-weight:600}
+
+/* —— Complices —— */
+.complices{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:32px}
+.complice{background:var(--noir-soft);padding:28px 24px;border-left:6px solid var(--rouge);position:relative}
+.complice::before{content:"";position:absolute;top:14px;right:14px;width:12px;height:12px;border-radius:50%;background:var(--rouge);box-shadow:0 0 0 4px rgba(214,31,31,0.2)}
+.complice .qui{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--jaune);font-weight:700;margin-bottom:10px}
+.complice h4{font-family:'Anton',sans-serif;font-size:24px;line-height:1.1;color:var(--paper);text-transform:uppercase;letter-spacing:-0.005em;margin-bottom:14px}
+.complice h4 em{font-family:'Fraunces',serif;font-style:italic;color:var(--jaune);text-transform:none;font-weight:400}
+.complice p{font-size:14px;color:var(--paper);line-height:1.6}
+.complice p strong{color:var(--jaune);font-weight:600}
+
+/* —— Quote géante —— */
+.big-quote{background:var(--paper);color:var(--noir);padding:96px 0;margin:0;border-top:6px solid var(--rouge);border-bottom:6px solid var(--rouge);position:relative}
+.big-quote::before,.big-quote::after{content:"";position:absolute;left:0;right:0;height:4px;background:repeating-linear-gradient(90deg,var(--noir) 0,var(--noir) 10px,transparent 10px,transparent 20px)}
+.big-quote::before{top:8px}
+.big-quote::after{bottom:8px}
+.big-quote blockquote{font-family:'Anton',sans-serif;font-size:clamp(38px,6.5vw,84px);line-height:0.96;text-transform:uppercase;letter-spacing:-0.015em;color:var(--noir);max-width:1100px;margin:0 auto;padding:0 32px;text-align:center}
+.big-quote blockquote em{font-family:'Fraunces',serif;font-style:italic;color:var(--rouge);text-transform:none;font-weight:300;font-variation-settings:"opsz" 144,"SOFT" 60,"WONK" 1}
+.big-quote blockquote .surligne{background:var(--jaune);padding:0 12px;display:inline-block;transform:skew(-3deg);margin:4px 0}
+.big-quote cite{display:block;text-align:center;margin-top:36px;font-family:'IBM Plex Mono',monospace;font-style:normal;font-size:13px;letter-spacing:0.18em;color:var(--rouge);text-transform:uppercase;font-weight:700}
+
+/* —— Actions (et toi tu fais quoi) —— */
+.actions-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:32px}
+.action-card{background:var(--noir-soft);border:2px solid var(--paper);padding:28px 28px;transition:all 0.15s}
+.action-card:hover{border-color:var(--jaune);transform:translateY(-3px)}
+.action-card .duree{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--jaune);font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.action-card h4{font-family:'Anton',sans-serif;font-size:30px;line-height:1.05;color:var(--paper);text-transform:uppercase;letter-spacing:-0.005em;margin-bottom:14px}
+.action-card h4 em{font-family:'Fraunces',serif;font-style:italic;color:var(--jaune);text-transform:none;font-weight:300}
+.action-card p{font-size:15px;color:var(--paper);line-height:1.6;margin-bottom:14px}
+.action-card p strong{color:var(--jaune);font-weight:600}
+.action-card .lien{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--rouge);font-weight:700;letter-spacing:0.1em;text-decoration:none;text-transform:uppercase;display:inline-block;padding-top:14px;border-top:1px solid var(--noir-mute);width:100%}
+.action-card .lien:hover{color:var(--jaune);background:transparent;padding:14px 0 0 0}
+.action-card .lien::after{content:" →"}
+
+/* —— Calendrier —— */
+.dates{display:flex;flex-direction:column;gap:0;margin-top:32px;border:3px solid var(--paper)}
+.date-row{display:grid;grid-template-columns:200px 1fr;gap:0;border-bottom:1px solid var(--paper)}
+.date-row:last-child{border-bottom:none}
+.date-row .quand{background:var(--rouge);color:var(--paper);padding:24px 22px;display:flex;flex-direction:column;justify-content:center;gap:4px;border-right:2px solid var(--paper)}
+.date-row .quand .d{font-family:'Anton',sans-serif;font-size:32px;line-height:1;letter-spacing:-0.01em;text-transform:uppercase}
+.date-row .quand .l{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--jaune);font-weight:700}
+.date-row .quoi{padding:24px 28px;background:var(--noir-soft)}
+.date-row .quoi h4{font-family:'Anton',sans-serif;font-size:22px;text-transform:uppercase;letter-spacing:-0.005em;margin-bottom:10px;color:var(--paper)}
+.date-row .quoi h4 em{font-family:'Fraunces',serif;font-style:italic;color:var(--jaune);text-transform:none;font-weight:400}
+.date-row .quoi p{font-size:14px;color:var(--paper);line-height:1.6}
+.date-row .quoi p strong{color:var(--jaune);font-weight:600}
+
+/* —— Diffusion —— */
+.diffuse{background:var(--paper);color:var(--noir);padding:96px 0;margin:0;border-top:6px solid var(--rouge);border-bottom:6px solid var(--rouge)}
+.diffuse h2{color:var(--noir)}
+.diffuse h2 em{color:var(--rouge)}
+.diffuse h2 .surligne{background:var(--noir);color:var(--jaune)}
+.diffuse .section-intro{color:var(--noir-soft)}
+.diffuse .section-intro strong{color:var(--rouge)}
+.diffuse .section-intro em{color:var(--rouge-deep)}
+.diffuse .section-num{color:var(--rouge)}
+.diffuse .section-num span.big{color:var(--rouge)}
+.diffuse-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:32px}
+.diffuse-card{background:var(--noir);color:var(--paper);padding:32px 28px;position:relative}
+.diffuse-card::before{content:"";position:absolute;top:0;left:0;width:100%;height:6px;background:var(--rouge)}
+.diffuse-card h4{font-family:'Anton',sans-serif;font-size:28px;line-height:1.05;text-transform:uppercase;letter-spacing:-0.005em;margin-bottom:14px;margin-top:8px}
+.diffuse-card h4 em{font-family:'Fraunces',serif;font-style:italic;color:var(--jaune);text-transform:none;font-weight:300}
+.diffuse-card p{font-size:14px;line-height:1.65;color:var(--paper);margin-bottom:14px}
+.diffuse-card p strong{color:var(--jaune);font-weight:600}
+.diffuse-card a{color:var(--jaune);text-decoration:underline;text-decoration-thickness:2px}
+.diffuse-card a:hover{background:var(--jaune);color:var(--noir);padding:0 3px;text-decoration:none}
+
+/* —— Slogans à recopier —— */
+.slogans{margin-top:32px;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.slogan{background:var(--noir-soft);border:2px solid var(--jaune);padding:20px 22px;position:relative;font-family:'Anton',sans-serif;font-size:22px;line-height:1.1;color:var(--paper);text-transform:uppercase;letter-spacing:-0.005em;cursor:pointer;transition:background 0.15s}
+.slogan:hover{background:var(--jaune);color:var(--noir)}
+.slogan em{font-family:'Fraunces',serif;font-style:italic;color:var(--jaune);text-transform:none;font-weight:300}
+.slogan:hover em{color:var(--rouge)}
+.slogan::after{content:"COPIER";position:absolute;top:8px;right:8px;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.16em;color:var(--rouge);font-weight:700;opacity:0.5}
+.slogan.copied::after{content:"COPIÉ ✓";color:var(--rouge);opacity:1}
+
+/* —— Closing manifeste —— */
+.closing{background:var(--noir);color:var(--paper);padding:128px 0;border-top:6px solid var(--jaune);position:relative;overflow:hidden}
+.closing::before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(at 20% 80%,rgba(214,31,31,0.2) 0%,transparent 50%)}
+.closing .wrap{position:relative;z-index:2}
+.closing h2{font-size:clamp(56px,9vw,140px);line-height:0.9;margin-bottom:48px;max-width:1180px}
+.closing .punch-final{font-family:'Fraunces',serif;font-style:italic;font-weight:350;font-size:clamp(24px,3vw,36px);line-height:1.4;color:var(--paper);max-width:920px;margin-bottom:32px;font-variation-settings:"opsz" 72,"SOFT" 60,"WONK" 1}
+.closing .punch-final strong{color:var(--jaune);font-weight:500;font-style:normal}
+.closing .punch-final em{color:var(--rouge);font-style:italic}
+.closing .signature-block{margin-top:64px;padding-top:36px;border-top:2px solid var(--rouge)}
+.closing .signature-block .anaphore{font-family:'Anton',sans-serif;font-size:clamp(32px,4.5vw,56px);line-height:1.05;color:var(--paper);text-transform:uppercase;letter-spacing:-0.01em;margin-bottom:14px}
+.closing .signature-block .anaphore .r{color:var(--rouge)}
+.closing .signature-block .anaphore .j{background:var(--jaune);color:var(--noir);padding:0 8px}
+
+/* —— Footer minimal —— */
+footer{padding:48px 0 72px;background:var(--noir);font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--paper-mute);letter-spacing:0.04em;line-height:1.75;border-top:1px solid var(--noir-mute)}
+footer p{margin-bottom:14px;max-width:1000px}
+footer a{color:var(--rouge);font-weight:700}
+footer strong{color:var(--paper)}
+
+/* —— Mobile —— */
+@media (max-width:980px){
+  .gifles,.complices,.diffuse-grid,.actions-grid,.slogans{grid-template-columns:1fr}
+  .gifle,.step{border-right:none;border-bottom:1px solid var(--paper)}
+  .gifle:last-child,.step:last-child{border-bottom:none}
+  .steps{grid-template-columns:1fr 1fr}
+  .step:nth-child(2n){border-right:none}
+  .date-row{grid-template-columns:1fr}
+  .date-row .quand{border-right:none;border-bottom:2px solid var(--paper)}
+  .tampon{top:24px;right:16px;transform:rotate(-4deg) scale(0.8)}
+  .topbar nav{display:none}
+}
+@media (max-width:640px){
+  .wrap,.wrap-narrow{padding:0 18px}
+  .hero{padding:48px 0 64px}
+  section{padding:64px 0}
+  .steps{grid-template-columns:1fr}
+  .step{border-right:none!important}
+  h1.titre{font-size:64px}
+  .big-quote blockquote{font-size:32px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand">⚡ RAS LE BOL — Manifeste citoyen</div>
+    <nav>
+      <a href="#gifle">La gifle</a>
+      <a href="#comment">Comment</a>
+      <a href="#complices">Complices</a>
+      <a href="#agir">Et toi ?</a>
+      <a href="#dates">Échéances</a>
+      <a href="#diffuse">Diffuser</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="tampon">DOCUMENTÉ<strong>2024–2026</strong>Pas de rétractation</div>
+    <div class="kicker">Manifeste citoyen · Belgique · Mai 2026 · Open source</div>
+    <h1 class="titre">On <span class="rouge">arrête</span> de faire <em>semblant</em>.</h1>
+    <p class="subtitle">Pendant que tu lis ça, <strong>cinq présidents de partis</strong> que tu n'as pas élus arbitrent les lois qui te concernent. Dans un Parlement qui vote à <strong>99,73 %</strong> de discipline. Dans un État qui paie pour ne pas obéir à ses propres juges. <strong>Tout est documenté. Personne n'en parle.</strong></p>
+    <div class="intro-body">
+      <p>Ceci n'est pas un essai. C'est un <strong>manifeste</strong>. Si tu cherches une analyse mesurée, équilibrée, complaisante avec ses sources — va voir ailleurs. Ce document a un parti pris : <em>il en a marre</em>.</p>
+      <p>Marre de voir un État fondateur de l'Union européenne aligné par le Conseil de l'Europe sur la Biélorussie sur l'anti-corruption — sans qu'aucune une de journal ne le mentionne. Marre de payer des amendes en millions plutôt que de respecter des décisions de justice. Marre qu'on appelle « compromis » ce qui est <em>arbitrage oligarchique</em>. Marre qu'on appelle « discipline de groupe » ce qui est <em>mandat impératif</em> — prohibé par la Constitution.</p>
+      <p>Marre, surtout, qu'on nous prenne pour des cons. <strong>Mathématiquement.</strong></p>
+      <p>Cette page existe pour une raison simple : que tu disposes, en dix minutes de lecture, de tout ce qu'il faut pour <em>nommer ce que tu vis</em>, <em>vérifier ce qu'on te dit</em>, et <em>commencer à le contester</em>. Sans avocat. Sans diplôme de sciences politiques. Sans permission.</p>
+    </div>
+    <div class="intro-cta">
+      <a href="#agir" class="btn jaune">⚡ Et toi, tu fais quoi ?</a>
+      <a href="#gifle" class="btn rouge">Les faits qui claquent →</a>
+      <a href="#diffuse" class="btn outline">Diffuser ce truc</a>
+    </div>
+  </div>
+</header>
+
+<div class="bandeau">
+  <div class="scroller">
+    <span>99,73 % de discipline de vote au Parlement fédéral</span>
+    <span>10 000+ condamnations CEDH dans un seul contentieux</span>
+    <span>20 M€ d'amendes payées plutôt que d'obéir aux juges</span>
+    <span>Seul État UE recevant une recommandation spécifique sur l'exécution des jugements</span>
+    <span>Aligné sur la Biélorussie par le GRECO en 2025</span>
+    <span>~4 milliards captés par les partis depuis 1989</span>
+    <span>99,73 % de discipline de vote au Parlement fédéral</span>
+    <span>10 000+ condamnations CEDH dans un seul contentieux</span>
+    <span>20 M€ d'amendes payées plutôt que d'obéir aux juges</span>
+    <span>Seul État UE recevant une recommandation spécifique sur l'exécution des jugements</span>
+    <span>Aligné sur la Biélorussie par le GRECO en 2025</span>
+    <span>~4 milliards captés par les partis depuis 1989</span>
+  </div>
+</div>
+
+<section id="gifle">
+  <div class="wrap">
+    <div class="section-num"><span class="big">01</span> Six gifles · Six faits qu'on n'apprend pas à l'école</div>
+    <h2>Tu sais quoi ? <em>Tu le savais ?</em></h2>
+    <p class="section-intro">Pas d'opinion. Pas d'interprétation. <strong>Six faits documentés, sources publiques.</strong> Si tu en savais déjà trois, t'es au-dessus de la moyenne. Si tu n'en savais aucun, t'es la moyenne. <em>C'est aussi ça, le problème.</em></p>
+
+    <div class="gifles">
+      <div class="gifle">
+        <div class="nbr">⚡ Gifle 01</div>
+        <div class="punch">Cinq <span class="r">mecs</span> décident. <em>Onze millions</em> de Belges <span class="j">subissent</span>.</div>
+        <div class="src">Cinq présidents de partis — Bart De Wever, Maxim Prévot, Conner Rousseau, Sammy Mahdi, Georges-Louis Bouchez — arbitrent <strong>en réunion privée</strong> (le « kern ») les lois qui s'imposent à toi. Aucun n'est mentionné dans la Constitution. Aucun n'est élu à une fonction exécutive. <strong>Et toi tu l'as appris quand ?</strong></div>
+      </div>
+
+      <div class="gifle">
+        <div class="nbr">⚡ Gifle 02</div>
+        <div class="punch"><span class="j">99,73 %</span> au Parlement. <em>Et ils appellent ça</em> de la <span class="r">démocratie</span>.</div>
+        <div class="src">99,73 % de discipline de vote dans la majorité fédérale. <strong>Source : CRISP, sur 1 823 votes analysés.</strong> La Constitution interdit pourtant le mandat impératif (article 42). Une telle unanimité sur des centaines de lois est mathématiquement impossible — sauf à ce que personne ne vote librement. C'est <em>exactement</em> ce qui se passe.</div>
+      </div>
+
+      <div class="gifle">
+        <div class="nbr">⚡ Gifle 03</div>
+        <div class="punch">L'État paie <span class="r">20 M€</span> d'amendes <em>plutôt que d'obéir</em> à un juge.</div>
+        <div class="src">Vingt millions d'euros payés sur le seul dossier des nuisances de Bruxelles-National. <strong>L'État belge a calculé : payer revenait moins cher que respecter le jugement.</strong> Pendant que tes impôts financent les amendes, le bruit continue. <em>Bienvenue dans un État qui calcule son non-respect du droit.</em></div>
+      </div>
+
+      <div class="gifle">
+        <div class="nbr">⚡ Gifle 04</div>
+        <div class="punch"><span class="r">10 000+</span> condamnations européennes. <em>Dans</em> <span class="j">UN</span> <em>seul</em> dossier.</div>
+        <div class="src">Plus de dix mille condamnations de la Cour européenne des droits de l'homme — sur le seul contentieux de l'accueil des demandeurs d'asile. La Cour a inventé une qualification spéciale pour la Belgique : <strong>« défaillance systémique »</strong>. <em>Aucun autre pays d'Europe occidentale n'a un tel bilan.</em></div>
+      </div>
+
+      <div class="gifle">
+        <div class="nbr">⚡ Gifle 05</div>
+        <div class="punch">Le Conseil de l'Europe nous <span class="j">aligne</span> sur la <span class="r">Biélorussie</span>.</div>
+        <div class="src">Novembre 2025, 101ᵉ plénière du GRECO. Le Secrétaire général du Conseil de l'Europe a été chargé d'écrire au ministre belge des Affaires étrangères. <strong>Stade précédant immédiatement la déclaration publique de non-conformité — mesure prononcée jusqu'ici contre la seule Biélorussie.</strong> Tu l'as lu où ? Tu l'as lu nulle part. Voilà.</div>
+      </div>
+
+      <div class="gifle">
+        <div class="nbr">⚡ Gifle 06</div>
+        <div class="punch"><span class="j">~4 milliards €</span> captés par cinq <em>asbl</em> qui <span class="r">n'existent même pas</span> juridiquement.</div>
+        <div class="src">Depuis 1989, environ quatre milliards d'euros d'argent public ont été versés aux partis politiques. <strong>Le contrôle de ces fonds est exercé par les parlementaires des partis bénéficiaires.</strong> Les partis sont, en droit belge, des associations de fait sans personnalité juridique. <em>Aucun juge ne peut les attaquer directement.</em> Pratique, non ?</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="comment">
+  <div class="wrap">
+    <div class="section-num"><span class="big">02</span> Le mécanisme · 4 étapes pour capturer un État</div>
+    <h2>Comment ils <em>nous</em> ont <span class="surligne">eus</span>.</h2>
+    <p class="section-intro">Pas un complot. Pas un événement. Un dispositif. <strong>Construit sur cent ans.</strong> Chaque étape verrouille la suivante. C'est lent, c'est patient, c'est implacable — c'est la définition d'un régime qui marche.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="nbr">1</div>
+        <h3>Ils nous <em>encadrent</em></h3>
+        <p>Mutuelle, syndicat, école, asbl, club. <strong>Chaque structure intermédiaire est affiliée à un parti.</strong> Depuis le XIXᵉ siècle. Tu accèdes à tes droits sociaux <em>via</em> eux. Ils dessinent les systèmes qu'ils financent.</p>
+      </div>
+      <div class="step">
+        <div class="nbr">2</div>
+        <h3>Ils <em>vident</em> la Constitution</h3>
+        <p>L'article 42 dit que chaque élu représente la Nation. <strong>La pratique : 99,73 % de discipline.</strong> Chartes de fidélité, lettres de démission pré-signées, exclusion des commissions. Le vote libre n'existe plus.</p>
+      </div>
+      <div class="step">
+        <div class="nbr">3</div>
+        <h3>Ils <em>capturent</em> l'argent</h3>
+        <p>80 % du revenu des partis vient des subventions publiques. <strong>2 à 4 fois plus qu'ailleurs en Europe.</strong> Et le contrôle de cette manne est exercé par les bénéficiaires eux-mêmes. Auto-contrôle institutionnalisé.</p>
+      </div>
+      <div class="step">
+        <div class="nbr">4</div>
+        <h3>Ils <em>désobéissent</em></h3>
+        <p>Quand un juge tranche contre eux, ils paient l'amende. Sur les nuisances aériennes. Sur l'asile. Sur le climat — où un Premier ministre a qualifié l'arrêt de <strong>« perte de temps »</strong>. <em>État de droit : calculé.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="big-quote">
+  <blockquote>
+    « <span class="surligne">Le régime n'est pas dysfonctionnel.</span> Il fonctionne précisément comme il a été conçu pour <em>fonctionner</em>. »
+    <cite>— Diagnostic du corpus citoyen · mai 2026</cite>
+  </blockquote>
+</div>
+
+<section id="complices">
+  <div class="wrap">
+    <div class="section-num"><span class="big">03</span> Les complices · Sans qui rien ne tiendrait</div>
+    <h2>Ils ne sont pas <em>seuls</em>. Et c'est ça <span class="surligne">le pire</span>.</h2>
+    <p class="section-intro">Il serait confortable de croire que cinq présidents de partis tiennent tout seuls la machine. <strong>Faux.</strong> Un régime de cette ampleur exige <em>tout un écosystème de complicités passives</em>. Personne ne signe rien. Personne n'organise rien. Et sans eux, rien ne tiendrait. Les voici.</p>
+
+    <div class="complices">
+      <div class="complice">
+        <div class="qui">Complice 01</div>
+        <h4>L'<em>université</em> qui décrit sans juger</h4>
+        <p>La doctrine constitutionnaliste sait. Elle décrit la particratie depuis 1976. Wilfried Dewachter, Frederik Verleden, Anne-Emmanuelle Bourgaux — la liste est longue. <strong>Mais elle ne qualifie pas. Elle ne mobilise pas. Elle reste « neutre ».</strong> La neutralité au sommet d'un régime de capture <em>n'est pas neutre</em>. C'est une forme de complicité.</p>
+      </div>
+
+      <div class="complice">
+        <div class="qui">Complice 02</div>
+        <h4>La <em>presse</em> qui fragmente les scandales</h4>
+        <p>Publifin. Samusocial. Kazakhgate. Qatargate. Reynders. Engie. <strong>Six scandales structurels en huit ans.</strong> Chacun couvert comme un événement isolé. Aucune une qui les agrège jamais comme symptômes d'un même régime. La concentration des médias entre quatre groupes (IPM, Rossel, Mediahuis, DPG) n'aide pas. <em>Le format « scandale » sert le régime — il l'isole.</em></p>
+      </div>
+
+      <div class="complice">
+        <div class="qui">Complice 03</div>
+        <h4>Les <em>corps intermédiaires</em> affiliés</h4>
+        <p>Mutuelles, syndicats, réseaux d'enseignement, asbl. Ils défendent leurs adhérents — <strong>et verrouillent toute réforme du système qui les nourrit</strong>. La pilarisation a transformé la société civile belge en relais partisan. <em>Conséquence : la critique de la particratie n'a aucun acteur collectif évident.</em></p>
+      </div>
+
+      <div class="complice">
+        <div class="qui">Complice 04</div>
+        <h4>Le <em>cordon sanitaire</em> moralisé</h4>
+        <p>L'endigument de l'extrême droite est devenu, factuellement, un cartel de protection mutuelle entre partis traditionnels. <strong>Toute critique systémique est suspectée de « faire le jeu de »</strong>. Le cordon défend la démocratie contre ses ennemis affichés. Il protège aussi le régime de ses propres dysfonctions. <em>Pratique des deux côtés.</em></p>
+      </div>
+
+      <div class="complice">
+        <div class="qui">Complice 05</div>
+        <h4>Les <em>fonctionnaires</em> cooptés</h4>
+        <p>56 % du personnel des cabinets wallons sont des fonctionnaires détachés. <strong>La carrière administrative passe désormais par le cabinet politique.</strong> Sans appui partisan, pas de progression. Les fonctionnaires qui devraient incarner la continuité de l'État servent les appareils. <em>14,8 millions par an, comptabilisés nulle part.</em></p>
+      </div>
+
+      <div class="complice">
+        <div class="qui">Complice 06</div>
+        <h4>Le <em>« c'est comme ça »</em> · toi, moi</h4>
+        <p>Aucune complicité n'est plus efficace que celle du citoyen qui sait, qui constate, et qui considère que <strong>« rien ne changera »</strong>. Cette résignation n'est pas un trait de caractère. C'est l'effet psychique attendu d'un système qui multiplie les verrous précisément pour la produire. <em>C'est aussi une décision collective qui ne fait jamais l'objet d'un débat public.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="agir">
+  <div class="wrap">
+    <div class="section-num"><span class="big">04</span> Et toi ? · Pas demain. <span style="background:var(--jaune);color:var(--noir);padding:0 6px">Là.</span></div>
+    <h2>Tu fais <em>quoi</em>, concrètement ?</h2>
+    <p class="section-intro">Pas de héros. Pas de mobilisation générale. <strong>Toi, ce que tu peux faire, à ton niveau, avec le temps que tu as.</strong> Six actions classées par temps de réalisation. Si t'as 5 minutes : commence par la première. Si t'en as 5 ans : fais les toutes.</p>
+
+    <div class="actions-grid">
+
+      <div class="action-card">
+        <div class="duree">🕐 5 minutes · Le minimum vital</div>
+        <h4>Tu <em>partages</em> ce truc.</h4>
+        <p>Envoie le lien à <strong>trois personnes</strong>. Famille. Collègues. Le groupe WhatsApp du foot. Sortir le débat des cercles spécialisés est l'action <em>la plus efficace</em> par minute investie. Si chaque lecteur fait ça, le silence médiatique se fissure en six mois.</p>
+        <a href="#diffuse" class="lien">Comment diffuser</a>
+      </div>
+
+      <div class="action-card">
+        <div class="duree">🕐 10 minutes · La gym mentale</div>
+        <h4>Tu <em>changes</em> tes mots.</h4>
+        <p>Tu cesses de dire « compromis » quand c'est <strong>arbitrage oligarchique</strong>. Tu cesses de dire « cabinet » quand c'est <strong>administration parallèle non élue</strong>. Tu cesses de dire « scandale » quand c'est <strong>régime</strong>. <em>Le vocabulaire fait le réel.</em></p>
+        <a href="#" class="lien" onclick="document.querySelector('.slogans').scrollIntoView();return false;">Voir les slogans à recopier</a>
+      </div>
+
+      <div class="action-card">
+        <div class="duree">🕑 1 heure · Le réveil civique</div>
+        <h4>Tu <em>vérifies</em> ton député.</h4>
+        <p>Sur le site de la Chambre, tu tapes son nom. Tu regardes ses dix derniers votes. <strong>Tu comptes les votes dissidents. Probablement zéro.</strong> Ensuite tu lui écris pour lui demander pourquoi. <em>Tu gardes la réponse. Ou son silence.</em></p>
+        <a href="https://www.lachambre.be" target="_blank" rel="noopener" class="lien">lachambre.be</a>
+      </div>
+
+      <div class="action-card">
+        <div class="duree">🕒 1 jour · L'action concrète</div>
+        <h4>Tu <em>fais une demande</em> CADA.</h4>
+        <p>C'est une <strong>demande d'accès à un document administratif</strong>. Gratuit. Sans avocat. Délai légal de réponse : 30 jours. Tu cibles un document précis (audit, convention, note de cabinet) et tu le demandes. <em>L'opacité existe parce que personne ne demande.</em></p>
+        <a href="https://bosa.belgium.be/fr/services/commission-dacces-aux-et-de-reutilisation-des-documents-administratifs-cada" target="_blank" rel="noopener" class="lien">CADA · BOSA</a>
+      </div>
+
+      <div class="action-card">
+        <div class="duree">🕒 1 mois · Le levier collectif</div>
+        <h4>Tu <em>rejoins</em> les autres.</h4>
+        <p>Transparencia.be, Anticor Belgique, G1000, REScoop (coopérative énergie citoyenne), BelRefugees (accueil), Klimaatzaak. <strong>Tu n'es pas seul.</strong> D'autres ont déjà construit. Devenir membre, donner du temps, voter en AG. <em>Le tissu civique est l'antichambre du changement.</em></p>
+        <a href="https://transparencia.be" target="_blank" rel="noopener" class="lien">Transparencia.be</a>
+      </div>
+
+      <div class="action-card">
+        <div class="duree">🕓 1 an+ · Le coup de levier</div>
+        <h4>Tu <em>plaides</em>. Ou tu finances qui plaide.</h4>
+        <p>Action en responsabilité de l'État pour faute du législateur (art. 1382 C. civ., Cassation 2006). Sur la lacune de l'article 15ter. Une action bien plaidée <strong>fait plus de bruit que dix manifestations</strong>. Cherche un avocat constitutionnaliste sympathique à la cause. <em>Ou crowdfunde celui d'un autre.</em></p>
+        <a href="https://www.affaire-climat.be" target="_blank" rel="noopener" class="lien">Voir Klimaatzaak (modèle)</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="dates">
+  <div class="wrap">
+    <div class="section-num"><span class="big">05</span> Les dates · Quand ils devront répondre</div>
+    <h2>Voici ce qui leur fait <em>vraiment</em> peur.</h2>
+    <p class="section-intro">Pas les manifestations. Pas les éditoriaux. <strong>Les rapports internationaux qu'ils ne peuvent pas faire taire.</strong> Cinq dates entre 2026 et 2029 où l'État belge doit répondre publiquement devant des institutions plus puissantes que lui. Aligne tes actions sur ces dates et tu pèses dix fois plus.</p>
+
+    <div class="dates">
+      <div class="date-row">
+        <div class="quand"><span class="d">30 nov.</span><span class="l">2026</span></div>
+        <div class="quoi">
+          <h4>Rapport de progrès <em>GRECO</em></h4>
+          <p>La Belgique doit prouver qu'elle applique les 16 recommandations en souffrance. <strong>Une réponse insuffisante = déclaration publique de non-conformité.</strong> Cette mesure n'a été prononcée jusqu'ici que contre la Biélorussie. Document publié et public. <em>Que tu peux citer.</em></p>
+        </div>
+      </div>
+      <div class="date-row">
+        <div class="quand"><span class="d">2026</span><span class="l">→ 2027</span></div>
+        <div class="quoi">
+          <h4>Examen périodique <em>ONU</em></h4>
+          <p>Le Conseil des droits de l'homme examine la Belgique. <strong>Les ONG peuvent soumettre des contributions documentées.</strong> Une fenêtre rare pour faire entrer dans le dossier officiel ce que la presse belge ignore. <em>Aucun gouvernement ne pourra ensuite prétendre ne pas savoir.</em></p>
+        </div>
+      </div>
+      <div class="date-row">
+        <div class="quand"><span class="d">2026</span><span class="l">→ 2028</span></div>
+        <div class="quoi">
+          <h4>Déficit excessif <em>UE</em></h4>
+          <p>La Commission instruit le déficit belge. <strong>Levier imparable parce que strictement gestionnaire :</strong> exiger la transparence des cabinets, de la consultance et des dotations partisanes comme condition d'efficience. C'est leur propre logique. Retourne-la.</p>
+        </div>
+      </div>
+      <div class="date-row">
+        <div class="quand"><span class="d">2029</span><span class="l">Triple choc</span></div>
+        <div class="quoi">
+          <h4>Élections + <em>Justice</em> + <em>Climat</em></h4>
+          <p>Élections fédérales et régionales. Renouvellement complet du Conseil supérieur de la Justice. Échéance d'application de Klimaatzaak (-55 % à 2030). <strong>Trois moments où tout ce qui aura été promis devient matériellement vérifiable.</strong> Personne n'y échappera.</p>
+        </div>
+      </div>
+      <div class="date-row">
+        <div class="quand"><span class="d">2030</span><span class="l">Communales</span></div>
+        <div class="quoi">
+          <h4>Tu peux <em>te présenter</em></h4>
+          <p>Le niveau local est le plus accessible pour bâtir une candidature citoyenne ou rejoindre une liste ouverte. <strong>Le travail commence trois ans avant.</strong> Si tu lis ceci en 2026 ou 2027 et que l'idée te traverse — tu es pile dans la fenêtre. Pas plus tard.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="diffuse" class="diffuse">
+  <div class="wrap">
+    <div class="section-num"><span class="big">06</span> Diffuser · Le seul truc qui leur fait peur</div>
+    <h2>Imprime. Tague. Forke. <em>Recommence.</em></h2>
+    <p class="section-intro">Cette page est <strong>open source</strong>. Licence Creative Commons BY-SA 4.0. Tu peux copier, traduire, modifier, imprimer, distribuer, vendre. <em>La seule chose interdite est de la laisser tranquille.</em></p>
+
+    <div class="diffuse-grid">
+      <div class="diffuse-card">
+        <h4>Tu <em>imprimes</em></h4>
+        <p>Une version PDF imprimable A4 sera publiée dans le dépôt. <strong>Recto-verso. Photocopiable. À distribuer.</strong> Le tract a fait ses preuves. Boîtes aux lettres de ton immeuble. Café du coin. Salle d'attente du généraliste. Université. Maison communale.</p>
+        <p><a href="#">→ PDF (bientôt)</a></p>
+      </div>
+      <div class="diffuse-card">
+        <h4>Tu <em>forkes</em></h4>
+        <p>Le code source est sur GitHub. <strong>Tu vois une coquille, une erreur, une amélioration ?</strong> Pull request. Tu veux ajouter ta région, tes scandales locaux, tes données ? Forke. Tu veux faire la même chose pour la France, le Québec, l'Italie ? Forke aussi.</p>
+        <p><a href="https://github.com/ouaisfieu/politique-belge" target="_blank" rel="noopener">→ GitHub</a></p>
+      </div>
+      <div class="diffuse-card">
+        <h4>Tu <em>traduis</em></h4>
+        <p>Une version <strong>néerlandaise</strong> est urgente — la critique systémique en Belgique meurt du silo linguistique. Une version anglaise pour la presse internationale. Une version allemande pour la Communauté germanophone. <em>Si tu maîtrises une langue, tu sais maintenant ce que tu peux faire.</em></p>
+        <p><a href="https://github.com/ouaisfieu/politique-belge" target="_blank" rel="noopener">→ Branches GitHub</a></p>
+      </div>
+      <div class="diffuse-card">
+        <h4>Tu <em>copies</em> les phrases</h4>
+        <p>En dessous, des slogans <strong>cliquables</strong>. Un clic = phrase copiée dans ton presse-papier. Tu peux les coller dans un mail. Un tweet. Une story. Un sticker. <em>Un mur, même.</em> Open source incluant les formules.</p>
+        <p><a href="#">↓ Slogans à copier</a></p>
+      </div>
+      <div class="diffuse-card">
+        <h4>Tu <em>parles</em></h4>
+        <p>La conversation à table avec ta famille pèse plus que dix posts viraux. <strong>Le verrou cognitif est le plus dur à briser — et celui sur lequel le régime mise le plus.</strong> Si tu lis ceci et que tu te dis « je ne vais pas en parler parce que ça va plomber le repas »… tu viens de le mesurer en direct.</p>
+      </div>
+      <div class="diffuse-card">
+        <h4>Tu <em>archives</em></h4>
+        <p>Cette page peut disparaître. Le code source est sur GitHub. <strong>Télécharge-la. Hébérge-la chez toi.</strong> Bookmarke-la sur l'Internet Archive (Wayback Machine). Le savoir civique a ses propres lois de conservation. <em>Et elles passent par toi.</em></p>
+        <p><a href="https://web.archive.org" target="_blank" rel="noopener">→ Wayback Machine</a></p>
+      </div>
+    </div>
+
+    <div style="margin-top:64px">
+      <h3 style="font-family:'Anton',sans-serif;font-size:36px;text-transform:uppercase;color:var(--noir);margin-bottom:8px;letter-spacing:-0.01em">Slogans à recopier <em style="font-family:'Fraunces',serif;font-style:italic;color:var(--rouge);text-transform:none;font-weight:300">(cliquer = copier)</em></h3>
+      <p style="font-size:15px;color:var(--noir-soft);margin-bottom:8px;font-family:'IBM Plex Sans',sans-serif">Pour ton mail, ton sticker, ton post, ton mur. <strong>Open source. Réutilise sans demander.</strong></p>
+      <div class="slogans">
+        <div class="slogan">99,73 %. <em>C'est pas de la démocratie, c'est de la chorégraphie.</em></div>
+        <div class="slogan">Cinq mecs. Onze millions de Belges. <em>Tu vois le problème ?</em></div>
+        <div class="slogan">L'État paie pour ne pas obéir. <em>État de droit calculé.</em></div>
+        <div class="slogan">GRECO 2025 : Belgique au niveau Biélorussie. <em>Personne n'en parle.</em></div>
+        <div class="slogan">« Compromis » ? Non. <em>Arbitrage oligarchique.</em></div>
+        <div class="slogan">« Discipline de groupe » ? Non. <em>Mandat impératif prohibé.</em></div>
+        <div class="slogan">4 milliards captés depuis 1989. <em>Contrôlés par les bénéficiaires.</em></div>
+        <div class="slogan">La particratie n'est pas une métaphore. <em>C'est un régime.</em></div>
+        <div class="slogan">Ils comptent sur ta fatigue. <em>Déçois-les.</em></div>
+        <div class="slogan">Diffuse. Imprime. Forke. <em>Recommence.</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <h2>Personne ne vient nous <em>sauver</em>.</h2>
+
+    <p class="punch-final">Le régime particratique belge tient parce qu'il a, en cent ans, perfectionné ses verrous. <strong>Il ne tombera pas par révélation médiatique, ni par sursaut moral collectif, ni par héros parlementaire.</strong> Il bougera quand le coût politique de son maintien dépassera, pour ses bénéficiaires, le coût d'une réforme partielle.</p>
+
+    <p class="punch-final">Ce seuil dépend de toi. <em>Pas d'eux.</em></p>
+
+    <p class="punch-final">Tu n'as pas besoin d'être héroïque. Tu as juste besoin d'être <strong>nombreux</strong>. La pression contentieuse, informationnelle, internationale, électorale — alignée sur les échéances 2026–2029 — peut déplacer la balance. Pas à elle seule. <em>Cumulativement.</em></p>
+
+    <div class="signature-block">
+      <p class="anaphore">Tu peux <span class="r">ignorer</span>.</p>
+      <p class="anaphore">Tu peux <span class="r">scroller</span>.</p>
+      <p class="anaphore">Tu peux te dire que <em>« rien ne changera »</em>.</p>
+      <p class="anaphore">Tu peux <span class="j">aussi</span> faire <span class="r">autre chose</span>.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Le manifeste « Ras le bol » est une version ton libre.</strong> Pour une version analytique avec sources juridiques détaillées, voir <a href="./index.html">la boîte à outils citoyenne</a> et <a href="https://ouaisfi.eu/politique-belge">la synthèse complète</a>.</p>
+    <p><strong>Faits documentés :</strong> rapports GRECO 5ᵉ cycle (101ᵉ plénière nov. 2025), arrêts CEDH (<em>Camara</em>, <em>M.V. e.a.</em>, <em>Mugemangango</em>), rapports État de droit Commission européenne 2022-2025 (COM(2025)900), CRISP (Verleden, Depauw), Cour des comptes (cabinets wallons 2022), doctrine constitutionnaliste belge (Dewachter, Bourgaux, Verdussen, Behrendt).</p>
+    <p><strong>Licence :</strong> <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr">Creative Commons BY-SA 4.0</a> · libre réutilisation, modification, traduction et diffusion. <strong>Code source :</strong> <a href="https://github.com/ouaisfieu/politique-belge">github.com/ouaisfieu/politique-belge</a></p>
+    <p>v1.0 · mai 2026 · Manifeste citoyen — Ras le bol.</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.slogan').forEach(el=>{
+  el.addEventListener('click',()=>{
+    const txt = el.innerText.replace(/COPIER|COPIÉ ✓/g,'').trim();
+    navigator.clipboard.writeText(txt).then(()=>{
+      el.classList.add('copied');
+      setTimeout(()=>el.classList.remove('copied'),2000);
+    });
+  });
+});
+</script>
+</body>
+</html>
