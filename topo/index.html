@@ -7,7 +7,1436 @@
 <meta name="description" content="Synthèse critique de deux années d'enquête citoyenne sur la particratie belge. Le régime nommé, daté, mesuré, et attaqué avec ses propres armes.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topo — Acte d'accusation d'un État défaillant qui se rêve en parangon · Belgique 2024-2026</title>
+<meta name="description" content="Synthèse critique de deux années d'enquête citoyenne sur la particratie belge. Le régime nommé, daté, mesuré, et attaqué avec ses propres armes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0e0c;
+    --ink-soft: #2a2620;
+    --ink-mute: #6b6358;
+    --paper: #f1ece1;
+    --paper-warm: #e7e0cd;
+    --paper-deep: #ddd4bb;
+    --rouge: #9c1c1c;
+    --rouge-deep: #6b0f0f;
+    --rouge-bright: #c92626;
+    --or: #b8923a;
+    --noir: #0f0e0c;
+    --rule: rgba(15, 14, 12, 0.18);
+    --rule-soft: rgba(15, 14, 12, 0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.55;
+    font-weight: 400;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(at 12% 6%, rgba(184, 146, 58, 0.06) 0%, transparent 40%),
+      radial-gradient(at 90% 95%, rgba(156, 28, 28, 0.04) 0%, transparent 45%);
+  }
+
+  ::selection { background: var(--rouge); color: var(--paper); }
+
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+  .wrap-narrow { max-width: 880px; margin: 0 auto; padding: 0 32px; }
+
+  /* —— Topbar —— */
+  .topbar {
+    border-bottom: 1px solid var(--rule);
+    padding: 16px 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(241, 236, 225, 0.94);
+    backdrop-filter: blur(8px);
+  }
+  .topbar .wrap { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .topbar a { color: var(--ink-mute); text-decoration: none; transition: color 0.2s; }
+  .topbar a:hover { color: var(--rouge); }
+  .topbar nav { display: flex; gap: 22px; flex-wrap: wrap; }
+  .topbar .brand { color: var(--rouge); font-weight: 600; letter-spacing: 0.12em; }
+
+  /* —— Hero monumental —— */
+  .hero {
+    padding: 120px 0 80px;
+    border-bottom: 2px solid var(--ink);
+    position: relative;
+  }
+  .stamp {
+    position: absolute;
+    top: 64px;
+    right: 32px;
+    transform: rotate(-8deg);
+    border: 2px solid var(--rouge);
+    color: var(--rouge);
+    padding: 8px 18px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    background: rgba(241, 236, 225, 0.8);
+  }
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--rouge);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-weight: 600;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 48px;
+    height: 2px;
+    background: var(--rouge);
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 350;
+    font-size: clamp(48px, 8.5vw, 112px);
+    line-height: 0.94;
+    letter-spacing: -0.03em;
+    font-variation-settings: "opsz" 144, "SOFT" 0, "WONK" 0;
+    color: var(--ink);
+    margin-bottom: 40px;
+    max-width: 1100px;
+  }
+  h1 em {
+    font-style: italic;
+    font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 1;
+    color: var(--rouge);
+    font-weight: 400;
+  }
+  h1 .strike {
+    text-decoration: line-through;
+    text-decoration-color: var(--rouge);
+    text-decoration-thickness: 4px;
+    color: var(--ink-mute);
+  }
+
+  .thesis {
+    font-family: 'Fraunces', serif;
+    font-weight: 350;
+    font-size: clamp(22px, 2.4vw, 28px);
+    line-height: 1.42;
+    color: var(--ink);
+    max-width: 920px;
+    margin-bottom: 56px;
+    font-variation-settings: "opsz" 36;
+  }
+  .thesis strong {
+    font-weight: 500;
+    color: var(--rouge-deep);
+    border-bottom: 2px solid var(--rouge);
+    padding-bottom: 1px;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 56px;
+    flex-wrap: wrap;
+    padding-top: 36px;
+    border-top: 1px solid var(--rule);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-mute);
+  }
+  .meta-row > div { display: flex; flex-direction: column; gap: 6px; }
+  .meta-row .val { color: var(--ink); font-size: 14px; letter-spacing: 0; text-transform: none; font-weight: 500; }
+
+  /* —— Sections —— */
+  section { padding: 96px 0; border-bottom: 1px solid var(--rule); }
+  section.tight { padding: 56px 0; }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 72px;
+    margin-bottom: 64px;
+  }
+  .section-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--rouge);
+    text-transform: uppercase;
+    padding-top: 16px;
+    border-top: 3px solid var(--rouge);
+    font-weight: 600;
+    line-height: 1.5;
+  }
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(36px, 5.5vw, 64px);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    font-variation-settings: "opsz" 96;
+    margin-bottom: 28px;
+    max-width: 900px;
+  }
+  h2 em {
+    font-style: italic;
+    color: var(--rouge);
+    font-variation-settings: "opsz" 96, "SOFT" 50, "WONK" 1;
+  }
+  .section-intro {
+    font-family: 'Fraunces', serif;
+    font-weight: 350;
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 780px;
+  }
+
+  /* —— Texte narratif fort —— */
+  .narrative {
+    max-width: 760px;
+    margin: 32px 0;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+  .narrative p { margin-bottom: 24px; }
+  .narrative p strong { font-weight: 600; color: var(--rouge-deep); }
+  .narrative p em { font-style: italic; color: var(--ink); }
+
+  /* —— Pull quote dévastateur —— */
+  .verdict-quote {
+    margin: 64px auto;
+    max-width: 900px;
+    padding: 0 32px;
+    text-align: center;
+  }
+  .verdict-quote blockquote {
+    font-family: 'Fraunces', serif;
+    font-weight: 350;
+    font-style: italic;
+    font-size: clamp(28px, 3.6vw, 42px);
+    line-height: 1.18;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    font-variation-settings: "opsz" 72, "SOFT" 60, "WONK" 1;
+    position: relative;
+    padding: 32px 0;
+  }
+  .verdict-quote blockquote::before,
+  .verdict-quote blockquote::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 2px;
+    background: var(--rouge);
+    margin: 0 auto;
+  }
+  .verdict-quote blockquote::before { margin-bottom: 32px; }
+  .verdict-quote blockquote::after { margin-top: 32px; }
+  .verdict-quote cite {
+    font-family: 'IBM Plex Mono', monospace;
+    font-style: normal;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-weight: 500;
+  }
+
+  /* —— Encadré "preuve" —— */
+  .preuve {
+    border: 1px solid var(--ink);
+    padding: 36px 40px;
+    margin: 40px 0;
+    background: var(--paper-warm);
+    position: relative;
+  }
+  .preuve::before {
+    content: "PIÈCE";
+    position: absolute;
+    top: -10px;
+    left: 24px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 4px 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    font-weight: 600;
+  }
+  .preuve h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 450;
+    font-size: 22px;
+    margin-bottom: 14px;
+    line-height: 1.25;
+  }
+  .preuve p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+  }
+  .preuve p:last-child { margin-bottom: 0; }
+  .preuve .ref {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* —— Trois boucles —— */
+  .boucles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--ink);
+    margin-top: 48px;
+    border: 1px solid var(--ink);
+  }
+  .boucle {
+    background: var(--paper);
+    padding: 36px 32px;
+    position: relative;
+  }
+  .boucle .num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rouge);
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+  .boucle h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 1.15;
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+  }
+  .cycle-svg { margin: 16px 0; display: block; width: 100%; height: auto; }
+  .boucle p {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .boucle p strong { color: var(--ink); font-weight: 500; }
+
+  /* —— Données : la note de la salle —— */
+  .ledger {
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 2px solid var(--ink);
+  }
+  .ledger-cell {
+    padding: 32px 24px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper);
+    position: relative;
+  }
+  .ledger-cell:nth-child(4n) { border-right: none; }
+  .ledger-cell:nth-last-child(-n+4) { border-bottom: none; }
+  .ledger-cell .num {
+    font-family: 'Fraunces', serif;
+    font-weight: 350;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--rouge);
+    font-variation-settings: "opsz" 144;
+    letter-spacing: -0.025em;
+    margin-bottom: 12px;
+  }
+  .ledger-cell .num small {
+    font-size: 22px;
+    color: var(--ink);
+    font-weight: 400;
+  }
+  .ledger-cell .label {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  .ledger-cell .source {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding-top: 12px;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* —— Le coût humain : pleine largeur sombre —— */
+  .humain-zone {
+    background: var(--ink);
+    color: var(--paper);
+    margin: 0;
+    padding: 96px 0;
+    border: none;
+  }
+  .humain-zone h2 { color: var(--paper); }
+  .humain-zone h2 em { color: var(--or); }
+  .humain-zone .section-num { color: var(--or); border-color: var(--or); }
+  .humain-zone .section-intro { color: rgba(241, 236, 225, 0.78); }
+  .humain-content { display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: start; }
+  .humain-content > div p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: rgba(241, 236, 225, 0.85);
+    margin-bottom: 22px;
+  }
+  .humain-content > div p strong { color: var(--paper); font-weight: 500; }
+  .humain-content > div p em { color: var(--or); font-style: italic; }
+  .humain-side {
+    border-left: 2px solid var(--or);
+    padding: 0 0 0 32px;
+    position: sticky;
+    top: 80px;
+  }
+  .humain-side h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    color: var(--paper);
+  }
+  .humain-side ul { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+  .humain-side li {
+    padding-left: 22px;
+    position: relative;
+    font-size: 15px;
+    line-height: 1.5;
+    color: rgba(241, 236, 225, 0.85);
+  }
+  .humain-side li::before {
+    content: "·";
+    position: absolute;
+    left: 0; top: -2px;
+    color: var(--or);
+    font-size: 28px;
+    line-height: 1;
+  }
+
+  /* —— Verrous : tableau d'instruction —— */
+  .verrous-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 24px;
+    font-size: 15px;
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+  }
+  .verrous-table th, .verrous-table td {
+    text-align: left;
+    padding: 22px 20px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  .verrous-table th {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 600;
+    background: var(--paper-warm);
+    border-bottom: 2px solid var(--ink);
+  }
+  .verrous-table td:first-child {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 450;
+    color: var(--rouge);
+    width: 220px;
+    font-style: italic;
+  }
+  .verrous-table td:nth-child(2) { color: var(--ink); font-weight: 500; }
+  .verrous-table td:nth-child(3) { color: var(--ink-soft); line-height: 1.6; }
+  .verrous-table tr:last-child td { border-bottom: none; }
+
+  /* —— Failles : où le système se contredit —— */
+  .failles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-top: 40px;
+  }
+  .faille {
+    background: var(--paper);
+    border-top: 3px solid var(--rouge);
+    padding: 32px 28px;
+    box-shadow: 0 1px 0 var(--rule);
+  }
+  .faille .lbl {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rouge);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .faille h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 450;
+    font-size: 24px;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+  .faille h4 em { font-style: italic; color: var(--rouge); }
+  .faille p {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    margin-bottom: 14px;
+  }
+  .faille p:last-child { margin-bottom: 0; }
+  .faille p strong { color: var(--ink); font-weight: 500; }
+  .faille .impasse {
+    background: var(--paper-deep);
+    padding: 14px 16px;
+    margin-top: 16px;
+    font-size: 13px;
+    font-family: 'IBM Plex Mono', monospace;
+    line-height: 1.5;
+    color: var(--ink);
+    border-left: 2px solid var(--rouge);
+  }
+  .faille .impasse strong {
+    color: var(--rouge);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 11px;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* —— International : témoignages —— */
+  .temoins {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-top: 32px;
+    border: 2px solid var(--ink);
+  }
+  .temoin {
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 28px 24px;
+    background: var(--paper);
+  }
+  .temoin:nth-child(3n) { border-right: none; }
+  .temoin:nth-last-child(-n+3) { border-bottom: none; }
+  .temoin .org {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--rouge);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .temoin .verdict {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.22;
+    color: var(--ink);
+    margin-bottom: 14px;
+    font-variation-settings: "opsz" 36, "SOFT" 50, "WONK" 1;
+  }
+  .temoin .ref {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .temoin .ref strong { color: var(--ink); font-weight: 500; }
+
+  /* —— Leviers : fronts d'action —— */
+  .fronts {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 16px;
+    border: 2px solid var(--ink);
+  }
+  .front {
+    padding: 36px;
+    display: grid;
+    grid-template-columns: 90px 1fr 200px;
+    gap: 36px;
+    align-items: start;
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper);
+    transition: background 0.2s;
+  }
+  .front:last-child { border-bottom: none; }
+  .front:hover { background: var(--paper-warm); }
+  .front .num {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 64px;
+    line-height: 0.85;
+    color: var(--rouge);
+    font-variation-settings: "opsz" 144;
+    letter-spacing: -0.02em;
+  }
+  .front .content h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 450;
+    font-size: 24px;
+    margin-bottom: 12px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  .front .content h4 em { font-style: italic; color: var(--rouge); }
+  .front .content p {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    margin-bottom: 10px;
+  }
+  .front .content p:last-child { margin-bottom: 0; }
+  .front .content p strong { color: var(--ink); font-weight: 500; }
+  .front .signal {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    line-height: 1.5;
+    padding-left: 16px;
+    border-left: 2px solid var(--rouge);
+  }
+  .front .signal strong {
+    color: var(--rouge);
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+
+  /* —— Timeline —— */
+  .timeline { margin-top: 40px; position: relative; }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 140px;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: var(--rouge);
+  }
+  .tl-item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 48px;
+    padding: 28px 0;
+    position: relative;
+  }
+  .tl-item::before {
+    content: "";
+    position: absolute;
+    left: 134px;
+    top: 38px;
+    width: 14px; height: 14px;
+    background: var(--rouge);
+    border-radius: 50%;
+    border: 3px solid var(--paper);
+    box-shadow: 0 0 0 2px var(--rouge);
+    z-index: 2;
+  }
+  .tl-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: var(--rouge);
+    font-weight: 600;
+    padding-top: 24px;
+    text-transform: uppercase;
+  }
+  .tl-body { padding: 20px 0 24px 36px; }
+  .tl-body h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 450;
+    font-size: 22px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .tl-body p {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .tl-body p strong { color: var(--ink); font-weight: 500; }
+
+  /* —— Closing —— */
+  .closing {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 120px 0;
+    margin: 0;
+    border: none;
+    position: relative;
+    overflow: hidden;
+  }
+  .closing::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 6px; height: 100%;
+    background: var(--rouge);
+  }
+  .closing h2 {
+    color: var(--paper);
+    font-size: clamp(40px, 6.5vw, 80px);
+    line-height: 0.98;
+    margin-bottom: 48px;
+    max-width: 1000px;
+  }
+  .closing h2 em { color: var(--or); }
+  .closing p {
+    font-family: 'Fraunces', serif;
+    font-weight: 350;
+    font-size: 22px;
+    line-height: 1.52;
+    color: rgba(241, 236, 225, 0.88);
+    margin-bottom: 28px;
+    max-width: 820px;
+  }
+  .closing p strong { color: var(--paper); font-weight: 500; }
+  .closing p em { color: var(--or); font-style: italic; }
+  .closing .sign {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--or);
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(241, 236, 225, 0.18);
+    font-weight: 600;
+  }
+
+  /* —— Footer —— */
+  footer {
+    padding: 64px 0 96px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+    line-height: 1.75;
+  }
+  footer p { margin-bottom: 14px; max-width: 1000px; }
+  footer a { color: var(--rouge); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  /* —— Inline —— */
+  mark {
+    background: linear-gradient(transparent 55%, rgba(184, 146, 58, 0.4) 55%);
+    color: inherit;
+    padding: 0 2px;
+    font-weight: 500;
+  }
+  .num-inline {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    color: var(--rouge-deep);
+  }
+
+  /* —— Responsive —— */
+  @media (max-width: 980px) {
+    .section-head { grid-template-columns: 1fr; gap: 28px; }
+    .humain-content { grid-template-columns: 1fr; }
+    .humain-side { position: static; border-left: none; padding: 0; border-top: 2px solid var(--or); padding-top: 32px; }
+    .boucles, .temoins { grid-template-columns: 1fr; }
+    .ledger { grid-template-columns: repeat(2, 1fr); }
+    .ledger-cell { border-right: 1px solid var(--rule); }
+    .ledger-cell:nth-child(2n) { border-right: none; }
+    .ledger-cell:nth-last-child(-n+4) { border-bottom: 1px solid var(--rule); }
+    .ledger-cell:nth-last-child(-n+2) { border-bottom: none; }
+    .failles { grid-template-columns: 1fr; }
+    .front { grid-template-columns: 60px 1fr; gap: 24px; }
+    .front .signal { grid-column: 1 / -1; padding-left: 0; padding-top: 12px; padding-bottom: 0; border-left: none; border-top: 1px solid var(--rouge); padding-top: 16px; }
+    .timeline::before { left: 8px; }
+    .tl-item { grid-template-columns: 1fr; gap: 8px; padding-left: 32px; }
+    .tl-item::before { left: 1px; top: 24px; }
+    .tl-body { padding-left: 0; }
+    .verrous-table th, .verrous-table td { padding: 14px 10px; font-size: 13px; }
+    .verrous-table td:first-child { font-size: 18px; width: auto; }
+    .stamp { top: 32px; right: 16px; }
+  }
+  @media (max-width: 640px) {
+    .wrap, .wrap-narrow { padding: 0 20px; }
+    .hero { padding: 80px 0 56px; }
+    section { padding: 64px 0; }
+    .ledger { grid-template-columns: 1fr; }
+    .ledger-cell { border-right: none; }
+    .meta-row { gap: 28px; }
+    .topbar nav { display: none; }
+    .verdict-quote blockquote { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand">Topo · Belgique 24-26</div>
+    <nav>
+      <a href="#these">Thèse</a>
+      <a href="#mecanisme">Mécanisme</a>
+      <a href="#boucles">Boucles</a>
+      <a href="#preuves">Preuves</a>
+      <a href="#bilan">Bilan</a>
+      <a href="#humain">Le prix</a>
+      <a href="#verrous">Verrous</a>
+      <a href="#failles">Failles</a>
+      <a href="#calendrier">Échéances</a>
+      <a href="#strategie">Stratégie</a>
+    </nav>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="stamp">Pièce versée au débat public</div>
+    <div class="eyebrow">Acte d'accusation citoyen · Mai 2026</div>
+    <h1>Un État qui fait la <span class="strike">leçon</span> à la Pologne, sans <em>l'écouter</em> chez lui.</h1>
+    <p class="thesis">Un État fondateur de l'Union européenne accumule, depuis 2014, <strong>plus de dix mille condamnations</strong> de la Cour européenne des droits de l'homme dans un seul contentieux. Il préfère payer <strong>vingt millions d'euros d'astreintes</strong> plutôt que d'exécuter une décision de justice sur les nuisances aériennes. Il est <strong>le seul des Vingt-Sept</strong> à recevoir une recommandation spécifique de la Commission européenne sur l'exécution diligente des jugements. Le Conseil de l'Europe vient d'activer contre lui un mécanisme d'escalade jusque-là réservé à la Biélorussie. C'est la Belgique. Et la Belgique fait, à Varsovie et à Budapest, la leçon de l'État de droit.</p>
+    <div class="meta-row">
+      <div><span>Pièces versées</span><span class="val">~70 notes, rapports, mémoires de recherche</span></div>
+      <div><span>Période couverte</span><span class="val">Mémorandum 2024 → avril 2026</span></div>
+      <div><span>Statut</span><span class="val">Publication libre · diffusion encouragée</span></div>
+      <div><span>Mise à jour</span><span class="val">15 mai 2026</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- THESE -->
+<section id="these">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">00 — La thèse</div>
+      <div>
+        <h2>Ce n'est pas une <em>crise</em>. C'est un régime.</h2>
+        <p class="section-intro">L'érosion démocratique belge n'est ni un accident, ni une suite de scandales, ni un effet d'époque. C'est le fonctionnement <em>normal</em> d'un système qui a substitué l'oligarchie partisane à la représentation, et qui en paie le coût en violations documentées de ses propres engagements constitutionnels et conventionnels.</p>
+      </div>
+    </div>
+
+    <div class="narrative">
+      <p>La Belgique de 2026 n'est pas en train de glisser. Elle est arrivée. <strong>Un parlementaire sur cent quarante-neuf vote selon sa conscience.</strong> Les autres exécutent une consigne décidée hors de l'hémicycle, par des présidents de partis qui n'ont aucune existence constitutionnelle. La Constitution proclame, depuis 1831, que <em>« les membres des deux Chambres représentent la Nation »</em> — l'article 42, mandat libre, prohibition du mandat impératif. Un siècle et demi plus tard, le taux de cohésion partisane à la Chambre frôle les 100 %. La fiction est devenue norme.</p>
+
+      <p>Pendant ce temps, l'État qui se rêve en parangon de l'État de droit accumule, devant les juridictions européennes, le bilan d'un récidiviste institutionnel. <strong>Plus de dix mille condamnations</strong> de Strasbourg dans l'unique contentieux de l'accueil — qualifié de <em>« défaillance systémique »</em>. <strong>Seize recommandations anti-corruption sur vingt-deux</strong> non mises en œuvre par le Conseil de l'Europe. <strong>Vingt millions d'euros d'astreintes payées</strong> plutôt que de respecter un arrêt sur les nuisances aériennes — un Premier ministre qualifiant publiquement de <em>« perte de temps »</em> l'arrêt climatique qui obligeait son gouvernement à réduire les émissions. <strong>Seule la Biélorussie</strong> a, à ce jour, franchi le stade ultime du GRECO que la Belgique côtoie depuis novembre 2025.</p>
+
+      <p>La cascade des affaires — Publifin-Nethys, Samusocial, Kazakhgate, Qatargate, Reynders, le retour aux mains publiques du parc nucléaire d'Engie négocié dans une opacité contractuelle quasi totale — n'est pas anecdotique. <strong>C'est le bruit que fait un régime qui marche.</strong> Et ce régime, la doctrine constitutionaliste belge l'a nommé sans détour depuis Wilfried Dewachter en 2001 : <em>la particratie</em>. Un système où, comme l'écrit le CRISP, les partis sont <em>« politiquement centraux mais juridiquement évanescents »</em> — assez puissants pour contrôler l'État, assez invisibles juridiquement pour échapper à tout recours direct.</p>
+
+      <p>Cette page rassemble deux ans d'enquête citoyenne. Elle ne vise ni à informer ni à indigner — les deux registres ont fait leur temps. Elle vise à <strong>retourner le système contre lui-même</strong> : nommer le régime avec la précision du droit, exposer ses contradictions internes comme failles juridiques opérationnelles, et aligner l'action citoyenne sur le calendrier des institutions internationales qui sont les seules à pouvoir produire, dans les trois années qui viennent, la pression à laquelle ce système devra céder.</p>
+    </div>
+
+    <div class="verdict-quote">
+      <blockquote>
+        Ceux qui contrôlent le système contrôlent aussi les clés de sa réforme. C'est pourquoi la réforme ne viendra pas du système.
+        <cite>— Diagnostic transversal du corpus citoyen, mai 2026</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- MECANISME -->
+<section id="mecanisme">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">01 — Le mécanisme</div>
+      <div>
+        <h2>La particratie n'est pas une <em>métaphore</em>.</h2>
+        <p class="section-intro">C'est une qualification juridico-politique précise, documentée par la doctrine belge depuis les années 1970, et dont les ressorts opératoires sont identifiables ligne par ligne — y compris dans la Constitution.</p>
+      </div>
+    </div>
+
+    <div class="narrative">
+      <p>Le régime fonctionne par capture en quatre temps, et chaque temps verrouille le suivant.</p>
+
+      <p><strong>Premier temps : la pilarisation.</strong> Aux origines, un État fragmenté entre piliers idéologiques (catholique, socialiste, libéral) a confié sa pacification à des partis qui ont, en retour, encadré le citoyen <em>« du berceau au tombeau »</em> via mutuelles, syndicats, réseaux d'enseignement. Le compromis au sommet a remplacé l'affrontement dans la rue. La médiation entre l'individu et l'État est devenue, structurellement, l'affaire des partis. Cette ingénierie historique a sauvé l'État belge. Elle a aussi installé un précédent : les partis dessinent les systèmes sociaux qui assurent leur propre survie financière et électorale. Le terme technique est <em>policy feedback</em>. La traduction politique est : <strong>l'appareil contrôle ce qui le finance.</strong></p>
+
+      <p><strong>Deuxième temps : la métamorphose.</strong> L'article 42 — <em>« Les membres des deux Chambres représentent la Nation, et non uniquement ceux qui les ont élus »</em> — interdit explicitement le mandat impératif. La doctrine européenne (Commission de Venise) en a fait <em>« l'une des clés de voûte du constitutionnalisme démocratique »</em>. La pratique parlementaire belge l'a vidé. La discipline de vote est obtenue par un arsenal de sanctions extra-juridiques : exclusion des commissions, refus de reconduction sur liste, retrait du soutien logistique, rétrocession imposée d'indemnités, signature préalable de <em>« chartes de fidélité »</em> et de lettres de démission. Aucun parlementaire belge n'a jamais saisi un juge pour contester cette discipline. Pas par satisfaction. Par <strong>impossibilité procédurale</strong> : les partis sont des associations de fait sans personnalité juridique ; le Conseil d'État ne peut connaître que d'actes d'autorités administratives ; la Cour constitutionnelle ne contrôle que le Titre II — et l'article 42 relève du Titre III.</p>
+
+      <div class="preuve">
+        <h4>L'écart entre la norme et la pratique, en un chiffre.</h4>
+        <p>Selon les travaux de Frederik Verleden (CRISP), sur 1 823 votes à la Chambre entre 2003 et 2007, la cohésion partisane atteint <span class="num-inline">99,95 %</span> pour le sp.a et <span class="num-inline">97,33 %</span> pour le cdH. Sous le gouvernement Wilmès II, la discipline de la majorité atteint <span class="num-inline">99,73 %</span>. Au PTB-PVDA, sur dix années de présence parlementaire fédérale, <strong>aucun vote dissident en plénière n'est documenté</strong>.</p>
+        <p>Une telle unanimité arithmétique sur des centaines de textes législatifs hétérogènes est statistiquement impossible si elle résulte du libre arbitre individuel. C'est la définition juridique du <em>mandat impératif de facto</em>, prohibé par l'article 42. Il est appliqué par cinq cent quatre-vingts parlementaires belges, tous les jours, sans qu'aucun juge ne le constate.</p>
+        <p class="ref">Sources : Verleden (CRISP, <em>Aux sources de la particratie</em>, 2019) · Depauw (KU Leuven, sur cohésion comparée européenne) · Bourgaux (ULB, <em>La démocratisation du gouvernement représentatif</em>, 2013) · Compass artifact wf-c68bc1b7.</p>
+      </div>
+
+      <p><strong>Troisième temps : la captation des ressources.</strong> Quatre-vingts pour cent du revenu des partis politiques belges provient des subventions publiques, à un niveau par voteur deux à quatre fois supérieur à celui des voisins (Bart Maddens, KU Leuven). Le contrôle de ce financement est exercé par la Commission de contrôle des dépenses électorales — composée des parlementaires des partis bénéficiaires. <strong>Les contrôleurs et les contrôlés ne font qu'un.</strong> Côté exécutif, les cabinets ministériels concentrent l'expertise et la décision, hors du champ de l'administration publique : 37 millions d'euros par an en Wallonie (Cour des comptes 2022, en intégrant les détachés non budgétés), avec 56 % de fonctionnaires détachés <em>« à titre gratuit »</em> dont le coût réel n'apparaît dans aucun budget. À Bruxelles, 470 millions d'euros de consultance privée sur une législature pour suppléer l'expertise des cabinets gelée par les moratoires sur l'embauche. La littérature académique qualifie ces cabinets de <em>« covert means of party financing »</em> — financement occulte des partis par détournement des moyens administratifs.</p>
+
+      <p><strong>Quatrième temps : la désobéissance assumée.</strong> Lorsque les juridictions tranchent contre l'État, l'État paie. Plus exactement, le contribuable paie — pour que l'État puisse continuer à ne pas exécuter. C'est le stade où la particratie cesse d'être seulement une pathologie de la représentation pour devenir une <em>désobéissance d'État institutionnalisée</em>. L'article 159 de la Constitution oblige les juridictions à écarter les actes administratifs illégaux. Mais que vaut un dispositif constitutionnel quand l'exécutif a appris à <strong>budgétiser sa propre illégalité</strong> ?</p>
+    </div>
+  </div>
+</section>
+
+<!-- BOUCLES -->
+<section id="boucles">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">02 — Pourquoi rien ne bouge</div>
+      <div>
+        <h2>Trois cycles fermés qui se <em>nourrissent</em> de leurs propres effets.</h2>
+        <p class="section-intro">Le régime n'est pas seulement injuste. Il est <em>auto-reproductif</em>. Trois boucles d'auto-renforcement expliquent pourquoi les alertes ne produisent pas de réforme, et où viser pour les rompre.</p>
+      </div>
+    </div>
+
+    <div class="boucles">
+
+      <div class="boucle">
+        <div class="num">Cycle 01</div>
+        <h4>Discipline ↔ Financement</h4>
+        <svg class="cycle-svg" viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="ar1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M0,0 L10,5 L0,10 z" fill="#9c1c1c"/>
+            </marker>
+          </defs>
+          <g fill="none" stroke="#9c1c1c" stroke-width="1.6">
+            <path d="M 60 60 Q 140 18 220 60" marker-end="url(#ar1)"/>
+            <path d="M 220 80 Q 140 132 60 80" marker-end="url(#ar1)"/>
+          </g>
+          <g fill="#0f0e0c" font-family="Fraunces" font-size="13" font-weight="500" text-anchor="middle">
+            <text x="60" y="74">Discipline</text>
+            <text x="60" y="90">de vote</text>
+            <text x="220" y="74">Dotations</text>
+            <text x="220" y="90">publiques</text>
+          </g>
+          <g fill="#6b6358" font-family="IBM Plex Mono" font-size="9" text-anchor="middle" letter-spacing="0.5">
+            <text x="140" y="28">le parti distribue les fonds</text>
+            <text x="140" y="160">l'élu doit aligner son vote</text>
+          </g>
+        </svg>
+        <p>L'élu dépend matériellement du parti pour sa carrière, sa place sur liste, son indemnité. Le parti capte la dotation publique. Le contrôle de la dotation est exercé par les bénéficiaires eux-mêmes. <strong>Le système qui finance la discipline est contrôlé par les disciplinés.</strong></p>
+      </div>
+
+      <div class="boucle">
+        <div class="num">Cycle 02</div>
+        <h4>Opacité ↔ Capture</h4>
+        <svg class="cycle-svg" viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+          <g fill="none" stroke="#9c1c1c" stroke-width="1.6">
+            <path d="M 60 60 Q 140 18 220 60" marker-end="url(#ar1)"/>
+            <path d="M 220 80 Q 140 132 60 80" marker-end="url(#ar1)"/>
+          </g>
+          <g fill="#0f0e0c" font-family="Fraunces" font-size="13" font-weight="500" text-anchor="middle">
+            <text x="60" y="74">Cabinets</text>
+            <text x="60" y="90">opaques</text>
+            <text x="220" y="74">Capture</text>
+            <text x="220" y="90">sectorielle</text>
+          </g>
+          <g fill="#6b6358" font-family="IBM Plex Mono" font-size="9" text-anchor="middle" letter-spacing="0.5">
+            <text x="140" y="28">le lobby négocie sans trace</text>
+            <text x="140" y="160">l'opacité doit perdurer</text>
+          </g>
+        </svg>
+        <p>La loi du 12 mai 2024, présentée comme avancée de transparence, a introduit l'exception <em>« stratégie politique »</em> qui exclut du champ de la publicité tout document entre ministres, cabinets et partis. Conséquence : <strong>le pantouflage, les ASBL satellites et les intercommunales restent les canaux où la régulation publique se négocie hors champ.</strong></p>
+      </div>
+
+      <div class="boucle">
+        <div class="num">Cycle 03</div>
+        <h4>Non-recours ↔ Violence</h4>
+        <svg class="cycle-svg" viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+          <g fill="none" stroke="#9c1c1c" stroke-width="1.6">
+            <path d="M 60 60 Q 140 18 220 60" marker-end="url(#ar1)"/>
+            <path d="M 220 80 Q 140 132 60 80" marker-end="url(#ar1)"/>
+          </g>
+          <g fill="#0f0e0c" font-family="Fraunces" font-size="13" font-weight="500" text-anchor="middle">
+            <text x="60" y="74">Complexité</text>
+            <text x="60" y="90">administrative</text>
+            <text x="220" y="74">Non-recours</text>
+            <text x="220" y="90">aux droits</text>
+          </g>
+          <g fill="#6b6358" font-family="IBM Plex Mono" font-size="9" text-anchor="middle" letter-spacing="0.5">
+            <text x="140" y="28">la charge cognitive sature</text>
+            <text x="140" y="160">les statistiques valident l'austérité</text>
+          </g>
+        </svg>
+        <p>La conditionnalité administrative imposée aux plus précaires (médecins-conseils INAMI, critères BIM, digitalisation forcée) produit des renoncements de masse. Ces renoncements sont enregistrés comme <em>« rationalisation budgétaire »</em>. <strong>L'État fabrique ses propres exclus puis encaisse les économies sur leur dos.</strong></p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PREUVES INTERNATIONALES -->
+<section id="preuves">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">03 — Témoignages</div>
+      <div>
+        <h2>La communauté internationale a déjà <em>témoigné</em>.</h2>
+        <p class="section-intro">Aucune institution ne reprend le mot <em>« particratie »</em>. Toutes documentent les symptômes. La particratie belge est <strong>connue par ses effets et innommée par convention diplomatique</strong>. Ce silence sémantique protège politiquement l'État-hôte des institutions européennes. Il ne le protège plus juridiquement.</p>
+      </div>
+    </div>
+
+    <div class="temoins">
+      <div class="temoin">
+        <div class="org">GRECO · Conseil de l'Europe</div>
+        <div class="verdict">« La Belgique ne se conforme pas suffisamment »</div>
+        <div class="ref">5ᵉ cycle, addendum du <strong>12 décembre 2025</strong>. À la 101ᵉ plénière, le Secrétaire général du Conseil de l'Europe a été <strong>chargé d'écrire au ministre belge des Affaires étrangères</strong>. Stade précédant immédiatement la déclaration publique de non-conformité — prononcée jusqu'ici contre <em>la seule Biélorussie</em>.</div>
+      </div>
+      <div class="temoin">
+        <div class="org">CEDH · Strasbourg</div>
+        <div class="verdict">« Défaillance systémique »</div>
+        <div class="ref">Qualification dans <em>Camara</em>, puis <em>M.V. e.a.</em>. <strong>Plus de 10 000 condamnations</strong> dans le seul contentieux accueil. Aucun équivalent récent en Europe occidentale. Et l'arrêt du <strong>9 avril 2026</strong> confirme l'inexécution.</div>
+      </div>
+      <div class="temoin">
+        <div class="org">Commission européenne</div>
+        <div class="verdict">« Plusieurs défis structurels »</div>
+        <div class="ref">Rapports État de droit 2022-2025. Belgique <strong>seul État membre UE</strong> recevant une recommandation spécifique sur l'exécution diligente des décisions de justice (COM(2025)900). Plus aucun progrès noté sur la réforme du lobbying en 2025.</div>
+      </div>
+      <div class="temoin">
+        <div class="org">Economist Intelligence Unit</div>
+        <div class="verdict">« Flawed democracy »</div>
+        <div class="ref">Depuis 2017. Parmi les six fondateurs de l'UE, seules la France, l'Italie, Malte et la Belgique sont classées en démocratie défaillante. Allemagne, Pays-Bas, Luxembourg restent <em>« full democracy »</em>.</div>
+      </div>
+      <div class="temoin">
+        <div class="org">CIVICUS Monitor</div>
+        <div class="verdict">« Narrowed civic space »</div>
+        <div class="ref">Déclassement de <em>« open »</em> à <em>« narrowed »</em> en <strong>2023</strong>. Aligne la Belgique sur les démocraties où l'espace civique commence à se restreindre. Procédures-bâillons documentées.</div>
+      </div>
+      <div class="temoin">
+        <div class="org">Transparency International</div>
+        <div class="verdict">« Rule of law and political integrity threats »</div>
+        <div class="ref">IPC chute à <strong>69/100 en 2024</strong> (22ᵉ rang mondial), <strong>plus bas niveau historique</strong>. Liens étroits documentés entre politique et milieux d'affaires. Cascade : Publifin, Samusocial, Kazakhgate, Qatargate, Reynders, Engie.</div>
+      </div>
+    </div>
+
+    <div class="preuve" style="margin-top: 56px;">
+      <h4>Pourquoi cette condamnation internationale reste indolore pour le régime.</h4>
+      <p>Le silence relatif des médias internationaux et du Parlement européen tient à trois mécanismes identifiés. Premièrement, la <strong>Belgique reste classée « Free »</strong> par Freedom House (96/100) — les indices fondés majoritairement sur la dimension électorale ne perçoivent pas la pathologie intra-parlementaire. La mécanique du vote est intacte ; seul le contenu démocratique en est sorti. Deuxièmement, Bruxelles est le <strong>siège des institutions européennes</strong> ; un réquisitoire frontal sur le pays-hôte coûte politiquement aux acteurs qui auraient les moyens de l'instruire. Troisièmement, <strong>le mot « particratie » n'a pas d'équivalent grand public en anglais</strong>. La critique passe donc par des proxies techniques (corruption, État de droit, droits humains) qui dispersent l'alerte au lieu de la concentrer.</p>
+      <p>Ces trois facteurs expliquent pourquoi le régime peut continuer. Ils ne le protègent pas pour autant juridiquement. <strong>La pièce versée au dossier ne dépend pas du commentaire médiatique qu'elle suscite.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- BILAN -->
+<section id="bilan">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">04 — Le bilan</div>
+      <div>
+        <h2>Huit chiffres. <em>Pas un de plus.</em></h2>
+        <p class="section-intro">Pas d'inventaire. Le corpus en contient des centaines. Huit suffisent pour que l'ordre de grandeur ne soit plus discutable — à condition d'accepter de regarder ce qu'ils mesurent.</p>
+      </div>
+    </div>
+
+    <div class="ledger">
+      <div class="ledger-cell">
+        <div class="num">99,73<small>%</small></div>
+        <div class="label">Taux de discipline de vote dans la majorité fédérale Wilmès II — la mesure empirique de l'article 42 vidé</div>
+        <div class="source">Verleden / CRISP — sur 1823 votes</div>
+      </div>
+      <div class="ledger-cell">
+        <div class="num">~4<small>Md €</small></div>
+        <div class="label">Financement public direct cumulé des partis depuis 1989 — capté par cinq présidents de partis qui n'ont aucune existence constitutionnelle</div>
+        <div class="source">Estimation corpus, base loi 4 juillet 1989</div>
+      </div>
+      <div class="ledger-cell">
+        <div class="num">16<small>/22</small></div>
+        <div class="label">Recommandations GRECO non mises en œuvre — 5ᵉ cycle, addendum 12 décembre 2025</div>
+        <div class="source">GrecoRC5(2024)3 · 101ᵉ plénière</div>
+      </div>
+      <div class="ledger-cell">
+        <div class="num">10 000<small>+</small></div>
+        <div class="label">Condamnations CEDH dans le seul contentieux accueil — qualification de « défaillance systémique » par la Cour</div>
+        <div class="source">Arrêts <em>Camara</em>, <em>M.V. e.a.</em>, 9 avril 2026</div>
+      </div>
+      <div class="ledger-cell">
+        <div class="num">20<small>M€</small></div>
+        <div class="label">Astreintes accumulées sur les nuisances de Bruxelles-National — l'État paie pour ne pas obéir</div>
+        <div class="source">BX1, dossier 2024</div>
+      </div>
+      <div class="ledger-cell">
+        <div class="num">69<small>/100</small></div>
+        <div class="label">Indice de perception de la corruption 2024 — niveau historique le plus bas, contre 77 en 2016</div>
+        <div class="source">Transparency Int.</div>
+      </div>
+      <div class="ledger-cell">
+        <div class="num">613<small>jours</small></div>
+        <div class="label">Pour former un gouvernement régional à Bruxelles (record absolu, février 2026) — la thrombose institutionnelle comme nouvelle norme</div>
+        <div class="source">Crise post-électorale 2024-2026</div>
+      </div>
+      <div class="ledger-cell">
+        <div class="num">1<small>seul</small></div>
+        <div class="label">État membre de l'UE recevant une recommandation spécifique sur l'exécution des décisions de justice : la Belgique</div>
+        <div class="source">COM(2025)900</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COUT HUMAIN -->
+<section id="humain" class="humain-zone">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">05 — Qui paie</div>
+      <div>
+        <h2>Le déficit démocratique <em>se paie en bas.</em></h2>
+        <p class="section-intro">Pendant que le sommet négocie sa non-conformité aux standards internationaux, l'État externalise le coût de cette non-conformité sur les populations qu'il avait promis de protéger. C'est le mouvement le plus systématiquement passé sous silence par le débat institutionnel.</p>
+      </div>
+    </div>
+
+    <div class="humain-content">
+      <div>
+        <p>L'<em>« État social actif »</em> théorisé à la fin des années 1990 a muté en architecture de la suspicion. Politiques d'activation, médecins-conseils INAMI transformés en évaluateurs de capacité de gain, complexification orchestrée des critères BIM, digitalisation forcée des démarches : le filet de sécurité est converti en outil de pénalisation de la misère. La <strong>fabrique institutionnelle du non-recours</strong> n'est plus une métaphore militante — c'est une politique publique dont les effets statistiques permettent ensuite de proclamer la <em>« rationalisation budgétaire »</em>.</p>
+
+        <p>La théorie de la rareté (Mullainathan, Shafir) documente ce qui se passe alors dans le cerveau d'un usager précarisé : le fardeau cognitif imposé par la survie administrative séquestre la bande passante mentale, provoque l'effondrement des fonctions exécutives, et rend matériellement impossible la navigation dans les labyrinthes que l'État a délibérément complexifiés. L'usager s'auto-exclut. L'État enregistre l'auto-exclusion comme efficience. <strong>La violence administrative devient comptable.</strong></p>
+
+        <p>Cette violence n'est pas un effet collatéral du déficit démocratique. <strong>Elle en est la condition de survie</strong> : sans la matière budgétaire prélevée sur les plus vulnérables, l'État ne pourrait pas différer indéfiniment la réforme de son sommet. Les invalidités perdues, les statuts BIM retirés, les radiations subies entre l'adoption d'une mesure et son éventuelle censure ultérieure par une juridiction constituent des préjudices que personne ne réparera. La temporalité juridique — décisions parfois rendues fin 2026 — laisse le dispositif déployer ses effets concrets avant la sanction.</p>
+
+        <p>Nommer ce processus est la première mesure d'éducation permanente utile. <em>Ce qui s'opère n'est pas une rationalisation gestionnaire. C'est une politique punitive d'État qui a fait des malades et des pauvres la ligne budgétaire d'ajustement d'un projet néolibéral-nationaliste.</em> Le coût démocratique n'est pas une externalité. <strong>C'est une variable d'ajustement.</strong></p>
+      </div>
+
+      <aside class="humain-side">
+        <h4>Les invisibles du débat institutionnel.</h4>
+        <ul>
+          <li>Anxiété documentée par l'Observatoire INAMI / LUSS (2022) avant, pendant et après les convocations médico-administratives</li>
+          <li>Syndémie : la précarité économique aggrave les troubles psychiques, qui aggravent l'incapacité à se défendre administrativement, qui aggrave la précarité</li>
+          <li>Verrou ultime du non-recours : la peur viscérale des représailles institutionnelles dissuade les recours contre les décisions injustes</li>
+          <li>Effet « boule de neige » documenté par l'ABSP : les scandales locaux érodent la confiance politique de manière cumulative et durable</li>
+          <li>23 % d'électeurs « hors système » au scrutin de 2024 — en régime de vote obligatoire</li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- VERROUS -->
+<section id="verrous">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">06 — L'architecture de l'impunité</div>
+      <div>
+        <h2>Quatre verrous, <em>une seule serrure</em>.</h2>
+        <p class="section-intro">Le régime n'est pas impossible à réformer par hasard. Il est <em>conçu</em> pour résister à toute attaque venue de l'extérieur de l'appareil. Les nommer permet de cesser de s'épuiser sur les fausses portes et de chercher les vraies failles.</p>
+      </div>
+    </div>
+
+    <table class="verrous-table">
+      <thead>
+        <tr>
+          <th>Verrou</th>
+          <th>Mécanisme</th>
+          <th>Effet</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Juridique</td>
+          <td>Inexistence constitutionnelle des partis (associations de fait sans personnalité juridique) ; immunité absolue des actes parlementaires ; Cour constitutionnelle limitée au Titre II — l'article 42 relevant du Titre III</td>
+          <td>Aucun citoyen, aucune ONG ne peut attaquer directement la particratie. Toute action passe par des biais : lacune extrinsèque, action en responsabilité de l'État législateur, voie préjudicielle, recours CEDH après épuisement des voies internes</td>
+        </tr>
+        <tr>
+          <td>Procédural</td>
+          <td>Auto-contrôle institutionnalisé : la Commission de contrôle du financement des partis est composée des parlementaires de ces partis ; six juges constitutionnels sur douze sont d'anciens parlementaires nommés à la majorité des deux tiers — c'est-à-dire par les partis eux-mêmes</td>
+          <td>Les contrôleurs et les contrôlés ne font qu'un. Toute réforme du système suppose l'accord explicite de ceux qui en vivent. Le système est <strong>conçu pour rendre sa réforme dépendante de sa volonté de se réformer</strong></td>
+        </tr>
+        <tr>
+          <td>Informationnel</td>
+          <td>Exception <em>« stratégie politique »</em> de la loi du 12 mai 2024 ; CADA fédérale aux avis purement consultatifs ; concentration de la presse belge entre quatre groupes (IPM, Rossel, Mediahuis, DPG) ; aucun registre obligatoire des lobbyistes au fédéral</td>
+          <td>Les preuves matérielles des instructions de vote, des arbitrages de cabinet et des conflits d'intérêts restent inaccessibles. Donc impropres à fonder une action contentieuse. <strong>Pas de preuve, pas de procès</strong></td>
+        </tr>
+        <tr>
+          <td>Cognitif</td>
+          <td>Le mot <em>« particratie »</em> ne franchit pas les médias internationaux. La doctrine académique reste compartimentée. L'opinion publique perçoit les scandales un à un, jamais comme symptômes d'un même régime. L'éducation civique scolaire reste descriptive et non critique</td>
+          <td>L'érosion progresse à bas bruit. Aucune alerte unique ne déclenche de réaction proportionnée à l'accumulation cumulée. <strong>Le régime se reproduit dans l'inaperçu</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="verdict-quote" style="margin-top: 64px;">
+      <blockquote>
+        L'opacité ne procède pas d'une violation du droit, mais de sa neutralisation par construction institutionnelle.
+        <cite>— Analyse du kern, corpus citoyen 2025</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- FAILLES -->
+<section id="failles">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">07 — Où frapper</div>
+      <div>
+        <h2>Là où le régime <em>se contredit</em> lui-même.</h2>
+        <p class="section-intro">Un régime conçu pour résister à l'extérieur reste vulnérable à ses propres contradictions internes. Cinq failles juridiquement exploitables, où l'État ne peut soutenir sa pratique sans renier ses engagements. Frapper là, c'est utiliser le droit que l'État a lui-même produit pour le retourner contre lui.</p>
+      </div>
+    </div>
+
+    <div class="failles">
+
+      <div class="faille">
+        <div class="lbl">Faille 01 · Constitutionnelle</div>
+        <h4>L'<em>asymétrie</em> de l'article 15ter</h4>
+        <p>La loi du 4 juillet 1989 prévoit la privation de dotation pour tout parti <em>hostile aux droits garantis par la CEDH</em>. Mais elle <strong>reste muette</strong> sur les partis qui annihilent l'article 42 de la Constitution en imposant un mandat impératif <em>de facto</em> à leurs élus.</p>
+        <p>C'est une <em>lacune extrinsèque</em> au sens de la doctrine Scholsem-Behrendt : le législateur règle une matière mais omet d'élaborer un régime analogue pour une catégorie comparable. Faute du législateur ouvrant la voie de la responsabilité civile de l'État (art. 1382 C. civ., jurisprudence Cassation 2006).</p>
+        <div class="impasse">
+          <strong>Question préjudicielle visée</strong>
+          L'article 15ter viole-t-il les articles 10 et 11 de la Constitution, lus avec l'article 42, en ne sanctionnant pas le mandat impératif de facto comme il sanctionne l'hostilité à la CEDH ?
+        </div>
+      </div>
+
+      <div class="faille">
+        <div class="lbl">Faille 02 · Loi Quintin</div>
+        <h4>Le glaive et le <em>bouclier</em></h4>
+        <p>La loi Quintin (2025) dote l'État d'un <em>glaive administratif</em> pour interdire les organisations radicales menaçant l'ordre démocratique. Cohérent — sauf que le même État oppose un <em>bouclier d'autonomie partisane</em> pour continuer à financer des structures qui violent ouvertement l'article 42.</p>
+        <p>L'argument se retourne mécaniquement : <strong>l'État ne peut pas, dans le même temps, sanctionner administrativement les violations « externes » de l'ordre constitutionnel et financer les violations « internes » par lui-même.</strong> La contradiction est juridiquement insoutenable.</p>
+        <div class="impasse">
+          <strong>Levier</strong>
+          Demande d'application uniforme du standard : si glaive contre l'extérieur, alors glaive contre l'intérieur. Recours pour rupture d'égalité.
+        </div>
+      </div>
+
+      <div class="faille">
+        <div class="lbl">Faille 03 · CEDH Mugemangango</div>
+        <h4>L'auto-jugement <em>condamné</em></h4>
+        <p>Dans <em>Mugemangango c. Belgique</em> (2020), la CEDH a déjà condamné l'auto-jugement parlementaire en matière de contestation électorale. Par extension juridique évidente : les partis ne peuvent être seuls juges du respect des règles de leur propre financement.</p>
+        <p>Dans <em>Tomenko c. Ukraine</em> (2025), la Cour a affirmé que la suprématie du parti sur le libre arbitre de l'élu <strong>« place les partis politiques au-dessus de l'électorat souverain »</strong> — qualification anticonventionnelle au regard de l'article 3 du Protocole 1.</p>
+        <div class="impasse">
+          <strong>Levier</strong>
+          Argument d'autorité : la Belgique est <em>déjà condamnée</em> dans une matière voisine. La transposition à la discipline de vote n'attend qu'un plaideur qualifié.
+        </div>
+      </div>
+
+      <div class="faille">
+        <div class="lbl">Faille 04 · Magyar Helsinki</div>
+        <h4>Le droit d'<em>accès</em> à l'information publique</h4>
+        <p>L'arrêt <em>Magyar Helsinki Bizottság c. Hongrie</em> (2016) consacre, sous l'article 10 CEDH, un droit pour les <em>« chiens de garde »</em> (ONG, journalistes, chercheurs) d'accéder aux documents administratifs d'intérêt public. La Belgique se classe au <strong>122ᵉ rang sur 139 pays</strong> en matière d'accès à l'information.</p>
+        <p>Combiné aux articles 4 et 6 de la Convention d'Aarhus et à l'article 32 de la Constitution, ce dispositif permet d'attaquer l'exception <em>« stratégie politique »</em> de la loi du 12 mai 2024 comme disproportionnée et inconventionnelle.</p>
+        <div class="impasse">
+          <strong>Voie de recours</strong>
+          Demande CADA visant un document documenté → refus → recours au Conseil d'État mobilisant l'article 32 Const., l'article 10 CEDH, l'article 4 Aarhus.
+        </div>
+      </div>
+
+      <div class="faille">
+        <div class="lbl">Faille 05 · Responsabilité de l'État</div>
+        <h4>La <em>faute</em> du législateur</h4>
+        <p>Depuis l'arrêt de la Cour de cassation de 2006, <strong>l'État belge peut être condamné pour faute commise dans l'exercice de la fonction législative</strong>, notamment par l'adoption de lois inconstitutionnelles ou lacunaires (art. 1382 C. civ.).</p>
+        <p>Un ancien élu défectionnaire (PTB, dont les défections récentes — Handichi 2024, Dupont mars 2026, Aït Alouha avril 2026 — fournissent les pièces empiriques) dispose de l'intérêt direct à agir : préjudice matériel (rétrocession d'indemnités), professionnel (sanctions pour vote de conscience), moral (<em>« machine à broyer »</em> documentée).</p>
+        <div class="impasse">
+          <strong>Stratégie</strong>
+          Tribunal de première instance → question préjudicielle forcée → Cour constitutionnelle. La voie civile contourne l'impossibilité du recours direct.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CALENDRIER -->
+<section id="calendrier">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">08 — Les dates</div>
+      <div>
+        <h2>Le calendrier <em>2026 – 2029</em>.</h2>
+        <p class="section-intro">Plus utile qu'un appel à mobilisation général : connaître les dates où la pression citoyenne, alignée avec le calendrier des institutions internationales, peut produire un effet de levier mesurable. Cinq échéances structurent les trois prochaines années.</p>
+      </div>
+    </div>
+
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-date">30 nov. 2026</div>
+        <div class="tl-body">
+          <h4>Rapport de progrès GRECO</h4>
+          <p>La Belgique doit produire les preuves matérielles de mise en œuvre des 16 recommandations en souffrance — registre des lobbyistes, déclarations de patrimoine publiques, cooling-off pour anciens ministres, contrôle externe des cabinets. <strong>Une réponse insuffisante déclenche le stade ultime : déclaration publique de non-conformité.</strong> Fenêtre d'opportunité citoyenne : documenter publiquement, mois par mois, l'absence de progrès, et l'adresser à la délégation GRECO.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">2026 – 2027</div>
+        <div class="tl-body">
+          <h4>Examen périodique universel ONU</h4>
+          <p>Le Conseil des droits de l'homme examine la Belgique. Les ONG peuvent soumettre des contributions documentées. <strong>Moment privilégié pour faire entrer dans le dossier officiel</strong> la non-exécution structurelle des décisions de justice et la fabrique du non-recours aux droits. Les contributions citoyennes sont consultées au-delà du cycle, et fondent les recommandations ultérieures.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">2026 – 2028</div>
+        <div class="tl-body">
+          <h4>Procédure pour déficit excessif</h4>
+          <p>La Commission européenne instruit le déficit belge. Les arbitrages forcés rendent <strong>politiquement coûteux</strong> le maintien des dépenses opaques : cabinets, consultance, dotations partisanes. Levier rhétorique : exiger la transparence comme condition d'efficience budgétaire. L'argument est imparable précisément parce qu'il est strictement gestionnaire.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">20 mars 2025 → 2027</div>
+        <div class="tl-body">
+          <h4>6ᵉ cycle d'évaluation GRECO · entités infranationales</h4>
+          <p>Le cycle ouvert porte sur l'intégrité des régions, provinces, communes — territoires où Publifin, Samusocial, Nethys ont laissé des traces. <strong>L'évaluation belge à venir produira une nouvelle pièce internationale</strong> à verser à l'instruction citoyenne.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">2029</div>
+        <div class="tl-body">
+          <h4>Triple convergence</h4>
+          <p>Élections fédérales et régionales. Renouvellement complet du Conseil supérieur de la Justice. Échéance d'application des -55 % d'émissions imposés par Klimaatzaak (horizon 2030). <strong>Trois moments où les engagements antérieurs deviennent matériellement vérifiables.</strong> Le test de réalité de tout ce qui aura été promis en 2024-2026.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGIE -->
+<section id="strategie">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">09 — La stratégie</div>
+      <div>
+        <h2>Cinq fronts. <em>Aucun ne suffit seul.</em></h2>
+        <p class="section-intro">Pas de mobilisation générale ; pas de salut individuel. Une stratégie multi-niveaux où chaque front rend les autres efficaces. Lire ce qui suit comme une <em>architecture de campagne</em> distribuée — pas comme une liste d'options à choisir.</p>
+      </div>
+    </div>
+
+    <div class="fronts">
+
+      <div class="front">
+        <div class="num">01</div>
+        <div class="content">
+          <h4>Informationnel — <em>nommer</em> avec précision</h4>
+          <p>Lire les rapports primaires (GRECO RC5, IFDH 2024-25, ENNHRI, arrêts CEDH par leur référence exacte). Maîtriser la distinction symptôme/diagnostic. Cesser de parler de <em>« corruption »</em> quand il s'agit de <em>capture réglementaire</em>. Cesser de parler de <em>« crise »</em> quand il s'agit de <em>régime</em>.</p>
+          <p><strong>Sans cette base lexicale, l'engagement supérieur tourne à vide.</strong> Une critique imprécise est une critique inopérante.</p>
+        </div>
+        <div class="signal">
+          <strong>Indicateur de progrès</strong>
+          Le mot « particratie » entre dans le langage médiatique grand public sans guillemets explicatifs.
+        </div>
+      </div>
+
+      <div class="front">
+        <div class="num">02</div>
+        <div class="content">
+          <h4>Transmissif — <em>équiper</em> les autres</h4>
+          <p>Éducation permanente reconnue, médias indépendants, structures pédagogiques, contenus publics librement réutilisables. Diffuser la grille de lecture transversale — pas chaque scandale séparément. <strong>Faire de l'analyse systémique le standard, et non l'exception.</strong></p>
+          <p>Cette page elle-même appartient à ce front. Elle est faite pour être citée, fragmentée, retravaillée, contestée.</p>
+        </div>
+        <div class="signal">
+          <strong>Indicateur de progrès</strong>
+          Les jeunes adultes diplômés expriment spontanément la critique systémique, et pas seulement la défiance diffuse.
+        </div>
+      </div>
+
+      <div class="front">
+        <div class="num">03</div>
+        <div class="content">
+          <h4>Suppléant — <em>tenir</em> la société civile</h4>
+          <p>Coopératives énergétiques REScoop, plateformes citoyennes BelRefugees, épiceries sociales, monnaies locales, Transparencia.be, Cumuleo. L'État défaillant est <em>palliée</em> dans ses missions régaliennes par la société civile.</p>
+          <p><strong>Vertu :</strong> reconstitue du tissu social et de la capacité d'agir. <strong>Limite à connaître :</strong> sans pression simultanée sur les fronts 4 et 5, la suppléance permet à l'État de différer ses obligations <em>sans en payer le coût d'image</em>. Suppléer sans documenter publiquement la défaillance qu'on supplée, c'est subventionner cette défaillance.</p>
+        </div>
+        <div class="signal">
+          <strong>Indicateur de progrès</strong>
+          Les structures de suppléance publient annuellement le coût qu'elles assument à la place de l'État.
+        </div>
+      </div>
+
+      <div class="front">
+        <div class="num">04</div>
+        <div class="content">
+          <h4>Contentieux — <em>forcer</em> l'entrée judiciaire</h4>
+          <p>Demandes CADA documentées + recours au Conseil d'État (article 14 lois coordonnées) ; question préjudicielle à la Cour constitutionnelle sur la lacune extrinsèque de l'article 15ter ; action en responsabilité de l'État législateur (art. 1382 C. civ.) ; recours CEDH après épuisement (article 35 Convention) ; communication au Comité d'examen d'Aarhus pour les décisions environnementales.</p>
+          <p>Le PTB-PVDA fournit involontairement le laboratoire empirique : les défections récentes (Handichi 2024, Dupont mars 2026, Aït Alouha avril 2026) <strong>documentent la « machine à broyer »</strong> et fournissent les plaideurs qualifiés à intérêt direct à agir.</p>
+        </div>
+        <div class="signal">
+          <strong>Indicateur de progrès</strong>
+          Une première action en responsabilité de l'État pour faute du législateur sur l'article 15ter est introduite et déclarée recevable.
+        </div>
+      </div>
+
+      <div class="front">
+        <div class="num">05</div>
+        <div class="content">
+          <h4>Politique — <em>légiférer</em> en sortie de cycle</h4>
+          <p>Modification de la loi du 4 juillet 1989 (sanction des partis violant l'article 42, contrôle externe juridictionnel du financement) ; constitutionnalisation des partis sur le modèle allemand (art. 21 GG) ou portugais ; loi anti-SLAPP ; introduction d'un <em>Organstreitverfahren</em> belge permettant au député de contester son groupe parlementaire devant la Cour constitutionnelle.</p>
+          <p>Suppose une <strong>fenêtre politique exceptionnelle</strong> — qui ne s'ouvre que sous la pression cumulée des fronts 1 à 4 et alignée sur les échéances 2026-2029. La précondition est qu'à l'échéance 2029, le coût politique du statu quo dépasse pour les appareils le coût de leur propre réforme partielle.</p>
+        </div>
+        <div class="signal">
+          <strong>Indicateur de progrès</strong>
+          Une proposition de loi modifiant l'article 15ter (sanction du mandat impératif de facto) est inscrite à l'ordre du jour parlementaire.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="wrap">
+    <h2>Cette page n'est pas une <em>conclusion</em>. C'est une pièce.</h2>
+    <p>La synthèse qui précède n'a aucune ambition académique et aucune naïveté militante. Elle agrège deux ans de travail citoyen pour produire ce que les notes individuelles ne pouvaient pas produire isolément : <strong>un acte d'accusation argumenté, une cartographie des failles juridiquement exploitables, et un calendrier d'action aligné sur les échéances institutionnelles internationales</strong>.</p>
+    <p>Le régime particratique belge n'est pas invincible. Il est <em>conçu pour paraître l'être</em>. C'est une distinction stratégique. Un système qui repose sur quatre verrous structurels et survit grâce à trois boucles d'auto-renforcement reste vulnérable à toute action qui les attaque <strong>simultanément</strong>. Pas séparément. Simultanément.</p>
+    <p>Les trois prochaines années concentrent cinq fenêtres d'opportunité institutionnelle. Le GRECO en novembre 2026. L'EPU à l'ONU. La procédure pour déficit excessif. Le 6ᵉ cycle GRECO infranational. Et la triple convergence de 2029. <strong>Chacune est un dépôt de pièce possible.</strong> Aucune ne produira de réforme à elle seule. Ensemble, alignées avec une pression contentieuse et informationnelle continue, elles peuvent rendre, en 2029, le coût politique du statu quo supérieur pour les appareils au coût de leur propre réforme partielle.</p>
+    <p>C'est tout ce que vise la stratégie citoyenne : non pas vaincre le régime, qui survivra à toute défaite tactique — mais <em>déplacer le seuil</em> où la conservation du système coûte plus à ses bénéficiaires que sa réforme. À ce seuil, la réforme arrive d'elle-même. Pas avant.</p>
+    <p>Ce qui est versé ici au débat public n'engage personne. <strong>Ce qui n'est pas versé engage tout le monde.</strong></p>
+    <div class="sign">Topo · ouaisfi.eu/politique-belge — synthèse au 15 mai 2026 · diffusion libre, citation bienvenue</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <p>Sources primaires : rapports GRECO (4ᵉ et 5ᵉ cycles, 101ᵉ plénière nov. 2025), arrêts CEDH (<em>Camara</em>, <em>M.V. e.a.</em>, <em>Mugemangango</em>, <em>G.K.</em>, <em>Demirtaş</em>, <em>Tomenko</em>, <em>Magyar Helsinki Bizottság</em>), rapports État de droit Commission européenne 2022-2025 (COM(2025)900), IFDH 2024-2025, ENNHRI 2025, Liberties Rule of Law 2026, V-Dem 2026, EIU Democracy Index, Transparency International CPI 2024, CIVICUS Monitor, jurisprudence Cour constitutionnelle (n° 35/2024, n° 10/2001), Cour de cassation 2006 (responsabilité du législateur), Cour des comptes (cabinets wallons 2022), CRISP (Verleden, Depauw, Dewachter, De Winter), doctrine constitutionnaliste belge (Alen, Uyttendaele, Verdussen, Behrendt, Bourgaux, De Prins, Scholsem).</p>
+    <p>Pratiques juridiques : Loi 4 juillet 1989 (financement et comptabilité des partis), article 15ter ; Loi 12 mai 2024 (publicité de l'administration) et exception « stratégie politique » ; Loi Quintin 2025 ; articles 32, 33, 42, 65, 70, 99-101, 159 de la Constitution ; article 1382 du Code civil ; articles 8, 10, 13 CEDH, art. 3 Protocole 1 ; Convention d'Aarhus art. 4 et 6.</p>
+    <p>Cette page rassemble et hiérarchise un corpus citoyen de ~70 documents. Elle ne se substitue pas aux notes individuelles — elle propose une grille de lecture pour les articuler stratégiquement. <a href="https://ouaisfi.eu/politique-belge">ouaisfi.eu/politique-belge</a></p>
+    <p>Publication libre · Réutilisation encouragée · Critique sollicitée.</p>
+  </div>
+</footer>
+
+</body>
+</html>,300..900,0..100,0..1&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --ink: #0f0e0c;
