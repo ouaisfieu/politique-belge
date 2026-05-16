@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topo — Boîte à outils citoyenne · Belgique 2026 · Open source</title>
+<meta name="description" content="Tout ce qu'il faut savoir, et tout ce qu'on peut faire, pour contester la particratie belge. Outils, modèles, démarches et ressources — open source, libres de réutilisation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0d0c0a;--ink-soft:#2a2620;--ink-mute:#605648;--paper:#f1ecdf;--paper-warm:#e6dcc4;--paper-deep:#d6cba9;--rouge:#9b1717;--rouge-deep:#5e0a0a;--vert:#2a5f3d;--vert-soft:#3d7a52;--or:#a87f24;--bleu:#1f3a5f;--rule:rgba(13,12,10,0.2);--rule-strong:rgba(13,12,10,0.4)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'IBM Plex Sans',-apple-system,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;font-weight:400;font-size:17px;-webkit-font-smoothing:antialiased}
+::selection{background:var(--rouge);color:var(--paper)}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+.wrap-narrow{max-width:880px;margin:0 auto;padding:0 28px}
+a{color:var(--rouge);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+.topbar{border-bottom:1px solid var(--ink);padding:14px 0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;color:var(--ink-mute);text-transform:uppercase;position:sticky;top:0;z-index:100;background:rgba(241,236,223,0.97);backdrop-filter:blur(10px)}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.topbar a{color:var(--ink-mute);text-decoration:none;transition:color 0.2s;font-weight:500}
+.topbar a:hover{color:var(--rouge)}
+.topbar nav{display:flex;gap:18px;flex-wrap:wrap}
+.topbar .brand{color:var(--rouge);font-weight:700;letter-spacing:0.14em}
+.os-badge{display:inline-block;padding:3px 8px;border:1px solid var(--vert);color:var(--vert);font-size:9px;letter-spacing:0.16em;font-weight:600;margin-left:8px;border-radius:2px;text-transform:uppercase}
+.hero{padding:104px 0 72px;border-bottom:3px solid var(--ink);position:relative}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.24em;text-transform:uppercase;color:var(--rouge);margin-bottom:36px;font-weight:700;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.eyebrow::before{content:"";width:48px;height:2px;background:var(--rouge)}
+h1{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(44px,8vw,108px);line-height:0.95;letter-spacing:-0.03em;font-variation-settings:"opsz" 144,"SOFT" 0;color:var(--ink);margin-bottom:36px;max-width:1100px}
+h1 em{font-style:italic;color:var(--rouge);font-weight:400;font-variation-settings:"opsz" 144,"SOFT" 60,"WONK" 1}
+.lede{font-family:'Fraunces',serif;font-weight:350;font-size:clamp(20px,2.3vw,26px);line-height:1.42;color:var(--ink-soft);max-width:780px;margin-bottom:40px;font-variation-settings:"opsz" 36}
+.lede strong{color:var(--ink);font-weight:500}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;font-family:'IBM Plex Sans',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.04em;text-decoration:none;border:2px solid var(--ink);transition:all 0.15s;cursor:pointer}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn.primary:hover{background:var(--rouge);border-color:var(--rouge)}
+.btn.outline{background:transparent;color:var(--ink)}
+.btn.outline:hover{background:var(--ink);color:var(--paper)}
+.btn.vert{background:var(--vert);border-color:var(--vert);color:var(--paper)}
+.btn.vert:hover{background:var(--vert-soft);border-color:var(--vert-soft)}
+.hero-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.hero-meta > div{padding:20px 24px;border-right:1px solid var(--rule)}
+.hero-meta > div:last-child{border-right:none}
+.hero-meta .lbl{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:6px;display:block;font-weight:600}
+.hero-meta .val{font-size:14px;font-weight:500;color:var(--ink);line-height:1.4}
+section{padding:88px 0;border-bottom:1px solid var(--rule)}
+section.compact{padding:64px 0}
+.section-head{margin-bottom:48px;max-width:920px}
+.section-num{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.22em;color:var(--rouge);text-transform:uppercase;padding-top:14px;border-top:3px solid var(--rouge);font-weight:700;display:inline-block;margin-bottom:20px;line-height:1.4}
+.section-num small{display:block;font-weight:500;color:var(--ink-mute);margin-top:4px;letter-spacing:0.12em}
+h2{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(34px,5vw,56px);line-height:1.04;letter-spacing:-0.025em;font-variation-settings:"opsz" 72;margin-bottom:20px}
+h2 em{font-style:italic;color:var(--rouge);font-variation-settings:"opsz" 72,"SOFT" 60,"WONK" 1}
+.section-intro{font-family:'Fraunces',serif;font-weight:350;font-size:21px;line-height:1.5;color:var(--ink-soft);max-width:760px}
+.section-intro strong{color:var(--ink);font-weight:500}
+h3{font-family:'Fraunces',serif;font-weight:450;font-size:24px;line-height:1.2;margin-bottom:14px;letter-spacing:-0.01em}
+h3 em{font-style:italic;color:var(--rouge)}
+.constat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid var(--ink);margin-top:32px}
+.constat-cell{padding:32px 28px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--paper)}
+.constat-cell:nth-child(3n){border-right:none}
+.constat-cell:nth-last-child(-n+3){border-bottom:none}
+.constat-cell .big{font-family:'Fraunces',serif;font-weight:350;font-size:54px;line-height:1;color:var(--rouge);letter-spacing:-0.025em;margin-bottom:14px;font-variation-settings:"opsz" 144}
+.constat-cell .big small{font-size:22px;color:var(--ink);font-weight:400}
+.constat-cell .lbl{font-size:14px;line-height:1.55;color:var(--ink);font-weight:500;margin-bottom:10px}
+.constat-cell .lbl strong{color:var(--rouge-deep);font-weight:700}
+.constat-cell .src{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.08em;color:var(--ink-mute);text-transform:uppercase;padding-top:10px;border-top:1px solid var(--rule);margin-top:10px}
+.lexique{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:24px;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.lex-entry{padding:22px 28px;border-bottom:1px solid var(--rule);background:var(--paper);display:grid;grid-template-columns:1fr 16px 1fr;align-items:center;gap:14px}
+.lex-entry:nth-child(2n){background:var(--paper-warm)}
+.lex-entry:nth-last-child(-n+2){border-bottom:none}
+.lex-entry .from{font-family:'Fraunces',serif;font-size:18px;font-weight:400;color:var(--ink-mute);font-style:italic;text-decoration:line-through;text-decoration-color:var(--rouge);text-decoration-thickness:2px}
+.lex-entry .arrow{color:var(--rouge);font-weight:700;text-align:center}
+.lex-entry .to{font-family:'Fraunces',serif;font-size:19px;font-weight:500;color:var(--rouge-deep)}
+.mecanisme-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--ink);margin-top:32px;border:2px solid var(--ink)}
+.step{background:var(--paper);padding:28px 24px;position:relative}
+.step .nbr{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;color:var(--rouge);font-weight:700;margin-bottom:14px;text-transform:uppercase}
+.step h4{font-family:'Fraunces',serif;font-weight:450;font-size:22px;line-height:1.2;margin-bottom:14px;letter-spacing:-0.01em}
+.step h4 em{font-style:italic;color:var(--rouge)}
+.step p{font-size:14px;line-height:1.6;color:var(--ink-soft)}
+.step p strong{color:var(--ink);font-weight:600}
+.arsenal{display:grid;grid-template-columns:1fr;gap:0;margin-top:40px;border:2px solid var(--ink)}
+.tier{display:grid;grid-template-columns:200px 1fr;gap:0;border-bottom:2px solid var(--ink);background:var(--paper)}
+.tier:last-child{border-bottom:none}
+.tier-head{background:var(--paper-warm);padding:32px 28px;border-right:1px solid var(--ink);display:flex;flex-direction:column;justify-content:center;gap:8px}
+.tier-head .duree{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;color:var(--rouge);text-transform:uppercase;font-weight:700}
+.tier-head .titre{font-family:'Fraunces',serif;font-weight:400;font-size:28px;line-height:1.05;color:var(--ink);letter-spacing:-0.015em}
+.tier-head .titre em{font-style:italic;color:var(--rouge)}
+.tier-body{padding:24px 28px;display:flex;flex-direction:column;gap:18px}
+.action{display:grid;grid-template-columns:1fr auto;gap:16px;padding:18px 0;border-bottom:1px dashed var(--rule);align-items:start}
+.action:last-child{border-bottom:none}
+.action-text h5{font-family:'Fraunces',serif;font-weight:500;font-size:18px;margin-bottom:6px;letter-spacing:-0.005em}
+.action-text p{font-size:14px;color:var(--ink-soft);line-height:1.55}
+.action-text p a{color:var(--rouge);font-weight:500}
+.action-text p strong{color:var(--ink);font-weight:600}
+.action-link{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--rouge);font-weight:600;text-decoration:none;padding:6px 12px;border:1.5px solid var(--rouge);white-space:nowrap;transition:all 0.15s;align-self:start}
+.action-link:hover{background:var(--rouge);color:var(--paper);text-decoration:none}
+.modeles{display:flex;flex-direction:column;gap:16px;margin-top:32px}
+.modele{border:2px solid var(--ink);background:var(--paper)}
+.modele summary{padding:20px 24px;cursor:pointer;display:flex;align-items:center;gap:16px;font-family:'Fraunces',serif;font-weight:450;font-size:20px;color:var(--ink);list-style:none;letter-spacing:-0.005em;transition:background 0.15s}
+.modele summary::-webkit-details-marker{display:none}
+.modele summary::before{content:"+";font-family:'IBM Plex Mono',monospace;font-weight:600;color:var(--rouge);font-size:22px;width:24px;text-align:center}
+.modele[open] summary::before{content:"−"}
+.modele summary:hover{background:var(--paper-warm)}
+.modele summary .tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;color:var(--ink-mute);text-transform:uppercase;margin-left:auto;font-weight:600;padding:4px 10px;background:var(--paper-warm);border:1px solid var(--rule)}
+.modele[open] summary .tag{background:var(--paper-deep)}
+.modele-body{padding:0 24px 24px;border-top:1px solid var(--rule)}
+.modele-intro{font-size:14px;color:var(--ink-soft);line-height:1.6;padding:18px 0 14px;font-style:italic}
+.modele-intro strong{color:var(--ink);font-weight:600;font-style:normal}
+.modele-text{background:var(--paper-warm);border:1px solid var(--rule);padding:22px 24px;font-family:'IBM Plex Sans',sans-serif;font-size:14px;line-height:1.65;color:var(--ink);white-space:pre-wrap;position:relative;font-weight:400}
+.copy-btn{position:absolute;top:12px;right:12px;background:var(--ink);color:var(--paper);border:none;padding:6px 12px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;cursor:pointer;transition:background 0.15s}
+.copy-btn:hover{background:var(--rouge)}
+.copy-btn.copied{background:var(--vert)}
+.outils{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--ink);margin-top:32px;border:2px solid var(--ink)}
+.outil{background:var(--paper);padding:24px 26px;display:flex;flex-direction:column;gap:10px}
+.outil .nom{font-family:'Fraunces',serif;font-weight:500;font-size:21px;color:var(--ink);letter-spacing:-0.005em}
+.outil .desc{font-size:14px;color:var(--ink-soft);line-height:1.55;flex:1}
+.outil .desc strong{color:var(--ink);font-weight:600}
+.outil .lien{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--rouge);font-weight:600;text-decoration:none;letter-spacing:0.04em;align-self:start;padding-top:8px;border-top:1px solid var(--rule);width:100%;margin-top:auto}
+.outil .lien:hover{text-decoration:underline}
+.outil .lien::after{content:" →";opacity:0.6}
+.dates{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:32px}
+.date-card{border:2px solid var(--ink);padding:24px 26px;background:var(--paper)}
+.date-card .d{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--rouge);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px}
+.date-card h4{font-family:'Fraunces',serif;font-weight:450;font-size:21px;line-height:1.2;margin-bottom:10px;letter-spacing:-0.01em}
+.date-card p{font-size:14px;color:var(--ink-soft);line-height:1.6}
+.date-card p strong{color:var(--ink);font-weight:600}
+.glossaire{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-top:32px;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.glo-entry{padding:20px 28px;border-bottom:1px solid var(--rule)}
+.glo-entry:nth-last-child(-n+2){border-bottom:none}
+.glo-entry .terme{font-family:'Fraunces',serif;font-weight:500;font-size:18px;color:var(--rouge-deep);margin-bottom:6px}
+.glo-entry .def{font-size:14px;color:var(--ink-soft);line-height:1.6}
+.glo-entry .def strong{color:var(--ink);font-weight:600}
+.ressources-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:32px}
+.ress{background:var(--paper);padding:24px 24px;border-top:3px solid var(--rouge)}
+.ress .cat{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;color:var(--rouge);text-transform:uppercase;font-weight:700;margin-bottom:12px}
+.ress h4{font-family:'Fraunces',serif;font-weight:450;font-size:19px;line-height:1.2;margin-bottom:10px;letter-spacing:-0.005em}
+.ress .desc{font-size:13px;color:var(--ink-soft);line-height:1.55;margin-bottom:12px}
+.ress .lien{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--rouge);font-weight:600;text-decoration:none}
+.ress .lien:hover{text-decoration:underline}
+.opensource{background:var(--ink);color:var(--paper);padding:96px 0;margin:0;border:none;position:relative}
+.opensource::before{content:"";position:absolute;top:0;left:0;width:6px;height:100%;background:var(--vert-soft)}
+.opensource h2{color:var(--paper)}
+.opensource h2 em{color:var(--vert-soft);font-variation-settings:"opsz" 72,"SOFT" 60,"WONK" 1}
+.opensource .section-num{color:var(--vert-soft);border-color:var(--vert-soft)}
+.opensource .section-num small{color:rgba(241,236,223,0.55)}
+.opensource .section-intro{color:rgba(241,236,223,0.78)}
+.opensource .section-intro strong{color:var(--paper)}
+.os-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:40px}
+.os-card{padding:24px 0;border-top:2px solid var(--vert-soft)}
+.os-card .lbl{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--vert-soft);text-transform:uppercase;font-weight:700;margin-bottom:12px}
+.os-card h4{font-family:'Fraunces',serif;font-weight:400;font-size:22px;color:var(--paper);line-height:1.2;margin-bottom:14px;letter-spacing:-0.01em}
+.os-card p{font-size:14px;color:rgba(241,236,223,0.82);line-height:1.6;margin-bottom:14px}
+.os-card p strong{color:var(--paper);font-weight:500}
+.os-card a{color:var(--vert-soft);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.06em;font-weight:600;text-decoration:none;text-transform:uppercase}
+.os-card a:hover{text-decoration:underline}
+.closing{padding:88px 0;background:var(--paper-deep);border-top:3px solid var(--ink);border-bottom:none}
+.closing h2{margin-bottom:24px}
+.closing .pitch{font-family:'Fraunces',serif;font-size:21px;line-height:1.5;color:var(--ink);max-width:760px;font-weight:350;margin-bottom:20px}
+.closing .pitch strong{font-weight:500;color:var(--rouge-deep)}
+.closing .pitch em{color:var(--rouge);font-style:italic}
+.sign-off{font-family:'Fraunces',serif;font-style:italic;font-size:24px;color:var(--rouge-deep);max-width:760px;border-left:3px solid var(--rouge);padding-left:24px;margin:36px 0 0}
+footer{padding:48px 0 72px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-mute);letter-spacing:0.04em;line-height:1.75;border-top:1px solid var(--rule)}
+footer p{margin-bottom:14px;max-width:1000px}
+footer a{color:var(--rouge);font-weight:600}
+.num-inline{font-family:'IBM Plex Mono',monospace;font-weight:700;color:var(--rouge-deep)}
+@media (max-width:980px){.constat-grid,.mecanisme-steps{grid-template-columns:1fr 1fr}.constat-cell:nth-child(3n),.step:nth-child(3n){border-right:1px solid var(--rule)}.constat-cell:nth-child(2n),.step:nth-child(2n){border-right:none}.constat-cell:nth-last-child(-n+3),.step:nth-last-child(-n+3){border-bottom:1px solid var(--rule)}.constat-cell:nth-last-child(-n+2),.step:nth-last-child(-n+2){border-bottom:none}.lexique,.glossaire{grid-template-columns:1fr}.lex-entry:nth-child(2n){background:var(--paper)}.lex-entry:nth-child(odd){background:var(--paper-warm)}.tier{grid-template-columns:1fr}.tier-head{border-right:none;border-bottom:1px solid var(--ink)}.outils,.ressources-grid,.os-grid,.dates{grid-template-columns:1fr}.hero-meta{grid-template-columns:repeat(2,1fr)}.hero-meta > div:nth-child(2){border-right:none}.hero-meta > div:nth-child(1),.hero-meta > div:nth-child(2){border-bottom:1px solid var(--rule)}}
+@media (max-width:640px){.wrap,.wrap-narrow{padding:0 18px}.hero{padding:64px 0 48px}section{padding:56px 0}.constat-grid,.mecanisme-steps{grid-template-columns:1fr}.constat-cell,.step{border-right:none}.hero-meta{grid-template-columns:1fr}.hero-meta > div{border-right:none;border-bottom:1px solid var(--rule)}.hero-meta > div:last-child{border-bottom:none}.topbar nav{display:none}.action{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand">Topo · Boîte à outils citoyenne<span class="os-badge">Open source</span></div>
+    <nav>
+      <a href="#constat">Constat</a>
+      <a href="#langage">Langage</a>
+      <a href="#mecanisme">Comment</a>
+      <a href="#chiffres">Chiffres</a>
+      <a href="#agir">Agir</a>
+      <a href="#modeles">Modèles</a>
+      <a href="#outils">Outils</a>
+      <a href="#dates">Dates</a>
+      <a href="#ressources">Ressources</a>
+      <a href="#opensource">Open source</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Boîte à outils citoyenne · Belgique · Version mai 2026</div>
+    <h1>Tout savoir. Tout vérifier. <em>Tout contester.</em></h1>
+    <p class="lede">Deux ans d'enquête citoyenne ramenés à ce qui sert vraiment : <strong>comprendre le système belge en 5 minutes, vérifier soi-même, écrire les lettres qui comptent, déposer les recours qui marchent</strong>. Modèles inclus. Liens directs. Aucun jargon non expliqué. Sous licence libre.</p>
+    <div class="cta-row">
+      <a href="#agir" class="btn primary">Que puis-je faire ? →</a>
+      <a href="#modeles" class="btn outline">Modèles à copier</a>
+      <a href="#opensource" class="btn vert">Contribuer / Forker</a>
+    </div>
+    <div class="hero-meta">
+      <div><span class="lbl">Pour qui</span><span class="val">Citoyens, journalistes, étudiants, élus locaux</span></div>
+      <div><span class="lbl">Pour quand</span><span class="val">5 min à 5 ans · à votre rythme</span></div>
+      <div><span class="lbl">Licence</span><span class="val">CC BY-SA 4.0 · libre, gratuit, modifiable</span></div>
+      <div><span class="lbl">Mise à jour</span><span class="val">15 mai 2026 · v3.0</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="constat">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">01 · Le constat<small>En 3 minutes</small></div>
+      <h2>Le problème, sans <em>jargon</em>.</h2>
+      <p class="section-intro">La Belgique a un mot pour son régime, créé par les universitaires belges : <strong>la particratie</strong>. Ce n'est pas une insulte. C'est une description. Voici ce qu'elle veut dire en chiffres et en faits — vérifiables, datés, accablants.</p>
+    </div>
+    <div class="constat-grid">
+      <div class="constat-cell">
+        <div class="big">5</div>
+        <div class="lbl">Présidents de partis exercent le pouvoir réel. <strong>Aucun n'est mentionné dans la Constitution.</strong> Ils ne sont élus à aucune fonction exécutive.</div>
+        <div class="src">Doctrine constitutionnaliste belge · 1976-2026</div>
+      </div>
+      <div class="constat-cell">
+        <div class="big">99,73<small>%</small></div>
+        <div class="lbl">De discipline de vote au Parlement fédéral. La Constitution interdit pourtant le mandat impératif (article 42). <strong>C'est mathématiquement impossible si chaque élu votait librement.</strong></div>
+        <div class="src">Verleden / CRISP · sur 1823 votes</div>
+      </div>
+      <div class="constat-cell">
+        <div class="big">10 000<small>+</small></div>
+        <div class="lbl">Condamnations de la Cour européenne des droits de l'homme dans <strong>un seul</strong> contentieux (l'accueil des demandeurs d'asile). La Cour parle de <em>« défaillance systémique »</em>.</div>
+        <div class="src">Arrêts <em>Camara</em>, <em>M.V. e.a.</em></div>
+      </div>
+      <div class="constat-cell">
+        <div class="big">20<small>M€</small></div>
+        <div class="lbl">D'amendes payées par l'État belge plutôt que de respecter une décision de justice sur les nuisances aériennes. <strong>L'État paie pour ne pas obéir à ses propres juges.</strong></div>
+        <div class="src">Bruxelles-National · dossier 2024</div>
+      </div>
+      <div class="constat-cell">
+        <div class="big">~4<small>Md €</small></div>
+        <div class="lbl">D'argent public versé aux partis politiques depuis 1989. <strong>Contrôlé par les bénéficiaires eux-mêmes</strong> via la Commission de contrôle composée de leurs propres parlementaires.</div>
+        <div class="src">Loi du 4 juillet 1989 · estimation corpus</div>
+      </div>
+      <div class="constat-cell">
+        <div class="big">1<small>seul</small></div>
+        <div class="lbl">État membre de l'Union européenne reçoit une recommandation spécifique pour exécuter ses propres décisions de justice : <strong>la Belgique</strong>. Et la Belgique fait la leçon à la Pologne.</div>
+        <div class="src">Rapport État de droit COM(2025)900</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="langage">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">02 · Le langage<small>Que les médias et les politiques utilisent</small></div>
+      <h2>Les mots qui <em>cachent</em> le système.</h2>
+      <p class="section-intro">Un régime se défend d'abord par son vocabulaire. Chaque mot à gauche est un euphémisme. Chaque mot à droite est ce qu'il décrit vraiment. <strong>Apprenez à les traduire à voix haute.</strong> C'est l'arme la moins chère et la plus efficace.</p>
+    </div>
+    <div class="lexique">
+      <div class="lex-entry"><div class="from">Compromis</div><div class="arrow">→</div><div class="to">Arbitrage oligarchique</div></div>
+      <div class="lex-entry"><div class="from">Discipline de groupe</div><div class="arrow">→</div><div class="to">Mandat impératif prohibé</div></div>
+      <div class="lex-entry"><div class="from">Stratégie politique</div><div class="arrow">→</div><div class="to">Secret protégeant les arbitrages</div></div>
+      <div class="lex-entry"><div class="from">Cabinet ministériel</div><div class="arrow">→</div><div class="to">Administration parallèle non élue</div></div>
+      <div class="lex-entry"><div class="from">Activation</div><div class="arrow">→</div><div class="to">Coercition administrative</div></div>
+      <div class="lex-entry"><div class="from">Rationalisation budgétaire</div><div class="arrow">→</div><div class="to">Économies sur les vulnérables</div></div>
+      <div class="lex-entry"><div class="from">Subvention aux partis</div><div class="arrow">→</div><div class="to">Capture des ressources publiques</div></div>
+      <div class="lex-entry"><div class="from">Démocratie représentative</div><div class="arrow">→</div><div class="to">Cérémonie de ratification</div></div>
+      <div class="lex-entry"><div class="from">Cordon sanitaire</div><div class="arrow">→</div><div class="to">Cartel de protection mutuelle</div></div>
+      <div class="lex-entry"><div class="from">Tradition belge du dialogue</div><div class="arrow">→</div><div class="to">Anesthésie civique</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="mecanisme">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">03 · Comment ça marche<small>Le mécanisme en 4 étapes</small></div>
+      <h2>La capture, expliquée <em>simplement</em>.</h2>
+      <p class="section-intro">Pas de complot. Un dispositif construit sur cent ans, qui se reproduit chaque jour. Quatre étapes successives, chacune verrouillant la suivante.</p>
+    </div>
+    <div class="mecanisme-steps">
+      <div class="step">
+        <div class="nbr">Étape 01</div>
+        <h4>Les partis <em>encadrent</em></h4>
+        <p>Depuis le XIXᵉ siècle, les partis contrôlent les mutuelles, syndicats, écoles, ASBL. Les citoyens passent par eux pour accéder aux droits sociaux. <strong>Ils dessinent les systèmes qu'ils financent.</strong></p>
+      </div>
+      <div class="step">
+        <div class="nbr">Étape 02</div>
+        <h4>L'article 42 est <em>vidé</em></h4>
+        <p>La Constitution dit que chaque élu représente la Nation. La pratique : 99,73 % de discipline. Les partis imposent des chartes de fidélité, des lettres de démission pré-signées. <strong>Le vote libre n'existe plus.</strong></p>
+      </div>
+      <div class="step">
+        <div class="nbr">Étape 03</div>
+        <h4>L'argent public <em>finance</em> les appareils</h4>
+        <p>80 % des revenus des partis viennent du budget public, soit 2 à 4 fois plus qu'ailleurs en Europe. Le contrôle de cet argent est exercé par les bénéficiaires eux-mêmes. <strong>Auto-contrôle institutionnalisé.</strong></p>
+      </div>
+      <div class="step">
+        <div class="nbr">Étape 04</div>
+        <h4>L'État <em>désobéit</em></h4>
+        <p>Quand un juge tranche contre lui, l'État paie l'amende au lieu d'exécuter. 10 000 condamnations européennes. La Commission UE le pointe du doigt — la seule des Vingt-Sept. <strong>L'État de droit, calculé.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="chiffres">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">04 · Les complices<small>Ce que personne n'ose nommer</small></div>
+      <h2>Le régime ne tient pas seul. <em>Voici qui le porte.</em></h2>
+      <p class="section-intro">Il est confortable de croire que la particratie est l'œuvre des seuls politiciens. C'est faux. <strong>Un régime de cette ampleur exige tout un écosystème de complicités passives.</strong> Les nommer est une condition de la critique sérieuse.</p>
+    </div>
+    <div class="ressources-grid" style="grid-template-columns:repeat(3,1fr)">
+      <div class="ress">
+        <div class="cat">Complice 01</div>
+        <h4>La doctrine pacifiée</h4>
+        <div class="desc">L'université décrit la particratie comme un « fait » et refuse de la qualifier comme violation. La « neutralité » au sommet d'un système de capture n'est pas neutre. <strong>Elle est complice.</strong></div>
+      </div>
+      <div class="ress">
+        <div class="cat">Complice 02</div>
+        <h4>La presse fragmentée</h4>
+        <div class="desc">Six scandales structurels en huit ans (Publifin, Samusocial, Kazakhgate, Qatargate, Reynders, Engie). <strong>Aucune une qui les agrège jamais comme symptômes d'un même régime.</strong></div>
+      </div>
+      <div class="ress">
+        <div class="cat">Complice 03</div>
+        <h4>Les corps intermédiaires</h4>
+        <div class="desc">Mutuelles, syndicats, ASBL satellites : historiquement affiliés aux partis. Ils défendent leurs adhérents — et <strong>verrouillent en même temps toute réforme du système qui les nourrit</strong>.</div>
+      </div>
+      <div class="ress">
+        <div class="cat">Complice 04</div>
+        <h4>Le cordon sanitaire moralisé</h4>
+        <div class="desc">L'endigument de l'extrême droite est devenu, factuellement, un cartel de protection mutuelle entre partis traditionnels. <strong>Toute critique systémique est suspectée de « faire le jeu de »</strong>.</div>
+      </div>
+      <div class="ress">
+        <div class="cat">Complice 05</div>
+        <h4>Les fonctionnaires détachés</h4>
+        <div class="desc">56 % du personnel des cabinets wallons sont des fonctionnaires détachés. <strong>La carrière administrative passe par le cabinet politique</strong>. Sans appui partisan, pas de progression.</div>
+      </div>
+      <div class="ress">
+        <div class="cat">Complice 06</div>
+        <h4>La résignation organisée</h4>
+        <div class="desc">Le « c'est comme ça » des citoyens informés n'est pas un trait de caractère. C'est l'effet psychique attendu d'un système qui multiplie les verrous précisément pour le produire. <strong>C'est aussi une décision collective.</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="agir">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">05 · Que puis-je faire ?<small>L'arsenal — par temps disponible</small></div>
+      <h2>Cinq minutes, une heure, un jour, <em>un an</em>.</h2>
+      <p class="section-intro">Pas d'appel à mobilisation général. Pas de héros à attendre. <strong>Chacun agit au niveau accessible.</strong> Les actions cumulées, alignées sur le calendrier des institutions internationales, produisent de la pression mesurable. Choisissez votre niveau. Tous comptent.</p>
+    </div>
+
+    <div class="arsenal">
+
+      <div class="tier">
+        <div class="tier-head">
+          <span class="duree">🕐 5 minutes</span>
+          <span class="titre"><em>Informer</em> autour de vous</span>
+        </div>
+        <div class="tier-body">
+          <div class="action">
+            <div class="action-text">
+              <h5>Partager cette page</h5>
+              <p>Envoyer le lien à 3 personnes : famille, collègues, groupe WhatsApp. <strong>Sortir le débat des cercles spécialisés est l'action la plus efficace</strong> au ratio temps/impact.</p>
+            </div>
+            <a href="#" class="action-link" onclick="navigator.clipboard.writeText(window.location.href);this.textContent='Lien copié ✓';return false;">Copier le lien</a>
+          </div>
+          <div class="action">
+            <div class="action-text">
+              <h5>Adopter le bon vocabulaire</h5>
+              <p>Cessez de dire « corruption » quand il s'agit de capture réglementaire. Cessez de dire « compromis » quand il s'agit d'arbitrage oligarchique. Voir <a href="#langage">le lexique</a>. <strong>Les mots imposent le cadre.</strong></p>
+            </div>
+            <a href="#langage" class="action-link">Voir le lexique</a>
+          </div>
+          <div class="action">
+            <div class="action-text">
+              <h5>S'abonner aux veilles indépendantes</h5>
+              <p>Cumuleo (mandats et patrimoine des élus), Transparencia.be (transparence locale), Anticor Belgique, le CRISP. <strong>Un mail par semaine. Une culture politique en six mois.</strong></p>
+            </div>
+            <a href="#outils" class="action-link">Voir les outils</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tier">
+        <div class="tier-head">
+          <span class="duree">🕑 1 heure</span>
+          <span class="titre"><em>Vérifier</em> et écrire</span>
+        </div>
+        <div class="tier-body">
+          <div class="action">
+            <div class="action-text">
+              <h5>Vérifier le vote de votre député</h5>
+              <p>Sur le site de la Chambre, tapez le nom de votre député fédéral et regardez ses dix derniers votes. <strong>Cherchez les votes dissidents de la ligne du parti. Il n'y en a probablement aucun.</strong> Notez la date des sessions, c'est utile pour la suite.</p>
+            </div>
+            <a href="https://www.lachambre.be/kvvcr/showpage.cfm?language=fr&section=/myvote&story=index.cfm" target="_blank" rel="noopener" class="action-link">La Chambre →</a>
+          </div>
+          <div class="action">
+            <div class="action-text">
+              <h5>Écrire à votre député (modèle inclus)</h5>
+              <p>Demandez-lui pourquoi il n'a aucun vote dissident, ce qu'il pense de l'article 42, et s'il soutiendrait une réforme de la loi du 4 juillet 1989. <strong>Conservez sa réponse — ou son silence.</strong> L'un et l'autre se versent au dossier.</p>
+            </div>
+            <a href="#modeles" class="action-link">Modèle ↓</a>
+          </div>
+          <div class="action">
+            <div class="action-text">
+              <h5>Écrire à un·e journaliste</h5>
+              <p>Identifiez le journaliste politique d'un quotidien que vous lisez. Envoyez-lui un mail court avec un fait + un chiffre + une question. <strong>Les journalistes répondent. Surtout aux mails précis.</strong></p>
+            </div>
+            <a href="#modeles" class="action-link">Modèle ↓</a>
+          </div>
+          <div class="action">
+            <div class="action-text">
+              <h5>Vérifier les mandats locaux</h5>
+              <p>Sur Cumuleo, tapez le nom de votre bourgmestre, échevin ou député provincial. Combien de mandats cumule-t-il ? Combien rétrocède-t-il à son parti ? <strong>L'opacité existe parce que personne ne regarde.</strong></p>
+            </div>
+            <a href="https://www.cumuleo.be" target="_blank" rel="noopener" class="action-link">Cumuleo →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tier">
+        <div class="tier-head">
+          <span class="duree">🕒 1 journée</span>
+          <span class="titre"><em>Demander</em> et organiser</span>
+        </div>
+        <div class="tier-body">
+          <div class="action">
+            <div class="action-text">
+              <h5>Faire une demande CADA</h5>
+              <p>La Commission d'accès aux documents administratifs vous permet, gratuitement et sans avocat, <strong>d'exiger la communication d'un document administratif</strong>. Délai légal : 30 jours. En cas de refus : recours au Conseil d'État. Le modèle ci-dessous fonctionne pour 90 % des cas courants.</p>
+            </div>
+            <a href="#modeles" class="action-link">Modèle ↓</a>
+          </div>
+          <div class="action">
+            <div class="action-text">
+              <h5>Organiser une discussion (chez vous, dans votre asso)</h5>
+              <p>Une soirée. Cinq personnes. Un thème : <em>« Que veut dire particratie en Belgique aujourd'hui ? »</em>. Cette page comme support. <strong>Le travail civique commence par la conversation hors-ligne.</strong></p>
+            </div>
+            <a href="#ressources" class="action-link">Ressources →</a>
+          </div>
+          <div class="action">
+            <div class="action-text">
+              <h5>Rejoindre une initiative existante</h5>
+              <p>Transparencia.be, Anticor Belgique, REScoop (énergie citoyenne), BelRefugees (accueil), G1000 (délibération), Le Mouvement (mobilisation), le tissu associatif local. <strong>Vous ne partez pas de zéro.</strong> D'autres ont déjà construit.</p>
+            </div>
+            <a href="#ressources" class="action-link">Liste ↓</a>
+          </div>
+          <div class="action">
+            <div class="action-text">
+              <h5>Contribuer à cette page</h5>
+              <p>Cette page est open source. Vous voyez une erreur ? Vous voulez ajouter un modèle, une traduction, une infographie ? <strong>Le code est sur GitHub. Forkez. Améliorez. Renvoyez.</strong></p>
+            </div>
+            <a href="#opensource" class="action-link">Contribuer →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tier">
+        <div class="tier-head">
+          <span class="duree">🕓 1 an et +</span>
+          <span class="titre"><em>Plaider</em> et construire</span>
+        </div>
+        <div class="tier-body">
+          <div class="action">
+            <div class="action-text">
+              <h5>Soutenir un contentieux stratégique</h5>
+              <p>Le levier judiciaire est le plus puissant. Une action en responsabilité de l'État pour faute du législateur (art. 1382 C. civ. + jurisprudence Cassation 2006) sur la lacune de l'article 15ter peut aboutir à une question préjudicielle à la Cour constitutionnelle. <strong>Cherchez un avocat constitutionnaliste sympathique à la cause. Cherchez un plaideur qualifié.</strong></p>
+            </div>
+            <a href="#ressources" class="action-link">Avocats →</a>
+          </div>
+          <div class="action">
+            <div class="action-text">
+              <h5>Contribuer à un rapport international</h5>
+              <p>L'Examen périodique universel ONU passe sur la Belgique en 2026-2027. <strong>Les ONG peuvent soumettre des contributions documentées.</strong> Une contribution citoyenne bien documentée pèse. Les rapports GRECO de novembre 2026 sont un autre point d'entrée.</p>
+            </div>
+            <a href="#dates" class="action-link">Calendrier →</a>
+          </div>
+          <div class="action">
+            <div class="action-text">
+              <h5>Se présenter localement</h5>
+              <p>Élections communales en 2030. <strong>Les listes citoyennes ouvertes restent rares.</strong> Construire une candidature ou rejoindre une liste locale est un travail de deux ans — qui commence maintenant.</p>
+            </div>
+            <a href="#dates" class="action-link">Dates →</a>
+          </div>
+          <div class="action">
+            <div class="action-text">
+              <h5>Former, écrire, transmettre</h5>
+              <p>Éducation permanente reconnue, blog citoyen, podcast, vidéos, livre, cours. <strong>Le verrou cognitif est le plus difficile à briser et celui sur lequel le régime mise le plus.</strong> Tout ce qui rend la critique systémique accessible est utile.</p>
+            </div>
+            <a href="#opensource" class="action-link">Boîte à outils →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="modeles">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">06 · Modèles<small>Textes prêts à copier</small></div>
+      <h2>Cinq lettres qui <em>servent vraiment</em>.</h2>
+      <p class="section-intro">Cliquez pour déplier. Cliquez sur <strong>« Copier »</strong> pour avoir le texte dans votre presse-papier. Adaptez aux crochets [...]. <strong>Tous les modèles ont été conçus pour fonctionner sans avocat ni connaissance juridique préalable.</strong></p>
+    </div>
+
+    <div class="modeles">
+
+      <details class="modele">
+        <summary>Lettre à votre député fédéral<span class="tag">5 min · effet : moyen</span></summary>
+        <div class="modele-body">
+          <p class="modele-intro"><strong>Pourquoi écrire ?</strong> Pour obtenir une trace écrite de la position de votre représentant sur la discipline de vote et l'article 42. Sa réponse — ou son silence — est une pièce versée au dossier civique. Envoyez par mail (adresses publiques sur lachambre.be).</p>
+          <div class="modele-text"><button class="copy-btn">Copier</button>Madame la Députée / Monsieur le Député,
+
+Je suis [prénom nom], électeur·trice de votre circonscription. Je vous écris en tant que citoyen·ne attaché·e au respect de la Constitution.
+
+L'article 42 de la Constitution dispose que « les membres des deux Chambres représentent la Nation, et non uniquement ceux qui les ont élus ». Cet article prohibe le mandat impératif et garantit le libre arbitre du parlementaire.
+
+Or, selon les travaux du CRISP (Frederik Verleden, Sam Depauw), la discipline de vote dans la majorité fédérale atteint 99,73 %. J'ai consulté vos votes des douze derniers mois sur le site de la Chambre : je n'y trouve aucun vote dissident de la ligne de votre groupe.
+
+Trois questions, auxquelles je vous demande respectueusement de répondre :
+
+1. Considérez-vous que la discipline de vote actuelle est compatible avec l'article 42 de la Constitution ?
+
+2. Avez-vous personnellement signé une charte de fidélité, une lettre de démission préalable, ou tout autre engagement écrit envers votre parti qui pourrait restreindre votre liberté de vote ?
+
+3. Soutiendriez-vous une modification de la loi du 4 juillet 1989 (article 15ter) ajoutant une sanction pour les partis qui imposent un mandat impératif de facto à leurs élus ?
+
+Je conserverai votre réponse — ou votre absence de réponse — et la rendrai publique, dans le respect du débat démocratique.
+
+Je vous prie de croire, Madame la Députée / Monsieur le Député, en l'expression de mes salutations citoyennes.
+
+[Prénom Nom]
+[Date]</div>
+        </div>
+      </details>
+
+      <details class="modele">
+        <summary>Demande CADA d'accès à un document<span class="tag">15 min · effet : fort</span></summary>
+        <div class="modele-body">
+          <p class="modele-intro"><strong>Pourquoi écrire ?</strong> La Commission d'accès aux documents administratifs (CADA) permet à tout citoyen d'exiger un document administratif. C'est gratuit et sans avocat. Délai légal de réponse : 30 jours. En cas de refus ou de silence : recours possible au Conseil d'État. Adresser à l'administration concernée + copie à la CADA fédérale.</p>
+          <div class="modele-text"><button class="copy-btn">Copier</button>Objet : Demande d'accès à un document administratif (loi du 11 avril 1994 et loi du 12 mai 2024)
+
+Madame, Monsieur,
+
+Conformément à l'article 32 de la Constitution, à la loi du 11 avril 1994 relative à la publicité de l'administration et à la loi du 12 mai 2024 relative à la transparence de l'administration fédérale, je sollicite par la présente la communication du document administratif suivant :
+
+[Décrire le document avec précision : titre, date approximative, auteur, contexte]
+
+Exemples possibles :
+- Le rapport d'audit des cabinets ministériels [...] pour l'année [...]
+- Les conventions de détachement de fonctionnaires vers le cabinet du Ministre [...]
+- Les avis de l'Inspection des Finances sur l'arrêté [...]
+- Les notes de cabinet relatives au dossier [...]
+
+Je vous prie de bien vouloir me communiquer ce document par voie électronique à l'adresse suivante : [votre@email]
+
+Je vous rappelle que l'administration dispose d'un délai de 30 jours pour répondre à ma demande. À défaut, ou en cas de refus, je me réserve le droit de saisir la Commission d'accès aux documents administratifs (CADA) ainsi que le Conseil d'État, en mobilisant l'article 10 de la Convention européenne des droits de l'homme tel qu'interprété par l'arrêt Magyar Helsinki Bizottság c. Hongrie (2016).
+
+Je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées.
+
+[Prénom Nom]
+[Adresse]
+[Date]</div>
+        </div>
+      </details>
+
+      <details class="modele">
+        <summary>Mail à un·e journaliste politique<span class="tag">10 min · effet : variable</span></summary>
+        <div class="modele-body">
+          <p class="modele-intro"><strong>Pourquoi écrire ?</strong> Les journalistes politiques répondent aux mails précis qui leur apportent un angle nouveau ou un chiffre vérifiable. La règle d'or : <strong>court, factuel, avec une question concrète</strong>. Ciblez le journaliste politique d'un média que vous lisez régulièrement.</p>
+          <div class="modele-text"><button class="copy-btn">Copier</button>Objet : Question - particratie et inexécution des décisions de justice
+
+Bonjour [prénom du/de la journaliste],
+
+Je vous suis depuis [période ou article particulier que vous avez apprécié]. Je vous écris en tant que lecteur·trice citoyen·ne sur un sujet qui me semble sous-traité dans les médias belges.
+
+Trois faits :
+
+1. La discipline de vote au Parlement fédéral atteint 99,73 % (Verleden, CRISP) — ce qui rend mathématiquement impossible un libre arbitre individuel des élus, en violation apparente de l'article 42 de la Constitution.
+
+2. La Belgique est le seul État membre de l'UE à recevoir une recommandation spécifique de la Commission européenne sur l'exécution diligente des décisions de justice (rapport État de droit COM(2025)900).
+
+3. Le Conseil de l'Europe vient d'aligner la Belgique sur la Biélorussie au titre du mécanisme de non-conformité du GRECO (101ᵉ plénière, novembre 2025).
+
+Ma question : pourquoi ces trois faits, qui dessinent un même problème systémique, sont-ils traités séparément dans la presse belge — quand ils le sont — et jamais agrégés comme symptômes d'un même régime que la doctrine constitutionnaliste appelle « particratie » depuis cinquante ans ?
+
+Je vous joins en lien une synthèse citoyenne récente qui rassemble ces éléments :
+[Lien vers cette page]
+
+Je reste à votre disposition pour échanger.
+
+Cordialement,
+[Prénom Nom]</div>
+        </div>
+      </details>
+
+      <details class="modele">
+        <summary>Post réseaux sociaux (Mastodon, LinkedIn, etc.)<span class="tag">2 min · effet : viral potentiel</span></summary>
+        <div class="modele-body">
+          <p class="modele-intro"><strong>Pourquoi publier ?</strong> Briser le compartimentage. La particratie est un savoir confidentiel qui reste hors du débat public faute de diffusion. Format court, un chiffre, une question, un lien. Adaptez en fonction de votre audience.</p>
+          <div class="modele-text"><button class="copy-btn">Copier</button>🇧🇪 Trois faits sur la Belgique en 2026 :
+
+— 99,73 % de discipline de vote au Parlement fédéral (Verleden, CRISP)
+— Plus de 10 000 condamnations CEDH dans le seul contentieux accueil
+— Seul État membre UE à recevoir une recommandation spécifique sur l'exécution des décisions de justice
+
+Le mot belge pour ça : particratie.
+Et c'est documenté par la doctrine constitutionnaliste depuis 1976.
+
+Pourquoi en parle-t-on si peu ?
+
+Boîte à outils citoyenne (open source) : [Lien]
+
+#Belgique #Démocratie #Particratie</div>
+        </div>
+      </details>
+
+      <details class="modele">
+        <summary>Conversation en famille / au travail<span class="tag">aucun écrit · effet : durable</span></summary>
+        <div class="modele-body">
+          <p class="modele-intro"><strong>Pourquoi parler ?</strong> Le travail civique commence hors-ligne. Le grand public belge n'a jamais entendu une explication accessible de la particratie. Voici un script éprouvé en 90 secondes — à personnaliser selon votre interlocuteur. Évitez le ton militant. Restez sur les faits.</p>
+          <div class="modele-text"><button class="copy-btn">Copier</button>« Tu sais que la Constitution belge interdit qu'un parlementaire reçoive des consignes de vote ? C'est l'article 42 : "Les membres représentent la Nation."
+
+Bon. Sauf qu'en pratique, la discipline de vote au Parlement fédéral atteint 99,73 %. C'est un chiffre du CRISP, l'institut de référence belge. Mathématiquement, ça veut dire qu'aucun élu ne vote librement.
+
+Et c'est pas tout. La Belgique paie 20 millions d'euros d'amendes plutôt que de respecter une décision de justice sur les avions. Plus de 10 000 fois condamnée par la Cour européenne pour l'accueil des demandeurs d'asile. Le Conseil de l'Europe la classe au niveau de la Biélorussie sur l'anti-corruption.
+
+Le mot pour décrire ce système, c'est "particratie". Les universitaires belges l'utilisent depuis cinquante ans. La presse ne le reprend jamais.
+
+Si tu veux creuser, il y a une page citoyenne : [Lien]. Open source, gratuite, vérifiable. »</div>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTIONS_HERE -->
+
+<script>
+document.querySelectorAll('.copy-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const pre = btn.parentElement;
+    const text = pre.innerText.replace(/^Copier\s*/,'').trim();
+    navigator.clipboard.writeText(text).then(()=>{
+      btn.textContent='Copié ✓';
+      btn.classList.add('copied');
+      setTimeout(()=>{btn.textContent='Copier';btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+</body>
+</html>
