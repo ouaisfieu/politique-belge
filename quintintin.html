@@ -1,0 +1,2546 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arsenal Quintin — Manuel de défense juridique pour les associations belges</title>
+<meta name="description" content="Guide opérationnel, gratuit et open source de défense juridique pour les associations, ASBL, syndicats et collectifs visés par la loi belge d'interdiction administrative dite « loi Quintin ».">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Source+Serif+4:opsz,wght@8..60,300..700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* =========================================================================
+   ARSENAL QUINTIN — Page web autonome
+   Licence CC-BY-SA 4.0
+   ========================================================================= */
+
+:root {
+  --bg: #F2EDE3;
+  --bg-deep: #E8E1D2;
+  --bg-card: #FAF6EC;
+  --ink: #1A1612;
+  --ink-soft: #4A3F31;
+  --ink-faded: #786A56;
+  --rule: #C8BFA9;
+  --rule-strong: #8C7E62;
+  --accent: #8B1A1A;
+  --accent-soft: #B23030;
+  --accent-bg: #F5D6D6;
+  --warn: #9C5500;
+  --warn-bg: #F5E2C8;
+  --ok: #3E6B3E;
+  --ok-bg: #DCE8DC;
+  --highlight: #FFE9B3;
+  --shadow: 0 1px 0 rgba(26,22,18,.04), 0 8px 24px rgba(26,22,18,.06);
+  --display: "Fraunces", "Times New Roman", serif;
+  --body: "Source Serif 4", Georgia, serif;
+  --mono: "JetBrains Mono", "Courier New", monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+body {
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse 80% 30% at 50% 0%, rgba(139,26,26,.05), transparent 70%),
+    repeating-linear-gradient(0deg, transparent 0px, transparent 24px, rgba(120,106,86,.025) 24px, rgba(120,106,86,.025) 25px);
+  font-feature-settings: "kern", "liga", "onum";
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--accent); color: var(--bg); }
+
+/* ---- Top urgency strip ---- */
+.urgency-strip {
+  background: var(--accent);
+  color: var(--bg);
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  text-align: center;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 2px solid var(--ink);
+}
+.urgency-strip a {
+  color: var(--bg);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 700;
+}
+.urgency-strip a:hover { background: var(--bg); color: var(--accent); padding: 0 4px; }
+
+/* ---- Layout ---- */
+.shell {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 0;
+}
+@media (max-width: 960px) {
+  .shell { grid-template-columns: 1fr; }
+}
+
+main {
+  padding: 0 48px 80px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+@media (max-width: 600px) {
+  main { padding: 0 22px 60px; }
+}
+
+/* ---- Header ---- */
+.masthead {
+  padding: 80px 0 50px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 50px;
+  position: relative;
+}
+.masthead::before {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--accent);
+  margin-bottom: 28px;
+}
+.eyebrow {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+h1.title {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(40px, 7vw, 76px);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  margin-bottom: 26px;
+  color: var(--ink);
+  font-variation-settings: "SOFT" 0;
+}
+h1.title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+}
+.lede {
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: clamp(20px, 2.6vw, 26px);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--ink-soft);
+  max-width: 640px;
+  margin-bottom: 36px;
+}
+.meta-bar {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-faded);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding-top: 28px;
+  border-top: 1px solid var(--rule);
+}
+.meta-bar span { display: inline-flex; align-items: center; gap: 6px; }
+.meta-bar strong { color: var(--ink); font-weight: 700; }
+
+/* ---- Sidebar TOC ---- */
+aside.toc {
+  padding: 80px 30px 80px 24px;
+  border-right: 1px solid var(--rule);
+  align-self: start;
+  position: sticky;
+  top: 60px;
+  max-height: calc(100vh - 60px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+@media (max-width: 960px) {
+  aside.toc {
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid var(--rule);
+    max-height: none;
+    padding: 30px 22px;
+  }
+}
+.toc-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+.toc ol {
+  list-style: none;
+  counter-reset: toc;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.4;
+}
+.toc ol li {
+  counter-increment: toc;
+  margin-bottom: 10px;
+  padding-left: 32px;
+  position: relative;
+}
+.toc ol li::before {
+  content: counter(toc, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 1px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-faded);
+  letter-spacing: 0.05em;
+}
+.toc a {
+  color: var(--ink);
+  text-decoration: none;
+  transition: color .15s;
+  border-bottom: 1px solid transparent;
+}
+.toc a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ---- Section structure ---- */
+section {
+  margin-bottom: 80px;
+  scroll-margin-top: 80px;
+}
+.section-number {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.section-number::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+h2 {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(32px, 4.5vw, 46px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+h2 em {
+  font-style: italic;
+  font-weight: 400;
+}
+h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.2;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+  margin: 44px 0 16px;
+}
+h4 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 19px;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  margin: 28px 0 12px;
+}
+
+p {
+  margin-bottom: 18px;
+}
+p.intro {
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--ink-soft);
+  margin-bottom: 30px;
+  border-left: 3px solid var(--accent);
+  padding-left: 20px;
+}
+strong { font-weight: 700; color: var(--ink); }
+em { font-style: italic; }
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+a:hover { text-decoration-thickness: 2px; }
+
+ul, ol {
+  margin: 0 0 22px 0;
+  padding-left: 24px;
+}
+ul li, ol li { margin-bottom: 8px; }
+ul.bare { list-style: none; padding-left: 0; }
+
+/* ---- Pull quotes ---- */
+blockquote {
+  font-family: var(--display);
+  font-weight: 300;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.4;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  padding: 30px 40px;
+  margin: 32px 0;
+  background: var(--bg-deep);
+  border-left: 5px solid var(--accent);
+  position: relative;
+}
+blockquote::before {
+  content: "“";
+  position: absolute;
+  top: -8px;
+  left: 16px;
+  font-size: 80px;
+  color: var(--accent);
+  font-family: var(--display);
+  line-height: 1;
+  opacity: 0.3;
+}
+
+/* ---- Callout boxes ---- */
+.callout {
+  border: 1px solid var(--rule);
+  background: var(--bg-card);
+  padding: 24px 26px;
+  margin: 28px 0;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+.callout.warn { border-color: var(--warn); background: var(--warn-bg); }
+.callout.danger { border-color: var(--accent); background: var(--accent-bg); }
+.callout.ok { border-color: var(--ok); background: var(--ok-bg); }
+.callout-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--ink);
+}
+.callout.warn .callout-title { color: var(--warn); }
+.callout.danger .callout-title { color: var(--accent); }
+.callout.ok .callout-title { color: var(--ok); }
+.callout p:last-child { margin-bottom: 0; }
+
+/* ---- Phase cards ---- */
+.phase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 28px 0;
+}
+.phase-card {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  padding: 18px 20px;
+  position: relative;
+}
+.phase-card .ph-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.phase-card .ph-title {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+.phase-card .ph-desc {
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+
+/* ---- Tables ---- */
+.table-wrap {
+  overflow-x: auto;
+  margin: 24px 0;
+  border: 1px solid var(--rule);
+  box-shadow: var(--shadow);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  background: var(--bg-card);
+}
+table th {
+  background: var(--ink);
+  color: var(--bg);
+  font-family: var(--display);
+  font-weight: 600;
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+}
+table td {
+  padding: 12px 16px;
+  border-top: 1px solid var(--rule);
+  vertical-align: top;
+}
+table tr:nth-child(even) td { background: var(--bg-deep); }
+table strong { color: var(--accent); }
+
+/* ---- Checklists ---- */
+.checklist {
+  list-style: none;
+  padding-left: 0;
+}
+.checklist li {
+  padding-left: 32px;
+  position: relative;
+  margin-bottom: 10px;
+}
+.checklist li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--ink);
+  background: var(--bg-card);
+}
+
+/* ---- Code blocks (letter templates) ---- */
+.template {
+  margin: 28px 0;
+  border: 1px solid var(--ink);
+  background: var(--bg-card);
+  box-shadow: 6px 6px 0 var(--rule-strong);
+}
+.template-header {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 12px 18px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+}
+.copy-btn {
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  padding: 6px 14px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background .15s;
+}
+.copy-btn:hover { background: var(--accent-soft); }
+.copy-btn.copied { background: var(--ok); }
+.template pre {
+  padding: 22px 24px;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  color: var(--ink);
+  background: var(--bg-card);
+  overflow-x: auto;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+/* ---- Timeline ---- */
+.timeline {
+  position: relative;
+  margin: 30px 0;
+  padding-left: 28px;
+  border-left: 2px solid var(--rule);
+}
+.timeline-item {
+  margin-bottom: 28px;
+  position: relative;
+}
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -36px;
+  top: 8px;
+  width: 14px;
+  height: 14px;
+  background: var(--accent);
+  border: 3px solid var(--bg);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--accent);
+}
+.timeline-date {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.timeline-title {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+.timeline-desc {
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+/* ---- FAQ ---- */
+details.faq {
+  border-top: 1px solid var(--rule);
+  padding: 18px 0;
+}
+details.faq:last-child { border-bottom: 1px solid var(--rule); }
+details.faq summary {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 18px;
+  cursor: pointer;
+  list-style: none;
+  padding-right: 30px;
+  position: relative;
+  color: var(--ink);
+}
+details.faq summary::-webkit-details-marker { display: none; }
+details.faq summary::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  top: -3px;
+  font-size: 30px;
+  font-weight: 300;
+  color: var(--accent);
+  line-height: 1;
+  transition: transform .2s;
+}
+details.faq[open] summary::after {
+  content: "−";
+}
+details.faq summary:hover { color: var(--accent); }
+details.faq .faq-body {
+  margin-top: 12px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+details.faq .faq-body p { margin-bottom: 10px; }
+
+/* ---- Resource grid ---- */
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+  margin: 24px 0;
+}
+.resource-card {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  padding: 16px 18px;
+}
+.resource-card .rc-name {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 4px;
+  color: var(--ink);
+}
+.resource-card .rc-role {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.resource-card .rc-link {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--accent);
+  word-break: break-all;
+}
+
+/* ---- Big numbers / stats ---- */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 24px;
+  margin: 30px 0;
+  padding: 30px;
+  background: var(--ink);
+  color: var(--bg);
+}
+.stat .stat-num {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 44px;
+  line-height: 1;
+  color: var(--bg);
+  margin-bottom: 6px;
+  font-variation-settings: "SOFT" 0;
+}
+.stat .stat-num em { font-style: normal; color: var(--accent-soft); }
+.stat .stat-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bg-deep);
+}
+
+/* ---- Anchor links headers ---- */
+.anchor-h {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ---- Footer ---- */
+footer {
+  background: var(--ink);
+  color: var(--bg-deep);
+  padding: 60px 24px;
+  margin-top: 80px;
+}
+footer .footer-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+}
+footer h5 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--bg);
+  margin-bottom: 12px;
+}
+footer p, footer li {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--bg-deep);
+}
+footer a {
+  color: var(--accent-soft);
+  text-decoration: underline;
+}
+footer ul { list-style: none; padding: 0; }
+footer ul li { margin-bottom: 6px; }
+.footer-bottom {
+  max-width: 1100px;
+  margin: 40px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--ink-soft);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faded);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* ---- Print ---- */
+@media print {
+  .urgency-strip, aside.toc, .copy-btn, footer { display: none; }
+  body { background: white; font-size: 11pt; }
+  main { padding: 0; max-width: 100%; }
+  .shell { display: block; }
+  section { page-break-inside: avoid; margin-bottom: 30px; }
+  h2 { page-break-after: avoid; }
+  .template pre { white-space: pre-wrap; max-height: none; }
+  a { color: var(--ink); text-decoration: none; }
+}
+
+/* ---- Utility ---- */
+.tight { margin-bottom: 8px; }
+.kicker {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: var(--accent);
+  color: var(--bg);
+  padding: 4px 10px;
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+.kicker.warn { background: var(--warn); }
+.kicker.ok { background: var(--ok); }
+
+/* Smooth fade-in for sections */
+@media (prefers-reduced-motion: no-preference) {
+  section {
+    animation: fadeIn .8s ease-out backwards;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="urgency-strip">
+  ⚠ Vous venez d'être notifié·e ? Allez directement à la <a href="#phase-1">PHASE 1 — RÉACTION IMMÉDIATE</a> ↓
+</div>
+
+<div class="shell">
+
+<!-- ====== TABLE OF CONTENTS ====== -->
+<aside class="toc">
+  <div class="toc-label">Sommaire</div>
+  <ol>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#contexte">Le contexte politique</a></li>
+    <li><a href="#menace">Comprendre la menace</a></li>
+    <li><a href="#qui">Qui est concerné ?</a></li>
+    <li><a href="#timeline">Chronologie</a></li>
+    <li><a href="#phase-0">Phase 0 — Préparation</a></li>
+    <li><a href="#phase-1">Phase 1 — Réaction immédiate</a></li>
+    <li><a href="#phase-2">Phase 2 — Conseil d'État</a></li>
+    <li><a href="#phase-3">Phase 3 — Cour constitutionnelle</a></li>
+    <li><a href="#phase-4">Phase 4 — Europe et international</a></li>
+    <li><a href="#phase-5">Phase 5 — Contre-attaque</a></li>
+    <li><a href="#modeles">Modèles de courriers</a></li>
+    <li><a href="#droits">Vos droits fondamentaux</a></li>
+    <li><a href="#faq">Questions fréquentes</a></li>
+    <li><a href="#alliers">Annuaire de soutien</a></li>
+    <li><a href="#diffusion">Diffuser ce manuel</a></li>
+  </ol>
+</aside>
+
+<!-- ====== MAIN ====== -->
+<main>
+
+<!-- HEADER -->
+<header class="masthead">
+  <div class="eyebrow">Manuel open source · Licence CC-BY-SA 4.0</div>
+  <h1 class="title">Arsenal <em>Quintin</em></h1>
+  <p class="lede">
+    Guide opérationnel de défense juridique pour les associations, ASBL, syndicats,
+    collectifs citoyens et groupements de fait visés par la loi belge d'interdiction
+    administrative des organisations.
+  </p>
+  <div class="meta-bar">
+    <span>Version <strong>1.0</strong></span>
+    <span>Mai <strong>2026</strong></span>
+    <span>≈ <strong>45 min</strong> de lecture intégrale</span>
+    <span><strong>Gratuit</strong> et libre de droits</span>
+  </div>
+</header>
+
+<!-- ====== INTRODUCTION ====== -->
+<section id="introduction">
+  <div class="section-number">§ 01 — Avant-propos</div>
+  <h2>Pour qui, pourquoi, comment</h2>
+  <p class="intro">
+    Ce manuel existe parce qu'une loi belge permet désormais au gouvernement de
+    suspendre administrativement une association, geler ses comptes, interdire ses
+    activités, ses symboles et ses slogans — sans qu'un juge ait préalablement examiné
+    le dossier.
+  </p>
+  <p>
+    La <strong>loi Quintin</strong> a été présentée comme un outil contre la criminalité
+    organisée et le terrorisme. Dans sa forme initiale de l'été 2025, elle accordait au
+    Conseil des ministres le pouvoir de <em>dissoudre définitivement</em> une organisation
+    par arrêté royal. Devant la mobilisation des syndicats, des barreaux, de la Ligue
+    des droits humains et un avis accablant du Conseil d'État, le gouvernement a reculé
+    le 8 janvier 2026 : la dissolution définitive est désormais confiée à un juge.
+  </p>
+  <p>
+    <strong>Mais la suspension administrative temporaire, l'interdiction d'activités, de
+    slogans et de symboles, et la pénalisation des participants subsistent.</strong> Et
+    la protection formelle accordée aux partis, syndicats et cultes est percée par une
+    clause de « détournement d'objectifs » qui transfère au ministre de l'Intérieur le
+    pouvoir de décider unilatéralement qu'une organisation est sortie de sa mission
+    légitime.
+  </p>
+  <p>
+    Ce manuel ne discute pas la légitimité politique de la loi. Il prend acte de son
+    existence, identifie ses failles juridiques, et fournit aux associations
+    susceptibles d'être visées un <strong>arsenal défensif structuré en six phases</strong> :
+    de la préparation préventive à la contre-attaque civile et pénale, en passant par
+    le référé d'extrême urgence devant le Conseil d'État, le recours en annulation
+    devant la Cour constitutionnelle, et la mobilisation des instances européennes et
+    onusiennes.
+  </p>
+  <div class="callout danger">
+    <div class="callout-title">⚠ Ce que ce manuel n'est pas</div>
+    <p>
+      Ce document n'est pas un avis juridique individuel et ne garantit aucun résultat.
+      Il fournit l'architecture d'une défense — pas son exécution. Pour tout cas
+      concret, le recours à un avocat reste indispensable. Voir
+      <a href="#alliers">l'annuaire de soutien</a> en fin de manuel pour les contacts
+      d'aide juridique gratuite.
+    </p>
+  </div>
+</section>
+
+<!-- ====== CONTEXTE ====== -->
+<section id="contexte">
+  <div class="section-number">§ 02 — Contexte politique</div>
+  <h2>D'où vient cette loi</h2>
+  <p>
+    La loi Quintin s'inscrit dans une séquence politique précise. Issue du gouvernement
+    de coalition « Arizona » dirigé par Bart De Wever (N-VA, MR, CD&V, Les Engagés,
+    Vooruit), elle a été portée par le ministre fédéral de la Sécurité et de l'Intérieur
+    <strong>Bernard Quintin</strong> (MR) à partir de l'été 2025. Son objectif officiel :
+    permettre l'<em>interdiction administrative</em> des « organisations radicales »
+    sans attendre une procédure pénale.
+  </p>
+  <p>
+    Le projet a immédiatement déclenché une coalition d'opposition exceptionnellement
+    large : <strong>FGTB, CSC, CGSLB, Ligue des droits humains, Liga voor Mensenrechten,
+    Amnesty International Belgique, Institut fédéral des Droits humains (IFDH),
+    Collectif21, Avocats.be, OBFG, Ordre des barreaux flamands</strong>, ainsi que de
+    nombreux constitutionnalistes universitaires.
+  </p>
+  <p>
+    L'<strong>avis n° 2025/9 de l'IFDH du 18 septembre 2025</strong> a pointé l'absence
+    de base constitutionnelle suffisante, l'imprécision terminologique, la
+    non-conformité à l'article 11 CEDH et à l'article 27 de la Constitution. Le
+    <strong>Conseil d'État, section de législation</strong>, a rendu un avis sévère en
+    fin d'année 2025, rappelant que la dissolution administrative d'une organisation
+    par l'exécutif sans contrôle judiciaire préalable est incompatible avec l'État de
+    droit.
+  </p>
+  <blockquote>
+    « Je respecte l'État de droit et le Conseil d'État. J'ai tenu compte de sa remarque
+    sur la dissolution. Je l'ai donc retirée. Néanmoins, il dit également que je peux
+    prendre des mesures de police administrative pour atteindre mes objectifs
+    légitimes. »
+    <footer style="font-family: var(--mono); font-size: 12px; margin-top: 12px; color: var(--ink-faded); text-transform: uppercase; letter-spacing: 0.08em; font-style: normal;">
+      — Bernard Quintin, débats à la Chambre, janvier 2026
+    </footer>
+  </blockquote>
+  <p>
+    C'est cette zone résiduelle — la « police administrative » sans dissolution
+    définitive — qui constitue le cœur du dispositif aujourd'hui en discussion au
+    Parlement et qui justifie ce manuel.
+  </p>
+</section>
+
+<!-- ====== MENACE ====== -->
+<section id="menace">
+  <div class="section-number">§ 03 — Comprendre la menace</div>
+  <h2>Ce que la loi <em>autorise</em> concrètement</h2>
+  <p class="intro">
+    Cinq mots pour résumer : suspendre, geler, interdire, criminaliser, contourner. La
+    version révisée 2026 retire à l'exécutif le pouvoir de dissoudre, mais lui conserve
+    une boîte à outils étendue.
+  </p>
+  <h3>Les actes administratifs disponibles</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Acte</th>
+          <th>Auteur</th>
+          <th>Effet immédiat</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Arrêté royal de suspension temporaire</strong></td>
+          <td>Conseil des ministres (sur proposition du ministre de l'Intérieur)</td>
+          <td>Cessation des activités, possibilité de gel des avoirs, fermeture des locaux</td>
+        </tr>
+        <tr>
+          <td><strong>Arrêté ministériel d'interdiction</strong></td>
+          <td>Ministre de l'Intérieur seul</td>
+          <td>Interdiction d'usage public de symboles, slogans, drapeaux ; sanctions pénales en cas de violation</td>
+        </tr>
+        <tr>
+          <td><strong>Saisine du juge pour dissolution au fond</strong></td>
+          <td>Gouvernement (après recul de janvier 2026)</td>
+          <td>Procédure judiciaire devant le tribunal de première instance</td>
+        </tr>
+        <tr>
+          <td><strong>Instruction administrative dérivée</strong></td>
+          <td>Ministre sectoriel, SPF Finances, banques</td>
+          <td>Asphyxie financière indirecte : gel bancaire, retrait de subventions, blocage TVA</td>
+        </tr>
+        <tr>
+          <td><strong>Poursuites pénales individuelles</strong></td>
+          <td>Parquet</td>
+          <td>Six mois à trois ans (jusqu'à cinq selon versions antérieures) pour participation à un groupement suspendu</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Le piège des notions floues</h3>
+  <p>
+    L'arme principale de la loi n'est pas dans ses pouvoirs, mais dans ses
+    <em>concepts</em>. Plusieurs formulations sont si vagues qu'elles laissent au
+    ministre une marge de qualification quasi discrétionnaire :
+  </p>
+  <ul>
+    <li>« <strong>détournement d'objectifs</strong> » ou « finalité réelle détournée »</li>
+    <li>« <strong>incitation à l'instabilité démocratique</strong> »</li>
+    <li>« <strong>atteinte à l'ordre constitutionnel</strong> »</li>
+    <li>« <strong>entrave méchante à la circulation</strong> »</li>
+    <li>« <strong>soutien logistique à des activités hostiles</strong> »</li>
+    <li>« <strong>diffusion de contenus extrémistes</strong> »</li>
+  </ul>
+  <p>
+    Aucune de ces expressions ne respecte le <strong>principe de légalité</strong>
+    (article 12 et 14 de la Constitution, article 7 de la CEDH) qui exige qu'une
+    incrimination soit suffisamment précise pour que le citoyen puisse prévoir quels
+    comportements sont sanctionnés. C'est l'une des premières lignes d'attaque devant
+    les juges.
+  </p>
+
+  <h3>Le piège du « détournement d'objectifs »</h3>
+  <p>
+    La loi exclut formellement les partis politiques, les syndicats et les cultes
+    reconnus. <strong>Mais cette exclusion est désactivée</strong> dès lors que
+    l'organisation « contourne ses objectifs déclarés ou reconnus » ou que sa
+    « finalité réelle est détournée ». En pratique :
+  </p>
+  <div class="callout warn">
+    <div class="callout-title">Comment ça marche</div>
+    <p>
+      Le ministre estime qu'un parti d'opposition qui apporte un soutien logistique à
+      des manifestations non autorisées, ou qu'un syndicat dont les piquets de grève
+      entravent la circulation, a « détourné » sa mission de représentation
+      institutionnelle pour s'engager dans des « actions déstabilisatrices ».
+      L'exclusion légale tombe. La suspension administrative redevient possible.
+    </p>
+  </div>
+
+  <h3>Les sanctions pénales individuelles</h3>
+  <p>
+    Toute personne qui participe à une réunion, qui arbore un symbole, qui distribue
+    un tract ou qui poursuit l'activité d'un groupement suspendu s'expose à une peine
+    de <strong>6 mois à 3 ans d'emprisonnement</strong> (jusqu'à 5 ans dans les versions
+    initiales), avec amendes. C'est ce volet pénal qui produit l'<strong>effet
+    d'intimidation systémique</strong> (« chilling effect ») et qui justifie l'urgence
+    de toute défense : non seulement l'association est suspendue, mais ses militants
+    sont individuellement criminalisés.
+  </p>
+</section>
+
+<!-- ====== QUI ====== -->
+<section id="qui">
+  <div class="section-number">§ 04 — Qui est concerné</div>
+  <h2>Typologie des organisations à risque</h2>
+  <p>
+    Aucune association n'est <em>a priori</em> à l'abri. Mais certaines catégories
+    présentent un risque particulièrement élevé selon les scénarios d'application
+    documentés par l'IFDH, la LDH et la coalition « Droit de protester ».
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Type d'organisation</th>
+          <th>Niveau de risque</th>
+          <th>Prétexte légal probable</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Partis de gauche radicale, éco-socialistes</td>
+          <td><strong>Élevé</strong></td>
+          <td>Soutien à des grèves non autorisées, désobéissance civile</td>
+        </tr>
+        <tr>
+          <td>Ailes de jeunesse, cercles étudiants politisés</td>
+          <td><strong>Très élevé</strong></td>
+          <td>Blocages universitaires, slogans jugés extrémistes</td>
+        </tr>
+        <tr>
+          <td>ASBL d'Éducation Permanente</td>
+          <td><strong>Élevé</strong></td>
+          <td>« Proximité politique excessive », « violation de la neutralité »</td>
+        </tr>
+        <tr>
+          <td>Fédérations syndicales (association de fait)</td>
+          <td><strong>Élevé</strong></td>
+          <td>Entrave méchante, déstabilisation économique</td>
+        </tr>
+        <tr>
+          <td>Collectifs de solidarité internationale</td>
+          <td><strong>Élevé</strong></td>
+          <td>Soutien à des entités étrangères, slogans séditieux</td>
+        </tr>
+        <tr>
+          <td>Mouvements climatiques, ZAD, occupations</td>
+          <td><strong>Très élevé</strong></td>
+          <td>Atteinte aux infrastructures, blocages économiques</td>
+        </tr>
+        <tr>
+          <td>Mouvements pro-Palestine, pro-migrants</td>
+          <td><strong>Très élevé</strong></td>
+          <td>« Liens avec organisations étrangères hostiles »</td>
+        </tr>
+        <tr>
+          <td>Structures régionalistes / indépendantistes radicales</td>
+          <td>Moyen</td>
+          <td>Atteinte à l'unité de l'État</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    Les <strong>groupements de fait</strong> — c'est-à-dire les structures sans
+    personnalité juridique : la plupart des collectifs informels, comités, courants
+    syndicaux locaux — sont particulièrement vulnérables. La loi les vise explicitement,
+    et leur absence de personnalité morale les prive des recours administratifs
+    ordinaires (Conseil d'État) qu'une ASBL classique peut activer.
+  </p>
+  <div class="callout">
+    <div class="callout-title">Indice de vulnérabilité — Auto-évaluation rapide</div>
+    <p>
+      Si <strong>trois ou plus</strong> de ces réponses sont <em>oui</em>, votre
+      organisation a un intérêt direct à appliquer la Phase 0 dès maintenant :
+    </p>
+    <ul class="checklist">
+      <li>Vous critiquez publiquement les orientations économiques ou sécuritaires du gouvernement</li>
+      <li>Vous soutenez ou participez à des actions de désobéissance civile</li>
+      <li>Vous êtes lié·e à un parti d'opposition ou à une centrale syndicale</li>
+      <li>Vous travaillez sur la solidarité internationale (Palestine, migration, climat)</li>
+      <li>Vous opérez en partie comme association de fait, sans personnalité juridique</li>
+      <li>Vous recevez des subventions publiques (FWB, fédérales, communales)</li>
+      <li>Vos activités touchent l'éducation permanente, la formation politique, la mobilisation</li>
+      <li>Vous avez déjà été visé·e par des contrôles administratifs renforcés</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ====== TIMELINE ====== -->
+<section id="timeline">
+  <div class="section-number">§ 05 — Chronologie</div>
+  <h2>De l'avant-projet à aujourd'hui</h2>
+  <p>
+    Cette chronologie permet de situer où en est la procédure parlementaire et de
+    repérer les jalons jurisprudentiels qui nourrissent la défense.
+  </p>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-date">Été 2025</div>
+      <div class="timeline-title">Dépôt de l'avant-projet de loi</div>
+      <div class="timeline-desc">
+        Le ministre Bernard Quintin (MR) dépose le projet d'interdiction administrative
+        des « organisations radicales ». Le texte initial accorde au gouvernement le
+        pouvoir de dissoudre par arrêté royal, sans contrôle judiciaire préalable.
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">18 septembre 2025</div>
+      <div class="timeline-title">Avis IFDH n° 2025/9</div>
+      <div class="timeline-desc">
+        L'Institut fédéral des Droits humains rend un avis sévère : imprécision
+        terminologique, non-conformité à l'article 27 de la Constitution et à
+        l'article 11 de la CEDH.
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">Automne 2025</div>
+      <div class="timeline-title">Mobilisation de la coalition « Droit de protester »</div>
+      <div class="timeline-desc">
+        FGTB, CSC, CGSLB, LDH, Liga, Amnesty, Collectif21, Avocats.be montent au front.
+        Pétitions, cartes blanches, manifestations.
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">Fin 2025</div>
+      <div class="timeline-title">Avis sévère du Conseil d'État</div>
+      <div class="timeline-desc">
+        La section de législation du Conseil d'État rappelle qu'en démocratie,
+        l'exécutif ne peut se substituer au juge pour prononcer la mort juridique d'une
+        organisation.
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">8 janvier 2026</div>
+      <div class="timeline-title">Recul partiel du gouvernement</div>
+      <div class="timeline-desc">
+        Le ministre Quintin annonce le retrait de la <em>dissolution définitive</em>,
+        désormais confiée au juge. Mais la <strong>suspension temporaire</strong> et
+        les autres pouvoirs administratifs sont maintenus.
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">27 mars 2026</div>
+      <div class="timeline-title">Arrêt CE n° 266.219 — précédent décisif</div>
+      <div class="timeline-desc">
+        Le Conseil d'État, en extrême urgence, suspend l'instruction ministérielle
+        Van Bossuyt sur l'accueil des demandeurs d'asile, jugée comme un contournement
+        d'un arrêt de la Cour constitutionnelle. Démonstration que la haute juridiction
+        administrative ose désavouer le gouvernement.
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">1<sup>er</sup> semestre 2026</div>
+      <div class="timeline-title">Débats parlementaires en cours</div>
+      <div class="timeline-desc">
+        Examen en commission, débats houleux à la Chambre. Le texte révisé reste
+        contesté. Aucune date d'adoption définitive à ce jour.
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">À venir</div>
+      <div class="timeline-title">Recours en annulation programmés</div>
+      <div class="timeline-desc">
+        Plusieurs coalitions préparent un recours coordonné devant la Cour
+        constitutionnelle dès la publication de la loi au Moniteur belge. Délai légal :
+        6 mois.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== PRÉSENTATION DES PHASES ====== -->
+<section id="phases-overview">
+  <div class="section-number">§ 06 — Vue d'ensemble</div>
+  <h2>Six phases <em>séquentielles</em></h2>
+  <p>
+    Cet arsenal est structuré comme une chaîne de défense en six maillons. Chaque phase
+    correspond à un moment précis du parcours d'une organisation visée. La règle
+    générale : <strong>plus vous activez de phases en amont, moins la suivante coûte
+    cher</strong>.
+  </p>
+  <div class="phase-grid">
+    <div class="phase-card">
+      <div class="ph-num">PHASE 0</div>
+      <div class="ph-title">Préparation</div>
+      <div class="ph-desc">Audit, architecture de résilience, réseau juridique pré-positionné. À faire <em>avant</em> toute attaque.</div>
+    </div>
+    <div class="phase-card">
+      <div class="ph-num">PHASE 1</div>
+      <div class="ph-title">Réaction immédiate</div>
+      <div class="ph-desc">Audition, accès aux pièces, communiqué, mobilisation parlementaire. Dès la notification.</div>
+    </div>
+    <div class="phase-card">
+      <div class="ph-num">PHASE 2</div>
+      <div class="ph-title">Conseil d'État</div>
+      <div class="ph-desc">Référé d'extrême urgence en 48 h. Suspension judiciaire de l'arrêté. Pivot principal.</div>
+    </div>
+    <div class="phase-card">
+      <div class="ph-num">PHASE 3</div>
+      <div class="ph-title">Cour constitutionnelle</div>
+      <div class="ph-desc">Annulation de la loi (6 mois) + question préjudicielle. Frappe à la racine.</div>
+    </div>
+    <div class="phase-card">
+      <div class="ph-num">PHASE 4</div>
+      <div class="ph-title">Europe et international</div>
+      <div class="ph-desc">CEDH, CJUE, Commission de Venise, ONU, Civicus, FIDH. Pression externe.</div>
+    </div>
+    <div class="phase-card">
+      <div class="ph-num">PHASE 5</div>
+      <div class="ph-title">Contre-attaque</div>
+      <div class="ph-desc">Action en responsabilité de l'État, plainte pénale, anti-SLAPP. Dissuasion par le coût.</div>
+    </div>
+  </div>
+  <div class="callout ok">
+    <div class="callout-title">Principe directeur</div>
+    <p>
+      Une loi appliquée sans frottement est une loi qui s'étend. Une loi qui rencontre
+      la riposte de chaque association concernée, organisée et mutualisée, devient une
+      loi que les ministres hésitent à utiliser. Le but du présent manuel n'est pas de
+      gagner chaque bataille : c'est de rendre chaque attaque <em>politiquement et
+      juridiquement coûteuse</em>.
+    </p>
+  </div>
+</section>
+
+<!-- ====== PHASE 0 ====== -->
+<section id="phase-0">
+  <div class="section-number">Phase 0 · Avant toute attaque</div>
+  <h2>Préparation <em>préventive</em></h2>
+  <p class="intro">
+    On ne se défend pas correctement à chaud. Tout doit être prêt avant que l'arrêté
+    ne tombe. Ces tâches sont à exécuter dès maintenant par toute association à risque,
+    indépendamment de la probabilité perçue d'être visée.
+  </p>
+
+  <h3>0.1 — Audit interne de gouvernance</h3>
+  <p>
+    Première ligne de défense : prouver, document à l'appui, que vos activités
+    correspondent à vos statuts et à votre mission déclarée. La <em>clause de
+    détournement d'objectifs</em> est désamorcée par une traçabilité irréprochable.
+  </p>
+  <ul class="checklist">
+    <li><strong>Vérifier la conformité des statuts</strong> déposés (UBO, Moniteur belge, registres communaux). Sont-ils actualisés ? La mission est-elle claire et cohérente avec l'activité réelle ?</li>
+    <li><strong>Archiver les procès-verbaux</strong> d'assemblée générale et de conseil d'administration. Accessibles, datés, signés. C'est la première preuve qu'on ne « détourne » pas sa mission.</li>
+    <li><strong>Cartographier les activités</strong> : associer chaque activité publique à une ligne statutaire. Documenter par photos, comptes-rendus, listes de présence.</li>
+    <li><strong>Tenir un registre des financements</strong> : sources, montants, traçabilité. Anticiper une enquête.</li>
+    <li><strong>Définir une politique de signature</strong> des communiqués : qui engage l'association, qui parle à titre personnel. Éviter la responsabilité de l'ASBL pour les déclarations d'un membre isolé.</li>
+    <li><strong>Séparer ASBL faîtière et mouvement militant</strong> quand c'est possible : la suspension de l'un ne tue pas l'autre.</li>
+  </ul>
+
+  <h3>0.2 — Architecture juridique de résilience</h3>
+  <p>
+    Construire dès maintenant les structures de secours qui prendront le relais en cas
+    de suspension. Ce ne sont pas des paranoïas — ce sont les bonnes pratiques de
+    gouvernance associative dans un contexte d'incertitude juridique.
+  </p>
+  <ul class="checklist">
+    <li><strong>Constituer une coquille de sauvegarde</strong> : une seconde ASBL « miroir » (mêmes administrateurs ou administrateurs distincts), inactive en temps normal, qui peut reprendre contrats, salariés, comptes bancaires en cas de suspension.</li>
+    <li><strong>Dispersion bancaire</strong> : éviter le compte unique. Plusieurs banques, dont au moins une éthique (NewB, Triodos) qui résiste mieux à la pression administrative.</li>
+    <li><strong>Hébergement numérique souverain</strong> : site, mailing list, base de données chez un prestataire belge ou européen, avec backup régulier hors juridiction (Suisse, Islande).</li>
+    <li><strong>Réseau de signataires habilités</strong> : pour qu'une procuration de paiement, un virement, un communiqué puissent être signés rapidement même si la moitié du CA est inaccessible.</li>
+    <li><strong>Procuration notariée anticipée</strong> donnant pouvoir à un avocat de représenter l'association en justice sans nouvelle délibération.</li>
+  </ul>
+
+  <h3>0.3 — Réseau juridique pré-positionné</h3>
+  <p>
+    <strong>Avant l'attaque</strong>, prendre contact avec un avocat ou un cabinet de
+    l'un de ces réseaux. Demander un <em>rendez-vous d'audit préventif</em> (1-2 heures)
+    pour identifier vos vulnérabilités spécifiques. Ne pas attendre la crise pour
+    chercher un défenseur.
+  </p>
+  <div class="resource-grid">
+    <div class="resource-card">
+      <div class="rc-name">Ligue des droits humains</div>
+      <div class="rc-role">Réseau d'avocats engagés, recours stratégiques. Point d'entrée principal.</div>
+      <div class="rc-link">liguedh.be</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Liga voor Mensenrechten</div>
+      <div class="rc-role">Pendant néerlandophone, indispensable pour les structures bilingues ou flamandes.</div>
+      <div class="rc-link">mensenrechten.be</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Progress Lawyers Network</div>
+      <div class="rc-role">Collectif d'avocats militants spécialisés en droits sociaux et libertés publiques.</div>
+      <div class="rc-link">progresslaw.net</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Amnesty International Belgique</div>
+      <div class="rc-role">Programme « Droit de protester », soutien stratégique et médiatique.</div>
+      <div class="rc-link">amnesty.be</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Avocats.be · BAJ</div>
+      <div class="rc-role">Bureau d'aide juridique : aide gratuite de 2<sup>e</sup> ligne sous conditions de revenus.</div>
+      <div class="rc-link">avocats.be</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Coalition « Droit de protester »</div>
+      <div class="rc-role">Structure de mutualisation déjà active sur la loi Quintin.</div>
+      <div class="rc-link">Via LDH ou Amnesty</div>
+    </div>
+  </div>
+
+  <h3>0.4 — Réseau d'alerte et soutien</h3>
+  <ul class="checklist">
+    <li><strong>Liste de diffusion sécurisée</strong> (Signal, ProtonMail) avec : 2 journalistes d'investigation, 2 parlementaires d'opposition par assemblée, 1 référent IFDH, 1 référent LDH, 1 avocat-conseil.</li>
+    <li><strong>Communiqué de presse pré-rédigé</strong> type « notre association vient d'être notifiée d'une procédure Quintin » — à dégoupiller en moins d'une heure.</li>
+    <li><strong>Bandeau de site web</strong> prêt avec message d'alerte et lien vers cagnotte de soutien juridique.</li>
+    <li><strong>Soutien international pré-mobilisé</strong> : Civicus, FIDH, OMCT, ECNL (European Center for Not-for-Profit Law) — qui connaissent déjà la procédure.</li>
+  </ul>
+
+  <h3>0.5 — Hygiène opérationnelle</h3>
+  <ul class="checklist">
+    <li><strong>Pas de mélange</strong> entre actions légales et actions de désobéissance civile dans la même structure juridique : la première sera utilisée pour qualifier la seconde de « détournement d'objectif ».</li>
+    <li><strong>Messageries chiffrées</strong> pour les discussions stratégiques (Signal). Pas de WhatsApp pour les sujets sensibles.</li>
+    <li><strong>Documents internes critiques</strong> : chiffrés, accessibles à au moins trois personnes (loi de Murphy).</li>
+    <li><strong>Photos des locaux et matériel</strong> : preuves de l'état avant toute intervention administrative éventuelle.</li>
+  </ul>
+</section>
+
+<!-- ====== PHASE 1 ====== -->
+<section id="phase-1">
+  <div class="section-number">Phase 1 · J+0 à J+7</div>
+  <h2>Réaction <em>immédiate</em></h2>
+  <p class="intro">
+    Vous recevez une notification, un courrier d'audition, une demande de pièces, ou
+    vous apprenez par voie de presse qu'une procédure vous vise. Vous êtes en Phase 1.
+    Ne pas attendre l'arrêté. Tout ce qui se joue ici prépare la défense devant le juge.
+  </p>
+
+  <div class="callout danger">
+    <div class="callout-title">⏱ Checklist des premières 24 heures</div>
+    <ul class="checklist">
+      <li>Photographier et scanner la notification</li>
+      <li>Alerter le réseau juridique pré-positionné (Phase 0.3)</li>
+      <li>Activer la liste de diffusion sécurisée (Phase 0.4)</li>
+      <li>Sauvegarder l'ensemble des données associatives sur support externe</li>
+      <li>Réunir en urgence le conseil d'administration ou les coordinateurs</li>
+      <li>Envoyer la demande écrite de communication du dossier (<a href="#modeles">modèle 1</a>)</li>
+    </ul>
+  </div>
+
+  <h3>1.1 — Droit à l'audition (audi alteram partem)</h3>
+  <p>
+    Toute décision administrative individuelle défavorable doit être précédée de
+    l'audition de la personne concernée. C'est un <strong>principe général de droit
+    administratif belge</strong> (Conseil d'État, arrêt <em>Orfinger</em> de 1993, et
+    jurisprudence constante).
+  </p>
+  <p>Dans les 48 heures suivant la notification :</p>
+  <ul class="checklist">
+    <li><strong>Demande écrite</strong> (recommandé + email) de communication intégrale du dossier sur lequel le ministre entend fonder sa décision, y compris les rapports CCRS, OCAM, Sûreté de l'État.</li>
+    <li><strong>Invoquer expressément</strong> : article 4 de la loi du 29 juillet 1991 sur la motivation formelle des actes administratifs ; article 10 du PIDCP ; article 6 CEDH (volet civil applicable selon <em>Bryan c. Royaume-Uni</em>).</li>
+    <li><strong>Refuser l'audition tant que le dossier complet n'est pas communiqué</strong>, sauf si cela porte préjudice ; alors se présenter sous réserves expresses.</li>
+  </ul>
+
+  <h3>1.2 — Accès aux pièces classifiées</h3>
+  <p>Si la communication est refusée ou partielle :</p>
+  <ul class="checklist">
+    <li><strong>Saisir la Commission d'accès aux documents administratifs (CADA)</strong> sur base de la loi du 11 avril 1994 et des décrets/ordonnances régionaux. Délai de 30 jours pour répondre.</li>
+    <li><strong>Demande croisée</strong> auprès du SPF Intérieur, du Comité R (contrôle parlementaire des renseignements), et du président du CCRS.</li>
+    <li><strong>Note d'observation de l'IFDH</strong> : l'Institut fédéral des Droits humains peut s'autosaisir et publier des avis. Le solliciter formellement.</li>
+    <li><strong>Question parlementaire écrite</strong> par un député allié au ministre : « avez-vous lancé une procédure contre X ? Sur quels rapports ? » La réponse publique entre dans le dossier de défense.</li>
+  </ul>
+
+  <h3>1.3 — Mobilisation parallèle</h3>
+  <p>
+    Le volet public est aussi important que le volet juridique. Mais il doit être
+    <strong>encadré</strong> et <strong>factuel</strong> — pas hystérique. Vous parlez
+    pour le futur juge autant que pour l'opinion.
+  </p>
+  <ul class="checklist">
+    <li><strong>Communiqué de presse factuel</strong> (<a href="#modeles">modèle 2</a>) : la procédure, les voies de recours, le caractère démocratique fondamental de la liberté d'association.</li>
+    <li><strong>Lettre ouverte cosignée</strong> par d'autres associations, intellectuels, parlementaires, hommes/femmes de culture. Démontre que la suspension toucherait un écosystème plus large — utile pour le <em>test de proportionnalité</em>.</li>
+    <li><strong>Cagnotte de défense juridique</strong> (KissKissBankBank, Helloasso, Mollie). Objectif chiffré, justification de l'usage prévu, mise à jour régulière.</li>
+    <li><strong>Conférence de presse</strong> avec présence des parlementaires solidaires, des avocats désignés, et si possible d'un représentant LDH ou IFDH.</li>
+  </ul>
+
+  <h3>1.4 — Préparation technique du dossier de défense</h3>
+  <p>
+    À déposer aux pièces de l'audition et à garder pour le recours ultérieur. Anticiper
+    dès maintenant, même avant que l'arrêté ne tombe :
+  </p>
+  <ul class="checklist">
+    <li><strong>Mémoire défensif</strong> synthétique (10-15 pages maximum) : faits, réfutation, droit, mesures alternatives moins attentatoires.</li>
+    <li><strong>Annexes documentaires</strong> : statuts, PV récents, rapport d'activité, bilan financier, presse, lettres de soutien.</li>
+    <li><strong>Attestations sur l'honneur</strong> de membres, bénéficiaires, partenaires (article 961/2 du Code judiciaire).</li>
+    <li><strong>Liste de témoins potentiels</strong> avec coordonnées.</li>
+  </ul>
+</section>
+
+<!-- ====== PHASE 2 ====== -->
+<section id="phase-2">
+  <div class="section-number">Phase 2 · J+1 à J+15</div>
+  <h2>Référé d'extrême urgence devant le <em>Conseil d'État</em></h2>
+  <p class="intro">
+    Si l'arrêté tombe — suspension temporaire, interdiction d'activités, gel des avoirs —
+    le compte à rebours est lancé. Le réflexe immédiat est le référé d'extrême urgence
+    devant le Conseil d'État, idéalement dans les 24 à 48 heures.
+  </p>
+
+  <h3>2.1 — Le cadre légal en bref</h3>
+  <div class="table-wrap">
+    <table>
+      <tbody>
+        <tr><td><strong>Base légale</strong></td><td>Article 17, § 4 des lois coordonnées sur le Conseil d'État (LCCE)</td></tr>
+        <tr><td><strong>Délai recommandé</strong></td><td>24 à 48 heures — tout retard fragilise l'argument d'urgence</td></tr>
+        <tr><td><strong>Effet</strong></td><td>Si accueilli, suspension de l'arrêté jusqu'à l'arrêt sur le fond (souvent plusieurs mois)</td></tr>
+        <tr><td><strong>Avocat</strong></td><td>Obligatoire (avocat à la Cour de cassation pas requis). Pro deo possible sous conditions de revenus</td></tr>
+        <tr><td><strong>Coût</strong></td><td>Honoraires variables (3 000 à 15 000 €). Souvent pris en charge par les réseaux militants</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>2.2 — Les trois conditions cumulatives</h3>
+  <ol>
+    <li><strong>Imminence d'un préjudice grave et difficilement réparable</strong></li>
+    <li><strong>Moyens sérieux</strong> invoqués contre l'acte</li>
+    <li><strong>Extrême urgence</strong> rendant inadéquat le référé de suspension ordinaire</li>
+  </ol>
+  <p>
+    Pour la loi Quintin, l'urgence est <strong>quasi présumée</strong> :
+  </p>
+  <ul>
+    <li>gel bancaire → impossibilité de payer salaires, loyer, factures</li>
+    <li>fermeture des locaux → perte d'archives, équipement, matériel</li>
+    <li>interdiction d'activités → préjudice irréversible à l'image et à l'utilité publique</li>
+    <li>effet d'intimidation sur les membres et bénéficiaires</li>
+  </ul>
+
+  <h3>2.3 — L'arsenal argumentatif</h3>
+  <p>
+    <strong>Empilez</strong> ces moyens — chacun est une porte. Le Conseil d'État doit
+    en accueillir un seul pour suspendre.
+  </p>
+
+  <h4>A. Vices de procédure</h4>
+  <ul>
+    <li><strong>Défaut ou insuffisance de motivation</strong> (loi 29 juillet 1991, art. 2-3) : motivation stéréotypée, références à des éléments inaccessibles, absence de discussion des arguments de la défense.</li>
+    <li><strong>Violation du droit d'être entendu</strong> (<em>Orfinger</em>) si l'audition a été expéditive ou tenue sans pièces.</li>
+    <li><strong>Violation des droits de la défense</strong> (art. 6 CEDH, volet « civil ») : impossibilité d'accéder aux rapports CCRS classifiés.</li>
+    <li><strong>Excès de pouvoir</strong> : la décision dépasse ce que la loi habilite à faire, ou repose sur un fondement de fait erroné.</li>
+    <li><strong>Détournement de pouvoir</strong> : la loi est utilisée pour un but étranger à sa finalité affichée (réprimer une opposition politique sous couvert de sécurité).</li>
+  </ul>
+
+  <h4>B. Violations de droits fondamentaux</h4>
+  <ul>
+    <li><strong>Article 27 de la Constitution</strong> — liberté d'association : « les Belges ont le droit de s'associer ; ce droit ne peut être soumis à aucune mesure préventive ». Une suspension administrative avant jugement <em>est</em> une mesure préventive.</li>
+    <li><strong>Article 19 de la Constitution</strong> — liberté d'expression et d'opinion.</li>
+    <li><strong>Article 26 de la Constitution</strong> — liberté de réunion.</li>
+    <li><strong>Article 11 CEDH</strong> — liberté d'association, invocable directement. Jurisprudence-clé : <em>Refah Partisi c. Turquie</em>, <em>Vona c. Hongrie</em>, <em>United Communist Party of Turkey c. Turquie</em>, <em>Tebieti Mühafize Cemiyyeti et Israfilov c. Azerbaïdjan</em>.</li>
+    <li><strong>Article 10 CEDH</strong> — liberté d'expression.</li>
+    <li><strong>Article 12 de la Charte UE</strong> des droits fondamentaux.</li>
+    <li><strong>Article 22 du PIDCP</strong> — liberté d'association.</li>
+  </ul>
+
+  <h4>C. Principes structurants</h4>
+  <ul>
+    <li><strong>Principe de légalité</strong> : les notions de « radical », « extrémiste », « détournement d'objectifs » sont juridiquement floues. Le justiciable ne peut prévoir ce qui est sanctionné — violation des articles 12 et 14 de la Constitution et de l'article 7 CEDH.</li>
+    <li><strong>Principe de proportionnalité</strong> : test en trois temps de la CEDH — base légale prévisible, but légitime, nécessité dans une société démocratique. La suspension échoue souvent sur (i) et (iii).</li>
+    <li><strong>Principe d'égalité et de non-discrimination</strong> (art. 10, 11 Constitution ; art. 14 CEDH ; art. 1 Protocole 12) : pourquoi votre association et pas une autre aux activités comparables ?</li>
+    <li><strong>Principe de séparation des pouvoirs</strong> : la suspension administrative court-circuite le juge — l'avis du Conseil d'État de 2025 est ici la munition principale.</li>
+  </ul>
+
+  <h4>D. Exception d'illégalité (article 159 de la Constitution)</h4>
+  <p>
+    Si la loi elle-même est inconstitutionnelle, tout acte pris sur son fondement est
+    dépourvu de base légale. <strong>Demander au CE d'écarter l'application de la
+    loi</strong> sur base de l'article 159 — voie diffuse et perpétuelle. À combiner
+    avec une demande de question préjudicielle.
+  </p>
+
+  <h3>2.4 — Stratégie d'audience</h3>
+  <ul class="checklist">
+    <li><strong>Préférer l'audience publique</strong> : ouverte aux médias, exerce une pression sur la qualité de la motivation gouvernementale.</li>
+    <li><strong>Présence physique</strong> des dirigeants, salariés, bénévoles, bénéficiaires : visualise l'impact humain.</li>
+    <li><strong>Note d'observation écrite</strong> déposée la veille, avec annexes.</li>
+    <li><strong>Témoins</strong> (statut différent du procès civil, mais possible en audition).</li>
+  </ul>
+</section>
+
+<!-- ====== PHASE 3 ====== -->
+<section id="phase-3">
+  <div class="section-number">Phase 3 · Long terme</div>
+  <h2>Cour <em>constitutionnelle</em></h2>
+  <p class="intro">
+    Le Conseil d'État n'attaque que l'arrêté individuel. Pour neutraliser la loi à la
+    racine, il faut saisir la Cour constitutionnelle. Deux voies : le recours en
+    annulation, et la question préjudicielle.
+  </p>
+
+  <h3>3.1 — Recours en annulation de la loi</h3>
+  <div class="table-wrap">
+    <table>
+      <tbody>
+        <tr><td><strong>Base légale</strong></td><td>Loi spéciale du 6 janvier 1989 sur la Cour constitutionnelle</td></tr>
+        <tr><td><strong>Délai</strong></td><td>6 mois à dater de la publication de la loi au Moniteur belge</td></tr>
+        <tr><td><strong>Qualité pour agir</strong></td><td>Toute personne physique ou morale justifiant d'un intérêt — défini largement par la Cour</td></tr>
+        <tr><td><strong>Demande de suspension</strong></td><td>Possible parallèlement si préjudice grave difficilement réparable. Délai : 3 mois</td></tr>
+        <tr><td><strong>Effet</strong></td><td>Annulation <em>erga omnes</em> et <em>ex tunc</em> (rétroactif), modulable par la Cour</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>3.2 — Stratégie de coalition</h3>
+  <p>
+    <strong>Ne pas attaquer seul.</strong> Construire une requête conjointe avec :
+  </p>
+  <ul>
+    <li>une ASBL « grand public » (LDH, Amnesty)</li>
+    <li>une organisation représentative (FGTB, CSC, CGSLB)</li>
+    <li>une association d'Éducation Permanente</li>
+    <li>une association de fait via ses représentants personnes physiques</li>
+    <li>éventuellement un parti politique ou un parlementaire</li>
+  </ul>
+  <p>
+    Cela multiplie les angles d'attaque (chaque requérant invoque son grief propre) et
+    impose à la Cour de traiter le dossier en grande chambre.
+  </p>
+
+  <h3>3.3 — Moyens à invoquer</h3>
+  <ul>
+    <li><strong>Violation art. 27 Constitution</strong> (liberté d'association ; prohibition des mesures préventives)</li>
+    <li><strong>Violation art. 10-11</strong> lus en combinaison avec art. 27, 19, 26, art. 11 CEDH, art. 12 Charte UE</li>
+    <li><strong>Violation art. 12-14 Constitution</strong> : principe de légalité</li>
+    <li><strong>Violation art. 16 Constitution</strong> : atteinte au droit de propriété (gel des avoirs sans procès)</li>
+    <li><strong>Violation art. 144-145 Constitution</strong> : compétence du juge judiciaire court-circuitée</li>
+    <li><strong>Violation art. 6 et 13 CEDH</strong> : procès équitable et recours effectif</li>
+    <li><strong>Violation art. 18 CEDH</strong> : limitation de l'usage des restrictions à leur but légitime — particulièrement adapté si l'on suspecte un détournement politique</li>
+  </ul>
+
+  <h3>3.4 — Question préjudicielle (article 26 LSCC)</h3>
+  <p>
+    Dans tout litige où la loi Quintin est en cause — recours CE, procès pénal d'un
+    militant, action civile en réparation — votre avocat <strong>demande au juge</strong>
+    de poser une question préjudicielle. Le juge a l'<strong>obligation</strong> de la
+    poser sauf si la question est manifestement non sérieuse ou que la Cour s'est déjà
+    prononcée. Avantage : pas de délai de 6 mois, possible à tout moment.
+  </p>
+  <blockquote>
+    L'article [X] de la loi du [date] relative à l'interdiction administrative des
+    personnes morales viole-t-il les articles 10, 11 et 27 de la Constitution, lus
+    isolément ou en combinaison avec les articles 11, 6 et 13 de la CEDH et l'article
+    12 de la Charte UE, en ce qu'il autorise le pouvoir exécutif à prononcer, par voie
+    d'arrêté de police administrative et sans contrôle judiciaire préalable, la
+    suspension temporaire d'une association sur la base de notions imprécises et au
+    moyen de pièces classifiées soustraites au débat contradictoire ?
+  </blockquote>
+</section>
+
+<!-- ====== PHASE 4 ====== -->
+<section id="phase-4">
+  <div class="section-number">Phase 4 · Niveau européen et international</div>
+  <h2>La pression <em>externe</em></h2>
+  <p class="intro">
+    Le niveau européen sert deux fonctions distinctes : judiciaire (CEDH, CJUE) et
+    politique (Commission de Venise, ONU, Conseil de l'UE, Civicus). Les deux doivent
+    être actionnés en parallèle, dès la Phase 2.
+  </p>
+
+  <h3>4.1 — Cour européenne des droits de l'homme</h3>
+  <div class="table-wrap">
+    <table>
+      <tbody>
+        <tr><td><strong>Délai</strong></td><td>4 mois (art. 35 CEDH, Protocole 15) à dater de la décision interne définitive</td></tr>
+        <tr><td><strong>Condition préalable</strong></td><td>Épuisement des voies de recours internes (CE + Cour const., ou démonstration de leur inefficacité)</td></tr>
+        <tr><td><strong>Mesure provisoire (art. 39)</strong></td><td>Invocable si dommage imminent et irréparable, parallèle au référé interne</td></tr>
+        <tr><td><strong>Articles à invoquer</strong></td><td>6, 10, 11, 13, 14, 18 ; art. 1 Protocole 1</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    Précédent belge récent à mobiliser : <strong><em>Mugemangango c. Belgique</em></strong>
+    (Grande Chambre, 10 juillet 2020) sur le contrôle juridictionnel des décisions
+    politiques attentatoires à des droits politiques.
+  </p>
+
+  <h3>4.2 — Cour de justice de l'Union européenne</h3>
+  <p>
+    Si la loi met en cause une norme de droit de l'UE (RGPD, directives anti-blanchiment,
+    fonds européens dont bénéficie l'association, libertés de circulation et
+    d'établissement, principe de non-discrimination UE), votre avocat demande au CE
+    belge ou à la Cour constitutionnelle de poser une <strong>question préjudicielle à
+    la CJUE</strong> (art. 267 TFUE). Avantage décisif : la CJUE peut juger qu'une loi
+    nationale viole le droit de l'UE, ce qui <em>prime sur le droit national</em>
+    (effet direct + primauté).
+  </p>
+
+  <h3>4.3 — Mécanismes politiques internationaux</h3>
+  <p>
+    Ces mécanismes ne donnent pas de décision juridictionnelle, mais construisent un
+    dossier international qui pèse sur l'État et nourrit la défense interne.
+  </p>
+  <div class="resource-grid">
+    <div class="resource-card">
+      <div class="rc-name">Commission de Venise</div>
+      <div class="rc-role">Conseil de l'Europe. Avis sur la conformité aux standards démocratiques.</div>
+      <div class="rc-link">venice.coe.int</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Rapporteur ONU liberté d'association</div>
+      <div class="rc-role">Communication directe possible. Procédures spéciales du Conseil des droits de l'homme.</div>
+      <div class="rc-link">ohchr.org/fr/special-procedures</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Commission européenne</div>
+      <div class="rc-role">Rapport annuel État de droit + procédure d'infraction. Plainte 1 page suffit.</div>
+      <div class="rc-link">commission.europa.eu</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">OSCE / BIDDH</div>
+      <div class="rc-role">Bureau des institutions démocratiques et des droits de l'homme. Avis publié.</div>
+      <div class="rc-link">osce.org/odihr</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Civicus Monitor</div>
+      <div class="rc-role">Indicateur international de l'espace civique. Une rétrogradation a un coût diplomatique réel.</div>
+      <div class="rc-link">monitor.civicus.org</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">ECNL</div>
+      <div class="rc-role">European Center for Not-for-Profit Law. Spécialiste de la liberté d'association.</div>
+      <div class="rc-link">ecnl.org</div>
+    </div>
+  </div>
+
+  <h3>4.4 — Réseau d'ONG internationales</h3>
+  <p>
+    À solliciter dès la Phase 2 par courrier officiel motivé, avec dossier de pièces :
+  </p>
+  <ul>
+    <li><strong>FIDH</strong> — Fédération internationale pour les droits humains</li>
+    <li><strong>OMCT</strong> — Organisation mondiale contre la torture (couvre les défenseurs)</li>
+    <li><strong>Human Rights Watch</strong></li>
+    <li><strong>Article 19</strong> — liberté d'expression</li>
+    <li><strong>Front Line Defenders</strong> — protection individuelle des défenseurs</li>
+    <li><strong>ICNL</strong> — International Center for Not-for-Profit Law</li>
+  </ul>
+</section>
+
+<!-- ====== PHASE 5 ====== -->
+<section id="phase-5">
+  <div class="section-number">Phase 5 · Dissuasion</div>
+  <h2>Contre-attaque <em>civile et pénale</em></h2>
+  <p class="intro">
+    La défense ne suffit pas. Pour décourager les futurs arrêtés, il faut rendre coûteux
+    pour l'État et pour les ministres l'usage de la loi Quintin. C'est la phase de
+    dissuasion par la riposte.
+  </p>
+
+  <h3>5.1 — Action en responsabilité civile de l'État (art. 1382 Code civil)</h3>
+  <p>
+    Depuis les arrêts <em>Anca</em> (Cass., 19 décembre 1991) et <em>F.J./Ferrara</em>
+    (Cass., 28 septembre 2006), <strong>l'État belge est responsable des fautes du
+    législateur et du pouvoir exécutif</strong>. Vous pouvez donc le poursuivre en
+    réparation civile.
+  </p>
+  <div class="table-wrap">
+    <table>
+      <tbody>
+        <tr><td><strong>Faute</strong></td><td>Adoption d'une loi inconstitutionnelle (à confirmer par la Cour const.) ; adoption d'un arrêté illégal (à confirmer par le CE) ; application abusive ou disproportionnée</td></tr>
+        <tr><td><strong>Dommage</strong></td><td>Perte de revenus, atteinte à la réputation, salariés au chômage, préjudice moral des dirigeants, frais juridiques</td></tr>
+        <tr><td><strong>Compétence</strong></td><td>Tribunal de première instance du domicile de l'association ou du Royaume</td></tr>
+        <tr><td><strong>Délai</strong></td><td>5 ans à partir du dommage</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    <strong>Stratégie</strong> : ne pas attendre l'issue du recours en annulation pour
+    ouvrir l'action 1382. Elle peut être lancée dès la suspension administrative ; la
+    procédure peut être suspendue dans l'attente du jugement constitutionnel.
+  </p>
+
+  <h3>5.2 — Plainte pénale pour abus d'autorité</h3>
+  <p>
+    Si la procédure Quintin a été manifestement instrumentalisée à des fins politiques
+    (cibler un opposant, neutraliser une mobilisation en période électorale), une
+    <strong>plainte avec constitution de partie civile</strong> entre les mains du
+    doyen des juges d'instruction est envisageable.
+  </p>
+  <ul>
+    <li><strong>Article 151 du Code pénal</strong> — abus d'autorité par un fonctionnaire public</li>
+    <li><strong>Articles 233-234</strong> — forfaiture</li>
+    <li><strong>Articles 240-245</strong> — prises d'intérêt et faux dans les actes</li>
+  </ul>
+
+  <h3>5.3 — Lutte contre les procédures-bâillons (anti-SLAPP)</h3>
+  <p>
+    Si l'État ou un de ses agents tente d'étouffer le débat par des poursuites en
+    diffamation, en injures, ou en plaintes auprès des autorités professionnelles,
+    activer :
+  </p>
+  <ul>
+    <li><strong>Directive UE 2024/1069</strong> sur la protection contre les procédures abusives, transposable en droit belge</li>
+    <li><strong>Avis IFDH</strong> sur la protection des victimes de poursuites-bâillons</li>
+    <li><strong>Coalition CASE</strong> — Coalition Against SLAPPs in Europe</li>
+  </ul>
+
+  <h3>5.4 — Autres recours administratifs</h3>
+  <ul>
+    <li><strong>Médiateur fédéral</strong> : rapport au Parlement. Effet réputationnel. <em>mediateurfederal.be</em></li>
+    <li><strong>Comité R</strong> : contrôle des services de renseignement, si les rapports CCRS comportent des erreurs factuelles</li>
+    <li><strong>Comité P</strong> : si l'exécution de l'arrêté a impliqué des fautes des forces de l'ordre</li>
+    <li><strong>Autorité de protection des données (APD)</strong> : si des données personnelles ont été traitées illégalement</li>
+    <li><strong>Conseil supérieur de la Justice</strong> : pour signaler des dysfonctionnements judiciaires connexes</li>
+  </ul>
+</section>
+
+<!-- ====== MODÈLES ====== -->
+<section id="modeles">
+  <div class="section-number">§ 12 — Boîte à outils</div>
+  <h2>Modèles de <em>courriers</em></h2>
+  <p class="intro">
+    Trois modèles prêts à l'emploi, à personnaliser avec les données de votre
+    association. Cliquez sur « Copier » pour les récupérer dans votre presse-papier.
+  </p>
+
+  <div class="template">
+    <div class="template-header">
+      <span>Modèle 1 — Demande de communication du dossier</span>
+      <button class="copy-btn" data-target="tpl1">Copier</button>
+    </div>
+    <pre id="tpl1">[Lettre recommandée + copie email]
+
+Monsieur le Ministre de la Sécurité et de l'Intérieur
+SPF Intérieur
+Rue de Louvain 1
+1000 Bruxelles
+
+Objet : Procédure relative à [identification de l'association] —
+        Demande de communication intégrale du dossier
+        Référence : [n° de notification]
+
+Monsieur le Ministre,
+
+Par courrier daté du [date], reçu le [date], nos services ont été
+notifiés du lancement à notre encontre d'une procédure fondée sur la
+loi du [date] relative à l'interdiction administrative des personnes
+morales, sociétés sans personnalité juridique, associations et
+groupements de fait.
+
+Avant toute audition et toute prise de position de notre part,
+nous vous demandons, sur la base :
+
+— de l'article 4 de la loi du 29 juillet 1991 relative à la motivation
+  formelle des actes administratifs,
+— du principe général d'audition préalable (audi alteram partem),
+— des articles 6 et 13 de la Convention européenne des droits
+  de l'homme,
+— de l'article 32 de la Constitution et de la loi du 11 avril 1994
+  relative à la publicité de l'administration,
+
+la communication intégrale du dossier administratif sur lequel vous
+entendez fonder une éventuelle décision défavorable à notre égard,
+en ce compris :
+
+1° les rapports, notes et analyses émanant du Comité de coordination
+   du renseignement et de la sécurité (CCRS), de l'OCAM, de la Sûreté
+   de l'État ou de tout autre service de renseignement ou de police,
+2° l'ensemble des pièces matérielles citées au dossier,
+3° l'identité et la qualité des auteurs des rapports,
+4° les éventuelles observations d'autorités tierces,
+5° la motivation provisoire de l'administration.
+
+Toute pièce classifiée doit faire l'objet d'une procédure de
+déclassification au sens de la loi du 11 décembre 1998, ou à
+défaut d'un résumé non classifié permettant l'exercice effectif
+des droits de la défense.
+
+Dans l'attente de cette communication, nous nous réservons le droit
+de ne pas participer à toute audition qui se tiendrait sans
+connaissance complète des griefs articulés.
+
+Cette communication doit nous parvenir dans un délai raisonnable
+n'excédant pas 15 jours.
+
+Je vous prie d'agréer, Monsieur le Ministre, l'expression de ma
+considération distinguée.
+
+[Nom, qualité, signature]
+[Date]</pre>
+  </div>
+
+  <div class="template">
+    <div class="template-header">
+      <span>Modèle 2 — Communiqué de presse</span>
+      <button class="copy-btn" data-target="tpl2">Copier</button>
+    </div>
+    <pre id="tpl2">COMMUNIQUÉ DE PRESSE
+[Date]
+
+[Nom de l'association] visée par une procédure administrative —
+nous mobilisons les voies de l'État de droit
+
+[Ville], le [date]. L'association [nom], active depuis [année]
+dans le domaine de [mission], a été notifiée ce [date] d'une
+procédure administrative relevant de la loi du [date] sur
+l'interdiction administrative des personnes morales et
+groupements de fait.
+
+Notre association conteste le bien-fondé de cette procédure.
+Conformément aux principes de l'État de droit, nous avons :
+
+— demandé la communication intégrale du dossier administratif ;
+— saisi la Commission d'accès aux documents administratifs ;
+— mandaté nos conseils juridiques pour préparer notre défense
+  devant les juridictions compétentes : Conseil d'État, Cour
+  constitutionnelle et, le cas échéant, Cour européenne des
+  droits de l'homme.
+
+Nous appelons les pouvoirs publics au respect strict des
+garanties fondamentales : droit d'être entendu, accès au dossier,
+contrôle judiciaire indépendant. Nous rappelons que la liberté
+d'association est protégée par l'article 27 de la Constitution
+et par l'article 11 de la Convention européenne des droits de
+l'homme, qui prohibe toute mesure préventive.
+
+[Nom de l'association] poursuit ses activités dans le respect
+de ses statuts et de la loi. Nous remercions les nombreux
+soutiens reçus depuis l'annonce de cette procédure.
+
+Contact presse : [nom, téléphone, email]</pre>
+  </div>
+
+  <div class="template">
+    <div class="template-header">
+      <span>Modèle 3 — Lettre à un parlementaire</span>
+      <button class="copy-btn" data-target="tpl3">Copier</button>
+    </div>
+    <pre id="tpl3">[Date]
+
+Madame / Monsieur la / le Député(e),
+
+Je m'adresse à vous en tant que président·e / représentant·e de
+l'association [nom], qui vient de faire l'objet d'une procédure
+fondée sur la loi du [date] (« loi Quintin »).
+
+Au regard de l'opacité entourant les fondements de cette procédure
+et compte tenu de l'intérêt public soulevé, je sollicite votre
+intervention afin que les questions parlementaires suivantes
+soient adressées au ministre de la Sécurité et de l'Intérieur :
+
+1. Combien de procédures fondées sur la loi du [date] ont-elles
+   été engagées depuis l'entrée en vigueur du texte ?
+
+2. Combien d'arrêtés royaux de suspension ont-ils été pris,
+   et quels en sont les motifs ?
+
+3. Quels services ont produit les rapports sous-tendant ces
+   procédures, et selon quelle méthodologie ?
+
+4. Combien de ces procédures ont-elles fait l'objet d'un recours,
+   et avec quel taux de succès devant le Conseil d'État ?
+
+5. Quelles garanties sont-elles mises en œuvre pour assurer le
+   respect des droits de la défense et de l'article 11 de la CEDH ?
+
+Je me tiens à votre disposition pour vous transmettre les
+documents pertinents et pour toute audition que vous jugerez
+utile.
+
+Avec mes salutations distinguées,
+
+[Nom, qualité, coordonnées]</pre>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">Tableau récapitulatif des recours</div>
+    <div class="table-wrap" style="margin: 12px 0 0;">
+      <table>
+        <thead>
+          <tr><th>Étape</th><th>Juridiction</th><th>Délai</th><th>Effet</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Audition</td><td>Administration</td><td>8-15 j</td><td>Procédural</td></tr>
+          <tr><td>Saisine CADA</td><td>Commission accès docs</td><td>30 j</td><td>Procédural</td></tr>
+          <tr><td>Référé extrême urgence</td><td>Conseil d'État</td><td>24-48 h</td><td><strong>Suspend l'arrêté</strong></td></tr>
+          <tr><td>Recours en annulation</td><td>Conseil d'État</td><td>60 j</td><td>Annule l'arrêté</td></tr>
+          <tr><td>Annulation de la loi</td><td>Cour constitutionnelle</td><td>6 mois</td><td><strong>Annule la loi</strong></td></tr>
+          <tr><td>Question préjudicielle</td><td>Cour const. via juge</td><td>Sans délai</td><td>Censure ou conformité</td></tr>
+          <tr><td>Mesure provisoire</td><td>CEDH Strasbourg</td><td>Sans délai</td><td>Gel international</td></tr>
+          <tr><td>Recours CEDH</td><td>CEDH Strasbourg</td><td>4 mois</td><td>Constat de violation</td></tr>
+          <tr><td>Action 1382</td><td>Tribunal 1re instance</td><td>5 ans</td><td>Indemnités</td></tr>
+          <tr><td>Plainte pénale</td><td>Doyen des JI</td><td>Variable</td><td>Enquête</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ====== DROITS ====== -->
+<section id="droits">
+  <div class="section-number">§ 13 — Pédagogie</div>
+  <h2>Vos droits <em>fondamentaux</em></h2>
+  <p class="intro">
+    Cette section est une vulgarisation. Elle est utile à toute association ou
+    militant·e qui veut comprendre quelle est la base juridique de la défense, sans
+    avoir lu la loi spéciale du 6 janvier 1989.
+  </p>
+
+  <div class="stat-row">
+    <div class="stat">
+      <div class="stat-num">Art. <em>27</em></div>
+      <div class="stat-label">Constitution belge</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">Art. <em>11</em></div>
+      <div class="stat-label">Convention européenne des droits de l'homme</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">Art. <em>12</em></div>
+      <div class="stat-label">Charte des droits fondamentaux de l'UE</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">Art. <em>22</em></div>
+      <div class="stat-label">Pacte international relatif aux droits civils et politiques</div>
+    </div>
+  </div>
+
+  <h3>La liberté d'association</h3>
+  <p>
+    L'article 27 de la Constitution belge dit, mot pour mot : <em>« Les Belges ont le
+    droit de s'associer ; ce droit ne peut être soumis à aucune mesure préventive. »</em>
+    Cette phrase a deux conséquences pratiques décisives.
+  </p>
+  <p>
+    <strong>Première conséquence</strong> : aucune autorisation préalable n'est requise
+    pour fonder une association. C'est un droit, pas une faveur de l'État.
+  </p>
+  <p>
+    <strong>Deuxième conséquence</strong> : aucune mesure préventive ne peut être prise.
+    « Préventive » signifie : <em>avant</em> qu'une infraction ne soit constatée par
+    un juge. Or qu'est-ce qu'une <strong>suspension administrative</strong> sinon une
+    mesure préventive ? Le ministre estime, sur base de rapports confidentiels, qu'une
+    organisation pourrait nuire à l'ordre public ; il la suspend ; aucun juge n'a
+    encore examiné le dossier. C'est précisément ce que l'article 27 interdit.
+  </p>
+
+  <h3>La liberté d'expression</h3>
+  <p>
+    L'article 19 de la Constitution et l'article 10 de la CEDH protègent la liberté
+    d'expression — y compris les idées qui « choquent, heurtent ou inquiètent », selon
+    la formule consacrée par la Cour européenne (<em>Handyside c. Royaume-Uni</em>,
+    1976). Une association ne peut être sanctionnée pour ses <em>idées</em>, mais
+    seulement pour ses <em>actes</em> contraires à la loi, et encore : à condition que
+    la sanction soit proportionnée.
+  </p>
+
+  <h3>Le procès équitable</h3>
+  <p>
+    L'article 6 de la CEDH garantit à toute personne le droit à un procès équitable
+    devant un tribunal indépendant et impartial. Ce droit s'applique à toute contestation
+    sur des « droits et obligations de caractère civil » (jurisprudence <em>Bryan</em>).
+    La suspension d'une association affecte ses droits civils (patrimoine, réputation,
+    capacité d'agir) — donc l'article 6 s'applique. Or la procédure Quintin ne prévoit
+    pas de contrôle judiciaire préalable. Violation directe.
+  </p>
+
+  <h3>Le principe de légalité</h3>
+  <p>
+    On ne peut pas être sanctionné pour un comportement qui n'est pas clairement défini
+    dans une loi accessible et prévisible. C'est le sens de l'adage <em>nullum crimen
+    sine lege</em> (article 7 CEDH, article 12 Constitution). Or les notions de
+    « détournement d'objectifs » ou « instabilité démocratique » ne permettent pas à
+    une association de prévoir si une activité donnée tombera ou non sous le coup de
+    la loi. Le justiciable est laissé à l'arbitraire de qualification du ministre.
+    C'est une violation structurelle de la légalité.
+  </p>
+
+  <h3>Le principe de proportionnalité</h3>
+  <p>
+    Toute restriction à un droit fondamental doit être <em>nécessaire</em> dans une
+    société démocratique et <em>proportionnée</em> au but poursuivi. La Cour européenne
+    teste ces conditions en trois temps : (i) la mesure a-t-elle une base légale claire ?
+    (ii) poursuit-elle un but légitime ? (iii) est-elle nécessaire ? La suspension
+    administrative d'une association entière, sans procès, échoue presque toujours sur
+    le troisième temps : il existe des mesures moins attentatoires (sanctions
+    individuelles, dialogue, retrait ciblé de subventions). Si elles n'ont pas été
+    examinées, la mesure est disproportionnée.
+  </p>
+
+  <div class="callout ok">
+    <div class="callout-title">À retenir</div>
+    <p>
+      L'arsenal défensif repose sur cinq piliers : <strong>liberté d'association,
+      liberté d'expression, procès équitable, principe de légalité, principe de
+      proportionnalité</strong>. Chacun est suffisant pour faire tomber un arrêté de
+      suspension. Cumulés, ils rendent la défense presque inattaquable sur le plan du
+      droit.
+    </p>
+  </div>
+</section>
+
+<!-- ====== FAQ ====== -->
+<section id="faq">
+  <div class="section-number">§ 14 — Questions fréquentes</div>
+  <h2>Questions <em>fréquentes</em></h2>
+  <p class="intro">
+    Les questions qui reviennent le plus souvent dans les ateliers de la coalition
+    « Droit de protester » et des permanences juridiques associatives.
+  </p>
+
+  <details class="faq">
+    <summary>Notre association est une petite ASBL locale. Sommes-nous vraiment concernés ?</summary>
+    <div class="faq-body">
+      <p>
+        Oui, en théorie. La loi vise <em>toute personne morale</em>, <em>société sans
+        personnalité juridique</em>, <em>association</em> ou <em>groupement de fait</em>.
+        Aucune taille minimale n'est requise. En pratique, le ministre cible
+        prioritairement les structures de visibilité publique, mais une petite ASBL qui
+        soutient activement une cause politique sensible n'est pas à l'abri.
+      </p>
+      <p>
+        Le coût d'application de la Phase 0 (audit, gouvernance, contacts juridiques)
+        est minime. Le coût de ne rien faire si on est visé est immense. Faites-le.
+      </p>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary>Nous n'avons pas d'argent pour un avocat. Que faire ?</summary>
+    <div class="faq-body">
+      <p>
+        Plusieurs solutions cumulables :
+      </p>
+      <ul>
+        <li><strong>Bureau d'aide juridique (BAJ)</strong> de votre arrondissement : aide gratuite de deuxième ligne sous conditions de revenus. La plupart des dirigeants associatifs y ont droit.</li>
+        <li><strong>Pro bono</strong> via la Ligue des droits humains, Progress Lawyers Network, ou des cabinets engagés.</li>
+        <li><strong>Cagnotte de défense juridique</strong> ouverte au public.</li>
+        <li><strong>Mutualisation</strong> : si plusieurs associations sont visées, regroupez les dossiers, partagez l'avocat, formez une coalition.</li>
+        <li><strong>Permanences syndicales</strong> (FGTB, CSC, CGSLB) qui couvrent souvent les questions de droits collectifs.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary>Nous sommes une association de fait, sans personnalité juridique. Pouvons-nous saisir le Conseil d'État ?</summary>
+    <div class="faq-body">
+      <p>
+        Directement, non. Mais vos <strong>membres personnes physiques</strong> peuvent
+        agir en leur nom propre, en invoquant un intérêt direct et personnel à
+        l'annulation de l'arrêté qui suspend le groupement auquel ils appartiennent.
+        C'est un détour, mais il fonctionne.
+      </p>
+      <p>
+        L'autre solution : <strong>se constituer en ASBL en urgence</strong>. La
+        procédure est rapide (publication au Moniteur en quelques semaines) et donne
+        accès à tous les recours administratifs. À combiner avec l'action des membres
+        personnes physiques.
+      </p>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary>Que faire si la police vient fermer nos locaux ?</summary>
+    <div class="faq-body">
+      <p>
+        <strong>Ne pas s'opposer physiquement</strong> — vous risquez des poursuites
+        pour rébellion. Mais vous avez le droit de :
+      </p>
+      <ul>
+        <li>Demander à voir l'arrêté écrit (refuser l'exécution si on ne vous le montre pas)</li>
+        <li>Photographier l'arrêté et la scène</li>
+        <li>Demander un délai raisonnable pour sécuriser les pièces sensibles (archives, données personnelles)</li>
+        <li>Refuser de signer toute déclaration sans la présence de votre avocat</li>
+        <li>Appeler immédiatement votre avocat-conseil et la Ligue des droits humains</li>
+      </ul>
+      <p>
+        Si des biens personnels sont saisis avec les biens associatifs, exiger un
+        inventaire signé.
+      </p>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary>Pouvons-nous continuer nos activités après une suspension ?</summary>
+    <div class="faq-body">
+      <p>
+        <strong>Non, c'est pénalement risqué.</strong> Toute personne qui participe à
+        une réunion, qui arbore un symbole, qui distribue un tract d'un groupement
+        suspendu s'expose à 6 mois à 3 ans d'emprisonnement. Tant que l'arrêté n'est
+        pas suspendu par le Conseil d'État, ne défiez pas ouvertement la mesure.
+      </p>
+      <p>
+        Vous pouvez en revanche :
+      </p>
+      <ul>
+        <li>Activer la <strong>coquille de sauvegarde</strong> (Phase 0.2) qui reprend les activités essentielles</li>
+        <li>Maintenir la communication publique sur la procédure en cours</li>
+        <li>Organiser des rassemblements de soutien à titre <em>personnel</em>, sans logo associatif</li>
+        <li>Mobiliser le réseau d'alliés sans engager la structure suspendue</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary>Combien de temps prend une procédure complète ?</summary>
+    <div class="faq-body">
+      <p>
+        Variable selon les phases :
+      </p>
+      <ul>
+        <li><strong>Référé extrême urgence CE</strong> : décision en quelques jours à quelques semaines</li>
+        <li><strong>Recours en annulation CE</strong> : 12 à 24 mois</li>
+        <li><strong>Recours en annulation Cour const.</strong> : 12 à 24 mois</li>
+        <li><strong>Question préjudicielle</strong> : 12 à 18 mois après saisine</li>
+        <li><strong>CEDH</strong> : 4 à 7 ans (mesures provisoires : quelques jours)</li>
+        <li><strong>Action 1382</strong> : 3 à 8 ans selon la complexité</li>
+      </ul>
+      <p>
+        Le pivot stratégique est le <strong>référé extrême urgence du Conseil d'État</strong>.
+        S'il aboutit, votre association reprend ses activités pendant que les autres
+        procédures suivent leur cours.
+      </p>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary>Risquons-nous des poursuites en représailles ?</summary>
+    <div class="faq-body">
+      <p>
+        C'est un risque réel mais limité. L'État belge utilise rarement les poursuites
+        en représailles directes ; il privilégie les voies administratives indirectes
+        (contrôles fiscaux, retraits de subventions, contrôles ONSS). C'est précisément
+        pour cela que la <strong>tenue irréprochable des comptes</strong> et le respect
+        scrupuleux des obligations administratives sont essentiels (Phase 0.1).
+      </p>
+      <p>
+        Les <strong>procédures-bâillons (SLAPP)</strong> sont l'autre risque : plaintes
+        en diffamation, en injures, atteinte à la réputation. Ce sont elles que la
+        directive UE 2024/1069 cherche à contrer.
+      </p>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary>Et si la loi n'est jamais adoptée ?</summary>
+    <div class="faq-body">
+      <p>
+        Le projet est toujours en discussion au Parlement au moment de la rédaction de
+        ce manuel. Trois scénarios possibles :
+      </p>
+      <ul>
+        <li><strong>Adoption telle quelle</strong> : ce manuel devient pleinement opérationnel</li>
+        <li><strong>Adoption amputée</strong> : la suspension administrative est retirée, ne reste que la procédure judiciaire — risque atténué</li>
+        <li><strong>Retrait</strong> : le projet est abandonné. Le manuel reste utile pour les <em>prochains</em> projets de loi sécuritaires (le précédent Quintin sera reproduit ailleurs)</li>
+      </ul>
+      <p>
+        Dans tous les cas, la <strong>Phase 0</strong> (préparation préventive)
+        constitue une bonne pratique de gouvernance qui reste utile indépendamment de
+        la loi.
+      </p>
+    </div>
+  </details>
+</section>
+
+<!-- ====== ANNUAIRE ====== -->
+<section id="alliers">
+  <div class="section-number">§ 15 — Allié·e·s</div>
+  <h2>Annuaire de <em>soutien</em></h2>
+  <p class="intro">
+    Aucune défense n'est solitaire. Voici les structures à contacter — par ordre
+    d'urgence et de spécialisation.
+  </p>
+
+  <h3>Soutien juridique direct</h3>
+  <div class="resource-grid">
+    <div class="resource-card">
+      <div class="rc-name">Ligue des droits humains (LDH)</div>
+      <div class="rc-role">Conseil, plaidoyer, partenariat juridique. Premier réflexe.</div>
+      <div class="rc-link">liguedh.be</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Liga voor Mensenrechten</div>
+      <div class="rc-role">Idem côté néerlandophone.</div>
+      <div class="rc-link">mensenrechten.be</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Progress Lawyers Network</div>
+      <div class="rc-role">Cabinet militant, libertés publiques et droits sociaux.</div>
+      <div class="rc-link">progresslaw.net</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Bureau d'aide juridique (BAJ)</div>
+      <div class="rc-role">Aide juridique gratuite de 2<sup>e</sup> ligne. Listes par arrondissement.</div>
+      <div class="rc-link">avocats.be / ovb.be</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Avocats.be / OBFG</div>
+      <div class="rc-role">Ordre des barreaux francophones et germanophone.</div>
+      <div class="rc-link">avocats.be</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Atelier des Droits Sociaux</div>
+      <div class="rc-role">Permanence droits sociaux, Bruxelles. Boutique de droit.</div>
+      <div class="rc-link">atelierdroitssociaux.be</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Droits Quotidiens</div>
+      <div class="rc-role">Permanence droits, Liège. Vulgarisation juridique.</div>
+      <div class="rc-link">droitsquotidiens.be</div>
+    </div>
+  </div>
+
+  <h3>Soutien politique et institutionnel</h3>
+  <div class="resource-grid">
+    <div class="resource-card">
+      <div class="rc-name">Institut fédéral des Droits humains</div>
+      <div class="rc-role">Autosaisine possible. Avis officiels. Indépendant.</div>
+      <div class="rc-link">institutfederaldroitshumains.be</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Médiateur fédéral</div>
+      <div class="rc-role">Plainte administrative, rapport au Parlement.</div>
+      <div class="rc-link">mediateurfederal.be</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Comité R</div>
+      <div class="rc-role">Contrôle parlementaire des services de renseignement.</div>
+      <div class="rc-link">comiteri.be</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Comité P</div>
+      <div class="rc-role">Contrôle des services de police.</div>
+      <div class="rc-link">comitep.be</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Autorité de protection des données</div>
+      <div class="rc-role">RGPD, plaintes traitement illicite de données.</div>
+      <div class="rc-link">autoriteprotectiondonnees.be</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Unia</div>
+      <div class="rc-role">Centre interfédéral pour l'égalité des chances et la lutte contre la discrimination.</div>
+      <div class="rc-link">unia.be</div>
+    </div>
+  </div>
+
+  <h3>Soutien syndical et associatif</h3>
+  <div class="resource-grid">
+    <div class="resource-card">
+      <div class="rc-name">FGTB</div>
+      <div class="rc-role">Coalition « Droit de protester ». Soutien juridique syndical.</div>
+      <div class="rc-link">fgtb.be</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">CSC</div>
+      <div class="rc-role">Soutien juridique et plaidoyer associatif.</div>
+      <div class="rc-link">lacsc.be</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">CGSLB</div>
+      <div class="rc-role">Syndicat libéral. Position critique sur la loi Quintin.</div>
+      <div class="rc-link">cgslb.be</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Amnesty Belgique</div>
+      <div class="rc-role">Carte blanche, mobilisation, soutien international.</div>
+      <div class="rc-link">amnesty.be</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Collectif21</div>
+      <div class="rc-role">Plateforme citoyenne mobilisée contre Quintin.</div>
+      <div class="rc-link">collectif21.be</div>
+    </div>
+  </div>
+
+  <h3>Soutien européen et international</h3>
+  <div class="resource-grid">
+    <div class="resource-card">
+      <div class="rc-name">ECNL</div>
+      <div class="rc-role">European Center for Not-for-Profit Law.</div>
+      <div class="rc-link">ecnl.org</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Civicus Monitor</div>
+      <div class="rc-role">Surveillance internationale de l'espace civique.</div>
+      <div class="rc-link">monitor.civicus.org</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">FIDH</div>
+      <div class="rc-role">Fédération internationale pour les droits humains.</div>
+      <div class="rc-link">fidh.org</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Article 19</div>
+      <div class="rc-role">Liberté d'expression, défense internationale.</div>
+      <div class="rc-link">article19.org</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Front Line Defenders</div>
+      <div class="rc-role">Protection individuelle des défenseurs des droits.</div>
+      <div class="rc-link">frontlinedefenders.org</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Human Rights Watch</div>
+      <div class="rc-role">Documentation, plaidoyer international.</div>
+      <div class="rc-link">hrw.org</div>
+    </div>
+  </div>
+
+  <h3>Presse d'investigation</h3>
+  <p>
+    Le bon contact média peut transformer une affaire administrative en débat public.
+    Ces médias ont déjà couvert la loi Quintin et l'évolution de l'État de droit en
+    Belgique :
+  </p>
+  <div class="resource-grid">
+    <div class="resource-card">
+      <div class="rc-name">Médor</div>
+      <div class="rc-role">Coopérative de journalisme d'investigation.</div>
+      <div class="rc-link">medor.coop</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Apache</div>
+      <div class="rc-role">Investigation francophone et néerlandophone.</div>
+      <div class="rc-link">apache.be</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Le Soir</div>
+      <div class="rc-role">Quotidien de référence, suivi politique.</div>
+      <div class="rc-link">lesoir.be</div>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Knack</div>
+      <div class="rc-role">Hebdomadaire flamand d'investigation.</div>
+      <div class="rc-link">knack.be</div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== DIFFUSION ====== -->
+<section id="diffusion">
+  <div class="section-number">§ 16 — Diffusion</div>
+  <h2>Faire circuler ce <em>manuel</em></h2>
+  <p class="intro">
+    Plus ce manuel est connu avant que les attaques ne se multiplient, plus la
+    dissuasion fonctionne. Voici comment l'intégrer dans votre écosystème.
+  </p>
+
+  <h3>Pour les associations</h3>
+  <ul>
+    <li>Intégrer le manuel dans votre <strong>kit de gouvernance</strong> pour les nouveaux administrateurs</li>
+    <li>Diffuser auprès de votre <strong>réseau associatif</strong> (fédérations, plateformes, coordinations)</li>
+    <li>Organiser un <strong>atelier de 2 heures</strong> en équipe pour appliquer la Phase 0</li>
+    <li>Prévoir l'application de la Phase 0 lors de votre prochaine <strong>assemblée générale</strong></li>
+  </ul>
+
+  <h3>Pour les syndicats</h3>
+  <ul>
+    <li>Diffuser auprès des <strong>sections de base</strong>, particulièrement celles qui organisent des piquets et des actions de terrain</li>
+    <li>Intégrer dans la <strong>formation des délégué·e·s</strong></li>
+    <li>Préparer des <strong>permanences juridiques mutualisées</strong> sur la loi Quintin</li>
+  </ul>
+
+  <h3>Pour les journalistes</h3>
+  <ul>
+    <li>Utiliser comme <strong>document de référence</strong> dans les enquêtes sur l'évolution de l'État de droit</li>
+    <li>Mobiliser les contacts (LDH, IFDH) pour des <strong>cartes blanches</strong> et débats</li>
+    <li>Suivre les premiers cas d'application et documenter les recours</li>
+  </ul>
+
+  <h3>Pour les avocat·e·s</h3>
+  <ul>
+    <li>Utiliser comme <strong>socle pour les consultations préventives</strong> auprès des associations clientes</li>
+    <li>Adapter et enrichir avec les jurisprudences locales et personnelles</li>
+    <li>Contribuer à l'amélioration du manuel via les pull requests sur le repo Git</li>
+  </ul>
+
+  <h3>Pour les parlementaires</h3>
+  <ul>
+    <li>Utiliser comme <strong>base pour les questions écrites et orales</strong></li>
+    <li>Intégrer dans les <strong>amendements et propositions de loi</strong> visant à corriger les failles de la loi Quintin</li>
+    <li>Relayer auprès de la <strong>commission de la Justice</strong> et des rapporteurs européens</li>
+  </ul>
+
+  <div class="callout">
+    <div class="callout-title">Licence Creative Commons BY-SA 4.0</div>
+    <p>
+      Ce manuel est <strong>libre de droits</strong>. Vous pouvez le copier, le modifier,
+      le redistribuer — y compris à des fins commerciales — sous deux conditions :
+      <strong>citer la source</strong> et <strong>conserver la même licence</strong> pour
+      les œuvres dérivées. Aucune autorisation préalable n'est requise. Aucune
+      contrepartie n'est due. Aucune restriction supplémentaire ne peut être ajoutée.
+    </p>
+    <p>
+      Texte complet : <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr">creativecommons.org/licenses/by-sa/4.0/deed.fr</a>
+    </p>
+  </div>
+
+  <h3>Contribuer</h3>
+  <p>
+    Le manuel est hébergé sur un dépôt Git public. Vous pouvez :
+  </p>
+  <ul>
+    <li><strong>Forker</strong> pour créer une version adaptée à votre situation locale</li>
+    <li><strong>Traduire</strong> en néerlandais, allemand, anglais (priorité pour la portée européenne)</li>
+    <li><strong>Compléter</strong> : ajouter des jurisprudences récentes, des modèles testés, des retours d'expérience anonymisés</li>
+    <li><strong>Mirror</strong> sur d'autres plateformes (Codeberg, Framagit, archive.org) pour la résilience</li>
+    <li><strong>Signaler</strong> erreurs et omissions via le système d'issues</li>
+  </ul>
+
+  <p>
+    Toute contribution doit citer ses sources juridiques (loi, jurisprudence, doctrine),
+    préserver le caractère opérationnel (pas de rhétorique inutile), respecter la
+    neutralité partisane (le manuel doit être utile à toute association, indépendamment
+    de son orientation politique), et conserver la licence CC-BY-SA.
+  </p>
+</section>
+
+<!-- ====== CLOSING ====== -->
+<section id="closing">
+  <div class="section-number">§ 17 — En conclusion</div>
+  <h2>La meilleure défense, c'est la <em>préparation</em></h2>
+  <p class="intro">
+    Cet arsenal ne garantit aucune victoire. Il garantit que toute attaque
+    administrative coûtera politiquement et juridiquement ce qu'elle doit coûter dans
+    un État de droit : un long contentieux, une exposition publique, un risque
+    réputationnel pour l'exécutif, un risque de condamnation internationale.
+  </p>
+  <p>
+    C'est cette <strong>prévisibilité du coût</strong> qui dissuade. Une loi qui
+    s'applique sans frottement est une loi qui s'étend. Une loi qui rencontre la
+    riposte de chaque association concernée, organisée, mutualisée, devient une loi
+    que les ministres hésitent à utiliser.
+  </p>
+  <p>
+    La défense de la liberté d'association en Belgique ne dépendra pas d'un arrêt
+    isolé, d'un avis ministériel, d'une déclaration de bonne intention. Elle dépendra
+    de la <strong>capacité collective</strong> des associations à se préparer ensemble,
+    à se défendre ensemble, à mutualiser leurs moyens, leurs connaissances et leurs
+    réseaux. Ce manuel n'est qu'un outil parmi d'autres dans cette construction
+    collective.
+  </p>
+  <p>
+    <strong>Diffusez-le. Forkez-le. Améliorez-le. Utilisez-le.</strong>
+  </p>
+  <blockquote>
+    « Les Belges ont le droit de s'associer ; ce droit ne peut être soumis à aucune
+    mesure préventive. »
+    <footer style="font-family: var(--mono); font-size: 12px; margin-top: 12px; color: var(--ink-faded); text-transform: uppercase; letter-spacing: 0.08em; font-style: normal;">
+      — Article 27 de la Constitution belge
+    </footer>
+  </blockquote>
+</section>
+
+</main>
+</div>
+
+<!-- ====== FOOTER ====== -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h5>Arsenal Quintin</h5>
+      <p>
+        Manuel open source de défense juridique pour les associations belges menacées
+        par la loi d'interdiction administrative des organisations.
+      </p>
+      <p>Version 1.0 — mai 2026.</p>
+    </div>
+    <div>
+      <h5>Licence</h5>
+      <p>
+        Creative Commons BY-SA 4.0.<br>
+        Libre de copier, modifier, redistribuer<br>
+        sous réserve de citation et de partage<br>
+        à l'identique.
+      </p>
+      <p><a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr">Texte de la licence →</a></p>
+    </div>
+    <div>
+      <h5>Accès rapide</h5>
+      <ul>
+        <li><a href="#phase-0">Phase 0 — Préparation</a></li>
+        <li><a href="#phase-1">Phase 1 — Réaction immédiate</a></li>
+        <li><a href="#modeles">Modèles de courriers</a></li>
+        <li><a href="#alliers">Annuaire de soutien</a></li>
+        <li><a href="#faq">Questions fréquentes</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Urgence</h5>
+      <p>
+        En cas de notification immédiate :
+      </p>
+      <ul>
+        <li><strong>Ligue des droits humains</strong></li>
+        <li>liguedh.be</li>
+        <li>Permanence : voir site</li>
+      </ul>
+      <p style="margin-top: 12px;">
+        <strong>Bureau d'aide juridique</strong> de votre arrondissement —
+        aide gratuite sous conditions.
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>CC-BY-SA 4.0 · 2026</span>
+    <span>Pas un avis juridique individuel</span>
+    <span>Manuel évolutif · Fork bienvenu</span>
+  </div>
+</footer>
+
+<script>
+// Copy buttons for letter templates
+document.querySelectorAll('.copy-btn').forEach(btn => {
+  btn.addEventListener('click', async () => {
+    const targetId = btn.getAttribute('data-target');
+    const text = document.getElementById(targetId).innerText;
+    try {
+      await navigator.clipboard.writeText(text);
+      const orig = btn.textContent;
+      btn.textContent = '✓ Copié';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = orig;
+        btn.classList.remove('copied');
+      }, 2000);
+    } catch (err) {
+      // Fallback: select text
+      const range = document.createRange();
+      range.selectNode(document.getElementById(targetId));
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      btn.textContent = 'Sélectionné';
+      setTimeout(() => { btn.textContent = 'Copier'; }, 2000);
+    }
+  });
+});
+
+// Smooth scroll for TOC links is handled by CSS scroll-behavior
+// Add active state to TOC links on scroll
+const sections = document.querySelectorAll('section[id]');
+const tocLinks = document.querySelectorAll('aside.toc a');
+
+function highlightToc() {
+  let current = '';
+  const scrollY = window.pageYOffset;
+  sections.forEach(section => {
+    const top = section.offsetTop - 100;
+    if (scrollY >= top) current = section.id;
+  });
+  tocLinks.forEach(link => {
+    link.style.fontWeight = '400';
+    link.style.color = '';
+    if (link.getAttribute('href') === '#' + current) {
+      link.style.fontWeight = '700';
+      link.style.color = 'var(--accent)';
+    }
+  });
+}
+
+window.addEventListener('scroll', highlightToc, { passive: true });
+highlightToc();
+</script>
+</body>
+</html>
+
+</body>
+</html>
