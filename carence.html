@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La carence systémique — Chronique du démantèlement belge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Spectral:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f3ece0;
+    --paper-2: #ede4d3;
+    --ink: #14110d;
+    --ink-2: #3a342a;
+    --rule: #b7a98d;
+    --sang: #8b1a1a;
+    --sang-deep: #5e0e0e;
+    --gold: #a47a25;
+    --shadow: rgba(20,17,13,0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Spectral', Georgia, serif;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    background-image:
+      radial-gradient(ellipse at 20% 10%, rgba(164,122,37,0.06), transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(139,26,26,0.05), transparent 50%);
+  }
+
+  /* Masthead */
+  .masthead {
+    border-bottom: 2px solid var(--ink);
+    padding: 22px 40px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    background: var(--paper);
+  }
+  .masthead .left { display: flex; gap: 30px; align-items: baseline; }
+  .masthead .brand {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 22px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--sang-deep);
+  }
+  .masthead .meta { color: var(--ink-2); }
+
+  /* Hero */
+  .hero {
+    padding: 90px 40px 80px;
+    max-width: 1280px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+  .hero .kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--sang);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .hero .kicker::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--sang);
+    display: inline-block;
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-style: italic;
+    font-variation-settings: 'SOFT' 30, 'WONK' 1;
+    font-size: clamp(60px, 11vw, 168px);
+    line-height: 0.86;
+    letter-spacing: -0.035em;
+    color: var(--ink);
+    margin-bottom: 40px;
+    max-width: 13ch;
+  }
+  .hero h1 em {
+    color: var(--sang-deep);
+    font-style: italic;
+    font-weight: 900;
+  }
+  .hero .deck {
+    font-family: 'Spectral', serif;
+    font-weight: 300;
+    font-size: clamp(22px, 2.4vw, 32px);
+    line-height: 1.35;
+    max-width: 60ch;
+    color: var(--ink-2);
+    font-style: italic;
+    margin-top: 30px;
+  }
+  .hero .byline {
+    margin-top: 60px;
+    display: flex;
+    gap: 40px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+  .hero .byline strong { color: var(--ink); }
+
+  /* Article container */
+  article {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+
+  /* Lede */
+  .lede {
+    font-family: 'Spectral', serif;
+    font-size: 24px;
+    line-height: 1.5;
+    font-weight: 400;
+    margin-bottom: 60px;
+    color: var(--ink);
+  }
+  .lede::first-letter {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 110px;
+    line-height: 0.85;
+    float: left;
+    margin: 6px 14px -6px 0;
+    color: var(--sang-deep);
+    font-style: italic;
+  }
+
+  /* Section heads */
+  .chapter {
+    margin: 80px 0 36px;
+    padding-top: 50px;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 24px;
+    align-items: baseline;
+  }
+  .chapter .num {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 80px;
+    line-height: 0.9;
+    color: var(--sang);
+    font-style: italic;
+    font-variation-settings: 'WONK' 1;
+  }
+  .chapter h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: clamp(32px, 4vw, 44px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .chapter .subtitle {
+    grid-column: 2;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin-top: 12px;
+  }
+
+  /* Paragraphs */
+  article p {
+    margin-bottom: 24px;
+    hyphens: auto;
+    text-align: justify;
+  }
+  article p strong {
+    font-weight: 700;
+    color: var(--ink);
+    background: linear-gradient(transparent 60%, rgba(164,122,37,0.22) 60%);
+    padding: 0 1px;
+  }
+  article em {
+    font-style: italic;
+    color: var(--ink-2);
+  }
+
+  /* Pull quotes */
+  .pullquote {
+    margin: 50px -40px;
+    padding: 50px 60px;
+    border-top: 3px double var(--ink);
+    border-bottom: 3px double var(--ink);
+    position: relative;
+  }
+  .pullquote::before {
+    content: '«';
+    position: absolute;
+    top: 18px;
+    left: 24px;
+    font-family: 'Fraunces', serif;
+    font-size: 90px;
+    line-height: 1;
+    color: var(--sang);
+    font-style: italic;
+    font-weight: 900;
+  }
+  .pullquote q {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-variation-settings: 'SOFT' 50;
+    font-size: 32px;
+    line-height: 1.25;
+    color: var(--ink);
+    quotes: none;
+  }
+  .pullquote q::before, .pullquote q::after { content: none; }
+  .pullquote cite {
+    display: block;
+    margin-top: 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    font-style: normal;
+  }
+  .pullquote cite::before { content: '— '; color: var(--sang); }
+
+  /* Data callouts */
+  .figure-strip {
+    margin: 50px -40px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 48px 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 36px 30px;
+    position: relative;
+  }
+  .figure-strip::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -6px;
+    height: 3px;
+    background: var(--sang);
+  }
+  .figure-strip .stat .n {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 52px;
+    line-height: 1;
+    color: var(--paper);
+    display: block;
+    letter-spacing: -0.03em;
+  }
+  .figure-strip .stat .n .unit {
+    font-size: 22px;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--rule);
+    margin-left: 4px;
+  }
+  .figure-strip .stat .label {
+    margin-top: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    line-height: 1.5;
+    color: var(--rule);
+  }
+
+  /* Ledger table */
+  .ledger {
+    margin: 50px 0;
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    padding: 4px 0;
+  }
+  .ledger .row {
+    display: grid;
+    grid-template-columns: 90px 1fr 100px;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .ledger .row:last-child { border-bottom: none; }
+  .ledger .date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--sang);
+    font-weight: 700;
+  }
+  .ledger .desc {
+    font-family: 'Spectral', serif;
+    font-size: 16px;
+    line-height: 1.45;
+  }
+  .ledger .desc strong { color: var(--ink); font-weight: 700; }
+  .ledger .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    text-align: right;
+  }
+
+  /* Aside box */
+  .aside {
+    background: var(--paper-2);
+    padding: 32px 36px;
+    margin: 40px 0;
+    border-left: 4px solid var(--sang);
+    font-size: 17px;
+    line-height: 1.55;
+  }
+  .aside h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--sang-deep);
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+  .aside p { margin-bottom: 12px; }
+  .aside p:last-child { margin-bottom: 0; }
+
+  /* Section ornament */
+  .ornament {
+    text-align: center;
+    margin: 50px 0;
+    font-family: 'Fraunces', serif;
+    color: var(--sang);
+    font-size: 22px;
+    letter-spacing: 0.5em;
+    font-style: italic;
+  }
+
+  /* Footer */
+  footer {
+    border-top: 4px double var(--ink);
+    padding: 60px 40px 50px;
+    max-width: 1280px;
+    margin: 60px auto 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  footer h5 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sang-deep);
+    margin-bottom: 16px;
+    font-weight: 700;
+  }
+  footer ul { list-style: none; }
+  footer li {
+    padding: 6px 0;
+    border-bottom: 1px dotted var(--rule);
+    font-family: 'Spectral', serif;
+    font-size: 13px;
+    color: var(--ink-2);
+  }
+  footer li:last-child { border-bottom: none; }
+  footer li strong { color: var(--ink); font-weight: 700; }
+  footer .colophon {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+  footer .colophon span { color: var(--sang); }
+
+  /* Final flourish */
+  .endmark {
+    text-align: center;
+    margin: 40px 0 0;
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--sang);
+    font-size: 32px;
+  }
+
+  /* Responsive */
+  @media (max-width: 720px) {
+    body { font-size: 17px; }
+    .masthead { padding: 16px 20px; flex-direction: column; gap: 10px; align-items: flex-start; }
+    .hero { padding: 50px 22px 50px; }
+    .hero h1 { font-size: 60px; }
+    .hero .deck { font-size: 20px; }
+    article { padding: 50px 22px; }
+    .chapter { grid-template-columns: 60px 1fr; gap: 14px; }
+    .chapter .num { font-size: 56px; }
+    .chapter .subtitle { grid-column: 2; }
+    .pullquote { margin: 40px -22px; padding: 38px 28px 32px; }
+    .pullquote q { font-size: 22px; }
+    .pullquote::before { font-size: 60px; top: 10px; left: 14px; }
+    .figure-strip { margin: 40px -22px; padding: 36px 28px; }
+    .figure-strip .stat .n { font-size: 38px; }
+    .ledger .row { grid-template-columns: 1fr; gap: 4px; }
+    .ledger .tag { text-align: left; }
+    footer { grid-template-columns: 1fr; padding: 40px 22px; gap: 36px; }
+    .lede { font-size: 20px; }
+    .lede::first-letter { font-size: 80px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="left">
+    <span class="brand">Le Pli Republicain</span>
+    <span class="meta">Cahier n° XII · Réquisitoire</span>
+  </div>
+  <span class="meta">Bruxelles · mai 2026</span>
+</header>
+
+<section class="hero">
+  <div class="kicker">Belgique · État de droit · Saison 2024 — 2026</div>
+  <h1>La <em>carence</em><br>systémique.</h1>
+  <p class="deck">Comment un État fondateur de l'Union européenne a appris à se passer de la justice, du Parlement et de ses citoyens — sans jamais changer une virgule à sa Constitution.</p>
+  <div class="byline">
+    <span><strong>Format</strong>&nbsp;&nbsp;Long-form · réquisitoire documenté</span>
+    <span><strong>Lecture</strong>&nbsp;&nbsp;≈ 22 minutes</span>
+    <span><strong>Sources</strong>&nbsp;&nbsp;CEDH · GRECO · CRISP · IFDH · Cour des comptes</span>
+  </div>
+</section>
+
+<article>
+
+<p class="lede">Il n'y a pas eu de putsch. Aucun général n'a pris la radio, aucune Cour n'a été dissoute, aucune élection truquée. La Belgique a inventé quelque chose de plus inquiétant : un démantèlement à la belge, c'est-à-dire feutré, juridiquement plausible, recouvert d'une couche de chocolat institutionnel. Les apparences tiennent. La Constitution est toujours là, en vitrine. Les mots — État de droit, séparation des pouvoirs, mandat libre — circulent encore, désinfectés, dans les communiqués officiels. Mais derrière le décor, l'État a appris à désobéir à ses propres juges, le Parlement à voter dans la docilité d'un chœur, et les partis à se financer eux-mêmes sous le contrôle de personne d'autre qu'eux-mêmes. C'est ce que la Cour européenne des droits de l'homme a appelé, en 2023, une <em>carence systémique</em>. Le terme est presque trop poli.</p>
+
+<p>Le rapport 2025 de la Commission européenne sur l'état de droit a adressé six recommandations explicites à la Belgique. Aucune n'a été pleinement satisfaite. L'Economist Intelligence Unit classe désormais le pays parmi les « démocraties défaillantes » (Democracy Index 2024 : 7,64/10, 34<sup>e</sup> mondial). Le GRECO du Conseil de l'Europe a réactivé en novembre 2025 sa procédure exceptionnelle de non-conformité (Règle 32) — la procédure du dernier rang, celle réservée aux États qui refusent durablement de se mettre en règle. L'Indice de perception de la corruption de Transparency International s'est effondré de 77 à 69 sur cent en moins de dix ans. Et pourtant : pas une manchette de tabloïd, pas une émission de fin de soirée, pas de mobilisation transversale. La machine a appris à tomber sans bruit.</p>
+
+<p>Ce qui suit n'est ni un commentaire d'humeur ni un pamphlet d'opposition. C'est un inventaire — froid, daté, sourcé — de ce que les institutions de contrôle, belges et internationales, ont consigné entre 2023 et 2026. Le pays qui héberge les institutions européennes et qui a exporté pendant un siècle des standards démocratiques au reste du continent figure aujourd'hui, dans les évaluations indépendantes, dans la catégorie des « Sliders » — les démocraties qui glissent.</p>
+
+<div class="figure-strip">
+  <div class="stat">
+    <span class="n">16 000<span class="unit">+</span></span>
+    <div class="label">Condamnations Fedasil non exécutées depuis 2021</div>
+  </div>
+  <div class="stat">
+    <span class="n">278,5<span class="unit">M€</span></span>
+    <div class="label">Astreintes accumulées — refus de paiement assumé</div>
+  </div>
+  <div class="stat">
+    <span class="n">99,73<span class="unit">%</span></span>
+    <div class="label">Cohésion partisane au Parlement fédéral</div>
+  </div>
+  <div class="stat">
+    <span class="n">69<span class="unit">/100</span></span>
+    <div class="label">Indice CPI Transparency · 22<sup>e</sup> rang mondial</div>
+  </div>
+  <div class="stat">
+    <span class="n">6<span class="unit">/22</span></span>
+    <div class="label">Recommandations GRECO mises en œuvre (5<sup>e</sup> cycle)</div>
+  </div>
+  <div class="stat">
+    <span class="n">22,5<span class="unit">%</span></span>
+    <div class="label">Électorat hors système en juin 2024 (record depuis 1981)</div>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="num">I</div>
+  <h2>La justice que l'État n'exécute plus</h2>
+  <div class="subtitle">Affaire Camara · contentieux Fedasil · saisies dans les ministères</div>
+</div>
+
+<p>Tout pays de droit repose sur un postulat banal : quand un juge ordonne, l'État obéit. La Belgique a choisi, à partir d'octobre 2021, de tester ce que devient une démocratie qui suspend ce postulat. Depuis cette date, l'État belge et son agence Fedasil ont été condamnés <strong>plus de 16 000 fois</strong> par les tribunaux du travail pour avoir refusé d'héberger des demandeurs d'asile pourtant titulaires d'un droit légal à l'accueil. Le cumul des astreintes prononcées atteint <strong>278,5 millions d'euros</strong>. L'État n'en paye qu'une fraction infime, et l'on ne sait même plus si l'on doit qualifier cette fraction d'humiliation ou de relique.</p>
+
+<p>Le 18 juillet 2023, dans l'arrêt <em>Camara c. Belgique</em> (req. n° 49255/22), la Cour européenne des droits de l'homme a tranché ce qu'aucun juriste belge n'osait formuler à voix haute. Le requérant guinéen, muni d'une ordonnance exécutoire du tribunal du travail francophone de Bruxelles assortie d'une astreinte de mille euros par nuit, n'avait toujours pas été logé. La CEDH a constaté une violation de l'article 6 §1 de la Convention — droit à un procès équitable — et, plus grave encore, une violation de l'article 46 : la Cour diagnostique une <strong>« carence systémique des autorités belges d'exécuter les décisions de justice définitives »</strong>. Au paragraphe 118, les juges précisent que l'on ne parle pas de retard administratif, mais d'un <em>refus caractérisé</em>. À ce moment-là, 358 requêtes similaires étaient déjà pendantes devant la Cour.</p>
+
+<p>Depuis, plus de <strong>2 200 mesures provisoires</strong> ont été imposées à la Belgique au titre de l'article 39 du règlement de la Cour. Le 9 avril 2026, dans l'arrêt <em>M.V. et autres c. Belgique</em>, Strasbourg est passée à la vitesse supérieure : violation de l'article 3 (traitements dégradants), de l'article 6 et de l'article 34. Et cette précision glaçante dans la motivation : les astreintes prononcées dans l'affaire Camara <em>n'ont toujours pas été payées</em>. Près de cinq cents agents de Fedasil ont publié dans la foulée une lettre ouverte se désolidarisant des « violations quotidiennes de l'État de droit et de la dignité humaine » qu'ils sont sommés d'exécuter au quotidien.</p>
+
+<div class="pullquote">
+  <q>Le droit d'accès à un tribunal devient illusoire si l'ordre juridique interne permet qu'une décision judiciaire définitive et obligatoire reste inopérante.</q>
+  <cite>CEDH, Camara c. Belgique, § 118 — 18 juillet 2023</cite>
+</div>
+
+<p>La ministre fédérale de l'Asile et de la Migration, Anneleen Van Bossuyt (N-VA), a déclaré publiquement qu'elle <strong>« ne peut ni ne veut payer ces astreintes »</strong>, préférant investir dans « un durcissement de la politique d'asile et de migration ». La phrase, en français correct, signifie : <em>j'ai pris connaissance des décisions de justice qui me condamnent et j'ai décidé qu'elles ne me concernaient pas</em>. Dans n'importe quelle université du droit constitutionnel européen, cette phrase devrait déclencher un cours magistral entier. En Belgique, elle déclenche une dépêche Belga et une fiche-info.</p>
+
+<p>Pour mesurer où nous en sommes, il faut décrire l'image que la Belgique a offerte au monde en 2024 et 2025 : des huissiers de justice, mandatés par les avocats des demandeurs d'asile, débarquant physiquement au siège central de Fedasil pour saisir le mobilier, les ordinateurs, jusqu'aux machines à café, en exécution des jugements que l'État refusait d'honorer. L'État, dépositaire de la force publique, contraint par ses propres huissiers de respecter la loi qu'il a lui-même votée. Il n'existe pas, dans les manuels comparés, de scène plus dépouillée de souveraineté étatique.</p>
+
+<p>En octobre 2025, quatre familles afghanes et érythréennes ont déposé plainte au pénal contre la ministre Van Bossuyt pour traitements inhumains et non-assistance à personne en danger. Fait sans précédent dans l'histoire institutionnelle belge : la Cour de cassation, le Collège des procureurs généraux et le Collège des cours et tribunaux ont publié un <strong>communiqué commun</strong> dénonçant « une atteinte à la séparation des pouvoirs ». Quand les magistrats supérieurs d'un pays se sentent obligés de cosigner une mise en garde publique adressée à l'exécutif, c'est qu'il s'est passé quelque chose qui ne figure pas dans le tableau des bonnes notes des chancelleries.</p>
+
+<div class="chapter">
+  <div class="num">II</div>
+  <h2>Le mandat libre, fiction d'opérette</h2>
+  <div class="subtitle">Article 42 · discipline de groupe · 99 % d'alignement</div>
+</div>
+
+<p>L'article 42 de la Constitution belge énonce une promesse limpide : les membres des deux Chambres représentent « la Nation, et non uniquement ceux qui les ont élus ». La doctrine, depuis 1831, en déduit la nullité du <em>mandat impératif</em>. Un parlementaire ne peut juridiquement être contraint, ni par ses électeurs, ni par son parti, à voter dans un sens prédéterminé. La promesse est belle. La pratique est autre.</p>
+
+<p>Les travaux comparatifs de Depauw & Martin, ceux du politologue Wilfried Dewachter (KU Leuven), de Pascal Delwit et Émilie van Haute (ULB), convergent sur un même chiffre : la cohésion partisane au Parlement belge oscille autour de <strong>99 %</strong>. Une étude récente sur le cycle législatif 2019-2024 mesure même <strong>99,73 %</strong> d'alignement. Cela signifie qu'à de très rares exceptions près, chaque parlementaire vote exactement comme son groupe parlementaire — c'est-à-dire comme la décision du président de parti. Aucune démocratie d'Europe occidentale n'atteint un tel taux. La France, l'Italie, les Pays-Bas, les pays scandinaves : tous présentent des défections plus régulières. La discipline de vote, en Belgique, n'est plus une tendance ; c'est une mécanique horlogère.</p>
+
+<p>Wilfried Dewachter, dans ses derniers travaux, parlait de la démocratie parlementaire belge comme d'un <strong>« mythe »</strong>. Les décisions ne se prennent pas en séance plénière, elles s'y entérinent. Elles se prennent dans le <em>kernkabinet</em> (le noyau gouvernemental), dans les conclaves des présidents de parti, dans l'administration des cabinets ministériels. Le Parlement enregistre. Pascal Delwit qualifie la Belgique d'<em>idéal-type de la particratie</em>. Le terme n'est ni péjoratif ni journalistique : c'est une catégorie d'analyse politique, à laquelle peu de pays prétendent.</p>
+
+<div class="pullquote">
+  <q>La démocratie parlementaire belge est un mythe : les décisions politiques se prennent dans le noyau gouvernemental, les conclaves de présidents de parti et l'administration. Le Parlement entérine.</q>
+  <cite>Wilfried Dewachter · politologue · KU Leuven</cite>
+</div>
+
+<p>L'élégance perverse du système réside dans son ancrage juridique. La Constitution interdit le mandat impératif, mais aucune sanction n'est prévue contre les présidents de parti qui en imposent un, <em>de facto</em>, par les statuts internes et la maîtrise des listes électorales. L'élu dissident sait qu'il ne sera pas réinvesti à la prochaine législature. Le mandat n'est pas révoqué — il est non-renouvelé. La sanction est invisible, mais absolue. L'article 42 devient une figure de style.</p>
+
+<p>Dans cette configuration, qui choisit réellement les élus ? Pas l'électeur, dont la voix de préférence, en système de listes (semi-)fermées et avec effet dévolutif réduit depuis la loi du 27 décembre 2000, pèse infiniment moins que le rang sur la liste. Les rangs, eux, sont fixés par le bureau du parti — c'est-à-dire par une poignée de personnes dont aucune n'a jamais été élue à ce poste par les militants ni par les citoyens. En Belgique, voter, c'est ratifier des décisions de nomination prises ailleurs, par des organes qui ne figurent dans aucun article de la Constitution. La fiction du suffrage tient debout par convention. C'est une convention plus ancienne que solide.</p>
+
+<div class="chapter">
+  <div class="num">III</div>
+  <h2>Le verrou financier</h2>
+  <div class="subtitle">Loi du 4 juillet 1989 · 108,7 M€ par an · les contrôleurs contrôlés</div>
+</div>
+
+<p>Sans argent, pas de discipline. Sans discipline, pas de cohésion à 99 %. La pièce maîtresse du système est la <strong>loi du 4 juillet 1989</strong>, conçue dans la foulée du scandale Agusta-Dassault pour assainir un financement politique alors gangrené par les fonds occultes. Personne ne contestera la noblesse de l'intention. Le résultat, lui, est devenu son contraire : un dispositif qui injecte près de <strong>108,7 millions d'euros par an</strong> de deniers publics dans les caisses des partis, soit environ <strong>7,1 € par habitant</strong> — deux à sept fois la moyenne des pays voisins, ce qui place la Belgique parmi les championnes mondiales du financement public de la politique.</p>
+
+<p>Cette manne fabrique du marbre : elle pétrifie les partis en place, ériges en barrières d'entrée infranchissables, garantit aux états-majors la maîtrise d'une publicité numérique massive (les partis belges sont identifiés comme les <em>plus grands dépenseurs européens</em> sur Meta Ads — 15,08 millions d'euros en 2024, année électorale), et permet de salarier des appareils permanents qui contrôlent la sélection des candidats, l'écriture des programmes, la communication, la formation, la recherche, l'organisation des congrès. Le patrimoine cumulé des partis politiques belges atteignait <strong>156,8 millions d'euros fin 2021</strong> — il a triplé en vingt ans. À titre indicatif, ces structures de droit privé disposent désormais d'un actif comparable à celui de communes belges de taille moyenne.</p>
+
+<div class="aside">
+<h4>L'autocontrôle particratique</h4>
+<p>Le contrôle des comptes et des dépenses électorales est confié à une commission parlementaire <strong>composée des parlementaires des partis qu'elle contrôle</strong>. Le politologue Jean Faniel (CRISP) et les chercheurs du collectif <em>We Need To Talk</em> qualifient cet arrangement de « financement par les partis, contrôlé par les partis ». Le GRECO, dans ses cinq cycles d'évaluation, n'a cessé de réclamer l'instauration d'un contrôle externe et indépendant. La Belgique n'a jamais donné suite. En novembre 2025, le GRECO a réactivé la <strong>Règle 32</strong> de son règlement intérieur — procédure exceptionnelle de non-conformité — pour les hautes fonctions de l'exécutif belge.</p>
+</div>
+
+<p>L'asymétrie est totale. Un citoyen lambda qui souhaiterait contester en justice un point précis de l'usage de ces fonds publics se heurte à un défaut d'<em>intérêt à agir</em> ; ses élus, eux, sont juges de leurs propres comptes. Une initiative citoyenne en 2023 — un panel de soixante citoyens tirés au sort — a formulé trente-quatre recommandations pour réformer le financement. La N-VA a refusé de se positionner sur chacune d'entre elles. Les autres partis ont approuvé en surface, échoué à conclure dans la majorité Vivaldi qui s'y était engagée par écrit (page 83 de l'accord de coalition), et le sujet a été enterré sous le tapis épais des arbitrages budgétaires. Le rapport Adlens d'octobre 2024 chiffre à 11 millions d'euros les seules dépenses publicitaires sur Meta : c'est du financement public reconverti en fabrique du consentement, à très grande échelle, dans un angle mort démocratique presque parfait.</p>
+
+<p>Six partis perçoivent l'essentiel de la dotation. Cinq sont au gouvernement fédéral ou en ont récemment quitté la table. Le sixième — le PTB-PVDA — a construit son modèle interne sur une mécanique de <em>rétrocession</em> qui, bien que présentée comme une vertu militante, configure dans la pratique une discipline financière plus rigoureuse encore : l'élu rétrocède à la caisse centrale tout revenu excédant un « salaire d'ouvrier » de 2 200 à 2 400 € nets. Le mandat libre, dans cette configuration, n'est même plus une fiction polie : il est une promesse contractuelle violée par signature préalable. Les défections en série de 2024-2026 (Handichi, El Mokadem, Dupont, Aït Alouha) en témoignent. Le système particratique belge a ceci de remarquable qu'il dévore aussi ceux qui prétendent le combattre.</p>
+
+<div class="chapter">
+  <div class="num">IV</div>
+  <h2>La forteresse opaque</h2>
+  <div class="subtitle">Cabinets ministériels · GRECO · pantouflage sans délai</div>
+</div>
+
+<p>Au-dessus du Parlement règnent les cabinets ministériels. Cette particularité belge — des cellules de cinquante à quatre-vingts personnes accrochées à chaque ministre, recrutées sans concours, hors de tout statut de la fonction publique — concentre la décision politique réelle. Les chiffres publiés par la RTBF en 2023, croisés avec les rapports de la Cour des comptes, dessinent un paysage de pouvoir invisible : <strong>50,5 équivalents temps plein</strong> par ministre wallon, 46,4 en Fédération Wallonie-Bruxelles, 43,8 à Bruxelles, 37,4 au fédéral, 30,2 en Flandre. Le cabinet du Ministre-Président bruxellois Rudi Vervoort comptait 81 personnes en 2023 — « le plus grand du pays » selon Christophe De Beukelaer (Les Engagés).</p>
+
+<p>Les coûts réels échappent au budget affiché. La Cour des comptes a documenté en 2022 que <strong>56 % du personnel des cabinets wallons</strong> étaient des fonctionnaires détachés à titre gratuit. Leur rémunération n'apparaît dans aucun budget cabinets. Charge réelle : <strong>37 millions d'euros</strong> annuels en Wallonie, contre 23 millions affichés. Un écart de plus de quatorze millions d'euros, par an, soustrait à la lecture des assemblées qui devraient en débattre. Pour qu'une démocratie fonctionne, encore faut-il que le pouvoir législatif puisse <em>voir</em> ce que coûte l'exécutif.</p>
+
+<p>La <strong>loi du 12 mai 2024</strong>, qui aurait pu être un progrès en élargissant le périmètre de la publicité administrative, a inscrit en son article 6 § 1 5° une exception de <em>« stratégie politique »</em> qui neutralise précisément les documents les plus précieux pour le contrôle citoyen et journalistique. L'Autorité de protection des données (avis n° 01/2026) et l'Institut fédéral des droits humains ont relevé que la Commission d'accès aux documents administratifs, déjà privée de pouvoir contraignant, devient en pratique un guichet de recours symbolique. La Cour constitutionnelle a partiellement censuré le dispositif (arrêt n° 9/2026), mais les pratiques ne suivent pas la jurisprudence.</p>
+
+<div class="pullquote">
+  <q>Liens trop étroits entre la politique et les milieux d'affaires.</q>
+  <cite>Marc Beyens · Transparency International Belgium · à propos de la chute de l'IPC 2024</cite>
+</div>
+
+<p>Sur la déclaration de patrimoine des élus et hauts fonctionnaires, la Belgique cultive une singularité européenne enviée par personne : la déclaration est déposée sous <em>pli scellé</em> à la Cour des comptes, et <strong>détruite au bout de cinq ans</strong> si aucune procédure pénale n'a été engagée. Aucun audit ex post citoyen ou journalistique n'est donc possible. Le GRECO le réclame depuis plus de dix ans. Le législateur n'a pas bougé. Sur le pantouflage — la circulation entre fonctions politiques et secteur privé régulé —, il n'existe pas de délit, pas de période d'incompatibilité contraignante, pas d'autorité indépendante de contrôle. La France a la HATVP, avec délit pénalement sanctionné. La Belgique a une Commission fédérale de déontologie qui rend des avis consultatifs. Personne, dans aucun ministère, n'a jamais été poursuivi pour s'être recasé chez un opérateur qu'il régulait l'année précédente.</p>
+
+<p>Le recours massif aux cabinets de conseil — <strong>2,5 milliards d'euros sur trois ans</strong> (2020-2022) selon la Cour des comptes — achève la captation. Dans <strong>78 % des dossiers</strong> examinés, la justification de l'externalisation est lacunaire ou inexistante. Deloitte, BCG, McKinsey figurent parmi les quinze prestataires les plus sollicités. L'État belge sous-traite son expertise propre, paie au prix fort une expertise privée, et reconfigure ainsi en silence le partage entre intérêt public et intérêt sectoriel. La <em>Public Affairs Academy</em> de la FEB/VBO — huit éditions en 2025, en partenariat avec les agences akkanto, Whyte Corporate Affairs et Political Intelligence — professionnalise méthodiquement le passage des frontières entre lobby et décision publique. Tout se passe au grand jour. C'est précisément cela, la définition technique de la <em>capture réglementaire</em> au sens de Stigler.</p>
+
+<div class="chapter">
+  <div class="num">V</div>
+  <h2>Quand la critique devient un délit</h2>
+  <div class="subtitle">Loi Quintin · atteinte méchante · périmètres préventifs</div>
+</div>
+
+<p>Une démocratie qui ne supporte plus la critique commence à inventer des lois pour l'empêcher. Le gouvernement Arizona, formé en janvier 2025 sous la présidence de Bart De Wever (N-VA), a porté à la Chambre, à l'été 2025, un projet de loi conçu par le ministre de l'Intérieur Bernard Quintin (MR), dit <em>loi Quintin</em>. Le dispositif, dans sa mouture initiale, octroyait au pouvoir exécutif la faculté de <strong>dissoudre administrativement</strong> des personnes morales — associations, syndicats, partis, groupements de fait — sur simple proposition du ministre de l'Intérieur, après audition lacunaire devant un fonctionnaire et sans accès complet aux pièces classifiées à charge.</p>
+
+<p>Une dissolution administrative d'une association sans procès. Dans n'importe quel manuel de droit administratif comparé, c'est le marqueur le plus connu du basculement illibéral. La Hongrie, la Russie, la Turquie ont chacune leur version. La Belgique, jusqu'en 2025, n'en avait jamais eu. Le Conseil d'État, saisi pour avis, a livré une censure d'une fermeté inhabituelle, rappelant que <strong>le pouvoir politique ne saurait se substituer à un juge pour prononcer une dissolution</strong>. L'Institut fédéral des droits humains, dans son avis 2025/9 du 18 septembre 2025, a fermement condamné le texte. La coalition « Droit de protester » — FGTB, CSC, CGSLB, Greenpeace, Amnesty, LDH, Liga — a structuré la résistance civile.</p>
+
+<p>Le gouvernement a reculé. En partie. Il a retiré la dissolution définitive — pour la remplacer par des prérogatives d'<em>« interdiction administrative »</em>, de gel d'avoirs, de fermeture de locaux, d'interdiction de slogans et de symboles, sur des fondements vagues comme le <em>« détournement d'objectifs »</em>. Le ministre Quintin a expliqué qu'il <em>« respecte l'État de droit et le Conseil d'État »</em>, mais que celui-ci lui permettait toujours <em>« de prendre des mesures de police administrative pour atteindre [ses] objectifs légitimes »</em>. C'est l'art belge d'avancer par couches : un texte radical, un avis ferme, un retrait partiel, un texte amoindri mais qui conserve l'essentiel de l'arbitraire. Le résultat se mesure dans ce que les juristes appellent l'<em>effet dissuasif</em> : les ASBL critiques, les syndicats militants, les courants marginaux pratiquent désormais une autocensure de précaution.</p>
+
+<div class="aside">
+<h4>L'arsenal parallèle</h4>
+<p>La loi Quintin n'arrive pas dans un terrain vierge. Le délit d'« atteinte méchante à l'autorité de l'État » (article 547 du Code pénal, voté sous Vivaldi en février 2024) a été <strong>maintenu</strong> par la Cour constitutionnelle le 29 janvier 2026, malgré le recours porté par sept organisations syndicales et de défense des droits. La peine complémentaire d'<strong>interdiction de manifester</strong>, votée en 2023 puis retirée fin 2023, a été réintroduite par l'Arizona. Les périmètres préventifs interdisant de manifester dans un rayon de cinquante mètres autour de sites identifiés se sont multipliés. Le 26 octobre 2024 à Anvers, une action Code Rouge contre TotalEnergies s'est soldée par <strong>270 interpellations</strong>, dont deux journalistes et sept avocats.</p>
+</div>
+
+<p>Le pays qui a vu naître la <em>liberté d'association</em> comme principe constitutionnel en 1831 dispose désormais d'un attirail administratif capable, sur signature ministérielle, de stopper net une organisation jugée déviante. Le périmètre exact de la déviance est, par construction, flou — et c'est ce flou même qui constitue la menace. Comme l'a noté la FGTB dans sa carte blanche d'avril 2026 : c'est moins l'usage de la loi qui inquiète que l'<em>existence</em> de la loi, parce qu'elle redessine en permanence la frontière entre ce qui se dit et ce qui se tait.</p>
+
+<div class="chapter">
+  <div class="num">VI</div>
+  <h2>La société civile remplace ce que l'État a déserté</h2>
+  <div class="subtitle">Abstention record · auto-organisation · sécession civique</div>
+</div>
+
+<p>Que font les citoyens face à un État qui désobéit à ses juges, à un Parlement qui n'écrit pas les lois qu'il vote, à des partis qui se contrôlent eux-mêmes, à des cabinets qui décident dans le secret et à un ministre de l'Intérieur qui peut interdire une association d'un trait de plume ? Une partie cesse de jouer. Le 9 juin 2024, près de <strong>1 050 000 électeurs</strong> ne se sont pas présentés au scrutin fédéral — abstention record depuis 1981, soit 12,5 % de l'électorat dans un pays où le vote est <em>obligatoire</em>. Si l'on additionne les bulletins blancs et le vote pour la liste antisystème <em>Blanco</em>, on dépasse 1,5 million de citoyens hors du système — <strong>22,5 %</strong> de l'électorat. Les abstentionnistes constituent virtuellement le deuxième parti du pays, derrière la N-VA.</p>
+
+<p>Le politologue Pierre Vercauteren parle d'<em>anomie citoyenne</em>. Les enquêtes IWEPS sur la confiance institutionnelle marquent un effondrement transversal : Parlement fédéral, Gouvernement, partis politiques, justice — tous reculent simultanément, et la chute traverse les générations, les classes sociales, les régions. Ce n'est plus une crise de défiance ciblée, c'est une décroyance systémique.</p>
+
+<p>L'autre partie de la société civile, plus active, fait sécession <em>positivement</em> : elle pallie ce que l'État a déserté. La <strong>Plateforme Citoyenne de Soutien aux Réfugiés</strong> (BelRefugees), coordonnée par des bénévoles, a comptabilisé <strong>422 078 nuitées</strong> d'hébergement en 2024. Près de cent vingt mille citoyens sont membres de coopératives énergétiques. Les Banques Alimentaires nourrissent 209 000 bénéficiaires par mois. À chaque hiver, des familles ouvrent leur salon à des hommes que la Belgique laisse dormir dans la rue malgré seize mille jugements ordonnant à l'État de les loger. La société civile <em>fait</em> ce que les juges ordonnent et que les ministres refusent. Elle paie en bénévolat et en chauffage ce que les astreintes auraient dû couvrir. Elle subventionne, sans le savoir, la rébellion de l'exécutif contre la justice.</p>
+
+<div class="pullquote">
+  <q>L'État ne sera plus, aux yeux de la majorité, qu'une machine fiscale et policière dépourvue de légitimité représentative.</q>
+  <cite>Note de recherche sur la sécession civique · avril 2026</cite>
+</div>
+
+<p>Ce double mouvement — retrait électoral et substitution civique — n'est pas neutre. À court terme, il maintient une apparence d'ordre. À moyen terme, il détache la légitimité de l'État de sa raison d'être : l'État perd à la fois ses fidèles (qui partent vers les marges) et son utilité (que des bénévoles assument à sa place). C'est ainsi qu'un régime peut continuer à fonctionner administrativement tout en ayant déjà perdu, en silence, son contrat fondateur.</p>
+
+<div class="chapter">
+  <div class="num">VII</div>
+  <h2>Le grand livre de la dégradation</h2>
+  <div class="subtitle">Chronologie sélective d'un démantèlement institutionnel · 2023 — 2026</div>
+</div>
+
+<div class="ledger">
+  <div class="row">
+    <div class="date">18.07.2023</div>
+    <div class="desc"><strong>CEDH, Camara c. Belgique.</strong> Diagnostic de « carence systémique » des autorités belges à exécuter les décisions de justice. Le mot rentre dans la jurisprudence.</div>
+    <div class="tag">Justice</div>
+  </div>
+  <div class="row">
+    <div class="date">12.05.2024</div>
+    <div class="desc"><strong>Loi sur la publicité administrative.</strong> Élargissement formel + insertion de l'exception « stratégie politique » qui neutralise l'élargissement.</div>
+    <div class="tag">Opacité</div>
+  </div>
+  <div class="row">
+    <div class="date">09.06.2024</div>
+    <div class="desc"><strong>Élections fédérales.</strong> 22,5 % de l'électorat hors système. Abstention record depuis 1981 malgré le vote obligatoire.</div>
+    <div class="tag">Représentation</div>
+  </div>
+  <div class="row">
+    <div class="date">26.10.2024</div>
+    <div class="desc"><strong>Anvers, action Code Rouge.</strong> 270 interpellations dont deux journalistes et sept avocats. Le périmètre préventif devient norme.</div>
+    <div class="tag">Libertés</div>
+  </div>
+  <div class="row">
+    <div class="date">31.01.2025</div>
+    <div class="desc"><strong>Formation du gouvernement Arizona.</strong> Coalition N-VA, MR, Les Engagés, Vooruit, CD&V — 237 jours de négociations.</div>
+    <div class="tag">Politique</div>
+  </div>
+  <div class="row">
+    <div class="date">31.07.2025</div>
+    <div class="desc"><strong>Avant-projet de loi Quintin.</strong> Dissolution administrative d'associations sur signature ministérielle. Avis cinglant du Conseil d'État.</div>
+    <div class="tag">Libertés</div>
+  </div>
+  <div class="row">
+    <div class="date">XX.10.2025</div>
+    <div class="desc"><strong>Plainte pénale contre la ministre Van Bossuyt.</strong> Communiqué commun inédit de la Cour de cassation, du Collège des procureurs généraux et du Collège des cours et tribunaux dénonçant l'atteinte à la séparation des pouvoirs.</div>
+    <div class="tag">Justice</div>
+  </div>
+  <div class="row">
+    <div class="date">XX.11.2025</div>
+    <div class="desc"><strong>GRECO active la Règle 32.</strong> Procédure exceptionnelle de non-conformité — premier cas pour la Belgique.</div>
+    <div class="tag">Anti-corruption</div>
+  </div>
+  <div class="row">
+    <div class="date">19.12.2025</div>
+    <div class="desc"><strong>Loi de gel de l'indexation</strong> des dotations aux partis. Touche le symptôme financier sans réformer l'autocontrôle.</div>
+    <div class="tag">Financement</div>
+  </div>
+  <div class="row">
+    <div class="date">29.01.2026</div>
+    <div class="desc"><strong>Cour constitutionnelle, atteinte méchante.</strong> Rejet du recours de la coalition « Droit de protester ». Le délit est maintenu.</div>
+    <div class="tag">Libertés</div>
+  </div>
+  <div class="row">
+    <div class="date">XX.02.2026</div>
+    <div class="desc"><strong>Cour constitutionnelle, asile.</strong> Suspension de mesures Van Bossuyt (exclusion systémique des hommes isolés, report à 5 ans de l'aide sociale).</div>
+    <div class="tag">Justice</div>
+  </div>
+  <div class="row">
+    <div class="date">09.04.2026</div>
+    <div class="desc"><strong>CEDH, M.V. c. Belgique.</strong> Violation articles 3, 6 et 34. Constat : les astreintes Camara ne sont toujours pas payées. Lettre ouverte de ~500 agents de Fedasil.</div>
+    <div class="tag">Justice</div>
+  </div>
+</div>
+
+<div class="ornament">·  ·  ·</div>
+
+<div class="chapter">
+  <div class="num">VIII</div>
+  <h2>Conclusion : il n'y aura pas de héros</h2>
+  <div class="subtitle">Ce que la Belgique a perdu sans signature ni fracas</div>
+</div>
+
+<p>On voudrait, pour clore un texte de cette nature, un coup d'éclat — un nom à dénoncer, une réforme miraculeuse, un programme. Il n'y en aura pas. La spécificité belge consiste précisément à n'offrir aucun coupable identifiable, aucun acte fondateur de la dérive. Aucune institution n'a été abolie, aucune élection truquée, aucun journaliste assassiné. Il y a eu une accumulation, sur une décennie, de petites désobéissances institutionnelles qui, prises isolément, n'auraient déclenché aucune alerte, et qui prises ensemble dessinent une autre démocratie que celle qui figure dans les manuels scolaires.</p>
+
+<p>La trajectoire 2024-2026 ne se rattrape pas avec un changement de ministre. Le diagnostic des organes spécialisés — Institut fédéral des droits humains, Commission européenne, GRECO, Liberties, Transparency International, CEDH — converge sur un mot : <strong>structurel</strong>. C'est-à-dire : indépendant des personnes en place. Le rétablissement exigerait des leviers que les acteurs en place n'ont aucun intérêt à actionner : exécution inconditionnelle des décisions de justice ; refinancement de l'appareil judiciaire par loi de programmation (la Belgique consacre moins de 0,25 % de son PIB à sa justice, 22<sup>e</sup> sur 27 dans l'UE) ; publication des déclarations de patrimoine ; registre obligatoire et sanctionné du lobbying, étendu au gouvernement et aux entités fédérées ; contrôle indépendant du financement des partis ; évaluation éthique réellement extérieure aux cabinets ministériels. Le programme tient en deux pages. Aucun gouvernement ne l'a inscrit à l'ordre du jour.</p>
+
+<p>La phrase la plus dérangeante de tout le dossier n'a pas été prononcée par un opposant. Elle a été écrite, en latin diplomatique, dans le mémorandum commun publié en juillet 2024 par plusieurs vigies européennes : <em>« le pacte fondateur de la séparation des pouvoirs risque de perdre sa consistance matérielle sans avoir jamais cessé d'exister sur le papier »</em>. C'est exactement l'opération en cours. Les murs de l'édifice tiennent. À l'intérieur, le contenu se vide. Vue de l'extérieur, la villa belge fait toujours bonne figure dans le voisinage européen ; on s'y rend volontiers pour les sommets. Vue de l'intérieur, les meubles ont commencé à manquer.</p>
+
+<p>Reste une question, brutale, qu'aucune procédure ne réglera. Si l'État cesse d'exécuter ses propres jugements ; si le Parlement n'est qu'une chambre d'enregistrement pour des arbitrages pris ailleurs ; si les partis tirent leur subsistance d'une dotation publique qu'ils contrôlent eux-mêmes ; si les cabinets décident dans une opacité organisée par la loi ; si les associations critiques peuvent être interdites par signature ministérielle ; si la moitié de la population a cessé d'y croire et que l'autre moitié remplace l'État dans ses missions élémentaires — alors qu'est-ce qui reste, exactement, du contrat de 1831 ? Une Constitution écrite, certes. Une nation ? Probablement. Un État de droit ? La Cour européenne des droits de l'homme a déjà répondu, en deux mots : <em>carence systémique</em>.</p>
+
+<p>La carence n'est pas un accident. Elle est devenue un mode de gouvernement. Ce qui se joue à Bruxelles n'est pas réservé à Bruxelles ; c'est le laboratoire d'un illibéralisme à visage chocolat, plus difficile à nommer que celui de Budapest parce qu'il sauvegarde scrupuleusement les façades. Mais une façade qui n'abrite plus rien finit toujours par s'effondrer. La seule question est de savoir si le bruit de l'effondrement réveillera, dans le pays qui a inventé tant de choses pour l'Europe, quelque chose qui ressemble à un sursaut. À ce jour, et compte tenu des indicateurs, on attend toujours.</p>
+
+<p class="endmark">❦</p>
+
+</article>
+
+<footer>
+  <div>
+    <h5>Sources primaires citées</h5>
+    <ul>
+      <li><strong>CEDH</strong> — Camara c. Belgique (2023), M.V. c. Belgique (2026), Mugemangango c. Belgique (2020), Tomenko c. Ukraine (2025)</li>
+      <li><strong>GRECO</strong> — 4<sup>e</sup> et 5<sup>e</sup> cycles d'évaluation, Règle 32 activée nov. 2025</li>
+      <li><strong>Commission européenne</strong> — Rapport État de droit COM(2025)900</li>
+      <li><strong>IFDH</strong> — Avis 2025/9 (loi Quintin), avis 01/2026 (CADA)</li>
+      <li><strong>Cour des comptes</strong> — Rapport sur les cabinets wallons (2022), rapport sur les marchés de prestations intellectuelles (2023)</li>
+      <li><strong>Transparency International</strong> — CPI 2024 (69/100)</li>
+      <li><strong>EIU</strong> — Democracy Index 2024 (Belgique : 34<sup>e</sup> mondial, « démocratie défaillante »)</li>
+      <li><strong>CIVICUS Monitor</strong> — Espace civique belge classé <em>narrowed</em> depuis 2023</li>
+      <li><strong>Liberties</strong> — Rapport 2025 et 2026 : Belgique parmi les <em>Sliders</em></li>
+    </ul>
+  </div>
+  <div>
+    <h5>Académie · Société civile</h5>
+    <ul>
+      <li><strong>Wilfried Dewachter</strong> — KU Leuven · particratie</li>
+      <li><strong>Pascal Delwit · Émilie van Haute</strong> — ULB · partis politiques</li>
+      <li><strong>Min Reuchamps</strong> — UCLouvain · démocratie délibérative</li>
+      <li><strong>Jean Faniel</strong> — CRISP · financement et autocontrôle</li>
+      <li><strong>Coalition « Droit de protester »</strong> — FGTB, CSC, CGSLB, LDH, Liga, Greenpeace, Amnesty</li>
+      <li><strong>BelRefugees</strong> — 422 078 nuitées en 2024</li>
+      <li><strong>Médor · Apache · Le Vif</strong> — investigations Publifin, Samusocial, Reynders, Qatargate</li>
+      <li><strong>We Need To Talk</strong> — collectif citoyen sur le financement politique</li>
+      <li><strong>Initiative panel 60</strong> — 34 recommandations restées sans suite (2023)</li>
+    </ul>
+  </div>
+  <div class="colophon">
+    Le Pli Républicain &nbsp;·&nbsp; <span>Cahier XII</span> &nbsp;·&nbsp; Composé en Fraunces &amp; Spectral &nbsp;·&nbsp; Bruxelles · mai 2026 &nbsp;·&nbsp; <span>fin</span>
+  </div>
+</footer>
+
+</body>
+</html>
