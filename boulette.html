@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La loi Quintin et les formations politiques — anatomie d'une menace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Source+Serif+4:opsz,wght@8..60,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #f1e9d8;
+  --paper-dark: #e8dec8;
+  --ink: #16110a;
+  --ink-soft: #3a322a;
+  --ink-faint: #6a5f53;
+  --rule: #1a14080d;
+  --oxblood: #7a1f1f;
+  --oxblood-deep: #561515;
+  --gold: #8a6f2c;
+  --warning: #b8421f;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(122,31,31,.025) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(138,111,44,.03) 0%, transparent 50%);
+  color: var(--ink);
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 19px;
+  line-height: 1.65;
+  font-weight: 380;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Subtle paper grain */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.4;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08 0 0 0 0 0.06 0 0 0 0 0.04 0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  mix-blend-mode: multiply;
+}
+
+.wrap { position: relative; z-index: 2; }
+
+/* ============ MASTHEAD ============ */
+.masthead {
+  border-bottom: 1px solid var(--ink);
+  padding: 14px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.masthead .brand {
+  font-family: "Fraunces", serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--ink);
+  font-variation-settings: "SOFT" 0, "WONK" 0;
+}
+.masthead .meta { display: flex; gap: 18px; }
+
+/* ============ HERO ============ */
+.hero {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 90px 32px 60px;
+  text-align: center;
+  position: relative;
+}
+
+.kicker {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--oxblood);
+  margin-bottom: 36px;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.kicker::before, .kicker::after {
+  content: "";
+  display: inline-block;
+  width: 36px;
+  height: 1px;
+  background: var(--oxblood);
+}
+
+h1.title {
+  font-family: "Fraunces", serif;
+  font-weight: 350;
+  font-size: clamp(40px, 6.2vw, 84px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  font-variation-settings: "SOFT" 30, "WONK" 0, "opsz" 144;
+  margin-bottom: 28px;
+}
+h1.title em {
+  font-style: italic;
+  font-variation-settings: "SOFT" 60, "WONK" 1, "opsz" 144;
+  color: var(--oxblood-deep);
+}
+
+.deck {
+  font-family: "Fraunces", serif;
+  font-weight: 350;
+  font-style: italic;
+  font-size: clamp(20px, 2.2vw, 26px);
+  line-height: 1.4;
+  color: var(--ink-soft);
+  max-width: 720px;
+  margin: 0 auto 48px;
+  font-variation-settings: "opsz" 36;
+}
+
+.byline {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.byline span::before {
+  content: "—";
+  margin-right: 10px;
+  color: var(--oxblood);
+}
+
+/* ============ ARTICLE ============ */
+article {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 40px 32px 80px;
+}
+
+article > p {
+  margin-bottom: 1.4em;
+  hyphens: auto;
+}
+
+article > p.lead {
+  font-size: 22px;
+  line-height: 1.55;
+  color: var(--ink);
+  font-weight: 400;
+  margin-bottom: 2em;
+}
+
+article > p.lead::first-letter {
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  font-size: 5.2em;
+  float: left;
+  line-height: 0.85;
+  margin: 0.08em 0.12em 0 -0.04em;
+  color: var(--oxblood);
+  font-variation-settings: "SOFT" 0, "WONK" 0, "opsz" 144;
+}
+
+article h2 {
+  font-family: "Fraunces", serif;
+  font-weight: 400;
+  font-size: clamp(28px, 3.4vw, 38px);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 3em 0 0.6em;
+  font-variation-settings: "SOFT" 20, "opsz" 60;
+  position: relative;
+  padding-top: 1.5em;
+}
+article h2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: var(--oxblood);
+}
+
+article h2 .num {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: var(--oxblood);
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+article h3 {
+  font-family: "Fraunces", serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 24px;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 2em 0 0.5em;
+  font-variation-settings: "SOFT" 50, "WONK" 1;
+}
+
+article a {
+  color: var(--oxblood);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(122,31,31,.4);
+  transition: text-decoration-color .2s;
+}
+article a:hover { text-decoration-color: var(--oxblood); }
+
+article strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+article em { font-style: italic; }
+
+/* ============ PULL QUOTE ============ */
+.pullquote {
+  margin: 3em -60px;
+  padding: 40px 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  font-family: "Fraunces", serif;
+  font-weight: 350;
+  font-size: clamp(26px, 3.2vw, 36px);
+  line-height: 1.2;
+  font-style: italic;
+  color: var(--ink);
+  text-align: center;
+  font-variation-settings: "SOFT" 40, "WONK" 1, "opsz" 60;
+  letter-spacing: -0.01em;
+  position: relative;
+}
+.pullquote::before {
+  content: "“";
+  display: block;
+  font-size: 80px;
+  line-height: 0.5;
+  color: var(--oxblood);
+  margin-bottom: 24px;
+  font-style: normal;
+  font-weight: 300;
+}
+.pullquote cite {
+  display: block;
+  margin-top: 24px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-style: normal;
+  color: var(--ink-faint);
+  font-variation-settings: normal;
+}
+
+/* ============ SIDE NOTE / WARNING ============ */
+.callout {
+  margin: 2.5em 0;
+  padding: 28px 32px;
+  background: var(--paper-dark);
+  border-left: 3px solid var(--oxblood);
+  position: relative;
+}
+.callout .label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--oxblood);
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.callout p { margin-bottom: 0.8em; font-size: 17px; }
+.callout p:last-child { margin-bottom: 0; }
+
+/* ============ SCENARIO CARDS ============ */
+.scenarios {
+  max-width: 1100px;
+  margin: 4em auto;
+  padding: 0 32px;
+}
+.scenarios-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.scenarios-header .eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--oxblood);
+  margin-bottom: 16px;
+}
+.scenarios-header h2 {
+  font-family: "Fraunces", serif;
+  font-weight: 350;
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-variation-settings: "SOFT" 20, "opsz" 80;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+.scenarios-header h2::before { display: none; }
+
+.scenarios-header p {
+  max-width: 600px;
+  margin: 20px auto 0;
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 18px;
+}
+
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+}
+
+.scenario {
+  background: #fbf6ea;
+  border: 1px solid var(--ink);
+  padding: 32px 28px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.scenario .roman {
+  font-family: "Fraunces", serif;
+  font-size: 64px;
+  font-weight: 300;
+  line-height: 0.9;
+  color: var(--oxblood);
+  font-variation-settings: "SOFT" 0, "opsz" 144;
+  margin-bottom: 12px;
+}
+.scenario h4 {
+  font-family: "Fraunces", serif;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 16px;
+  font-variation-settings: "SOFT" 20;
+}
+.scenario .target {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--oxblood);
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--rule);
+}
+.scenario p {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin-bottom: 1em;
+}
+.scenario .outcome {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px dashed var(--ink);
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ink);
+}
+.scenario .outcome strong {
+  font-family: "JetBrains Mono", monospace;
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--oxblood);
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* ============ VULNERABILITY TABLE ============ */
+.vulnerability {
+  max-width: 1100px;
+  margin: 4em auto;
+  padding: 0 32px;
+}
+.vulnerability h2 {
+  font-family: "Fraunces", serif;
+  font-weight: 350;
+  font-size: clamp(28px, 3.4vw, 40px);
+  text-align: center;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+  font-variation-settings: "SOFT" 20;
+}
+.vulnerability .sub {
+  text-align: center;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin-bottom: 40px;
+  font-size: 17px;
+}
+
+.vuln-table {
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+}
+.vuln-row {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr 2fr;
+  gap: 24px;
+  padding: 22px 4px;
+  border-bottom: 1px solid var(--rule);
+  align-items: start;
+}
+.vuln-row:last-child { border-bottom: none; }
+.vuln-row.header {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-weight: 500;
+  padding: 14px 4px;
+}
+.vuln-row .org {
+  font-family: "Fraunces", serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3;
+  color: var(--ink);
+}
+.vuln-row .level {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 2px;
+  font-weight: 500;
+}
+.vuln-row .level.tres-eleve { background: var(--oxblood-deep); color: var(--paper); }
+.vuln-row .level.eleve { background: var(--oxblood); color: var(--paper); }
+.vuln-row .level.moyen { background: var(--gold); color: var(--paper); }
+.vuln-row .pretexte {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+@media (max-width: 720px) {
+  .vuln-row { grid-template-columns: 1fr; gap: 8px; }
+  .vuln-row.header { display: none; }
+  .vuln-row .org { font-size: 20px; }
+  .vuln-row .level { justify-self: start; }
+}
+
+/* ============ TIMELINE ============ */
+.timeline {
+  margin: 3em -20px;
+  padding: 36px 28px;
+  background: linear-gradient(180deg, transparent 0%, rgba(122,31,31,.03) 100%);
+  border-left: 1px solid var(--ink);
+}
+.timeline h3 {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--oxblood);
+  margin-bottom: 24px;
+  font-style: normal;
+  font-weight: 500;
+}
+.timeline-item {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 24px;
+  padding: 14px 0;
+  border-bottom: 1px dashed var(--rule);
+}
+.timeline-item:last-child { border-bottom: none; }
+.timeline-item .date {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--oxblood);
+  font-weight: 500;
+}
+.timeline-item .event {
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+/* ============ FOOTER ============ */
+.article-footer {
+  max-width: 680px;
+  margin: 60px auto 0;
+  padding: 60px 32px 80px;
+  border-top: 2px solid var(--ink);
+}
+.article-footer h3 {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 28px;
+  font-weight: 500;
+}
+.sources {
+  list-style: none;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.sources li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  gap: 16px;
+}
+.sources li::before {
+  content: counter(src, decimal-leading-zero);
+  counter-increment: src;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--oxblood);
+  min-width: 32px;
+}
+.sources { counter-reset: src; }
+.sources a { color: var(--ink); text-decoration-color: rgba(20,17,10,.2); }
+
+.colophon {
+  margin-top: 80px;
+  text-align: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.colophon::before {
+  content: "✦";
+  display: block;
+  font-size: 14px;
+  color: var(--oxblood);
+  margin-bottom: 16px;
+}
+
+@media (max-width: 720px) {
+  .pullquote { margin-left: 0; margin-right: 0; }
+  article { padding: 30px 24px 60px; }
+  .hero { padding: 60px 24px 40px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="brand">Le Dossier</div>
+  <div class="meta">
+    <span>Belgique · Libertés publiques</span>
+    <span>Format long · 18 min</span>
+    <span>Mai 2026</span>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="kicker">Enquête institutionnelle</div>
+  <h1 class="title">La loi Quintin contre les partis : <em>anatomie d'une menace</em></h1>
+  <p class="deck">
+    Présenté comme un outil de lutte contre la criminalité organisée, l'avant-projet de loi du ministre de l'Intérieur Bernard Quintin contient des dispositions qui, en l'état, suffisent à mettre à genoux n'importe quelle formation politique d'opposition. Démontage juridique d'un dispositif que ses partisans jurent inoffensif.
+  </p>
+  <div class="byline">
+    <span>Dossier institutionnel</span>
+    <span>Sources : IFDH, Conseil d'État, FGTB, CSC, PTB, LDH</span>
+    <span>État du texte au 18 mai 2026</span>
+  </div>
+</section>
+
+<!-- ARTICLE BODY -->
+<article>
+
+<p class="lead">
+La promesse a été répétée à l'envi par le gouvernement Arizona : les partis politiques, les syndicats et les cultes reconnus seraient <strong>formellement exclus</strong> du champ d'application de la future loi sur l'interdiction administrative des organisations dites « radicales et dangereuses ». L'argument a circulé dans les commissions parlementaires, dans les cartes blanches favorables au texte, dans les conférences de presse du cabinet du ministre de la Sécurité et de l'Intérieur. Sauf qu'à la lecture des dispositions concrètes, l'immunité affichée se révèle être une <em>passoire constitutionnelle</em>. Trois mécanismes la transpercent.
+</p>
+
+<p>
+Pour comprendre pourquoi, il faut accepter de redescendre dans la mécanique du texte. L'avant-projet de loi relatif à l'interdiction administrative des personnes morales, des sociétés sans personnalité juridique, des associations ou des groupements de fait — son intitulé officiel — a connu plusieurs moutures depuis l'été 2025. Sa version initiale octroyait au Conseil des ministres, sur simple proposition du ministre de l'Intérieur, le pouvoir de dissoudre une organisation par arrêté royal, de geler ses avoirs, de fermer ses locaux et d'interdire l'usage de ses symboles, le tout <strong>sans contrôle judiciaire préalable</strong>. La procédure se limitait à une audition devant un fonctionnaire administratif, sans accès complet aux pièces de sécurité versées au dossier.
+</p>
+
+<p>
+Cette première mouture a déclenché une levée de boucliers structurée autour de la coalition « Droit de protester » : Ligue des droits humains, FGTB, CSC, CGSLB, Amnesty International, Greenpeace, l'Institut fédéral des Droits humains (IFDH). Dans son avis n° 2025/9 du 18 septembre 2025, l'IFDH a frontalement condamné le dispositif pour imprécision terminologique et non-conformité à l'article 27 de la Constitution belge (liberté d'association) ainsi qu'à l'article 11 de la Convention européenne des droits de l'homme. Saisi pour avis, le <strong>Conseil d'État</strong> a rappelé à l'ordre l'exécutif fin 2025 : dans un État de droit, le politique ne se substitue pas au juge pour prononcer la mort juridique d'un groupement de citoyens.
+</p>
+
+<p>
+Le 8 janvier 2026, sous double pression du Conseil d'État et d'une mobilisation sociale d'envergure, le ministre Bernard Quintin annonce un premier recul : la dissolution définitive sera désormais confiée à un juge. Présenté comme une victoire démocratique, ce recul est en réalité <em>tactique</em>. La version révisée maintient la prérogative pour le gouvernement de prononcer unilatéralement, par arrêté de police administrative, la <strong>suspension temporaire immédiate</strong> d'une organisation, l'interdiction de ses activités, le gel de ses fonds et la proscription de ses symboles, dans l'attente d'une éventuelle confirmation judiciaire au fond. L'asymétrie entre le moment de la sanction et celui de son contrôle reste massive.
+</p>
+
+<div class="callout">
+  <div class="label">À retenir</div>
+  <p>La loi Quintin a perdu son volet « dissolution administrative » en janvier 2026. Elle a conservé l'essentiel : la <strong>suspension temporaire immédiate</strong> par arrêté royal, le gel des avoirs, l'interdiction des symboles et la criminalisation pénale des membres (six mois à trois ans de prison) pour avoir participé à une réunion d'un groupement suspendu.</p>
+</div>
+
+<h2><span class="num">I — Le piège juridique</span>La fausse promesse de l'immunité</h2>
+
+<p>
+La protection accordée aux partis politiques, aux syndicats et aux cultes reconnus existe formellement dans le texte. Mais elle est <strong>conditionnelle</strong>. Une clause de sauvegarde prévoit que ces exclusions ne s'appliquent pas lorsque l'entité concernée « contourne ses objectifs déclarés ou reconnus » ou lorsque sa finalité réelle est « détournée ». C'est cette clause de détournement d'objectifs qui vide la protection de sa substance.
+</p>
+
+<p>
+Le mécanisme est élégant — et c'est bien ce qui inquiète les juristes constitutionnels. En insérant un test de « détournement », le législateur transfère le pouvoir de qualification au <strong>ministre de l'Intérieur lui-même</strong>. C'est l'exécutif qui décide unilatéralement si un parti politique est resté dans sa mission constitutionnelle de représentation, ou s'il a glissé vers des activités déstabilisatrices. Aucun seuil objectif n'est défini. Aucune procédure contradictoire préalable n'encadre la qualification.
+</p>
+
+<p class="pullquote">
+La protection des partis ne tient qu'à un mot — « détournement » — et c'est le ministre de l'Intérieur qui en détient l'interprétation.
+<cite>Argumentaire de la coalition Droit de protester</cite>
+</p>
+
+<p>
+Concrètement : qu'une formation d'opposition radicale, écologiste ou de gauche apporte un soutien logistique, financier ou politique explicite à des campagnes de désobéissance civile, à des occupations d'infrastructures énergétiques ou à des blocages économiques requalifiés en « entrave méchante à la circulation », et l'exécutif peut estimer que le parti utilise sa structure de manière détournée pour orchestrer des atteintes à la sécurité nationale. La suspension administrative immédiate devient alors juridiquement possible.
+</p>
+
+<p>
+Ce mécanisme est d'autant plus redoutable qu'il s'inscrit dans le contexte d'une <em>particratie belge</em> où le pouvoir effectif est concentré entre les présidents des partis de la majorité gouvernementale et les cabinets ministériels. Le ministre de l'Intérieur, issu d'une formation spécifique de la coalition — en l'occurrence le MR — dispose d'un droit d'initiative direct pour enclencher des procédures contre des concurrents politiques, sur la base d'analyses produites par des services de renseignement dont le contrôle parlementaire reste parcellaire.
+</p>
+
+<h2><span class="num">II — La faille structurelle</span>Les groupements de fait, angle mort de la Constitution</h2>
+
+<p>
+La deuxième faille tient à la <strong>forme juridique</strong> sous laquelle s'organisent les forces politiques et sociales en Belgique. Les structures syndicales opèrent traditionnellement sous le statut d'<em>associations de fait</em>, dépourvues de personnalité juridique autonome. De nombreux partis politiques locaux, comités électoraux ou courants internes fonctionnent de la même manière, informellement.
+</p>
+
+<p>
+L'avant-projet de loi Quintin vise <strong>explicitement les « groupements de fait »</strong>. En ciblant des structures sans personnalité morale, le texte permet à l'exécutif de prononcer des mesures restrictives qui frappent collectivement des militants sans qu'il soit nécessaire d'identifier et de condamner individuellement chaque auteur d'une infraction pénale. C'est une rupture doctrinale majeure avec un siècle de droit administratif belge : on sanctionne un collectif comme tel, indépendamment de la responsabilité individuelle de ses participants.
+</p>
+
+<p>
+Cette absence de personnalité juridique prive ces groupements des capacités de recours ordinaires devant les instances administratives comme le Conseil d'État. Ils se retrouvent démunis face aux décisions de suspension prises par arrêté royal. Et l'appareil pénal qui accompagne la loi prévoit que toute personne participant à une réunion ou arborant les symboles d'un groupement de fait suspendu risque <strong>six mois à trois ans d'emprisonnement</strong>. Le militantisme au sein d'une structure non traditionnelle devient un comportement passible de détention criminelle.
+</p>
+
+<div class="callout">
+  <div class="label">Précédent</div>
+  <p>L'affaire pénale du pont de Cheratte, dans laquelle des dirigeants syndicaux ont été condamnés pour « entrave méchante à la circulation » lors d'un piquet de grève, illustre la pente sur laquelle s'installe le droit pénal belge. La loi Quintin viendrait s'y greffer en y ajoutant une couche administrative : non seulement le militant peut être condamné, mais sa structure peut être suspendue.</p>
+</div>
+
+<h2><span class="num">III — L'écosystème</span>L'asphyxie par les satellites</h2>
+
+<p>
+La troisième brèche est la plus discrète, et probablement la plus efficace. Les partis politiques belges ne sont pas des entités isolées : ils s'appuient sur un vaste écosystème de <strong>mutualités, organisations de jeunesse, centres de recherche, ASBL socioculturelles, fondations d'éducation permanente</strong>. Cet écosystème leur fournit infrastructure, ressources humaines, vivier militant et capacité d'influence intellectuelle.
+</p>
+
+<p>
+La clause de protection des partis <em>ne s'applique pas</em> à ces structures tierces. Une ASBL d'éducation permanente proche d'un parti d'opposition peut être suspendue par arrêté royal, ses comptes gelés, ses contrats-programmes non renouvelés, sans que la formation politique mère ne soit formellement visée. L'effet recherché — neutraliser l'opposition — est obtenu sans même franchir la ligne rouge constitutionnelle.
+</p>
+
+<p>
+Le rapprochement avec l'article 103 du décret-programme adopté par la Fédération Wallonie-Bruxelles en décembre 2025 est ici essentiel. Cet article introduit huit critères destinés à évaluer la « proximité politique » des associations d'éducation permanente : symboles partagés, mises à disposition de salles, présence d'élus à des événements communs en période électorale. Une ASBL jugée « politiquement proche » peut voir ses subventions supprimées. Combiné à la loi Quintin, le dispositif devient un <strong>outil d'asphyxie globale</strong> : une même structure peut perdre ses subsides régionaux pour proximité partisane <em>et</em> être suspendue administrativement pour soupçon de radicalisme.
+</p>
+
+</article>
+
+<!-- VULNERABILITY TABLE -->
+<section class="vulnerability">
+  <h2>Cartographie de la vulnérabilité</h2>
+  <p class="sub">Qui peut être atteint, sur quel prétexte, à quelle profondeur</p>
+  <div class="vuln-table">
+    <div class="vuln-row header">
+      <div>Type d'organisation</div>
+      <div>Niveau théorique</div>
+      <div>Prétexte légal mobilisable</div>
+    </div>
+    <div class="vuln-row">
+      <div class="org">Partis de gauche radicale et éco-socialistes</div>
+      <div><span class="level eleve">Élevé</span></div>
+      <div class="pretexte">Soutien explicite à des actions de grève non autorisées, à des manifestations sauvages ou à de la désobéissance civile.</div>
+    </div>
+    <div class="vuln-row">
+      <div class="org">Ailes de jeunesse et cercles d'étudiants politisés</div>
+      <div><span class="level tres-eleve">Très élevé</span></div>
+      <div class="pretexte">Diffusion de discours jugés extrémistes, organisation de blocages universitaires, liens supposés avec des réseaux étrangers interdits.</div>
+    </div>
+    <div class="vuln-row">
+      <div class="org">Structures régionales et indépendantistes radicales</div>
+      <div><span class="level moyen">Moyen</span></div>
+      <div class="pretexte">Atteinte alléguée à la pérennité de l'ordre constitutionnel et à l'unité de l'État belge.</div>
+    </div>
+    <div class="vuln-row">
+      <div class="org">ASBL d'éducation permanente et de réflexion</div>
+      <div><span class="level eleve">Élevé</span></div>
+      <div class="pretexte">Violation supposée de la neutralité de l'État, suspicion d'extrémisme, proximité partisane jugée excessive (article 103 FWB).</div>
+    </div>
+    <div class="vuln-row">
+      <div class="org">Fédérations syndicales régionales ou locales</div>
+      <div><span class="level eleve">Élevé</span></div>
+      <div class="pretexte">Entrave méchante à la circulation lors de piquets de grève, déstabilisation alléguée de la sécurité économique.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SCENARIOS -->
+<section class="scenarios">
+  <div class="scenarios-header">
+    <div class="eyebrow">Application théorique</div>
+    <h2>Trois scénarios pour comprendre</h2>
+    <p>Comment l'avant-projet de loi se traduirait, concrètement, contre une force politique d'opposition. Les hypothèses ci-dessous sont construites à partir des dispositions actuelles du texte.</p>
+  </div>
+
+  <div class="scenario-grid">
+
+    <div class="scenario">
+      <div class="roman">I</div>
+      <div class="target">Cible · Infrastructure intellectuelle</div>
+      <h4>La paralysie des ASBL d'éducation permanente</h4>
+      <p>À l'approche d'une élection, l'exécutif s'appuie sur un rapport du Comité de coordination du renseignement et de la sécurité (CCRS) signalant qu'une ASBL liée à un parti d'opposition organise des ateliers contestant les réformes d'austérité du gouvernement Arizona.</p>
+      <p>Le prétexte juridique : « incitation à l'instabilité démocratique ». La clause de protection ne couvre pas les structures tierces.</p>
+      <div class="outcome">
+        <strong>Effet immédiat</strong>
+        Arrêté royal de suspension, gel des comptes, impossibilité de payer les formateurs, d'éditer les revues, de soutenir les mobilisations. Le parti mère perd sa force de frappe idéologique au cœur de la campagne.
+      </div>
+    </div>
+
+    <div class="scenario">
+      <div class="roman">II</div>
+      <div class="target">Cible · Section locale en pleine grève</div>
+      <h4>La criminalisation du soutien aux conflits sociaux</h4>
+      <p>Un mouvement de grève éclate en Wallonie et à Bruxelles contre la baisse des primes de nuit et la dégradation du pouvoir d'achat. Un parti de gauche radicale met ses locaux à disposition, imprime des tracts, participe aux piquets de grève.</p>
+      <p>Le ministre active la clause de contournement d'objectifs : le parti a, selon lui, détourné sa finalité électorale pour parrainer des activités d'entrave à l'économie.</p>
+      <div class="outcome">
+        <strong>Effet immédiat</strong>
+        Suspension de la section locale, interdiction des symboles et drapeaux dans les manifestations, poursuites pénales contre les secrétaires régionaux. Alternative impossible : se taire, ou être hors-la-loi.
+      </div>
+    </div>
+
+    <div class="scenario">
+      <div class="roman">III</div>
+      <div class="target">Cible · Solidarité internationale</div>
+      <h4>Le ciblage par l'extérieur</h4>
+      <p>Un parti d'opposition s'allie à des collectifs universitaires et à des réseaux de solidarité transnationaux (cause palestinienne, cause kurde, etc.). Plusieurs manifestations non autorisées ont lieu sur le territoire national.</p>
+      <p>Le ministre s'appuie sur la qualification européenne d'organisations extrémistes attribuée à certains partenaires étrangers pour invoquer « l'apologie indirecte de la violence ».</p>
+      <div class="outcome">
+        <strong>Effet immédiat</strong>
+        Gel administratif des ressources de campagne, suspension des comités universitaires et des ASBL culturelles satellites. Paralysie politique sous l'étiquette « lutte anti-radicalisme ».
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECOND HALF -->
+<article>
+
+<h2><span class="num">IV — La conséquence</span>Le <em>chilling effect</em> ou l'évidement de la démocratie sociale</h2>
+
+<p>
+L'impact le plus redoutable de la loi Quintin sur les formations politiques n'est probablement pas l'usage qui en serait fait, mais celui qu'on n'aurait pas besoin d'en faire. L'instauration d'un dispositif d'interdiction administrative, <strong>même rarement activé</strong>, modifie profondément les comportements collectifs. Les juristes anglo-saxons appellent cela un <em>chilling effect</em>. La traduction française la plus juste est sans doute « effet de glaciation ».
+</p>
+
+<p>
+L'autocensure s'impose progressivement comme stratégie de survie pour les organisations de petite taille, pour les courants politiques marginaux, pour les nouvelles ASBL qui n'ont pas encore consolidé leur ancrage. La crainte d'un mauvais rapport des services de renseignement, ou d'une requalification de leurs activités par le ministre de l'Intérieur, pousse les structures à <strong>édulcorer leurs critiques politiques</strong> et à se retirer des espaces de contestation directe. Les donateurs privés, les fondations, les bénévoles eux-mêmes manifestent une frilosité accrue, redoutant qu'un soutien financier à une cause jugée « sensible » ne les expose à une surveillance d'État.
+</p>
+
+<p class="pullquote">
+Lorsque la survie juridique d'un contre-pouvoir dépend de la bienveillance idéologique du gouvernement en place, la citoyenneté associative est intrinsèquement muselée.
+<cite>Argumentaire CIVICUS Monitor — Belgique, 2025</cite>
+</p>
+
+<p>
+Ce diagnostic n'est pas une vue de l'esprit. L'observatoire mondial CIVICUS Monitor classe désormais la Belgique avec un score de 77/100, dans la zone des espaces civiques <em>« rétrécis »</em> (narrowed). C'est-à-dire un cran en dessous des démocraties pleinement ouvertes. La loi Quintin n'a pas encore été adoptée. Le seul fait qu'elle soit en discussion à la Chambre suffit à abaisser le score belge.
+</p>
+
+<h2><span class="num">V — Le calendrier</span>2026, l'année décisive</h2>
+
+<div class="timeline">
+  <h3>Repères chronologiques</h3>
+  <div class="timeline-item">
+    <div class="date">Été 2025</div>
+    <div class="event">Dépôt de l'avant-projet initial par le ministre Bernard Quintin. Pouvoir de dissolution par arrêté royal, sans contrôle judiciaire préalable.</div>
+  </div>
+  <div class="timeline-item">
+    <div class="date">18 sept. 2025</div>
+    <div class="event">Avis n° 2025/9 de l'IFDH : incompatibilité avec l'article 27 de la Constitution et l'article 11 CEDH.</div>
+  </div>
+  <div class="timeline-item">
+    <div class="date">Oct. 2025</div>
+    <div class="event">Structuration de la coalition « Droit de protester » (FGTB, CSC, LDH, Amnesty, Greenpeace, IFDH, PTB).</div>
+  </div>
+  <div class="timeline-item">
+    <div class="date">Fin 2025</div>
+    <div class="event">Avis du Conseil d'État : l'exécutif ne peut se substituer au juge pour prononcer la mort juridique d'un groupement.</div>
+  </div>
+  <div class="timeline-item">
+    <div class="date">Déc. 2025</div>
+    <div class="event">Adoption en FWB de l'article 103 du décret-programme : huit critères d'évaluation de la « proximité politique » des associations d'éducation permanente.</div>
+  </div>
+  <div class="timeline-item">
+    <div class="date">8 janv. 2026</div>
+    <div class="event">Premier recul du ministre Quintin : la dissolution définitive est confiée à un juge. Mais la suspension administrative immédiate est conservée.</div>
+  </div>
+  <div class="timeline-item">
+    <div class="date">2026</div>
+    <div class="event">Débats à la Chambre. Mobilisations syndicales du « 13 de chaque mois ». L'arbitrage final reste ouvert.</div>
+  </div>
+</div>
+
+<h2><span class="num">VI — Bilan</span>Ce que la loi Quintin nous dit du modèle belge</h2>
+
+<p>
+La loi Quintin n'est pas un accident législatif. Elle s'inscrit dans un mouvement plus large d'<strong>évidement de l'État de droit</strong> — ce que les juristes néerlandophones nomment <em>uitholling van de rechtsstaat</em> — qui s'accompagne d'un changement de modèle de société. La conflictualité naturelle des rapports de classe et des opinions y est progressivement requalifiée en déviance sécuritaire ou en radicalisme violent. Les méthodes traditionnelles de protestation sociale, dont la grève et la manifestation, sont réinterprétées au prisme d'une prétendue neutralité apolitique de l'État.
+</p>
+
+<p>
+Lue dans cette perspective, la loi Quintin <strong>n'est pas tant un outil de lutte contre le terrorisme qu'un outil de régulation du pluralisme politique</strong>. Elle ne dissout pas formellement les partis d'opposition — la Constitution le lui interdit — mais elle permet de paralyser leurs satellites, de criminaliser leurs militants, de tarir leurs ressources et de surveiller leurs alliances. Elle déplace l'arbitrage du pluralisme du Parlement et des urnes vers le cabinet d'un ministre de l'Intérieur, à un moment où la particratie belge concentre déjà le pouvoir effectif entre quelques présidents de partis de la majorité.
+</p>
+
+<p>
+Le recul de janvier 2026 a été présenté comme une victoire démocratique. Il l'est, en partie. Mais l'<strong>architecture résiduelle du projet</strong> préserve des prérogatives exorbitantes aux mains du pouvoir exécutif : arrêté de suspension temporaire immédiate, interdiction administrative d'activités, proscription des symboles, criminalisation pénale de la participation. La clause floue du « détournement d'objectifs » continue d'ouvrir une brèche constitutionnelle dans l'immunité légale des partis et des syndicats.
+</p>
+
+<p>
+L'année 2026 s'avère décisive. L'issue des débats en séance plénière à la Chambre des représentants, couplée à l'action d'opposition systématique de la coalition « Droit de protester », déterminera si le pays maintient son modèle traditionnel de démocratie ouverte ou s'il bascule vers ce que les juristes appellent désormais, sans ironie, l'<em>autoritarisme de police administrative</em>. La Belgique en serait, dans cette hypothèse, l'un des premiers laboratoires d'Europe occidentale.
+</p>
+
+</article>
+
+<!-- FOOTER -->
+<footer class="article-footer">
+  <h3>Sources principales</h3>
+  <ul class="sources">
+    <li>Institut fédéral des Droits humains (IFDH), <em>Avis n° 2025/9 du 18 septembre 2025 sur l'avant-projet de loi relatif à l'interdiction administrative des personnes morales, sociétés sans personnalité juridique, associations ou groupements de fait</em>.</li>
+    <li>Conseil d'État, section de législation, avis sur l'avant-projet de loi Quintin, fin 2025.</li>
+    <li>FGTB, communiqué « Atteinte méchante à l'autorité de l'État : une menace pour le droit de protester ».</li>
+    <li>CSC, soirée citoyenne « Comprendre la loi Quintin », 28 novembre 2025.</li>
+    <li>CGSLB, « Dissoudre une association sur décision du gouvernement ».</li>
+    <li>Monasbl.be, « Loi Quintin : le gouvernement pourrait-il bientôt fermer une ASBL sans juge ? ».</li>
+    <li>PTB, « Loi Quintin : l'Arizona rappelé à l'ordre par le Conseil d'État pour atteinte aux droits démocratiques ».</li>
+    <li>PTB, « Loi Quintin : comment le gouvernement Arizona veut casser notre droit d'association ».</li>
+    <li>Agir par la culture, « Neutralité ou fin de la conflictualité ? Les syndicats sous pression » ; « Une arme idéologique au service de l'exécutif » ; « Une attaque frontale contre l'éducation permanente — Article 103 ».</li>
+    <li>Les Équipes Populaires, « Manifester, un droit essentiel », 16 avril 2026.</li>
+    <li>CIVICUS Monitor, fiche Belgique 2025-2026 (score 77/100, espace civique « narrowed »).</li>
+    <li>Chambre des représentants, doc. parl. 56 K 1280 et compte rendu analytique de la commission de la Justice.</li>
+  </ul>
+  <div class="colophon">
+    Format long · Dossier institutionnel · 18 mai 2026
+  </div>
+</footer>
+
+</div>
+</body>
+</html>
