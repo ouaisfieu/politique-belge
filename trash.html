@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La décharge belge — six strates d'un État qui ne se digère pas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,700;1,6..72,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ece5d6;
+    --bg-deep: #ddd3bd;
+    --bg-dark: #2a2218;
+    --paper: #f6f0e1;
+    --ink: #15110a;
+    --ink-soft: #4a3d2d;
+    --ink-faint: #7a6a55;
+    --rust: #8b3a1f;
+    --rust-deep: #5a2511;
+    --toxic: #c69218;
+    --toxic-bright: #e8b020;
+    --moss: #3d4a2a;
+    --moss-deep: #232c17;
+    --hazmat: #d83820;
+    --rule: #c4b896;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 400;
+    line-height: 1.55;
+    font-size: 18px;
+    background-image:
+      radial-gradient(at 12% 8%, rgba(139, 58, 31, 0.06) 0px, transparent 50%),
+      radial-gradient(at 88% 92%, rgba(61, 74, 42, 0.07) 0px, transparent 55%);
+    background-attachment: fixed;
+  }
+
+  /* Grain overlay */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.35;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0 0.05 0 0 0 0.18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ============ HEADER ============ */
+  header {
+    padding: 60px 0 40px;
+    border-bottom: 1.5px solid var(--ink);
+    position: relative;
+  }
+
+  .stamp {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rust);
+    border: 1.5px solid var(--rust);
+    padding: 6px 12px;
+    margin-bottom: 28px;
+    transform: rotate(-1deg);
+  }
+
+  h1.title {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: clamp(58px, 11vw, 142px);
+    line-height: 0.88;
+    letter-spacing: -0.035em;
+    margin-bottom: 18px;
+    color: var(--ink);
+  }
+
+  h1.title em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--rust);
+    display: block;
+    font-size: 0.62em;
+    margin-top: 8px;
+  }
+
+  .deck {
+    font-family: 'Newsreader', serif;
+    font-size: clamp(20px, 2.4vw, 27px);
+    font-weight: 300;
+    line-height: 1.32;
+    max-width: 780px;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin-top: 22px;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px 48px;
+    margin-top: 44px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .meta span strong {
+    display: block;
+    color: var(--ink);
+    font-weight: 700;
+    margin-top: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ============ PROLOGUE ============ */
+  .prologue {
+    padding: 70px 0 50px;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .prologue h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    position: sticky;
+    top: 30px;
+  }
+
+  .prologue h2 .accent {
+    display: block;
+    color: var(--rust);
+    font-style: italic;
+    font-weight: 400;
+    margin-top: 8px;
+  }
+
+  .prologue p {
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+
+  .prologue p:first-child::first-letter {
+    font-family: 'Fraunces', serif;
+    font-size: 5.2em;
+    float: left;
+    line-height: 0.82;
+    padding: 6px 10px 0 0;
+    font-weight: 900;
+    color: var(--rust);
+  }
+
+  .strike {
+    text-decoration: line-through;
+    text-decoration-color: var(--rust);
+    text-decoration-thickness: 2px;
+    color: var(--ink-faint);
+  }
+
+  .underline {
+    border-bottom: 2px solid var(--toxic);
+    padding-bottom: 1px;
+  }
+
+  /* ============ INDEX (jauge) ============ */
+  .index {
+    padding: 60px 0 30px;
+  }
+
+  .index-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 18px;
+  }
+
+  .index-bar {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 4px;
+    margin-bottom: 14px;
+  }
+
+  .index-cell {
+    aspect-ratio: 4/1.2;
+    border: 1.5px solid var(--ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform 0.15s ease, background-color 0.2s ease;
+  }
+
+  .index-cell:hover {
+    transform: translateY(-3px);
+  }
+
+  .index-cell .n {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 0;
+  }
+
+  .index-cell.c1 { background: #d8d3c0; }
+  .index-cell.c2 { background: #cfc2a4; }
+  .index-cell.c3 { background: #c69218; color: var(--bg-dark); }
+  .index-cell.c4 { background: #a45f1d; color: var(--paper); border-color: var(--rust-deep); }
+  .index-cell.c5 { background: var(--rust); color: var(--paper); border-color: var(--rust-deep); }
+  .index-cell.c6 { background: var(--bg-dark); color: var(--toxic-bright); border-color: var(--ink); }
+
+  .index-scale {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ============ STRATE ============ */
+  .strate {
+    padding: 100px 0;
+    position: relative;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .strate-head {
+    display: grid;
+    grid-template-columns: minmax(140px, 200px) 1fr;
+    gap: 40px;
+    align-items: start;
+    margin-bottom: 50px;
+  }
+
+  .roman {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: clamp(80px, 13vw, 170px);
+    line-height: 0.78;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    margin-top: -10px;
+  }
+
+  .strate-title-block {
+    padding-top: 14px;
+  }
+
+  .strate-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    margin-bottom: 16px;
+    border: 1.5px solid currentColor;
+  }
+
+  .strate h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: clamp(34px, 4.5vw, 54px);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    margin-bottom: 20px;
+  }
+
+  .strate h3 em {
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .toxicity {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .tox-bar {
+    display: flex;
+    gap: 3px;
+  }
+
+  .tox-bar span {
+    width: 22px;
+    height: 10px;
+    background: var(--bg-deep);
+    border: 1px solid var(--ink);
+  }
+
+  .tox-bar span.lit { background: currentColor; }
+
+  /* Toxicity color per strate */
+  .strate-1 .strate-tag, .strate-1 .tox-bar { color: var(--ink-soft); }
+  .strate-2 .strate-tag, .strate-2 .tox-bar { color: var(--moss); }
+  .strate-3 .strate-tag, .strate-3 .tox-bar { color: var(--toxic); }
+  .strate-4 .strate-tag, .strate-4 .tox-bar { color: #a45f1d; }
+  .strate-5 .strate-tag, .strate-5 .tox-bar { color: var(--rust); }
+  .strate-6 .strate-tag, .strate-6 .tox-bar { color: var(--hazmat); }
+
+  .strate-6 {
+    background: var(--bg-dark);
+    color: var(--paper);
+    margin: 60px -50vw 0;
+    padding: 100px 50vw;
+  }
+  .strate-6 .wrap { max-width: 1100px; margin: 0 auto; padding: 0; }
+  .strate-6 h3 { color: var(--paper); }
+  .strate-6 .roman { color: var(--toxic-bright); }
+  .strate-6 .strate-tag, .strate-6 .tox-bar { color: var(--hazmat); }
+  .strate-6 .toxicity { color: rgba(246, 240, 225, 0.5); }
+  .strate-6 .body p { color: rgba(246, 240, 225, 0.9); }
+  .strate-6 .fact { background: rgba(255,255,255,0.05); border-color: var(--hazmat); }
+  .strate-6 .fact .num { color: var(--toxic-bright); }
+  .strate-6 .pull { color: var(--paper); border-color: var(--hazmat); }
+  .strate-6 .source { color: rgba(246, 240, 225, 0.55); }
+  .strate-6 .tox-bar span { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.25); }
+  .strate-6 .tox-bar span.lit { background: var(--hazmat); }
+
+  /* Body content */
+  .body {
+    display: grid;
+    grid-template-columns: 2.4fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .body p {
+    font-size: 19px;
+    line-height: 1.62;
+    margin-bottom: 18px;
+    color: var(--ink);
+  }
+
+  .body p strong { font-weight: 700; }
+
+  .facts {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .fact {
+    background: var(--paper);
+    border-left: 3px solid var(--rust);
+    padding: 18px 20px;
+    font-family: 'Newsreader', serif;
+  }
+
+  .fact .num {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 1;
+    color: var(--rust);
+    letter-spacing: -0.02em;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .fact .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    line-height: 1.4;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .pull {
+    grid-column: 1 / -1;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(22px, 2.8vw, 32px);
+    line-height: 1.28;
+    padding: 32px 0 32px 32px;
+    border-left: 3px solid var(--rust);
+    margin: 30px 0;
+    color: var(--ink-soft);
+  }
+
+  .pull cite {
+    display: block;
+    font-style: normal;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 16px;
+  }
+
+  .source {
+    grid-column: 1 / -1;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
+    line-height: 1.55;
+    padding-top: 22px;
+    border-top: 1px dashed var(--rule);
+    margin-top: 18px;
+  }
+
+  .source::before {
+    content: "→ ";
+    color: var(--rust);
+  }
+
+  /* ============ EPILOGUE ============ */
+  .epilogue {
+    padding: 120px 0 80px;
+    text-align: left;
+  }
+
+  .epilogue .stamp {
+    color: var(--moss);
+    border-color: var(--moss);
+  }
+
+  .epilogue h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 0.96;
+    letter-spacing: -0.03em;
+    margin-bottom: 28px;
+    max-width: 14ch;
+  }
+
+  .epilogue h2 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--rust);
+  }
+
+  .epilogue p {
+    font-size: 20px;
+    line-height: 1.62;
+    margin-bottom: 16px;
+    max-width: 68ch;
+  }
+
+  .epilogue .signoff {
+    margin-top: 50px;
+    padding-top: 28px;
+    border-top: 1.5px solid var(--ink);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  /* Section divider */
+  .gap-divider {
+    text-align: center;
+    padding: 30px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 0.4em;
+    color: var(--ink-faint);
+  }
+
+  /* Responsive */
+  @media (max-width: 760px) {
+    .prologue { grid-template-columns: 1fr; gap: 24px; }
+    .prologue h2 { position: static; }
+    .strate-head { grid-template-columns: 1fr; gap: 14px; }
+    .roman { font-size: 100px; margin-bottom: -10px; }
+    .body { grid-template-columns: 1fr; gap: 30px; }
+    .index-bar { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .index-cell { aspect-ratio: auto; padding: 14px; min-height: 70px; }
+    .strate-6 { margin: 60px -32px 0; padding: 80px 32px; }
+    .strate-6 .wrap { padding: 0; }
+  }
+
+  /* Animation reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<!-- HEADER -->
+<header>
+  <span class="stamp">Pamphlet structurel · Mai 2026 · Bruxelles</span>
+  <h1 class="title">La décharge<em>belge</em></h1>
+  <p class="deck">On nous parle de <span class="strike">« lasagne institutionnelle »</span>. Une lasagne, ça cuit, ça se partage, ça se mange. <span class="underline">Six strates, du moins toxique au plus scandaleux : ce qu'on a vraiment sous les pieds.</span></p>
+  <div class="meta">
+    <span>Format <strong>Analyse structurelle</strong></span>
+    <span>Sources <strong>GRECO · CEDH · FMI · OCDE · CRISP · Cour des comptes</strong></span>
+    <span>Période <strong>2014 – Mai 2026</strong></span>
+    <span>Lecture <strong>≈ 14 minutes</strong></span>
+  </div>
+</header>
+
+<!-- PROLOGUE -->
+<section class="prologue">
+  <h2>Mauvaise métaphore<span class="accent">— en chercher une vraie</span></h2>
+  <div>
+    <p>La lasagne institutionnelle est devenue le calmant officiel du commentaire politique belge. Elle suggère une complexité gourmande, des couches qui se tiennent, un plat qui finit par sortir du four. Elle infuse l'idée — rassurante, fausse — qu'on pourrait, à terme, le manger.</p>
+
+    <p>Or ce qu'on observe en Belgique n'est ni cuit, ni partagé, ni comestible. C'est <strong>stratifié et toxique</strong>. Des couches successives d'arrangements posées les unes sur les autres depuis 1970, dont les plus anciennes ne se décomposent pas, dont les plus récentes suintent, et dont personne n'assume plus la totalité. Une <strong>décharge publique</strong> posée sur un <strong>marécage</strong> : on y enfouit, on y tasse, on espère que le méthane ne s'enflamme pas avant les prochaines élections.</p>
+
+    <p>Le classement qui suit organise ces strates non par chronologie mais par <em>toxicité institutionnelle</em>. On commence par le moins pire — l'embonpoint coûteux que l'œil étranger remarque en premier — et on descend, couche après couche, vers ce qui constitue la rupture la plus profonde : un État qui assume publiquement de ne plus obéir à ses propres juges.</p>
+  </div>
+</section>
+
+<!-- INDEX -->
+<section class="index">
+  <p class="index-label">Échelle de toxicité — du déchet courant au refus assumé de l'État de droit</p>
+  <div class="index-bar">
+    <a href="#strate-1" class="index-cell c1"><span class="n">I</span><span>Densité</span></a>
+    <a href="#strate-2" class="index-cell c2"><span class="n">II</span><span>Opacité</span></a>
+    <a href="#strate-3" class="index-cell c3"><span class="n">III</span><span>Particratie</span></a>
+    <a href="#strate-4" class="index-cell c4"><span class="n">IV</span><span>Discrédit international</span></a>
+    <a href="#strate-5" class="index-cell c5"><span class="n">V</span><span>Capture & scandales</span></a>
+    <a href="#strate-6" class="index-cell c6"><span class="n">VI</span><span>Mépris de la justice</span></a>
+  </div>
+  <div class="index-scale">
+    <span>← Gaspillage visible</span>
+    <span>Rupture systémique →</span>
+  </div>
+</section>
+
+<div class="gap-divider">· · ·</div>
+
+<!-- STRATE 1 -->
+<section class="strate strate-1" id="strate-1">
+  <div class="strate-head">
+    <div class="roman">I</div>
+    <div class="strate-title-block">
+      <span class="strate-tag">Strate I — Déchets courants</span>
+      <h3>L'embonpoint politique :<br><em>quand le coût se voit, mais peu</em></h3>
+      <div class="toxicity">
+        Toxicité institutionnelle
+        <div class="tox-bar">
+          <span class="lit"></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <span>1 / 6</span>
+      </div>
+    </div>
+  </div>
+  <div class="body">
+    <div>
+      <p>Six gouvernements, six parlements, <strong>592 députés</strong> pour 11,7 millions d'habitants, des cabinets ministériels qui frôlent les <strong>3 200 collaborateurs</strong>. C'est la couche qu'un visiteur étranger voit immédiatement. Elle choque parce qu'elle se compte, mais elle n'est, en soi, ni illégale ni cachée.</p>
+
+      <p>La Wallonie aligne <strong>50,5 ETP par cabinet</strong>, Bruxelles-Capitale 43,8, le fédéral 37,4, la Flandre 30,2 — la Communauté germanophone se contente de 9. Le cabinet du Ministre-Président bruxellois Rudi Vervoort comptait 81 personnes en 2023. La Cour des comptes a établi en 2022 qu'<strong>au moins la moitié</strong> du coût réel des cabinets wallons (37 M€ contre 23 M€ affichés) est invisible : il s'agit de fonctionnaires « détachés à titre gratuit » dont les salaires restent payés par leur administration d'origine.</p>
+
+      <p>À cela s'ajoute la <strong>consultance externalisée</strong> — pour la seule Région de Bruxelles-Capitale, plus de 470 millions d'euros sur une législature, selon les calculs du PTB. Ce que la masse salariale officielle ne fait plus, McKinsey, Deloitte et Roland Berger le facturent. Le coût de la politique belge se mesure mal parce qu'il fuit par tous les budgets latéraux.</p>
+
+      <p>Comparativement, la France a plafonné en 2017 ses cabinets à 10 conseillers par ministre. Les Pays-Bas n'ont pas de cabinets ministériels au sens belge. La Belgique reste, avec l'Italie historique, l'un des derniers grands pays d'Europe occidentale à entretenir cette architecture d'intermédiation partisane dans l'appareil d'État.</p>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <span class="num">592</span>
+        <span class="label">Députés cumulés (fédéral + entités fédérées)</span>
+      </div>
+      <div class="fact">
+        <span class="num">~3 200</span>
+        <span class="label">Collaborateurs de cabinets ministériels (tous niveaux)</span>
+      </div>
+      <div class="fact">
+        <span class="num">200 M€</span>
+        <span class="label">Coût annuel estimé des cabinets — dont env. 50 % hors budget officiel (détachés non refacturés)</span>
+      </div>
+      <div class="fact">
+        <span class="num">470 M€</span>
+        <span class="label">Dépenses de consultance sur une législature, Région bruxelloise (calcul PTB)</span>
+      </div>
+    </div>
+    <div class="pull">
+      « Le choix des membres d'un cabinet ministériel est laissé à la discrétion du ministre… et le parti politique intervient lui aussi dans le choix des principaux membres. »
+      <cite>— CRISP, vocabulaire politique</cite>
+    </div>
+    <p class="source">Cour des comptes (rapport cabinets wallons 2022) · CRISP · RTBF Enquête (2023) · GERFA · Audits Doc 56-0855 Chambre des représentants</p>
+  </div>
+</section>
+
+<!-- STRATE 2 -->
+<section class="strate strate-2" id="strate-2">
+  <div class="strate-head">
+    <div class="roman">II</div>
+    <div class="strate-title-block">
+      <span class="strate-tag">Strate II — Lixiviats invisibles</span>
+      <h3>L'opacité institutionnalisée :<br><em>la transparence vient toujours après</em></h3>
+      <div class="toxicity">
+        Toxicité institutionnelle
+        <div class="tox-bar">
+          <span class="lit"></span><span class="lit"></span><span></span><span></span><span></span><span></span>
+        </div>
+        <span>2 / 6</span>
+      </div>
+    </div>
+  </div>
+  <div class="body">
+    <div>
+      <p>Pendant <strong>30 ans</strong>, la loi du 11 avril 1994 sur la publicité de l'administration a, de fait, exclu les cabinets ministériels de son champ. C'est dans ces « organes stratégiques » que s'élabore la décision politique — et c'est précisément ce que l'administration et le citoyen ne pouvaient pas consulter. La loi du <strong>12 mai 2024</strong> a réparé la chose en façade : les ministres doivent désormais publier la liste de leurs collaborateurs.</p>
+
+      <p>Sauf que la même loi a introduit, dans son article 6 §1 5°, un <strong>secret protégeant les documents portant sur l'exécution d'une stratégie politique</strong> — entre ministres, entre cabinets, entre cabinets et partis. La porte rouvre par où la fenêtre s'est fermée. La Commission d'accès aux documents administratifs (CADA), saisie en cas de refus, ne dispose que d'un pouvoir consultatif.</p>
+
+      <p>Le décor complet : <strong>déclarations de patrimoine sous enveloppe scellée</strong> et détruites au bout de 5 ans, neutralisant tout audit ex post citoyen ou journalistique. Registre des lobbies <strong>volontaire</strong> à la Chambre fédérale (180 inscrits, contre ~12 500 au registre UE), <strong>inexistant</strong> dans cinq des six entités fédérées belges. Régulateurs sectoriels (CREG énergie, CRM-INAMI santé) <strong>composés des régulés eux-mêmes</strong> : pharma.be siège à la CRM, les producteurs au Conseil général de la CREG.</p>
+
+      <p>Le code des marchés publics existe ; les transactions pénales élargies (loi du 14 avril 2011) permettent à un Patokh Chodiev d'éviter le procès moyennant ~3,5 millions d'euros. La règle est écrite quelque part, l'exception est partout.</p>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <span class="num">30 ans</span>
+        <span class="label">Pendant lesquels les cabinets ministériels étaient hors publicité administrative</span>
+      </div>
+      <div class="fact">
+        <span class="num">5 ans</span>
+        <span class="label">Délai au bout duquel les déclarations de patrimoine des élus sont détruites</span>
+      </div>
+      <div class="fact">
+        <span class="num">180 vs 12 500</span>
+        <span class="label">Lobbyistes inscrits (Chambre fédérale belge) vs registre UE</span>
+      </div>
+      <div class="fact">
+        <span class="num">0 / 6</span>
+        <span class="label">Gouvernements (exécutifs) belges disposant d'un registre des lobbies opposable</span>
+      </div>
+    </div>
+    <div class="pull">
+      « Pharma.be siège à la Commission de remboursement des médicaments. Les producteurs siègent au Conseil général de la CREG. La capture réglementaire belge n'est pas un soupçon : elle est une organisation. »
+      <cite>— Synthèse des rapports sectoriels, 2024-2026</cite>
+    </div>
+    <p class="source">Loi du 12 mai 2024 (publicité administration) · GRECO 5e cycle, rapport de conformité 2024 · Autorité de protection des données, avis 01/2026 · Transparency International Belgium</p>
+  </div>
+</section>
+
+<!-- STRATE 3 -->
+<section class="strate strate-3" id="strate-3">
+  <div class="strate-head">
+    <div class="roman">III</div>
+    <div class="strate-title-block">
+      <span class="strate-tag">Strate III — Carbure de calcium</span>
+      <h3>La particratie :<br><em>une fiction constitutionnelle assumée</em></h3>
+      <div class="toxicity">
+        Toxicité institutionnelle
+        <div class="tox-bar">
+          <span class="lit"></span><span class="lit"></span><span class="lit"></span><span></span><span></span><span></span>
+        </div>
+        <span>3 / 6</span>
+      </div>
+    </div>
+  </div>
+  <div class="body">
+    <div>
+      <p>L'article 42 de la Constitution belge dispose, depuis 1831, que « les membres des deux Chambres représentent la Nation, et non uniquement ceux qui les ont élus ». Ce <strong>mandat libre</strong> est censé interdire toute forme de mandat impératif — y compris partisan.</p>
+
+      <p>La réalité documentée par le CRISP, par Frederik Verleden (<em>Aux sources de la particratie</em>, 2019), par Wilfried Dewachter et par Kris Deschouwer est l'inverse exact : la <strong>cohésion partisane belge est « pratiquement la plus forte d'Europe occidentale »</strong>. Les partis politiques — qui dominent chaque rouage de l'État — n'apparaissent dans la Constitution qu'à partir de la révision du 6 janvier 2014, et uniquement pour la mention technique de leur financement (article 77, 5°).</p>
+
+      <p>Le système tient par trois verrous : <strong>la sélection des candidats</strong> sur listes (l'élu est d'abord choisi par son parti), <strong>la discipline de vote</strong> au parlement (les états-majors décident), <strong>les mandats dérivés</strong> dans les intercommunales, ASBL satellites, conseils d'administration — environ 2 700 postes pourvus par cooptation politique. Sortir du rang, c'est sortir du système.</p>
+
+      <p>Le financement public partisan culmine à <strong>~188 millions d'euros par an</strong>, soit ~80 % des revenus des partis belges — contre un plafond légal de <strong>50 %</strong> en Allemagne, où chaque don supérieur à 10 000 € est publié avec le nom du donateur. En Belgique, les relevés de dons sont conservés dans des <strong>boîtes étiquetées « secret »</strong> dans une pièce du Parlement, accessibles aux seuls 17 membres de la Commission de contrôle — elle-même composée de parlementaires. Les contrôlés contrôlent.</p>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <span class="num">Art. 42</span>
+        <span class="label">Mandat libre des parlementaires — fiction inversée par la pratique</span>
+      </div>
+      <div class="fact">
+        <span class="num">188 M€/an</span>
+        <span class="label">Dotations publiques aux partis belges (~80 % de leurs revenus)</span>
+      </div>
+      <div class="fact">
+        <span class="num">2 700</span>
+        <span class="label">Mandats dérivés pourvus par cooptation politique (post-Publifin)</span>
+      </div>
+      <div class="fact">
+        <span class="num">15 M€</span>
+        <span class="label">Dépenses publicitaires des partis sur Facebook / Google en 2024 — sans plafond</span>
+      </div>
+    </div>
+    <div class="pull">
+      « L'empire de la loi s'arrête là où commence l'intérêt des partis. »
+      <cite>— Thibault Gaudin, CRISP, Courrier hebdomadaire n° 2483-2484</cite>
+    </div>
+    <p class="source">CRISP · Verleden, <em>Aux sources de la particratie</em> (2019) · Maddens (KU Leuven), cité par Follow the Money / VSquare (2024) · Eraly & Göransson (ULB)</p>
+  </div>
+</section>
+
+<!-- STRATE 4 -->
+<section class="strate strate-4" id="strate-4">
+  <div class="strate-head">
+    <div class="roman">IV</div>
+    <div class="strate-title-block">
+      <span class="strate-tag">Strate IV — Métaux lourds</span>
+      <h3>Le discrédit international :<br><em>quand les vigies tirent toutes les sonnettes</em></h3>
+      <div class="toxicity">
+        Toxicité institutionnelle
+        <div class="tox-bar">
+          <span class="lit"></span><span class="lit"></span><span class="lit"></span><span class="lit"></span><span></span><span></span>
+        </div>
+        <span>4 / 6</span>
+      </div>
+    </div>
+  </div>
+  <div class="body">
+    <div>
+      <p>Il faut sortir de Belgique pour saisir la singularité du cas. Le <strong>GRECO</strong>, organe anti-corruption du Conseil de l'Europe, a évalué la Belgique sur deux cycles. 5e cycle (hautes fonctions de l'exécutif, services répressifs) : <strong>6 recommandations sur 22</strong> mises en œuvre de manière satisfaisante au second rapport de conformité (mai 2024). 4e cycle (parlementaires, juges, procureurs) : <strong>7 sur 15</strong>. Une <strong>procédure de non-conformité</strong> est ouverte, avec échéance au 30 novembre 2026.</p>
+
+      <p>L'<strong>Indice de Perception de la Corruption</strong> de Transparency International, qui mesure la perception (sévère) des élites et observateurs internationaux, place la Belgique à son plus bas niveau historique : <strong>69/100 en 2024</strong> (contre 77 en 2016), au 22e rang mondial — dépassée par les Pays-Bas (9e), le Luxembourg (5e), l'Allemagne (16e). L'Eurobaromètre 2024 confirme : <strong>deux tiers des Belges</strong> jugent la corruption répandue dans leur pays.</p>
+
+      <p>L'<strong>Economist Intelligence Unit</strong> classe la Belgique comme « flawed democracy » — défaut d'élite en Europe occidentale, où seules la France, Malte et la Belgique partagent ce statut parmi les fondateurs de l'UE. Les voisins immédiats (Allemagne, Pays-Bas, Luxembourg) restent en « full democracy ».</p>
+
+      <p>Les institutions financières prolongent l'avertissement. Le <strong>FMI</strong> (consultation Article IV, février 2026) prévoit à politiques inchangées un déficit de 7 % du PIB et une dette de 125 % en 2030. L'<strong>OCDE</strong> projette un scénario noir à <strong>200 % du PIB en 2049</strong>. <strong>Fitch a dégradé la note souveraine</strong> de AA- à A+ le 13 juin 2025 — première dégradation depuis 2016. La Belgique est en procédure de déficit excessif depuis juillet 2024.</p>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <span class="num">6 / 22</span>
+        <span class="label">Recommandations GRECO satisfaites (5e cycle) — procédure de non-conformité ouverte</span>
+      </div>
+      <div class="fact">
+        <span class="num">69 / 100</span>
+        <span class="label">IPC Transparency International 2024 — plus bas niveau jamais enregistré</span>
+      </div>
+      <div class="fact">
+        <span class="num">2/3</span>
+        <span class="label">Des Belges estiment la corruption répandue (Eurobaromètre 2024)</span>
+      </div>
+      <div class="fact">
+        <span class="num">126 % PIB</span>
+        <span class="label">Projection dette publique 2035 sans correction (FMI / OCDE)</span>
+      </div>
+    </div>
+    <div class="pull">
+      « La Belgique se trouve désormais dans la même catégorie d'aléa que le Liechtenstein, l'Allemagne, la Hongrie, la Roumanie et la Turquie sur les recommandations relatives aux parlementaires et aux fonctions exécutives. »
+      <cite>— Comparatif GRECO, retard belge inédit en Europe occidentale</cite>
+    </div>
+    <p class="source">GRECO 2nd rapport conformité 5e cycle (7 mai 2024) · Transparency International CPI 2024 · EIU Democracy Index · FMI Art. IV (fév. 2026) · OCDE Economic Survey Belgium 2024 · Fitch (13 juin 2025)</p>
+  </div>
+</section>
+
+<!-- STRATE 5 -->
+<section class="strate strate-5" id="strate-5">
+  <div class="strate-head">
+    <div class="roman">V</div>
+    <div class="strate-title-block">
+      <span class="strate-tag">Strate V — Cyanures</span>
+      <h3>La capture et les scandales :<br><em>l'État néo-patrimonial sectoriel</em></h3>
+      <div class="toxicity">
+        Toxicité institutionnelle
+        <div class="tox-bar">
+          <span class="lit"></span><span class="lit"></span><span class="lit"></span><span class="lit"></span><span class="lit"></span><span></span>
+        </div>
+        <span>5 / 6</span>
+      </div>
+    </div>
+  </div>
+  <div class="body">
+    <div>
+      <p>À cette profondeur, ce ne sont plus des défauts d'architecture mais des affaires. Une <strong>généalogie continue</strong> qui empêche de parler d'incidents isolés.</p>
+
+      <p><strong>Publifin / Nethys</strong> (révélé en 2016) : l'intercommunale liégeoise versait des jetons de présence pour des réunions fictives ; CEO Stéphane Moreau sous mandat d'arrêt en janvier 2021. <strong>Samusocial</strong> (2017) : démission d'Yvan Mayeur (PS), bourgmestre de Bruxelles. <strong>Kazakhgate</strong> (2011-2024) : transaction pénale élargie (loi du 14 avril 2011, votée en « période suspecte ») permettant au trio kazakh Chodiev-Ibragimov-Patokh d'éviter le procès le 17 juin 2011 ; l'avocat Armand De Decker, ex-président du Sénat, mis en examen 2018 pour trafic d'influence.</p>
+
+      <p><strong>Qatargate</strong> (décembre 2022) : 1,5 million d'euros en cash saisis chez la vice-présidente du Parlement européen Eva Kaili et l'ex-eurodéputé Pier Antonio Panzeri, inculpations incluant l'eurodéputé belge Marc Tarabella. Détail troublant : le juge d'instruction Michel Claise se dessaisit en juin 2023, puis se présente sur la liste DéFi aux législatives de 2024 — illustration directe des <em>revolving doors</em> que le GRECO dénonce.</p>
+
+      <p><strong>Affaire Reynders</strong> (révélée 2024) : inculpation de l'ancien commissaire européen pour blanchiment le 16 octobre 2025. Modus operandi présumé : achats massifs d'e-tickets de la Loterie Nationale (2 000 à 3 000 €/jour) — institution qui était sous la tutelle de Reynders pendant ~12 ans. Sources possibles des fonds investiguées : Kazakhgate, fonds gelés libyens, rétrocessions sur 78 opérations <em>sales and rent back</em> immobilières au SPF Finances.</p>
+
+      <p>Cette série n'est pas une coïncidence statistique. Elle décrit ce qu'Alain Eraly nomme un <strong>État néo-patrimonial sectoriel</strong> : la fonction publique est privatisée dans une logique de prédation des ressources publiques au bénéfice de réseaux politico-économiques territorialisés, échappant aux règles ordinaires (rémunérations, marchés publics, transparence). Les intercommunales, ASBL satellites et sociétés à capitaux publics (Publifin, Samusocial, Vivaqua, énergie) fonctionnent comme des <strong>sas d'évasion réglementaire</strong>.</p>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <span class="num">1,5 M€</span>
+        <span class="label">Cash saisi Qatargate (déc. 2022)</span>
+      </div>
+      <div class="fact">
+        <span class="num">3,5 M€</span>
+        <span class="label">Transaction Kazakhgate (17 juin 2011)</span>
+      </div>
+      <div class="fact">
+        <span class="num">~1 M€</span>
+        <span class="label">Blanchiment présumé affaire Reynders / Fontinoy / Theunissen</span>
+      </div>
+      <div class="fact">
+        <span class="num">15 indices</span>
+        <span class="label">D'infractions pénales relevés Publifin (commission d'enquête 2017)</span>
+      </div>
+    </div>
+    <div class="pull">
+      « La perception d'une allocation non neutre de l'argent public, des liens trop étroits entre politique et milieux d'affaires, et l'impunité de fait des responsables sur les questions de patrimoine. »
+      <cite>— Marc Beyens, Transparency International Belgium — sur les trois facteurs de la chute de l'IPC belge</cite>
+    </div>
+    <p class="source">Parquet fédéral · Apache · Médor · Le Vif · Politico (déc. 2023) · Engels, <em>Le Clan Reynders</em> · Commission d'enquête Publifin (2017) · GRECO 2024</p>
+  </div>
+</section>
+
+<!-- STRATE 6 -->
+<section class="strate strate-6" id="strate-6">
+ <div class="wrap">
+  <div class="strate-head">
+    <div class="roman">VI</div>
+    <div class="strate-title-block">
+      <span class="strate-tag">Strate VI — Zone interdite</span>
+      <h3>Le mépris assumé de la justice :<br><em>la sortie du périmètre de l'État de droit</em></h3>
+      <div class="toxicity">
+        Toxicité institutionnelle maximale
+        <div class="tox-bar">
+          <span class="lit"></span><span class="lit"></span><span class="lit"></span><span class="lit"></span><span class="lit"></span><span class="lit"></span>
+        </div>
+        <span>6 / 6</span>
+      </div>
+    </div>
+  </div>
+  <div class="body">
+    <div>
+      <p>Depuis octobre 2021, l'État belge et l'agence Fedasil ont été condamnés <strong>plus de 16 000 fois</strong> par les juridictions belges pour défaut d'hébergement de demandeurs d'asile. Le cumul des astreintes a atteint <strong>278,5 millions d'euros</strong> (RTBF, 2024). Ce ne sont pas des décisions contestées : ce sont des décisions <em>coulées en force de chose jugée</em>, que l'exécutif a publiquement choisi de ne pas exécuter.</p>
+
+      <p>Le 18 juillet 2023, dans l'arrêt <strong>Camara c. Belgique</strong> (req. n° 49255/22), la Cour européenne des droits de l'homme a posé la qualification décisive : il s'agit d'une « <strong>carence systémique</strong> des autorités belges d'exécuter les décisions de justice définitives » (§ 118) — pas un retard, mais un « <strong>refus caractérisé</strong> ». Plus de <strong>2 200 mesures provisoires</strong> ont été imposées à la Belgique par la CEDH depuis. Le 9 avril 2026, nouvel arrêt <em>M.V. et autres c. Belgique</em> : violation de l'article 3 (traitements dégradants), de l'article 6 (procès équitable), et de l'article 34. Les astreintes, constate la Cour, « <strong>n'ont toujours pas été payées</strong> ».</p>
+
+      <p>La ministre fédérale de l'Asile Anneleen Van Bossuyt (N-VA) a déclaré publiquement qu'elle « <strong>ne peut ni ne veut payer ces astreintes</strong> », préférant investir dans un durcissement de la politique migratoire. L'État utilise l'article 1412bis du Code judiciaire (insaisissabilité des biens publics) pour ramener le montant officiellement « dû » à 6,75 millions — non par paiement, par <em>évitement procédural</em>.</p>
+
+      <p>Tableau qu'aucune métaphore lasagnière ne peut digérer : des <strong>huissiers de justice</strong>, mandatés par les avocats des requérants, sont entrés dans les locaux de Fedasil et de cabinets ministériels pour <strong>saisir le mobilier, les ordinateurs, les œuvres d'art, les machines à café</strong> en vue de ventes publiques aux enchères. L'État, dépositaire de la force publique, contraint par cette même force publique à respecter ses propres lois.</p>
+
+      <p>En octobre 2025, fait inédit : la <strong>Cour de cassation, le Collège des procureurs généraux et le Collège des cours et tribunaux</strong> ont publié un <strong>communiqué commun</strong> dénonçant « une atteinte à la séparation des pouvoirs ». Quatre familles afghanes et érythréennes ont déposé plainte contre la ministre pour traitements inhumains et non-assistance à personne en danger.</p>
+
+      <p>On peut critiquer une politique migratoire, plaider pour sa transformation, contester son humanité — c'est le débat démocratique. Mais le point spécifique atteint ici est différent et n'a, dans son ampleur, <strong>pas d'équivalent en Europe occidentale</strong> : l'exécutif a fait du non-respect des décisions de justice qui le condamnent <strong>une posture publique assumée</strong>. C'est la définition juridique stricte d'une sortie du périmètre de l'État de droit.</p>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <span class="num">16 000+</span>
+        <span class="label">Condamnations de l'État belge non exécutées (asile, depuis octobre 2021)</span>
+      </div>
+      <div class="fact">
+        <span class="num">278,5 M€</span>
+        <span class="label">Astreintes cumulées dues — refus de paiement</span>
+      </div>
+      <div class="fact">
+        <span class="num">2 200+</span>
+        <span class="label">Mesures provisoires CEDH imposées à la Belgique</span>
+      </div>
+      <div class="fact">
+        <span class="num">Octobre 2025</span>
+        <span class="label">Communiqué commun inédit Cour de cassation + parquets + tribunaux</span>
+      </div>
+    </div>
+    <div class="pull">
+      « Le droit d'accès à un tribunal devient illusoire si l'ordre juridique interne permet qu'une décision judiciaire définitive et obligatoire reste inopérante. »
+      <cite>— CEDH, Camara c. Belgique, 18 juillet 2023, § 118</cite>
+    </div>
+    <p class="source">CEDH, Camara c. Belgique (18 juil. 2023) · CEDH, M.V. et autres c. Belgique (9 avr. 2026) · Communiqué commun Cour de cassation, Collèges parquets et tribunaux (oct. 2025) · IFDH</p>
+  </div>
+ </div>
+</section>
+
+<!-- EPILOGUE -->
+<section class="epilogue">
+  <span class="stamp">Conclusion provisoire</span>
+  <h2>Ce que change<br>le bon mot<em> .</em></h2>
+  <p>La métaphore importe. Tant qu'on parle de « lasagne institutionnelle », on suggère que la Belgique cuit lentement et qu'il suffit d'attendre la sortie du four. Tant qu'on parle de « complexité belge », on transforme une dysfonction documentée en charme folklorique.</p>
+  <p>Les six strates décrites ici ne sont pas un défaut de présentation ; elles sont un système. Elles s'<em>emboîtent</em> : la densité politique (I) finance l'opacité (II) qui protège la particratie (III) qui produit le discrédit international (IV) qui rend les scandales (V) prévisibles et l'impunité (VI) tolérable. C'est pour cela qu'aucune réforme partielle — réduction des cabinets, registre des lobbies, fin du Sénat — ne touche au socle.</p>
+  <p>La Belgique reste membre de l'OTAN, organise des présidences du Conseil de l'UE, abrite le siège des institutions européennes, et continue d'être classée « démocratie défaillante » par les vigies qui la regardent. Le contraste ne se résoudra ni par un changement de gouvernement ni par une septième réforme de l'État. Il se résoudra le jour où l'opinion publique cessera de croire qu'elle vit dans une cuisine plutôt que dans une décharge — et donc, le jour où elle exigera qu'on s'en occupe avec les outils appropriés.</p>
+  <p>Le marais n'est pas une fatalité géologique. C'est un état d'entretien.</p>
+
+  <div class="signoff">
+    <span>Sources primaires citées : CEDH · GRECO · FMI · OCDE · Cour des comptes · CRISP · Transparency International · Commission européenne</span>
+    <span>· Fin ·</span>
+  </div>
+</section>
+
+</div>
+
+<script>
+  // Reveal on scroll
+  const reveal = () => {
+    const els = document.querySelectorAll('.strate, .prologue, .epilogue, .index');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    els.forEach((el) => {
+      el.classList.add('reveal');
+      io.observe(el);
+    });
+  };
+  reveal();
+</script>
+
+</body>
+</html>
