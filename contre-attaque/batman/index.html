@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'action en justice contre l'État belge — Fondements, référés et exigences procédurales</title>
+<meta name="description" content="Fondements de la responsabilité publique, référés d'urgence et exigences procédurales en droit belge.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F4F1EA;
+  --paper-card: #ECE7DA;
+  --paper-deep: #E2DCC9;
+  --ink: #1A1814;
+  --ink-soft: #36322B;
+  --ink-faded: #6E665A;
+  --rule: #C9C1AB;
+  --rule-soft: #D9D2BE;
+  --red: #7A1F2A;
+  --red-soft: #9A2C39;
+  --teal: #284B52;
+  --brass: #9D5E2F;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  background-image:
+    radial-gradient(ellipse at 15% 8%, rgba(40, 75, 82, 0.025) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 92%, rgba(122, 31, 42, 0.025) 0%, transparent 55%);
+  color: var(--ink);
+  font-family: 'Source Serif 4', 'EB Garamond', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.65;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(26, 24, 20, 0.012) 0px, transparent 1px, transparent 2px, rgba(26, 24, 20, 0.012) 3px),
+    repeating-linear-gradient(90deg, rgba(26, 24, 20, 0.012) 0px, transparent 1px, transparent 2px, rgba(26, 24, 20, 0.012) 3px);
+  z-index: 1;
+}
+
+/* PROGRESS BAR */
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--rule-soft);
+  z-index: 100;
+}
+.progress-bar {
+  height: 100%;
+  background: var(--red);
+  width: 0%;
+  transition: width 0.1s ease;
+}
+
+/* LAYOUT */
+.layout {
+  position: relative;
+  z-index: 2;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 56px 32px 120px;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* SIDEBAR TOC */
+.sidebar {
+  position: sticky;
+  top: 32px;
+  align-self: start;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+}
+
+.toc-label {
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.toc {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.toc a {
+  color: var(--ink-faded);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  display: block;
+  padding: 4px 0 4px 12px;
+  border-left: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.toc a:hover {
+  color: var(--red);
+  border-left-color: var(--red);
+}
+
+.toc .toc-num {
+  display: inline-block;
+  width: 18px;
+  font-weight: 600;
+  color: var(--brass);
+}
+
+.toc .subitem {
+  padding-left: 26px;
+  font-size: 9.5px;
+  color: var(--ink-faded);
+  opacity: 0.8;
+}
+
+/* MAIN */
+.main {
+  max-width: 720px;
+  min-width: 0;
+}
+
+/* META HEADER */
+.meta-header {
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--rule);
+  padding: 16px 0;
+  margin-bottom: 48px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faded);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.meta-header .tag {
+  color: var(--red);
+  font-weight: 600;
+}
+
+/* MASTHEAD */
+.masthead {
+  margin-bottom: 56px;
+}
+
+.masthead .kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 24px;
+}
+
+h1.title {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: clamp(40px, 5.5vw, 64px);
+  font-weight: 400;
+  font-variation-settings: 'opsz' 60;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+
+.subtitle {
+  font-family: 'Source Serif 4', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(20px, 2.6vw, 24px);
+  line-height: 1.4;
+  color: var(--ink-soft);
+  max-width: 620px;
+  margin-bottom: 24px;
+}
+
+.byline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faded);
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+}
+
+/* LEAD */
+.lead {
+  font-family: 'Source Serif 4', serif;
+  font-size: 21px;
+  line-height: 1.55;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 56px;
+}
+
+.lead::first-letter {
+  font-family: 'Source Serif 4', serif;
+  font-size: 64px;
+  font-weight: 500;
+  line-height: 0.85;
+  float: left;
+  margin: 6px 12px 0 0;
+  color: var(--red);
+  font-variation-settings: 'opsz' 60;
+}
+
+/* SECTION H2 */
+h2.section {
+  font-family: 'Source Serif 4', serif;
+  font-variation-settings: 'opsz' 48;
+  font-size: clamp(30px, 4vw, 38px);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.18;
+  color: var(--ink);
+  margin: 72px 0 28px;
+  padding-top: 28px;
+  border-top: 2px solid var(--ink);
+  position: relative;
+}
+
+h2.section .h2-num {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  color: var(--red);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+/* SECTION H3 */
+h3.sub {
+  font-family: 'Source Serif 4', serif;
+  font-variation-settings: 'opsz' 32;
+  font-size: clamp(22px, 2.8vw, 26px);
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 48px 0 20px;
+  padding-left: 18px;
+  border-left: 3px solid var(--red);
+}
+
+/* PARAGRAPHS */
+p {
+  margin-bottom: 1.2em;
+  hyphens: auto;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+p strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+p em {
+  font-style: italic;
+}
+
+/* CITATIONS - superscript */
+sup.ref {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  color: var(--red);
+  font-weight: 500;
+  margin-left: 1px;
+  vertical-align: super;
+  line-height: 0;
+}
+
+/* INLINE LIST */
+ul.bullets {
+  margin: 20px 0 28px;
+  padding: 0;
+  list-style: none;
+}
+
+ul.bullets li {
+  position: relative;
+  padding: 12px 0 12px 28px;
+  border-bottom: 1px dashed var(--rule-soft);
+  line-height: 1.55;
+}
+
+ul.bullets li:last-child {
+  border-bottom: none;
+}
+
+ul.bullets li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  color: var(--red);
+  font-weight: 500;
+}
+
+ul.bullets li strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* TABLES */
+.table-wrap {
+  margin: 32px 0;
+  overflow-x: auto;
+  border: 1px solid var(--rule);
+  background: var(--paper-card);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Source Serif 4', serif;
+  font-size: 14.5px;
+  line-height: 1.5;
+}
+
+table caption {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red);
+  padding: 14px 18px;
+  border-bottom: 2px solid var(--ink);
+  text-align: left;
+  background: var(--paper-deep);
+}
+
+table th {
+  font-family: 'Source Serif 4', serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  font-variation-settings: 'opsz' 14;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  background: var(--paper-deep);
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1.5px solid var(--ink);
+  border-right: 1px solid var(--rule);
+  vertical-align: top;
+}
+
+table th:last-child { border-right: none; }
+
+table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--rule-soft);
+  border-right: 1px solid var(--rule-soft);
+  vertical-align: top;
+  color: var(--ink-soft);
+}
+
+table td:last-child { border-right: none; }
+
+table tr:last-child td {
+  border-bottom: none;
+}
+
+table tr:hover td {
+  background: rgba(122, 31, 42, 0.04);
+}
+
+table td strong, table th strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* NUMERIC EMPHASIS in tables */
+table .num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--red);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* CALLOUT - key principles */
+.callout {
+  margin: 28px 0;
+  padding: 22px 28px;
+  background: var(--paper-card);
+  border-left: 3px solid var(--teal);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.callout-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 10px;
+}
+
+/* DIVIDER */
+.divider {
+  margin: 56px auto;
+  width: 80px;
+  height: 1px;
+  background: var(--brass);
+  position: relative;
+}
+.divider::before, .divider::after {
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: var(--brass);
+  border-radius: 50%;
+  top: -2px;
+}
+.divider::before { left: -14px; }
+.divider::after { right: -14px; }
+
+/* SOURCES */
+.sources {
+  margin-top: 80px;
+  padding-top: 32px;
+  border-top: 2px solid var(--ink);
+}
+
+.sources-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 20px;
+}
+
+.sources h3 {
+  font-family: 'Source Serif 4', serif;
+  font-size: 24px;
+  font-weight: 500;
+  font-style: italic;
+  margin-bottom: 24px;
+  color: var(--ink);
+}
+
+.sources ol {
+  list-style: none;
+  padding: 0;
+  counter-reset: src;
+}
+
+.sources li {
+  counter-increment: src;
+  padding: 14px 0 14px 42px;
+  border-bottom: 1px solid var(--rule-soft);
+  position: relative;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.sources li::before {
+  content: counter(src, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--red);
+  letter-spacing: 0.05em;
+}
+
+.sources a {
+  color: var(--teal);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  word-break: break-all;
+}
+
+.sources a:hover {
+  color: var(--red);
+  border-bottom-color: var(--red);
+}
+
+.sources-note {
+  margin-top: 24px;
+  padding: 16px 20px;
+  background: rgba(40, 75, 82, 0.05);
+  border-left: 2px solid var(--teal);
+  font-family: 'Source Serif 4', serif;
+  font-style: italic;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--ink-faded);
+}
+
+/* FOOTER COLOPHON */
+.colophon {
+  margin-top: 48px;
+  padding: 22px 26px;
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  line-height: 1.8;
+  letter-spacing: 0.08em;
+  color: var(--ink-faded);
+}
+
+.colophon .key {
+  color: var(--red);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.colophon-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* MOBILE NAV TOGGLE */
+.mobile-toc {
+  display: none;
+  margin-bottom: 40px;
+  padding: 16px 20px;
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--red);
+}
+
+.mobile-toc summary {
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--red);
+  list-style: none;
+  position: relative;
+  padding-right: 24px;
+}
+
+.mobile-toc summary::-webkit-details-marker { display: none; }
+
+.mobile-toc summary::after {
+  content: '+';
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 18px;
+  color: var(--red);
+  transition: transform 0.2s ease;
+}
+
+.mobile-toc[open] summary::after {
+  content: '−';
+}
+
+.mobile-toc ul {
+  list-style: none;
+  margin: 16px 0 4px;
+  padding: 0;
+}
+
+.mobile-toc li {
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--rule-soft);
+}
+
+.mobile-toc li:last-child { border-bottom: none; }
+
+.mobile-toc a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+
+.mobile-toc a:hover { color: var(--red); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 32px 22px 80px;
+  }
+  .sidebar { display: none; }
+  .mobile-toc { display: block; }
+  .main { max-width: none; }
+  body { font-size: 17px; }
+  .lead { font-size: 19px; }
+  .lead::first-letter { font-size: 52px; }
+  h1.title { font-size: clamp(34px, 9vw, 52px); }
+  h2.section { margin: 56px 0 24px; padding-top: 24px; font-size: clamp(26px, 6vw, 32px); }
+  h3.sub { font-size: clamp(20px, 5vw, 24px); }
+  table { font-size: 13.5px; }
+  table th, table td { padding: 10px 10px; }
+  .callout { padding: 18px 20px; font-size: 16px; }
+  .meta-header { font-size: 9.5px; gap: 8px; }
+  .colophon-row { font-size: 10px; }
+}
+
+::selection {
+  background: var(--red);
+  color: var(--paper);
+}
+
+</style>
+</head>
+<body>
+
+  <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="toc-label">Sommaire</div>
+      <ul class="toc">
+        <li><a href="#preambule"><span class="toc-num">·</span>Préambule</a></li>
+        <li><a href="#section-1"><span class="toc-num">I.</span>Motifs d'engagement</a></li>
+        <li><a href="#sub-1-1" class="subitem">→ Faute administrative</a></li>
+        <li><a href="#sub-1-2" class="subitem">→ Faute du législateur</a></li>
+        <li><a href="#sub-1-3" class="subitem">→ Faute du judiciaire</a></li>
+        <li><a href="#section-2"><span class="toc-num">II.</span>Référés d'urgence</a></li>
+        <li><a href="#sub-2-1" class="subitem">→ Référé judiciaire</a></li>
+        <li><a href="#sub-2-2" class="subitem">→ Référé administratif</a></li>
+        <li><a href="#section-3"><span class="toc-num">III.</span>Contentieux de référence</a></li>
+        <li><a href="#sub-3-1" class="subitem">→ Affaire Climat</a></li>
+        <li><a href="#sub-3-2" class="subitem">→ Crise de l'accueil</a></li>
+        <li><a href="#section-4"><span class="toc-num">IV.</span>Cadre financier</a></li>
+        <li><a href="#sub-4-1" class="subitem">→ Avocat &amp; dispenses</a></li>
+        <li><a href="#sub-4-2" class="subitem">→ Droits de greffe</a></li>
+        <li><a href="#sub-4-3" class="subitem">→ Fonds d'aide juridique</a></li>
+        <li><a href="#sub-4-4" class="subitem">→ Indemnités de procédure</a></li>
+        <li><a href="#sub-4-5" class="subitem">→ Aide juridique &amp; assistance</a></li>
+        <li><a href="#section-5"><span class="toc-num">V.</span>Synthèse stratégique</a></li>
+        <li><a href="#sources"><span class="toc-num">§</span>Sources</a></li>
+      </ul>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <div class="meta-header">
+        <span><span class="tag">Document</span> · Référence juridique</span>
+        <span><span class="tag">Version</span> · web v.1</span>
+        <span><span class="tag">Date</span> · mai 2026</span>
+      </div>
+
+      <header class="masthead">
+        <div class="kicker">Droit belge · responsabilité publique</div>
+        <h1 class="title">L'action en justice contre l'État belge.</h1>
+        <p class="subtitle">Fondements de la responsabilité publique, référés d'urgence et exigences procédurales.</p>
+        <div class="byline">Document juridique · Bruxelles, mai 2026</div>
+      </header>
+
+      <!-- Mobile TOC -->
+      <details class="mobile-toc">
+        <summary>Sommaire</summary>
+        <ul>
+          <li><a href="#preambule">Préambule</a></li>
+          <li><a href="#section-1">I. Motifs d'engagement de la responsabilité</a></li>
+          <li><a href="#section-2">II. Modalités procédurales d'urgence</a></li>
+          <li><a href="#section-3">III. Contentieux de référence</a></li>
+          <li><a href="#section-4">IV. Cadre financier et opérationnel</a></li>
+          <li><a href="#section-5">V. Synthèse stratégique</a></li>
+          <li><a href="#sources">Sources</a></li>
+        </ul>
+      </details>
+
+      <!-- PREAMBLE / LEAD -->
+      <p class="lead" id="preambule">Le principe de la séparation des pouvoirs, pilier de l'ordre constitutionnel belge, n'exclut pas la soumission de l'État aux règles de droit qu'il édicte ou auxquelles il consent par traité.<sup class="ref">1</sup> Lorsqu'un citoyen ou une personne morale fait face à un manquement caractérisé de l'État belge à ses obligations légales — qu'il s'agisse d'une carence de l'administration, d'une loi inconstitutionnelle ou d'un dysfonctionnement de l'appareil judiciaire —, la mise en œuvre de la responsabilité publique s'avère possible. Dans des situations d'urgence manifeste, où l'inertie ou l'action illégale de l'État menace directement des droits fondamentaux, des mécanismes de référé tant judiciaire qu'administratif permettent d'obtenir des mesures de sauvegarde immédiates.<sup class="ref">4</sup></p>
+
+      <!-- SECTION I -->
+      <h2 class="section" id="section-1"><span class="h2-num">Première partie</span>Les motifs d'engagement de la responsabilité de l'État.</h2>
+
+      <p>La responsabilité civile de l'État belge repose sur le droit commun de la responsabilité extracontractuelle, profondément modernisé par l'entrée en vigueur, le <strong>1ᵉʳ janvier 2025</strong>, du <strong>Livre 6 du nouveau Code civil</strong>, lequel abroge les anciens articles 1382 et 1384 de l'ancien Code.<sup class="ref">7</sup> L'<strong>article 6.4</strong> de ce nouveau code consacre l'égalité de traitement stricte entre les personnes physiques et les personnes morales, qu'elles relèvent du droit privé ou du droit public, soumettant ainsi l'État au même régime de faute civile que tout justiciable.<sup class="ref">10</sup></p>
+
+      <h3 class="sub" id="sub-1-1">La faute de l'autorité administrative.</h3>
+
+      <p>Le pouvoir exécutif engage la responsabilité de l'État lorsque ses agents, services ou organes commettent une faute causant un préjudice à autrui.<sup class="ref">9</sup> L'<strong>article 6.5</strong> du Code civil définit la faute selon un double volet : soit le manquement à une règle légale déterminée qui impose ou interdit un comportement spécifique, soit le manquement à la norme générale de prudence attendue d'une personne — ou en l'occurrence d'une administration — normalement soigneuse et diligente placée dans les mêmes circonstances.<sup class="ref">10</sup></p>
+
+      <p>La réforme du Livre 6 introduit trois évolutions majeures pour le justiciable :</p>
+
+      <ul class="bullets">
+        <li><strong>L'objectivation de la faute.</strong> Le discernement subjectif de l'agent n'est plus une condition de la faute.<sup class="ref">12</sup> Les administrations publiques sont responsables sans faute des dommages causés par les manquements de leurs préposés ou de leurs organes (ministres, bourgmestres, échevins, administrateurs).<sup class="ref">9</sup></li>
+        <li><strong>La proportionnalité et l'analyse économique.</strong> L'appréciation de la prudence intègre désormais des critères objectifs tels que le rapport de proportionnalité entre le risque de survenance du dommage et les coûts nécessaires pour l'éviter, ainsi que l'état des connaissances scientifiques au moment des faits.<sup class="ref">13</sup></li>
+        <li><strong>La réparation en nature.</strong> Le nouveau texte consacre explicitement la primauté de la réparation en nature sur l'allocation de dommages et intérêts, offrant au juge un levier puissant pour contraindre l'administration à exécuter matériellement ses obligations.<sup class="ref">12</sup></li>
+      </ul>
+
+      <h3 class="sub" id="sub-1-2">La faute de l'État-législateur et la neutralisation par modulation temporelle.</h3>
+
+      <p>La responsabilité de l'État du fait de l'activité du pouvoir législatif (Chambre des représentants, Sénat, parlements régionaux et communautaires) est acquise en jurisprudence depuis l'<strong>arrêt de la Cour de cassation du 28 septembre 2006</strong>.<sup class="ref">2</sup> Le législateur commet une faute civile lorsqu'il adopte une norme (loi, décret ou ordonnance) qui viole une règle hiérarchiquement supérieure, telle qu'une disposition constitutionnelle ou un traité international doté d'effets directs dans l'ordre interne.<sup class="ref">14</sup> Cette faute est appréciée par rapport au comportement d'un législateur normalement soigneux et prudent placé dans les mêmes conditions.<sup class="ref">11</sup></p>
+
+      <p>Néanmoins, la portée de cette responsabilité a été considérablement encadrée par un arrêt fondamental de la <strong>Cour de cassation du 5 septembre 2025</strong>.<sup class="ref">16</sup> La Cour a tranché la question de savoir si un justiciable peut obtenir réparation du préjudice causé par une loi déclarée inconstitutionnelle lorsque la Cour constitutionnelle a décidé de maintenir provisoirement ou définitivement les effets de cette norme annulée, en vertu des articles 8 et 9 de la loi spéciale du 6 janvier 1989.<sup class="ref">14</sup></p>
+
+      <div class="callout">
+        <div class="callout-label">Principe — Cass. 5 septembre 2025</div>
+        La Cour de cassation a jugé que la décision de la Cour constitutionnelle de maintenir les effets d'une norme inconstitutionnelle s'impose au juge judiciaire avec <strong>l'autorité absolue de la chose jugée</strong>. Durant la période de maintien, la loi annulée continue de produire ses effets légaux et constitue un titre juridique valable. Dès lors, le dommage invoqué par le contribuable ou le citoyen trouve sa cause juridique directe dans l'arrêt de la Cour constitutionnelle et non dans la faute initiale du législateur. Cette décision <strong>neutralise l'action en responsabilité civile contre l'État-législateur</strong> pour toute la période couverte par la modulation temporelle.
+      </div>
+
+      <h3 class="sub" id="sub-1-3">La faute du pouvoir judiciaire.</h3>
+
+      <p>Le dysfonctionnement de l'appareil judiciaire peut également engager la responsabilité civile de l'État sur la base de la doctrine établie par l'<strong>arrêt <em>Anca</em> du 19 décembre 1991</strong>.<sup class="ref">3</sup> À cet égard, une distinction nette sépare la responsabilité de l'État de celle des magistrats :</p>
+
+      <ul class="bullets">
+        <li><strong>La responsabilité pour faute de la fonction de juger.</strong> L'erreur d'interprétation ou d'application du droit par un magistrat n'engage pas sa responsabilité personnelle mais celle de l'État belge.<sup class="ref">17</sup> Elle est appréciée selon le critère du juge raisonnablement prudent et prévoyant placé dans les mêmes circonstances. Pour le magistrat, l'application correcte de la loi est une obligation de moyens, tandis que pour l'État, l'organisation d'une justice conforme au droit constitue une obligation de résultat. L'action requiert l'anéantissement préalable de la décision erronée par l'exercice des voies de recours (appel, cassation), à l'exception des décisions des cours suprêmes contre lesquelles aucun recours n'est possible.</li>
+        <li><strong>La prise à partie des magistrats.</strong> Régie par l'<strong>article 1140 du Code judiciaire</strong>, la mise en cause personnelle d'un juge est de droit étroit.<sup class="ref">3</sup> Elle est limitée au dol, à la fraude procédurale ou au déni de justice, défini comme le refus volontaire et injustifié de rendre une décision. D'autres voies de sauvegarde, telles que la récusation pour suspicion légitime d'impartialité ou le dessaisissement, permettent d'écarter un magistrat sans engager de contentieux indemnitaire.</li>
+      </ul>
+
+      <!-- SECTION II -->
+      <h2 class="section" id="section-2"><span class="h2-num">Deuxième partie</span>Les modalités procédurales d'urgence : référé judiciaire et référé administratif.</h2>
+
+      <p>Face à une situation d'illégalité flagrante de l'État caractérisée par l'urgence, le justiciable ne peut se contenter d'une procédure ordinaire au fond, dont les délais sont incompatibles avec la sauvegarde immédiate de ses droits.<sup class="ref">18</sup> L'ordre juridique belge organise <strong>deux voies de référé distinctes</strong> selon l'objet de la contestation.<sup class="ref">5</sup></p>
+
+      <h3 class="sub" id="sub-2-1">Le référé judiciaire devant les tribunaux de l'ordre judiciaire.</h3>
+
+      <p>En vertu de l'<strong>article 584, alinéa 2, du Code judiciaire</strong>, le président du tribunal de première instance peut statuer au provisoire dans les cas dont il reconnaît l'urgence.<sup class="ref">6</sup> L'urgence s'apprécie au moment où le juge statue. Elle est définie par la jurisprudence comme la crainte d'un préjudice d'une certaine gravité, ou d'inconvénients sérieux, qui rend une décision immédiate hautement souhaitable pour prévenir un dommage irréparable avant qu'un jugement au fond ne puisse intervenir.<sup class="ref">18</sup></p>
+
+      <p>La saisine du juge des référés judiciaires requiert l'établissement d'une <em>apparence de droit</em> (<em>fumus boni iuris</em>) — c'est-à-dire la probabilité suffisante de l'existence du droit invoqué par le requérant. Le juge peut ordonner toutes les mesures conservatoires nécessaires, y compris <strong>enjoindre à l'État d'agir sous peine d'astreinte</strong>. L'astreinte n'est pas une sanction pénale mais un moyen de contrainte civile destiné à vaincre la résistance de l'administration.<sup class="ref">6</sup></p>
+
+      <h3 class="sub" id="sub-2-2">Le référé administratif devant le Conseil d'État.</h3>
+
+      <p>Lorsque le litige porte sur l'annulation d'un acte ou d'un règlement administratif unilatéral illégal, le <strong>Conseil d'État est seul compétent</strong>.<sup class="ref">21</sup> Le recours en annulation ordinaire n'étant pas suspensif, le requérant doit solliciter parallèlement la suspension de l'acte ou l'octroi de mesures provisoires.<sup class="ref">5</sup> La suspension administrative requiert la preuve de l'urgence et l'exposé d'au moins un moyen sérieux de droit, propre à justifier l'annulation au fond.</p>
+
+      <p>La procédure en référé administratif a fait l'objet d'une <strong>modernisation en profondeur par l'arrêté royal du 19 novembre 2024</strong>, applicable dès 2025, qui réorganise l'accès à la justice administrative.<sup class="ref">4</sup> La réforme introduit l'usage obligatoire du dépôt électronique pour les avocats et les autorités administratives, et structure les dossiers autour de calendriers de procédure contraignants.</p>
+
+      <p>Dans le cadre du Conseil d'État, les dossiers ordinaires de suspension voient leur calendrier fixé dans les <strong>sept jours ouvrables</strong>, avec une audience devant se tenir dans les <strong>soixante jours</strong> suivant l'ordonnance. Pour les dossiers en extrême urgence, le calendrier est établi immédiatement sans que le délai de soixante jours ne soit applicable, ce qui garantit un traitement quasi instantané du péril imminent.</p>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Comparatif des deux voies de référé</caption>
+          <thead>
+            <tr>
+              <th>Critère</th>
+              <th>Référé judiciaire (TPI)</th>
+              <th>Référé administratif (Conseil d'État)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Base légale</strong></td>
+              <td>Article 584 du Code judiciaire</td>
+              <td>Articles 17 et 18 des lois coordonnées sur le Conseil d'État</td>
+            </tr>
+            <tr>
+              <td><strong>Objet de la demande</strong></td>
+              <td>Mesures provisoires de garde de droits civils face à un fait ou un acte matériel de l'État</td>
+              <td>Suspension ou mesures provisoires contre un acte administratif unilatéral ou un règlement</td>
+            </tr>
+            <tr>
+              <td><strong>Condition de fond</strong></td>
+              <td>Urgence objective et apparence de droit (<em>fumus boni iuris</em>)</td>
+              <td>Urgence concrète et présence d'un moyen sérieux d'annulation en droit</td>
+            </tr>
+            <tr>
+              <td><strong>Extrême urgence</strong></td>
+              <td>Saisine par requête unilatérale ou citation à très bref délai</td>
+              <td>Procédure d'extrême urgence avec calendrier immédiat ; dépôt hors heures réglementé depuis le 15 octobre 2025</td>
+            </tr>
+            <tr>
+              <td><strong>Présomption d'urgence</strong></td>
+              <td>Non applicable</td>
+              <td>Présumée d'office pour les marchés publics au-dessus des seuils légaux</td>
+            </tr>
+            <tr>
+              <td><strong>Effet de la décision</strong></td>
+              <td>Ordonnance de référé exécutoire par provision, nonobstant tout recours</td>
+              <td>Arrêt de suspension paralysant immédiatement l'exécution de l'acte administratif contesté</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- SECTION III -->
+      <h2 class="section" id="section-3"><span class="h2-num">Troisième partie</span>Contentieux de référence : le climat et la crise systémique de l'accueil.</h2>
+
+      <p>La portée des actions en justice contre l'État belge s'illustre de manière concrète à travers deux contentieux contemporains majeurs, révélant la confrontation entre le pouvoir judiciaire et l'inertie de l'exécutif.</p>
+
+      <h3 class="sub" id="sub-3-1">L'Affaire Climat (<em>Klimaatzaak</em>).</h3>
+
+      <p>L'action introduite en <strong>avril 2015</strong> par l'ASBL <em>Klimaatzaak</em> et rejointe par <strong>plus de 58 000 personnes physiques</strong> met en cause la responsabilité civile de l'État fédéral et des trois régions pour insuffisance de leurs politiques de réduction des gaz à effet de serre.<sup class="ref">19</sup> Après de longs retards de procédure liés à la langue de l'instruction (tranchée en français), le Tribunal de première instance de Bruxelles a déclaré l'action recevable et a conclu, le 17 juin 2021, à l'existence d'une faute civile et d'une violation des droits humains, tout en refusant d'ordonner des injonctions de réduction chiffrées au nom de la séparation des pouvoirs.</p>
+
+      <p>Saisie du recours, la <strong>Cour d'appel de Bruxelles a rendu le 30 novembre 2023 un arrêt historique</strong> qui bouscule l'interprétation traditionnelle de la séparation des pouvoirs :</p>
+
+      <ul class="bullets">
+        <li><strong>La requalification de la faute.</strong> La Cour d'appel a jugé que l'État fédéral, la Région flamande et la Région de Bruxelles-Capitale violaient de manière continue les articles 2 (droit à la vie) et 8 (droit au respect de la vie privée et familiale) de la Convention européenne des droits de l'homme, ainsi que les articles 1382 et 1383 de l'ancien Code civil. La Région wallonne a été mise hors de cause au motif qu'elle avait démontré des efforts de réduction suffisants.</li>
+        <li><strong>L'injonction chiffrée.</strong> S'appuyant sur le consensus scientifique international pour calibrer son intervention, la Cour d'appel a enjoint à l'État fédéral, à la Flandre et à Bruxelles de réduire conjointement les émissions de gaz à effet de serre de la Belgique de <strong>55 % d'ici 2030</strong> par rapport aux niveaux de 1990.</li>
+        <li><strong>La menace d'astreintes.</strong> La Cour a décidé qu'elle assurerait elle-même le suivi de l'exécution de sa décision et qu'elle pourrait imposer des astreintes financières si les statistiques d'émissions des gouvernements condamnés s'avéraient non conformes à la trajectoire imposée.</li>
+      </ul>
+
+      <p>Cet arrêt fait figure de <strong>précédent majeur à l'échelle européenne</strong>, illustrant comment le juge judiciaire peut imposer des obligations de résultat chiffrées à l'État pour faire cesser une violation systémique des droits fondamentaux.<sup class="ref">30</sup></p>
+
+      <h3 class="sub" id="sub-3-2">La crise de l'accueil et le refus systémique d'exécuter les décisions de justice.</h3>
+
+      <p>Un autre exemple de confrontation directe concerne l'effondrement du réseau d'accueil des demandeurs d'asile géré par <strong>Fedasil</strong>.<sup class="ref">34</sup> Depuis la fin de l'année 2021, des milliers de personnes se sont vu refuser l'hébergement auquel elles ont légalement droit en vertu de la loi du 12 janvier 2007. Cette situation a donné lieu à un contentieux d'une ampleur inédite en Belgique.</p>
+
+      <p>L'État belge a été condamné à des <em>milliers de reprises</em> par les juridictions du travail et des référés à accorder un hébergement sous peine d'astreintes journalières.<sup class="ref">20</sup> Face au refus délibéré de l'exécutif d'exécuter ces condamnations et de s'acquitter des astreintes, une <strong>crise constitutionnelle majeure de l'État de droit s'est déclarée</strong> :</p>
+
+      <ul class="bullets">
+        <li><strong>La position des juridictions internationales.</strong> La Cour européenne des droits de l'homme, saisie en urgence (notamment dans l'affaire <em>Camara c. Belgique</em>), a conclu que la défaillance des autorités belges ne relevait pas d'un simple retard matériel mais d'un <em>« refus caractérisé »</em> de se conformer aux décisions de justice.<sup class="ref">35</sup> La CEDH a condamné la Belgique pour violation de l'article 6 de la Convention européenne des droits de l'homme (droit à un procès équitable). Le Comité des Ministres du Conseil de l'Europe a placé l'exécution de ces arrêts sous surveillance renforcée.<sup class="ref">37</sup></li>
+        <li><strong>Les saisies de biens publics.</strong> Face à l'impayé des astreintes — l'État ayant été condamné dans <span class="num" style="color: var(--red); font-family: 'JetBrains Mono', monospace;">8 181 jugements</span> sous la précédente législature, déboursant au moins <span class="num" style="color: var(--red); font-family: 'JetBrains Mono', monospace;">20,58 M€</span> tout en restant théoriquement redevable de plus de <span class="num" style="color: var(--red); font-family: 'JetBrains Mono', monospace;">44 M€</span> —, les avocats des demandeurs d'asile ont procédé à des saisies mobilières forcées au sein des cabinets ministériels et à la saisie de garanties bancaires de l'État à hauteur de 400 000 €.</li>
+        <li><strong>Les recours en extrême urgence au Conseil d'État.</strong> En mars 2026, des organisations non gouvernementales telles que le CIRÉ ont introduit des recours en extrême urgence devant le Conseil d'État pour suspendre les instructions de la ministre de tutelle excluant unilatéralement certains demandeurs d'asile de l'accueil, dénonçant un mépris flagrant de la légalité et du pouvoir judiciaire.<sup class="ref">39</sup></li>
+      </ul>
+
+      <!-- SECTION IV -->
+      <h2 class="section" id="section-4"><span class="h2-num">Quatrième partie</span>Le cadre financier et opérationnel de l'action contre l'État.</h2>
+
+      <p>Intenter une action en justice contre l'État exige une évaluation rigoureuse des aspects financiers, administratifs et des règles de représentation devant les différentes juridictions du pays.</p>
+
+      <h3 class="sub" id="sub-4-1">L'assistance d'un avocat : exigences et dispenses.</h3>
+
+      <p>En droit judiciaire belge, le principe général veut que toute personne physique puisse <strong>agir elle-même en justice</strong>, rédiger ses actes de procédure et plaider sa cause devant les tribunaux du fond (<strong>article 728 du Code judiciaire</strong>).<sup class="ref">40</sup> L'assistance d'un avocat n'est donc, en règle, pas légalement obligatoire en premier degré, bien que le juge puisse l'imposer si l'inexpérience ou la passion du justiciable compromet sa défense.</p>
+
+      <p>Néanmoins, l'assistance d'un avocat est <strong>obligatoire</strong> dans des cadres spécifiques :</p>
+
+      <ul class="bullets">
+        <li>Devant la <strong>Cour d'assises</strong> pour l'accusé.</li>
+        <li>Devant le <strong>Tribunal de la jeunesse</strong> pour les mineurs d'âge.</li>
+        <li>Devant la <strong>Chambre de protection sociale</strong> en matière d'internement.</li>
+        <li>Devant la <strong>Cour de cassation</strong> en matière civile et administrative — seuls les avocats à la Cour de cassation (barreau spécialisé) sont habilités à introduire un pourvoi.<sup class="ref">42</sup></li>
+        <li>Devant le <strong>Conseil d'État</strong> — bien qu'une requête en annulation puisse théoriquement être signée par le requérant lui-même, la formulation de moyens de droit recevables requiert dans les faits l'assistance d'un spécialiste en droit administratif.</li>
+      </ul>
+
+      <h3 class="sub" id="sub-4-2">Les droits de mise au rôle (droits de greffe).</h3>
+
+      <p>Le droit de mise au rôle est une taxe perçue par le SPF Finances pour l'inscription d'une cause au rôle d'une juridiction.<sup class="ref">44</sup> Depuis la réforme du <strong>1ᵉʳ février 2019</strong>, ces droits sont liquidés à la fin de la procédure (<em>en débet</em>). C'est la décision finale du juge qui détermine quelle partie doit supporter cette taxe, celle-ci étant généralement mise à la charge de la partie qui perd le procès.</p>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Droits de mise au rôle par juridiction</caption>
+          <thead>
+            <tr>
+              <th>Juridiction saisie</th>
+              <th>Montant du droit</th>
+              <th>Amende administrative (non-paiement tardif)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Justice de paix et Tribunal de police</strong></td>
+              <td><span class="num">50 €</span></td>
+              <td><span class="num">25 €</span></td>
+            </tr>
+            <tr>
+              <td><strong>Tribunal de première instance / de l'entreprise</strong></td>
+              <td><span class="num">165 €</span></td>
+              <td><span class="num">82,50 €</span></td>
+            </tr>
+            <tr>
+              <td><strong>Cour d'appel</strong></td>
+              <td><span class="num">400 €</span></td>
+              <td><span class="num">200 €</span></td>
+            </tr>
+            <tr>
+              <td><strong>Cour de cassation</strong></td>
+              <td><span class="num">650 €</span></td>
+              <td><span class="num">325 €</span></td>
+            </tr>
+            <tr>
+              <td><strong>Conseil d'État</strong></td>
+              <td><span class="num">200 €</span> (introduction de la requête)</td>
+              <td>Non applicable</td>
+            </tr>
+            <tr>
+              <td><strong>Cour constitutionnelle</strong></td>
+              <td><span class="num">Gratuit</span></td>
+              <td>Non applicable</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Une <strong>exemption complète</strong> de droits de mise au rôle s'applique devant les juridictions du travail (matières de sécurité sociale et d'aide sociale) ainsi que pour les chambres fiscales des tribunaux de première instance et des cours d'appel, à moins que la valeur de la demande ne dépasse le seuil de 250 000 €.<sup class="ref">49</sup></p>
+
+      <h3 class="sub" id="sub-4-3">Le Fonds d'aide juridique de deuxième ligne.</h3>
+
+      <p>La contribution obligatoire au Fonds d'aide juridique de deuxième ligne est un frais de justice forfaitaire destiné à financer le système des avocats d'office (<em>pro deo</em>).<sup class="ref">51</sup> Depuis le <strong>3 mars 2025</strong>, ce montant a été indexé à <strong>26 €</strong>.</p>
+
+      <p>La contribution doit être versée par acte introductif d'instance déposé au greffe, et non par demandeur individuel, conformément à un arrêt de la Cour constitutionnelle du 13 février 2020 qui a censuré la perception multiple par requérant.<sup class="ref">54</sup> Elle s'applique également devant le Conseil d'État. Sont <strong>légalement exemptées</strong> de cette taxe : les procédures d'accidents du travail, les contestations d'allocations sociales (revenu d'intégration, chômage, GRAPA, handicap), ainsi que l'ensemble des procédures en droit des étrangers, y compris l'asile et le regroupement familial. Les personnes bénéficiant de l'aide juridique gratuite sont également dispensées de ce paiement.</p>
+
+      <h3 class="sub" id="sub-4-4">Les indemnités de procédure (frais d'avocat répétibles).</h3>
+
+      <p>L'indemnité de procédure est une intervention forfaitaire dans les frais et honoraires d'avocat de la partie ayant obtenu gain de cause, due par la partie succombante.<sup class="ref">44</sup> Le montant varie en fonction de la valeur de la demande et est fixé par le juge entre des montants minimaux, de base et maximaux légaux. Les barèmes ont fait l'objet d'une <strong>indexation de +6,98 %</strong> au 1ᵉʳ mars 2025.</p>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Indemnités de procédure (barème 2025)</caption>
+          <thead>
+            <tr>
+              <th>Nature et valeur du litige</th>
+              <th>Minimum</th>
+              <th>Base</th>
+              <th>Maximum</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Demande de 0 à 250 €</strong></td>
+              <td><span class="num">117,73 €</span></td>
+              <td><span class="num">235,47 €</span></td>
+              <td><span class="num">470,93 €</span></td>
+            </tr>
+            <tr>
+              <td><strong>Demande de 5 000 à 10 000 €</strong></td>
+              <td><span class="num">784,88 €</span></td>
+              <td><span class="num">1 412,79 €</span></td>
+              <td><span class="num">3 139,53 €</span></td>
+            </tr>
+            <tr>
+              <td><strong>Demande de 100 000 à 250 000 €</strong></td>
+              <td><span class="num">1 569,77 €</span></td>
+              <td><span class="num">7 848,84 €</span></td>
+              <td><span class="num">15 697,67 €</span></td>
+            </tr>
+            <tr>
+              <td><strong>Non évaluables en argent (Judiciaire)</strong></td>
+              <td><span class="num">117,73 €</span></td>
+              <td><span class="num">1 883,72 €</span></td>
+              <td><span class="num">15 000,00 €</span></td>
+            </tr>
+            <tr>
+              <td><strong>Recours devant le Conseil d'État</strong></td>
+              <td><span class="num">140,00 €</span></td>
+              <td><span class="num">700,00 €</span></td>
+              <td><span class="num">1 400,00 €</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Les actions en cessation ou en référé contre l'État portant sur le respect des droits fondamentaux étant généralement qualifiées de litiges non évaluables en argent, l'indemnité de procédure de base s'élève à <strong>1 883,72 €</strong> devant les cours et tribunaux judiciaires, et à <strong>700 €</strong> devant le Conseil d'État. Le juge conserve la faculté de modérer ou d'augmenter ces montants en fonction de la complexité du dossier ou de la situation financière de la partie succombante.</p>
+
+      <h3 class="sub" id="sub-4-5">L'aide juridique de deuxième ligne et l'assistance judiciaire.</h3>
+
+      <p>Pour garantir l'accès à la justice des justiciables à faibles revenus, deux mécanismes distincts sont organisés par la loi :</p>
+
+      <ul class="bullets">
+        <li><strong>L'aide juridique de deuxième ligne</strong> (ex-<em>pro deo</em>). Prise en charge gratuite ou partielle des honoraires de l'avocat par l'État, gérée par le Bureau d'aide juridique (BAJ) de chaque barreau.</li>
+        <li><strong>L'assistance judiciaire.</strong> Dispense totale ou partielle du paiement des frais de procédure (droits de mise au rôle, frais de citation par huissier, frais d'expert). Les seuils d'accès sont calqués sur ceux de l'aide juridique.</li>
+      </ul>
+
+      <p>Les seuils d'accès mensuels nets ont été <strong>indexés au 1ᵉʳ septembre 2025</strong> :</p>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Seuils d'accès à l'aide juridique (septembre 2025)</caption>
+          <thead>
+            <tr>
+              <th>Situation familiale</th>
+              <th>Gratuité totale</th>
+              <th>Gratuité partielle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Personne isolée</strong></td>
+              <td>Inférieur à <span class="num">1 612 €</span></td>
+              <td>Entre <span class="num">1 612 €</span> et <span class="num">1 920 €</span></td>
+            </tr>
+            <tr>
+              <td><strong>Cohabitant / Famille à charge</strong></td>
+              <td>Inférieur à <span class="num">1 920 €</span> (revenus cumulés)</td>
+              <td>Entre <span class="num">1 920 €</span> et <span class="num">2 226 €</span> (revenus cumulés)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Pour introduire la demande auprès du BAJ, le requérant doit obligatoirement fournir un dossier de pièces justificatives comprenant un certificat de composition de ménage délivré par la commune, le dernier avertissement extrait de rôle pour tous les membres majeurs du foyer, des preuves de revenus récentes (fiches de paie, attestation de chômage, mutuelle ou CPAS), la taxe de circulation des véhicules, l'avertissement extrait du précompte immobilier pour les propriétaires, et un extrait bancaire de moins de deux mois reprenant les soldes si l'épargne du ménage excède 5 000 €.<sup class="ref">67</sup></p>
+
+      <!-- SECTION V -->
+      <h2 class="section" id="section-5"><span class="h2-num">Cinquième partie</span>Synthèse stratégique pour le justiciable.</h2>
+
+      <p>L'exercice d'une action en justice contre l'État belge dans un contexte d'urgence requiert une articulation rigoureuse des règles de fond et de forme.</p>
+
+      <h3 class="sub" id="sub-5-1">Détermination de l'acte générateur de responsabilité.</h3>
+
+      <p>La première étape consiste à qualifier la nature du manquement de l'État :</p>
+
+      <ul class="bullets">
+        <li><strong>Acte administratif unilatéral individuel ou réglementaire illégal</strong> (ex. une décision ministérielle ou un règlement communal) → la voie de droit prioritaire est le <em>recours en annulation devant le Conseil d'État</em>, combiné à une demande de suspension d'extrême urgence si le péril est imminent.</li>
+        <li><strong>Dommage matériel ou fait pur de l'administration</strong> (ex. des conditions de détention indignes, l'absence de création de places d'accueil obligatoires, ou une inaction environnementale) → l'action relève de la compétence exclusive des <em>tribunaux judiciaires ordinaires</em> sur le fondement du Livre 6 du Code civil, par la voie d'une citation en référé devant le président du tribunal de première instance.</li>
+        <li><strong>Loi inconstitutionnelle</strong> → l'action en responsabilité de l'État-législateur requiert l'introduction préalable d'un <em>recours en annulation devant la Cour constitutionnelle</em>. Il importe toutefois d'anticiper la jurisprudence restrictive du 5 septembre 2025 : si la Cour constitutionnelle décide de moduler les effets de l'annulation dans le temps, le droit à réparation civile devant les tribunaux judiciaires pour cette période est éteint.</li>
+      </ul>
+
+      <h3 class="sub" id="sub-5-2">Structuration de la preuve de l'urgence.</h3>
+
+      <p>Pour prospérer en référé, le justiciable doit impérativement documenter de manière factuelle et rigoureuse le risque de préjudice grave et difficilement réparable. L'urgence ne peut résulter de la seule circonstance que la procédure au fond prendra du temps, car les délais de la justice ordinaire sont inhérents au système. Le requérant doit apporter <strong>la preuve concrète</strong> que l'attente d'une décision au fond rendrait l'exercice ultérieur de son droit totalement illusoire ou lui imposerait des conditions de vie intolérables, à l'instar des constats dressés par les juridictions belges et européennes dans le contentieux systémique de l'accueil ou de la surpopulation carcérale.<sup class="ref">18</sup></p>
+
+      <div class="callout">
+        <div class="callout-label">Note méthodologique</div>
+        Trois facteurs déterminent la viabilité d'une action contre l'État : <strong>(1)</strong> la qualification précise de l'acte ou du fait générateur, qui commande la juridiction compétente ; <strong>(2)</strong> la matérialité de l'urgence, qui doit être démontrée par pièces et non simplement alléguée ; <strong>(3)</strong> la qualité à agir et l'intérêt à agir du requérant, plus restrictifs en droit belge que dans plusieurs systèmes voisins.
+      </div>
+
+      <!-- SOURCES -->
+      <section class="sources" id="sources">
+        <div class="sources-label">Bibliographie</div>
+        <h3>Sources principales.</h3>
+        <ol>
+          <li>« La nécessaire responsabilité de l'État dans sa fonction juridictionnelle » — Droit belge, consulté le 19 mai 2026. <a href="https://www.droitbelge.be/fiches_detail.asp?idcat=36&id=357" target="_blank" rel="noopener">droitbelge.be/fiches_detail.asp?idcat=36&amp;id=357</a></li>
+          <li>« Responsabilité de l'État pour les actes du législateur / Overheidsaansprakelijkheid voor het optreden van de wetgevende macht » — Chambre des représentants. <a href="https://www.lachambre.be/FLWB/PDF/52/1627/52K1627001.pdf" target="_blank" rel="noopener">lachambre.be/FLWB/PDF/52/1627/52K1627001.pdf</a></li>
+          <li>« Introduction sur la responsabilité de l'État dans l'exercice de sa fonction juridictionnelle » — Fiches pratiques : informations juridiques en droit belge. <a href="https://www.droitbelge.be/fiches_detail.asp?idcat=36&id=355" target="_blank" rel="noopener">droitbelge.be/fiches_detail.asp?idcat=36&amp;id=355</a></li>
+          <li>« Réforme de la procédure en référé devant le Conseil d'État : une modernisation en profondeur » — FinancesConnect. <a href="https://www.financesconnect.be/actualites/actualite/720858527752530111" target="_blank" rel="noopener">financesconnect.be/actualites/actualite/720858527752530111</a></li>
+          <li>« Voies de recours » — Service public de Wallonie, Emploi. <a href="https://emploi.wallonie.be/files/DOCS/Voies_de_recours.pdf" target="_blank" rel="noopener">emploi.wallonie.be/files/DOCS/Voies_de_recours.pdf</a></li>
+          <li>Jugement / arrêt du 4 mai 2023 — Terralaboris. <a href="https://www.terralaboris.be/IMG/pdf/ctb_2023_05_04_2023_cb_3.pdf" target="_blank" rel="noopener">terralaboris.be/IMG/pdf/ctb_2023_05_04_2023_cb_3.pdf</a></li>
+          <li>« Livre 6 du CC et la responsabilité dans la relation de travail » — Beswic. <a href="https://beswic.be/fr/blog/livre-6-du-cc-et-la-responsabilite-dans-la-relation-de-travail-publication-dans-larbeidsrecht-journaal" target="_blank" rel="noopener">beswic.be/fr/blog/livre-6-du-cc-et-la-responsabilite…</a></li>
+          <li>« Réforme du Code civil » — Service public fédéral Justice. <a href="https://justice.belgium.be/fr/bwcc" target="_blank" rel="noopener">justice.belgium.be/fr/bwcc</a></li>
+        </ol>
+        <div class="sources-note">
+          Les renvois en exposant dans le corps du texte (¹, ², ³…) correspondent aux références numérotées de la version d'origine du document. La bibliographie complète, incluant les arrêts et la doctrine cités au-delà des sources principales reproduites ici, est disponible dans le document source.
+        </div>
+      </section>
+
+      <!-- COLOPHON -->
+      <div class="colophon">
+        <div class="colophon-row">
+          <span><span class="key">Document</span> · Action en justice contre l'État belge</span>
+          <span><span class="key">Format</span> · Version web</span>
+        </div>
+        <div class="colophon-row">
+          <span><span class="key">Mise en page</span> · Claude (Anthropic)</span>
+          <span><span class="key">Date</span> · 19 mai 2026</span>
+        </div>
+        <div class="colophon-row">
+          <span><span class="key">Statut</span> · Document de référence juridique</span>
+          <span><span class="key">Diffusion</span> · Libre</span>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <script>
+    // Reading progress bar
+    const progressBar = document.getElementById('progressBar');
+    function updateProgress() {
+      const scrolled = window.scrollY;
+      const height = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = (scrolled / height) * 100;
+      progressBar.style.width = pct + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    // Active TOC highlight
+    const sections = document.querySelectorAll('h2.section, h3.sub, #preambule, #sources');
+    const tocLinks = document.querySelectorAll('.toc a, .mobile-toc a');
+
+    function updateActiveSection() {
+      let current = '';
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 120) {
+          current = section.id;
+        }
+      });
+      tocLinks.forEach(link => {
+        link.style.color = '';
+        link.style.borderLeftColor = '';
+        if (current && link.getAttribute('href') === '#' + current) {
+          link.style.color = 'var(--red)';
+          link.style.borderLeftColor = 'var(--red)';
+        }
+      });
+    }
+    window.addEventListener('scroll', updateActiveSection, { passive: true });
+    updateActiveSection();
+  </script>
+
+</body>
+</html>
