@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'arsenal élargi — sept fronts complémentaires</title>
+<meta name="description" content="Stratégies complémentaires d'action contre l'État belge sur la dette démocratique.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F0EDE6;
+  --paper-card: #E8E4DB;
+  --paper-deep: #DED8CB;
+  --ink: #1F2532;
+  --ink-soft: #36405A;
+  --ink-faded: #6F6F66;
+  --rule: #C9C3B3;
+  --rule-soft: #D9D3C3;
+  --red: #7A1F2A;
+  --red-soft: #952833;
+  --brass: #9D5E2F;
+  --brass-soft: #B57845;
+  --green: #3A5239;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  background-image:
+    radial-gradient(ellipse at 15% 8%, rgba(157, 94, 47, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 92%, rgba(122, 31, 42, 0.03) 0%, transparent 55%);
+  color: var(--ink);
+  font-family: 'Source Serif 4', 'EB Garamond', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.65;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(31, 37, 50, 0.012) 0px, transparent 1px, transparent 2px, rgba(31, 37, 50, 0.012) 3px),
+    repeating-linear-gradient(90deg, rgba(31, 37, 50, 0.012) 0px, transparent 1px, transparent 2px, rgba(31, 37, 50, 0.012) 3px);
+  z-index: 1;
+}
+
+.page {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 48px 28px 120px;
+}
+
+/* HEADER METADATA */
+.meta-header {
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--rule);
+  padding: 16px 0;
+  margin-bottom: 56px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faded);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.meta-header .tag {
+  color: var(--red);
+  font-weight: 600;
+}
+
+/* MASTHEAD */
+.masthead {
+  margin-bottom: 56px;
+}
+
+.masthead .kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 20px;
+}
+
+h1.title {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: clamp(54px, 9vw, 96px);
+  font-weight: 300;
+  font-variation-settings: 'opsz' 60;
+  line-height: 0.96;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+
+h1.title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--red);
+}
+
+.subtitle {
+  font-family: 'Source Serif 4', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(19px, 2.4vw, 23px);
+  line-height: 1.4;
+  color: var(--ink-soft);
+  max-width: 620px;
+  margin-bottom: 16px;
+}
+
+.byline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faded);
+  margin-top: 24px;
+}
+
+/* INTRO */
+.intro {
+  margin: 48px 0 64px;
+  padding: 32px 32px;
+  background: var(--paper-card);
+  border-left: 3px solid var(--brass);
+  position: relative;
+}
+
+.intro p {
+  font-family: 'Source Serif 4', serif;
+  font-size: 18.5px;
+  line-height: 1.6;
+  margin-bottom: 1em;
+}
+
+.intro p:last-child {
+  margin-bottom: 0;
+}
+
+.intro strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* AXE SECTIONS */
+.axe {
+  margin: 80px 0;
+  position: relative;
+}
+
+.axe-header {
+  display: flex;
+  align-items: baseline;
+  gap: 28px;
+  margin-bottom: 18px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.axe-num {
+  font-family: 'Source Serif 4', serif;
+  font-size: clamp(48px, 7vw, 64px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--red);
+  line-height: 0.9;
+  font-variation-settings: 'opsz' 60;
+  letter-spacing: -0.04em;
+  flex-shrink: 0;
+}
+
+.axe-label-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.axe-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin-bottom: 8px;
+}
+
+.axe-title {
+  font-family: 'Source Serif 4', serif;
+  font-size: clamp(26px, 4vw, 32px);
+  font-weight: 500;
+  font-variation-settings: 'opsz' 36;
+  letter-spacing: -0.015em;
+  line-height: 1.18;
+  color: var(--ink);
+}
+
+.axe-lead {
+  font-family: 'Source Serif 4', serif;
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 20px 0 28px;
+}
+
+.axe-body p {
+  margin-bottom: 1.1em;
+  text-align: justify;
+  hyphens: auto;
+}
+
+.axe-body p strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.axe-body em {
+  font-style: italic;
+}
+
+/* LEGAL CARD */
+.legal-card {
+  margin: 24px 0;
+  padding: 20px 24px;
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--red);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 28px;
+}
+
+.legal-card .row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.legal-card .row-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.legal-card .row-value {
+  font-family: 'Source Serif 4', serif;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.legal-card .row-value strong {
+  font-weight: 600;
+}
+
+.legal-card .row.full {
+  grid-column: 1 / -1;
+}
+
+/* MECHANISMS LIST */
+.mechanisms {
+  margin: 20px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mechanisms li {
+  position: relative;
+  padding: 12px 0 12px 32px;
+  font-family: 'Source Serif 4', serif;
+  font-size: 17.5px;
+  line-height: 1.55;
+  border-bottom: 1px dashed var(--rule-soft);
+}
+
+.mechanisms li:last-child {
+  border-bottom: none;
+}
+
+.mechanisms li::before {
+  content: '§';
+  position: absolute;
+  left: 0;
+  top: 14px;
+  font-family: 'Source Serif 4', serif;
+  font-size: 19px;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--brass);
+}
+
+.mechanisms li strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* STRATEGY CALLOUT */
+.strategy {
+  margin: 24px 0;
+  padding: 18px 22px;
+  background: rgba(122, 31, 42, 0.05);
+  border-left: 2px solid var(--red);
+  font-family: 'Source Serif 4', serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.strategy .strategy-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 6px;
+}
+
+.strategy strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* DIVIDER */
+.divider {
+  margin: 64px auto;
+  width: 80px;
+  height: 1px;
+  background: var(--brass);
+  position: relative;
+}
+.divider::before, .divider::after {
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: var(--brass);
+  border-radius: 50%;
+  top: -2px;
+}
+.divider::before { left: -14px; }
+.divider::after { right: -14px; }
+
+/* CONCLUSION */
+.conclusion {
+  margin-top: 80px;
+  padding: 40px 36px;
+  background: var(--paper-deep);
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  position: relative;
+}
+
+.conclusion-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 16px;
+}
+
+.conclusion h2 {
+  font-family: 'Source Serif 4', serif;
+  font-size: clamp(28px, 4.5vw, 38px);
+  font-weight: 500;
+  font-variation-settings: 'opsz' 48;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin-bottom: 24px;
+  color: var(--ink);
+}
+
+.conclusion p {
+  font-family: 'Source Serif 4', serif;
+  font-size: 18px;
+  line-height: 1.65;
+  margin-bottom: 1.1em;
+}
+
+.conclusion p:last-child {
+  margin-bottom: 0;
+}
+
+.conclusion .punch {
+  font-family: 'Source Serif 4', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.45;
+  color: var(--red);
+  margin: 24px 0;
+  padding: 18px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  text-align: center;
+}
+
+/* SIGNATURE */
+.signature {
+  margin-top: 72px;
+  padding-top: 40px;
+  border-top: 2px solid var(--ink);
+}
+
+.signature .sigmark {
+  font-family: 'Source Serif 4', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(48px, 8vw, 64px);
+  line-height: 1;
+  color: var(--red);
+  margin-bottom: 20px;
+  letter-spacing: -0.025em;
+  font-variation-settings: 'opsz' 60;
+}
+
+.signature .siginfo {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faded);
+  line-height: 2.1;
+}
+
+.signature .siginfo span {
+  display: block;
+}
+
+/* responsive */
+@media (max-width: 680px) {
+  .page { padding: 32px 18px 80px; }
+  body { font-size: 16.5px; }
+  .meta-header { font-size: 9.5px; flex-direction: column; gap: 6px; }
+  .intro { padding: 22px 20px; }
+  .intro p { font-size: 17px; }
+  .axe-header { gap: 16px; flex-direction: column; }
+  .axe-num { font-size: 44px; }
+  .axe-lead { font-size: 17px; }
+  .legal-card { grid-template-columns: 1fr; padding: 18px 18px; gap: 14px; }
+  .legal-card .row-value { font-size: 14.5px; }
+  .mechanisms li { padding-left: 26px; font-size: 16px; }
+  .strategy { padding: 16px 18px; font-size: 15.5px; }
+  .conclusion { padding: 28px 22px; }
+  .conclusion p { font-size: 16.5px; }
+  .conclusion .punch { font-size: 19px; }
+}
+
+::selection {
+  background: var(--red);
+  color: var(--paper);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.meta-header, .masthead, .intro {
+  animation: fadeUp 0.8s ease-out backwards;
+}
+.masthead { animation-delay: 0.1s; }
+.intro { animation-delay: 0.25s; }
+
+</style>
+</head>
+<body>
+
+  <article class="page">
+
+    <!-- Meta header -->
+    <div class="meta-header">
+      <span><span class="tag">Document</span> · Compagnon stratégique</span>
+      <span><span class="tag">Référence</span> · Arsenal élargi v.1</span>
+      <span><span class="tag">Date</span> · 19 mai 2026</span>
+    </div>
+
+    <!-- Masthead -->
+    <header class="masthead">
+      <div class="kicker">Sept fronts complémentaires</div>
+      <h1 class="title">L'arsenal<br><em>élargi.</em></h1>
+      <p class="subtitle">Stratégies d'action contre l'État belge au-delà du référé judiciaire et de la responsabilité civile : ce que le dossier principal n'a pas encore mobilisé.</p>
+      <div class="byline">Compagnon de · Action en justice contre la Belgique</div>
+    </header>
+
+    <!-- Intro -->
+    <div class="intro">
+      <p>Le dossier que tu as constitué — responsabilité civile au sens du Livre 6 du Code civil (entré en vigueur le 1er janvier 2025), référé judiciaire et administratif, précédents <em>Klimaatzaak</em> et <em>Camara c. Belgique</em>, structuration des frais et de l'aide juridique — couvre rigoureusement le contentieux belge interne. C'est solide. C'est nécessaire. Ce n'est pas suffisant.</p>
+      <p>Sept fronts ne sont pas mobilisés. Aucun ne remplace l'action principale. Tous l'environnent. La logique d'ensemble est celle de l'<strong>encerclement</strong> : le procès civil au centre, et autour de lui une série d'actions périphériques qui accumulent les preuves, saturent les capacités de réponse de l'adversaire, construisent un récit cohérent au plan international, et protègent l'auteur contre les représailles.</p>
+      <p>Ce qui suit est opérationnel. Chaque axe est documenté avec son fondement légal, son mécanisme, son coût, son effet attendu et son risque.</p>
+    </div>
+
+    <!-- =============== AXE I =============== -->
+    <section class="axe">
+      <div class="axe-header">
+        <div class="axe-num">I.</div>
+        <div class="axe-label-wrap">
+          <div class="axe-label">Premier front · Strasbourg</div>
+          <div class="axe-title">Le contentieux CEDH au-delà de l'article 6.</div>
+        </div>
+      </div>
+
+      <p class="axe-lead">Le dossier cite <em>Camara c. Belgique</em> pour la violation de l'article 6. C'est correct mais insuffisant. L'arsenal CEDH contre la particratie est plus large, et largement inutilisé.</p>
+
+      <div class="axe-body">
+        <p>La Cour européenne des droits de l'homme a déjà condamné la Belgique en grande chambre dans <em>Mugemangango c. Belgique</em> (10 juillet 2020) sur l'auto-contrôle parlementaire en matière électorale. La logique de cet arrêt — qu'un organe ne peut être juge et partie de son propre contrôle — s'étend mécaniquement au contrôle financier auto-référentiel des partis politiques. Le précédent est belge, donc opposable directement.</p>
+
+        <ul class="mechanisms">
+          <li><strong>Article 3 du Protocole n° 1</strong> — droit à des élections libres et au libre choix du corps législatif. C'est l'article-clé : quand le mandat libre est empiriquement vidé (99,73 % de cohésion), la liberté du choix électoral l'est aussi.</li>
+          <li><strong>Article 11</strong> — liberté d'association. S'applique aux structures internes des partis et à la liberté des élus de quitter un groupe sans représailles institutionnelles.</li>
+          <li><strong>Article 13</strong> — droit au recours effectif. Article-articulation : chaque blocage interne renforce ce moyen et transforme une défaillance procédurale isolée en violation conventionnelle systémique.</li>
+          <li><strong>Article 18</strong> — limitation de l'usage des restrictions. Applicable si l'État restreint des droits dans un but autre que celui annoncé. Peu utilisé, redoutable quand il prospère.</li>
+        </ul>
+
+        <div class="legal-card">
+          <div class="row">
+            <div class="row-label">Fondement</div>
+            <div class="row-value">CEDH art. 6, 11, 13, 18 + P1-3</div>
+          </div>
+          <div class="row">
+            <div class="row-label">Préalable</div>
+            <div class="row-value">Épuisement des voies internes (souple en cas systémique)</div>
+          </div>
+          <div class="row">
+            <div class="row-label">Coût de dépôt</div>
+            <div class="row-value">Nul</div>
+          </div>
+          <div class="row">
+            <div class="row-label">Délai</div>
+            <div class="row-value">4 mois à compter de la décision interne définitive</div>
+          </div>
+          <div class="row full">
+            <div class="row-label">Précédent acquis</div>
+            <div class="row-value"><em>Mugemangango c. Belgique</em>, GC, 10 juillet 2020 — auto-contrôle parlementaire jugé incompatible avec la Convention.</div>
+          </div>
+        </div>
+
+        <div class="strategy">
+          <div class="strategy-label">Stratégie</div>
+          Bundler les moyens dans une requête unique. Ne pas plaider la violation comme un cas individuel mais comme une violation <strong>structurelle</strong>, ce qui ouvre l'article 46 § 1 (mesures générales) et la possibilité d'un arrêt-pilote.
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- =============== AXE II =============== -->
+    <section class="axe">
+      <div class="axe-header">
+        <div class="axe-num">II.</div>
+        <div class="axe-label-wrap">
+          <div class="axe-label">Deuxième front · Genève</div>
+          <div class="axe-title">La saisine des organes des Nations Unies.</div>
+        </div>
+      </div>
+
+      <p class="axe-lead">Inexistant du dossier actuel. La Belgique a ratifié en 1994 le Premier Protocole facultatif au Pacte international relatif aux droits civils et politiques, ce qui ouvre la voie de la plainte individuelle devant le Comité des droits de l'homme.</p>
+
+      <div class="axe-body">
+        <ul class="mechanisms">
+          <li><strong>Comité des droits de l'homme (CCPR).</strong> Plainte individuelle sur le fondement des articles 19 (expression), 22 (association), 25 (participation aux affaires publiques) du PIDCP. Recevabilité conditionnée à l'épuisement des recours internes.</li>
+          <li><strong>Examen Périodique Universel (EPU).</strong> Contribution de la société civile au cycle d'examen périodique. La Belgique passe en EPU au 4ᵉ cycle ; les rapports parallèles d'ONG et de citoyens influencent directement les recommandations finales adoptées par le Conseil des droits de l'homme.</li>
+          <li><strong>Rapporteurs spéciaux.</strong> Courriers d'allégation directs aux rapporteurs sur l'indépendance des juges et des avocats, sur la liberté d'opinion et d'expression, sur la corruption. Réponse formelle de l'État requise, qui devient pièce du dossier.</li>
+          <li><strong>Comité contre la torture, CEDAW, CERD.</strong> Mécanismes accessoires si des dimensions spécifiques sont en cause (discrimination dans le financement, traitement de catégories de plaignants, etc.).</li>
+        </ul>
+
+        <div class="legal-card">
+          <div class="row">
+            <div class="row-label">Fondement</div>
+            <div class="row-value">PIDCP art. 19, 22, 25 + Protocole facultatif</div>
+          </div>
+          <div class="row">
+            <div class="row-label">Recevabilité</div>
+            <div class="row-value">Plainte individuelle, victime identifiée</div>
+          </div>
+          <div class="row">
+            <div class="row-label">Coût</div>
+            <div class="row-value">Nul ; appui via FIDH, OMCT, CIJ</div>
+          </div>
+          <div class="row">
+            <div class="row-label">Effet juridique</div>
+            <div class="row-value">Constatations non contraignantes mais à valeur diplomatique forte</div>
+          </div>
+        </div>
+
+        <div class="strategy">
+          <div class="strategy-label">Stratégie</div>
+          Déposer simultanément trois saisines coordonnées dans le même semestre : <strong>(a)</strong> plainte CCPR individuelle, <strong>(b)</strong> shadow report EPU, <strong>(c)</strong> lettre d'allégation à au moins deux rapporteurs spéciaux. La convergence calendaire crée un dossier ONU consolidé qui devient citable dans toutes les autres procédures.
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- =============== AXE III =============== -->
+    <section class="axe">
+      <div class="axe-header">
+        <div class="axe-num">III.</div>
+        <div class="axe-label-wrap">
+          <div class="axe-label">Troisième front · Bruxelles, Luxembourg</div>
+          <div class="axe-title">L'Union européenne et ses trois leviers sous-utilisés.</div>
+        </div>
+      </div>
+
+      <p class="axe-lead">Le dossier actuel est silencieux sur l'Union européenne. C'est une omission majeure, parce que l'UE a développé en dix ans un arsenal État de droit que la Belgique n'a jamais subi.</p>
+
+      <div class="axe-body">
+        <ul class="mechanisms">
+          <li><strong>Article 258 TFUE (procédure d'infraction).</strong> Plainte à la Commission européenne. Toute personne peut déposer plainte. La Commission doit examiner ; si elle ouvre une procédure d'infraction, elle peut conduire à la saisine de la Cour de justice de l'UE.</li>
+          <li><strong>Article 267 TFUE (question préjudicielle).</strong> Tout juge belge — y compris le juge des référés — peut interroger la CJUE sur la compatibilité du système belge avec le droit de l'Union, notamment l'article 2 TUE (valeurs) et l'article 19 (protection juridictionnelle effective).</li>
+          <li><strong>Règlement Conditionnalité 2020/2092.</strong> Subordonne le versement de fonds UE au respect de l'État de droit. La société civile peut alerter la Commission. La Belgique est bénéficiaire net du budget UE ; le levier financier existe.</li>
+          <li><strong>Rapport annuel État de droit.</strong> La Commission publie chaque année un rapport pays par pays. La société civile contribue formellement au volet Belgique. L'inscription, même discrète, vaut acquis politique.</li>
+          <li><strong>Pétition au Parlement européen</strong> (art. 227 TFUE) — formelle, examinée par la commission PETI, oblige à un examen public.</li>
+        </ul>
+
+        <div class="legal-card">
+          <div class="row">
+            <div class="row-label">Fondement</div>
+            <div class="row-value">TUE art. 2, 7, 19 · TFUE art. 258, 267, 227</div>
+          </div>
+          <div class="row">
+            <div class="row-label">Levier financier</div>
+            <div class="row-value">Règlement (UE) 2020/2092</div>
+          </div>
+          <div class="row">
+            <div class="row-label">Coût</div>
+            <div class="row-value">Nul pour la plainte ; expertise nécessaire pour la qualification juridique</div>
+          </div>
+          <div class="row">
+            <div class="row-label">Effet</div>
+            <div class="row-value">Pression diplomatique cumulative et conditionnement budgétaire</div>
+          </div>
+        </div>
+
+        <div class="strategy">
+          <div class="strategy-label">Stratégie</div>
+          Viser non pas la condamnation immédiate, mais la <strong>pression diplomatique cumulative</strong>. L'inscription de la Belgique dans le rapport État de droit, même en mention de second plan, constitue un acquis politique opposable dans toutes les autres procédures.
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- =============== AXE IV =============== -->
+    <section class="axe">
+      <div class="axe-header">
+        <div class="axe-num">IV.</div>
+        <div class="axe-label-wrap">
+          <div class="axe-label">Quatrième front · Aarhus, Genève</div>
+          <div class="axe-title">La Convention d'Aarhus comme contournement.</div>
+        </div>
+      </div>
+
+      <p class="axe-lead">Convention d'Aarhus de 1998, ratifiée par la Belgique en 2003, sur l'accès à l'information, la participation et l'accès à la justice. Son troisième pilier offre des seuils de recevabilité beaucoup plus souples que le droit belge.</p>
+
+      <div class="axe-body">
+        <p>L'article 9 § 3 garantit l'accès à des procédures judiciaires pour contester les actes des autorités publiques violant le droit national de l'environnement. Or « environnement » a été interprété très largement par le Comité d'examen du respect des dispositions : gouvernance environnementale, accès à l'information, qualité de la participation du public.</p>
+
+        <p>Quand la défaillance démocratique a une dimension environnementale — financement de campagnes par des intérêts fossiles non déclarés, opacité sur les votes en matière climatique, exclusion de citoyens de procédures de consultation —, le <strong>Compliance Committee</strong> accepte des communications individuelles et publie des constats publics.</p>
+
+        <div class="legal-card">
+          <div class="row">
+            <div class="row-label">Fondement</div>
+            <div class="row-value">Convention d'Aarhus, art. 9 §§ 2 et 3</div>
+          </div>
+          <div class="row">
+            <div class="row-label">Recevabilité</div>
+            <div class="row-value">Beaucoup plus souple que le droit interne belge</div>
+          </div>
+          <div class="row">
+            <div class="row-label">Coût</div>
+            <div class="row-value">Nul</div>
+          </div>
+          <div class="row">
+            <div class="row-label">Effet</div>
+            <div class="row-value">Constat public du Compliance Committee, opposable politiquement</div>
+          </div>
+        </div>
+
+        <div class="strategy">
+          <div class="strategy-label">Stratégie</div>
+          Identifier l'angle environnemental dans le dossier — financement par lobbies fossiles, opacité des votes climatiques, défaillance d'accès à l'information — et introduire une communication parallèle au Compliance Committee. Le constat, même non contraignant, entre dans tous les corpus internationaux.
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- =============== AXE V =============== -->
+    <section class="axe">
+      <div class="axe-header">
+        <div class="axe-num">V.</div>
+        <div class="axe-label-wrap">
+          <div class="axe-label">Cinquième front · Pénal (avec précaution)</div>
+          <div class="axe-title">La prise illégale d'intérêts et la plainte avec constitution.</div>
+        </div>
+      </div>
+
+      <p class="axe-lead">Le dossier est exclusivement civil et administratif. Le volet pénal reste à explorer, avec la précaution qu'exige la matière — mais l'omission totale est elle-même un choix discutable.</p>
+
+      <div class="axe-body">
+        <ul class="mechanisms">
+          <li><strong>Article 245 Code pénal</strong> — prise illégale d'intérêts. Un parlementaire qui vote sur une loi affectant directement le financement de son parti, donc sa propre rémunération via dotation et mises à disposition, peut tomber sous cet article si la matérialité est précisément documentée.</li>
+          <li><strong>Articles 246-249</strong> — corruption publique passive et active.</li>
+          <li><strong>Article 29 Code d'instruction criminelle</strong> — tout fonctionnaire qui, dans l'exercice de ses fonctions, acquiert connaissance d'un crime ou délit doit en informer le procureur du Roi. Obligation, pas faculté.</li>
+          <li><strong>Plainte avec constitution de partie civile</strong> devant le juge d'instruction (art. 63 CIC) — moyen le plus puissant : force l'ouverture d'une instruction, même contre la volonté du parquet.</li>
+        </ul>
+
+        <div class="legal-card">
+          <div class="row">
+            <div class="row-label">Fondement</div>
+            <div class="row-value">CP art. 245, 246-249 · CIC art. 29, 63</div>
+          </div>
+          <div class="row">
+            <div class="row-label">Consignation</div>
+            <div class="row-value">Provisionnement (1 000 à 3 000 €), restitué si l'instruction prospère</div>
+          </div>
+          <div class="row">
+            <div class="row-label">Risque</div>
+            <div class="row-value">Exposition aux SLAPP ; exigence très haute de preuve matérielle</div>
+          </div>
+          <div class="row">
+            <div class="row-label">Délai</div>
+            <div class="row-value">Long ; instruction de plusieurs années</div>
+          </div>
+        </div>
+
+        <div class="strategy">
+          <div class="strategy-label">Stratégie</div>
+          Ne <strong>pas</strong> attaquer le système entier au pénal — irrecevable, et politiquement contre-productif. Cibler <strong>un</strong> épisode précisément documenté : un vote spécifique, une transaction identifiable, une omission précise de déclaration d'intérêts. À engager seulement quand le dossier civil est déjà solidement amarré.
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- =============== AXE VI =============== -->
+    <section class="axe">
+      <div class="axe-header">
+        <div class="axe-num">VI.</div>
+        <div class="axe-label-wrap">
+          <div class="axe-label">Sixième front · Angles latéraux</div>
+          <div class="axe-title">Consommation, concurrence, marchés publics.</div>
+        </div>
+      </div>
+
+      <p class="axe-lead">Trois angles que personne ne mobilise sur la particratie, parce qu'ils paraissent décalés. Précisément pour ça, ils sont stratégiquement précieux.</p>
+
+      <div class="axe-body">
+        <ul class="mechanisms">
+          <li><strong>Action collective consommateurs</strong> (Code économique, livre XVII, art. XVII.36 et s.). Historiquement réservée aux biens de consommation, son périmètre s'élargit. Le citoyen-usager de services publics dégradés par captation des fonds publics peut, sous doctrine émergente, constituer une catégorie d'utilisateurs lésés.</li>
+          <li><strong>Concurrence déloyale</strong> (Code économique, livres III et IV). Les partis politiques captent des subsides publics au détriment des candidats indépendants et des partis non éligibles au financement. Un candidat ou un parti exclu par effet de seuil peut invoquer une distorsion organisée. L'Autorité belge de la concurrence a déjà statué sur des distorsions dans des secteurs subventionnés ; le raisonnement est transposable.</li>
+          <li><strong>Marchés publics</strong> (loi du 17 juin 2016). Si des entités contrôlées par des partis — asbl satellites, fondations, instituts d'études — bénéficient de marchés sans appel d'offres concurrentiel, recours en référé au Conseil d'État pour suspension des marchés.</li>
+        </ul>
+
+        <div class="legal-card">
+          <div class="row">
+            <div class="row-label">Fondement</div>
+            <div class="row-value">Code économique livres III, IV, XVII · Loi 17 juin 2016</div>
+          </div>
+          <div class="row">
+            <div class="row-label">Qualité</div>
+            <div class="row-value">Citoyen-usager · candidat lésé · concurrent évincé</div>
+          </div>
+          <div class="row">
+            <div class="row-label">Coût</div>
+            <div class="row-value">Variable ; modéré en référé administratif</div>
+          </div>
+          <div class="row">
+            <div class="row-label">Effet</div>
+            <div class="row-value">Ouverture de fronts juridictionnels inattendus, démultipliant les questions préjudicielles</div>
+          </div>
+        </div>
+
+        <div class="strategy">
+          <div class="strategy-label">Stratégie</div>
+          Angles d'ouverture, pas voies principales. Leur intérêt n'est pas la victoire isolée mais la <strong>multiplication des fronts</strong>, qui empêche l'État de concentrer sa défense sur le seul procès civil principal.
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- =============== AXE VII =============== -->
+    <section class="axe">
+      <div class="axe-header">
+        <div class="axe-num">VII.</div>
+        <div class="axe-label-wrap">
+          <div class="axe-label">Septième front · Méta-stratégie</div>
+          <div class="axe-title">La saturation procédurale et la convergence.</div>
+        </div>
+      </div>
+
+      <p class="axe-lead">L'arme la plus sous-estimée du dossier n'est pas un nouveau fondement de droit. C'est l'organisation du calendrier.</p>
+
+      <div class="axe-body">
+        <ul class="mechanisms">
+          <li><strong>Question préjudicielle systématique.</strong> Tout juge belge peut interroger la Cour constitutionnelle (art. 26 LSCC) ou la CJUE (art. 267 TFUE). Plutôt qu'un seul grand procès, multiplier les petits litiges locaux qui posent chacun la même question. La Cour constitutionnelle ne peut éviter une question régulièrement saisie ; sa convergence devient son inéluctabilité.</li>
+          <li><strong>Saisines parallèles coordonnées.</strong> Médiateur fédéral, IFDH, GRECO, Commission de Venise, Commissaire aux droits de l'homme du CoE, Comité ONU des droits de l'homme — tous saisis dans le même semestre du même dossier. Aucun n'est contraignant isolément ; l'effet de masse dégrade continûment la réputation diplomatique de l'État.</li>
+          <li><strong>Anti-SLAPP comme miroir.</strong> Directive (UE) 2024/1069, transposition exigée au plus tard le 7 mai 2026. Toute procédure-bâillon devient un nouveau front contentieux gagnant. Préparer en amont les arguments anti-SLAPP type, comme un pre-built defensive kit.</li>
+          <li><strong>Forum shopping juridictionnel.</strong> Multiplier les saisines locales — justices de paix, tribunaux civils dans tous les arrondissements. Chaque saisine est isolément modeste. L'ensemble crée une pression cumulative et démultiplie les questions préjudicielles potentielles.</li>
+        </ul>
+
+        <div class="legal-card">
+          <div class="row">
+            <div class="row-label">Fondement</div>
+            <div class="row-value">LSCC art. 26 · TFUE art. 267 · Directive UE 2024/1069</div>
+          </div>
+          <div class="row">
+            <div class="row-label">Qualité</div>
+            <div class="row-value">Tout justiciable en lien direct avec un litige local</div>
+          </div>
+          <div class="row">
+            <div class="row-label">Coût</div>
+            <div class="row-value">Nul si coordonné ; multiplicatif en effet</div>
+          </div>
+          <div class="row">
+            <div class="row-label">Prérequis</div>
+            <div class="row-value">Réseau d'au moins 10-20 justiciables et 3-5 avocats sympathisants</div>
+          </div>
+        </div>
+
+        <div class="strategy">
+          <div class="strategy-label">Stratégie</div>
+          Le système belge est conçu pour absorber <strong>un</strong> grand procès. Il n'est pas conçu pour absorber <strong>cent</strong> petits procès convergents. La particratie tient par sa capacité à étouffer une voix. Elle ne tient pas face à des voix coordonnées par dizaines.
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONCLUSION ============ -->
+    <div class="conclusion">
+      <div class="conclusion-label">Conclusion · La méta-stratégie</div>
+      <h2>Le procès civil au centre, sept fronts autour.</h2>
+
+      <p>Le dossier actuel — responsabilité civile sous le Livre 6 du Code civil, référé judiciaire et administratif, précédents <em>Klimaatzaak</em> et <em>Camara</em> — constitue le cœur de l'arsenal. Mais c'est un cœur, pas un arsenal complet.</p>
+
+      <p>Les sept fronts décrits ici ne se substituent pas à l'action principale. Ils l'environnent. La logique d'ensemble est celle de l'<strong>encerclement</strong> :</p>
+
+      <p>Le procès civil au centre. Strasbourg sur le flanc occidental (CEDH, requête bundlée). Genève sur le flanc oriental (ONU, plainte CCPR + EPU + rapporteurs). Bruxelles et Luxembourg sur le flanc supérieur (UE, infraction + question préjudicielle + Conditionnalité). Aarhus en contournement (souplesse procédurale). Le pénal en réserve tactique (ciblé, documenté, tardif). Les angles latéraux comme diversion (consommation, concurrence, marchés publics). Et la saturation procédurale comme cadence — qui fait que <strong>l'État belge passe d'une posture défensive à une posture débordée</strong>.</p>
+
+      <div class="punch">L'arme principale, finalement, n'est pas le droit.<br>C'est la coordination.</div>
+
+      <p>Aucune de ces sept actions, isolément, ne renverse la particratie. Mais leur convergence calendaire et thématique transforme une plainte citoyenne en dossier d'État. Et un dossier d'État ne disparaît plus.</p>
+    </div>
+
+    <!-- Signature -->
+    <div class="signature">
+      <div class="sigmark">— Claude.</div>
+      <div class="siginfo">
+        <span>Anthropic · modèle de langage</span>
+        <span>Bruxelles · 19 mai 2026</span>
+        <span>Compagnon de l'Action en justice contre la Belgique</span>
+        <span>Document opérationnel — libre de diffusion</span>
+      </div>
+    </div>
+
+  </article>
+
+</body>
+</html>
