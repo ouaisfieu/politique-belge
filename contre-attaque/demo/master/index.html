@@ -1,0 +1,2188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plaidoirie type — La Doctrine du Miroir Constitutionnel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Manrope:wght@200..800&family=JetBrains+Mono:wght@300..700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #f5f0e3;
+    --bg-deep: #ebe3d0;
+    --bg-paper: #fdf9ee;
+    --ink: #1c1814;
+    --ink-soft: #4a3f33;
+    --ink-faint: #8a7a64;
+    --accent: #7a1c1c;
+    --accent-deep: #4d0f0f;
+    --gold: #9a7a3a;
+    --rule: #c9bda1;
+    --rule-soft: #ddd2b6;
+    --expert-tint: #f0e8d2;
+    --public-tint: #ede4d0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  html { scroll-behavior: smooth; }
+  
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.65;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  
+  /* Paper grain texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.4;
+    background-image: 
+      radial-gradient(circle at 20% 30%, rgba(154, 122, 58, 0.03) 0px, transparent 2px),
+      radial-gradient(circle at 70% 60%, rgba(122, 28, 28, 0.02) 0px, transparent 2px),
+      radial-gradient(circle at 40% 80%, rgba(28, 24, 20, 0.02) 0px, transparent 2px);
+    background-size: 80px 80px, 120px 120px, 100px 100px;
+    mix-blend-mode: multiply;
+  }
+  
+  /* ============================
+     EN-TÊTE MONUMENTAL
+     ============================ */
+  
+  .masthead {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 3rem 2.5rem 1.5rem;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .top-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .top-meta span:nth-child(2) {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  
+  .piece-marker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid var(--accent);
+    border-radius: 1px;
+  }
+  
+  .main-title {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    font-weight: 400;
+    font-size: clamp(2.4rem, 6vw, 5.5rem);
+    line-height: 0.96;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+  
+  .main-title em {
+    font-style: normal;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  
+  .subtitle {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+    font-style: italic;
+    color: var(--ink-soft);
+    max-width: 70ch;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+  }
+  
+  .author-strip {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.1em;
+    flex-wrap: wrap;
+  }
+  
+  .author-strip .seal {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: relative;
+    flex-shrink: 0;
+  }
+  
+  .author-strip .seal::after {
+    content: '§';
+    position: absolute;
+    inset: 0;
+    color: var(--bg-paper);
+    font-family: 'EB Garamond', serif;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+  }
+  
+  /* ============================
+     ABSTRACT / RÉSUMÉ
+     ============================ */
+  
+  .abstract {
+    max-width: 1500px;
+    margin: 2rem auto 4rem;
+    padding: 0 2.5rem;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .abstract-inner {
+    background: var(--bg-paper);
+    border: 1px solid var(--rule);
+    padding: 2.5rem 3rem;
+    position: relative;
+  }
+  
+  .abstract-inner::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    height: 4px;
+    background: var(--accent);
+  }
+  
+  .abstract-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: block;
+  }
+  
+  .abstract h2 {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144, "wght" 500;
+    font-size: clamp(1.4rem, 2.4vw, 2rem);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: var(--ink);
+  }
+  
+  .abstract p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 1rem;
+  }
+  
+  .abstract p:last-child { margin-bottom: 0; }
+  
+  /* ============================
+     EXPLICATION DU DIPTYQUE
+     ============================ */
+  
+  .how-it-works {
+    max-width: 1500px;
+    margin: 0 auto 3rem;
+    padding: 0 2.5rem;
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  
+  .how-card {
+    padding: 2rem;
+    position: relative;
+  }
+  
+  .how-card:first-child {
+    background: var(--expert-tint);
+    border-right: 1px solid var(--rule);
+  }
+  
+  .how-card:last-child {
+    background: var(--public-tint);
+  }
+  
+  .how-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+  }
+  
+  .how-card:first-child .how-label::before { content: '◐ '; }
+  .how-card:last-child .how-label::before { content: '◑ '; }
+  
+  .how-card h3 {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144, "wght" 500;
+    font-style: italic;
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    color: var(--ink);
+  }
+  
+  .how-card:last-child {
+    font-family: 'Manrope', sans-serif;
+  }
+  
+  .how-card p {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  
+  /* ============================
+     DIPTYQUE PRINCIPAL
+     ============================ */
+  
+  .diptych-container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 2.5rem 4rem;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .scene {
+    margin-bottom: 6rem;
+    position: relative;
+  }
+  
+  .scene:last-child { margin-bottom: 2rem; }
+  
+  .scene-header {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  
+  .scene-number {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144, "wght" 300;
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--accent);
+    font-style: italic;
+    margin-bottom: 0.5rem;
+  }
+  
+  .scene-title {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144, "wght" 500;
+    font-size: clamp(1.6rem, 3vw, 2.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  
+  .scene-subtitle {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    max-width: 75ch;
+  }
+  
+  .diptych {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    background: var(--bg-paper);
+    border: 1px solid var(--rule);
+    position: relative;
+  }
+  
+  .diptych::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--rule);
+    pointer-events: none;
+  }
+  
+  .panel {
+    padding: 2.5rem 2.5rem;
+    position: relative;
+  }
+  
+  .panel-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--rule-soft);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  
+  .panel.expert .panel-label {
+    color: var(--accent);
+  }
+  
+  .panel.expert .panel-label::before {
+    content: '◐';
+    font-size: 0.9rem;
+  }
+  
+  .panel.public .panel-label {
+    color: var(--ink-faint);
+  }
+  
+  .panel.public .panel-label::before {
+    content: '◑';
+    font-size: 0.9rem;
+  }
+  
+  /* PANEL EXPERT — typographie classique */
+  .panel.expert {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+  
+  .panel.expert p {
+    margin-bottom: 1.1rem;
+    text-align: justify;
+    hyphens: auto;
+  }
+  
+  .panel.expert .lead {
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--accent-deep);
+    margin-bottom: 1.4rem;
+    line-height: 1.5;
+  }
+  
+  .panel.expert .speech::first-letter {
+    font-family: 'Fraunces', serif;
+    font-size: 3.6rem;
+    line-height: 0.85;
+    float: left;
+    margin: 0.2rem 0.6rem 0 0;
+    color: var(--accent);
+    font-style: italic;
+    font-weight: 400;
+  }
+  
+  .panel.expert .quoted {
+    display: block;
+    margin: 1.4rem 0;
+    padding: 0.4rem 0 0.4rem 1.5rem;
+    border-left: 3px solid var(--accent);
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 1rem;
+  }
+  
+  .panel.expert .legal-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    background: var(--bg-deep);
+    padding: 0.1rem 0.5rem;
+    color: var(--accent-deep);
+    border-radius: 1px;
+    white-space: nowrap;
+    font-style: normal;
+  }
+  
+  .panel.expert .sidenote {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--ink-faint);
+    padding-left: 0.8rem;
+    border-left: 1px solid var(--rule);
+    margin: 1.4rem 0;
+    line-height: 1.5;
+  }
+  
+  /* PANEL PUBLIC — typographie moderne */
+  .panel.public {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--ink);
+    font-weight: 400;
+  }
+  
+  .panel.public p {
+    margin-bottom: 1.1rem;
+  }
+  
+  .panel.public .lead {
+    font-size: 1.18rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 1.4rem;
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+  }
+  
+  .panel.public strong {
+    color: var(--accent-deep);
+    font-weight: 700;
+  }
+  
+  .panel.public .callout {
+    display: block;
+    margin: 1.4rem 0;
+    padding: 1rem 1.2rem;
+    background: var(--bg-deep);
+    border-left: 3px solid var(--accent);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  
+  .panel.public .callout-label {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+  
+  .panel.public ul {
+    list-style: none;
+    margin: 1rem 0;
+  }
+  
+  .panel.public ul li {
+    padding-left: 1.5rem;
+    margin-bottom: 0.7rem;
+    position: relative;
+    font-size: 0.95rem;
+  }
+  
+  .panel.public ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  
+  /* ============================
+     CITATION BLOCK SPÉCIALE
+     ============================ */
+  
+  .question-block {
+    margin: 3rem 0;
+    padding: 0;
+    position: relative;
+  }
+  
+  .question-block-inner {
+    background: var(--ink);
+    color: var(--bg-paper);
+    padding: 3rem;
+    position: relative;
+    border: 1px solid var(--ink);
+  }
+  
+  .question-block-inner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--accent);
+  }
+  
+  .question-block-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+  
+  .question-text {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+    line-height: 1.55;
+    color: var(--bg-paper);
+    max-width: 70ch;
+  }
+  
+  .question-text strong {
+    color: #e6c87a;
+    font-style: normal;
+    font-weight: 600;
+  }
+  
+  /* ============================
+     FULL TEXT (NOTE INTÉGRALE)
+     ============================ */
+  
+  .full-note {
+    max-width: 900px;
+    margin: 6rem auto 4rem;
+    padding: 0 2.5rem;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .full-note-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  
+  .full-note-marker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  
+  .full-note-title {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144, "wght" 400;
+    font-style: italic;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    color: var(--ink);
+    line-height: 1.1;
+  }
+  
+  .full-note-body {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 1.75;
+    color: var(--ink);
+  }
+  
+  .full-note-body h3 {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144, "wght" 500;
+    font-size: 1.4rem;
+    margin: 2.5rem 0 1rem;
+    color: var(--accent-deep);
+  }
+  
+  .full-note-body h3::before {
+    content: '§ ';
+    color: var(--accent);
+    font-weight: 400;
+  }
+  
+  .full-note-body p {
+    margin-bottom: 1.1rem;
+    text-align: justify;
+    hyphens: auto;
+  }
+  
+  .full-note-body .formula {
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--accent);
+    margin: 2.5rem 0;
+    line-height: 1.4;
+  }
+  
+  .full-note-body .formula::before,
+  .full-note-body .formula::after {
+    content: '❦';
+    color: var(--gold);
+    display: block;
+    font-size: 1.2rem;
+    margin: 0.8rem 0;
+  }
+  
+  .ornament-rule {
+    text-align: center;
+    margin: 3rem 0;
+    color: var(--gold);
+    font-size: 1.2rem;
+    letter-spacing: 1rem;
+  }
+  
+  /* ============================
+     FAQ
+     ============================ */
+  
+  .faq-section {
+    max-width: 1500px;
+    margin: 0 auto 4rem;
+    padding: 4rem 2.5rem 0;
+    border-top: 1px solid var(--rule);
+    position: relative;
+    z-index: 2;
+  }
+  
+  .faq-header {
+    margin-bottom: 3rem;
+  }
+  
+  .faq-header .marker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  
+  .faq-header h2 {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144, "wght" 400;
+    font-style: italic;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--ink);
+    line-height: 1.05;
+  }
+  
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .faq-item {
+    background: var(--bg-paper);
+    border: 1px solid var(--rule);
+    padding: 1.8rem 2rem;
+    transition: all 0.3s ease;
+  }
+  
+  .faq-item:hover {
+    border-color: var(--accent);
+    box-shadow: 0 8px 24px -12px rgba(122, 28, 28, 0.15);
+  }
+  
+  .faq-item h3 {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 36, "wght" 500;
+    font-size: 1.15rem;
+    color: var(--accent-deep);
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+  }
+  
+  .faq-item p {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  
+  /* ============================
+     PIED DE PAGE
+     ============================ */
+  
+  footer {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 4rem 2.5rem 3rem;
+    border-top: 1px solid var(--rule);
+    position: relative;
+    z-index: 2;
+  }
+  
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .footer-grid h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  
+  .footer-grid p,
+  .footer-grid li {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+  
+  .footer-grid ul {
+    list-style: none;
+  }
+  
+  .footer-grid li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule-soft);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .footer-bottom .formula-end {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--accent);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  
+  /* ============================
+     RESPONSIVE
+     ============================ */
+  
+  @media (max-width: 900px) {
+    body { font-size: 16px; }
+    
+    .masthead, .abstract, .how-it-works, .diptych-container, .full-note, .faq-section, footer {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+    
+    .diptych {
+      grid-template-columns: 1fr;
+    }
+    
+    .diptych::after {
+      display: none;
+    }
+    
+    .panel {
+      padding: 2rem 1.5rem;
+    }
+    
+    .panel.expert {
+      border-bottom: 2px solid var(--rule);
+    }
+    
+    .how-it-works {
+      grid-template-columns: 1fr;
+    }
+    
+    .how-card:first-child {
+      border-right: none;
+      border-bottom: 1px solid var(--rule);
+    }
+    
+    .abstract-inner {
+      padding: 1.8rem 1.5rem;
+    }
+    
+    .question-block-inner {
+      padding: 2rem 1.5rem;
+    }
+    
+    .scene-number {
+      font-size: 3rem;
+    }
+    
+    .faq-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .top-meta {
+      font-size: 0.65rem;
+    }
+    
+    .panel.expert .speech::first-letter {
+      font-size: 3rem;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .masthead {
+      padding-top: 2rem;
+    }
+    
+    .main-title {
+      font-size: 2.4rem;
+    }
+    
+    .top-meta {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.3rem;
+    }
+  }
+  
+  /* Reading flow enhancement */
+  .scene:nth-child(odd) .diptych {
+    background: linear-gradient(to right, var(--bg-paper) 50%, var(--bg-paper) 50%);
+  }
+  
+  /* Subtle entrance animation */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .scene {
+    animation: fadeUp 0.6s ease-out;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================
+     EN-TÊTE
+     ============================ -->
+<header class="masthead">
+  <div class="top-meta">
+    <span>Doctrine du Miroir Constitutionnel — Pièce II</span>
+    <span>Note de plaidoirie type</span>
+    <span>Libre de droits • À diffuser</span>
+  </div>
+  
+  <div class="piece-marker">Outil de contre-attaque — Édition 2026</div>
+  
+  <h1 class="main-title">
+    Plaidoirie<br>
+    pour <em>l'asymétrie</em><br>
+    démasquée
+  </h1>
+  
+  <p class="subtitle">
+    Note d'audience pour l'avocat qui veut soulever, dès la première comparution, 
+    la question préjudicielle qui met l'État face à son propre miroir — 
+    présentée en diptyque pour le juriste et le citoyen.
+  </p>
+  
+  <div class="author-strip">
+    <span class="seal"></span>
+    <span>Format : note orale • durée estimée : 12 à 18 minutes</span>
+    <span>·</span>
+    <span>Juridiction : tribunal correctionnel ou civil</span>
+  </div>
+</header>
+
+<!-- ============================
+     ABSTRACT
+     ============================ -->
+<section class="abstract">
+  <div class="abstract-inner">
+    <span class="abstract-label">Pourquoi ce document existe</span>
+    <h2>Une plaidoirie n'est pas un texte — c'est une mécanique.</h2>
+    <p>
+      L'argument central de la Doctrine du Miroir est juridiquement simple : 
+      l'État impose au citoyen une transparence sanctionnée pénalement, et 
+      s'octroie à lui-même une opacité sans aucune sanction. Cette asymétrie 
+      viole les articles 10, 11, 32 et 33 de la Constitution.
+    </p>
+    <p>
+      Mais entre l'idée et l'arrêt, il y a un avocat, un juge, une salle d'audience, 
+      des minutes, et un greffier qui prend des notes. C'est cette mécanique 
+      que cette pièce documente. Côté gauche : ce que l'avocat dit, comment, 
+      pourquoi, avec quels appuis jurisprudentiels. Côté droit : ce qui se passe 
+      vraiment dans la salle, pour quiconque n'a jamais mis les pieds dans un 
+      tribunal et veut comprendre ce qui se joue.
+    </p>
+  </div>
+</section>
+
+<!-- ============================
+     COMMENT LIRE
+     ============================ -->
+<section class="how-it-works">
+  <div class="how-card">
+    <div class="how-label">Colonne de gauche</div>
+    <h3>Panneau Expert</h3>
+    <p>
+      Pour l'avocat, le juriste, le magistrat curieux ou l'étudiant en droit. 
+      Reprend les formulations exactes à employer à la barre, avec articles, 
+      arrêts, doctrine et travaux préparatoires. Le texte peut être lu, 
+      annoté ou prononcé tel quel.
+    </p>
+  </div>
+  <div class="how-card">
+    <div class="how-label">Colonne de droite</div>
+    <h3>Panneau Grand Public</h3>
+    <p>
+      Pour le citoyen, le justiciable, le journaliste, ou simplement quiconque 
+      veut comprendre. Décrit ce qui se passe à chaque étape, ce que pèsent 
+      les arguments, et ce qui se joue concrètement. Sans jargon, sans 
+      simplification trompeuse.
+    </p>
+  </div>
+</section>
+
+<!-- ============================
+     DIPTYQUE PRINCIPAL
+     ============================ -->
+<main class="diptych-container">
+
+  <!-- SCÈNE I — OUVERTURE -->
+  <article class="scene">
+    <header class="scene-header">
+      <div class="scene-number">I.</div>
+      <h2 class="scene-title">L'ouverture — le moment où l'on prend la parole</h2>
+      <p class="scene-subtitle">
+        L'avocat se lève. Le tribunal s'attend à entendre une défense au fond. 
+        Au lieu de cela, il va entendre une exception — c'est-à-dire un obstacle 
+        juridique préalable.
+      </p>
+    </header>
+    
+    <div class="diptych">
+      
+      <div class="panel expert">
+        <div class="panel-label">Ce que l'avocat dit</div>
+        <p class="lead">Monsieur le Président, Mesdames et Messieurs les Juges,</p>
+        <p class="speech">
+          Mon client comparaît aujourd'hui devant vous, poursuivi sur le 
+          fondement de <span class="legal-code">l'article 449 du Code des impôts sur les revenus 1992</span>. 
+          On lui reproche un défaut de déclaration. La peine encourue est 
+          considérable : <em>de huit jours à deux ans d'emprisonnement, 
+          assortis d'une amende pouvant atteindre cinq cent mille euros</em>.
+        </p>
+        <p>
+          Avant que le tribunal n'examine si les faits reprochés à mon client 
+          sont matériellement établis, avant même que la défense ne discute 
+          de l'intention frauduleuse, je soulève, in limine litis, une 
+          <strong>exception préjudicielle de constitutionnalité</strong>.
+        </p>
+        <p>
+          Cette exception ne tend pas à retarder le procès. Elle tend à le 
+          rendre possible. Car la disposition pénale sur laquelle reposent 
+          les poursuites est, dans son économie même, contraire aux articles 
+          10, 11, 32 et 33 de la Constitution, lus seuls ou en combinaison 
+          avec les articles 10 et 14 de la Convention européenne des droits 
+          de l'homme.
+        </p>
+        <p>
+          Le tribunal est, dès lors, tenu, conformément à <span class="legal-code">l'article 26 § 2 de la loi spéciale du 6 janvier 1989</span> 
+          sur la Cour constitutionnelle, de poser une question préjudicielle 
+          dont je proposerai la formulation au terme de mon développement.
+        </p>
+        <div class="sidenote">
+          Travaux préparatoires utiles : Doc. parl. Chambre, sess. 1988-1989, 
+          n° 633/1 (loi spéciale du 6 janvier 1989). 
+          Jurisprudence d'application : Cass., 2 mars 2005, Pas. 2005, n° 130 — 
+          la qualification de question « sérieuse » est appréciée objectivement.
+        </div>
+      </div>
+      
+      <div class="panel public">
+        <div class="panel-label">Ce qui se passe vraiment</div>
+        <p class="lead">
+          La salle d'audience est calme. Le client est assis derrière son avocat. 
+          Le ministère public attend.
+        </p>
+        <p>
+          L'avocat ne va pas commencer par dire « mon client est innocent ». 
+          Il va faire mieux que ça. Il va dire au tribunal : <strong>« avant 
+          de juger mon client, il faut vérifier si la loi sur laquelle vous 
+          vous appuyez est constitutionnelle. »</strong>
+        </p>
+        <p>
+          C'est ce qu'on appelle une <strong>exception préjudicielle</strong>. 
+          C'est une procédure prévue par la loi belge : si une partie à un 
+          procès estime que la loi qu'on lui applique viole la Constitution, 
+          elle peut demander au tribunal de mettre le procès en pause et 
+          de demander à la Cour constitutionnelle de trancher.
+        </p>
+        
+        <div class="callout">
+          <span class="callout-label">À retenir</span>
+          Le tribunal qui juge votre affaire n'a pas le pouvoir de vérifier 
+          si une loi est conforme à la Constitution. Seule la Cour 
+          constitutionnelle peut faire ça. Donc le tribunal doit lui poser 
+          la question — c'est ce qu'on appelle « renvoyer une question 
+          préjudicielle ».
+        </div>
+        
+        <p>
+          Et ce n'est pas une faveur du juge. C'est une obligation. La loi 
+          dit qu'il <strong>doit</strong> transmettre la question, sauf 
+          s'il peut démontrer qu'elle est manifestement non fondée — ce 
+          qui est très difficile à motiver quand l'argument est solide.
+        </p>
+      </div>
+      
+    </div>
+  </article>
+
+  <!-- SCÈNE II — LA NORME ATTAQUÉE -->
+  <article class="scene">
+    <header class="scene-header">
+      <div class="scene-number">II.</div>
+      <h2 class="scene-title">Ce que l'État reproche au citoyen</h2>
+      <p class="scene-subtitle">
+        Avant de dénoncer l'asymétrie, il faut planter le premier panneau du miroir : 
+        l'obligation imposée au justiciable et la violence pénale qui l'accompagne.
+      </p>
+    </header>
+    
+    <div class="diptych">
+      
+      <div class="panel expert">
+        <div class="panel-label">Démonstration juridique</div>
+        <p class="speech">
+          La disposition fondatrice de la poursuite, <span class="legal-code">l'article 449 CIR 1992</span>, 
+          punit pénalement « celui qui, dans une intention frauduleuse ou à 
+          dessein de nuire, contrevient aux dispositions du présent Code ou 
+          des arrêtés pris pour son exécution ».
+        </p>
+        <p>
+          Le périmètre de cette infraction est vaste. Il couvre, notamment :
+        </p>
+        <div class="quoted">
+          — l'omission de déclaration de revenus (art. 305 CIR 92),<br>
+          — l'omission de déclaration de comptes bancaires à l'étranger (art. 307 § 1/1),<br>
+          — l'omission de déclaration de constructions juridiques (art. 5/1, dit « cayman »),<br>
+          — l'omission de déclaration des avoirs en cryptomonnaies (instruction administrative postérieure à la directive DAC8).
+        </div>
+        <p>
+          Ces obligations déclaratives sont d'une <em>radicalité particulière</em> : 
+          le contribuable doit déclarer, sous serment, l'intégralité de sa 
+          situation patrimoniale et financière, y compris celle qu'il détient 
+          hors du territoire belge, y compris celle dont l'administration 
+          fiscale ne soupçonnait pas l'existence avant la déclaration.
+        </p>
+        <p>
+          La transparence imposée est <em>active</em> (déclarer), <em>continue</em> 
+          (chaque exercice), <em>quasi-illimitée</em> (tous patrimoines, tous revenus, 
+          toutes constructions juridiques), et <em>pénalement sanctionnée</em> en 
+          cas de défaut. Telle est la première face du miroir.
+        </p>
+      </div>
+      
+      <div class="panel public">
+        <div class="panel-label">Ce que ça veut dire concrètement</div>
+        <p class="lead">
+          La loi belge demande au citoyen de tout dire à l'État, et de risquer 
+          la prison s'il oublie quelque chose.
+        </p>
+        <p>
+          Concrètement : si vous avez un livret d'épargne en France, vous 
+          devez le déclarer. Si votre tante vous a légué un appartement au 
+          Maroc, vous devez le déclarer. Si vous avez 300 € en bitcoin sur 
+          une plateforme étrangère, vous devez le déclarer. Si vous oubliez 
+          — même de bonne foi, sur un seul de ces points — le fisc peut 
+          considérer que vous êtes en infraction.
+        </p>
+        <p>
+          Et la sanction n'est pas anecdotique. <strong>Deux ans de prison. 
+          Cinq cent mille euros d'amende.</strong> Pour avoir oublié de 
+          déclarer.
+        </p>
+        
+        <div class="callout">
+          <span class="callout-label">Le principe caché</span>
+          La loi part d'un postulat simple : <em>le citoyen est suspect 
+          jusqu'à preuve du contraire</em>. C'est à lui de prouver, chaque 
+          année, qu'il n'a rien caché. Et s'il rate quelque chose, la 
+          présomption d'innocence ne joue qu'à moitié.
+        </p>
+        </div>
+        
+        <p>
+          Ce n'est pas une critique morale de l'obligation fiscale — l'impôt 
+          est nécessaire et le combat contre la fraude est légitime. La 
+          critique porte ailleurs : sur le <strong>double standard</strong> 
+          qu'on va découvrir dans la scène suivante.
+        </p>
+      </div>
+      
+    </div>
+  </article>
+
+  <!-- SCÈNE III — LE MIROIR -->
+  <article class="scene">
+    <header class="scene-header">
+      <div class="scene-number">III.</div>
+      <h2 class="scene-title">Ce que l'État se permet à lui-même</h2>
+      <p class="scene-subtitle">
+        Le second panneau du miroir : un texte de loi, voté la même décennie, 
+        publié au même Moniteur belge, qui organise pour l'État l'inverse 
+        exact de ce qu'il impose au citoyen.
+      </p>
+    </header>
+    
+    <div class="diptych">
+      
+      <div class="panel expert">
+        <div class="panel-label">La norme symétrique</div>
+        <p class="speech">
+          À la même page du Moniteur belge, à la même époque que les 
+          obligations déclaratives renforcées du contribuable, le législateur 
+          a adopté la <span class="legal-code">loi du 12 mai 2024</span> 
+          modifiant la loi du 11 avril 1994 relative à la publicité de 
+          l'administration.
+        </p>
+        <p>
+          Cette loi insère un <span class="legal-code">5° à l'article 6 § 2</span> 
+          de la loi de 1994. Le texte, je cite :
+        </p>
+        <div class="quoted">
+          « L'instance administrative rejette la demande (...) si la publication 
+          du document administratif porte atteinte (...) au secret des documents 
+          administratifs portant sur l'exécution d'une stratégie politique, 
+          entre des ministres ou secrétaires d'État entre eux, entre un ministre 
+          ou secrétaire d'État ou des ministres ou secrétaires d'État et les 
+          membres de leurs organes stratégiques, entre les organes stratégiques 
+          entre eux, ou entre des ministres ou secrétaires d'État et/ou organes 
+          stratégiques et un parti politique ou un groupe parlementaire. »
+        </div>
+        <p>
+          L'exception est <em>obligatoire</em> (le verbe est « rejette »), 
+          <em>absolue</em> (aucune mise en balance avec l'intérêt de la 
+          publication n'est prévue), et <em>indéfinie</em> (la notion de 
+          « stratégie politique » n'est définie nulle part dans la loi 
+          ni dans ses travaux préparatoires).
+        </p>
+        <p>
+          Et — voici le point central — <strong>cette exception n'est 
+          assortie d'aucune sanction.</strong> Le ministre qui dissimule, 
+          le cabinet qui détruit, l'organe stratégique qui efface : 
+          aucun encoure d'amende, aucun encoure de peine. Aucun.
+        </p>
+        <div class="sidenote">
+          L'avis du Conseil d'État n° 72.732/2 du 30 janvier 2023 questionnait 
+          déjà l'utilité de cette exception, observant que « les exceptions 
+          actuelles sont manifestement suffisantes ». L'avis CADA fédérale 
+          n° 2025-73 du 6 juin 2025 la juge contraire au principe de publicité.
+        </div>
+      </div>
+      
+      <div class="panel public">
+        <div class="panel-label">Le double standard mis à nu</div>
+        <p class="lead">
+          La même année que la loi qui menace le citoyen de prison pour 
+          omission fiscale, le parlement belge a voté une autre loi qui 
+          dit, en substance : <strong>les ministres et leurs cabinets ont 
+          le droit de tout cacher dès qu'il s'agit de « stratégie politique ».</strong>
+        </p>
+        <p>
+          C'est l'article 6 § 2 5° de la loi du 11 avril 1994, modifié par 
+          la loi du 12 mai 2024. Trois choses, à retenir :
+        </p>
+        <ul>
+          <li>L'exception est <strong>obligatoire</strong> : si on demande un 
+          document, l'administration <em>doit</em> le refuser, elle n'a pas 
+          le choix.</li>
+          <li>L'exception est <strong>absolue</strong> : aucune mise en 
+          balance, même quand l'intérêt public à connaître le document 
+          est immense.</li>
+          <li>La notion de « stratégie politique » n'est définie nulle part. 
+          C'est l'administration elle-même qui décide ce qui en relève.</li>
+        </ul>
+        
+        <div class="callout">
+          <span class="callout-label">Le point qui fait tout</span>
+          Le ministre qui cache un document n'encourt <strong>aucune 
+          sanction</strong>. Pas d'amende. Pas de poursuite. Rien. 
+          Comparez avec le contribuable de la scène précédente, qui 
+          risque deux ans de prison pour avoir oublié un livret d'épargne.
+        </div>
+        
+        <p>
+          Le Conseil d'État lui-même, lors de l'examen du projet de loi, 
+          a écrit que cette nouvelle exception était <em>inutile</em>, 
+          que les protections existantes du secret gouvernemental étaient 
+          déjà suffisantes. Le parlement a quand même voté la loi.
+        </p>
+        <p>
+          Pourquoi ? Parce que la <strong>vraie</strong> utilité de cette 
+          exception, c'est de couvrir précisément le cœur de l'activité 
+          des cabinets : les échanges avec les lobbyistes, les arbitrages 
+          confidentiels, les coordinations entre partis et ministres. 
+          Tout ce que la Doctrine du Miroir cherche à rendre visible.
+        </p>
+      </div>
+      
+    </div>
+  </article>
+
+  <!-- SCÈNE IV — L'ARGUMENT CENTRAL -->
+  <article class="scene">
+    <header class="scene-header">
+      <div class="scene-number">IV.</div>
+      <h2 class="scene-title">L'argument central — l'asymétrie comme discrimination</h2>
+      <p class="scene-subtitle">
+        Le cœur de la plaidoirie. L'avocat met les deux normes en regard et 
+        démontre que la différence de traitement n'est ni objective, ni 
+        proportionnée, ni légitime — donc qu'elle viole l'égalité.
+      </p>
+    </header>
+    
+    <div class="diptych">
+      
+      <div class="panel expert">
+        <div class="panel-label">Le moyen pris de la violation des articles 10-11</div>
+        <p class="speech">
+          La jurisprudence constante de votre Cour, et plus encore celle de 
+          la Cour constitutionnelle (arrêts n° 23/89, n° 39/91, n° 158/2009, 
+          n° 167/2018 et leurs descendants), exige, pour qu'une différence 
+          de traitement soit conforme aux articles 10 et 11 de la Constitution, 
+          que trois conditions cumulatives soient remplies :
+        </p>
+        <div class="quoted">
+          (1) la différence doit reposer sur un critère <em>objectif</em>,<br>
+          (2) elle doit poursuivre un <em>but légitime</em>,<br>
+          (3) elle doit être <em>proportionnée</em> au but poursuivi.
+        </div>
+        <p>
+          Aucune de ces trois conditions n'est remplie dans la confrontation 
+          des deux normes que je viens d'exposer.
+        </p>
+        <p>
+          <em>Premièrement</em>, sur le critère objectif. La différence de 
+          traitement repose sur la position des personnes concernées dans le 
+          rapport de souveraineté — gouvernant <em>versus</em> gouverné. Or, 
+          <span class="legal-code">l'article 33 de la Constitution</span> dispose 
+          que « tous les pouvoirs émanent de la Nation ». Dans cette architecture, 
+          c'est le gouvernant qui exerce un pouvoir <em>délégué</em>, et qui 
+          doit dès lors rendre compte au délégant. Faire de la position de 
+          gouvernant un motif d'opacité accrue, c'est inverser le critère 
+          constitutionnel. Le critère n'est pas seulement non objectif : il 
+          est <strong>contraire</strong> à la norme dont il est censé dériver.
+        </p>
+        <p>
+          <em>Deuxièmement</em>, sur le but légitime. L'État invoquera la 
+          protection de la délibération politique, la continuité de l'action 
+          gouvernementale, la nécessité du secret pour gouverner efficacement. 
+          Ces buts existent <em>symétriquement</em> pour le citoyen, dont la 
+          vie privée est protégée par l'article 22 de la Constitution et 
+          par l'article 8 CEDH, dont le secret des affaires est consacré par 
+          de nombreuses législations, et dont la présomption d'innocence est 
+          consacrée par l'article 6 § 2 CEDH. Si l'État accepte de sacrifier 
+          ces intérêts du citoyen au nom de la lutte contre la fraude, il 
+          doit accepter de sacrifier ses propres intérêts au nom du contrôle 
+          démocratique. À défaut, le « but légitime » n'est que la <em>protection 
+          du pouvoir</em>, ce qui n'est pas, et ne peut être, un but légitime 
+          constitutionnel.
+        </p>
+        <p>
+          <em>Troisièmement</em>, sur la proportionnalité. La disproportion 
+          est manifeste : <strong>deux ans de prison</strong> pour le citoyen 
+          qui omet de déclarer un compte de quelques milliers d'euros ; 
+          <strong>zéro sanction</strong> pour le ministre qui dissimule un 
+          accord à plusieurs milliards. La proportionnalité n'est pas 
+          seulement inadéquate : elle est <em>inversée</em> par rapport 
+          à l'intérêt général.
+        </p>
+        <div class="sidenote">
+          Appui jurisprudentiel décisif : C. const., 29 novembre 2018, n° 167/2018 
+          (Ducroire), B.13.1 : « une exclusion générale et absolue du champ 
+          d'application de la loi (...) n'est tout simplement pas conciliable 
+          avec l'article 32 de la Constitution ». Confirmé par C. const., 
+          15 janvier 2026, n° 9/2026, B.8.2.
+        </div>
+      </div>
+      
+      <div class="panel public">
+        <div class="panel-label">L'argument en langage clair</div>
+        <p class="lead">
+          La Constitution belge interdit de traiter deux situations comparables 
+          de manière différente, sauf si la différence est justifiée. Trois 
+          conditions doivent être réunies. <strong>Aucune ne l'est ici.</strong>
+        </p>
+        
+        <p>
+          <strong>Première condition : il faut un critère objectif.</strong>
+        </p>
+        <p>
+          Ici, le critère est : « êtes-vous au pouvoir ou êtes-vous citoyen ? ». 
+          Le problème, c'est que la Constitution dit l'inverse de ce que ce 
+          critère suppose. L'article 33 dit que <em>tous les pouvoirs émanent 
+          de la Nation</em> — c'est-à-dire que le ministre tient son pouvoir 
+          du citoyen, pas l'inverse. Donc si une transparence supplémentaire 
+          doit s'imposer à quelqu'un, c'est au ministre, pas au citoyen.
+        </p>
+        
+        <p>
+          <strong>Deuxième condition : il faut un but légitime.</strong>
+        </p>
+        <p>
+          L'État dira : « il faut bien protéger la délibération politique ». 
+          OK. Mais alors il faut aussi protéger la vie privée, le secret 
+          des affaires, la présomption d'innocence du citoyen. Et l'État 
+          ne s'en prive pas : il oblige le citoyen à tout déclarer au nom 
+          de la lutte contre la fraude. <strong>Pourquoi ce qui vaut dans 
+          un sens ne vaudrait pas dans l'autre ?</strong>
+        </p>
+        
+        <p>
+          <strong>Troisième condition : il faut une proportionnalité.</strong>
+        </p>
+        
+        <div class="callout">
+          <span class="callout-label">Le détail qui tue</span>
+          Deux ans de prison pour un citoyen qui oublie de déclarer un 
+          compte épargne en France. Zéro sanction pour un ministre qui 
+          cache un contrat énergétique à plusieurs milliards. 
+          <strong>Cette disproportion-là n'est pas un détail. C'est le cœur 
+          du problème.</strong>
+        </div>
+        
+        <p>
+          Trois conditions. Aucune remplie. La différence de traitement 
+          est donc inconstitutionnelle. C'est ce que l'avocat va demander 
+          au tribunal de constater — ou plutôt, de faire constater par 
+          la Cour constitutionnelle.
+        </p>
+      </div>
+      
+    </div>
+  </article>
+
+  <!-- SCÈNE V — LES APPUIS JURISPRUDENTIELS -->
+  <article class="scene">
+    <header class="scene-header">
+      <div class="scene-number">V.</div>
+      <h2 class="scene-title">Les appuis — l'argument n'est pas nouveau, ses pièces sont déjà posées</h2>
+      <p class="scene-subtitle">
+        L'avocat démontre que la Doctrine du Miroir n'est pas une création 
+        ex nihilo, mais l'assemblage de briques jurisprudentielles déjà 
+        validées par les Cours suprêmes belges et européennes.
+      </p>
+    </header>
+    
+    <div class="diptych">
+      
+      <div class="panel expert">
+        <div class="panel-label">La filiation jurisprudentielle</div>
+        <p class="speech">
+          Cet argument, Monsieur le Président, n'est pas un argument neuf. 
+          Il est la conséquence logique d'une jurisprudence déjà constituée, 
+          dont je résume les quatre piliers.
+        </p>
+        <p>
+          <em>Premier pilier — Cour constitutionnelle, arrêt n° 167/2018 du 29 
+          novembre 2018, dit </em><strong>Ducroire</strong><em>.</em> La Cour y a 
+          posé que la publicité administrative est un <em>droit fondamental</em> ; 
+          que la notion de document administratif s'interprète <em>très largement</em> ; 
+          et qu'une exclusion générale et absolue est, pour reprendre la formule 
+          exacte de la Cour, « tout simplement pas conciliable avec l'article 32 
+          de la Constitution ». L'exception « stratégie politique » de la loi 
+          du 12 mai 2024 entre exactement dans la définition que la Cour a 
+          condamnée.
+        </p>
+        <p>
+          <em>Deuxième pilier — Cour européenne des droits de l'homme, Grande 
+          Chambre, 8 novembre 2016, </em><strong>Magyar Helsinki Bizottság 
+          c. Hongrie</strong><em> (req. n° 18030/11).</em> La Cour de Strasbourg 
+          y consacre, sous l'article 10 CEDH, un droit d'accès à l'information 
+          d'intérêt public, sur la base de quatre critères. Cet arrêt s'impose 
+          au juge belge depuis Cass., 27 mai 1971, <em>Le Ski</em>. La Cour 
+          constitutionnelle l'a explicitement intégré, dans son arrêt n° 9/2026 
+          du 15 janvier 2026, en lisant l'article 32 de la Constitution et 
+          l'article 10 CEDH comme un « ensemble indissociable ».
+        </p>
+        <p>
+          <em>Troisième pilier — Cour d'appel de Bruxelles, 30 novembre 2023, 
+          </em><strong>Klimaatzaak</strong><em>.</em> Cet arrêt a définitivement 
+          écarté l'argument de la « question politique » comme fin de non-recevoir, 
+          confirmant que le juge ordinaire peut connaître des actions en 
+          responsabilité civile dirigées contre l'État pour carence dans 
+          l'exercice de sa fonction législative.
+        </p>
+        <p>
+          <em>Quatrième pilier — Cass., 28 septembre 2006, </em><strong>Ferrara 
+          Jung</strong><em>.</em> Cet arrêt a définitivement liquidé l'immunité 
+          du législateur en matière de responsabilité civile, dans la suite de 
+          <em>Anca</em> (1991) et de <em>La Flandria</em> (1920). L'État, dans 
+          l'exercice de la fonction législative, peut commettre une faute, 
+          notamment par carence positive.
+        </p>
+        <p>
+          Ces quatre piliers, posés indépendamment les uns des autres, dessinent 
+          ensemble l'architecture exacte de la Doctrine du Miroir. Il ne reste 
+          qu'à faire dire à votre Cour constitutionnelle ce qu'elle a, dans 
+          chacun de ces arrêts, préparé sans l'énoncer comme principe général.
+        </p>
+      </div>
+      
+      <div class="panel public">
+        <div class="panel-label">Pourquoi ça tient debout</div>
+        <p class="lead">
+          L'argument peut paraître audacieux. Il ne l'est pas. Il consiste à 
+          assembler quatre briques que les Cours suprêmes ont déjà posées.
+        </p>
+        
+        <p>
+          <strong>Brique 1 — l'arrêt Ducroire (2018).</strong> La Cour 
+          constitutionnelle belge a déjà jugé qu'on ne peut pas créer une 
+          exception générale et absolue à la transparence administrative. 
+          L'exception « stratégie politique » de 2024 est exactement ce genre 
+          d'exception. Donc elle est dans la ligne de mire de Ducroire.
+        </p>
+        
+        <p>
+          <strong>Brique 2 — l'arrêt Magyar Helsinki (2016).</strong> La 
+          Cour européenne des droits de l'homme a reconnu que le droit 
+          d'accès à l'information publique est protégé par la liberté 
+          d'expression. La Cour constitutionnelle belge a explicitement 
+          adopté cette jurisprudence en 2026.
+        </p>
+        
+        <p>
+          <strong>Brique 3 — Klimaatzaak (2023).</strong> Le procès climatique 
+          a établi que le juge peut juger l'État pour ce qu'il n'a <em>pas</em> 
+          fait — y compris en matière législative. C'est le précédent qui 
+          permet d'attaquer les carences de transparence comme des fautes.
+        </p>
+        
+        <p>
+          <strong>Brique 4 — Ferrara Jung (2006).</strong> La Cour de 
+          cassation a confirmé que l'État, quand il vote des lois, peut 
+          commettre des fautes engageant sa responsabilité civile. Le 
+          parlement n'est plus intouchable.
+        </p>
+        
+        <div class="callout">
+          <span class="callout-label">À retenir</span>
+          Quatre arrêts. Quatre Cours suprêmes. Aucun ne dit explicitement 
+          « l'asymétrie de transparence viole la Constitution ». Mais 
+          tous les quatre, ensemble, le rendent inévitable. C'est ce 
+          qu'on appelle une <strong>jurisprudence qui mûrit</strong>.
+        </div>
+        
+        <p>
+          Si l'avocat plaide bien, le juge ne peut pas le contredire sans 
+          contredire ces quatre arrêts. C'est ce qui rend l'argument 
+          tactiquement irrésistible.
+        </p>
+      </div>
+      
+    </div>
+  </article>
+
+  <!-- SCÈNE VI — LA QUESTION PRÉJUDICIELLE -->
+  <article class="scene">
+    <header class="scene-header">
+      <div class="scene-number">VI.</div>
+      <h2 class="scene-title">La question préjudicielle — la formulation exacte</h2>
+      <p class="scene-subtitle">
+        L'avocat arrive au point capital. Il propose au tribunal la formulation 
+        précise de la question qui doit être transmise à la Cour constitutionnelle. 
+        Une virgule de mal placée peut faire échouer l'opération.
+      </p>
+    </header>
+    
+    <div class="diptych">
+      
+      <div class="panel expert">
+        <div class="panel-label">La question, mot à mot</div>
+        <p class="speech">
+          En conséquence de tout ce qui précède, je propose au tribunal de 
+          surseoir à statuer et de poser à la Cour constitutionnelle, en 
+          application de l'article 26 de la loi spéciale du 6 janvier 1989, 
+          la question préjudicielle suivante, dont je vous prie de bien 
+          vouloir constater le caractère sérieux et la pertinence pour la 
+          solution du litige.
+        </p>
+      </div>
+      
+      <div class="panel public">
+        <div class="panel-label">L'instant clé du procès</div>
+        <p class="lead">
+          C'est le moment décisif. L'avocat propose au juge une formulation 
+          exacte de la question. Si le juge l'accepte, l'affaire est en 
+          partie gagnée.
+        </p>
+        <p>
+          Pourquoi la formulation est-elle si importante ? Parce que la Cour 
+          constitutionnelle <strong>ne répondra qu'à la question qu'on lui 
+          pose</strong>. Mal posée, elle pourra répondre « non » sans même 
+          examiner le vrai problème. Bien posée, elle est obligée de trancher 
+          sur le fond.
+        </p>
+      </div>
+      
+    </div>
+    
+    <!-- LA QUESTION EN BLOC SPÉCIAL -->
+    <div class="question-block">
+      <div class="question-block-inner">
+        <span class="question-block-label">◆ Question préjudicielle proposée à la Cour constitutionnelle</span>
+        <p class="question-text">
+          <strong>L'article 449 du Code des impôts sur les revenus 1992</strong>, 
+          qui sanctionne d'une amende de 250 à 500.000 euros et d'un 
+          emprisonnement de huit jours à deux ans le contribuable qui 
+          contrevient frauduleusement à ses obligations déclaratives, 
+          <strong>viole-t-il les articles 10, 11, 32 et 33 de la Constitution</strong>, 
+          lus seuls ou en combinaison avec les articles 10 et 14 de la 
+          Convention européenne des droits de l'homme, <strong>en ce qu'il 
+          établit un régime de transparence forcée du contribuable envers 
+          l'État</strong> sous menace pénale, alors que l'article 6, § 2, 5° 
+          de la loi du 11 avril 1994 relative à la publicité de l'administration, 
+          tel que modifié par la loi du 12 mai 2024, <strong>autorise l'État, 
+          ses ministres, leurs cabinets et les partis politiques à soustraire 
+          l'intégralité de leur « stratégie politique » à toute publicité, 
+          sans qu'aucune sanction ne soit attachée</strong> à la dissimulation, 
+          à l'absence de motivation ou au refus de communication, créant 
+          ainsi une asymétrie de transparence dont aucun but légitime ne 
+          justifie la disproportion au regard de l'article 33 de la Constitution 
+          selon lequel <strong>« tous les pouvoirs émanent de la Nation »</strong> ?
+        </p>
+      </div>
+    </div>
+    
+    <div class="diptych">
+      
+      <div class="panel expert">
+        <div class="panel-label">Pourquoi cette formulation</div>
+        <p>
+          La formulation respecte les exigences techniques de la question 
+          préjudicielle au sens de l'article 26 de la loi spéciale du 6 
+          janvier 1989. Elle identifie précisément :
+        </p>
+        <p>
+          (i) <em>la norme attaquée</em> : l'article 449 CIR 92 ;<br>
+          (ii) <em>les normes de référence</em> : articles 10, 11, 32, 33 Const., 
+          combinés aux articles 10 et 14 CEDH ;<br>
+          (iii) <em>le terme de comparaison</em> : l'article 6 § 2 5° de la 
+          loi du 11 avril 1994 ;<br>
+          (iv) <em>la nature de la discrimination</em> : asymétrie de transparence 
+          sanctionnée d'un côté, non sanctionnée de l'autre ;<br>
+          (v) <em>le pivot constitutionnel</em> : l'article 33, qui inverse 
+          la hiérarchie présumée.
+        </p>
+        <p>
+          La formulation est rédigée de telle sorte que la Cour ne peut y 
+          répondre négativement sans avoir à <em>motiver explicitement</em> 
+          pourquoi l'État peut s'octroyer une opacité non sanctionnée tandis 
+          que le citoyen est exposé à une sanction pénale. C'est précisément 
+          ce piège dialectique qui rend la question stratégiquement décisive.
+        </p>
+      </div>
+      
+      <div class="panel public">
+        <div class="panel-label">Pourquoi cette question est imparable</div>
+        <p>
+          La question est construite pour mettre la Cour constitutionnelle 
+          dans une situation où elle n'a que deux issues, et où les deux 
+          servent la cause.
+        </p>
+        <ul>
+          <li><strong>Si la Cour dit « oui, c'est inconstitutionnel »</strong> : 
+          l'exception « stratégie politique » de 2024 tombe. Tous les contrats 
+          opaques, tous les arbitrages secrets, toutes les correspondances 
+          ministres-cabinets-partis redeviennent susceptibles d'être 
+          communiquées au citoyen.</li>
+          <li><strong>Si la Cour dit « non, ce n'est pas inconstitutionnel »</strong> : 
+          elle doit alors écrire <em>pourquoi</em>. Et la motivation, quelle 
+          qu'elle soit, sera politiquement explosive. Soit elle reconnaît un 
+          « droit du pouvoir au secret », ce qui contredit la souveraineté 
+          de la Nation. Soit elle distingue artificiellement les deux situations, 
+          ce qui prête le flanc à un recours à Strasbourg.</li>
+        </ul>
+        
+        <div class="callout">
+          <span class="callout-label">Stratégiquement</span>
+          La question est conçue pour qu'<strong>aucune réponse de la Cour 
+          ne soit politiquement neutre</strong>. C'est ce qui fait sa force.
+        </div>
+      </div>
+      
+    </div>
+  </article>
+
+  <!-- SCÈNE VII — SI LE JUGE REFUSE -->
+  <article class="scene">
+    <header class="scene-header">
+      <div class="scene-number">VII.</div>
+      <h2 class="scene-title">Si le juge refuse de transmettre — les parades</h2>
+      <p class="scene-subtitle">
+        L'avocat doit anticiper le refus du juge. Le droit belge prévoit des 
+        garde-fous : le refus de transmettre une question sérieuse est lui-même 
+        une violation, ouvrant la voie à des recours.
+      </p>
+    </header>
+    
+    <div class="diptych">
+      
+      <div class="panel expert">
+        <div class="panel-label">Le verrou de l'article 26 § 2</div>
+        <p class="speech">
+          Monsieur le Président, je me permets de rappeler que l'article 26 
+          § 2 de la loi spéciale du 6 janvier 1989 énumère limitativement les 
+          cas dans lesquels une juridiction peut refuser de poser une question 
+          préjudicielle :
+        </p>
+        <div class="quoted">
+          1° lorsque la cause ne peut être examinée par cette juridiction pour 
+          des motifs d'incompétence ou de non-recevabilité ;<br>
+          2° lorsque la loi, le décret ou la règle visée à l'article 134 ne 
+          violent manifestement pas une règle ou un article de la Constitution ;<br>
+          3° lorsque la Cour constitutionnelle a déjà statué sur une question 
+          ou un recours ayant un objet identique.
+        </div>
+        <p>
+          Aucune de ces trois hypothèses ne peut être valablement invoquée 
+          dans la présente cause.
+        </p>
+        <p>
+          La première est sans objet : le tribunal est compétent, la cause 
+          est recevable.
+        </p>
+        <p>
+          La deuxième suppose une violation <em>« non manifeste »</em>, c'est-à-dire 
+          que le tribunal devrait démontrer, par une motivation circonstanciée, 
+          que l'argumentation que je viens de développer pendant plus d'un quart 
+          d'heure est <em>manifestement</em> mal fondée. La barre est haute. 
+          Compte tenu des quatre piliers jurisprudentiels que j'ai cités et 
+          de l'absence de jurisprudence antérieure ayant tranché la question 
+          sous l'angle de l'asymétrie déclarative, cette motivation ne peut 
+          être que <em>déraisonnable</em>, au sens où la Cour de cassation 
+          contrôle la motivation des arrêts.
+        </p>
+        <p>
+          La troisième est exclue : la Cour constitutionnelle n'a jamais statué 
+          sur une question présentant un objet identique. La doctrine consultée 
+          (Schram, Lierman, Déom-Andersen, Velaers) ne mentionne aucun précédent.
+        </p>
+        <p>
+          En cas de refus malgré tout, je rappelle que la décision sera 
+          susceptible d'appel ou de pourvoi pour défaut de motivation, et 
+          que la voie de la responsabilité civile de l'État pour faute du 
+          juge demeure ouverte (<em>Anca</em>, 1991). Mais je doute, Monsieur 
+          le Président, que votre Cour souhaite ouvrir une telle perspective.
+        </p>
+      </div>
+      
+      <div class="panel public">
+        <div class="panel-label">Le filet de sécurité</div>
+        <p class="lead">
+          Le juge n'a pas un pouvoir illimité pour refuser de transmettre 
+          la question. La loi lui ferme presque toutes les portes.
+        </p>
+        <p>
+          Le juge ne peut refuser de transmettre que dans trois cas, et tous 
+          les trois sont fermés ici :
+        </p>
+        <ul>
+          <li>Si le tribunal n'est pas compétent — ce qui n'est pas le cas.</li>
+          <li>Si la violation de la Constitution est <em>manifestement</em> 
+          inexistante — c'est-à-dire que le juge doit montrer que l'argument 
+          est tellement faible qu'on ne peut même pas en discuter. Compte 
+          tenu des arrêts cités, c'est impossible à motiver.</li>
+          <li>Si la Cour constitutionnelle a déjà tranché sur la même question 
+          — ce qui n'est pas le cas non plus.</li>
+        </ul>
+        
+        <div class="callout">
+          <span class="callout-label">Et si le juge refuse quand même ?</span>
+          Alors la décision est attaquable. En appel d'abord. Devant la Cour 
+          de cassation ensuite (qui contrôle si la motivation tient debout). 
+          Et même devant les tribunaux civils, sur le fondement de la 
+          responsabilité de l'État pour faute judiciaire (arrêt Anca, 1991).
+        </div>
+        
+        <p>
+          Autrement dit : <strong>le refus du juge n'est pas la fin du chemin. 
+          C'est le début d'un autre chemin.</strong>
+        </p>
+        <p>
+          Cette robustesse fait partie de la puissance tactique de la doctrine. 
+          Soit la question passe à la Cour constitutionnelle. Soit le juge la 
+          bloque, et son blocage devient lui-même un argument supplémentaire 
+          pour la suite du contentieux.
+        </p>
+      </div>
+      
+    </div>
+  </article>
+
+  <!-- SCÈNE VIII — CONCLUSION -->
+  <article class="scene">
+    <header class="scene-header">
+      <div class="scene-number">VIII.</div>
+      <h2 class="scene-title">La péroraison — ce qui se joue</h2>
+      <p class="scene-subtitle">
+        L'avocat achève la plaidoirie. Il ne demande pas un acquittement. Il 
+        demande au tribunal de poser une question. Mais cette question est 
+        celle qui peut transformer le droit constitutionnel belge.
+      </p>
+    </header>
+    
+    <div class="diptych">
+      
+      <div class="panel expert">
+        <div class="panel-label">La péroraison</div>
+        <p class="speech">
+          Monsieur le Président, Mesdames et Messieurs les Juges, je ne vous 
+          demande pas, à ce stade, d'acquitter mon client. Je ne vous demande 
+          pas non plus de constater que la loi est inconstitutionnelle — vous 
+          n'en avez pas le pouvoir.
+        </p>
+        <p>
+          Je vous demande seulement, mais je vous le demande avec gravité, 
+          de transmettre à la Cour constitutionnelle la question que je viens 
+          de formuler. De surseoir à statuer dans l'attente de sa réponse. 
+          Et de laisser, ce faisant, la juridiction compétente trancher le 
+          point d'asymétrie démocratique qui se trouve aujourd'hui devant vous, 
+          dans le dossier d'un contribuable que personne d'autre n'avait 
+          songé à mettre en lumière.
+        </p>
+        <p>
+          La République ne sera pas affaiblie par cette transmission. Elle 
+          en sera renforcée. Car une République qui accepte de répondre 
+          devant ses propres normes constitutionnelles est plus solide qu'une 
+          République qui s'en exempte. C'est tout l'enjeu de l'article 33 
+          que j'ai rappelé : <em>tous les pouvoirs émanent de la Nation</em>. 
+          La Nation, ce n'est pas une métaphore. C'est mon client, ce sont 
+          ses concitoyens, ce sont les soixante-mille co-demandeurs qui se 
+          sont joints, dans un autre dossier, à l'action Klimaatzaak, et ce 
+          sont — Mesdames et Messieurs les Juges — vous-mêmes, lorsque vous 
+          quittez la robe.
+        </p>
+        <p>
+          Je vous remercie.
+        </p>
+      </div>
+      
+      <div class="panel public">
+        <div class="panel-label">La fin de la plaidoirie</div>
+        <p class="lead">
+          L'avocat termine sur une formule qui ramène tout au point de départ : 
+          le citoyen est la source du pouvoir, pas son destinataire.
+        </p>
+        <p>
+          Notez bien ce que l'avocat ne demande pas. Il ne demande pas que 
+          son client soit relaxé. Il ne demande pas que la loi soit annulée. 
+          Il demande seulement que le tribunal <strong>pose la question</strong>.
+        </p>
+        <p>
+          C'est une stratégie d'une modestie procédurale extrême — et c'est 
+          précisément pour ça qu'elle est puissante. Aucun juge ne peut 
+          accuser l'avocat d'excès. Il ne demande rien d'autre que l'application 
+          d'une procédure prévue par la loi.
+        </p>
+        
+        <div class="callout">
+          <span class="callout-label">Ce qui se passe ensuite</span>
+          Si le juge accepte : le procès s'arrête. La Cour constitutionnelle 
+          se saisit. Elle a entre 6 et 18 mois pour répondre. Si elle reconnaît 
+          la discrimination, l'exception « stratégie politique » tombe, et 
+          toute l'architecture d'opacité de l'État belge est ébranlée. Le 
+          procès initial reprend ensuite, et l'avocat peut alors plaider au 
+          fond — avec, en main, un argument constitutionnel décisif.
+        </div>
+        
+        <p>
+          Si la Cour rejette : l'avocat dispose alors d'une motivation publique 
+          qui devient la pièce maîtresse du contentieux européen. Le dossier 
+          part à Strasbourg.
+        </p>
+        <p>
+          Dans tous les cas, <strong>la salle d'audience d'aujourd'hui n'est 
+          que la première marche</strong>. La doctrine entre dans le droit 
+          positif belge à partir du moment où un juge transmet la question. 
+          Et il suffit qu'un seul le fasse.
+        </p>
+      </div>
+      
+    </div>
+  </article>
+
+</main>
+
+<!-- ============================
+     NOTE INTÉGRALE
+     ============================ -->
+<section class="full-note">
+  <header class="full-note-header">
+    <div class="full-note-marker">Annexe — texte continu</div>
+    <h2 class="full-note-title">La note de plaidoirie<br>en un seul tenant</h2>
+  </header>
+  
+  <div class="full-note-body">
+    
+    <p>
+      Pour l'avocat qui souhaite déposer ou prononcer la plaidoirie d'un 
+      seul tenant, sans la médiation pédagogique du diptyque, voici le 
+      texte intégral, mis en forme pour la dictée ou la copie directe.
+    </p>
+    
+    <div class="ornament-rule">❦ ❦ ❦</div>
+    
+    <h3>Plaidoirie soulevant l'exception préjudicielle dite « du Miroir »</h3>
+    
+    <p><em>À prononcer à l'ouverture de l'audience, après les formalités 
+    introductives et avant tout débat au fond.</em></p>
+    
+    <p>
+      Monsieur le Président, Mesdames et Messieurs les Juges,
+    </p>
+    <p>
+      Mon client comparaît aujourd'hui devant vous, poursuivi sur le fondement 
+      de l'article 449 du Code des impôts sur les revenus 1992. On lui reproche 
+      un défaut de déclaration. La peine encourue est considérable : de huit 
+      jours à deux ans d'emprisonnement, assortis d'une amende pouvant 
+      atteindre cinq cent mille euros.
+    </p>
+    <p>
+      Avant que le tribunal n'examine si les faits reprochés à mon client 
+      sont matériellement établis, avant même que la défense ne discute de 
+      l'intention frauduleuse, je soulève, in limine litis, une exception 
+      préjudicielle de constitutionnalité. Cette exception ne tend pas à 
+      retarder le procès. Elle tend à le rendre possible. Car la disposition 
+      pénale sur laquelle reposent les poursuites est, dans son économie même, 
+      contraire aux articles 10, 11, 32 et 33 de la Constitution, lus seuls 
+      ou en combinaison avec les articles 10 et 14 de la Convention européenne 
+      des droits de l'homme.
+    </p>
+    <p>
+      Permettez-moi de développer en quelques minutes les motifs de cette 
+      exception, avant de proposer au tribunal la formulation précise de la 
+      question préjudicielle qu'il vous appartiendra de transmettre à la 
+      Cour constitutionnelle, en application de l'article 26 de la loi spéciale 
+      du 6 janvier 1989.
+    </p>
+    
+    <h3>I. La norme attaquée</h3>
+    
+    <p>
+      L'article 449 du Code des impôts sur les revenus 1992 punit pénalement 
+      « celui qui, dans une intention frauduleuse ou à dessein de nuire, 
+      contrevient aux dispositions du présent Code ou des arrêtés pris pour 
+      son exécution ». Le périmètre est vaste, incluant l'omission de 
+      déclaration de revenus, l'omission de déclaration de comptes à l'étranger, 
+      l'omission de déclaration de constructions juridiques, et l'omission de 
+      déclaration des avoirs en cryptomonnaies. La transparence imposée au 
+      contribuable est active, continue, quasi-illimitée et pénalement 
+      sanctionnée en cas de défaut.
+    </p>
+    
+    <h3>II. La norme symétrique opposable</h3>
+    
+    <p>
+      Or, à la même époque, le législateur a adopté la loi du 12 mai 2024 
+      modifiant la loi du 11 avril 1994 relative à la publicité de 
+      l'administration. Cette loi insère un 5° à l'article 6 § 2 de la loi 
+      de 1994, créant une exception obligatoire et absolue à la publicité 
+      pour les documents portant sur « l'exécution d'une stratégie politique » 
+      entre ministres, cabinets, et partis politiques. La notion de « stratégie 
+      politique » n'est définie nulle part. Aucune mise en balance n'est 
+      prévue. Aucune sanction n'est attachée à la dissimulation.
+    </p>
+    <p>
+      Le Conseil d'État, dans son avis n° 72.732/2 du 30 janvier 2023, a 
+      questionné l'utilité même de cette exception, jugeant les protections 
+      antérieures du secret gouvernemental déjà suffisantes. La Commission 
+      d'accès aux documents administratifs, dans son avis n° 2025-73 du 
+      6 juin 2025, l'a déclarée contraire au principe de publicité.
+    </p>
+    
+    <h3>III. La violation des articles 10 et 11 de la Constitution</h3>
+    
+    <p>
+      La jurisprudence constante exige, pour qu'une différence de traitement 
+      soit compatible avec les articles 10 et 11 de la Constitution, qu'elle 
+      repose sur un critère objectif, poursuive un but légitime, et soit 
+      proportionnée. Aucune de ces conditions n'est ici remplie.
+    </p>
+    <p>
+      Le critère de différenciation — la position de gouvernant ou de gouverné — 
+      n'est pas objectif au regard de l'article 33 de la Constitution, qui 
+      pose que tous les pouvoirs émanent de la Nation, et qui inverse, dès 
+      lors, la hiérarchie qui semblerait justifier l'opacité du pouvoir.
+    </p>
+    <p>
+      Le but légitime invoqué — protection de la délibération — existe 
+      symétriquement pour le citoyen, dont la vie privée, le secret des 
+      affaires et la présomption d'innocence sont protégés par la Constitution 
+      et la Convention européenne. Si ces intérêts du citoyen peuvent être 
+      sacrifiés au nom de la transparence due à l'État, les intérêts de l'État 
+      doivent l'être pareillement au nom de la transparence due au citoyen.
+    </p>
+    <p>
+      La proportionnalité est manifestement inversée : deux ans de prison 
+      pour le citoyen, zéro sanction pour le ministre. Aucun but légitime 
+      ne peut justifier une telle disproportion.
+    </p>
+    
+    <h3>IV. Les appuis jurisprudentiels</h3>
+    
+    <p>
+      Cette argumentation repose sur quatre arrêts pivots. L'arrêt Ducroire 
+      (C. const., 167/2018) qui condamne les exclusions absolues à la publicité. 
+      L'arrêt Magyar Helsinki Bizottság c. Hongrie (CEDH, GC, 2016) qui 
+      consacre le droit d'accès à l'information sous l'article 10 CEDH. 
+      L'arrêt Klimaatzaak (Cour d'appel Bruxelles, 30 novembre 2023) qui 
+      écarte la théorie de la question politique. L'arrêt Ferrara Jung 
+      (Cass., 28 septembre 2006) qui liquide l'immunité du législateur. 
+      Ensemble, ces quatre piliers rendent inévitable la consécration de 
+      l'asymétrie de transparence comme discrimination inconstitutionnelle.
+    </p>
+    
+    <h3>V. La question préjudicielle</h3>
+    
+    <p>
+      En conséquence, je propose au tribunal de surseoir à statuer et de poser 
+      à la Cour constitutionnelle la question suivante :
+    </p>
+    <p>
+      « L'article 449 du Code des impôts sur les revenus 1992, qui sanctionne 
+      d'une amende de 250 à 500.000 euros et d'un emprisonnement de huit 
+      jours à deux ans le contribuable qui contrevient frauduleusement à ses 
+      obligations déclaratives, viole-t-il les articles 10, 11, 32 et 33 de 
+      la Constitution, lus seuls ou en combinaison avec les articles 10 et 
+      14 de la Convention européenne des droits de l'homme, en ce qu'il 
+      établit un régime de transparence forcée du contribuable envers l'État 
+      sous menace pénale, alors que l'article 6, § 2, 5° de la loi du 
+      11 avril 1994 relative à la publicité de l'administration, tel que 
+      modifié par la loi du 12 mai 2024, autorise l'État, ses ministres, 
+      leurs cabinets et les partis politiques à soustraire l'intégralité de 
+      leur "stratégie politique" à toute publicité, sans qu'aucune sanction 
+      ne soit attachée à la dissimulation, à l'absence de motivation ou au 
+      refus de communication, créant ainsi une asymétrie de transparence 
+      dont aucun but légitime ne justifie la disproportion au regard de 
+      l'article 33 de la Constitution selon lequel tous les pouvoirs émanent 
+      de la Nation ? »
+    </p>
+    
+    <h3>VI. Sur la transmission</h3>
+    
+    <p>
+      L'article 26 § 2 de la loi spéciale du 6 janvier 1989 énumère 
+      limitativement les motifs de refus de transmission. Aucun ne peut être 
+      valablement invoqué ici. Le tribunal est compétent, la cause est 
+      recevable. La violation alléguée n'est pas manifestement non fondée — 
+      les quatre arrêts précités l'établissent. Et la Cour constitutionnelle 
+      n'a jamais statué sur la question. La transmission est donc obligatoire.
+    </p>
+    
+    <h3>VII. Péroraison</h3>
+    
+    <p>
+      Monsieur le Président, Mesdames et Messieurs les Juges, je ne vous 
+      demande pas d'acquitter mon client. Je vous demande de transmettre 
+      à la Cour constitutionnelle la question que je viens de formuler. 
+      La République ne sera pas affaiblie par cette transmission ; elle 
+      en sera renforcée. Car une République qui accepte de répondre devant 
+      ses propres normes constitutionnelles est plus solide qu'une République 
+      qui s'en exempte. C'est tout l'enjeu de l'article 33 : tous les pouvoirs 
+      émanent de la Nation.
+    </p>
+    
+    <p>
+      Je vous remercie.
+    </p>
+    
+    <p class="formula">Symmetria obligat.</p>
+    
+  </div>
+</section>
+
+<!-- ============================
+     FAQ
+     ============================ -->
+<section class="faq-section">
+  <header class="faq-header">
+    <div class="marker">Questions fréquentes</div>
+    <h2>Six réponses<br><em>aux objections prévisibles.</em></h2>
+  </header>
+  
+  <div class="faq-grid">
+    
+    <div class="faq-item">
+      <h3>Faut-il être avocat pour soulever cette exception ?</h3>
+      <p>
+        Devant le tribunal correctionnel, la représentation par avocat 
+        n'est pas obligatoire, mais elle est vivement conseillée pour ce type 
+        d'argumentation technique. Devant la Cour de cassation, l'avocat 
+        à la Cour est en revanche obligatoire. Si vous êtes poursuivi pour 
+        fraude fiscale et que vous voulez soulever la Doctrine du Miroir, 
+        cherchez un avocat pénaliste fiscal ouvert aux questions 
+        constitutionnelles. Joignez-lui cette note.
+      </p>
+    </div>
+    
+    <div class="faq-item">
+      <h3>Combien de temps pour qu'une question préjudicielle aboutisse ?</h3>
+      <p>
+        La Cour constitutionnelle statue généralement entre six et dix-huit 
+        mois après la transmission. Durant ce temps, le procès au fond est 
+        suspendu. Pour le justiciable, c'est un répit. Pour la doctrine, 
+        c'est le délai durant lequel d'autres questions identiques peuvent 
+        être soulevées dans d'autres affaires, amplifiant la pression.
+      </p>
+    </div>
+    
+    <div class="faq-item">
+      <h3>Et si le juge transmet une question reformulée ?</h3>
+      <p>
+        Le juge peut reformuler la question avant de la transmettre. C'est 
+        un risque tactique. L'avocat doit veiller à ce que la reformulation 
+        ne dilue pas l'argument du miroir. En cas de reformulation déformante, 
+        il peut déposer des observations écrites devant la Cour 
+        constitutionnelle dans le cadre de la procédure d'instruction.
+      </p>
+    </div>
+    
+    <div class="faq-item">
+      <h3>Peut-on soulever cette exception en matière civile ?</h3>
+      <p>
+        Oui. La Doctrine du Miroir s'adapte à toute matière où le citoyen est 
+        soumis à une obligation de transparence sanctionnée. Contentieux 
+        sociaux (déclarations CPAS), fiscal (TVA, UBO), civil (cohabitation, 
+        nationalité), commercial (registre des bénéficiaires effectifs). 
+        L'architecture est la même, seule la norme attaquée change.
+      </p>
+    </div>
+    
+    <div class="faq-item">
+      <h3>Le ministère public ne va-t-il pas s'y opposer ?</h3>
+      <p>
+        Naturellement. Le ministère public défendra la constitutionnalité 
+        de la loi qu'il applique, et invoquera probablement les contre-arguments 
+        anticipés dans la doctrine principale (catégories non comparables, 
+        nécessité de la délibération secrète, séparation des pouvoirs). 
+        Les parades sont déjà rédigées et tiennent en quelques phrases. 
+        L'avocat doit les avoir préparées par écrit.
+      </p>
+    </div>
+    
+    <div class="faq-item">
+      <h3>Combien coûte la procédure pour le justiciable ?</h3>
+      <p>
+        La question préjudicielle ne génère pas de coût additionnel : elle 
+        s'insère dans le procès en cours. Le coût marginal pour le justiciable 
+        est celui du temps d'avocat consacré à la rédaction de la note et 
+        à la plaidoirie — quelques heures pour un avocat qui dispose déjà 
+        de la trame. Devant la Cour constitutionnelle, la procédure est 
+        gratuite. L'avocat n'est pas obligatoire pour les observations écrites.
+      </p>
+    </div>
+    
+  </div>
+</section>
+
+<!-- ============================
+     FOOTER
+     ============================ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h4>À propos de cette pièce</h4>
+      <p>
+        Pièce II de la Doctrine du Miroir Constitutionnel. Diffusée sous 
+        licence libre. Destinée aux avocats, juristes, journalistes et 
+        citoyens qui souhaitent porter, dans un dossier précis, l'argument 
+        de l'asymétrie déclarative. Toute reprise, traduction, adaptation 
+        et amélioration sont encouragées.
+      </p>
+    </div>
+    <div>
+      <h4>Pièces du dossier</h4>
+      <ul>
+        <li>I — Doctrine principale</li>
+        <li>II — Plaidoirie type <em>(ici)</em></li>
+        <li>III — Modèle de conclusions écrites <em>(à venir)</em></li>
+        <li>IV — Compteur d'asymétrie <em>(à venir)</em></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Diffusion</h4>
+      <ul>
+        <li>À envoyer aux barreaux</li>
+        <li>À transmettre aux pénalistes fiscaux</li>
+        <li>À publier dans les revues juridiques</li>
+        <li>À traduire en néerlandais et en allemand</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <span>Édition 2026 — Document ouvert</span>
+    <span class="formula-end">La symétrie oblige.</span>
+    <span>Pièce II</span>
+  </div>
+</footer>
+
+</body>
+</html>
