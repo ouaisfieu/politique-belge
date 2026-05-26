@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manifeste citoyen — Pour une démocratie réelle en Belgique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #ede6d6;
+  --paper-deep: #e3d9c2;
+  --ink: #1a1612;
+  --ink-soft: #3a342c;
+  --ink-faded: #6b6353;
+  --blood: #8a1c1c;
+  --blood-deep: #5a0f0f;
+  --gold: #a07a2a;
+  --rule: #1a161240;
+  --highlight: #f5edd9;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 19px;
+  line-height: 1.65;
+  font-feature-settings: "kern", "liga", "onum";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(circle at 20% 10%, #00000008 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, #00000010 0%, transparent 50%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.07 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  z-index: 1;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 28px;
+  position: relative;
+  z-index: 2;
+}
+
+.wide { max-width: 1100px; }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  padding: 60px 28px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  border-bottom: 1px solid var(--ink);
+}
+
+.masthead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink-soft);
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--ink);
+  margin: 0 auto;
+  max-width: 1100px;
+  width: 100%;
+}
+
+.masthead .left { display: flex; gap: 28px; }
+.masthead .dot { color: var(--blood); }
+
+.hero-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 0;
+}
+
+.eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--blood);
+  margin-bottom: 36px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 40px;
+  height: 1px;
+  background: var(--blood);
+}
+
+h1.manifeste-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(48px, 9vw, 130px);
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  margin-bottom: 40px;
+  font-variation-settings: "opsz" 144, "SOFT" 0, "WONK" 0;
+}
+
+h1.manifeste-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--blood);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+}
+
+.hero-deck {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(20px, 2.4vw, 28px);
+  line-height: 1.4;
+  max-width: 720px;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin-bottom: 60px;
+}
+
+.hero-meta {
+  display: flex;
+  gap: 60px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--ink-faded);
+  padding-top: 30px;
+  border-top: 1px solid var(--rule);
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.hero-meta strong {
+  color: var(--ink);
+  display: block;
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+.scroll-cue {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink-faded);
+  animation: nudge 2.4s ease-in-out infinite;
+}
+
+@keyframes nudge {
+  0%, 100% { transform: translate(-50%, 0); opacity: 0.5; }
+  50% { transform: translate(-50%, 8px); opacity: 1; }
+}
+
+/* ===== SECTIONS ===== */
+
+section {
+  padding: 100px 0;
+  position: relative;
+}
+
+.section-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--blood);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.section-number::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--blood);
+}
+
+h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  margin-bottom: 50px;
+  font-variation-settings: "opsz" 144;
+}
+
+h2 em {
+  font-style: italic;
+  color: var(--blood);
+}
+
+h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: clamp(24px, 3vw, 32px);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin: 50px 0 18px;
+  font-variation-settings: "opsz" 72;
+}
+
+h3 .num {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 400;
+  font-size: 0.55em;
+  color: var(--blood);
+  letter-spacing: 0.1em;
+  margin-right: 14px;
+  vertical-align: 0.18em;
+}
+
+p {
+  margin-bottom: 1.2em;
+}
+
+p.lead {
+  font-size: 1.22em;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin-bottom: 1.6em;
+  border-left: 2px solid var(--blood);
+  padding-left: 24px;
+}
+
+strong { font-weight: 600; color: var(--ink); }
+
+em.accent { font-style: italic; color: var(--blood); }
+
+.pullquote {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  padding: 60px 0 60px 50px;
+  margin: 80px 0;
+  border-left: 4px solid var(--blood);
+  position: relative;
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+}
+
+.pullquote::before {
+  content: "«";
+  position: absolute;
+  left: 18px;
+  top: 40px;
+  font-size: 60px;
+  color: var(--blood);
+  font-style: normal;
+  line-height: 1;
+}
+
+.pullquote cite {
+  display: block;
+  font-style: normal;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ink-faded);
+  margin-top: 24px;
+}
+
+/* ===== STATS ===== */
+
+.stats-section {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 120px 0;
+  margin: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.stats-section h2 { color: var(--paper); }
+.stats-section .section-number { color: var(--paper-deep); }
+.stats-section .section-number::before { background: var(--paper-deep); }
+
+.stats-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(90deg, transparent, transparent 80px, #ffffff05 80px, #ffffff05 81px);
+  pointer-events: none;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1px;
+  background: var(--paper-deep);
+  margin-top: 60px;
+}
+
+.stat {
+  background: var(--ink);
+  padding: 50px 36px;
+  position: relative;
+}
+
+.stat-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+
+.stat-number {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(54px, 7vw, 92px);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--paper);
+  margin-bottom: 16px;
+  font-variation-settings: "opsz" 144;
+}
+
+.stat-number .unit {
+  font-size: 0.4em;
+  vertical-align: 0.6em;
+  color: var(--paper-deep);
+  margin-left: 4px;
+  font-weight: 400;
+}
+
+.stat-label {
+  font-family: 'EB Garamond', serif;
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--paper-deep);
+}
+
+.stat-source {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-faded);
+  margin-top: 18px;
+  opacity: 0.7;
+}
+
+/* ===== DEMANDS ===== */
+
+.demands {
+  background: var(--paper-deep);
+  padding: 100px 0;
+  margin-top: 80px;
+  position: relative;
+}
+
+.demand {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 30px;
+  padding: 36px 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: start;
+}
+
+.demand:last-child { border-bottom: none; }
+
+.demand-num {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: 56px;
+  line-height: 1;
+  color: var(--blood);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  font-style: italic;
+}
+
+.demand-content h4 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+  color: var(--ink);
+}
+
+.demand-content p {
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.demand-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blood);
+  background: var(--highlight);
+  padding: 4px 10px;
+  margin-top: 10px;
+}
+
+/* ===== ACTIONS ===== */
+
+.actions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 60px;
+}
+
+.action-card {
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  padding: 36px 30px;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.action-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.action-card .kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blood);
+  margin-bottom: 16px;
+}
+
+.action-card h4 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.2;
+  margin-bottom: 14px;
+  color: var(--ink);
+}
+
+.action-card p {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin-bottom: 16px;
+}
+
+.action-card .threshold {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  padding-top: 14px;
+  border-top: 1px dashed var(--rule);
+}
+
+/* ===== TIMELINE ===== */
+
+.timeline {
+  margin: 60px 0;
+  padding-left: 30px;
+  border-left: 2px solid var(--blood);
+}
+
+.timeline-item {
+  padding-left: 30px;
+  padding-bottom: 36px;
+  position: relative;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -38px;
+  top: 8px;
+  width: 14px;
+  height: 14px;
+  background: var(--paper);
+  border: 2px solid var(--blood);
+  border-radius: 50%;
+}
+
+.timeline-item.critical::before {
+  background: var(--blood);
+}
+
+.timeline-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blood);
+  margin-bottom: 6px;
+}
+
+.timeline-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 19px;
+  margin-bottom: 6px;
+}
+
+.timeline-desc {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+/* ===== SIGNATURE ===== */
+
+.signature {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 140px 0 100px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.signature::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(45deg, transparent, transparent 60px, #ffffff04 60px, #ffffff04 120px);
+  pointer-events: none;
+}
+
+.signature .container { position: relative; z-index: 2; }
+
+.signature .section-number {
+  justify-content: center;
+  color: var(--gold);
+}
+
+.signature .section-number::before { background: var(--gold); }
+
+.signature h2 {
+  color: var(--paper);
+  font-size: clamp(42px, 6vw, 86px);
+  margin-bottom: 36px;
+}
+
+.signature h2 em { color: var(--gold); }
+
+.signature p {
+  color: var(--paper-deep);
+  font-size: 20px;
+  line-height: 1.6;
+  max-width: 640px;
+  margin: 0 auto 30px;
+}
+
+.engage {
+  margin: 60px 0 50px;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(24px, 3vw, 36px);
+  line-height: 1.3;
+  color: var(--paper);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+
+.footer-mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--paper-deep);
+  margin-top: 80px;
+  padding-top: 36px;
+  border-top: 1px solid #ffffff20;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* ===== REVEAL ANIMATIONS ===== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 720px) {
+  body { font-size: 17px; }
+  .hero { padding: 30px 22px 60px; }
+  .container { padding: 0 22px; }
+  .masthead { font-size: 9px; letter-spacing: 0.12em; flex-direction: column; gap: 8px; align-items: flex-start; }
+  .masthead .left { gap: 14px; flex-wrap: wrap; }
+  .hero-meta { gap: 24px; }
+  .hero-meta > div { min-width: 45%; }
+  section { padding: 70px 0; }
+  .pullquote { padding: 30px 0 30px 24px; font-size: 24px; margin: 50px 0; }
+  .pullquote::before { font-size: 40px; top: 18px; left: 4px; }
+  .demand { grid-template-columns: 50px 1fr; gap: 18px; }
+  .demand-num { font-size: 38px; }
+  .stat { padding: 36px 24px; }
+  .stats-section { padding: 80px 0; margin: 50px 0; }
+  .signature { padding: 90px 0 70px; }
+  .footer-mono { font-size: 9px; }
+}
+
+::selection { background: var(--blood); color: var(--paper); }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="masthead">
+    <div class="left">
+      <span>Manifeste citoyen</span>
+      <span class="dot">●</span>
+      <span>Édition I</span>
+    </div>
+    <div>Bruxelles · Mai 2026</div>
+  </div>
+
+  <div class="hero-content">
+    <div class="eyebrow">Plaidoyer pour une démocratie réelle en Belgique</div>
+    <h1 class="manifeste-title">Reprendre <em>la parole</em>,<br>reprendre <em>le pouvoir</em>.</h1>
+    <p class="hero-deck">
+      Quand 99,7 % des votes parlementaires sont alignés sur la consigne du parti, quand 16 recommandations anti-corruption sur 22 restent lettre morte, quand jusqu'à 51 % des ayants droit ne perçoivent pas le revenu d'intégration qui leur revient — la démocratie belge n'est plus malade : elle est captive.
+    </p>
+  </div>
+
+  <div class="hero-meta">
+    <div>Diagnostic<strong>État de droit en érosion</strong></div>
+    <div>Constat<strong>Particratie consulaire</strong></div>
+    <div>Horizon<strong>Refondation civique</strong></div>
+    <div>Document<strong>Travail collectif, ouvert</strong></div>
+  </div>
+
+  <div class="scroll-cue">↓ Lire le manifeste</div>
+</header>
+
+<!-- ===== PRÉAMBULE ===== -->
+<section>
+  <div class="container">
+    <div class="section-number">Préambule · I</div>
+    <h2>Pourquoi <em>maintenant</em>.</h2>
+
+    <p class="lead">
+      Nous ne sommes pas en colère par idéologie. Nous sommes en colère parce que les faits, additionnés, ne laissent plus de place au doute raisonnable.
+    </p>
+
+    <p>
+      L'article 42 de la Constitution belge proclame, depuis 1831, que « les membres des deux Chambres représentent la Nation, et non uniquement ceux qui les ont élus ». Le mandat est libre. Le mandat impératif est prohibé. C'est le texte. La réalité est ailleurs : la cohésion partisane belge avoisine les 99,73 % en moyenne sur les législatures récentes, parmi les plus fortes d'Europe occidentale. Les rares dissensions — quasi exclusivement sur des questions éthiques — sont sanctionnées : non-réinvestiture, perte de portefeuilles parlementaires, rétention de dotations.
+    </p>
+
+    <p>
+      Le pouvoir réel a quitté le Parlement. Il s'est concentré dans les états-majors des partis, lesquels négocient à huis clos les accords de coalition, distribuent les portefeuilles ministériels, contrôlent la confection des listes électorales et colonisent une administration parallèle — les <strong>cabinets ministériels</strong> — peuplée de fidèles dévoués à la ligne. C'est ce que la doctrine appelle <em class="accent">particratie consulaire</em>. C'est ce que les citoyens, eux, appellent simplement : on ne nous écoute plus.
+    </p>
+
+    <p>
+      Ce manifeste ne demande pas un grand soir. Il ne propose pas d'enterrer les institutions. Il dresse, sur la base d'un travail documentaire rigoureux — rapports GRECO, arrêts CEDH, données du Bureau du Plan, baromètres Solidaris et IWEPS, enquêtes de l'IFDH, recherches universitaires —, un constat factuel, des revendications précises et des voies d'action que <strong>chaque citoyen, dès aujourd'hui, peut emprunter</strong>.
+    </p>
+
+    <div class="pullquote">
+      Que vaut une décision de justice si elle n'est pas mise en œuvre ?
+      <cite>— Martien Schotsmans, directrice de l'Institut fédéral des droits humains, 2024</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONSTAT ===== -->
+<section>
+  <div class="container">
+    <div class="section-number">Constat · II</div>
+    <h2>Six failles <em>structurelles</em>.</h2>
+
+    <p class="lead">
+      Ces failles ne sont pas indépendantes. Elles forment un système — un mécanisme d'irresponsabilité auto-entretenu où chaque dysfonctionnement nourrit les autres.
+    </p>
+
+    <h3><span class="num">01</span>Le mandat libre vidé de son sens</h3>
+    <p>
+      La Constitution garantit aux élu·es une indépendance de vote absolue. Les partis, eux, exigent contractuellement la fidélité à la ligne — par chartes internes, par la maîtrise des listes, par la possibilité d'exclure un dissident sans qu'aucun mécanisme légal ne sanctionne cette violation matérielle de l'article 42. La <strong>loi du 4 juillet 1989</strong> organise un financement public d'environ <strong>75 millions d'euros annuels</strong> — l'un des taux les plus élevés d'Europe — sans aucune contrepartie en matière de démocratie interne ni de respect du mandat libre.
+    </p>
+
+    <h3><span class="num">02</span>L'État de droit en érosion documentée</h3>
+    <p>
+      Plus de <strong>16 000 condamnations</strong> ignorées par Fedasil entre 2021 et 2024 dans le seul dossier de l'accueil des demandeurs d'asile. L'arrêt <strong>Klimaatzaak</strong> (Cour d'appel de Bruxelles, 30 novembre 2023) imposant 55 % de réduction d'émissions de gaz à effet de serre d'ici 2030 : seul le gouvernement flamand s'est pourvu en cassation, et la question de son exécution reste pendante. L'aéroport de Bruxelles-National : environ <strong>20 millions d'euros d'astreintes payées</strong> par l'État plutôt que de modifier les routes aériennes. Le <strong>Comité des Ministres du Conseil de l'Europe</strong> a placé la Belgique en procédure renforcée pour les conditions de détention.
+    </p>
+
+    <h3><span class="num">03</span>Le GRECO et l'inertie : la Règle 32 activée</h3>
+    <p>
+      Le Groupe d'États contre la corruption (Conseil de l'Europe) a évalué la Belgique. Verdict du 5e cycle (adopté le 22 mars 2024) : <strong>16 recommandations sur 22 demeurent en souffrance</strong>. La <em class="accent">procédure de non-conformité (Règle 32)</em> a été activée. Lors de la 101e plénière (18-21 novembre 2025), le GRECO a franchi le niveau 3 — lettre du Secrétaire général au ministre belge des Affaires étrangères. Le niveau ultime — la <strong>déclaration publique de non-conformité</strong> — n'a jamais été appliqué qu'à un seul pays : la Biélorussie. La Belgique, État fondateur du Conseil de l'Europe, risque ce stigmate à l'échéance du 30 novembre 2026.
+    </p>
+
+    <h3><span class="num">04</span>L'opacité institutionnelle érigée en méthode</h3>
+    <p>
+      Cabinets ministériels pléthoriques, sans encadrement légal sérieux, peuplés de plusieurs centaines de conseillers qui doublonnent l'administration. Déclarations de patrimoine envoyées <strong>sous pli fermé</strong>, consultables uniquement dans le cadre d'une enquête pénale. Pas de registre fédéral des lobbyistes opérationnel. La loi-programme du 12 mai 2024, censée étendre la transparence aux cabinets, est neutralisée par une <em class="accent">exception absolue</em> couvrant tout document portant « sur l'exécution d'une stratégie politique » entre ministres, cabinets, partis ou groupes parlementaires.
+    </p>
+
+    <h3><span class="num">05</span>Le coût humain : non-recours et violence administrative</h3>
+    <p>
+      Les projets de recherche fédéraux TAKE et BELMOD le documentent : entre <strong>37 % et 51 %</strong> des personnes éligibles au revenu d'intégration sociale ne le perçoivent pas. Environ <strong>50 %</strong> des aînés éligibles à la GRAPA. Jusqu'à <strong>77 %</strong> des plus de 65 ans éligibles à l'allocation chauffage. À titre de comparaison, la fraude sociale détectée représente 0,3 % du budget de la sécurité sociale. Pendant la crise sanitaire, le premier supplément COVID aux allocations familiales en Flandre, octroyé sur demande, a connu <strong>près de 90 % de non-recours</strong> ; le second, octroyé automatiquement sur la base des flux fiscaux, presque zéro. L'automatisation des droits n'est pas un slogan — c'est une démonstration empirique.
+    </p>
+
+    <h3><span class="num">06</span>La sécession civique installée</h3>
+    <p>
+      Les baromètres convergent. Confiance dans les partis politiques effondrée. Confiance dans le gouvernement fédéral en chute libre. Une part croissante de la population — y compris des classes moyennes éduquées qui votaient encore il y a dix ans — décrit son rapport aux institutions avec une seule formule : <em class="accent">décrochage</em>. Ce n'est plus de la défiance partisane, c'est de l'anomie démocratique. Quand les commissions délibératives citoyennes, expérience belge saluée à l'étranger, voient leurs recommandations traitées en avis purement consultatifs et largement ignorées, c'est l'innovation démocratique elle-même qui se retourne contre la promesse qu'elle portait.
+    </p>
+  </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="stats-section">
+  <div class="container wide">
+    <div class="section-number">Les chiffres · III</div>
+    <h2>Ce que la <em>République</em> ne dit pas.</h2>
+    <p style="color: var(--paper-deep); font-size: 19px; max-width: 700px; margin-bottom: 30px;">
+      Tous les chiffres ci-dessous proviennent de sources publiques vérifiables — rapports GRECO, Cour des comptes, Commission européenne, Bureau du Plan, IFDH, recherches universitaires. La référence de chacun est précisée dans le dossier global disponible en annexe.
+    </p>
+
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="stat-tag">Article 42 · Mandat libre</div>
+        <div class="stat-number">99,73<span class="unit">%</span></div>
+        <div class="stat-label">d'alignement intra-groupe sur les votes nominaux à la Chambre. La cohésion partisane belge est « pratiquement la plus forte d'Europe occidentale ».</div>
+        <div class="stat-source">Verleden · CRISP · 2019</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-tag">Financement public</div>
+        <div class="stat-number">~75<span class="unit">M€/an</span></div>
+        <div class="stat-label">de dotations publiques annuelles aux partis politiques — environ 80 % de leurs revenus totaux. L'un des taux les plus élevés d'Europe.</div>
+        <div class="stat-source">Loi du 4 juillet 1989 · KU Leuven</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-tag">Financement indirect</div>
+        <div class="stat-number">~84<span class="unit">M€/an</span></div>
+        <div class="stat-label">supplémentaires via les collaborateurs parlementaires affectés à des tâches partisanes — estimation Maddens (KU Leuven).</div>
+        <div class="stat-source">Politologie · Bart Maddens</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-tag">Conseil de l'Europe</div>
+        <div class="stat-number">16<span class="unit">/22</span></div>
+        <div class="stat-label">recommandations GRECO en souffrance. Procédure de non-conformité (Règle 32) activée jusqu'au niveau 3. Niveau 4 : déclaration publique.</div>
+        <div class="stat-source">GRECO RC5(2024)3 · Plénière 101 · 2025</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-tag">Non-exécution judiciaire</div>
+        <div class="stat-number">16 000+</div>
+        <div class="stat-label">condamnations ignorées par Fedasil dans le seul dossier de l'accueil des demandeurs d'asile (2021–2024).</div>
+        <div class="stat-source">IFDH · Enquête 18.11.2024</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-tag">Astreintes</div>
+        <div class="stat-number">~20<span class="unit">M€</span></div>
+        <div class="stat-label">d'astreintes payées par l'État dans le dossier Bruxelles-National, plutôt que de modifier les routes aériennes.</div>
+        <div class="stat-source">BX1 · 2024</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-tag">Non-recours aux droits</div>
+        <div class="stat-number">37<span class="unit">à 51%</span></div>
+        <div class="stat-label">des personnes éligibles au revenu d'intégration sociale ne le perçoivent pas. Phénomène massif, mesurable, structurel.</div>
+        <div class="stat-source">TAKE · BELMOD · BELSPO</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-tag">Allocation chauffage 65+</div>
+        <div class="stat-number">77<span class="unit">%</span></div>
+        <div class="stat-label">de non-recours chez les aînés éligibles à l'allocation chauffage. Fraude sociale détectée : 0,3 % du budget de la sécu.</div>
+        <div class="stat-source">Bureau fédéral du Plan</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-tag">Vulnérabilité numérique</div>
+        <div class="stat-number">46<span class="unit">%</span></div>
+        <div class="stat-label">des Belges de 16-74 ans en situation de vulnérabilité numérique — au moment même où l'État ferme guichets et impose le tout-en-ligne.</div>
+        <div class="stat-source">Baromètre Fondation Roi Baudouin 2022</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-tag">Lobby UE / société civile</div>
+        <div class="stat-number">1 : 23</div>
+        <div class="stat-label">rapport entre les moyens financiers du lobby industriel à Bruxelles et ceux des organisations de la société civile.</div>
+        <div class="stat-source">CEO · LobbyControl · 02.2025</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-tag">Lobby tech à Bruxelles</div>
+        <div class="stat-number">151<span class="unit">M€/an</span></div>
+        <div class="stat-label">de dépenses déclarées par la Big Tech au registre de transparence UE en 2025. Côté belge fédéral : pas de registre obligatoire.</div>
+        <div class="stat-source">Corporate Europe Observatory</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-tag">Mandats dérivés</div>
+        <div class="stat-number">~2 700</div>
+        <div class="stat-label">mandats dérivés rémunérés dans intercommunales, régies, ASBL publiques. L'héritage Publifin perdure malgré les plafonds.</div>
+        <div class="stat-source">Cour des comptes · Moniteur belge</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CITATION FORTE ===== -->
+<section style="padding: 40px 0 0;">
+  <div class="container">
+    <div class="pullquote">
+      La particratie ne relève pas d'une simple dérive comportementale. C'est une transformation structurelle du modèle démocratique — où les partis ont cessé d'agir comme intermédiaires de l'opinion pour devenir des structures auto-préservatrices, captant les ressources publiques pour assurer leur propre pérennité.
+      <cite>— Synthèse de la doctrine : Katz, Mair, De Winter, Verleden</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REVENDICATIONS ===== -->
+<section class="demands">
+  <div class="container">
+    <div class="section-number">Revendications · IV</div>
+    <h2>Dix exigences <em>opérationnelles</em>.</h2>
+    <p class="lead">
+      Aucune de ces dix revendications ne suppose une révolution institutionnelle. Toutes peuvent être adoptées par voie législative ordinaire, ou — pour celles qui touchent au texte constitutionnel — inscrites au prochain agenda de révision. Toutes sont déjà recommandées par des organes internationaux que l'État belge a ratifiés.
+    </p>
+
+    <div class="demand">
+      <div class="demand-num">01</div>
+      <div class="demand-content">
+        <h4>Refonder le financement public des partis</h4>
+        <p>Conditionner toute dotation publique à des clauses statutaires garantissant l'indépendance de vote des élu·es ; interdire la rétrocession obligatoire de l'indemnité parlementaire ; plafonner les réserves financières des partis ; instaurer un système partiel de fonds de contrepartie indexé sur les contributions citoyennes de faible montant.</p>
+        <span class="demand-tag">Loi du 4 juillet 1989</span>
+      </div>
+    </div>
+
+    <div class="demand">
+      <div class="demand-num">02</div>
+      <div class="demand-content">
+        <h4>Remplacer la Commission de contrôle parlementaire</h4>
+        <p>L'actuelle commission, composée des partis qui s'autocontrôlent, doit être remplacée par une autorité indépendante de nature juridictionnelle, présidée par des magistrats de la Cour des comptes, dotée de pouvoirs d'enquête réels. C'est la portée de l'arrêt CEDH <em>Mugemangango</em>.</p>
+        <span class="demand-tag">Conformité CEDH</span>
+      </div>
+    </div>
+
+    <div class="demand">
+      <div class="demand-num">03</div>
+      <div class="demand-content">
+        <h4>Registre fédéral obligatoire et sanctionné des lobbyistes</h4>
+        <p>Le registre actuel de la Chambre est non contraignant, géré par une seule personne. Aucun dispositif au Sénat, au gouvernement, dans les cabinets ministériels. Le projet de loi 2025 doit être adopté sans dilution : enregistrement obligatoire, déclaration de tous les contacts avec les cabinets, sanctions effectives.</p>
+        <span class="demand-tag">GRECO · 5e cycle · Recommandation vii</span>
+      </div>
+    </div>
+
+    <div class="demand">
+      <div class="demand-num">04</div>
+      <div class="demand-content">
+        <h4>Publication des déclarations de patrimoine</h4>
+        <p>Les déclarations sous pli fermé sont une garantie d'opacité, non d'intégrité. Comme l'exige le GRECO, elles doivent être consultables publiquement pour les hautes fonctions exécutives et les parlementaires, dans un format standardisé et accessible.</p>
+        <span class="demand-tag">GRECO · Recommandations xii et xiii</span>
+      </div>
+    </div>
+
+    <div class="demand">
+      <div class="demand-num">05</div>
+      <div class="demand-content">
+        <h4>Encadrement légal des cabinets ministériels</h4>
+        <p>Plafond strict de conseillers par ministre, transparence des recrutements, registre des cadeaux et des contacts avec les lobbyistes commun à tous les cabinets, extension du contrôle de la Cour des comptes, période de carence (cooling-off) légale pour les anciens membres.</p>
+        <span class="demand-tag">GRECO · Cabinets ministériels</span>
+      </div>
+    </div>
+
+    <div class="demand">
+      <div class="demand-num">06</div>
+      <div class="demand-content">
+        <h4>Garantir le mandat libre par voie pénale et statutaire</h4>
+        <p>Toute exclusion d'un·e élu·e motivée par l'exercice libre de son droit de vote doit entraîner la suspension immédiate du financement public du parti concerné. Reconnaissance d'un droit de vote de conscience opposable aux directions de parti.</p>
+        <span class="demand-tag">Article 42 de la Constitution</span>
+      </div>
+    </div>
+
+    <div class="demand">
+      <div class="demand-num">07</div>
+      <div class="demand-content">
+        <h4>Assemblée citoyenne permanente, contraignante</h4>
+        <p>Institutionnaliser, à l'image du Bürgerdialog germanophone et des commissions délibératives bruxelloises, une assemblée citoyenne tirée au sort dont les recommandations adoptées à majorité qualifiée s'imposent au Parlement par voie d'examen obligatoire et motivé. Suppression du seuil électoral de 5 %.</p>
+        <span class="demand-tag">Volt · CaP Démocratie · G1000</span>
+      </div>
+    </div>
+
+    <div class="demand">
+      <div class="demand-num">08</div>
+      <div class="demand-content">
+        <h4>Initiative populaire et référendum d'initiative citoyenne</h4>
+        <p>Introduction dans la Constitution belge d'un droit d'initiative populaire et d'un référendum d'initiative citoyenne sur les questions législatives ordinaires, à l'exclusion des matières communautaires sensibles. Pétition de la Chambre n° 55/2023-2024/42 toujours pendante.</p>
+        <span class="demand-tag">Pétition à la Chambre · Révision constitutionnelle</span>
+      </div>
+    </div>
+
+    <div class="demand">
+      <div class="demand-num">09</div>
+      <div class="demand-content">
+        <h4>Justice exécutée — décisions exécutoires</h4>
+        <p>Mécanisme automatique d'astreintes croissantes en cas de non-exécution d'une décision juridictionnelle par l'État ; obligation pour le Parlement d'examiner trimestriellement les décisions non exécutées ; engagement de la responsabilité de l'État-législateur en cas d'inaction prolongée — voie ouverte par l'arrêt <em>Cass., 5 septembre 2025</em> (F.24.0060.F).</p>
+        <span class="demand-tag">État de droit · IFDH</span>
+      </div>
+    </div>
+
+    <div class="demand">
+      <div class="demand-num">10</div>
+      <div class="demand-content">
+        <h4>Automatisation et accès effectif aux droits sociaux</h4>
+        <p>Généralisation de l'attribution automatique des droits sociaux à partir des flux fiscaux et administratifs ; obligation pour les administrations de maintenir guichets physiques et accompagnement humain ; reconnaissance du <em>pauvrétisme</em>, ainsi que l'a qualifié le rapporteur spécial De Schutter, comme préjugé structurel à traiter avec la même gravité que le racisme ou le sexisme.</p>
+        <span class="demand-tag">Charte de l'assuré social · Olivier De Schutter</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ACTIONS CITOYENNES ===== -->
+<section>
+  <div class="container">
+    <div class="section-number">Action · V</div>
+    <h2>Ce que <em>chacun·e</em> peut faire, dès aujourd'hui.</h2>
+
+    <p class="lead">
+      Le contentieux et le plaidoyer institutionnel sont indispensables, mais lents. Ils ne suffisent pas. La démocratie réelle se reconstruit aussi par des gestes concrets, à portée de tout·e citoyen·ne. Voici les leviers immédiatement disponibles.
+    </p>
+
+    <div class="actions-grid">
+      <div class="action-card">
+        <div class="kicker">Niveau communal</div>
+        <h4>Interpellation citoyenne</h4>
+        <p>En Wallonie et à Bruxelles, tout·e habitant·e peut monter à la tribune du conseil communal pour 10 minutes et interpeller les élu·es sur un sujet d'intérêt général. Séance publique, souvent filmée.</p>
+        <div class="threshold">Gratuit · 1 personne suffit</div>
+      </div>
+
+      <div class="action-card">
+        <div class="kicker">Parlement fédéral</div>
+        <h4>Pétition à la Chambre</h4>
+        <p>25 000 signatures déclenchent une audition obligatoire en commission (loi du 2 mai 2019). Les parlements wallon, flamand et bruxellois ont des seuils plus bas. Plateforme officielle Adolphe.</p>
+        <div class="threshold">Seuil : 25 000 signatures</div>
+      </div>
+
+      <div class="action-card">
+        <div class="kicker">Démocratie directe</div>
+        <h4>Consultation populaire communale</h4>
+        <p>Toute commune peut être saisie d'une consultation populaire si 10 à 20 % des habitant·es la demandent (selon la taille). Résultat consultatif, mais effet politique réel.</p>
+        <div class="threshold">10 à 20 % de la commune</div>
+      </div>
+
+      <div class="action-card">
+        <div class="kicker">Bruxelles</div>
+        <h4>Commission délibérative bruxelloise</h4>
+        <p>Sur la plateforme democratie.brussels, une suggestion citoyenne qui recueille 1 000 signatures peut déclencher une commission délibérative mêlant parlementaires et citoyen·nes tiré·es au sort.</p>
+        <div class="threshold">Seuil : 1 000 signatures</div>
+      </div>
+
+      <div class="action-card">
+        <div class="kicker">International</div>
+        <h4>Contribuer aux rapports onusiens</h4>
+        <p>La Belgique est examinée par l'Examen Périodique Universel (ONU), les Comités des droits humains, le GRECO, la Commission européenne. La société civile peut soumettre des contributions via la LDH, Unia, Myria, CNAPD, coalition 11.11.11.</p>
+        <div class="threshold">Témoignages individuels acceptés</div>
+      </div>
+
+      <div class="action-card">
+        <div class="kicker">Loi du 28 novembre 2022</div>
+        <h4>Lanceur·euse d'alerte protégé·e</h4>
+        <p>Transposition de la directive UE 2019/1937 : les signalements en interne, en externe (Médiateur fédéral) ou publiquement sont protégés. Représailles interdites et sanctionnées.</p>
+        <div class="threshold">Protection légale activée</div>
+      </div>
+
+      <div class="action-card">
+        <div class="kicker">Justice gratuite</div>
+        <h4>Aide juridique de 1re et 2e ligne</h4>
+        <p>Permanences gratuites sans rendez-vous (maisons de justice, bureaux d'aide juridique des barreaux). Pour les revenus modestes, un avocat pro deo est désigné gratuitement ou à coût réduit.</p>
+        <div class="threshold">Sans rendez-vous · Selon revenus</div>
+      </div>
+
+      <div class="action-card">
+        <div class="kicker">Portes gratuites</div>
+        <h4>Médiateurs · CADA · APD · Comité P</h4>
+        <p>Médiateur fédéral, Médiateurs régionaux, Commission d'accès aux documents administratifs, Autorité de protection des données, Comité P, Conseil supérieur de la justice. Saisine simple, sans avocat obligatoire.</p>
+        <div class="threshold">Recours administratifs gratuits</div>
+      </div>
+
+      <div class="action-card">
+        <div class="kicker">Mobilisation</div>
+        <h4>Rejoindre les coalitions actives</h4>
+        <p>Collectif21, We Need To Talk, Ligue des droits humains, IFDH, partis émergents (Volt, Vista, Pro, Oxygène), réseau associatif d'éducation permanente. Le pouvoir d'agir naît du collectif.</p>
+        <div class="threshold">Adhésion ouverte</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TIMELINE D'ACTION ===== -->
+<section>
+  <div class="container">
+    <div class="section-number">Calendrier · VI</div>
+    <h2>Les <em>échéances</em> qui viennent.</h2>
+
+    <p class="lead">
+      Ces dates ne sont pas des prédictions. Ce sont des rendez-vous institutionnels déjà inscrits à l'agenda. Chacun constitue une fenêtre d'opportunité pour porter les revendications du présent manifeste.
+    </p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">25–26 mai 2026</div>
+        <div class="timeline-title">Rapport État de droit 2026 (Commission européenne)</div>
+        <div class="timeline-desc">Publication du nouveau rapport annuel. La Belgique y fera l'objet d'une évaluation comparative. Contributions de la société civile possibles via la LDH et l'IFDH.</div>
+      </div>
+
+      <div class="timeline-item critical">
+        <div class="timeline-date">30 novembre 2026</div>
+        <div class="timeline-title">Échéance GRECO — risque de déclaration publique</div>
+        <div class="timeline-desc">Date limite du rapport de progrès belge au GRECO. En cas de non-progrès tangible, activation du niveau 4 (Règle 32) — déclaration publique de non-conformité. Seule la Biélorussie l'a subie à ce jour.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2026–2027</div>
+        <div class="timeline-title">Examen Périodique Universel de la Belgique (ONU)</div>
+        <div class="timeline-desc">Examen quadriennal des droits humains. Soumissions de la société civile à déposer via le système onusien. Toutes les coalitions associatives belges y contribuent.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2029</div>
+        <div class="timeline-title">Élections fédérales, régionales, communautaires</div>
+        <div class="timeline-desc">Prochain rendez-vous électoral général. Toutes les revendications du présent manifeste ont vocation à figurer dans les programmes des formations qui souhaitent rouvrir l'agenda institutionnel.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SIGNATURE ===== -->
+<section class="signature">
+  <div class="container">
+    <div class="section-number">Engagement · VII</div>
+    <h2>Nous <em>signons</em>.</h2>
+    <p>
+      Ce manifeste n'est pas un texte clos. Il appartient à toutes celles et tous ceux qui en partagent le diagnostic et les revendications. Il peut être repris, diffusé, traduit, complété — à condition d'en conserver la rigueur factuelle.
+    </p>
+    <p>
+      Nous appelons les citoyen·nes, les associations, les syndicats, les universitaires, les magistrat·es indépendant·es, les journalistes, les élu·es qui refusent l'omerta, à inscrire ces dix revendications dans le débat public belge avant l'échéance du 30 novembre 2026.
+    </p>
+
+    <div class="engage">
+      « Le droit n'est pas une chose qu'on subit.<br>
+      C'est un terrain de lutte. »
+    </div>
+
+    <p style="font-style: italic; font-size: 17px; color: var(--paper-deep); margin-top: 40px;">
+      — Manifeste citoyen, version I, Bruxelles, mai 2026<br>
+      Document de travail ouvert · Sous responsabilité partagée
+    </p>
+
+    <div class="footer-mono">
+      <div>Sources · Rapports GRECO · Arrêts CEDH · IFDH · Bureau du Plan · KU Leuven · ULB · CRISP</div>
+      <div>Vérifiable · Documenté · Réutilisable</div>
+    </div>
+  </div>
+</section>
+
+<script>
+// Reveal animations au scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('h2, .pullquote, .stat, .demand, .action-card, .timeline-item, p.lead').forEach(el => {
+  el.classList.add('reveal');
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>
