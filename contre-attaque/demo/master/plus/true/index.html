@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dossier global sur la démocratie belge : particratie, État de droit, voies de recours juridique. Synthèse intégrée d'un projet de recherche citoyen.">
+  <meta name="author" content="Recherche citoyenne">
+  <meta name="theme-color" content="#1a3a6c">
+  <meta property="og:title" content="La démocratie belge à l'épreuve">
+  <meta property="og:description" content="Particratie, État de droit, voies de recours — synthèse intégrée">
+  <meta property="og:type" content="article">
+  <title>La démocratie belge à l'épreuve — Dossier global</title>
+  <style>
+    /* ---------- RESET & BASE ---------- */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body {
+      margin: 0;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 17px;
+      line-height: 1.7;
+      color: #1a1a1a;
+      background: #fafaf7;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---------- COLOR SYSTEM ---------- */
+    :root {
+      --bg: #fafaf7;
+      --bg-elev: #ffffff;
+      --bg-deep: #f0ede5;
+      --text: #1a1a1a;
+      --text-soft: #4a4a4a;
+      --text-faint: #777;
+      --primary: #1a3a6c;
+      --primary-light: #2e75b6;
+      --accent: #b8860b;
+      --accent-soft: #f5ecd3;
+      --danger: #8b2c2c;
+      --border: #d5d0c4;
+      --border-soft: #e8e3d6;
+      --hl: #fff8dc;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #15171c;
+        --bg-elev: #1d2128;
+        --bg-deep: #0f1116;
+        --text: #e8e6e0;
+        --text-soft: #b8b5ad;
+        --text-faint: #8a8780;
+        --primary: #9ab5d8;
+        --primary-light: #b8d1ec;
+        --accent: #d4a747;
+        --accent-soft: #2a2620;
+        --danger: #d68585;
+        --border: #353941;
+        --border-soft: #262a32;
+        --hl: #2a2820;
+      }
+      body { background: var(--bg); color: var(--text); }
+    }
+
+    /* ---------- LAYOUT ---------- */
+    .topbar {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border-soft);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .topbar-inner {
+      max-width: 1200px; margin: 0 auto;
+      padding: 12px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      font-family: 'Georgia', serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--primary);
+      letter-spacing: 0.01em;
+    }
+    .brand small { display: block; font-weight: 400; font-size: 11px; color: var(--text-faint); letter-spacing: 0.05em; text-transform: uppercase; margin-top: 2px; }
+    .topbar nav { display: flex; gap: 4px; }
+    .topbar nav a {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 13px;
+      color: var(--text-soft);
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: 4px;
+    }
+    .topbar nav a:hover { background: var(--bg-deep); color: var(--primary); }
+    .nav-toggle { display: none; background: none; border: 1px solid var(--border); border-radius: 6px; padding: 6px 12px; color: var(--text); cursor: pointer; font-family: inherit; font-size: 13px; }
+
+    @media (max-width: 840px) {
+      .topbar nav { display: none; }
+      .nav-toggle { display: inline-block; }
+      .topbar nav.open { display: flex; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; background: var(--bg-elev); border-bottom: 1px solid var(--border-soft); padding: 8px 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+    }
+
+    .container { display: grid; grid-template-columns: 220px 1fr; max-width: 1200px; margin: 0 auto; gap: 48px; padding: 0 24px; }
+    @media (max-width: 960px) { .container { grid-template-columns: 1fr; gap: 0; } .toc-side { display: none; } }
+
+    /* ---------- SIDE TOC ---------- */
+    .toc-side {
+      position: sticky; top: 80px;
+      align-self: start;
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+      padding: 24px 0;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 13px;
+      line-height: 1.5;
+      border-right: 1px solid var(--border-soft);
+    }
+    .toc-side h4 { font-family: 'Georgia', serif; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-faint); margin: 0 0 12px 0; font-weight: 600; }
+    .toc-side ol { list-style: none; padding: 0; margin: 0; counter-reset: tocnum; }
+    .toc-side li { counter-increment: tocnum; margin: 0 0 6px 0; }
+    .toc-side li > a { display: block; color: var(--text-soft); text-decoration: none; padding: 4px 8px 4px 24px; border-left: 2px solid transparent; position: relative; transition: all 0.15s; }
+    .toc-side li > a::before { content: counter(tocnum, upper-roman) "."; position: absolute; left: 4px; color: var(--text-faint); font-size: 11px; }
+    .toc-side li > a:hover { color: var(--primary); border-left-color: var(--accent); background: var(--bg-deep); }
+    .toc-side li.active > a { color: var(--primary); border-left-color: var(--primary); background: var(--bg-deep); font-weight: 600; }
+
+    /* ---------- MAIN ---------- */
+    main { padding: 40px 0 80px 0; max-width: 760px; }
+    section { margin-bottom: 64px; scroll-margin-top: 80px; }
+    h1, h2, h3, h4 { font-family: 'Georgia', serif; color: var(--primary); line-height: 1.25; }
+    h1 { font-size: 2.4em; margin: 0 0 16px 0; font-weight: 700; letter-spacing: -0.01em; }
+    h2 { font-size: 1.7em; margin: 56px 0 16px 0; padding-bottom: 8px; border-bottom: 2px solid var(--accent); font-weight: 700; }
+    h3 { font-size: 1.25em; margin: 36px 0 12px 0; font-weight: 700; color: var(--primary-light); }
+    h4 { font-size: 1.05em; margin: 24px 0 8px 0; font-weight: 700; font-style: italic; color: var(--text-soft); }
+    p { margin: 0 0 16px 0; text-align: justify; hyphens: auto; }
+
+    /* ---------- COVER ---------- */
+    .cover {
+      padding: 80px 0 60px 0;
+      border-bottom: 1px solid var(--border-soft);
+      margin-bottom: 0;
+    }
+    .cover .eyebrow { font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin: 0 0 16px 0; font-weight: 600; }
+    .cover h1 { font-size: 3.2em; margin: 0 0 12px 0; letter-spacing: -0.02em; }
+    .cover .subtitle { font-size: 1.4em; color: var(--text-soft); font-style: italic; margin: 0 0 32px 0; }
+    .cover .meta { display: flex; gap: 24px; flex-wrap: wrap; font-family: 'Inter', sans-serif; font-size: 13px; color: var(--text-faint); }
+    .cover .meta span { display: flex; align-items: center; gap: 6px; }
+
+    @media (max-width: 600px) {
+      .cover h1 { font-size: 2.2em; }
+      .cover .subtitle { font-size: 1.1em; }
+      h2 { font-size: 1.4em; }
+    }
+
+    /* ---------- COMPONENTS ---------- */
+    .lead {
+      font-size: 1.15em;
+      line-height: 1.6;
+      color: var(--text-soft);
+      border-left: 3px solid var(--accent);
+      padding: 0 0 0 20px;
+      margin: 24px 0 32px 0;
+      font-style: italic;
+    }
+
+    .keyfacts {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 24px 0;
+    }
+    .keyfacts h4 { margin-top: 0; color: var(--accent); font-style: normal; text-transform: uppercase; font-size: 12px; letter-spacing: 0.1em; }
+    .keyfacts ul { margin: 8px 0 0 0; padding-left: 20px; }
+    .keyfacts li { margin: 6px 0; font-size: 0.95em; }
+
+    .pullquote {
+      font-size: 1.3em;
+      font-style: italic;
+      color: var(--primary);
+      border-left: 4px solid var(--accent);
+      padding: 12px 0 12px 24px;
+      margin: 32px 0;
+      line-height: 1.4;
+    }
+    .pullquote cite { display: block; font-size: 0.7em; color: var(--text-faint); margin-top: 12px; font-style: normal; font-family: 'Inter', sans-serif; }
+
+    .callout {
+      background: var(--accent-soft);
+      border-left: 4px solid var(--accent);
+      padding: 16px 20px;
+      margin: 24px 0;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.97em;
+    }
+    .callout strong { color: var(--primary); }
+    .callout.warn { background: #fdf4f0; border-color: var(--danger); }
+    @media (prefers-color-scheme: dark) {
+      .callout.warn { background: #2a1f1f; }
+    }
+
+    .figure-box {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px 20px;
+      align-items: baseline;
+      background: var(--bg-elev);
+      border: 1px solid var(--border-soft);
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    .figure-box .number {
+      font-family: 'Georgia', serif;
+      font-size: 2.2em;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .figure-box .label { font-size: 0.95em; color: var(--text-soft); }
+
+    /* ---------- TABLES ---------- */
+    .table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 8px; border: 1px solid var(--border); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 0.92em;
+      background: var(--bg-elev);
+    }
+    th, td { padding: 10px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--border-soft); }
+    th { background: var(--bg-deep); color: var(--primary); font-weight: 700; font-size: 0.88em; text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 2px solid var(--accent); }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: var(--bg-deep); }
+    td.num { text-align: right; font-variant-numeric: tabular-nums; }
+    .table-caption { font-family: 'Inter', sans-serif; font-size: 12px; color: var(--text-faint); margin: 6px 0 0 4px; font-style: italic; }
+
+    /* ---------- LISTS ---------- */
+    ul, ol { padding-left: 22px; }
+    li { margin: 6px 0; }
+    .clean-list { list-style: none; padding: 0; }
+    .clean-list li { padding: 8px 0 8px 28px; border-bottom: 1px dashed var(--border-soft); position: relative; }
+    .clean-list li::before { content: "▸"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+    .clean-list li:last-child { border-bottom: none; }
+
+    /* ---------- LINKS ---------- */
+    a { color: var(--primary); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; text-decoration-color: var(--border); transition: text-decoration-color 0.15s; }
+    a:hover { text-decoration-color: var(--accent); }
+
+    /* ---------- BACK TO TOP ---------- */
+    .totop {
+      position: fixed;
+      bottom: 24px; right: 24px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      box-shadow: 0 4px 12px rgba(26,58,108,0.3);
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s;
+      z-index: 50;
+    }
+    .totop.show { opacity: 1; pointer-events: auto; }
+    .totop:hover { background: var(--accent); }
+
+    /* ---------- FOOTER ---------- */
+    footer { background: var(--bg-deep); border-top: 1px solid var(--border-soft); padding: 48px 0 24px 0; margin-top: 80px; }
+    footer .container { display: block; max-width: 760px; }
+    footer h4 { font-size: 0.85em; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-faint); margin: 0 0 12px 0; font-style: normal; }
+    footer p { font-size: 0.88em; color: var(--text-soft); }
+    .disclaimer { background: var(--bg-elev); border: 1px solid var(--border); padding: 20px; border-radius: 8px; margin: 24px 0; font-size: 0.88em; color: var(--text-soft); }
+
+    /* ---------- PRINT ---------- */
+    @media print {
+      .topbar, .toc-side, .totop, .nav-toggle { display: none !important; }
+      body { background: white; color: black; font-size: 11pt; }
+      .container { display: block; max-width: 100%; padding: 0; }
+      main { max-width: 100%; padding: 0; }
+      section { page-break-inside: avoid; }
+      h1, h2, h3 { page-break-after: avoid; color: #000; }
+      a { color: #000; text-decoration: none; }
+      .pullquote, .callout, .keyfacts, .figure-box { page-break-inside: avoid; }
+    }
+
+    /* ---------- ACCESSIBILITY ---------- */
+    .skip { position: absolute; left: -9999px; top: 0; }
+    .skip:focus { left: 8px; top: 8px; background: var(--accent); color: white; padding: 8px 16px; z-index: 999; border-radius: 4px; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+    /* number badge inline */
+    .badge { display: inline-block; background: var(--accent-soft); color: var(--primary); font-family: 'Inter', sans-serif; font-size: 0.85em; padding: 2px 8px; border-radius: 4px; font-weight: 600; }
+    .badge.alert { background: #fdf4f0; color: var(--danger); }
+    @media (prefers-color-scheme: dark) {
+      .badge.alert { background: #2a1f1f; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Aller au contenu</a>
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">Dossier global<small>Démocratie belge — État au 26 mai 2026</small></div>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="topnav">Sections ▾</button>
+      <nav id="topnav">
+        <a href="#avant-propos">Avant-propos</a>
+        <a href="#partie-1">I.</a>
+        <a href="#partie-2">II.</a>
+        <a href="#partie-3">III.</a>
+        <a href="#partie-4">IV.</a>
+        <a href="#partie-5">V.</a>
+        <a href="#partie-6">VI.</a>
+        <a href="#partie-7">VII.</a>
+        <a href="#conclusion">Conclusion</a>
+      </nav>
+    </div>
+  </div>
+
+  <header class="cover">
+    <div class="container" style="display:block; max-width: 760px;">
+      <p class="eyebrow">Synthèse intégrée — Version augmentée pour le web</p>
+      <h1>La démocratie belge à l'épreuve</h1>
+      <p class="subtitle">Particratie, État de droit, voies de recours&nbsp;: d'un diagnostic structurel à une stratégie contentieuse opérationnelle</p>
+      <div class="meta">
+        <span>📄 Dossier de référence citoyen</span>
+        <span>🗓 Mise à jour&nbsp;: 26 mai 2026</span>
+        <span>⏱ Lecture&nbsp;: ~60 min</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <aside class="toc-side" aria-label="Table des matières">
+      <h4>Sommaire</h4>
+      <ol>
+        <li><a href="#avant-propos">Avant-propos</a></li>
+        <li><a href="#partie-1">La particratie face au mandat libre</a></li>
+        <li><a href="#partie-2">Défaillance de l'État de droit</a></li>
+        <li><a href="#partie-3">Opacité et capture institutionnelle</a></li>
+        <li><a href="#partie-4">Le coût humain</a></li>
+        <li><a href="#partie-5">La séquence Arizona 2025-2026</a></li>
+        <li><a href="#partie-6">Stratégie de recours opérationnelle</a></li>
+        <li><a href="#partie-7">Perspective comparée occidentale</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+        <li><a href="#biblio">Bibliographie &amp; sources</a></li>
+      </ol>
+    </aside>
+
+    <main id="main">
+      <!-- ============================================ -->
+      <!-- AVANT-PROPOS                                 -->
+      <!-- ============================================ -->
+      <section id="avant-propos">
+        <h1>Avant-propos</h1>
+
+        <p class="lead">Ce dossier global rassemble, dans un document unique, l'ensemble des analyses et matériaux produits dans le cadre d'un projet de recherche citoyen consacré à la démocratie belge. Il consolide plus de cinquante études thématiques portant sur la particratie, l'effectivité de l'État de droit, le financement public des partis, l'opacité des cabinets ministériels, le lobbying à Bruxelles, le non-recours aux droits sociaux, et la séquence politique ouverte par la coalition Arizona (gouvernement De Wever&nbsp;I, février 2025). Cette version augmentée intègre la sélection opérationnelle des requérants pour la stratégie contentieuse développée en Partie&nbsp;VI.</p>
+
+        <p>Sa finalité est triple. D'abord, offrir une synthèse opérationnelle au citoyen, au journaliste ou au parlementaire qui n'a pas le temps de parcourir les rapports thématiques in extenso. Ensuite, consolider les sources primaires — Constitution belge, arrêts de la CEDH, rapports du GRECO, données de la Commission européenne, du FMI, de Transparency International, du V-Dem Institute, de l'Institut fédéral des droits humains, de la Cour des comptes, des universités belges — pour permettre la vérification de chaque affirmation. Enfin, articuler les diagnostics avec les leviers d'action concrets&nbsp;: recours administratifs, questions préjudicielles, contentieux européen, mobilisation civile organisée autour d'une coalition juridique nommément identifiée.</p>
+
+        <p>Le document n'a pas valeur d'avis juridique. Il constitue un instrument de travail dont l'usage relève de la responsabilité du lecteur. Les jugements de valeur, lorsqu'ils apparaissent, sont signalés et reflètent la posture de la recherche citoyenne&nbsp;— non un acte d'accusation individuel. Les noms de personnalités politiques cités proviennent exclusivement de sources publiques journalistiques et institutionnelles.</p>
+
+        <h3>Comment lire ce dossier</h3>
+        <p>Sept parties structurent le propos. La <strong>Partie&nbsp;I</strong> pose le diagnostic constitutionnel&nbsp;: tension entre le mandat libre (article&nbsp;42 de la Constitution) et la réalité particratique. La <strong>Partie&nbsp;II</strong> documente la défaillance de l'État de droit par trois indicateurs convergents&nbsp;: non-exécution des décisions de justice, non-conformité aux recommandations du GRECO, opacité du financement des partis. La <strong>Partie&nbsp;III</strong> examine les mécanismes d'opacité institutionnelle (cabinets, Kern, lobbying, médias). La <strong>Partie&nbsp;IV</strong> établit les chaînes causales entre failles structurelles et coût humain. La <strong>Partie&nbsp;V</strong> décrit la séquence politique 2025-2026. La <strong>Partie&nbsp;VI</strong> — substantiellement enrichie dans cette version — cartographie la stratégie contentieuse et nomme les profils de requérants. La <strong>Partie&nbsp;VII</strong> replace l'analyse dans le contexte comparé de l'érosion démocratique occidentale.</p>
+
+        <p>Chaque partie peut être consultée de manière autonome&nbsp;; des renvois internes signalent les articulations. Une bibliographie indicative figure en fin de document.</p>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- PARTIE I                                     -->
+      <!-- ============================================ -->
+      <section id="partie-1">
+        <h1>I. La particratie, face cachée du mandat libre</h1>
+
+        <p class="lead">L'article&nbsp;42 de la Constitution consacre depuis 1831 le mandat représentatif libre. Mais la cohésion partisane belge — mesurée à 99,73&nbsp;% au sein des assemblées — fait du Parlement une chambre d'enregistrement des accords de coalition. Diagnostic d'une fiction constitutionnelle.</p>
+
+        <h2>1.1 Le texte constitutionnel et son contournement</h2>
+        <p>L'article&nbsp;42 dispose, depuis 1831, que «&nbsp;les membres des deux Chambres représentent la Nation, et non uniquement ceux qui les ont élus&nbsp;». Combiné à l'article&nbsp;33 — «&nbsp;Tous les pouvoirs émanent de la Nation. Ils sont exercés de la manière établie par la Constitution&nbsp;» —, ce texte consacre le mandat représentatif libre et prohibe le mandat impératif. Un parlementaire n'est juridiquement lié ni par ses électeurs, ni a fortiori par son parti. L'article&nbsp;58 vient compléter ce dispositif par une <strong>irresponsabilité parlementaire absolue</strong>&nbsp;: aucune poursuite civile, pénale ou en dommages et intérêts ne peut être engagée contre un parlementaire en raison de ses opinions ou votes.</p>
+
+        <p>La réalité institutionnelle belge se situe aux antipodes de ce principe. Frederik Verleden (<em>Aux sources de la particratie</em>, CRISP, 2019) conclut que la cohésion partisane belge est «&nbsp;pratiquement la plus forte d'Europe occidentale&nbsp;». Le vocabulaire politique du CRISP définit la particratie comme un système où les partis «&nbsp;imposent une discipline de vote aux personnes qui ont été élues sur leurs listes&nbsp;». Lieven De Winter documentait dès 1981 la «&nbsp;partijpolitisering&nbsp;» comme instrument de captation.</p>
+
+        <div class="callout">
+          <strong>Paradoxe constitutionnel.</strong> Les partis politiques n'apparaissent dans la Constitution qu'à partir de la révision du 6&nbsp;janvier 2014, à l'article&nbsp;77, 5°, qui se borne à mentionner «&nbsp;les lois concernant le financement des partis politiques et le contrôle des dépenses électorales&nbsp;». Hormis cette mention technique, les partis — qui dominent chaque rouage de l'État — n'ont aucun statut constitutionnel.
+        </div>
+
+        <h2>1.2 Une cohésion partisane mesurée et reconnue</h2>
+        <p>L'alignement intra-groupe atteint en moyenne <span class="badge">99,73&nbsp;%</span> sur les législatures récentes. Les rares dissensions documentées concernent quasi exclusivement des objections de conscience (questions éthiques) et entraînent des sanctions internes&nbsp;: non-réinvestiture, perte de portefeuilles parlementaires, rétention de dotations. La doctrine comparative ne qualifie pas cette cohésion d'anomalie en soi — tous les régimes parlementaires européens connaissent une discipline de vote élevée.</p>
+
+        <p>Ce qui distingue la Belgique, c'est la <strong>conjonction de cinq facteurs</strong>&nbsp;: (i) l'effacement constitutionnel des partis&nbsp;; (ii) leur sur-financement public&nbsp;; (iii) la pénétration administrative par les cabinets ministériels&nbsp;; (iv) l'absence de mécanisme de responsabilité activable lorsqu'un parti viole structurellement l'article&nbsp;42&nbsp;; (v) la non-exécution massive des décisions de justice. Cette conjonction est documentée par GRECO, la Commission européenne, la CEDH, Transparency International, CIVICUS et l'Economist Intelligence Unit, qui classe la Belgique parmi les «&nbsp;flawed democracies&nbsp;».</p>
+
+        <div class="pullquote">«&nbsp;Les élus exercent leur mandat pour le parti, pas pour eux-mêmes.&nbsp;»<cite>— Germain Mugemangango, chef de groupe PTB. Une formulation qui méconnaît délibérément l'esprit de l'article&nbsp;42 de la Constitution.</cite></div>
+
+        <h2>1.3 Du consociativisme à la particratie hégémonique</h2>
+        <p>L'architecture consociative belge — pacification d'une société segmentée (clivages linguistique, philosophique, socio-économique) par des compromis entre élites de piliers — a historiquement assuré la stabilité. Conçu pour la médiation, ce modèle a muté en captation. Les piliers (catholique, socialiste, libéral) ont permis aux partis de concevoir des mécanismes de «&nbsp;policy feedback&nbsp;»&nbsp;: les appareils politiques structurent la sécurité sociale, l'enseignement et la santé de manière à garantir leur propre survie financière et électorale.</p>
+
+        <p>Les présidents de parti sont devenus les véritables détenteurs du pouvoir, dans un dispositif qualifié par la doctrine de «&nbsp;particratie consulaire&nbsp;». Wilfried Dewachter (<em>De trukendoos van de Belgische particratie</em>, 2014) et Kris Deschouwer (<em>The Politics of Belgium</em>, 2012) ont documenté ce déplacement. La crise record de <span class="badge">615&nbsp;jours</span> pour la formation du gouvernement bruxellois (clôturée le 14&nbsp;février 2026), comme les <span class="badge">239&nbsp;jours</span> qu'aura pris la formation de l'Arizona fédérale, illustrent l'asphyxie du modèle consociatif sous l'effet de la captation partisane.</p>
+
+        <h2>1.4 Le statut juridique des partis&nbsp;: l'association de fait comme bouclier</h2>
+        <p>Malgré la gestion de dotations cumulant plus de <strong>188&nbsp;millions d'euros par an</strong> (toutes assemblées confondues), la quasi-totalité des partis belges sont organisés en «&nbsp;associations de fait&nbsp;» ou sociétés simples — c'est-à-dire sans personnalité juridique. Ce choix n'est pas neutre. Il configure une asymétrie radicale&nbsp;: l'État finance des entités qui n'existent pas en droit, ne tiennent pas de comptabilité publique au sens de la loi sur les ASBL, et ne peuvent être attaquées en justice qu'au prix de complexes recevabilités procédurales.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Caractéristique</th>
+                <th>ASBL (personne morale)</th>
+                <th>Association de fait (parti type)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Personnalité juridique</td><td>Oui, entité distincte</td><td>Non, inexistante en tant qu'unité</td></tr>
+              <tr><td>Responsabilité civile</td><td>Limitée, patrimoine protégé</td><td>Collective des membres, mais pratiquement inactivable</td></tr>
+              <tr><td>Transparence comptable</td><td>Stricte&nbsp;: bilans, publication</td><td>Compensée de manière lacunaire par la loi de 1989</td></tr>
+              <tr><td>Capacité d'ester en justice</td><td>Pleine et entière</td><td>Restreinte, recevabilité complexe</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-caption">Tableau&nbsp;1 — Comparaison du statut juridique des partis politiques.</p>
+
+        <p>Cette «&nbsp;irresponsabilité organisée&nbsp;» constitue l'un des leviers de la critique constitutionnelle développée en Partie&nbsp;VI&nbsp;: exiger, par voie législative ou par contentieux, la transformation des partis en personnes morales transparentes, ouvertes à la responsabilité civile et à la publicité administrative.</p>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- PARTIE II                                    -->
+      <!-- ============================================ -->
+      <section id="partie-2">
+        <h1>II. La défaillance structurelle de l'État de droit</h1>
+
+        <p class="lead">Plus de 16&nbsp;000 condamnations non exécutées dans le seul domaine de l'asile. 278,5&nbsp;millions d'euros d'astreintes accumulées. Une procédure GRECO Règle&nbsp;32 niveau&nbsp;3 activée. 188&nbsp;millions d'euros de financement public partisan sans contrôle indépendant. Trois indicateurs convergents.</p>
+
+        <h2>2.1 Un État qui refuse d'exécuter ses propres juges</h2>
+        <p>Depuis octobre 2021, l'État belge et Fedasil ont été condamnés <strong>plus de 16&nbsp;000 fois</strong> par les juridictions belges pour défaut d'hébergement de demandeurs d'asile. Le montant cumulé des astreintes atteint, selon la RTBF (2024), <span class="badge alert">278,5&nbsp;millions d'euros</span>. La ministre de l'Asile Anneleen Van Bossuyt (N-VA) a déclaré explicitement qu'elle «&nbsp;ne peut ni ne veut payer ces astreintes&nbsp;», préférant investir dans «&nbsp;un durcissement de la politique d'asile et de migration&nbsp;».</p>
+
+        <p>La Cour européenne des droits de l'homme a posé une qualification juridique décisive dans l'arrêt <em>Camara c. Belgique</em> (18&nbsp;juillet 2023, req. n°&nbsp;49255/22)&nbsp;: elle constate une «&nbsp;carence systémique des autorités belges d'exécuter les décisions de justice définitives&nbsp;» (§118), précisant qu'il ne s'agit pas d'un «&nbsp;simple retard&nbsp;» mais d'un «&nbsp;refus caractérisé de se conformer aux injonctions du juge&nbsp;». Plus de 2&nbsp;200 mesures provisoires ont été imposées à la Belgique par la CEDH depuis lors. Le 9&nbsp;avril 2026, la Cour a condamné à nouveau la Belgique pour non-hébergement de quatre demandeurs d'asile.</p>
+
+        <p>Le <strong>contournement législatif</strong> est désormais documenté&nbsp;: une loi de juillet 2025 modifie la loi accueil pour permettre de refuser l'hébergement aux personnes protégées dans un autre État membre de l'UE («&nbsp;statut M&nbsp;»), touchant plus de 3&nbsp;200 personnes mises à la rue. AVOCATS.BE a obtenu des condamnations confirmées en appel par les cours de Liège, Bruxelles et Mons (dernier arrêt du 27&nbsp;mars 2025), sans effet tangible.</p>
+
+        <h2>2.2 Au-delà de l'asile&nbsp;: climat, prisons, aéroport, armes</h2>
+        <ul class="clean-list">
+          <li><strong>Climat —</strong> L'arrêt de la Cour d'appel de Bruxelles du 30&nbsp;novembre 2023 (<em>Klimaatzaak</em>) impose une réduction des émissions de GES d'au moins 55&nbsp;% d'ici 2030. Seul le gouvernement flamand s'est pourvu en cassation. Le Premier ministre De Croo avait qualifié le procès de «&nbsp;pure perte de temps et d'énergie&nbsp;».</li>
+          <li><strong>Nuisances aériennes —</strong> Pour l'aéroport de Bruxelles-National, l'État a accumulé environ <span class="badge alert">20&nbsp;millions d'euros</span> d'astreintes payées plutôt que de modifier les routes aériennes. Les astreintes ont été relevées à 18&nbsp;000&nbsp;€ par dépassement grave, avec un plafond de 18&nbsp;millions&nbsp;€ par route.</li>
+          <li><strong>Surpopulation carcérale —</strong> Le délai moyen d'application des arrêts CEDH atteint 3,5&nbsp;ans dans ce domaine, malgré des condamnations répétées de la Belgique pour traitements inhumains et dégradants.</li>
+          <li><strong>Armes —</strong> Contournement systématique des annulations du Conseil d'État par l'octroi de licences identiques après réexamen <em>pro forma</em>.</li>
+        </ul>
+
+        <div class="pullquote">«&nbsp;Que vaut une décision de justice si elle n'est pas mise en œuvre&nbsp;?&nbsp;»<cite>— Martien Schotsmans, directrice de l'Institut fédéral des droits humains. Enquête formelle ouverte le 18&nbsp;novembre 2024 sur la non-exécution des décisions de justice (2014-2024).</cite></div>
+
+        <h2>2.3 Le GRECO et la procédure de non-conformité</h2>
+        <p>Le 2<sup>e</sup> Rapport de conformité du GRECO (5<sup>e</sup> cycle, adopté le 22&nbsp;mars 2024, réf. GrecoRC5(2024)3) conclut que «&nbsp;la Belgique ne se conforme pas suffisamment aux recommandations&nbsp;». Sur les 22 recommandations initiales de décembre 2019, seules <strong>6 sont mises en œuvre de manière satisfaisante</strong>, 8 partiellement, et 8 restent non mises en œuvre. Au total, <span class="badge alert">16 recommandations</span> demeuraient en souffrance, déclenchant l'activation de la <strong>Règle&nbsp;32</strong> — la procédure de non-conformité graduée du GRECO.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Niveau Règle&nbsp;32</th><th>Action requise</th><th>Statut Belgique</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Niveau 1 (§2.i)</td><td>Rapport d'étape à échéance rapprochée</td><td>Franchi (échéance 31&nbsp;mars 2025)</td></tr>
+              <tr><td>Niveau 2 (§2.ii.a/b)</td><td>Lettre du Président du Comité statutaire au Représentant permanent</td><td>Franchi</td></tr>
+              <tr><td>Niveau 3 (§2.ii.c)</td><td>Lettre du Secrétaire général au ministre des Affaires étrangères</td><td>Activé lors de la 101<sup>e</sup> plénière (18-21 novembre 2025)</td></tr>
+              <tr><td>Niveau 4 (§2.iv)</td><td>Déclaration publique de non-conformité</td><td><strong>Risque à l'échéance du 30&nbsp;novembre 2026</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-caption">Tableau&nbsp;2 — Gradation de la procédure GRECO Règle&nbsp;32 et statut belge.</p>
+
+        <p>À ce jour, seule la Biélorussie a fait l'objet d'une déclaration publique de non-conformité. Le franchissement de ce seuil par la Belgique — État fondateur du Conseil de l'Europe — constituerait un événement diplomatique majeur. Un Addendum au 2<sup>e</sup> rapport de conformité a été adopté lors de la 101<sup>e</sup> plénière du GRECO.</p>
+
+        <h2>2.4 Le financement public des partis&nbsp;: 188&nbsp;millions d'euros sans contrôle indépendant</h2>
+        <p>Le financement direct des partis politiques belges représente, en cumulé, environ <strong>75 à 93&nbsp;millions d'euros par an</strong> versés par les assemblées (auxquels s'ajoutent les dotations aux groupes parlementaires et les services de personnel). L'estimation consolidée, intégrant les rétrocessions partisanes obligatoires sur les indemnités des élus, dépasse <span class="badge alert">188&nbsp;millions d'euros</span> annuels. Selon Bart Maddens (KU Leuven), cité par Follow the Money, ce niveau par voteur est <strong>2 à 4 fois supérieur</strong> à celui des pays voisins.</p>
+
+        <p>La loi du 4&nbsp;juillet 1989 (dite loi Dhoore), conçue initialement pour éradiquer le financement occulte, a substitué aux dons privés un système de dotations publiques massives. Aujourd'hui, environ <strong>80&nbsp;%</strong> des recettes des partis représentés au Parlement fédéral proviennent de fonds publics. La formule combine un montant forfaitaire indexé et un montant variable proportionnel aux suffrages obtenus aux dernières élections générales.</p>
+
+        <div class="callout warn">
+          <strong>L'autocontrôle des bénéficiaires.</strong> Le contrôle de la régularité de ces budgets est confié à la <strong>Commission de contrôle des dépenses électorales</strong> de la Chambre des représentants, un organe exclusivement composé de parlementaires issus des partis mêmes qu'elle est censée auditer. La doctrine qualifie cette configuration de «&nbsp;financement par les partis, contrôlé par les partis&nbsp;». La Commission n'a, à ce jour, <strong>jamais sanctionné un parti politique</strong>.
+        </div>
+
+        <p>En 2024, les formations belges ont dépensé plus de <span class="badge">15&nbsp;millions&nbsp;€</span> en publicités ciblées sur Meta et Google, alimentant ce que Bart Maddens qualifie de «&nbsp;campagne permanente&nbsp;». Pour verrouiller davantage ce système, les déclarations de patrimoine des élus sont conservées sous pli scellé et détruites après 5&nbsp;ans, empêchant tout audit citoyen, journalistique ou académique indépendant.</p>
+
+        <p>Le patrimoine net cumulé des principaux partis traditionnels atteint <span class="badge alert">127,6&nbsp;millions d'euros</span> (N-VA 26,3&nbsp;M€, Vlaams Belang 15,3&nbsp;M€, PS 15,1&nbsp;M€, CD&amp;V 15,0&nbsp;M€). Cette accumulation constitue un actif financier indépendant de l'évolution électorale, en contradiction avec l'esprit du financement public conçu comme dotation de fonctionnement.</p>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- PARTIE III                                   -->
+      <!-- ============================================ -->
+      <section id="partie-3">
+        <h1>III. Opacité institutionnelle et capture réglementaire</h1>
+
+        <p class="lead">Cabinets ministériels pléthoriques, Kern sans base légale depuis 1992, capture sectorielle de l'énergie, du pharma et de la finance, 13&nbsp;000 lobbyistes à Bruxelles. Les mécanismes invisibles qui prolongent et amplifient la particratie.</p>
+
+        <h2>3.1 Les cabinets ministériels&nbsp;: la zone grise du pouvoir</h2>
+        <p>Les cabinets ministériels belges figurent parmi les plus pléthoriques au monde, ayant pu compter <strong>jusqu'à 100 collaborateurs par ministre</strong> (OECD SIGMA Paper n°&nbsp;38). Ces conseillers exercent une direction politique sur l'ensemble du ministère, intervenant dans les nominations de fonctionnaires et la coordination interministérielle via les groupes de travail intercabinets (IKW). La réforme Copernic de l'an 2000 visait à les supprimer&nbsp;; elle a en pratique été contournée et inversée.</p>
+
+        <p>La littérature académique (Brans, Pelgrims et De Winter&nbsp;; Dewachter&nbsp;; De Winter 1981 «&nbsp;De partijpolitisering als instrument van particratie&nbsp;») documente l'existence de cabinets servant explicitement de <em>«&nbsp;covert means of party financing&nbsp;»</em>, avec des «&nbsp;ghosts&nbsp;» formellement employés mais politiquement actifs ailleurs. Ce phénomène est absent ou marginal en France, Allemagne et aux Pays-Bas.</p>
+
+        <h2>3.2 Le Kern&nbsp;: un organe extra-constitutionnel</h2>
+        <p>Le Comité ministériel restreint (Kern) — formation informelle réunissant le Premier ministre et les vice-Premiers ministres — concentre l'essentiel des arbitrages politiques majeurs. Il n'a <strong>aucune existence constitutionnelle</strong> (les articles 99 à 101 de la Constitution organisent le Conseil des ministres et non le Kern), <strong>aucune base légale depuis 1992</strong>, et ne tient pas de procès-verbaux accessibles à la publicité administrative.</p>
+
+        <p>La combinaison «&nbsp;absence de base légale + absence structurelle de PV + exception <em>stratégie politique</em> de 2024&nbsp;» configure un espace où l'opacité ne procède pas d'une violation du droit, mais de sa neutralisation par construction institutionnelle. La doctrine qualifie ce dispositif de <strong>«&nbsp;para-légalité d'État&nbsp;»</strong> — non illégale stricto sensu, mais constituée par neutralisation organisationnelle du droit applicable.</p>
+
+        <div class="callout">
+          <strong>Conséquence structurelle.</strong> La délibération collégiale formelle du Conseil des ministres (art.&nbsp;99) est court-circuitée. Les ministres qui ne siègent pas au Kern se retrouvent contraints d'endosser juridiquement, par leur contreseing (art.&nbsp;106), des décisions politiques d'envergure auxquelles ils n'ont pas été associés. La responsabilité collective solidaire devient ainsi une fiction juridique.
+        </div>
+
+        <h2>3.3 Le lobbying à Bruxelles&nbsp;: capture réglementaire</h2>
+        <p>Bruxelles est devenue la deuxième place mondiale du lobbying après Washington, avec plus de <strong>13&nbsp;000 entités enregistrées</strong> et un budget annuel cumulé dépassant <span class="badge">3&nbsp;milliards d'euros</span> (Corporate Europe Observatory, 2025). Les recherches indépendantes établissent que <strong>75&nbsp;%</strong> des réunions de lobbying accordées par les Commissaires européens et les fonctionnaires de haut niveau se déroulent avec des lobbyistes représentant les grandes entreprises&nbsp;; dans les domaines stratégiques (marché intérieur, régulation financière, politique commerciale), ce taux dépasse <strong>80&nbsp;%</strong>.</p>
+
+        <p>Le Registre de transparence interinstitutionnel souffre de défaillances structurelles documentées par la Cour des comptes européenne en 2023&nbsp;: autodéclarations non vérifiées, données financières invraisemblables, doublons, désinscriptions stratégiques. Le double destin du Pacte Vert européen — adoption de la loi sur la restauration de la nature, abandon du règlement SUR sur les pesticides — illustre la capacité chirurgicale du lobbying à modeler, retarder ou anéantir des directives. L'Organisme interinstitutionnel d'éthique post-Qatargate, créé en 2025, naît privé de pouvoirs d'enquête indépendants et de sanction contraignants.</p>
+
+        <h2>3.4 La capture sectorielle en Belgique</h2>
+        <ul class="clean-list">
+          <li><strong>Énergie —</strong> L'abandon de la sortie du nucléaire (mai 2025) et la renégociation des termes financiers du démantèlement avec Engie-Electrabel se sont opérés dans une opacité contractuelle quasi totale. La CREG, régulateur autonome, voit son Conseil général inclure les producteurs et fournisseurs eux-mêmes (composition néo-corporatiste).</li>
+          <li><strong>Pharma —</strong> La Commission de Remboursement des Médicaments (INAMI) compte 31 membres&nbsp;; pharma.be y dispose de 2 membres effectifs et 2 suppléants. Les conventions Article&nbsp;81/111 (pricing confidentiel) limitent la transparence sur les prix réellement payés.</li>
+          <li><strong>Finance —</strong> Febelfin, statutairement «&nbsp;la voix&nbsp;» du secteur, siège dans les concertations BNB et FSMA. L'enquête en cours sur ING Belgique dans le sillage de l'affaire Reynders constitue une rupture symbolique&nbsp;: pour la première fois, une banque systémique est concernée non comme victime mais comme co-acteur potentiel d'un schéma de blanchiment.</li>
+          <li><strong>FEB/VBO —</strong> La Fédération représente environ 50&nbsp;000 entreprises et 75&nbsp;% de l'emploi privé, et siège dans environ 150 organes fédéraux, européens et internationaux (CNT, CCE, Groupe des Dix, BUSINESSEUROPE).</li>
+          <li><strong>Intercommunales —</strong> Bilan cumulé de <span class="badge alert">45,6&nbsp;milliards d'euros</span>, constituant des angles morts démocratiques servant de réservoirs de mandats et de ressources pour les cadres des partis.</li>
+        </ul>
+
+        <h2>3.5 Médias et conscience démocratique</h2>
+        <p>La concentration oligopolistique de la presse francophone (groupes IPM, Rossel, Mediahuis) et le système de subsides publics aux médias (aide à la presse écrite, dotations RTBF/VRT, taxe publicitaire) configurent une dépendance structurelle des rédactions à l'arbitrage politique. Le rapport Reporters Sans Frontières 2025 maintient la Belgique parmi les démocraties à liberté de la presse satisfaisante, mais signale les inquiétudes liées au financement public conditionnel.</p>
+
+        <p>Le phénomène de la «&nbsp;médiarchie&nbsp;», illustré par la collusion d'influence entre certains médias privés et les états-majors (réseau Deborsu / RTL-TVI documenté en lien avec le MR), permet de verrouiller le récit politique dominant et de marginaliser les discours alternatifs. L'écosystème des médias d'investigation indépendants — Apache, Médor, Le Vif, RTBF Investigation, Follow the Money — porte l'essentiel de la critique des dysfonctionnements documentés dans ce dossier. Sa fragilité financière constitue un point de vulnérabilité démocratique.</p>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- PARTIE IV                                    -->
+      <!-- ============================================ -->
+      <section id="partie-4">
+        <h1>IV. Le coût humain des failles structurelles</h1>
+
+        <p class="lead">43 à 46&nbsp;% de non-recours au revenu d'intégration. 50&nbsp;% à la GRAPA. 77&nbsp;% à l'allocation chauffage. 215&nbsp;337 ménages sur liste d'attente du logement social en Flandre. 180&nbsp;000 personnes exclues du chômage par l'Arizona. Le coût humain de la particratie est documenté, mesurable, et il ne se résorbe pas.</p>
+
+        <h2>4.1 Le non-recours aux droits&nbsp;: entre 35&nbsp;% et 77&nbsp;% selon les prestations</h2>
+        <p>Le non-recours aux droits sociaux atteint en Belgique des niveaux que la recherche scientifique qualifie de massifs. Les études TAKE-UP (Bolland, Goedemé, Janssens 2022, Banque-Carrefour de la Sécurité Sociale) établissent les taux suivants&nbsp;:</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Prestation</th><th>Bénéficiaires (2024-2025)</th><th class="num">Taux de non-recours</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Revenu d'intégration (RIS, CPAS)</td><td>≈ 158&nbsp;000 bénéficiaires</td><td class="num">37-51&nbsp;% (moyenne 43-46&nbsp;%)</td></tr>
+              <tr><td>GRAPA (revenu minimum personnes âgées)</td><td>≈ 86&nbsp;000 ménages</td><td class="num">50&nbsp;% (IC 42-59&nbsp;%)</td></tr>
+              <tr><td>BIM 65+ (revenus)</td><td>—</td><td class="num">35&nbsp;% (IC 24-46&nbsp;%)</td></tr>
+              <tr><td>Allocation chauffage 65+</td><td>—</td><td class="num">77&nbsp;% (IC 67-88&nbsp;%)</td></tr>
+              <tr><td>BIM total</td><td>2,5 millions (21,3&nbsp;%)</td><td class="num">Non chiffré finement</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-caption">Tableau&nbsp;3 — Non-recours aux droits sociaux selon les études TAKE-UP 2022.</p>
+
+        <p>Cette ineffectivité de l'État social n'est pas un dysfonctionnement résiduel. Elle est constitutive d'un système conçu, selon les analyses de Philippe Warin (Odenore) transposées au contexte belge, comme une <strong>«&nbsp;fabrique du non-recours&nbsp;»</strong>. Quatre mécanismes y contribuent&nbsp;:</p>
+
+        <ol>
+          <li>La fragmentation institutionnelle (581 CPAS, 6 entités fédérées, division complexe des compétences)&nbsp;;</li>
+          <li>Les pratiques de guichet, documentées par Hermans, Cantillon et Marchal (<em>Journal of European Social Policy</em>, 2024), qui créent des seuils supplémentaires non prévus par la loi&nbsp;;</li>
+          <li>La conditionnalité algorithmique et la surveillance asymétrique (croisements ONEM / BCSS / SPF Finances)&nbsp;;</li>
+          <li>La stigmatisation, qualifiée par le rapporteur spécial de l'ONU Olivier De Schutter de <strong>«&nbsp;pauvrétisme&nbsp;»</strong>, à traiter avec la même gravité juridique que le racisme ou le sexisme (rapport ONU A/HRC/56/61, 2024).</li>
+        </ol>
+
+        <h2>4.2 L'austérité Arizona et le basculement vers le CPAS</h2>
+        <p>La limitation dans le temps des allocations d'insertion, mesure-phare de la coalition Arizona, exclura environ <span class="badge alert">180&nbsp;000 personnes</span> du chômage d'ici juillet 2027. Les premières vagues d'exclusion (janvier 2026) laissaient présager un basculement de 46,5&nbsp;% vers le CPAS&nbsp;; l'étude affinée de la KU Leuven modère ce chiffre à 34&nbsp;% (environ 52&nbsp;000 personnes) en 2026. Que deviennent les 66&nbsp;% restants&nbsp;? Une part trouve l'insertion professionnelle ou repose sur la solidarité intrafamiliale&nbsp;; une part non négligeable <strong>disparaît simplement des radars institutionnels</strong>, entrant dans la zone d'ombre du non-recours.</p>
+
+        <p>Le 23&nbsp;mars 2026, un second recours associatif a attaqué le durcissement du statut de cohabitant, qui diminue les revenus des familles avec enfant majeur étudiant, des monoparentales et des ménages hébergeant un grand-parent âgé. La Cour constitutionnelle a refusé la suspension en décembre 2025 (pas de «&nbsp;préjudice grave difficilement réparable&nbsp;» démontré) mais examine le fond — décision attendue fin 2026.</p>
+
+        <h2>4.3 Logement social et fragmentation</h2>
+        <p>La Belgique compte environ <span class="badge">301&nbsp;872</span> logements sociaux (CCE, fin 2020), soit 6,5&nbsp;% du parc résidentiel total — un taux parmi les plus bas d'Europe occidentale. En Flandre, la liste d'attente atteint <strong>215&nbsp;337 ménages</strong> en avril 2026, avec des délais pouvant atteindre 15&nbsp;ans (VRT Pano, mars 2024). L'expert Filip Canfyn a calculé qu'au rythme actuel (2&nbsp;000 nouveaux logements/an), il faudrait <strong>plus de 80 ans</strong> pour résorber la liste. <strong>15&nbsp;000 logements sociaux (un sur dix) sont vacants en Flandre</strong>, principalement en attente de rénovation aux normes climatiques.</p>
+
+        <p>En Wallonie, la SWL recense 44&nbsp;491 ménages candidats-locataires (2023) pour un parc de 103&nbsp;000 logements gérés par 62 SLSP. À Bruxelles, la liste d'attente atteint 53&nbsp;750 ménages début 2025. Cette fragmentation régionale, couplée à l'inertie politique sur la rénovation et la construction, constitue une chaîne causale directe entre architecture institutionnelle et inaccessibilité du logement.</p>
+
+        <h2>4.4 Violence institutionnelle&nbsp;: la «&nbsp;chasse aux malades&nbsp;»</h2>
+        <p>L'accord Arizona inclut un volet «&nbsp;malades de longue durée&nbsp;» qui transfère la pression de la sécurité sociale vers les médecins-conseils des mutualités et, indirectement, vers les patients eux-mêmes. La Ligue des droits humains, dans son rapport annuel 2025, diagnostique une «&nbsp;volonté politique claire d'affaiblir les contre-pouvoirs&nbsp;»&nbsp;: «&nbsp;le gouvernement actuel se soucie fort peu de respecter le droit, et lorsque le droit contrevient à ses projets politiques, il propose tout simplement de s'en affranchir&nbsp;».</p>
+
+        <p>Le secteur académique (Coalition Santé, maisons médicales) a signé la carte blanche «&nbsp;Le travail, un malade de longue durée&nbsp;», articulant un diagnostic structurel&nbsp;: la violence institutionnelle ne se mesure pas seulement aux chiffres budgétaires mais à l'expérience subjective des assurés sociaux confrontés à des procédures de contrôle inquisitoriales, à la stigmatisation et à l'épuisement administratif.</p>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- PARTIE V                                     -->
+      <!-- ============================================ -->
+      <section id="partie-5">
+        <h1>V. La séquence Arizona&nbsp;: février 2025 à mai 2026</h1>
+
+        <p class="lead">239 jours pour former le gouvernement De Wever&nbsp;I. 23 milliards d'efforts. Une coalition à cinq qui survit à seize mois de tensions et bascule dans la «&nbsp;négociation perpétuelle&nbsp;». Pendant ce temps, le réalignement électoral s'opère&nbsp;: le PTB devient première force à Bruxelles, le PS reprend la Wallonie, le MR s'effondre.</p>
+
+        <h2>5.1 Genèse de la coalition De Wever I</h2>
+        <p>Les élections du 9&nbsp;juin 2024 ont vu la N-VA confirmer sa première place nationale, le MR opérer un rebond francophone historique (20 sièges fédéraux, +6), Les Engagés et Vooruit progresser, tandis qu'Ecolo, Open VLD, Groen et CD&amp;V s'effondraient. Bart De Wever est désigné informateur dès le 12&nbsp;juin 2024, puis préformateur, puis formateur (10&nbsp;juillet 2024). Après l'interruption des élections communales du 13&nbsp;octobre 2024, l'accord de coalition de 206 pages est conclu le 31&nbsp;janvier 2025. La coalition Arizona (N-VA, MR, CD&amp;V, Vooruit, Les Engagés) prête serment le 3&nbsp;février 2025, au terme de 239 jours de négociations.</p>
+
+        <p>L'accord acte <strong>23&nbsp;milliards d'efforts</strong> (dont 18 d'économies, 2,4 de nouvelles recettes), une réforme des pensions avec bonus-malus, la limitation du chômage à 24 mois, la fin de la loi de 2003 sur la sortie du nucléaire, une taxe sur les plus-values dite «&nbsp;contribution de solidarité&nbsp;» à 10&nbsp;%, et l'engagement OTAN à 2&nbsp;% du PIB pour la Défense, atteint dès fin 2025.</p>
+
+        <h2>5.2 Tensions internes et seize mois de «&nbsp;négociation perpétuelle&nbsp;»</h2>
+        <p>La coalition a survécu à seize mois de tensions répétées — taxe sur les plus-values, réforme des pensions, limitation du chômage, position belge sur Gaza, budget pluriannuel 2026 — mais a basculé dans ce que la RTBF et le CRISP qualifient de <strong>«&nbsp;négociation perpétuelle&nbsp;»</strong> entre un Premier ministre N-VA stabilisateur (Bart De Wever) et un président MR (Georges-Louis Bouchez) en campagne permanente depuis l'extérieur du gouvernement. Le 6&nbsp;novembre 2025, De Wever s'était donné comme date butoir d'aller chez le Roi avec une démission en poche, finalement évitée par l'accord du 24&nbsp;novembre.</p>
+
+        <p>Trois dossiers se sont avérés les plus clivants&nbsp;: (i) la <strong>taxe sur les plus-values</strong>, votée tardivement à l'automne 2025 et entrée en vigueur le 1<sup>er</sup> janvier 2026&nbsp;; (ii) la <strong>réforme des pensions</strong> (bonus-malus à partir du 1<sup>er</sup> janvier 2027, validée en 3<sup>e</sup> lecture le 6&nbsp;mars 2026), accusée de discriminer les femmes et les métiers pénibles&nbsp;; (iii) la <strong>position belge sur Gaza</strong>, avec une reconnaissance politique conditionnelle de la Palestine annoncée à l'ONU le 22&nbsp;septembre 2025.</p>
+
+        <h2>5.3 Mobilisation sociale historique</h2>
+        <p>Selon <em>Basta&nbsp;!</em> (29&nbsp;avril 2025), «&nbsp;le royaume vit un mouvement social comme il n'en a pas connu depuis au moins dix ans&nbsp;». La grève générale et manifestation nationale du 13&nbsp;février 2025 (60&nbsp;000 à 100&nbsp;000 personnes), les grèves du 31&nbsp;mars, du 29&nbsp;avril, la manifestation du 14&nbsp;octobre 2025 (80&nbsp;000-140&nbsp;000 personnes), les trois jours de grève des 24-26 novembre 2025 jusqu'à l'accord budgétaire — ont marqué une intensité inédite. Le 12&nbsp;mai 2026, une nouvelle manifestation nationale a réuni des dizaines de milliers de personnes contre les mesures Arizona, dans une dynamique syndicale soutenue par la FGTB, la CSC et la CGSLB.</p>
+
+        <h2>5.4 Réalignement électoral</h2>
+        <p>Le sondage Grand Baromètre Ipsos pour Le Soir-RTL-VTM-HLN (2-9 mars 2026, panel de 2&nbsp;602 répondants, marge ±3,1 à ±4,0) documente un réalignement significatif&nbsp;:</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Parti</th><th class="num">Wallonie</th><th class="num">Bruxelles</th><th class="num">Flandre (sélection)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>PS</td><td class="num">27,9&nbsp;%</td><td class="num">18,4&nbsp;%</td><td class="num">—</td></tr>
+              <tr><td>MR</td><td class="num">21,0&nbsp;%</td><td class="num">16,4&nbsp;%</td><td class="num">—</td></tr>
+              <tr><td>Les Engagés</td><td class="num">19,4&nbsp;%</td><td class="num">11,7&nbsp;%</td><td class="num">—</td></tr>
+              <tr><td><strong>PTB / PVDA</strong></td><td class="num">17,0&nbsp;%</td><td class="num"><strong>25,5&nbsp;%</strong></td><td class="num">9,8&nbsp;%</td></tr>
+              <tr><td>Ecolo / Groen</td><td class="num">7,9&nbsp;%</td><td class="num">7,1&nbsp;%</td><td class="num">7,7&nbsp;%</td></tr>
+              <tr><td>Vlaams Belang</td><td class="num">—</td><td class="num">—</td><td class="num">En tête</td></tr>
+              <tr><td>Vooruit</td><td class="num">—</td><td class="num">—</td><td class="num">12,8&nbsp;%</td></tr>
+              <tr><td>CD&amp;V</td><td class="num">—</td><td class="num">—</td><td class="num">12,6&nbsp;%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-caption">Tableau&nbsp;4 — Sondage Grand Baromètre Ipsos, mars 2026.</p>
+
+        <p>Le <strong>PTB-PVDA devient première force à Bruxelles</strong> (25,5&nbsp;%), le <strong>PS redevient premier parti de Wallonie</strong> (27,9&nbsp;%), le MR perd la place qu'il avait conquise en juin 2024. À Bruxelles, DéFI tombe sous le seuil. Personnalité préférée&nbsp;: Sophie Wilmès (MR) en tête en Wallonie et Bruxelles, Bart De Wever en Flandre. Pas d'élection nationale avant 2029&nbsp;; communales en 2030.</p>
+
+        <h2>5.5 La crise bruxelloise et sa résolution</h2>
+        <p>Parallèlement à la coalition fédérale, la crise de formation du gouvernement bruxellois — <span class="badge alert">615 jours</span>, qualifiée par la RTBF (3&nbsp;décembre 2025) de «&nbsp;bien triste record mondial&nbsp;» — s'est résolue le <strong>14&nbsp;février 2026</strong> par un gouvernement à 7 partis (MR-PS-Engagés-Groen-Anders-Vooruit-CD&amp;V) sous la conduite du nouveau ministre-président <strong>Boris Dilliès</strong> (MR), jusqu'alors bourgmestre d'Uccle. Le différend Dilliès-fédéral sur le financement et la sécurité s'annonce structurel.</p>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- PARTIE VI                                    -->
+      <!-- ============================================ -->
+      <section id="partie-6">
+        <h1>VI. La stratégie de recours&nbsp;: triangulation constitutionnelle opérationnelle</h1>
+
+        <p class="lead">D'un diagnostic à une stratégie nommée&nbsp;: un litige civil au TPI francophone de Bruxelles, une question préjudicielle miroir sur l'article&nbsp;15ter, un bouclier européen Tomenko, et une coalition de requérants constituée — élus défectionnaires, partis exclus du financement, ASBL chiens de garde. Le contentieux comme dernière arme pacifique.</p>
+
+        <h2>6.1 La logique d'ensemble&nbsp;: une triangulation contentieuse</h2>
+        <p>Les voies de recours étudiées s'articulent autour d'une <strong>triangulation contentieuse</strong>&nbsp;:</p>
+        <ol>
+          <li>Un <strong>axe constitutionnel intérieur</strong>, par voie préjudicielle à partir d'un litige civil&nbsp;;</li>
+          <li>Un <strong>axe européen</strong>, devant la CEDH (post-épuisement des voies internes) et, en parallèle, par communication au Comité d'examen d'Aarhus pour les décisions environnementales&nbsp;;</li>
+          <li>Un <strong>axe administratif et politique</strong>, par recours CADA, Conseil d'État, et mobilisation du GRECO.</li>
+        </ol>
+        <p>Ces axes ne sont pas alternatifs&nbsp;: ils sont cumulatifs et se renforcent mutuellement. La conduite victorieuse exige d'abandonner l'idée d'un recours individuel isolé pour structurer une <strong>coordination multi-fronts</strong>, articulant les forces respectives de trois profils de requérants identifiés en sections 6.4 à 6.6.</p>
+
+        <h2>6.2 L'obstacle de la recevabilité&nbsp;: structurer un «&nbsp;intérêt commun à agir&nbsp;»</h2>
+        <p>Le principal verrou procédural opposé à toute tentative de contestation judiciaire de la particratie réside dans la définition rigoureuse de l'intérêt à agir en droit public belge, qui <strong>proscrit absolument l'<em>actio popularis</em></strong>. Bien que la Cour constitutionnelle affirme apprécier l'intérêt «&nbsp;avec souplesse&nbsp;» en matière de droits fondamentaux, elle applique des filtres d'une extrême sévérité.</p>
+
+        <p>L'échec retentissant en 2016 du recours introduit par une coalition d'ASBL (Constituante.be, Ligue des droits humains, CNE, CGSP) contre le Traité sur la stabilité, la coordination et la gouvernance (TSCG) illustre cette sévérité&nbsp;: en l'absence d'un grief personnel précis et individualisable, la Cour a rejeté la requête comme irrecevable. La CEDH applique un filtre similaire (<em>Le Mailloux c. France</em>, 2020), exigeant la production d'indices raisonnables, convaincants et concrets démontrant que le requérant subit personnellement les effets directs de la loi contestée.</p>
+
+        <p>La jurisprudence récente issue de la <strong><em>Klimaatzaak</em></strong> (2021) a ouvert une brèche en reconnaissant l'intérêt à agir direct et personnel de milliers de citoyens co-demandeurs physiques sur la base d'une interprétation des articles 17 et 18 du Code judiciaire à la lumière des engagements environnementaux internationaux (notamment la Convention d'Aarhus). Toutefois, l'absence d'un traité équivalent à la Convention d'Aarhus dans le domaine des droits politiques crée un risque d'irrecevabilité majeur pour toute action isolée visant la particratie.</p>
+
+        <h2>6.3 Les deux axes pour ancrer l'intérêt collectif</h2>
+        <p>Pour contourner ce verrou, la stratégie juridique doit structurer un «&nbsp;intérêt commun à agir&nbsp;» en reliant la dérive particratique à des préjudices collectifs et individuels <strong>concrets et d'ordre matériel</strong>.</p>
+
+        <h3>L'axe du non-recours aux droits sociaux fondamentaux</h3>
+        <p>La discipline de parti et le fonctionnement hermétique des ministères de coalition génèrent un phénomène de rétroaction politique (<em>policy feedback</em>). Les états-majors maintiennent sciemment des barrières administratives complexes et des procédures de guichet dissuasives afin d'organiser le non-recours tacite aux prestations sociales par les citoyens les plus vulnérables, réalisant ainsi des économies budgétaires d'opportunité.</p>
+
+        <p>Cette privation systémique de droits fondamentaux affecte directement <strong>l'article 23 de la Constitution</strong> (droit à mener une vie conforme à la dignité humaine), ce qui fonde légitimement l'intérêt d'associations d'intérêt collectif&nbsp;: Réseau belge de lutte contre la pauvreté (BAPN), Vie Féminine, Femma, Ligue des familles, Solidaris, ASBL «&nbsp;L'Atelier des Droits Sociaux&nbsp;», CPAS d'Andenne notamment.</p>
+
+        <h3>L'axe de l'insécurité juridique et du coût de l'illégalité volontaire</h3>
+        <p>Pour préserver des compromis de coalition fragiles, l'État belge choisit de manière récurrente de <strong>budgétiser le paiement continu d'astreintes</strong> plutôt que de respecter des décisions de justice définitives (voir Partie&nbsp;II&nbsp;: asile, nuisances aéroportuaires, licences d'armes, climat). Cette érosion de la séparation des pouvoirs — qui a valu à la Belgique d'être placée sous surveillance étroite (niveau&nbsp;3) par le GRECO — cause un préjudice moral, civique et financier individualisable à tout citoyen actif.</p>
+
+        <h2>6.4 Profils opérationnels des requérants&nbsp;: les parlementaires défectionnaires</h2>
+        <p>Les élus dissidents constituent les <strong>«&nbsp;requérants parfaits&nbsp;»</strong> pour porter cette triangulation. Contrairement aux citoyens ordinaires, ils subissent un préjudice professionnel, matériel et patrimonial direct du fait de la coercition particratique, ce qui confère à leur intérêt à agir une robustesse incontestable devant les tribunaux de l'ordre judiciaire. La constitution de leur dossier probatoire repose sur l'analyse et la production en justice des <strong>statuts internes et chartes des partis politiques</strong> (MR, PTB notamment), révélant l'existence de mécanismes coercitifs de discipline de vote et d'aliénation financière.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Parlementaire</th>
+                <th>Trajectoire</th>
+                <th>Préjudice direct documenté</th>
+                <th>Intérêt à agir</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Youssef Handichi</strong><br><em>Député fédéral</em></td>
+                <td>PTB → MR (févr.-mars 2024)</td>
+                <td>Prélèvement substantiel de ses indemnités parlementaires brutes (estimées entre 140&nbsp;000 et 193&nbsp;000&nbsp;€/an selon les déclarations STIB/Parlement)&nbsp;; perte des mandats dérivés et rupture d'accords syndicaux STIB.</td>
+                <td><strong>Élevé</strong>&nbsp;: parfaitement documenté sur l'aliénation financière de l'élu par l'appareil du parti.</td>
+              </tr>
+              <tr>
+                <td><strong>Jean-Luc Crucke</strong><br><em>Ancien ministre et député</em></td>
+                <td>MR → Les Engagés (janv. 2022)</td>
+                <td>Retrait arbitraire de son décret ministériel de l'ordre du jour par l'état-major du parti&nbsp;; exclusion de fait du gouvernement wallon et marginalisation politique.</td>
+                <td><strong>Élevé</strong>&nbsp;: documente la mainmise directe des présidences de parti sur l'exercice du pouvoir législatif individuel.</td>
+              </tr>
+              <tr>
+                <td><strong>Michel De Maegd</strong><br><em>Député</em></td>
+                <td>MR → Les Engagés (janv. 2026)</td>
+                <td>Dénonciation publique de la «&nbsp;présidencratie&nbsp;» asphyxiante du MR&nbsp;; retrait de ses mandats de représentation et mise à l'écart systématique des instances décisionnelles et des commissions.</td>
+                <td><strong>Moyen à élevé</strong>&nbsp;: utile pour étayer l'absence de démocratie interne&nbsp;; préjudice patrimonial plus difficile à chiffrer.</td>
+              </tr>
+              <tr>
+                <td><strong>Els Ampe</strong><br><em>Ancienne sénatrice et députée</em></td>
+                <td>Open VLD → Vooruit (fin 2023)</td>
+                <td>Perte de ses fonctions de présidente de la commission Bruxelles et Bien-être animal&nbsp;; non-reconduction de ses mandats de sénatrice des entités fédérées et de députée flamande suite à son éviction des listes éligibles.</td>
+                <td><strong>Excellent</strong>&nbsp;: antériorité d'actions civiles en responsabilité contre l'Open VLD offre une base contentieuse solide.</td>
+              </tr>
+              <tr>
+                <td><strong>Rachida Aït Alouha</strong><br><em>Députée wallonne</em></td>
+                <td>PTB → Indépendante (20 avril 2026)</td>
+                <td>Défection motivée par l'impossibilité d'exprimer des nuances individuelles. Retrait de son mandat de membre suppléant de la commission Enfance, Santé, Aide à la jeunesse et Droits des femmes&nbsp;; privation des moyens logistiques liés au groupe PTB.</td>
+                <td><strong>Très élevé et actuel</strong>&nbsp;: concomitance temporelle de la défection permet d'agir en urgence devant le juge des référés civils.</td>
+              </tr>
+              <tr>
+                <td><strong>Jory Dupont</strong><br><em>Député wallon</em></td>
+                <td>PTB → Indépendant (début mars 2026)</td>
+                <td>Refus de s'aligner sur la discipline de vote stricte et contestation de la confiscation financière opérée par le parti. Perte des facilités de groupe et de l'encadrement technique pour l'exercice de son mandat.</td>
+                <td><strong>Très élevé</strong>&nbsp;: renforce la dimension collective et systémique de la révolte des élus contre le modèle de rétrocession.</td>
+              </tr>
+              <tr>
+                <td><strong>Rachida Aït Atmane</strong><br><em>Députée</em></td>
+                <td>PTB (défection similaire)</td>
+                <td>Résistance à la discipline interne et aux prélèvements statutaires obligatoires sur ses indemnités. Perte des investitures électorales et de l'appui structurel du parti.</td>
+                <td><strong>Moyen</strong>&nbsp;: profil de soutien doctrinal et factuel similaire à Jory Dupont et Rachida Aït Alouha.</td>
+              </tr>
+              <tr>
+                <td><strong>Soulaimane El Mokadem</strong><br><em>Député bruxellois</em></td>
+                <td>PTB → PS (2025)</td>
+                <td>Conflit sur les exigences financières statutaires imposées aux élus par le bureau politique du PTB. Isolement temporaire et pressions internes avant son ralliement au PS.</td>
+                <td><strong>Moyen</strong>&nbsp;: son intégration rapide à un autre parti traditionnel amoindrit la portée de son statut de requérant «&nbsp;neutre&nbsp;».</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-caption">Tableau&nbsp;5 — Inventaire des parlementaires défectionnaires comme requérants potentiels (sources&nbsp;: Wikipédia, Cumuleo, Le Vif, BRF Nachrichten, 21News).</p>
+
+        <div class="callout">
+          <strong>Le cœur nucléaire&nbsp;: les députés dissidents du PTB.</strong> Le PTB impose statutairement à ses parlementaires une obligation rigide de rétrocession de la majeure partie de leur indemnité d'élu. En affirmant publiquement par la voix de son chef de groupe Germain Mugemangango que «&nbsp;les élus exercent leur mandat pour le parti, pas pour eux-mêmes&nbsp;», la direction du PTB confirme qu'elle méconnaît délibérément l'esprit de l'article&nbsp;42. En privant l'élu dissident des moyens financiers constitutionnellement prévus pour assurer son autonomie matérielle, et en lui confisquant ses mandats de commission en cas de rébellion, le parti applique une sanction civile et professionnelle directe — précisément le type de préjudice patrimonial et fonctionnel actuel qui permet de surmonter l'irrecevabilité.
+        </div>
+
+        <h2>6.5 Profils opérationnels&nbsp;: partis outsiders et ASBL chiens de garde</h2>
+        <p>La seconde ligne de requérants est constituée par les mouvements politiques alternatifs exclus des canaux du financement public, combinés aux structures associatives défendant l'État de droit.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Organisation</th>
+                <th>Catégorie</th>
+                <th>Préjudice invocable</th>
+                <th>Force procédurale</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Volt Belgique</strong></td>
+                <td>Parti émergent</td>
+                <td>Exclusion absolue de toute dotation publique annuelle&nbsp;; incapacité de lutter à armes égales face aux millions de la rente particratique.</td>
+                <td><strong>Élevée</strong>&nbsp;: établit la distorsion systématique de concurrence électorale.</td>
+              </tr>
+              <tr>
+                <td><strong>Vista</strong></td>
+                <td>Parti émergent</td>
+                <td>Privation de ressources budgétaires pour structurer ses sections locales&nbsp;; confrontation à des barrières d'accès au marché politique.</td>
+                <td><strong>Élevée</strong>&nbsp;: a explicitement annoncé son intention de lancer une action civile contre la particratie en dernier recours.</td>
+              </tr>
+              <tr>
+                <td><strong>Pro</strong></td>
+                <td>Parti émergent</td>
+                <td>Privation des droits de tirage et de l'accès aux commissions de contrôle budgétaire de l'État.</td>
+                <td><strong>Moyenne</strong>&nbsp;: profil complémentaire pour consolider l'intérêt collectif des outsiders.</td>
+              </tr>
+              <tr>
+                <td><strong>Oxygène</strong></td>
+                <td>Parti émergent</td>
+                <td>Asymétrie financière totale bloquant le recrutement d'équipes de campagne et de professionnels des médias.</td>
+                <td><strong>Élevée</strong>&nbsp;: spécifiquement désigné pour son intérêt de fait à contester le financement inégalitaire.</td>
+              </tr>
+              <tr>
+                <td><strong>Ligue des droits humains (LDH)</strong></td>
+                <td>ASBL chien de garde</td>
+                <td>Atteinte générale à l'État de droit, à l'égalité de traitement et à la sincérité du processus électoral démocratique.</td>
+                <td><strong>Excellente</strong>&nbsp;: remplit les conditions de l'article&nbsp;17 al.&nbsp;2 du Code judiciaire pour l'action collective d'intérêt fondamental.</td>
+              </tr>
+              <tr>
+                <td><strong>Institut fédéral des droits humains (IFDH)</strong></td>
+                <td>Institution publique autonome</td>
+                <td>Atteinte systémique aux principes de légalité et de prévisibilité des lois encadrant les libertés d'association.</td>
+                <td><strong>Moyenne (directe) / Excellente (doctrinale)</strong>&nbsp;: ne peut être demandeur direct, mais ses avis (Avis 2025/9) servent d'autorité doctrinale suprême.</td>
+              </tr>
+              <tr>
+                <td><strong>Collectif «&nbsp;We Need To Talk&nbsp;»</strong></td>
+                <td>Collectif citoyen</td>
+                <td>Perte de confiance démocratique&nbsp;; dégradation de la sincérité de la délibération citoyenne face au monopole des partis traditionnels.</td>
+                <td><strong>Moyenne</strong>&nbsp;: idéal comme tiers-intervenant ou pour la fourniture de données quantitatives et rapports sociologiques.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-caption">Tableau&nbsp;6 — Partis outsiders et ASBL comme co-requérants ou tiers-intervenants.</p>
+
+        <h2>6.6 L'architecture du litige&nbsp;: la question préjudicielle miroir</h2>
+        <p>Le délai de six mois requis pour introduire un recours en annulation direct devant la Cour constitutionnelle à l'encontre de la loi de 1989 est expiré. La stratégie contentieuse repose donc sur la technique du <strong>«&nbsp;détour par la responsabilité civile&nbsp;»</strong>.</p>
+
+        <div class="keyfacts">
+          <h4>Architecture en trois étapes</h4>
+          <ol style="margin: 0; padding-left: 18px;">
+            <li><strong>Tribunal de première instance francophone de Bruxelles</strong> — Action en responsabilité civile de l'État-Législateur (article 1382 ancien Code civil, désormais Livre&nbsp;6 du nouveau Code civil), fondée sur l'omission fautive d'encadrer l'article&nbsp;42.</li>
+            <li><strong>Cour constitutionnelle</strong> — Pose d'une question préjudicielle sur la lacune inconstitutionnelle de l'article&nbsp;15ter (sanction de la CEDH versus silence sur le viol du mandat libre).</li>
+            <li><strong>Parlement belge</strong> — Obligation législative de réformer la loi de financement de 1989 sous peine d'indemnisation des requérants.</li>
+          </ol>
+        </div>
+
+        <h3>Le fondement&nbsp;: la faute de l'État-Législateur (Livre 6 du Code civil)</h3>
+        <p>L'action s'appuie sur la jurisprudence <em>Ferrara</em> (Cour de cassation, 28&nbsp;septembre 2006), pivot doctrinal&nbsp;: l'État commet une faute engageant sa responsabilité s'il adopte une loi inconstitutionnelle ou s'il s'abstient de combler une lacune de nature inconstitutionnelle. La faute reprochée est ici une <strong>«&nbsp;incompétence négative&nbsp;»</strong>&nbsp;: le législateur n'a pas exercé sa compétence exclusive pour réglementer le fonctionnement organique des partis et de leurs dotations financières de manière à garantir l'effectivité de l'article&nbsp;42. En continuant à subventionner à coups de millions des structures qui violent ouvertement l'indépendance de l'élu (rétrocession statutaire, retrait des mandats de commission), l'État maintient une illégalité systémique fautive.</p>
+
+        <h3>La démonstration de la lacune inconstitutionnelle (article&nbsp;15ter)</h3>
+        <p>L'article&nbsp;15ter de la loi du 4&nbsp;juillet 1989 prévoit la suspension ou la suppression de la dotation publique d'un parti uniquement si celui-ci manifeste une hostilité répétée et caractérisée envers les droits fondamentaux garantis par la CEDH. L'efficience de ce texte a d'ailleurs été mise à l'épreuve sans succès contre le Vlaams Blok (2001) et le Vlaams Belang (2011).</p>
+
+        <p>Le paradoxe est insoutenable&nbsp;: la loi de 1989 prévoit de priver de dotation un parti pour hostilité à la CEDH, mais elle reste <strong>totalement silencieuse</strong> et continue d'alimenter financièrement des structures qui violent le cœur même de l'architecture constitutionnelle belge — le mandat représentatif libre garanti par l'article&nbsp;42. Cette omission législative enfreint les principes d'égalité et de non-discrimination garantis par les articles&nbsp;10 et 11 de la Constitution.</p>
+
+        <div class="pullquote">«&nbsp;L'article 15ter de la loi du 4 juillet 1989 viole-t-il les articles 10 et 11, lus en combinaison avec l'article 42 de la Constitution, en ce qu'il ne prévoit aucune sanction pour un parti politique imposant un mandat impératif de facto à ses élus, alors qu'il sanctionne l'hostilité d'un parti envers les droits garantis par la CEDH&nbsp;?&nbsp;»<cite>— Formulation pré-rédigée de la question préjudicielle.</cite></div>
+
+        <h2>6.7 L'effet miroir de la loi Quintin</h2>
+        <p>Pour forcer la Cour constitutionnelle à sortir de sa réserve pragmatique, les requérants déploient l'argument de la <strong>«&nbsp;lacune extrinsèque offensive&nbsp;»</strong> en s'appuyant sur l'arsenal répressif de la loi Quintin.</p>
+
+        <p>Promulguée dans sa version initiale en juillet 2025 sous l'impulsion du ministre de l'Intérieur Bernard Quintin, cette loi conférait à l'origine à l'exécutif le pouvoir discrétionnaire de prononcer la dissolution d'associations ou le gel de leurs avoirs <strong>sans contrôle judiciaire préalable</strong>, sur la base de rapports confidentiels du Comité de coordination du renseignement et de la sécurité (CCRS). Face à une levée de boucliers de l'IFDH (Avis hostile n°&nbsp;2025/9), de la coalition «&nbsp;Droit de protester&nbsp;» et de la section de législation du Conseil d'État, le gouvernement a dû reculer le 8&nbsp;janvier 2026, confiant au tribunal de première instance la décision finale de dissolution au fond.</p>
+
+        <p>Cependant, la loi Quintin conserve en 2026 des mesures de police administrative d'une sévérité extrême&nbsp;: clauses de «&nbsp;détournement d'objectifs&nbsp;», arrêtés de suspension temporaire, AM d'interdiction de symboles, instructions de retrait de subventions ou de gel bancaire (FedAsil / SPF Finances). Par le biais de l'article&nbsp;103 de la Fédération Wallonie-Bruxelles, l'exécutif évalue la «&nbsp;proximité politique&nbsp;» d'une ASBL pour couper ses subsides.</p>
+
+        <div class="callout warn">
+          <strong>L'asymétrie fondatrice du recours.</strong> La stratégie miroir consiste à dénoncer cette asymétrie devant le juge constitutionnel&nbsp;: d'un côté, l'exécutif se dote d'outils administratifs agressifs et expéditifs pour asphyxier financièrement les associations citoyennes accusées d'atteinte à l'ordre constitutionnel sur la base de critères flous. De l'autre, ce même exécutif, contrôlé par les partis majoritaires, préserve l'immunité financière absolue de ces mêmes partis qui violent quotidiennement l'article&nbsp;42. Par l'invocation de l'exception d'illégalité (article&nbsp;159 de la Constitution) devant le Conseil d'État, tout arrêté individuel de sanction pris sur le fondement de la loi Quintin sera privé de base légale.
+        </div>
+
+        <h2>6.8 Le bouclier européen&nbsp;: Tomenko et Karácsony</h2>
+        <p>Si l'ordre juridictionnel national devait opposer une fin de non-recevoir au nom de la sauvegarde de la paix gouvernementale, les requérants porteront le contentieux devant la Cour européenne des droits de l'homme. L'action s'appuiera sur les articles&nbsp;6 (droit à un procès équitable contrecarré par l'encombrement judiciaire volontaire) et&nbsp;11 (liberté d'association et sincérité électorale) de la Convention.</p>
+
+        <h3>Le précédent <em>Tomenko c. Ukraine</em> (juillet 2025)</h3>
+        <p>Mykola Tomenko, député ukrainien élu en 2014, avait publiquement contesté l'adoption du budget de l'État pour 2016 qu'il jugeait antisocial. Pour conserver son indépendance d'esprit, il avait démissionné du groupe parlementaire de son parti. <strong>En représailles, l'appareil du parti avait modifié unilatéralement sa charte interne pour s'octroyer le pouvoir d'exclure un élu dissident</strong> et avait mis fin de manière anticipée à son mandat parlementaire, suspendant immédiatement son traitement.</p>
+
+        <p>Saisie de cette destitution sélective, la CEDH a condamné le parti et l'État à l'unanimité pour <strong>violation flagrante du droit à des élections libres</strong> (article&nbsp;3 du Protocole n°&nbsp;1). La Cour de Strasbourg a affirmé de façon solennelle que <em>«&nbsp;le mandat législatif appartient exclusivement à l'élu et à la Nation, et non à l'appareil politique qui l'a présenté au scrutin&nbsp;»</em>. Elle a formellement interdit qu'une divergence d'opinion ou une défection partisane soit sanctionnée par une privation matérielle ou par la révocation arbitraire du représentant du peuple.</p>
+
+        <h3>Combiné avec <em>Karácsony c. Hongrie</em></h3>
+        <p>Le précédent <em>Karácsony</em> impose le strict respect de garanties procédurales contradictoires face à toute mesure de sanction interne au Parlement. La combinaison <em>Tomenko</em>&nbsp;+ <em>Karácsony</em> constitue le bouclier supranational ultime pour anéantir les règlements et chartes privées des partis belges organisant une justice disciplinaire interne destinée à étouffer la voix des députés.</p>
+
+        <p>S'ajoutent les précédents <em>Mugemangango c. Belgique</em> (Grande Chambre, 10&nbsp;juillet 2020, qualifiant le contentieux électoral belge de défaillant), <em>Camara c. Belgique</em> (18&nbsp;juillet 2023, consacrant la carence systémique), <em>Sejdic et Finci c. Bosnie-Herzégovine</em> (Grande Chambre, 22&nbsp;décembre 2009), <em>Demirtaş c. Turquie n°2</em> (Grande Chambre, 22&nbsp;décembre 2020).</p>
+
+        <h2>6.9 Calendrier opérationnel</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Phase</th><th>Actions</th><th>Échéance</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Phase&nbsp;1</td><td>Constitution de la coalition, identification des requérants nommés (voir Tableaux&nbsp;5-6), mémoire préparatoire et statuts internes</td><td>Mois&nbsp;1-6</td></tr>
+              <tr><td>Phase&nbsp;2</td><td>Recours CADA et Conseil d'État pour collecte de preuves, saisine du Comité d'examen d'Aarhus</td><td>Mois&nbsp;6-12</td></tr>
+              <tr><td>Phase&nbsp;3</td><td>Introduction de l'action civile au TPI francophone de Bruxelles&nbsp;; conclusions sur transmission préjudicielle</td><td>Mois&nbsp;12-18</td></tr>
+              <tr><td>Phase&nbsp;4</td><td>Audience et débats sur la question préjudicielle&nbsp;; mémoires en intervention (LDH, IFDH, We Need To Talk)</td><td>Mois&nbsp;18-30</td></tr>
+              <tr><td>Phase&nbsp;5</td><td>Arrêt de la Cour constitutionnelle&nbsp;; activation des suites (proposition de loi, suivi GRECO, recours CEDH si rejet)</td><td>Mois&nbsp;30-36</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-caption">Tableau&nbsp;7 — Calendrier opérationnel indicatif de la stratégie contentieuse.</p>
+
+        <h2>6.10 Synthèse stratégique&nbsp;: une alliance tactique inédite</h2>
+        <p>La conduite victorieuse de cette triangulation exige d'articuler les trois profils&nbsp;:</p>
+        <ul class="clean-list">
+          <li><strong>La Ligue des droits humains en demanderesse principale</strong> — Elle assure la stabilité structurelle et financière de l'action collective d'intérêt fondamental. Elle déploie l'argumentaire doctrinal sur la violation de l'État de droit, l'inconstitutionnalité de la loi Quintin, et les rapports du GRECO.</li>
+          <li><strong>Les parlementaires dissidents en co-demandeurs</strong> (Rachida Aït Alouha, Els Ampe, Jory Dupont, Youssef Handichi en priorité) — Ils apportent l'intérêt personnel, direct et actuel le plus robuste. Leur présence fournit aux juges les preuves matérielles irréfutables de la coercition&nbsp;: statuts du PTB exigeant la rétrocession, courriers de menaces, décisions de retrait de commissions par le MR.</li>
+          <li><strong>Les partis outsiders en co-demandeurs ou tiers-intervenants</strong> (Vista, Oxygène, Volt) — Ils matérialisent la distorsion systématique de la concurrence électorale et le verrouillage de la rente politique par la loi de 1989, démontrant que la particratie s'auto-alimente sur fonds publics pour empêcher le pluralisme politique.</li>
+        </ul>
+
+        <p>Le récit médiatique doit articuler trois axes simples&nbsp;: (i) priver un élu de sa liberté de vote, c'est aussi grave que s'attaquer aux droits des citoyens&nbsp;; (ii) l'État finance massivement ces pratiques avec l'argent du contribuable, pendant que la sécurité sociale est rabotée&nbsp;; (iii) la loi le permet par une lacune que le contentieux peut combler. La simplicité de ce triptyque est la condition de son efficacité publique.</p>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- PARTIE VII                                   -->
+      <!-- ============================================ -->
+      <section id="partie-7">
+        <h1>VII. La Belgique dans l'érosion démocratique occidentale</h1>
+
+        <p class="lead">V-Dem 2026&nbsp;: six des dix nouveaux pays en autocratisation se trouvent en Europe et en Amérique du Nord. Les États-Unis ont perdu leur statut de démocratie libérale pour la première fois en plus de cinquante ans. L'indice mondial de démocratie est retombé au niveau de 1996, voire de 1978 en moyenne pondérée. Où se situe la Belgique dans cette cartographie&nbsp;?</p>
+
+        <h2>7.1 Trois tendances structurelles convergentes</h2>
+        <ul class="clean-list">
+          <li><strong>Concentration exécutive —</strong> <em>«&nbsp;Executive aggrandizement&nbsp;»</em> au sens de Bermeo (2016)&nbsp;: affaiblissement des contrepoids sous couvert de légitimité démocratique. Aux États-Unis, <strong>254 décrets exécutifs</strong> signés par Trump entre janvier 2025 et avril 2026, dont 143 durant les cent premiers jours — record absolu dépassant Roosevelt. En France, recours à l'article&nbsp;49.3 et aux ordonnances. En Belgique, particratie consulaire et Kern extra-constitutionnel.</li>
+          <li><strong>Politisation administrative —</strong> Spoils system américain, multiplication des Special Advisers britanniques (<strong>38 sous Major, 130 sous Starmer</strong>, coût passé de 5,9 à 16,7 millions de livres), cabinets ministériels à la française et à la belge.</li>
+          <li><strong>Crise de représentativité —</strong> Effondrement de la confiance dans les partis traditionnels (8&nbsp;% en Belgique), montée des extrêmes, fragmentation des systèmes proportionnels, désertion électorale.</li>
+        </ul>
+
+        <h2>7.2 La spécificité belge&nbsp;: une particratie innommée</h2>
+        <p>Ce qui caractérise la Belgique au sein de cette typologie n'est pas l'intensité d'une dimension prise isolément — la cohésion parlementaire belge n'est pas qualitativement supérieure à celle du Royaume-Uni ou de l'Allemagne — mais la conjonction unique de cinq traits&nbsp;: (i) effacement constitutionnel des partis&nbsp;; (ii) pénétration administrative par les cabinets&nbsp;; (iii) sur-financement public&nbsp;; (iv) non-conformité durable aux standards anti-corruption&nbsp;; (v) non-exécution massive des décisions de justice.</p>
+
+        <p>Cette conjonction est documentée par GRECO, la Commission européenne, la CEDH, Transparency International, CIVICUS et l'EIU — mais elle <strong>n'est presque jamais agrégée sous le mot «&nbsp;particratie&nbsp;»</strong> par ces acteurs internationaux. La particratie belge est, pour le monde, une réalité connue par ses symptômes mais innommée. C'est l'enjeu de la production discursive citoyenne que de proposer cette agrégation et de la rendre exploitable politiquement et juridiquement.</p>
+
+        <h2>7.3 L'exception nordique et le contre-modèle de la délibération citoyenne</h2>
+        <p>Les démocraties consensuelles d'Europe du Nord et la Suisse maintiennent un niveau substantiel de confiance sociale précisément parce qu'elles n'ont pas sacrifié l'expertise administrative et la collégialité législative sur l'autel de l'urgence exécutive. <strong>L'Ostbelgien Modell</strong> (Communauté germanophone de Belgique), unique au monde, articule depuis 2019 un Conseil citoyen permanent tiré au sort qui propose des thèmes au Parlement et assure le suivi des recommandations. Ce modèle prouve qu'une démocratie consociative peut, sans rupture institutionnelle, ouvrir des espaces de délibération directe qui dépolarisent la particratie.</p>
+
+        <p>À l'inverse, les <strong>34 recommandations du panel citoyen belge de 2023</strong> sur le financement des partis ont été <strong>intégralement ignorées</strong> par le Parlement fédéral. Cet écart entre l'expérimentation germanophone et l'inertie fédérale illustre que la difficulté belge n'est pas technique mais politique&nbsp;: c'est précisément la particratie qui empêche la réforme de la particratie.</p>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- CONCLUSION                                   -->
+      <!-- ============================================ -->
+      <section id="conclusion">
+        <h1>Conclusion&nbsp;: une démocratie à deux étages, des leviers identifiés</h1>
+
+        <p class="lead">La Belgique demeure une démocratie libérale dont les institutions fonctionnent. Mais elle fonctionne à deux étages. Au premier, la façade constitutionnelle&nbsp;; au second, sa neutralisation systématique. Le coût humain est mesurable. Les leviers d'action, désormais, sont nommés.</p>
+
+        <p>Le tableau dressé par ce dossier ne décrit pas un État voyou. La Belgique demeure une démocratie libérale, membre fondateur du Conseil de l'Europe et de l'Union européenne, dont les institutions fonctionnent, dont les élections sont libres et dont les juridictions, lorsqu'elles sont saisies, rendent en toute indépendance des décisions exigeantes contre l'État. Mais cette démocratie fonctionne désormais à deux étages.</p>
+
+        <p>Au <strong>premier étage</strong>, celui de la façade institutionnelle, tout est en place&nbsp;: Constitution de 1831 toujours en vigueur, séparation des pouvoirs, contrôle de constitutionnalité, ratification des conventions internationales, élections régulières, médias libres, libertés publiques. Au <strong>second étage</strong>, celui de l'opérationnel, les principes constitutionnels sont systématiquement neutralisés par construction&nbsp;: le mandat libre par la discipline de parti, l'État de droit par le refus d'exécution des jugements, la transparence par l'opacité organisée des cabinets, l'égalité d'accès aux droits par la fabrique du non-recours, le contrôle par l'autocontrôle des partis financeurs.</p>
+
+        <p>Cette dualité produit une <strong>«&nbsp;sécession civique&nbsp;»</strong> documentée par les enquêtes d'opinion&nbsp;: la confiance des citoyens envers les partis politiques atteint <span class="badge alert">8&nbsp;%</span>, le taux de participation aux élections diminue dans les segments les plus précarisés, et une part croissante de la population sort des radars institutionnels. C'est ce coût humain — mesurable dans les listes d'attente du logement social, dans les taux de non-recours, dans les exclusions du chômage Arizona — qui donne sa gravité au diagnostic structurel.</p>
+
+        <p>Les leviers d'action existent. Ils ne sont pas révolutionnaires&nbsp;: ils sont juridiques, médiatiques, organisationnels. Cette version augmentée du dossier les rend désormais opérationnels&nbsp;: les <strong>requérants sont nommés</strong> (Aït Alouha, Ampe, Dupont, Handichi, Crucke, De Maegd&nbsp;; Vista, Oxygène, Volt, Pro&nbsp;; LDH, IFDH, We Need To Talk), <strong>l'architecture du litige est précisée</strong> (article&nbsp;1382 Livre&nbsp;6, question préjudicielle miroir sur l'article&nbsp;15ter), <strong>le bouclier européen est en place</strong> (Tomenko + Karácsony + Mugemangango + Camara), et <strong>le calendrier opérationnel est tracé</strong> (36 mois de Phase 1 à Phase 5).</p>
+
+        <p>L'échéance du <strong>30&nbsp;novembre 2026</strong> — à laquelle pourrait être prononcée une déclaration publique de non-conformité du GRECO contre la Belgique — constitue un point de bascule symbolique sur lequel la coalition contentieuse peut concentrer ses efforts. Le franchissement de ce seuil placerait la Belgique aux côtés de la Biélorussie comme seul État européen ayant subi cette sanction diplomatique — un signal politique d'une portée considérable pour une démocratie fondatrice.</p>
+
+        <p>Le présent dossier n'a d'utilité que dans la mesure où il est lu, contesté, complété, et surtout traduit en actions concrètes&nbsp;: une coalition autour de la LDH, un litige stratégique structuré, une médiatisation coordonnée, une pression institutionnelle articulant le calendrier GRECO avec le calendrier du contentieux. Il n'a pas vocation à fournir une vérité définitive, mais un <strong>outil de travail rigoureux</strong> à partir duquel l'argumentation publique et juridique peut s'organiser. À ce titre, la critique des erreurs qu'il contient — et il en contient nécessairement — sera bienvenue.</p>
+
+        <div class="pullquote">L'action contentieuse stratégique ne triomphera pas par le verdict seul. Sa puissance réside dans la <strong>contrainte qu'elle impose à la Cour constitutionnelle de qualifier juridiquement</strong>, dans les considérants de son arrêt, la tension irréductible entre la réalité particratique et le mandat libre. Même un arrêt de rejet créerait un précédent jurisprudentiel inédit, offrant une assise juridique à de futurs recours, à la doctrine, et à un projet de réforme institutionnelle.<cite>— Synthèse stratégique de la Partie&nbsp;VI.</cite></div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- BIBLIOGRAPHIE                                -->
+      <!-- ============================================ -->
+      <section id="biblio">
+        <h1>Bibliographie et sources primaires</h1>
+
+        <p class="lead">Toutes les affirmations factuelles de ce dossier sont fondées sur des sources publiques vérifiables. Cette bibliographie indicative permet la traçabilité de chaque chaîne argumentative.</p>
+
+        <h2>Textes constitutionnels et législatifs</h2>
+        <ul>
+          <li>Constitution belge, coordonnée le 17 février 1994 (articles 33, 40, 42, 58, 99-101, 106, 159).</li>
+          <li>Loi du 4 juillet 1989 relative à la limitation et au contrôle des dépenses électorales et au financement des partis politiques (dite «&nbsp;loi Dhoore&nbsp;»), notamment article 15ter.</li>
+          <li>Loi spéciale du 6 janvier 1989 sur la Cour constitutionnelle, article 26 (questions préjudicielles).</li>
+          <li>Loi du 12 mai 2024 sur la publicité de l'administration (article 16, exception «&nbsp;stratégie politique&nbsp;»).</li>
+          <li>Code judiciaire, articles 17 al. 2 (intérêt à agir collectif), 18, 1412bis (insaisissabilité des biens publics).</li>
+          <li>Livre 6 du Code civil (responsabilité extracontractuelle, ancien article 1382).</li>
+          <li>Loi du 18 juillet 2025 sur l'interdiction administrative des associations (loi Quintin), version révisée du 8 janvier 2026.</li>
+        </ul>
+
+        <h2>Jurisprudence belge</h2>
+        <ul>
+          <li>Cour de cassation, arrêt <em>Anca</em>, 19 décembre 1991 (responsabilité de l'État pour le fait du pouvoir judiciaire).</li>
+          <li>Cour de cassation, arrêt <em>Ferrara</em>, 28 septembre 2006 (responsabilité de l'État législateur pour faute, y compris omission inconstitutionnelle) — <strong>pivot doctrinal</strong>.</li>
+          <li>Cour constitutionnelle, arrêt n°&nbsp;130/2016 du 13 octobre 2016 (mandat impératif contraire à l'art. 42 mais distinction de la validité de la loi) — précédent à neutraliser.</li>
+          <li>Cour constitutionnelle, arrêt n°&nbsp;35/2024 du 21 mars 2024 (suspension d'extrême urgence en matière électorale).</li>
+          <li>Conseil d'État, arrêts Vlaams Belang n°&nbsp;189.463 (14 janvier 2009) et n°&nbsp;213.879 (15 juin 2011) — exigence d'«&nbsp;incitation directe&nbsp;».</li>
+          <li>Cour d'appel de Bruxelles, <em>Klimaatzaak</em>, 30 novembre 2023.</li>
+          <li>Klimaatzaak ASBL c. État belge, jugement du tribunal de première instance, 2021.</li>
+        </ul>
+
+        <h2>Jurisprudence européenne</h2>
+        <ul>
+          <li>CEDH, Grande Chambre, <em>Mugemangango c. Belgique</em>, 10 juillet 2020 — contentieux électoral belge défaillant.</li>
+          <li>CEDH, <em>Camara c. Belgique</em>, 18 juillet 2023, req. n°&nbsp;49255/22 — «&nbsp;carence systémique&nbsp;».</li>
+          <li>CEDH, <em>Tomenko c. Ukraine</em>, 10 juillet 2025 — bouclier européen contre l'arbitraire partisan.</li>
+          <li>CEDH, <em>Karácsony et autres c. Hongrie</em>, 17 mai 2016.</li>
+          <li>CEDH, Grande Chambre, <em>Demirtaş c. Turquie n°2</em>, 22 décembre 2020.</li>
+          <li>CEDH, Grande Chambre, <em>Sejdic et Finci c. Bosnie-Herzégovine</em>, 22 décembre 2009.</li>
+          <li>CEDH, Grande Chambre, <em>Magyar Helsinki Bizottság c. Hongrie</em>, 8 novembre 2016 — test d'accès aux documents.</li>
+          <li>CEDH, <em>Refah Partisi c. Turquie</em>, 13 février 2003&nbsp;; <em>Ždanoka c. Lettonie</em>, 16 mars 2006.</li>
+          <li>CEDH, <em>Le Mailloux c. France</em>, 2020 — filtre du grief personnel.</li>
+        </ul>
+
+        <h2>Rapports institutionnels internationaux</h2>
+        <ul>
+          <li>GRECO, Rapport d'évaluation 4<sup>e</sup> cycle (28 mars 2014)&nbsp;; rapports de conformité 2016-2024.</li>
+          <li>GRECO, Rapport d'évaluation 5<sup>e</sup> cycle (6 décembre 2019)&nbsp;; 2<sup>e</sup> Rapport de conformité, 22 mars 2024 (GrecoRC5(2024)3)&nbsp;; Addendum 101<sup>e</sup> plénière (18-21 novembre 2025).</li>
+          <li>Commission européenne, Rapport sur l'État de droit, chapitre Belgique, 2024 et 2025.</li>
+          <li>Conseil de l'Europe, Recommandation Rec(2003)4 sur les règles communes contre la corruption dans le financement des partis politiques.</li>
+          <li>Transparency International, Corruption Perceptions Index, scores Belgique 2015-2024 (77→69 sur 100).</li>
+          <li>V-Dem Institute, Democracy Report 2026.</li>
+          <li>Economist Intelligence Unit, Democracy Index 2024-2025.</li>
+          <li>CIVICUS, rapports annuels sur l'espace civique en Belgique.</li>
+          <li>Rapport ONU A/HRC/56/61, Olivier De Schutter (rapporteur spécial sur la pauvreté), 2024.</li>
+          <li>Commission de Venise, standards sur la démocratie interne et le mandat représentatif.</li>
+        </ul>
+
+        <h2>Rapports institutionnels belges</h2>
+        <ul>
+          <li>Institut fédéral des droits humains, Rapport État de droit 2025&nbsp;; enquête sur la non-exécution des décisions de justice (lancée le 18 novembre 2024)&nbsp;; Avis 2025/9 sur la loi Quintin.</li>
+          <li>Cour des comptes belge, avis sur le budget fédéral et les comptabilités partisanes.</li>
+          <li>Conseil d'État, section de législation, avis sur la loi Quintin et lois-programmes.</li>
+          <li>Comité parlementaire de contrôle de la procédure de naturalisation (CCRS).</li>
+        </ul>
+
+        <h2>Doctrine et recherche académique</h2>
+        <ul>
+          <li>Verleden, F., <em>Aux sources de la particratie</em>, CRISP, Courrier hebdomadaire n°&nbsp;2501-2504, 2019.</li>
+          <li>Dewachter, W., <em>De trukendoos van de Belgische particratie</em>, Pelckmans, 2014.</li>
+          <li>Deschouwer, K., <em>The Politics of Belgium&nbsp;: Governing a Divided Society</em>, Palgrave Macmillan, 2012.</li>
+          <li>De Winter, L., Dumont, P., «&nbsp;Belgium&nbsp;: Delegation and Accountability under Partitocratic Rule&nbsp;», in Strøm, Müller, Bergman (eds.), <em>Delegation and Accountability in Parliamentary Democracies</em>, Oxford UP, 2006.</li>
+          <li>De Winter, L., «&nbsp;De partijpolitisering als instrument van particratie&nbsp;», <em>Res Publica</em>, vol. 23, n°&nbsp;1, 1981.</li>
+          <li>Destexhe, A., Eraly, A., Gillet, E., <em>Démocratie ou particratie&nbsp;? 120 propositions pour réformer le système belge</em>, Labor, 2003.</li>
+          <li>Brans, M., Pelgrims, C., De Winter, L., travaux sur les cabinets ministériels belges (OECD SIGMA Paper n°&nbsp;38).</li>
+          <li>Hermans, K., Cantillon, B., Marchal, S., <em>Journal of European Social Policy</em>, 2024 (modélisation sur 119 communes).</li>
+          <li>Bolland, J., Goedemé, T., Janssens, J., Études TAKE 2022, Banque-Carrefour de la Sécurité Sociale.</li>
+          <li>Warin, P., <em>Le non-recours&nbsp;: définition et typologies</em>, ODENORE, 2010.</li>
+          <li>Bourgaux, A.-E., Behrendt, C., Verdussen, M., travaux sur le mandat libre et le contentieux électoral.</li>
+          <li>Maddens, B., KU Leuven, études sur le financement des partis (cité par <em>Follow the Money</em>).</li>
+          <li>Cartuyvels, Y., Francq, B., Franssen, A. (UCLouvain/USL-B), travaux sur la rupture du contrat social et la société d'activation punitive.</li>
+        </ul>
+
+        <h2>Médias et investigations</h2>
+        <ul>
+          <li><em>Apache</em>, <em>Médor</em>, <em>Le Vif/L'Express</em>, RTBF Investigation, <em>Follow the Money</em> (rapports Maddens).</li>
+          <li>VRT <em>Pano</em>, «&nbsp;CPAS à la dérive&nbsp;» (19 novembre 2024)&nbsp;; enquête sur les listes d'attente du logement social (mars 2024).</li>
+          <li>Corporate Europe Observatory, <em>Lobby Planet Brussels</em>, 2024-2025.</li>
+          <li>BRF Nachrichten (presse germanophone), <em>21News</em>, sur les défections du PTB.</li>
+          <li>Reporters Sans Frontières, Classement mondial de la liberté de la presse, 2025.</li>
+        </ul>
+
+        <h2>Rapports et notes du projet (consolidés dans ce dossier)</h2>
+        <ul>
+          <li>Mémoire citoyen sur les failles structurelles de la démocratie belge.</li>
+          <li>Défaillance structurelle de l'accountability en Belgique&nbsp;: État de droit, GRECO et financement des partis.</li>
+          <li>Le PTB-PVDA&nbsp;: trajectoire, organisation et programme (1979-2026).</li>
+          <li>Coalition Arizona (De Wever I)&nbsp;: tensions internes et bilan de l'opposition, février 2025 à mai 2026.</li>
+          <li>Le Lobbying à Bruxelles&nbsp;: étude complète.</li>
+          <li>Non-recours aux droits en Belgique&nbsp;: rapport v2 et études associées.</li>
+          <li>Stratégies de contentieux contre le financement de la particratie.</li>
+          <li>Triple-Front Legal Strategy Against Belgian Particracy&nbsp;: Operational Litigation Dossier 2026-2030.</li>
+          <li>Belgian Particracy Under International Scrutiny&nbsp;: Mapping Alerts and Comparative Assessment.</li>
+          <li>Para-Legality in Belgium&nbsp;: Institutional Grey Zones and the Erosion of Rights.</li>
+          <li>Érosion démocratique en Occident&nbsp;: trois tendances structurelles, un même diagnostic.</li>
+          <li>Évolution du MR sous Bouchez&nbsp;; Portrait de Georges-Louis Bouchez par ses controverses.</li>
+          <li>Arsenal juridique de défense — Loi Quintin&nbsp;; Guide citoyen recours Belgique.</li>
+          <li>L'arme de la triangulation constitutionnelle contre la particratie belge — Analyse stratégique du contentieux de la responsabilité de l'État-Législateur et de la sélection des requérants <em>(intégré dans la Partie&nbsp;VI de cette version augmentée)</em>.</li>
+        </ul>
+
+        <div class="disclaimer">
+          <strong>Avertissement.</strong> Le présent dossier constitue un document de travail citoyen à finalité d'analyse et d'orientation. Il ne se substitue pas à la consultation d'un avocat spécialisé ou d'un expert sectoriel. Les évaluations de probabilités de succès des stratégies contentieuses reflètent l'état du droit positif belge et de la jurisprudence connue à la date de rédaction (mai 2026)&nbsp;; elles n'engagent ni leur auteur ni les acteurs qui choisiraient de mobiliser cette stratégie. Les noms et faits cités relatifs aux personnalités politiques proviennent exclusivement de sources publiques journalistiques et institutionnelles. Le dossier ne formule aucune accusation pénale individuelle&nbsp;; il documente des pratiques organisationnelles et institutionnelles aux fins d'un argumentaire de droit constitutionnel et de débat démocratique.
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <button class="totop" aria-label="Retour en haut" id="totop">↑</button>
+
+  <footer>
+    <div class="container">
+      <h4>Crédits</h4>
+      <p><strong>La démocratie belge à l'épreuve&nbsp;:</strong> particratie, État de droit, voies de recours. Version augmentée optimisée pour le web, mise à jour le 26 mai 2026. Document de travail citoyen issu de la consolidation de plus de cinquante études thématiques.</p>
+      <p>Source de l'analyse stratégique sur les requérants&nbsp;: <em>«&nbsp;L'arme de la triangulation constitutionnelle contre la particratie belge&nbsp;»</em>, recherche citoyenne mai 2026, sur la base de sources publiques (Le Vif, Trends-Tendances, Wikipédia, Cumuleo, BRF Nachrichten, 21News, Senate.be, Parlement de la Fédération Wallonie-Bruxelles, YouTube).</p>
+      <h4 style="margin-top: 24px;">Pour aller plus loin</h4>
+      <p>Ce dossier global peut être complété par les études thématiques consolidées (versions Word originales) couvrant chacun des dix-sept axes traités&nbsp;: particratie et mandat libre, financement des partis, cabinets ministériels et Kern, lobbying, médias, non-recours aux droits, austérité Arizona, loi Quintin, PTB-PVDA, MR sous Bouchez, érosion démocratique comparée, stratégies contentieuses détaillées.</p>
+      <p style="margin-top: 24px; color: var(--text-faint); font-size: 0.82em;">Document libre de diffusion non commerciale, citation appréciée. Aucun droit d'auteur revendiqué sur les sources primaires citées.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Back to top button
+    const totop = document.getElementById('totop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) totop.classList.add('show');
+      else totop.classList.remove('show');
+    });
+    totop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Nav toggle (mobile)
+    const navToggle = document.querySelector('.nav-toggle');
+    const topnav = document.getElementById('topnav');
+    if (navToggle) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = topnav.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', isOpen);
+      });
+      topnav.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+          topnav.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', false);
+        }
+      });
+    }
+
+    // TOC active highlight
+    const sections = document.querySelectorAll('main section');
+    const tocLinks = document.querySelectorAll('.toc-side li');
+    function highlightTOC() {
+      let current = '';
+      sections.forEach(s => {
+        const top = s.offsetTop - 120;
+        if (window.scrollY >= top) current = s.id;
+      });
+      tocLinks.forEach((li, i) => {
+        const a = li.querySelector('a');
+        const targetId = a.getAttribute('href').replace('#', '');
+        if (targetId === current) li.classList.add('active');
+        else li.classList.remove('active');
+      });
+    }
+    window.addEventListener('scroll', highlightTOC, { passive: true });
+    highlightTOC();
+  </script>
+</body>
+</html>
