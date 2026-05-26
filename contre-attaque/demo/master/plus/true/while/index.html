@@ -1,0 +1,2492 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le non-recours aux droits en Belgique — Rapport analytique, sources et stratégie juridique</title>
+<meta name="description" content="Rapport version 2 enrichie. Diagnostic, responsabilités, conséquences, et analyse juridique (Charte de l’assuré social, Livre 6 du Code civil, jurisprudence 2023-2025).">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=IBM+Plex+Sans+Condensed:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root {
+  /* Paper / ink — warm editorial palette */
+  --paper: #F5F0E6;
+  --paper-deep: #EFE9DC;
+  --paper-soft: #FAF6EC;
+  --ink: #1A1814;
+  --ink-soft: #2E2A22;
+  --text-secondary: #5C544A;
+  --text-muted: #8A8275;
+  --rule: #C9C0AE;
+  --rule-soft: #DCD3BD;
+
+  /* Accents */
+  --primary: #1B3047;        /* Prussian / institutional */
+  --primary-soft: #2C4661;
+  --accent: #7A1F1F;         /* Oxblood */
+  --accent-soft: #9A3535;
+  --highlight: #B89968;      /* Warm brass / gilt */
+  --green-policy: #3D5C3D;   /* Policy green for recommendations */
+
+  /* Callout backgrounds */
+  --bg-key: #ECE3CC;         /* Cream-gold for "key" */
+  --bg-warning: #F4E1DC;     /* Soft oxblood wash */
+  --bg-info: #E6E2D5;        /* Neutral parchment */
+  --bg-pullquote: #EFE5CE;
+
+  /* Typography */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Newsreader', Georgia, serif;
+  --font-ui: 'IBM Plex Sans Condensed', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  /* Spatial */
+  --content-width: 680px;
+  --reading-pad: clamp(1.5rem, 4vw, 3rem);
+  --sidebar-width: 280px;
+}
+
+/* Dark mode (subtle, retains warm character) */
+[data-theme="dark"] {
+  --paper: #161311;
+  --paper-deep: #1D1A16;
+  --paper-soft: #1F1C18;
+  --ink: #ECE5D6;
+  --ink-soft: #D6CEBF;
+  --text-secondary: #A89F8E;
+  --text-muted: #7A7264;
+  --rule: #3A352D;
+  --rule-soft: #2A2620;
+  --primary: #8FB3D9;
+  --primary-soft: #A5C2E0;
+  --accent: #D88080;
+  --accent-soft: #C26565;
+  --highlight: #C9A874;
+  --green-policy: #8EAE8E;
+  --bg-key: #2A2519;
+  --bg-warning: #2D1F1F;
+  --bg-info: #1F1D17;
+  --bg-pullquote: #2A2519;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 18px;
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  line-height: 1.65;
+  font-feature-settings: "kern", "liga", "onum";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color .3s ease, color .3s ease;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Grain texture overlay for warmth */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.18;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.09  0 0 0 0 0.08  0 0 0 0.3 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+[data-theme="dark"] body::before { mix-blend-mode: screen; opacity: 0.08; }
+
+/* ============================================================
+   READING PROGRESS BAR
+   ============================================================ */
+.progress {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: 2px; z-index: 100;
+  background: transparent;
+}
+.progress__bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--highlight));
+  width: 0%;
+  transition: width .15s linear;
+}
+
+/* ============================================================
+   TOP STRIP
+   ============================================================ */
+.topstrip {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rule-soft);
+  padding: 0.8rem var(--reading-pad);
+  display: flex; align-items: center; justify-content: space-between;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+.topstrip__title {
+  font-weight: 500;
+  color: var(--ink);
+}
+.topstrip__title em {
+  font-style: normal;
+  color: var(--accent);
+}
+.topstrip__actions {
+  display: flex; gap: 1rem; align-items: center;
+}
+.topstrip__btn {
+  background: transparent;
+  border: 1px solid var(--rule);
+  color: var(--text-secondary);
+  font-family: inherit; font-size: inherit;
+  letter-spacing: inherit; text-transform: inherit;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+.topstrip__btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.topstrip__btn--menu { display: none; }
+@media (max-width: 1100px) {
+  .topstrip__btn--menu { display: inline-block; }
+}
+
+/* ============================================================
+   LAYOUT — sidebar + main
+   ============================================================ */
+.shell {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+  position: relative;
+  z-index: 2;
+}
+@media (max-width: 1100px) {
+  .shell { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* TOC sidebar */
+.toc {
+  position: sticky;
+  top: 49px;
+  align-self: start;
+  height: calc(100vh - 49px);
+  overflow-y: auto;
+  padding: 2.5rem 1.5rem 3rem 2rem;
+  border-right: 1px solid var(--rule-soft);
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule) transparent;
+}
+.toc::-webkit-scrollbar { width: 4px; }
+.toc::-webkit-scrollbar-thumb { background: var(--rule); }
+
+.toc__label {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.66rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+.toc__part {
+  margin-top: 1.4rem;
+  padding-top: 1rem;
+  border-top: 1px dotted var(--rule);
+}
+.toc__part:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+.toc__part-title {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.7rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.toc__list { list-style: none; }
+.toc__list li { margin: 0.2rem 0; }
+.toc__list a {
+  display: block;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 0.25rem 0.4rem;
+  border-left: 2px solid transparent;
+  transition: all .15s ease;
+  line-height: 1.35;
+}
+.toc__list a:hover {
+  color: var(--ink);
+  border-left-color: var(--rule);
+  background: var(--paper-deep);
+}
+.toc__list a.active {
+  color: var(--primary);
+  border-left-color: var(--primary);
+  background: var(--paper-deep);
+  font-weight: 500;
+}
+.toc__num {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-right: 0.4rem;
+}
+
+/* Mobile TOC overlay */
+.toc-backdrop {
+  display: none;
+  position: fixed; inset: 49px 0 0 0;
+  background: rgba(0,0,0,0.3); z-index: 70;
+}
+.toc-backdrop.open { display: block; }
+@media (max-width: 1100px) {
+  .toc {
+    position: fixed;
+    left: 0; top: 49px; bottom: 0;
+    width: min(360px, 85vw);
+    background: var(--paper);
+    z-index: 80;
+    transform: translateX(-100%);
+    transition: transform .25s ease;
+    border-right: 1px solid var(--rule);
+  }
+  .toc.open { transform: translateX(0); }
+}
+
+/* ============================================================
+   MAIN ARTICLE
+   ============================================================ */
+.main {
+  padding: 0 var(--reading-pad) 6rem;
+  position: relative;
+  min-width: 0;
+  max-width: 100%;
+}
+.article {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  min-width: 0;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  padding: clamp(3rem, 8vw, 6rem) 0 clamp(3rem, 6vw, 5rem);
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 3rem;
+}
+.hero__eyebrow {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.hero__eyebrow::before, .hero__eyebrow::after {
+  content: '';
+  height: 1px; flex: 0 0 28px;
+  background: var(--accent);
+}
+.hero__eyebrow::after { display: none; }
+.hero__title {
+  font-family: var(--font-display);
+  font-weight: 350;
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  font-feature-settings: "kern", "liga";
+  margin-bottom: 1.5rem;
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+.hero__title em {
+  font-style: italic;
+  color: var(--accent);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+}
+.hero__subtitle {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+  line-height: 1.35;
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+  max-width: 580px;
+  font-variation-settings: "opsz" 36, "SOFT" 80;
+}
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule-soft);
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+}
+.hero__meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.hero__meta-label {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+.hero__meta-value {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* ============================================================
+   HERO STATS — the empirical revelation
+   ============================================================ */
+.hero-stat {
+  margin: 4rem 0;
+  padding: clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 4vw, 3rem);
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  position: relative;
+}
+.hero-stat__lead {
+  font-family: var(--font-ui);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.7rem;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+.hero-stat__h {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+  line-height: 1.3;
+  margin-bottom: 2rem;
+  color: var(--ink-soft);
+  font-variation-settings: "opsz" 36;
+}
+.hero-stat__compare {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  align-items: center;
+  margin: 2rem 0 1rem;
+}
+@media (max-width: 600px) {
+  .hero-stat__compare { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+.hero-stat__col { text-align: center; }
+.hero-stat__pct {
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: clamp(3.5rem, 9vw, 5.5rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-variation-settings: "opsz" 144;
+}
+.hero-stat__col--bad .hero-stat__pct { color: var(--accent); }
+.hero-stat__col--good .hero-stat__pct { color: var(--green-policy); }
+.hero-stat__caption {
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  margin-top: 0.6rem;
+  line-height: 1.4;
+}
+.hero-stat__vs {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.5rem;
+  color: var(--text-muted);
+}
+@media (max-width: 600px) {
+  .hero-stat__vs { display: none; }
+}
+.hero-stat__source {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 1.5rem;
+  text-align: right;
+  letter-spacing: 0.02em;
+}
+
+/* ============================================================
+   QUICK STATS GRID
+   ============================================================ */
+.quick-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.5rem;
+  margin: 3rem 0;
+  padding: 2rem 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.quick-stat {
+  text-align: left;
+}
+.quick-stat__num {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1;
+  color: var(--primary);
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 96;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.quick-stat__num em {
+  font-style: italic;
+  color: var(--accent);
+  font-variation-settings: "opsz" 96, "SOFT" 100, "WONK" 1;
+}
+.quick-stat__lbl {
+  font-family: var(--font-ui);
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  line-height: 1.35;
+}
+
+/* ============================================================
+   TYPOGRAPHY — body
+   ============================================================ */
+.article h1, .article h2, .article h3, .article h4 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  font-feature-settings: "kern", "liga", "ss01";
+  font-variation-settings: "opsz" 144;
+}
+
+.article p {
+  margin: 0 0 1.4rem;
+  font-size: 1.06rem;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  text-align: justify;
+  overflow-wrap: break-word;
+}
+@media (max-width: 600px) {
+  .article p { text-align: left; }
+  .article p { font-size: 1rem; }
+}
+.article p strong { font-weight: 600; color: var(--ink); }
+.article p em { font-style: italic; }
+
+/* Section openers — Partie */
+.partie-opener {
+  margin: 6rem 0 3rem;
+  text-align: left;
+  border-top: 2px solid var(--ink);
+  padding-top: 3rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+@media (max-width: 600px) {
+  .partie-opener { grid-template-columns: 1fr; gap: 0.5rem; margin: 4rem 0 2rem; padding-top: 2rem; }
+}
+.partie-opener__num {
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: clamp(5rem, 12vw, 8rem);
+  line-height: 0.85;
+  color: var(--accent);
+  letter-spacing: -0.04em;
+  font-variation-settings: "opsz" 144;
+  font-style: italic;
+}
+.partie-opener__title-block .partie-opener__label {
+  font-family: var(--font-ui);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+.partie-opener__title {
+  font-family: var(--font-display);
+  font-weight: 350;
+  font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+}
+
+/* Section h2 */
+.article h2 {
+  font-weight: 400;
+  font-size: clamp(1.5rem, 3vw, 1.95rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin: 4rem 0 1.5rem;
+  position: relative;
+  font-variation-settings: "opsz" 96, "SOFT" 30;
+  scroll-margin-top: 80px;
+}
+.article h2 .section-num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+/* Section h3 */
+.article h3 {
+  font-weight: 500;
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.3;
+  margin: 2rem 0 0.8rem;
+  color: var(--ink-soft);
+  font-variation-settings: "opsz" 36, "SOFT" 50;
+}
+
+/* Drop cap on first paragraph of each part */
+.partie > p:first-of-type::first-letter,
+.dropcap::first-letter {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 4.5em;
+  line-height: 0.85;
+  float: left;
+  padding: 0.1em 0.12em 0 0;
+  margin: 0.05em 0 -0.05em 0;
+  color: var(--primary);
+  font-variation-settings: "opsz" 144;
+}
+
+/* Inline links */
+.article a:not(.toc__list a):not(.topstrip__btn) {
+  color: var(--primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  transition: all .15s;
+}
+.article a:not(.toc__list a):not(.topstrip__btn):hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* Lists */
+.article ul, .article ol {
+  margin: 0 0 1.6rem;
+  padding-left: 0;
+  list-style: none;
+}
+.article ul li, .article ol li {
+  position: relative;
+  padding-left: 1.6rem;
+  margin-bottom: 0.7rem;
+  font-size: 1.04rem;
+  line-height: 1.6;
+}
+.article ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 600;
+}
+.article ol { counter-reset: ol-counter; }
+.article ol li { counter-increment: ol-counter; }
+.article ol li::before {
+  content: counter(ol-counter) '.';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  top: 0.3em;
+}
+
+/* ============================================================
+   CALLOUTS — three flavors
+   ============================================================ */
+.callout {
+  margin: 2.5rem 0;
+  padding: 1.6rem 1.8rem;
+  position: relative;
+  border-left: 3px solid;
+  font-size: 1.02rem;
+  line-height: 1.55;
+}
+.callout__label {
+  font-family: var(--font-ui);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  display: block;
+}
+.callout p { margin-bottom: 0.7rem; font-size: inherit; text-align: left; hyphens: none; }
+.callout p:last-child { margin-bottom: 0; }
+.callout--key {
+  background: var(--bg-key);
+  border-left-color: var(--highlight);
+}
+.callout--key .callout__label { color: var(--accent); }
+.callout--warning {
+  background: var(--bg-warning);
+  border-left-color: var(--accent);
+}
+.callout--warning .callout__label { color: var(--accent); }
+.callout--info {
+  background: var(--bg-info);
+  border-left-color: var(--text-secondary);
+}
+.callout--info .callout__label { color: var(--text-secondary); }
+
+/* Pull quote (rare, for high-impact citations) */
+.pullquote {
+  margin: 3rem 0;
+  padding: 2rem 0;
+  text-align: center;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.pullquote__text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.3rem, 2.6vw, 1.6rem);
+  line-height: 1.35;
+  color: var(--ink);
+  position: relative;
+  font-variation-settings: "opsz" 96, "SOFT" 80;
+  padding: 0 1rem;
+}
+.pullquote__text::before {
+  content: '«';
+  font-size: 2.5em;
+  line-height: 0;
+  color: var(--accent);
+  vertical-align: -0.4em;
+  margin-right: 0.15em;
+  font-style: normal;
+}
+.pullquote__text::after {
+  content: '»';
+  font-size: 2.5em;
+  line-height: 0;
+  color: var(--accent);
+  vertical-align: -0.4em;
+  margin-left: 0.15em;
+  font-style: normal;
+}
+.pullquote__attrib {
+  font-family: var(--font-ui);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  margin-top: 1.2rem;
+}
+
+/* ============================================================
+   TABLES — editorial style
+   ============================================================ */
+.table-wrap {
+  margin: 2.5rem 0;
+  overflow-x: auto;
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+.article table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+.article table thead th {
+  font-family: var(--font-ui);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.9rem 0.8rem;
+  border-bottom: 1px solid var(--rule);
+  color: var(--accent);
+  vertical-align: bottom;
+}
+.article table tbody td {
+  padding: 0.85rem 0.8rem;
+  border-bottom: 1px solid var(--rule-soft);
+  vertical-align: top;
+}
+.article table tbody tr:last-child td { border-bottom: none; }
+.article table tbody td:first-child {
+  font-weight: 500;
+  color: var(--primary);
+}
+.table-caption {
+  font-family: var(--font-ui);
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  margin-top: 0.6rem;
+  letter-spacing: 0.04em;
+  font-style: italic;
+}
+
+/* ============================================================
+   COMPARISON BARS — for COVID-Flandre & similar
+   ============================================================ */
+.comparison {
+  margin: 3rem 0;
+  padding: 2rem;
+  background: var(--paper-deep);
+  border-top: 2px solid var(--ink);
+}
+.comparison__title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.3;
+  margin-bottom: 1.8rem;
+  color: var(--ink);
+  font-variation-settings: "opsz" 36;
+}
+.comparison__row {
+  display: grid;
+  grid-template-columns: minmax(160px, 220px) 1fr auto;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 1.4rem;
+}
+@media (max-width: 600px) {
+  .comparison__row { grid-template-columns: 1fr; gap: 0.4rem; }
+}
+.comparison__lbl {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: var(--ink);
+  font-weight: 500;
+  line-height: 1.3;
+}
+.comparison__bar-wrap {
+  height: 28px;
+  background: var(--paper-soft);
+  border: 1px solid var(--rule-soft);
+  position: relative;
+  overflow: hidden;
+}
+.comparison__bar {
+  height: 100%;
+  position: relative;
+  transition: width .8s cubic-bezier(.2,.7,.2,1);
+}
+.comparison__bar--bad { background: linear-gradient(90deg, var(--accent), var(--accent-soft)); }
+.comparison__bar--good { background: linear-gradient(90deg, var(--green-policy), color-mix(in srgb, var(--green-policy) 70%, transparent)); }
+.comparison__bar--neutral { background: linear-gradient(90deg, var(--primary), var(--primary-soft)); }
+.comparison__pct {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.05rem;
+  color: var(--ink);
+  min-width: 64px;
+  text-align: right;
+}
+
+/* ============================================================
+   VOIES — the seven legal pathways
+   ============================================================ */
+.voies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin: 2.5rem 0;
+}
+@media (max-width: 600px) {
+  .voies-grid { grid-template-columns: 1fr; }
+}
+.voie {
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--primary);
+  padding: 1.4rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.voie:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -10px rgba(0,0,0,0.15);
+}
+.voie__num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+}
+.voie__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.1rem;
+  line-height: 1.2;
+  color: var(--ink);
+  font-variation-settings: "opsz" 36;
+}
+.voie__meta {
+  font-family: var(--font-ui);
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.voie__meta span {
+  display: flex; justify-content: space-between;
+  border-top: 1px dotted var(--rule);
+  padding-top: 0.3rem;
+}
+.voie__meta strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+.voie--priority {
+  border-top-color: var(--accent);
+  background: var(--bg-key);
+}
+.voie--priority .voie__title { color: var(--accent); }
+
+/* ============================================================
+   TIMELINE — jurisprudence
+   ============================================================ */
+.timeline {
+  margin: 3rem 0;
+  padding: 0;
+  position: relative;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: var(--rule);
+}
+.timeline-item {
+  position: relative;
+  padding-left: 2.5rem;
+  margin-bottom: 1.8rem;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 13px; height: 13px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 2px solid var(--primary);
+}
+.timeline-item--key::before {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.timeline-date {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.2rem;
+}
+.timeline-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-style: italic;
+  font-size: 1.05rem;
+  margin-bottom: 0.3rem;
+  color: var(--ink);
+}
+.timeline-desc {
+  font-size: 0.94rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  margin-top: 5rem;
+  padding: 3rem var(--reading-pad);
+  border-top: 2px solid var(--ink);
+  background: var(--paper-deep);
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  position: relative;
+  z-index: 2;
+}
+.footer__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+@media (max-width: 700px) {
+  .footer__inner { grid-template-columns: 1fr; }
+}
+.footer h4 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 0.8rem;
+  font-style: italic;
+}
+.footer p { margin-bottom: 0.6rem; line-height: 1.5; }
+
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+.lead {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-style: italic;
+  font-size: 1.3rem;
+  line-height: 1.45;
+  color: var(--ink);
+  margin: 2rem 0 2rem;
+  text-align: left !important;
+  font-variation-settings: "opsz" 36, "SOFT" 50;
+}
+
+.ornament {
+  text-align: center;
+  margin: 3rem 0;
+  color: var(--rule);
+  font-size: 1.4rem;
+  letter-spacing: 1em;
+}
+
+/* Print stylesheet */
+@media print {
+  body { background: white; color: black; font-size: 11pt; }
+  body::before, .topstrip, .toc, .footer__nav { display: none !important; }
+  .shell { grid-template-columns: 1fr; }
+  .main { padding: 0; }
+  .callout { break-inside: avoid; }
+  .partie-opener { break-before: page; }
+  .article h2 { break-after: avoid; }
+  a { color: black !important; border: none !important; }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="progress"><div class="progress__bar" id="progressBar"></div></div>
+
+<div class="topstrip">
+  <div class="topstrip__title">Non-recours aux droits <em>· Belgique</em></div>
+  <div class="topstrip__actions">
+    <button class="topstrip__btn topstrip__btn--menu" id="tocToggle" aria-label="Sommaire">☰ Sommaire</button>
+    <button class="topstrip__btn" id="themeToggle" aria-label="Mode sombre / clair">◐ Mode</button>
+  </div>
+</div>
+
+<div class="toc-backdrop" id="tocBackdrop"></div>
+
+<div class="shell">
+
+<aside class="toc" id="toc" aria-label="Sommaire">
+  <div class="toc__label">Sommaire</div>
+
+  <div class="toc__part">
+    <div class="toc__part-title">Ouverture</div>
+    <ul class="toc__list">
+      <li><a href="#hero"><span class="toc__num">—</span>Page de titre</a></li>
+      <li><a href="#synthese"><span class="toc__num">—</span>Synthèse exécutive</a></li>
+    </ul>
+  </div>
+
+  <div class="toc__part">
+    <div class="toc__part-title">Partie I · Diagnostic</div>
+    <ul class="toc__list">
+      <li><a href="#s1"><span class="toc__num">01</span>Définir le non-recours</a></li>
+      <li><a href="#s2"><span class="toc__num">02</span>Mesurer l’invisible : TAKE, BELMOD, COVID-Flandre</a></li>
+      <li><a href="#s3"><span class="toc__num">03</span>Typologie : cinq formes de non-recours</a></li>
+      <li><a href="#s4"><span class="toc__num">04</span>Six causes structurelles</a></li>
+      <li><a href="#s5"><span class="toc__num">05</span>Profils de vulnérabilité</a></li>
+    </ul>
+  </div>
+
+  <div class="toc__part">
+    <div class="toc__part-title">Partie II · Responsabilités</div>
+    <ul class="toc__list">
+      <li><a href="#s6"><span class="toc__num">06</span>Le législateur fédéral</a></li>
+      <li><a href="#s7"><span class="toc__num">07</span>Exécutifs et ministres : l’ère Arizona</a></li>
+      <li><a href="#s8"><span class="toc__num">08</span>Les administrations : CPAS et organismes</a></li>
+      <li><a href="#s9"><span class="toc__num">09</span>Obligations proactives existantes</a></li>
+      <li><a href="#s10"><span class="toc__num">10</span>Acteurs périphériques</a></li>
+    </ul>
+  </div>
+
+  <div class="toc__part">
+    <div class="toc__part-title">Partie III · Conséquences</div>
+    <ul class="toc__list">
+      <li><a href="#s11"><span class="toc__num">11</span>Privation matérielle, effet Matthieu</a></li>
+      <li><a href="#s12"><span class="toc__num">12</span>Coût épidémiologique</a></li>
+      <li><a href="#s13"><span class="toc__num">13</span>Effets différenciés</a></li>
+      <li><a href="#s14"><span class="toc__num">14</span>Effets démocratiques</a></li>
+      <li><a href="#s15"><span class="toc__num">15</span>La Toeslagenaffaire néerlandaise</a></li>
+    </ul>
+  </div>
+
+  <div class="toc__part">
+    <div class="toc__part-title">Partie IV · Responsabilité juridique</div>
+    <ul class="toc__list">
+      <li><a href="#s16"><span class="toc__num">16</span>Le Livre 6 du Code civil</a></li>
+      <li><a href="#s17"><span class="toc__num">17</span>Faute (1) : Charte de l’assuré social</a></li>
+      <li><a href="#s18"><span class="toc__num">18</span>Faute (2) : standstill (art. 23)</a></li>
+      <li><a href="#s19"><span class="toc__num">19</span>Faute (3) : carence systémique</a></li>
+      <li><a href="#s20"><span class="toc__num">20</span>Faute (4) : force majeure, dol</a></li>
+      <li><a href="#s21"><span class="toc__num">21</span>Faute (5) : discrimination indirecte</a></li>
+      <li><a href="#s22"><span class="toc__num">22</span>Le dommage : typologie fine</a></li>
+      <li><a href="#s23"><span class="toc__num">23</span>Le lien de causalité</a></li>
+      <li><a href="#s24"><span class="toc__num">24</span>Les sept voies contentieuses</a></li>
+      <li><a href="#s25"><span class="toc__num">25</span>L’arrêt Cass. 5 sept. 2025</a></li>
+      <li><a href="#s26"><span class="toc__num">26</span>Limites, obstacles, précautions</a></li>
+    </ul>
+  </div>
+
+  <div class="toc__part">
+    <div class="toc__part-title">Clôture</div>
+    <ul class="toc__list">
+      <li><a href="#s27"><span class="toc__num">27</span>Synthèse</a></li>
+      <li><a href="#s28"><span class="toc__num">28</span>Recommandations</a></li>
+      <li><a href="#s29"><span class="toc__num">29</span>Mot final</a></li>
+      <li><a href="#sources"><span class="toc__num">—</span>Sources mobilisées</a></li>
+    </ul>
+  </div>
+</aside>
+
+<main class="main">
+<article class="article">
+
+<!-- ============================================================
+     HERO / TITLE
+     ============================================================ -->
+<section class="hero" id="hero">
+  <div class="hero__eyebrow">Rapport analytique · Version 2 enrichie</div>
+  <h1 class="hero__title">Le non-recours<br>aux droits<br><em>en Belgique</em></h1>
+  <p class="hero__subtitle">Responsabilités des parties prenantes, conséquences sur la population, et analyse juridique de la faute, du dommage et du lien de causalité à la lumière de la Charte de l’assuré social, du Livre 6 du Code civil et de la jurisprudence 2023-2025.</p>
+
+  <div class="hero__meta">
+    <div class="hero__meta-item">
+      <span class="hero__meta-label">Édition</span>
+      <span class="hero__meta-value">Mai 2026</span>
+    </div>
+    <div class="hero__meta-item">
+      <span class="hero__meta-label">Version</span>
+      <span class="hero__meta-value">2.0 — enrichie</span>
+    </div>
+    <div class="hero__meta-item">
+      <span class="hero__meta-label">Étendue</span>
+      <span class="hero__meta-value">29 sections</span>
+    </div>
+    <div class="hero__meta-item">
+      <span class="hero__meta-label">Lecture</span>
+      <span class="hero__meta-value">≈ 90 minutes</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     EXECUTIVE SUMMARY
+     ============================================================ -->
+<section id="synthese" class="dropcap">
+
+<p class="lead">Cette version 2 du rapport intègre les apports de la doctrine récente et de la jurisprudence 2023-2025 — notamment la <strong>Charte de l’assuré social</strong> (loi du 11 avril 1995), l’<strong>article 6.4 du Livre 6 du Code civil</strong> entré en vigueur le 1ᵉʳ janvier 2025, et trois arrêts décisifs : <em>Cour du travail de Bruxelles, 4 mai 2023</em> (force majeure rejetée), <em>Camara c. Belgique</em> (CEDH, 18 juillet 2023), et <em>Cass., 5 septembre 2025</em> (F.24.0060.F) sur la responsabilité de l’État-législateur.</p>
+
+<h2><span class="section-num">Les chiffres</span>Un phénomène massif, mesurable et structurel</h2>
+
+<p>Selon les projets fédéraux <strong>TAKE</strong> (UAntwerpen, ULiège, Bureau fédéral du Plan, SPF Sécurité sociale, BELSPO 2015-2022) et <strong>BELMOD</strong> (2019-2022), entre <strong>37 % et 51 %</strong> des personnes éligibles au revenu d’intégration sociale ne le perçoivent pas ; environ <strong>50 %</strong> des aînés éligibles à la GRAPA ; jusqu’à <strong>77 %</strong> des 65+ éligibles à l’allocation chauffage. À titre de comparaison, la fraude sociale détectée représente ≈ 250 millions €/an, soit <strong>0,3 % du budget de la sécurité sociale</strong>.</p>
+
+<!-- THE HERO STAT: COVID-Flanders revelation -->
+<div class="hero-stat">
+  <div class="hero-stat__lead">L’expérience naturelle</div>
+  <div class="hero-stat__h">Durant la crise sanitaire, deux suppléments d’allocations familiales identiques ont été distribués en Flandre. L’un sur demande active. L’autre automatiquement, via les flux fiscaux.</div>
+
+  <div class="hero-stat__compare">
+    <div class="hero-stat__col hero-stat__col--bad">
+      <div class="hero-stat__pct">90<small style="font-size:.45em">%</small></div>
+      <div class="hero-stat__caption">Non-recours au premier supplément<br><em>demande active — 12 806 enfants seulement</em></div>
+    </div>
+    <div class="hero-stat__vs">vs</div>
+    <div class="hero-stat__col hero-stat__col--good">
+      <div class="hero-stat__pct">≈0<small style="font-size:.45em">%</small></div>
+      <div class="hero-stat__caption">Non-recours au second supplément<br><em>octroi automatique — 177 457 enfants</em></div>
+    </div>
+  </div>
+
+  <div class="hero-stat__source">Source : Service de lutte contre la pauvreté · Données Flandre, 2020-2021</div>
+</div>
+
+<p>Ce ratio de 1 à 14, pour une même population éligible et une même prestation, constitue la <strong>preuve empirique grandeur réelle</strong> que ce n’est pas l’ayant droit qui défaille — c’est le mode d’octroi. L’automaticité n’est pas un slogan technocratique : c’est une démonstration.</p>
+
+<h2><span class="section-num">Les causes</span>Systémiques, pas individuelles</h2>
+
+<p>Complexité bureaucratique, conditionnalité croissante, numérisation forcée (<strong>46 %</strong> des Belges de 16-74 ans en vulnérabilité numérique selon le Baromètre de la Fondation Roi Baudouin), fermeture des guichets physiques, fragmentation des compétences (Fédéral / Régions / Communautés / 581 CPAS), pratiques administratives dissuasives, et — depuis 2025 — réformes restrictives du gouvernement Arizona. Le rapporteur spécial des Nations Unies <strong>Olivier De Schutter</strong> qualifie le préjugé structurel contre les pauvres de <em>« pauvrétisme »</em>, à traiter avec la même gravité juridique que le racisme ou le sexisme.</p>
+
+<h2><span class="section-num">Les conséquences</span>Graves et documentées</h2>
+
+<p>Pauvreté monétaire et matérielle aggravée (<strong>1,9 million de Belges</strong> en risque de pauvreté ou d’exclusion sociale selon Statbel), dégradation de la santé mentale (multiplication par trois du risque dépressif lié au sentiment d’être « pris au piège »), renoncement aux soins, désaffiliation et rupture du contrat social. Le cas comparé de la <em>Toeslagenaffaire</em> néerlandaise illustre les dérives possibles d’une lutte anti-fraude disproportionnée combinée à des automatisations algorithmiques opaques.</p>
+
+<h2><span class="section-num">La question juridique</span>L’État belge engage-t-il sa responsabilité civile ?</h2>
+
+<p>Oui, et de manière mieux étayée qu’il ne paraît à première vue. Le droit positif belge offre plusieurs fondements solides :</p>
+
+<ul>
+  <li>L’<strong>article 6.4 du Livre 6 du Code civil</strong> consacre depuis 2025 le principe d’égalité de traitement entre personnes physiques et morales — l’État, les Régions et les CPAS sont pleinement soumis au droit commun de la responsabilité.</li>
+  <li>La <strong>Charte de l’assuré social</strong> (loi 11.04.1995) impose des obligations légales explicites d’information proactive (art. 3), de conseil (art. 4) et de réorientation (art. 9 al. 3). L’arrêt <em>Cass., 23 novembre 2009</em> précise que l’obligation d’information d’initiative <em>ne dépend d’aucune demande écrite préalable</em>.</li>
+  <li>La <strong>notion d’organe</strong> (Cass., 27 mai 1963) engage la responsabilité civile <strong>objective</strong> des CPAS dès qu’un Conseil de l’Action sociale ou un Comité Spécial du Service social refuse à tort une demande — sans qu’il soit besoin d’établir une faute personnelle.</li>
+  <li>La <strong>force majeure n’est pas opposable</strong> à l’État pour s’exonérer (Cour du travail de Bruxelles, 4 mai 2023) : une crise récurrente n’est ni imprévisible ni inévitable.</li>
+</ul>
+
+<div class="callout callout--warning">
+  <span class="callout__label">Avertissement stratégique majeur</span>
+  <p>L’arrêt <em>Cass., 5 septembre 2025</em> (n° F.24.0060.F) <strong>limite désormais</strong> la possibilité d’engager la responsabilité de l’État-législateur quand la Cour constitutionnelle annule une loi tout en maintenant ses effets temporels : pendant la période de maintien, le dommage a pour cause juridique l’arrêt constitutionnel lui-même, pas la loi fautive.</p>
+  <p><strong>Conséquence pratique : le contentieux le plus efficace est désormais celui des fautes administratives d’exécution</strong> (CPAS, organismes de paiement, mutuelles), qui ne bénéficient d’aucune immunité comparable.</p>
+</div>
+
+<!-- Quick stats grid -->
+<div class="quick-stats">
+  <div class="quick-stat">
+    <span class="quick-stat__num">37–51<em>%</em></span>
+    <div class="quick-stat__lbl">Non-recours au RIS (TAKE 2022)</div>
+  </div>
+  <div class="quick-stat">
+    <span class="quick-stat__num">~50<em>%</em></span>
+    <div class="quick-stat__lbl">Non-recours à la GRAPA</div>
+  </div>
+  <div class="quick-stat">
+    <span class="quick-stat__num">67–88<em>%</em></span>
+    <div class="quick-stat__lbl">Non-recours à l’allocation chauffage</div>
+  </div>
+  <div class="quick-stat">
+    <span class="quick-stat__num">46<em>%</em></span>
+    <div class="quick-stat__lbl">Belges en vulnérabilité numérique</div>
+  </div>
+  <div class="quick-stat">
+    <span class="quick-stat__num">1,9<em>M</em></span>
+    <div class="quick-stat__lbl">Belges en risque de pauvreté</div>
+  </div>
+  <div class="quick-stat">
+    <span class="quick-stat__num">~10 000</span>
+    <div class="quick-stat__lbl">Jugements non exécutés depuis 2022</div>
+  </div>
+</div>
+
+<div class="callout callout--info">
+  <p>Ce rapport vise à offrir une vision factuelle et juridiquement opérationnelle. Il ne constitue pas un avis juridique formel : toute action contentieuse doit être préparée avec un avocat spécialisé en droit social, droit public et responsabilité de la puissance publique.</p>
+</div>
+
+</section>
+
+<div class="ornament">· · ·</div>
+
+<!-- ============================================================
+     PARTIE I — DIAGNOSTIC
+     ============================================================ -->
+<section class="partie">
+<div class="partie-opener">
+  <div class="partie-opener__num">I</div>
+  <div class="partie-opener__title-block">
+    <div class="partie-opener__label">Partie un</div>
+    <h2 class="partie-opener__title">Diagnostic :<br>ampleur, typologie<br>et causes structurelles</h2>
+  </div>
+</div>
+
+<h2 id="s1"><span class="section-num">§ 01 · Définition</span>Définir le non-recours : du « non-take-up » à « l’ineffectivité des droits »</h2>
+
+<p>Le <strong>non-recours aux droits</strong> (en anglais <em>non-take-up of rights</em>) désigne toute situation dans laquelle une personne éligible à une prestation ou à un service public ne bénéficie pas effectivement de l’avantage auquel elle peut légitimement prétendre. La notion, importée en sociologie francophone par <strong>Philippe Warin</strong> (ODENORE, CNRS / PACTE, Université Grenoble Alpes), a connu en Belgique un développement académique tardif mais soutenu depuis la fin des années 2010.</p>
+
+<p>L’Observatoire de la Santé et du Social de Bruxelles privilégie la notion plus englobante de <strong>« sous-protection sociale »</strong>, définie comme toute situation où un individu ne tire pas profit de l’offre publique de droits et de services qu’il pourrait légitimement réclamer. Le glissement sémantique est lourd de sens : il déplace la focale d’une <em>prétendue défaillance de l’usager</em> vers une <em>ineffectivité de l’action publique</em>. Pour Warin et le Service interfédéral de lutte contre la pauvreté, parler de « non-recours » fait peser la responsabilité sur l’ayant droit, comme s’il « n’avait pas su recourir » ; le terme préféré devient <strong>« ineffectivité des droits »</strong>, restituant à l’État son obligation positive de garantir l’accès aux prestations que la loi reconnaît.</p>
+
+<p>Le 13ᵉ rapport bisannuel du Service interfédéral de lutte contre la pauvreté (2024-2025), intitulé <em>« L’humain comme boussole dans les services publics »</em>, consacre ce glissement comme un signal politique : la charge de la preuve et l’obligation de proactivité incombent aux pouvoirs publics, pas aux justiciables précarisés.</p>
+
+<div class="callout callout--key">
+  <span class="callout__label">Définition retenue dans ce rapport</span>
+  <p>Le non-recours désigne l’écart entre la population juridiquement éligible à un droit social et la population qui en bénéficie effectivement. Il comprend les situations où l’ayant droit ignore son droit, ne le demande pas, voit sa demande refusée à tort, ou n’est pas informé/orienté par l’administration. Sa cause est, en règle, <em>imputable au design institutionnel</em>, non à l’individu — ce qui ouvre la question juridique de la responsabilité publique.</p>
+</div>
+
+<h2 id="s2"><span class="section-num">§ 02 · Mesurer</span>Mesurer l’invisible : TAKE, BELMOD, ISADF 2025 et la démonstration COVID-Flandre</h2>
+
+<h3>2.1 — Le projet TAKE (BELSPO BRAIN-be, 2015-2022)</h3>
+
+<p>Coordonné par <strong>Tim Goedemé</strong> et <strong>Julie Janssens</strong> au <strong>Herman Deleeck Centre for Social Policy</strong> (Université d’Anvers), avec <strong>Laurent Nisen</strong> et <strong>Sergio Perelman</strong> (ULiège), le <strong>Bureau fédéral du Plan</strong> et le <strong>SPF Sécurité sociale</strong>, le projet TAKE a interrogé environ 1 900 ménages à faibles revenus en couplant données d’enquête et données administratives via la <strong>Banque-Carrefour de la Sécurité Sociale (BCSS)</strong> et le SPF Finances. Les résultats publiés dans la <em>Revue belge de sécurité sociale</em> (vol. 64, n° 3, 2022) sont devenus la référence.</p>
+
+<h3>2.2 — Les chiffres-clés (population à faibles revenus, données 2019)</h3>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Prestation</th>
+      <th>Taux de non-recours</th>
+      <th>Population concernée</th>
+      <th>Source</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Revenu d’intégration sociale (RIS, 18-64 ans)</td>
+      <td>37 % – 51 % (moy. 43-46 %)</td>
+      <td>Plusieurs dizaines de milliers</td>
+      <td>TAKE 2022 ; Ansaloni et al. (HIVA-KU Leuven, 2023)</td>
+    </tr>
+    <tr>
+      <td>Garantie de revenus aux personnes âgées (GRAPA)</td>
+      <td>≈ 50 % (IC 95 % : 42-59 %)</td>
+      <td>≈ 66 000 aînés (46-86 k)</td>
+      <td>TAKE / RBSS 2022 (Bolland, Goedemé, Janssens)</td>
+    </tr>
+    <tr>
+      <td>GRAPA — montant non perçu &lt; 300 €/mois</td>
+      <td>58 % des cas</td>
+      <td>Petits montants premiers touchés</td>
+      <td>TAKE 2022</td>
+    </tr>
+    <tr>
+      <td>Intervention majorée (BIM, 65+)</td>
+      <td>≈ 25 % (IC 17-32 %)</td>
+      <td>≈ 67 000 personnes</td>
+      <td>TAKE 2022</td>
+    </tr>
+    <tr>
+      <td>BIM « revenus » 18-64</td>
+      <td>39 % – 52 %</td>
+      <td>Plusieurs centaines de milliers</td>
+      <td>TAKE 2022</td>
+    </tr>
+    <tr>
+      <td>Allocation chauffage / Fonds social mazout (65+)</td>
+      <td>67 % – 88 %</td>
+      <td>≈ 54 000 personnes</td>
+      <td>TAKE 2022</td>
+    </tr>
+    <tr>
+      <td>GRAPA — borne haute historique</td>
+      <td>jusqu’à 79 %</td>
+      <td>Ordre de grandeur indicatif</td>
+      <td>Commission réforme pensions 2020-2040 (2014)</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="table-caption">Source : projet TAKE (BELSPO 2022), Revue belge de sécurité sociale n° 64/3. Population à très bas revenus (≈ 11 % des ménages belges).</div>
+
+<p><em>Caveats méthodologiques.</em> Les chiffres TAKE portent sur la population à très bas revenus. Ils sous-estiment vraisemblablement le non-recours total mais ne peuvent être généralisés à l’ensemble de la population. Le chiffre historique de 79 % de non-recours à la GRAPA (Commission de réforme des pensions, 2014) doit être considéré comme une borne haute ; la valeur TAKE 2022 (≈ 50 %) est aujourd’hui la référence rigoureuse.</p>
+
+<h3>2.3 — Le projet BELMOD (SPF Sécurité sociale, 2019-2022)</h3>
+
+<p>Coordonné par <strong>Arne Corselis</strong> et <strong>Natascha Van Mechelen</strong>, financé par la Commission européenne (programme TSI/EaSI), BELMOD a construit un modèle de microsimulation permettant d’évaluer ex ante les effets de réformes politiques. Sept axes d’action ont été formulés conjointement avec TAKE : octroi automatique des droits dérivés, identification proactive via les flux administratifs, harmonisation des critères de ressources, nudging ciblé, formation des agents, monitoring permanent, et soutien personnalisé pour les publics les plus éloignés du droit.</p>
+
+<h3>2.4 — L’expérience naturelle COVID-19 en Flandre</h3>
+
+<p>La crise sanitaire a produit, en Flandre, une <strong>expérience naturelle</strong> comparant deux modes d’octroi pour un même type d’aide (supplément COVID aux allocations familiales) :</p>
+
+<div class="comparison">
+  <div class="comparison__title">Premier vs second supplément COVID — Flandre, 2020-2021</div>
+
+  <div class="comparison__row">
+    <div class="comparison__lbl">Premier supplément<br><em style="color:var(--text-muted);font-size:0.8rem">demande active (formulaire papier/électronique) — 12 806 enfants effectifs</em></div>
+    <div class="comparison__bar-wrap">
+      <div class="comparison__bar comparison__bar--bad" data-width="90%"></div>
+    </div>
+    <div class="comparison__pct">90 %</div>
+  </div>
+
+  <div class="comparison__row">
+    <div class="comparison__lbl">Second supplément<br><em style="color:var(--text-muted);font-size:0.8rem">octroi automatique via flux fiscaux — 177 457 enfants effectifs</em></div>
+    <div class="comparison__bar-wrap">
+      <div class="comparison__bar comparison__bar--good" data-width="2%"></div>
+    </div>
+    <div class="comparison__pct">≈ 0 %</div>
+  </div>
+
+  <div class="table-caption" style="margin-top:1rem">Lecture : le mode d’octroi à lui seul produit un ratio de 1 à 14 sur la même population éligible et la même prestation.</div>
+</div>
+
+<div class="callout callout--key">
+  <span class="callout__label">Lecture</span>
+  <p>Le ratio est de <strong>1 à 14</strong> entre les deux dispositifs, pour une même population éligible et une même prestation. C’est la <em>preuve empirique grandeur réelle</em> que ce n’est pas l’ayant droit qui défaille — c’est le mode d’octroi. La démarche active constitue, à elle seule, la principale cause de l’ineffectivité du droit. Inversement, l’automaticité éradique quasi totalement le non-recours.</p>
+</div>
+
+<h3>2.5 — L’Indicateur Synthétique d’Accès aux Droits Fondamentaux (ISADF 2025, IWEPS)</h3>
+
+<p>L’<strong>Institut wallon de l’Évaluation, de la Prospective et de la Statistique</strong> a déployé en 2025 une refonte majeure de son ISADF, désormais structuré autour de <strong>13 droits fondamentaux et 148 indicateurs</strong>, appuyé sur une enquête auprès de 102 000 citoyens wallons. Inspiré des cadres conceptuels du Haut-Commissariat des Nations Unies aux droits de l’homme et du Conseil de l’Europe, l’ISADF 2025 est l’outil le plus avancé d’Europe pour objectiver la dépossession citoyenne territoriale et alimenter les Plans de cohésion sociale communaux.</p>
+
+<h3>2.6 — Disparités régionales</h3>
+
+<p>Les données IWEPS sur le RIS et l’ERIS chez les 18-64 ans révèlent de fortes disparités : la Flandre montre des augmentations historiques très limitées et stables ; Bruxelles connaît une croissance exponentielle des bénéficiaires, témoignant d’une paupérisation urbaine intense ; en Wallonie, le taux de (E)RIS est particulièrement élevé non seulement dans les centres urbains mais aussi dans les communes rurales isolées de la frontière française, caractérisées par un éloignement structurel des pôles d’emploi et des services d’aide sociale.</p>
+
+<h3>2.7 — Comparaison : non-recours vs fraude sociale</h3>
+
+<div class="callout callout--warning">
+  <span class="callout__label">Asymétrie politique fondamentale</span>
+  <p>La <strong>fraude sociale détectée</strong> représente environ <strong>250 millions €/an</strong> (SPF Sécurité sociale, Cour des comptes), soit <strong>0,3 %</strong> du budget de la sécurité sociale (≈ 70 milliards €). Le <strong>non-recours</strong> représente plusieurs centaines de millions d’euros de prestations non versées par an (estimations BELMOD). Les ressources institutionnelles, médiatiques et législatives mobilisées pour combattre la fraude sont sans commune mesure avec celles consacrées à combattre le non-recours — alors que ce dernier est massivement plus important.</p>
+</div>
+
+<h2 id="s3"><span class="section-num">§ 03 · Typologie</span>La typologie de Warin / Noël : cinq formes de non-recours</h2>
+
+<p>Pour qualifier juridiquement et politiquement les responsabilités, encore faut-il distinguer <em>ce que recouvre</em> le non-recours. La typologie de référence est celle de l’ODENORE de Philippe Warin (Working Paper n° 1, juin 2010, actualisé décembre 2016), enrichie pour le contexte belge par <strong>Laurence Noël</strong> (Observatoire de la Santé et du Social de Bruxelles, <em>Brussels Studies</em> n° 157, 2021) et par <strong>Julie Janssens</strong> et <strong>Natascha Van Mechelen</strong> (Herman Deleeck Centre, 2022).</p>
+
+<ul>
+  <li><strong>Non-connaissance</strong> — l’ayant droit ignore l’existence du dispositif, ses conditions, ses modalités de demande. Forme la plus répandue selon Warin.</li>
+  <li><strong>Non-demande</strong> — le droit est connu mais non sollicité : honte, complexité, peur des conséquences (inspections urbanistiques, contrôles fiscaux), désaccord normatif avec le dispositif, calcul coûts/bénéfices défavorable.</li>
+  <li><strong>Non-accès / non-réception</strong> — une demande a été introduite mais la prestation n’est pas reçue : refus à tort, abandon en cours de procédure, retards d’instruction, perte du dossier, dématérialisation excluante.</li>
+  <li><strong>Non-proposition</strong> — l’agent administratif n’informe pas, ne propose pas, n’oriente pas le justiciable vers un droit pourtant identifiable. <em>C’est précisément ce que prohibe la Charte de l’assuré social</em> (voir § 17).</li>
+  <li><strong>Exclusion d’un droit</strong> (ajout belge de L. Noël) — durcissement successif des conditions d’octroi et « ping-pong administratif » qui expulsent des personnes <em>antérieurement</em> titulaires d’un droit stable.</li>
+</ul>
+
+<p>Cette dernière catégorie — l’exclusion — est centrale dans le contexte belge actuel : c’est elle qui caractérise l’effet attendu de la limitation du chômage à 24 mois et du durcissement du statut cohabitant au RIS prévus par le gouvernement Arizona.</p>
+
+<h2 id="s4"><span class="section-num">§ 04 · Causes</span>Les causes structurelles : six moteurs systémiques</h2>
+
+<p>La sociologie belge — Périne Brotcorne (CIRTES/UCLouvain), Katrien Steenssens et Ides Nicaise (HIVA-KU Leuven), Bea Cantillon (UAntwerpen), Laurent Nisen (ULiège), Laurence Noël (OSS Bruxelles) — converge avec l’ODENORE sur six facteurs causaux qui ne relèvent pas de l’individu mais de la conception même de l’État social belge.</p>
+
+<h3>4.1 — Complexité administrative croissante et multiplication des conditionnalités</h3>
+
+<p>Chaque réforme « anti-fraude » ou « activatrice » ajoute des conditions d’octroi (PIIS, contrats de projet individualisé, critères de cohabitation, durées d’ouverture, plafonds de ressources et de patrimoine, obligations de disponibilité). Or, statistiquement, <strong>plus les conditions sont multiples, plus le non-recours est élevé</strong> — non parce que les ayants droit « ne méritent plus », mais parce que les chaînes de preuves deviennent inaccessibles. Cantillon parle de <em>« paradoxe de l’État d’investissement social »</em> : malgré des moyens accrus, la pauvreté ne recule pas, et la capacité redistributive de l’État stagne ou régresse depuis les années 2000.</p>
+
+<h3>4.2 — Numérisation forcée et fracture numérique</h3>
+
+<p>Le Baromètre de l’Inclusion Numérique (Fondation Roi Baudouin, 2022) établit que <strong>46 % des Belges de 16 à 74 ans</strong> sont en situation de vulnérabilité numérique (49 % en Wallonie, 46 % en Flandre, 39 % à Bruxelles), avec un pic à <strong>70 % chez les Bruxellois peu qualifiés</strong>. La fermeture progressive des guichets physiques, la dématérialisation imposée des demandes (RIS, allocations PMR, primes énergie, déclarations fiscales), l’utilisation de Itsme et de lecteurs eID excluent mécaniquement les populations sans connexion stable, sans matériel adapté, ou sans compétences numériques fonctionnelles.</p>
+
+<p>La <strong>Cour constitutionnelle</strong>, saisie par 24 organisations (Lire &amp; Écrire, Ligue des droits humains, CSC, FGTB, CAWaB, Brussels Platform Armoede, Unia) d’un recours contre l’ordonnance bruxelloise <em>« Bruxelles numérique »</em> du 25 janvier 2024, a consacré dans son <strong>arrêt n° 126/2025 du 25 septembre 2025</strong> un véritable <strong>droit au non-numérique</strong> : les administrations bruxelloises doivent obligatoirement maintenir trois garanties cumulatives — guichet physique, service téléphonique et voie postale — sans pouvoir invoquer une « charge disproportionnée » pour s’y soustraire.</p>
+
+<h3>4.3 — Fragmentation institutionnelle (fédéral / régions / communautés / CPAS)</h3>
+
+<p>La 6e réforme de l’État a réparti les compétences sociales entre fédéral, Régions, Communautés, et 581 CPAS communaux. Cette dispersion multiplie les portes d’entrée, les changements de statut, et donc les <strong>« ruptures de droits »</strong> lors d’un déménagement, d’un divorce, ou d’un changement de situation professionnelle. Chaque transition est une occasion de tomber dans le non-recours.</p>
+
+<h3>4.4 — Pratiques de guichet : le « non-accès » fabriqué localement</h3>
+
+<p>Les sociologues du CIRTES (UCLouvain) et de l’HIVA documentent un phénomène que Noël nomme <strong>« non-accès »</strong> : des travailleurs sociaux, sous pression budgétaire ou guidés par des circulaires locales restrictives, créent <em>de facto</em> des seuils supplémentaires non prévus par la loi organique : exigence de preuves de rupture conjugale (contrôle des brosses à dents, du linge), visites domiciliaires intrusives, enquêtes de voisinage, refus de prendre une demande tant qu’un « préalable » ne lui est pas fourni, redirection sans rendez-vous. L’étude de <strong>Hermans, Cantillon</strong> et al. (<em>Journal of Social Policy</em>, 2024, modélisation sur 119 communes) démontre des variations majeures entre communes dans les pratiques d’accueil au CPAS, qui influencent directement le risque de non-recours.</p>
+
+<h3>4.5 — Stigmatisation et coût psychologique de la demande</h3>
+
+<p>Le rapporteur spécial des Nations Unies <strong>Olivier De Schutter</strong> qualifie le préjugé structurel contre les pauvres de <em>« pauvrétisme »</em>, appelant à le traiter avec la même gravité juridique que le racisme ou le sexisme (rapport ONU A/HRC/56/61, 2024). Le discours politique dominant, qui présente les bénéficiaires d’aides comme des fraudeurs potentiels, est intériorisé par les premiers concernés et nourrit la <em>non-demande</em> : on préfère renoncer plutôt que s’exposer à l’humiliation administrative.</p>
+
+<h3>4.6 — Conditionnalité algorithmique et surveillance asymétrique</h3>
+
+<p>L’automatisation croissante des décisions administratives s’accompagne d’une <strong>surveillance algorithmique asymétrique</strong> ciblant les profils socio-économiques bas. Le précédent néerlandais SyRI, condamné en février 2020 par le tribunal de La Haye pour violation de l’article 8 CEDH (vie privée), atteste du risque. Plus encore, le précédent de la <em>Toeslagenaffaire</em> (voir § 15) illustre les dérives possibles. En Belgique, les croisements massifs de banques de données par l’ONEM, la BCSS et le SPF Finances à fins de contrôle installent chez les ayants droit une paranoïa légitime : la moindre erreur de déclaration peut déclencher un couperet automatique.</p>
+
+<h2 id="s5"><span class="section-num">§ 05 · Profils</span>Profils de vulnérabilité particulièrement exposés</h2>
+
+<p>L’ineffectivité ne frappe pas au hasard. Certains profils cumulent les facteurs et sont sur-représentés dans toutes les statistiques de sous-protection.</p>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Profil</th>
+      <th>Facteurs structurels</th>
+      <th>Conséquence</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Familles monoparentales / personnes âgées isolées</td>
+      <td>Isolement social, absence de relais d’information, complexité des critères de composition de ménage</td>
+      <td>Non-recours élevé à la GRAPA et aux aides communales complémentaires</td>
+    </tr>
+    <tr>
+      <td>Nouveaux demandeurs (accident de vie)</td>
+      <td>Entrée récente dans le besoin (licenciement, divorce, maladie), méconnaissance des structures</td>
+      <td>Méconnaissance totale, réticence face à la stigmatisation</td>
+    </tr>
+    <tr>
+      <td>Populations migrantes</td>
+      <td>Barrière linguistique, instabilité du statut de séjour, crainte d’impact sur le droit de séjour</td>
+      <td>Non-recours massif à l’aide médicale urgente et au RIS</td>
+    </tr>
+    <tr>
+      <td>Sans-abris / personnes radiées du registre national</td>
+      <td>Exclusion des canaux officiels, absence de domiciliation, perte d’existence informatique</td>
+      <td>Impossibilité de matérialiser l’ouverture de dossiers et le versement</td>
+    </tr>
+    <tr>
+      <td>Étudiants précarisés</td>
+      <td>Conflit de compétences entre CPAS, exigences illégales de rupture familiale</td>
+      <td>Non-recours par crainte de répercussions ou méconnaissance</td>
+    </tr>
+    <tr>
+      <td>Personnes en situation de handicap</td>
+      <td>Délais d’instruction (8-12 mois), dématérialisation excluante</td>
+      <td>Période de non-recours forcé pendant l’instruction</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Sur la précarité étudiante, les travaux de la <strong>Street Law Clinic</strong> de l’Université Libre de Bruxelles (Centre de droit public et social) révèlent qu’une part importante des étudiants vivant dans la précarité renoncent à l’aide des CPAS à laquelle ils ont pourtant droit, souvent en raison d’exigences <em>illégales</em> de rupture familiale formulées par certains assistants sociaux. Le portail <strong>« CPAS Online »</strong> lancé par le SPP Intégration sociale vise à réduire le non-recours, mais son efficacité reste suspendue aux compétences numériques réelles des demandeurs et à l’absence de suivi humain personnalisé par la suite.</p>
+
+<div class="callout callout--key">
+  <span class="callout__label">Conclusion partielle</span>
+  <p>Aucune des six causes structurelles ne relève du choix individuel de l’ayant droit. Toutes résultent d’architectures juridiques, administratives et budgétaires conçues, déployées et maintenues par les pouvoirs publics. Cette imputabilité structurelle est centrale pour la suite de l’analyse, notamment juridique : <em>on ne peut reprocher au justiciable un échec dont il n’a pas la maîtrise.</em></p>
+</div>
+
+</section>
+
+<div class="ornament">· · ·</div>
+
+<!-- ============================================================
+     PARTIE II — RESPONSABILITÉS
+     ============================================================ -->
+<section class="partie">
+<div class="partie-opener">
+  <div class="partie-opener__num">II</div>
+  <div class="partie-opener__title-block">
+    <div class="partie-opener__label">Partie deux</div>
+    <h2 class="partie-opener__title">Responsabilités<br>des parties prenantes</h2>
+  </div>
+</div>
+
+<p class="lead">Si le non-recours résulte d’une architecture institutionnelle, il importe d’identifier qui, dans cette architecture, fait quoi, et qui pourrait — au plan politique, déontologique ou juridique — être tenu pour responsable.</p>
+
+<h2 id="s6"><span class="section-num">§ 06 · Législateur</span>Le législateur fédéral : la fabrique normative du non-recours</h2>
+
+<p>La Chambre des représentants et le Sénat sont, in fine, à l’origine de l’architecture législative qui rend les droits inaccessibles. Trois reproches structurels peuvent leur être adressés.</p>
+
+<h3>6.1 — La multiplication conditionnalisante</h3>
+
+<p>Chaque législature ajoute conditions, plafonds, modalités, contrôles. La loi du 26 mai 2002 instituant le droit à l’intégration sociale (RIS) comportait, à son origine, un dispositif d’une relative simplicité ; elle compte aujourd’hui des dizaines d’arrêtés d’exécution, de circulaires, de seuils différenciés (cohabitant, isolé, charge de famille), de critères PIIS et de conditions de disponibilité au travail. La loi du 27 février 1987 sur les allocations PMR (ARR / AI / API) impose une évaluation médicale complexe dont les délais d’instruction atteignent régulièrement 8 à 12 mois — délais pendant lesquels l’ayant droit est de fait privé de ressources.</p>
+
+<h3>6.2 — Le défaut d’automaticité fautif</h3>
+
+<p>La Belgique dispose, depuis plus de vingt ans, d’une infrastructure technique permettant l’automatisation : la <strong>Banque-Carrefour de la Sécurité Sociale (BCSS)</strong> peut, en temps réel, identifier la quasi-totalité des éligibles à la GRAPA, au BIM, au tarif social. L’étude pilote <strong>Lefevere–Goedemé (2019)</strong> a démontré qu’un simple courrier proactif multiplie le recours par 3 à 4. L’expérience COVID-Flandre (voir § 2.4) démontre que l’octroi automatique fait passer le non-recours de <strong>90 % à près de 0 %</strong>. Depuis le 1ᵉʳ octobre 2024, les chômeurs isolés et les personnes en incapacité depuis 3 mois reçoivent le BIM d’office. Pourtant, le législateur n’a pas généralisé ce dispositif. Le blocage est <em>politique, non technique</em> : maintenir un système à demande active permet de produire des statistiques favorables (« les gens n’en ont pas besoin puisqu’ils ne demandent pas ») et d’externaliser le coût administratif sur les plus pauvres.</p>
+
+<h3>6.3 — L’adoption de réformes régressives sans triple test de proportionnalité</h3>
+
+<p>L’article 23 de la Constitution belge garantit le droit à la sécurité sociale, à l’aide sociale, médicale et juridique, et le droit à mener une vie conforme à la dignité humaine. La jurisprudence de la Cour constitutionnelle (notamment les arrêts n° 147/2005, n° 39/2020 sur la GRAPA, n° 60/2020 sur l’ARR, et n° 69/2023) a consacré le <strong>principe de standstill</strong> : interdiction de faire reculer significativement le niveau de protection sociale acquis, sauf motif impérieux d’intérêt général dûment démontré au regard d’un triple test (mesure appropriée, nécessaire, proportionnée). Plusieurs analyses académiques (Daniel Dumont, ULB ; Isabelle Hachez, USL-B) considèrent que certaines mesures du gouvernement Arizona — limitation du chômage à 24 mois en particulier — soulèvent une question sérieuse de standstill.</p>
+
+<div class="callout callout--info">
+  <span class="callout__label">Front commun de la société civile</span>
+  <p>En octobre 2025, un front large et inédit (CSC, FGTB, CGSLB, Ligue des droits humains, BAPN, Netwerk tegen Armoede, Vie Féminine, Solidaris, SAAMO, Ligue des familles, ATD Quart Monde, RWLP) a déposé un recours en annulation devant la Cour constitutionnelle contre la réforme du chômage, ainsi qu’un recours au Conseil d’État contre le durcissement du statut cohabitant. La Ville de Mons a introduit son propre recours, chiffrant le coût des transferts vers son CPAS à 14,2 millions d’euros.</p>
+</div>
+
+<h2 id="s7"><span class="section-num">§ 07 · Exécutifs</span>Les exécutifs et les ministres : du paradigme d’activation au démantèlement Arizona</h2>
+
+<h3>7.1 — L’héritage de l’État social actif (1999-2024)</h3>
+
+<p>Initié à la fin des années 1990 sous l’influence des politiques de la troisième voie (Tony Blair au Royaume-Uni, Frank Vandenbroucke en Belgique), l’État social actif a opéré un basculement paradigmatique : la protection sociale n’est plus inconditionnelle, elle est subordonnée à l’engagement actif du bénéficiaire dans un parcours de réinsertion. Les sociologues Yves Cartuyvels, Bernard Francq, Abraham Franssen (UCLouvain / USL-B) qualifient l’aboutissement de cette trajectoire de <em>« société d’activation punitive »</em> : le filet de sécurité devient un outil de discipline, et la bureaucratisation des démarches une <em>« violence institutionnelle silencieuse »</em> (J. Furtos, psychiatre).</p>
+
+<h3>7.2 — Le gouvernement Arizona (en fonction depuis le 3 février 2025)</h3>
+
+<p>La coalition De Wever (N-VA, MR, Engagés, CD&amp;V, Vooruit) accélère la trajectoire. Ses mesures-clefs en matière sociale incluent :</p>
+
+<ul>
+  <li><strong>Limitation des allocations de chômage à 24 mois</strong> dès le 1ᵉʳ janvier 2026 — entre 100 000 et 328 000 personnes concernées selon l’ONEM. Au 1ᵉʳ janvier 2026, 25 000 personnes étaient déjà exclues ; le chiffre devrait dépasser 184 000 d’ici juillet 2027.</li>
+  <li><strong>Durcissement du statut cohabitant au RIS</strong> — 90 % des cohabitants actuels n’ouvriraient plus le droit selon la Fédération des CPAS wallons.</li>
+  <li><strong>Généralisation du PIIS</strong> (projet individualisé d’intégration sociale) à tous les bénéficiaires du RIS, avec mécanisme bonus-malus pour les CPAS selon leur taux de remise à l’emploi.</li>
+  <li><strong>Création d’un registre central des aides</strong> et possibilité de verser partiellement l’aide en bons alimentaires.</li>
+  <li><strong>Révision du tarif social énergie</strong> envisagée en avril 2026 pour le retirer aux BIM « revenus » — alors que le Forbeg (régulateurs régionaux) identifie le tarif social belge comme « la meilleure protection en Europe ».</li>
+  <li><strong>Réintégration coercitive des malades de longue durée</strong> (quatrième vague des réformes Retour au travail, 2026), avec sanctions financières pour employeurs et travailleurs ne se conformant pas aux protocoles.</li>
+</ul>
+
+<h3>7.3 — La responsabilité personnelle des ministres</h3>
+
+<p>Un point souvent négligé : la responsabilité d’un ministre ou d’un secrétaire d’État peut être engagée <strong>à titre personnel sur le plan civil</strong>. Le Conseil d’État et la doctrine s’accordent à dire que la <em>faute purement civile d’un ministre</em> — qui cause un dommage sans constituer une infraction pénale — <strong>échappe au privilège de juridiction de l’article 103 de la Constitution</strong>. Le ministre peut donc être poursuivi devant les tribunaux de l’ordre judiciaire de droit commun, conformément à l’article 6 de la Convention européenne des droits de l’homme.</p>
+
+<p>Si le ministre (ou l’administration) commet un <strong>dol</strong> — défini comme la violation consciente et volontaire d’une obligation avec la conscience qu’un préjudice s’ensuivra nécessairement pour un tiers (sans qu’il soit requis qu’il ait voulu le dommage dans toute son étendue) — l’immunité fonctionnelle de l’agent est écartée, et la <strong>responsabilité solidaire de l’État est engagée de plein droit</strong>. C’est un levier utile lorsqu’une circulaire restrictive est sciemment maintenue malgré les avertissements de la doctrine et des juridictions.</p>
+
+<h3>7.4 — La responsabilité des exécutifs régionaux et communautaires</h3>
+
+<p>Les Régions et Communautés ne sont pas exemptes. Le moratoire imposé par le gouvernement de la Fédération Wallonie-Bruxelles (Élisabeth Degryse) sur le secteur de l’éducation permanente (270 associations, 2 300 travailleurs) en décembre 2025 prive précisément les acteurs qui forment au sens critique et qui accompagnent l’accès aux droits. La Région wallonne et la Région bruxelloise gèrent par ailleurs les allocations PMR depuis 2014, avec des délais d’instruction et des taux de refus qui interrogent.</p>
+
+<h2 id="s8"><span class="section-num">§ 08 · Administrations</span>Les administrations : CPAS, organismes de paiement, mutuelles</h2>
+
+<p>Les administrations ne sont pas seulement les exécutantes passives d’un cadre légal. Elles disposent d’un pouvoir d’appréciation, de circulaires internes, et d’une marge de manœuvre dans la qualité de l’accueil. Plusieurs reproches structurels s’adressent à elles.</p>
+
+<h3>8.1 — Les CPAS</h3>
+
+<p>Régis par la loi organique du 8 juillet 1976, les 581 CPAS sont les guichets sociaux de proximité. Les enquêtes (Pano VRT 19/11/2024 « CPAS à la dérive » sur Anderlecht ; témoignages Vie Féminine Namur ; rapport HIVA/CIRTES 2024 SPP-IS) documentent : refus d’enregistrement de demandes, exigences de preuves non prévues par la loi, contrôles inquisitoriaux, redirections sans rendez-vous, délais déraisonnables. L’usage de <strong>circulaires ministérielles non contraignantes pour restreindre les critères d’octroi</strong> du RIS ou de l’aide médicale urgente, le refus systématique de délivrer des accusés de réception le jour même du dépôt de la demande, et l’allongement démesuré des délais de traitement au-delà des trente jours calendrier prévus par la loi sont autant de fautes de gestion administrative directement imputables.</p>
+
+<div class="callout callout--key">
+  <span class="callout__label">Notion d’organe et responsabilité civile objective des CPAS</span>
+  <p>Depuis l’arrêt fondateur <em>Cass., 27 mai 1963</em>, sont considérés comme des organes d’une personne morale publique ceux qui disposent d’une parcelle de la puissance publique ou ont le pouvoir de l’engager vis-à-vis des tiers.</p>
+  <p>Conséquence pratique majeure : lorsqu’un <strong>Conseil de l’Action sociale</strong> ou un <strong>Comité Spécial du Service Social</strong> rejette indûment une demande d’aide ou impose des exigences intrusives non prévues par la loi, il agit <em>en tant qu’organe</em>, engageant directement la <strong>responsabilité civile objective</strong> de l’institution publique concernée — <em>sans qu’une faute personnelle d’agent doive être démontrée</em>. C’est une simplification probatoire considérable pour les contentieux contre les CPAS.</p>
+</div>
+
+<h3>8.2 — Les organismes de paiement (CAPAC, syndicats agréés)</h3>
+
+<p>Les organismes de paiement des allocations de chômage sont en première ligne. Ils disposent d’un délai de <strong>deux mois</strong> pour transmettre le dossier complet du chômeur à l’ONEM à dater de la demande ; l’ONEM doit statuer dans le mois suivant. Tout manquement à ces délais légaux constitue une <strong>faute de service</strong> de nature à priver le citoyen de ses moyens de subsistance — et donc à fonder une action en responsabilité. La jurisprudence Terralaboris recense de nombreuses condamnations sur ce fondement.</p>
+
+<h3>8.3 — L’ONEM et les services régionaux de l’emploi (Actiris, Forem, VDAB)</h3>
+
+<p>La transmission au CPAS des chômeurs en fin de droits est, dans la pratique, défaillante : selon la Fédération des CPAS wallons (Malvina Govaert, <em>Alter Échos</em>), <strong>72,2 % du public exclu de l’insertion en 2015</strong> avait simplement « disparu des radars » — ni au chômage, ni au CPAS, ni dans aucune statistique d’insertion. C’est un cas d’école de non-recours systémique imputable au design des transitions inter-administratives.</p>
+
+<h3>8.4 — Les mutualités, le SPF Pensions, l’INAMI, le SPF Sécurité sociale</h3>
+
+<p>Le Service fédéral des Pensions a fermé de nombreux guichets physiques depuis 2018. L’INAMI a mis en place depuis 2015 un <strong>flux proactif d’identification du BIM</strong> via la BCSS : en 2015, 3,64 millions de personnes assurées ont été détectées, dont 7 % ont obtenu le BIM après enquête. Entre 2014 et 2017, le nombre de bénéficiaires du BIM est passé de 1,86 à 2,08 millions (+12 % vs +1,8 % pour la population assurée). Ce sont des progrès réels, mais qui montrent en creux ce qui reste à faire.</p>
+
+<h3>8.5 — La carence systémique d’exécution des décisions de justice</h3>
+
+<p>Au-delà des prestations sociales stricto sensu, la non-exécution des décisions de justice par l’État belge constitue un cas extrême de non-effectivité du droit. Dans l’arrêt <em>Camara c. Belgique</em> du 18 juillet 2023 (req. n° 49255/22, § 118), la Cour européenne des droits de l’homme a constaté que les circonstances <em>« révèlent une carence systémique des autorités belges d’exécuter les décisions de justice définitives »</em> relatives à l’accueil des demandeurs de protection internationale. Au moment de l’arrêt, 358 requêtes similaires étaient pendantes et la Cour avait accordé des mesures provisoires dans plus de 1 000 affaires depuis octobre 2022.</p>
+
+<p>L’<strong>Institut fédéral des Droits humains (IFDH)</strong> a documenté que <strong>près de 10 000 jugements</strong> condamnant l’État belge n’avaient pas été exécutés depuis janvier 2022. Les tribunaux du travail de Bruxelles ont prononcé <strong>plus de 8 000 condamnations</strong> contre Fedasil, représentant des astreintes cumulées dépassant <strong>170 millions d’euros</strong> — jamais payées.</p>
+
+<div class="callout callout--warning">
+  <span class="callout__label">Force majeure rejetée</span>
+  <p>Dans un arrêt rendu le <strong>4 mai 2023 (rôle 2023/CB/3)</strong>, la <strong>Cour du travail de Bruxelles</strong> a fermement rejeté l’argument de l’État qui invoquait la crise de l’accueil comme cause étrangère libératoire. La Cour a rappelé que la crise <em>« s’était déjà présentée à plusieurs reprises au cours des années précédentes et perdurait depuis de longs mois »</em> ; dès lors, le manque de places d’accueil <em>« ne revêtait aucun caractère imprévisible ou inévitable »</em>.</p>
+  <p>Cette décision est essentielle : l’<strong>inorganisation structurelle ou l’insuffisance budgétaire chronique ne peuvent constituer une cause étrangère exonératoire</strong> pour l’administration publique. L’État ne peut pas plaider sa propre turpitude.</p>
+</div>
+
+<h2 id="s9"><span class="section-num">§ 09 · Obligations proactives</span>Les obligations proactives existantes : exemples positifs sous-exploités</h2>
+
+<p>L’ordre juridique belge contient déjà plusieurs obligations légales de proactivité que l’État ne respecte que partiellement. Les rappeler permet de mesurer l’écart entre le droit positif et la pratique.</p>
+
+<h3>9.1 — FAMIWAL : l’obligation légale de détection proactive</h3>
+
+<p>La <strong>Caisse publique d’allocations familiales (FAMIWAL)</strong> en Wallonie a <strong>l’obligation légale de détecter activement</strong> les enfants pour lesquels le droit aux allocations ou aux suppléments sociaux n’a pas été ouvert. C’est un exemple concret d’<em>obligation positive d’aller vers</em> inscrite dans le droit positif belge. Cette obligation pourrait — et devrait — être étendue à d’autres prestations.</p>
+
+<h3>9.2 — Le flux proactif BIM (INAMI, depuis 2015)</h3>
+
+<p>L’INAMI identifie semestriellement, via la BCSS, les assurés sociaux susceptibles de remplir les conditions du BIM, et leur envoie un courrier les invitant à se manifester auprès de leur mutuelle. Le procédé a multiplié par 3 à 4 les nouvelles ouvertures de droits. Depuis le <strong>1ᵉʳ octobre 2024</strong>, certaines catégories (chômeurs isolés, personnes en incapacité 3+ mois) bénéficient de l’octroi automatique sans démarche.</p>
+
+<h3>9.3 — Le tarif social énergie</h3>
+
+<p>Octroyé automatiquement quatre fois par an aux clients protégés fédéraux (CPAS, GRAPA, allocations DGPH) via la SPF Économie. L’extension Covid (1ᵉʳ février 2021 – 30 juin 2023) aux BIM, supprimée en juillet 2023, avait fait passer 400 000 ménages dans la protection — démonstration de ce que peut faire un dispositif d’automatisation à grande échelle, et démonstration de ce que coûte sa suppression.</p>
+
+<div class="callout callout--key">
+  <span class="callout__label">Conclusion partielle</span>
+  <p>Le défaut d’automaticité généralisée ne peut être justifié par l’absence d’infrastructure ou par une impossibilité technique : la Belgique sait faire, elle l’a démontré (BIM, tarif social, FAMIWAL, COVID-Flandre). Le maintien d’un système à demande active pour les autres prestations relève donc d’un <em>choix politique délibéré</em>, et non d’une fatalité administrative.</p>
+</div>
+
+<h2 id="s10"><span class="section-num">§ 10 · Périphérie</span>Les acteurs périphériques : syndicats, mutualités, secteur associatif</h2>
+
+<h3>10.1 — Les mutualités</h3>
+
+<p>Les mutualités (Solidaris, MC, Partenamut, Liantis…) jouent un rôle essentiel d’intermédiation. Solidaris accorde automatiquement le BIM à plus de 17 000 personnes ; la Mutualité chrétienne en a octroyé près de 18 000 automatiquement. Ces dispositifs montrent qu’une organisation à but non lucratif peut faire mieux que l’État lui-même en matière de proactivité. Mais elles dépendent de la BCSS et de l’INAMI pour les flux de données, et leur efficacité reste plafonnée par le cadre légal.</p>
+
+<h3>10.2 — Les syndicats</h3>
+
+<p>FGTB, CSC et CGSLB jouent un rôle de garde-fou et de relais d’information. Ils sont, depuis octobre 2025, en première ligne des recours en annulation contre les réformes Arizona. Leur capacité à former et accompagner reste néanmoins limitée par leurs propres ressources et par l’érosion du taux de syndicalisation.</p>
+
+<h3>10.3 — Le secteur associatif</h3>
+
+<p>BAPN (Belgian Anti-Poverty Network), Netwerk tegen Armoede, RWLP (Réseau Wallon de Lutte contre la Pauvreté), Vie Féminine, ATD Quart Monde, Lire &amp; Écrire, Brussels Platform Armoede, SAAMO, Ligue des droits humains, Solidaris, MOC, FASS… Le tissu associatif belge est dense, militant et compétent. Il pallie quotidiennement les défaillances de l’État (permanences sociales, aide à la rédaction de recours, accompagnement aux audiences), au prix d’un épuisement croissant et d’une dépendance aux subsides publics — eux-mêmes menacés par les moratoires budgétaires (gel des reconnaissances en éducation permanente, décembre 2025).</p>
+
+<h3>10.4 — Les cliniques juridiques universitaires</h3>
+
+<p>La <strong>Street Law Clinic</strong> de l’ULB (Centre de droit public et social) et d’autres cliniques universitaires (Saint-Louis, UCLouvain) produisent une expertise et un accompagnement précieux, particulièrement pour les étudiants précarisés. Leur extension serait un investissement à coût-bénéfice élevé.</p>
+
+<h3>10.5 — Le rôle des médias</h3>
+
+<p>Le traitement médiatique du non-recours reste très en deçà de celui de la fraude. Le ratio attention médiatique fraude/non-recours est sans commune mesure avec le ratio financier réel (0,3 % vs plusieurs %). Cette asymétrie nourrit politiquement la stigmatisation et freine la réforme. Pano (VRT), Alter Échos, La Revue Nouvelle, Politique, Médor, La Libre / Le Soir (rubriques société), Bruzz et BX1 (à Bruxelles) constituent les principales exceptions documentaires.</p>
+
+<div class="callout callout--key">
+  <span class="callout__label">Synthèse des responsabilités</span>
+  <p>Le non-recours en Belgique n’est pas une fatalité ni un dysfonctionnement isolé. C’est le résultat agrégé : (i) d’un cadre législatif sciemment complexifié, (ii) d’un défaut volontaire d’automatisation alors que les outils techniques existent et ont fait leurs preuves (BIM, tarif social, FAMIWAL, COVID-Flandre), (iii) de pratiques administratives parfois illégales qui engagent la responsabilité objective des CPAS via la notion d’organe, (iv) d’une numérisation forcée sans contrepartie suffisante, et (v) d’un discours politique stigmatisant. Cette chaîne d’imputabilités est précisément ce qui ouvre la question juridique de la responsabilité de l’État, examinée en Partie IV.</p>
+</div>
+
+</section>
+
+<div class="ornament">· · ·</div>
+
+<!-- ============================================================
+     PARTIE III — CONSÉQUENCES
+     ============================================================ -->
+<section class="partie">
+<div class="partie-opener">
+  <div class="partie-opener__num">III</div>
+  <div class="partie-opener__title-block">
+    <div class="partie-opener__label">Partie trois</div>
+    <h2 class="partie-opener__title">Conséquences<br>sur la population</h2>
+  </div>
+</div>
+
+<p class="lead">Le non-recours n’est pas une statistique abstraite. Il a des conséquences précises, mesurables, et hiérarchisables — privation matérielle, coût épidémiologique, effets différenciés, effets démocratiques.</p>
+
+<h2 id="s11"><span class="section-num">§ 11 · Privation</span>Privation matérielle, effet Matthieu et reproduction de la pauvreté</h2>
+
+<h3>11.1 — L’aggravation directe de la pauvreté monétaire</h3>
+
+<p>Selon Statbel (données EU-SILC 2024-2025), <strong>1,9 million de Belges</strong> courent un risque de pauvreté ou d’exclusion sociale, soit <strong>18,7 % de la population</strong>, chiffre qui grimpe à 20-25 % à Bruxelles-Capitale. Le seuil de pauvreté est fixé à 1 565 € net mensuel pour un isolé. Les modélisations BELMOD-TAKE estiment qu’un take-up complet de toutes les prestations sociales :</p>
+
+<ul>
+  <li>réduirait marginalement le taux AROP (At-Risk-Of-Poverty) — ≈ –0,09 % seulement, signe que les niveaux des prestations elles-mêmes restent insuffisants ;</li>
+  <li>mais comblerait significativement le <em>poverty gap</em> dans le segment des plus pauvres (sous 50 % du seuil de pauvreté).</li>
+</ul>
+
+<p>Autrement dit : le non-recours frappe le plus durement les plus pauvres parmi les pauvres. C’est précisément la frange où chaque euro non versé se traduit en privation matérielle aiguë (alimentation, chauffage, soins de santé, mobilité).</p>
+
+<h3>11.2 — L’effet Matthieu : quand l’aide profite davantage aux mieux dotés</h3>
+
+<p>La sociologie qualifie d’<em>« effet Matthieu »</em> le mécanisme par lequel les politiques sociales profitent davantage aux ménages disposant du capital culturel nécessaire pour naviguer dans la complexité administrative — qu’aux ménages les plus pauvres, dont l’exclusion est paradoxalement renforcée par les structures censées les protéger. Le non-recours est l’une des incarnations les plus pures de cet effet : ceux qui auraient le plus besoin du droit sont ceux qui y accèdent le moins. Bea Cantillon parle d’un <em>« effet Matthieu inversé »</em> pour décrire la perte de capacité redistributive de l’État social belge depuis les années 2000.</p>
+
+<h3>11.3 — La substitution par l’aide alimentaire</h3>
+
+<p>Hermans, Cantillon et Marchal (<em>Journal of European Social Policy</em> 34/3, 2024) démontrent que l’aide alimentaire (Restos du Cœur, banques alimentaires, épiceries sociales, colis) se substitue de plus en plus à un revenu minimum défaillant. C’est un symptôme inquiétant : l’aide alimentaire, conçue comme un filet exceptionnel, devient une politique sociale de fait, transférant aux ONG le coût et la responsabilité d’une fonction qui relève de l’État.</p>
+
+<h3>11.4 — Les trappes à pauvreté liées aux seuils</h3>
+
+<p>Le BIM concentre une illustration paradigmatique : son mécanisme « on/off » fait qu’un dépassement du plafond de revenus de quelques euros entraîne la perte simultanée du BIM et de l’ensemble des droits dérivés (transports, téléphone, taxe immondices, réductions culturelles, tiers payant). Le taux marginal d’imposition implicite ainsi créé désincite la transition vers l’emploi.</p>
+
+<h2 id="s12"><span class="section-num">§ 12 · Santé</span>Coût épidémiologique : santé mentale, santé somatique, théorie de la rareté</h2>
+
+<h3>12.1 — La pathologie de la précarité (J. Furtos)</h3>
+
+<p>Le psychiatre français <strong>Jean Furtos</strong> établit une différenciation clinique entre <strong>pauvreté</strong> (état objectif et monétaire) et <strong>précarité</strong> (pathologie du lien, état d’angoisse structurelle). La précarité se caractérise par la peur lancinante de perdre ce qui garantit la dignité : peur de perdre son logement, peur d’être radié de son statut, peur de ne plus pouvoir payer l’énergie. En fragilisant délibérément les « objets sociaux », les réformes maintiennent les bénéficiaires dans un état où <em>aucune sécurité ontologique n’est jamais définitivement acquise</em>. Le non-recours est à la fois cause et conséquence : il découle de l’épuisement cognitif et l’aggrave.</p>
+
+<h3>12.2 — Les « cinq maux de l’austérité »</h3>
+
+<p>La littérature internationale a synthétisé sous le concept d’<em>austerity ailments</em> cinq vecteurs pathogènes (Mc Grath, Walker, Jones, BPS / Open University 2018) :</p>
+
+<ul>
+  <li><strong>humiliation et honte</strong> liées au discours de stigmatisation ;</li>
+  <li><strong>peur et méfiance</strong> liées au climat de contrôle punitif ;</li>
+  <li><strong>instabilité et insécurité</strong> liées à la conditionnalité changeante des prestations ;</li>
+  <li><strong>isolement et solitude</strong> liées à la disparition des interlocuteurs humains ;</li>
+  <li><strong>sentiment d’être pris au piège</strong> (<em>trapped and powerless</em>), particulièrement aigu dans les procédures longues (handicap, surendettement).</li>
+</ul>
+
+<p>Les études épidémiologiques démontrent que le sentiment d’être piégé à long terme <strong>multiplie par trois la probabilité clinique d’être diagnostiqué avec des troubles anxieux ou une dépression sévère</strong>. La méfiance généralisée envers les institutions <strong>majore de 50 % les risques de diagnostic dépressif</strong>. Les enquêtes de Sciensano confirment longitudinalement la dégradation de la santé mentale en Belgique, notamment chez les jeunes et dans les ménages les moins scolarisés.</p>
+
+<h3>12.3 — La théorie de la rareté (Mullainathan &amp; Shafir, 2013)</h3>
+
+<p>Les neurosciences cognitives apportent un éclairage déterminant. Selon la <strong>Scarcity Theory</strong> de Sendhil Mullainathan (Harvard) et Eldar Shafir (Princeton), la pauvreté économique impose une charge cognitive permanente qui séquestre la « bande passante mentale » disponible. Les conséquences mesurées sont vertigineuses : une chute de 13 points de QI fonctionnel équivalente à une nuit blanche, une altération de la mémoire de travail, une rigidité de la flexibilité mentale, une perte d’inhibition et de régulation émotionnelle.</p>
+
+<div class="callout callout--key">
+  <span class="callout__label">Le paradoxe systémique</span>
+  <p>Les institutions belges exigent précisément des bénéficiaires les capacités cognitives — planification, flexibilité, mémoire de travail, inhibition — que la précarité, l’angoisse administrative et la complexité des procédures épuisent. L’État construit un labyrinthe et reproche aux égarés de ne pas en sortir. <em>Le non-recours est neurologiquement fabriqué.</em></p>
+</div>
+
+<h3>12.4 — La peur de l’intrusion administrative</h3>
+
+<p>Lors des concertations organisées par le Service de lutte contre la pauvreté, les participants ont exprimé la peur que l’exercice d’un droit n’entraîne une perte de contrôle sur leur propre vie :</p>
+
+<div class="pullquote">
+  <div class="pullquote__text">il y a la peur que des gens viennent fouiller chez vous, que vous ne soyez plus maître de la situation</div>
+  <div class="pullquote__attrib">Concertations du Service de lutte contre la pauvreté</div>
+</div>
+
+<p>La visite à domicile obligatoire pour vérifier la résidence effective, bien qu’inscrite dans les devoirs du CPAS, est vécue comme une violation de l’intimité familiale et pousse de nombreux usagers à la non-demande.</p>
+
+<h3>12.5 — Santé somatique et accès aux soins</h3>
+
+<p>Le non-recours au BIM, au tarif social énergie ou au RIS produit des renoncements aux soins documentés par la Mutualité chrétienne, Solidaris et l’Observatoire bruxellois de la Santé. Les délais de prise de rendez-vous, le coût des consultations même avec tiers payant, la fermeture de lits hospitaliers (norme de croissance des soins de santé limitée à 2 % pour 2026-2027) aggravent les renoncements. Selon Solidaris, près d’un Belge sur quatre déclare avoir renoncé à des soins pour raisons financières au moins une fois dans les douze derniers mois.</p>
+
+<h2 id="s13"><span class="section-num">§ 13 · Inégalités</span>Effets différenciés : qui paye le plus lourd tribut ?</h2>
+
+<h3>13.1 — Effets de genre</h3>
+
+<p>Les femmes sont surreprésentées : (i) dans les emplois à temps partiel précaire (et donc dans les ouvertures de droits chômage incomplètes), (ii) dans les familles monoparentales (avec exigences administratives accrues), (iii) dans les professions de care dont les budgets publics sont rabotés, (iv) dans les rôles d’aidant·e·s qui absorbent les défaillances des services publics. Les rapports d’Oxfam et de Vie Féminine soulignent que les mesures d’austérité constituent une <strong>violence économique indirecte à l’encontre des femmes</strong>. Le non-recours est genré.</p>
+
+<h3>13.2 — Effets d’âge</h3>
+
+<p>Aux deux extrémités, les conséquences sont aiguës :</p>
+
+<ul>
+  <li><strong>Personnes âgées</strong> — 50 % de non-recours à la GRAPA (TAKE 2022), 77 % à l’allocation chauffage. L’illectronisme touche massivement les 75+. Beaucoup vivent en isolement social, sans relais familial pour aider aux démarches.</li>
+  <li><strong>Jeunes</strong> — surreprésentés dans les exclusions du chômage Arizona, peu informés des droits CPAS, fragilisés par l’endettement étudiant et locatif. À Bruxelles, 42 % des jeunes exclus du chômage n’ouvriront pas de droit au RIS.</li>
+  <li><strong>Étudiants précarisés</strong> (travaux Street Law Clinic ULB) — exigences illégales de rupture familiale par certains CPAS, méconnaissance des droits, conflit de compétences entre CPAS du domicile parental et CPAS d’études.</li>
+</ul>
+
+<h3>13.3 — Effets d’origine et de statut administratif</h3>
+
+<p>Les personnes issues de l’immigration cumulent les barrières linguistiques, les difficultés de reconnaissance des diplômes, et la complexité de leurs statuts (autorisations de séjour, périodes d’ouverture de droits). Les sans-papiers et les demandeurs de protection internationale subissent la carence systémique d’accueil (<em>Camara c. Belgique</em>, 2023). Les personnes radiées d’office du registre national — fréquent chez les sans-abri — perdent leur existence informatique et donc tout accès à l’automaticité, créant un trou noir institutionnel quasi insoluble.</p>
+
+<h3>13.4 — Effets sur les personnes en situation de handicap</h3>
+
+<p>Les délais d’instruction des allocations PMR (8 à 12 mois en moyenne) constituent un non-recours de fait. La numérisation des démarches exclut les personnes avec déficience cognitive, visuelle ou motrice qui n’ont pas accès à l’assistance technique. Le CAWaB (Collectif Accessibilité Wallonie-Bruxelles), Unia et le Conseil supérieur national des personnes handicapées documentent ces ruptures.</p>
+
+<h2 id="s14"><span class="section-num">§ 14 · Démocratie</span>Conséquences démocratiques : désaffiliation, défiance, sortie civique</h2>
+
+<h3>14.1 — La dépossession citoyenne</h3>
+
+<p>Le sociologue T.H. Marshall avait défini la citoyenneté sociale comme le droit à <em>« une part entière de l’héritage social »</em>. Quand près d’un ayant droit sur deux n’accède pas à ses prestations, c’est cette citoyenneté qui se trouve amputée. Philippe Warin souligne que la <em>non-demande</em> constitue un comportement à dimension politique : refus d’une offre jugée stigmatisante, intrusive ou inadaptée, qui met en cause la légitimité même de l’action publique.</p>
+
+<h3>14.2 — La désaffiliation au sens de Robert Castel</h3>
+
+<p>Le sociologue Robert Castel a théorisé la <strong>désaffiliation</strong> comme la rupture progressive des liens d’intégration sociale (travail, sociabilité, protection sociale, citoyenneté). Le non-recours en est un puissant accélérateur : à mesure que les droits formels ne se traduisent plus en accès réels, l’individu désinvestit l’ensemble du registre civique.</p>
+
+<h3>14.3 — Le coût agrégé : « rupture du contrat social »</h3>
+
+<p>Yves Cartuyvels, Bernard Francq et Abraham Franssen (UCLouvain, USL-B) parlent d’une <em>« rupture du contrat social »</em>. Luc Vandormael, président de la Fédération des CPAS wallons, invoque le rapport 2024 du rapporteur spécial des Nations Unies <strong>Olivier De Schutter</strong> sur les <em>« maltraitances institutionnelles »</em> comme source directe de non-recours et de défiance démocratique. La logique est circulaire : plus les normes d’accès se durcissent, plus se développent <em>« conduites de fuite et de rejet »</em>, <em>« méfiance réciproque »</em> et <em>« basculement dans la marginalité chronique »</em>.</p>
+
+<h2 id="s15"><span class="section-num">§ 15 · Précédent</span>Précédent comparé : la Toeslagenaffaire néerlandaise</h2>
+
+<p>L’évaluation des politiques de lutte contre le non-recours met en garde contre les dérives d’une focalisation excessive sur la lutte contre la fraude sociale. L’exemple de la <strong>« Toeslagenaffaire »</strong> aux Pays-Bas (affaire des allocations familiales, 2019-2021) est devenu, à l’échelle européenne, le contre-modèle de référence.</p>
+
+<p>Sous l’empire d’une législation anti-fraude d’une sévérité disproportionnée (<em>Fraudewet</em>), <strong>environ 26 000 familles néerlandaises</strong> ont été contraintes de rembourser l’intégralité d’allocations perçues sur plusieurs années en raison <em>d’erreurs administratives mineures</em>, parfois d’une virgule manquante. La politique a été combinée à un <strong>ciblage algorithmique basé sur le profilage ethnique</strong> (nationalité étrangère utilisée comme variable de risque), provoquant la ruine financière de milliers de familles, des séparations, des suicides, le placement forcé d’enfants en familles d’accueil.</p>
+
+<p>L’affaire a entraîné la chute du gouvernement Rutte III en janvier 2021, des condamnations par le Conseil d’État néerlandais et la CEDH, et un programme indemnitaire pluriannuel chiffré en milliards d’euros. Le rapport de l’Autoriteit Persoonsgegevens (l’équivalent néerlandais de l’APD belge) a établi que l’algorithme constituait une discrimination directe interdite.</p>
+
+<div class="callout callout--warning">
+  <span class="callout__label">Leçon pour la Belgique</span>
+  <p>La mise en place de systèmes d’octroi automatisés basés sur des algorithmes opaques en Belgique présente un risque <strong>similaire</strong> si elle ne s’accompagne pas : (i) d’une transparence absolue sur les modes de calcul, (ii) d’une possibilité de contrôle humain effectif, (iii) d’un audit indépendant régulier, (iv) d’une interdiction stricte du profilage ethnique ou socio-économique.</p>
+  <p>L’automaticité est la solution technique au non-recours, mais l’automaticité mal encadrée devient un risque inverse de <strong>non-droit par algorithme</strong>. Les deux dangers — non-recours par démarche active et abus par algorithme — doivent être tenus simultanément.</p>
+</div>
+
+<div class="callout callout--key">
+  <span class="callout__label">Synthèse des conséquences</span>
+  <p>Le non-recours produit un dommage à plusieurs étages : (1) <strong>matériel</strong> — privation aiguë chez les plus pauvres, substitution par l’aide alimentaire, trappes à pauvreté ; (2) <strong>sanitaire</strong> — multiplication par 3 des risques dépressifs, dégradation de la santé somatique, renoncement aux soins ; (3) <strong>différencié</strong> — effets de genre, d’âge, d’origine, de handicap ; (4) <strong>démocratique</strong> — désaffiliation, défiance, rupture du contrat social.</p>
+  <p>Ces dommages sont documentés, chiffrables, et certains — ce qui constitue le matériau de base pour les actions juridiques examinées en Partie IV.</p>
+</div>
+
+</section>
+
+<div class="ornament">· · ·</div>
+
+<!-- ============================================================
+     PARTIE IV — RESPONSABILITÉ JURIDIQUE
+     ============================================================ -->
+<section class="partie">
+<div class="partie-opener">
+  <div class="partie-opener__num">IV</div>
+  <div class="partie-opener__title-block">
+    <div class="partie-opener__label">Partie quatre</div>
+    <h2 class="partie-opener__title">La responsabilité juridique<br>de l’État belge</h2>
+  </div>
+</div>
+
+<p class="lead">Cette partie répond à la question juridique centrale du rapport : l’État belge commet-il une faute en organisant ou en tolérant le non-recours aux droits ? Y a-t-il un dommage, et un lien de causalité, permettant d’engager sa responsabilité civile devant les juridictions ?</p>
+
+<p>La réponse, étayée dans les pages qui suivent, est : <strong>oui, dans plusieurs configurations identifiables et avec un fondement juridique plus solide qu’il n’y paraît à première vue</strong>. Le droit positif belge — articles du Livre 6 du Code civil (depuis 2025), Charte de l’assuré social (1995) renforcée par la jurisprudence de la Cour de cassation, notion d’organe, principe de standstill — offre des appuis multiples. Une <strong>réorientation stratégique majeure</strong> s’impose toutefois depuis l’arrêt <em>Cass. 5 septembre 2025</em> : le contentieux le plus efficace n’est plus celui contre l’État-législateur, mais celui contre les <strong>fautes administratives d’exécution</strong>.</p>
+
+<div class="callout callout--info">
+  <span class="callout__label">Avertissement méthodologique</span>
+  <p>Ce qui suit constitue une analyse de stratégie juridique et non un avis sur une situation individuelle. Toute action contentieuse réelle suppose de qualifier une faute précise, un dommage personnel ou collectif identifié, et un lien de causalité documenté, sous la direction d’un avocat spécialisé.</p>
+</div>
+
+<h3 style="margin-top:3rem">Repères jurisprudentiels essentiels</h3>
+
+<div class="timeline">
+  <div class="timeline-item">
+    <div class="timeline-date">5 novembre 1920</div>
+    <div class="timeline-title">Cass., Flandria</div>
+    <div class="timeline-desc">Reconnaissance de la responsabilité civile de l’administration sur le fondement du droit commun.</div>
+  </div>
+  <div class="timeline-item timeline-item--key">
+    <div class="timeline-date">27 mai 1963</div>
+    <div class="timeline-title">Cass. — notion d’organe</div>
+    <div class="timeline-desc">Les décisions des organes (Conseil de l’Action sociale, Comité Spécial) engagent la responsabilité civile <strong>objective</strong> des personnes morales publiques.</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-date">11 avril 1995</div>
+    <div class="timeline-title">Loi instituant la Charte de l’assuré social</div>
+    <div class="timeline-desc">Obligations d’information proactive (art. 3), de conseil (art. 4) et de réorientation (art. 9 al. 3).</div>
+  </div>
+  <div class="timeline-item timeline-item--key">
+    <div class="timeline-date">23 novembre 2009</div>
+    <div class="timeline-title">Cass. — information d’initiative</div>
+    <div class="timeline-desc">L’obligation d’information d’initiative de l’art. 3 de la Charte <em>n’est pas subordonnée à une demande écrite préalable</em>.</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-date">21 janvier 2011</div>
+    <div class="timeline-title">CEDH, M.S.S. c. Belgique et Grèce</div>
+    <div class="timeline-desc">Violation de l’art. 3 CEDH liée au dénuement extrême — fondement d’une obligation positive de l’État.</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-date">4 mai 2023</div>
+    <div class="timeline-title">Cour du travail de Bruxelles — force majeure rejetée</div>
+    <div class="timeline-desc">Une crise récurrente n’est ni imprévisible ni inévitable. L’inorganisation chronique ne libère pas l’État.</div>
+  </div>
+  <div class="timeline-item timeline-item--key">
+    <div class="timeline-date">18 juillet 2023</div>
+    <div class="timeline-title">CEDH, Camara c. Belgique</div>
+    <div class="timeline-desc">Constat de <strong>carence systémique</strong> des autorités belges à exécuter les décisions de justice définitives (art. 6 et 46 CEDH).</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-date">1ᵉʳ janvier 2025</div>
+    <div class="timeline-title">Livre 6 du Code civil — entrée en vigueur</div>
+    <div class="timeline-desc">Article 6.4 : égalité de traitement entre personnes physiques et morales publiques. L’État pleinement soumis au droit commun.</div>
+  </div>
+  <div class="timeline-item timeline-item--key">
+    <div class="timeline-date">5 septembre 2025</div>
+    <div class="timeline-title">Cass., F.24.0060.F</div>
+    <div class="timeline-desc"><strong>Limite</strong> la responsabilité de l’État-législateur quand la Cour constit. maintient les effets temporels — réorientation stratégique vers les fautes administratives d’exécution.</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-date">25 septembre 2025</div>
+    <div class="timeline-title">Cour constit. n° 126/2025</div>
+    <div class="timeline-desc">Consécration d’un <strong>droit au non-numérique</strong> : guichet physique, téléphone et voie postale obligatoires.</div>
+  </div>
+</div>
+
+<h2 id="s16"><span class="section-num">§ 16 · Cadre général</span>Le cadre juridique général : Livre 6 du Code civil (depuis 2025)</h2>
+
+<h3>16.1 — Le nouveau Livre 6 : une révolution discrète mais essentielle</h3>
+
+<p>Le <strong>Livre 6 du Code civil</strong>, consacré à la responsabilité extracontractuelle, est entré en vigueur le <strong>1ᵉʳ janvier 2025</strong>. Il remplace les articles 1382 et suivants de l’ancien Code civil et codifie tout en l’actualisant le droit commun de la responsabilité civile. Pour notre sujet, deux dispositions sont cruciales.</p>
+
+<h3>16.2 — L’article 6.4 : l’égalité de traitement entre personnes physiques et morales publiques</h3>
+
+<p>L’article <strong>6.4 du Livre 6</strong> consacre explicitement le principe selon lequel <strong>les personnes morales — y compris les personnes morales de droit public (État, Régions, Communautés, CPAS, organismes publics autonomes) — sont soumises au même régime de responsabilité civile que les personnes physiques</strong>. L’ancien débat doctrinal sur l’étendue de la responsabilité publique est tranché. L’État, les Régions et les CPAS sont pleinement justiciables devant les tribunaux civils sur le fondement du droit commun. C’est l’aboutissement d’une jurisprudence séculaire (arrêt <em>Flandria</em>, Cass., 5 nov. 1920) explicitement consolidé dans la loi.</p>
+
+<h3>16.3 — Les trois conditions cumulatives, inchangées dans leur substance</h3>
+
+<p>La responsabilité civile suppose la réunion de trois éléments :</p>
+
+<ul>
+  <li><strong>Une faute</strong> — violation d’une norme légale ou réglementaire identifiable, ou manquement à la norme générale de prudence (le standard du <em>bonus pater familias</em>) qui s’impose à toute personne raisonnable et prévoyante.</li>
+  <li><strong>Un dommage</strong> — certain (non hypothétique), personnel (subi par le demandeur), et juridiquement protégé.</li>
+  <li><strong>Un lien de causalité</strong> — le dommage ne se serait pas produit, <em>tel qu’il s’est produit</em>, sans la faute (théorie de l’équivalence des conditions, Cass., 28 avr. 1978).</li>
+</ul>
+
+<h3>16.4 — Les fondements internationaux et constitutionnels</h3>
+
+<p>Au socle interne s’ajoutent :</p>
+
+<ul>
+  <li>L’<strong>article 23 de la Constitution belge</strong> (1994) : droit à la dignité humaine, sécurité sociale, aide sociale, médicale et juridique, dont la Cour constitutionnelle a dérivé le principe de <strong>standstill</strong>.</li>
+  <li>Le <strong>Pacte international relatif aux droits économiques, sociaux et culturels</strong> (PIDESC, 1966), art. 9 et 11.</li>
+  <li>La <strong>Charte sociale européenne révisée</strong> (1996), art. 12, 13, 30 ; mécanisme de réclamations collectives ouvert.</li>
+  <li>La <strong>Convention européenne des droits de l’homme</strong> : art. 3 (<em>M.S.S. c. Belgique et Grèce</em>), 6, 8, 13, 14, et art. 1 du Protocole n° 1 (prestations sociales = biens : <em>Stec c. Royaume-Uni</em>).</li>
+  <li>La <strong>Charte des droits fondamentaux de l’UE</strong> : art. 34 (sécurité et aide sociales), 47 (recours effectif).</li>
+</ul>
+
+<div class="callout callout--key">
+  <span class="callout__label">Point essentiel</span>
+  <p>L’État belge n’est pas seulement débiteur d’une obligation passive de ne pas violer les droits sociaux : il est débiteur d’une <strong>obligation positive de mettre en œuvre l’effectivité des droits</strong>. Cette obligation positive est le pivot de toute action en responsabilité fondée sur le non-recours. Elle est désormais doublée par le principe d’égalité de traitement entre personnes physiques et morales publiques (art. 6.4 du Code civil).</p>
+</div>
+
+<h2 id="s17"><span class="section-num">§ 17 · Faute (1)</span>Manquement à la Charte de l’assuré social</h2>
+
+<p>C’est l’apport le plus important de cette version 2 du rapport. La <strong>Charte de l’assuré social</strong> — <em>loi du 11 avril 1995</em> — est un texte d’<strong>ordre public</strong> qui s’applique à <strong>toutes les institutions de sécurité sociale (INAMI, ONEM, SPF Pensions, mutualités) ainsi qu’aux CPAS</strong> en tant qu’institutions d’aide sociale. Elle impose des <strong>obligations légales explicites</strong> dont la méconnaissance constitue une faute civile <em>indiscutable</em>, sans recours à des constructions doctrinales innovantes.</p>
+
+<h3>17.1 — L’obligation d’information proactive (art. 3)</h3>
+
+<p>Article 3 de la Charte : l’administration doit fournir à tout assuré social qui en fait la demande écrite les informations utiles concernant ses droits et ses devoirs. Mais surtout, <strong>la jurisprudence de la Cour de cassation a considérablement étendu cette obligation</strong>. Dans son arrêt du <strong>23 novembre 2009</strong>, la Cour a établi que <em>« l’obligation de communiquer d’initiative à l’assuré social les informations susceptibles de lui permettre de prétendre à des prestations n’est pas subordonnée à une demande préalable écrite de l’intéressé »</em>.</p>
+
+<div class="callout callout--key">
+  <span class="callout__label">Portée juridique</span>
+  <p>Dès que l’administration <strong>dispose d’informations</strong> montrant qu’un usager remplit les conditions d’un droit ou risque de le perdre, elle doit <strong>agir d’initiative</strong> pour l’en informer. Le défaut de proactivité est alors <strong>constitutif d’une faute civile sanctionnée par les articles 6.5 et suivants du Code civil</strong>.</p>
+  <p>Cette jurisprudence transforme radicalement la nature du débat : ce n’est plus à l’ayant droit de prouver qu’il a tout fait pour solliciter son droit, c’est à l’administration de prouver qu’elle a rempli son obligation d’information d’initiative.</p>
+</div>
+
+<h3>17.2 — L’obligation de conseil (art. 4)</h3>
+
+<p>Article 4 : l’institution doit conseiller l’assuré et l’éclairer sur sa situation personnelle. Exemple jurisprudentiel : si un usager de nationalité étrangère risque de perdre ses allocations de handicap faute d’inscription au registre de la population, le SPF Sécurité sociale commet une faute s’il <em>ne lui conseille pas</em> de procéder à cette inscription spécifique auprès de sa commune. L’obligation va donc au-delà de la simple réponse à une question : elle implique une <em>anticipation active</em> des risques affectant les droits.</p>
+
+<h3>17.3 — L’obligation de réorientation (art. 9, al. 3)</h3>
+
+<p>Article 9 al. 3 : si l’administration saisie est incompétente, elle <strong>doit transmettre la demande d’office</strong> au service compétent. La pratique du <em>« ping-pong administratif »</em> — qui consiste à renvoyer le justiciable d’un guichet à l’autre sans transmission interne — est donc une faute imputable à chaque institution qui s’y livre. Cette obligation est particulièrement importante dans le contexte fédéral belge où les compétences sont dispersées entre fédéral, Régions, Communautés et 581 CPAS.</p>
+
+<h3>17.4 — Le respect des délais légaux</h3>
+
+<p>Toute décision administrative doit intervenir dans les délais légaux. Exemples :</p>
+
+<ul>
+  <li>Décision sur demande RIS : 30 jours calendrier (loi 26.05.2002).</li>
+  <li>Décision sur révision de handicap : 8 mois (délai de rigueur). Tout dépassement (treize mois, deux ans…) constitue une <strong>faute administrative de service</strong> engageant la responsabilité de l’État.</li>
+  <li>Transmission du dossier chômage à l’ONEM : 2 mois pour l’organisme de paiement ; 1 mois pour la décision ONEM.</li>
+</ul>
+
+<h3>17.5 — Tableau de synthèse des manquements fautifs à la Charte de l’assuré social</h3>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Obligation légale</th>
+      <th>Disposition</th>
+      <th>Comportement fautif</th>
+      <th>Référence</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Information proactive</td>
+      <td>Art. 3 Charte</td>
+      <td>Ne pas informer d’initiative un éligible identifié</td>
+      <td>Cass., 23 nov. 2009</td>
+    </tr>
+    <tr>
+      <td>Conseil personnalisé</td>
+      <td>Art. 4 Charte</td>
+      <td>Ne pas alerter sur un risque de perte de droit</td>
+      <td>Jurisprudence Terralaboris</td>
+    </tr>
+    <tr>
+      <td>Réorientation d’office</td>
+      <td>Art. 9 al. 3 Charte</td>
+      <td>Renvoyer le demandeur sans transmettre la demande</td>
+      <td>Pratique du « ping-pong »</td>
+    </tr>
+    <tr>
+      <td>Délais légaux</td>
+      <td>Loi 11.04.1995 + lois spéciales</td>
+      <td>Dépasser les 30 jours / 8 mois / 2 mois</td>
+      <td>Délai de rigueur, faute de service</td>
+    </tr>
+    <tr>
+      <td>Accusé de réception immédiat</td>
+      <td>Pratique administrative régulière</td>
+      <td>Refus de délivrer un AR le jour du dépôt</td>
+      <td>Faute de gestion</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="callout callout--key">
+  <span class="callout__label">Conséquence stratégique</span>
+  <p>Pour la grande majorité des situations individuelles de non-recours, <strong>il n’est pas nécessaire de mobiliser des qualifications juridiques complexes</strong>. Le manquement à la Charte de l’assuré social, lu à la lumière de la jurisprudence de la Cour de cassation, suffit à caractériser une faute. C’est la voie la plus rapide, la plus solide et la plus accessible.</p>
+</div>
+
+<h2 id="s18"><span class="section-num">§ 18 · Faute (2)</span>Violation du principe de standstill (art. 23 Constitution)</h2>
+
+<p>Cette qualification vise les actes du législateur (et, par extension, du pouvoir réglementaire) qui font reculer significativement le niveau de protection sociale acquis. Si une réforme aboutit à un tel recul sans démontrer un motif impérieux et sa proportionnalité au regard du triple test (mesure appropriée, nécessaire, proportionnée), elle est inconstitutionnelle. La dématérialisation forcée des services de première ligne sans alternative adéquate pour les non-connectés a déjà été sanctionnée (Cour constitutionnelle, arrêt n° 126/2025, 25 sept. 2025) sur le fondement du droit au non-numérique.</p>
+
+<div class="callout callout--warning">
+  <span class="callout__label">Avertissement majeur</span>
+  <p>L’arrêt <em>Cass., 5 septembre 2025</em> (n° F.24.0060.F) — examiné en détail au § 25 — <strong>limite désormais</strong> la possibilité d’engager la responsabilité de l’État-législateur quand la Cour constitutionnelle annule une loi tout en maintenant ses effets temporels. Cette qualification reste donc disponible, mais son rendement contentieux est réduit. Elle conserve un intérêt politique et déclaratoire élevé, mais elle n’est plus la voie indemnitaire la plus efficace.</p>
+</div>
+
+<h2 id="s19"><span class="section-num">§ 19 · Faute (3)</span>Carence systémique d’exécution</h2>
+
+<p>Cette qualification est aujourd’hui la mieux établie en droit positif belge — parce qu’elle a été expressément constatée par la juridiction internationale. Dans l’arrêt <em>Camara c. Belgique</em> du 18 juillet 2023 (req. n° 49255/22), la Cour européenne des droits de l’homme a constaté au § 118 que les circonstances <em>« révèlent une carence systémique des autorités belges d’exécuter les décisions de justice définitives »</em>. Conclusion : violation de l’article 6 § 1 CEDH (procès équitable, qui inclut le droit à l’exécution des jugements), et — au titre de l’article 46 — injonction à la Belgique de remédier au problème systémique.</p>
+
+<p>Cette qualification est : (a) attestée par la plus haute juridiction européenne, (b) directement imputable à l’État belge en tant que pouvoir exécutif, (c) constitutive d’une violation du droit à un recours effectif (art. 13 CEDH). <strong>Toute personne victime d’un jugement non exécuté dispose d’une action en responsabilité contre l’État</strong> sur ce fondement, devant le tribunal civil belge, sur base du Livre 6 du Code civil.</p>
+
+<h2 id="s20"><span class="section-num">§ 20 · Faute (4)</span>Force majeure rejetée, dol ministériel</h2>
+
+<h3>20.1 — La force majeure n’est pas opposable à l’État</h3>
+
+<p>L’État belge a régulièrement tenté de s’exonérer en invoquant des situations de crise imprévisibles (afflux de demandeurs d’asile, crise énergétique, COVID). Cette stratégie a été <strong>fermement rejetée</strong> par la Cour du travail de Bruxelles dans son arrêt du <strong>4 mai 2023 (rôle 2023/CB/3)</strong>. La Cour a rappelé que la crise invoquée <em>« s’était déjà présentée à plusieurs reprises au cours des années précédentes et perdurait depuis de longs mois »</em> ; dès lors, le manque de places d’accueil <em>« ne revêtait aucun caractère imprévisible ou inévitable »</em>. L’<strong>inorganisation structurelle ou l’insuffisance budgétaire chronique ne peuvent constituer une cause étrangère libératoire</strong> pour l’administration publique.</p>
+
+<p>Cette jurisprudence est transposable mutatis mutandis au non-recours : si l’État savait depuis le rapport TAKE 2022 que près d’un éligible sur deux n’accède pas au RIS, et qu’il dispose des outils techniques pour y remédier (BCSS, BELMOD, expériences BIM), il ne peut invoquer une « impossibilité de mettre en œuvre l’automaticité » comme cause étrangère exonératoire.</p>
+
+<h3>20.2 — La responsabilité personnelle des ministres et le dol</h3>
+
+<p>La responsabilité d’un ministre peut être engagée à titre personnel sur le plan civil. Le Conseil d’État et la doctrine s’accordent à dire que la faute purement civile d’un ministre <strong>échappe au privilège de juridiction de l’article 103 de la Constitution</strong> (qui ne couvre que les faits susceptibles de qualification pénale). Le ministre peut donc être poursuivi devant les tribunaux civils de droit commun, conformément à l’article 6 CEDH.</p>
+
+<p>Le <strong>dol</strong> est défini comme la violation consciente et volontaire d’une obligation avec la conscience qu’un préjudice s’ensuivra nécessairement pour un tiers (sans qu’il soit requis qu’il ait voulu le dommage dans toute son étendue). Quand le dol est caractérisé, l’<strong>immunité fonctionnelle</strong> de l’agent est écartée et la <strong>responsabilité solidaire de l’État</strong> est engagée de plein droit. Cette qualification est plaidable lorsqu’un ministre maintient sciemment une circulaire restrictive malgré les avertissements répétés du Service de lutte contre la pauvreté, du Conseil d’État ou de la doctrine.</p>
+
+<h2 id="s21"><span class="section-num">§ 21 · Faute (5)</span>Discrimination indirecte</h2>
+
+<p>La numérisation forcée, la fermeture des guichets, l’absence d’aménagements raisonnables pour les personnes handicapées, illettrées ou non-francophones constituent des cas plausibles de <strong>discrimination indirecte</strong> au sens de la loi du 10 mai 2007 (transposition des directives européennes), de la Convention ONU relative aux droits des personnes handicapées (CDPH) et de la Convention européenne des droits de l’homme (art. 14). Unia, le CAWaB et l’Institut pour l’égalité des femmes et des hommes ont déjà soutenu ce type de qualification, qui ouvre une voie spécifique : l’<strong>action en cessation</strong> (voir § 24).</p>
+
+<h2 id="s22"><span class="section-num">§ 22 · Dommage</span>Le dommage : typologie fine</h2>
+
+<p>Le dommage doit être certain, personnel et juridiquement protégé. Dans le contexte du non-recours, plusieurs catégories doivent être distinguées.</p>
+
+<h3>22.1 — La perte financière directe (dommage matériel)</h3>
+
+<p>Le préjudice correspond à la somme des allocations sociales (RIS, allocations PMR, GRAPA, BIM, tarif social, allocations familiales) que le justiciable aurait perçues si l’administration n’avait pas failli à ses devoirs. Le calcul est arithmétique : montant mensuel × nombre de mois × intérêts légaux et judiciaires.</p>
+
+<h3>22.2 — La réparation différentielle</h3>
+
+<p>Lorsque la faute a conduit à un <strong>mauvais classement</strong> de la victime — par exemple l’octroi d’une allocation d’intégration de catégorie 2 au lieu de la catégorie 3 en raison d’une mauvaise évaluation médicale, ou le calcul d’un RIS « cohabitant » au lieu d’« isolé » — le préjudice correspond à la <strong>différence arithmétique</strong> entre les deux catégories d’allocations pour toute la période concernée, augmentée des intérêts. Ce poste de dommage est fréquemment sous-estimé alors qu’il représente un contentieux régulier devant les tribunaux du travail.</p>
+
+<h3>22.3 — La perte d’une chance</h3>
+
+<p>Si l’octroi de la prestation restait soumis à une <strong>évaluation discrétionnaire</strong> de l’administration, la faute prive la victime de la <em>chance sérieuse</em> d’obtenir l’avantage. Le juge évalue alors le dommage à hauteur d’une <strong>fraction du montant de l’aide</strong>, proportionnelle à la probabilité qu’avait le demandeur de l’obtenir sans la faute administrative. Cette construction (consacrée par Cass., 17 déc. 2009 et reprise dans le Livre 6) permet d’indemniser même dans les hypothèses où la causalité directe est imparfaite.</p>
+
+<h3>22.4 — Le préjudice né de l’illusion de régularisation</h3>
+
+<p>Cas spécifique mais important : lorsqu’un organisme de paiement <strong>induit l’usager en erreur</strong> en lui faisant croire qu’il remplit les conditions pour cumuler ses allocations avec d’autres revenus, l’OP commet une faute. Si l’usager est ultérieurement contraint de <strong>rembourser un indu</strong> à l’ONEM, le dommage ne réside pas dans l’obligation de rembourser en soi (qui découle de l’absence du droit), <strong>mais dans l’exposition de l’usager à une situation d’endettement</strong> qu’il aurait évitée s’il avait été correctement informé. Cette nuance est cruciale : c’est le dommage de <em>confiance trompée</em> qui est indemnisable.</p>
+
+<h3>22.5 — Le dommage moral et corporel</h3>
+
+<p>Le dommage moral (humiliation administrative, sentiment de prison administrative, angoisse) et le dommage corporel (pathologies dépressives et anxieuses attestées, somatisations) sont indemnisables. Les ouvertures pour expertise médicale sont possibles en cas de pathologie chronique attestée par un certificat médical liant la pathologie à la situation administrative.</p>
+
+<h3>22.6 — Caractères communs</h3>
+
+<p>Tous ces postes doivent être <strong>certains</strong> (non purement hypothétiques), <strong>personnels</strong> (subis par le demandeur), et <strong>légitimes</strong> (atteinte à un intérêt juridiquement protégé). Ces conditions ne posent pas de difficulté dans les configurations classiques : le non-versement d’une prestation à laquelle on avait droit est un dommage certain, personnel et légitime.</p>
+
+<h2 id="s23"><span class="section-num">§ 23 · Causalité</span>Le lien de causalité : difficultés et stratégies probatoires</h2>
+
+<p>La théorie de l’<strong>équivalence des conditions</strong>, retenue par la Cour de cassation, exige que la faute soit une condition <em>sine qua non</em> du dommage : sans la faute, le dommage ne se serait pas produit, tel qu’il s’est produit. Le juge du fond procède à une <strong>reconstruction mentale</strong> de l’historique du sinistre en faisant abstraction de l’élément fautif.</p>
+
+<h3>23.1 — Cas favorable : action individuelle avec manquement à la Charte</h3>
+
+<p>Configuration : l’administration disposait d’éléments lui imposant d’informer ou de conseiller l’usager (art. 3-4 Charte) ; elle ne l’a pas fait ; l’usager n’a donc pas entrepris les démarches qu’il aurait entreprises s’il avait su. Le lien causal est ici <strong>présumé</strong> : le demandeur doit démontrer qu’il aurait agi s’il avait reçu l’information adéquate ; si l’administration ne parvient pas à démontrer que l’usager serait resté inactif <em>en tout état de cause</em>, le lien de causalité est juridiquement établi.</p>
+
+<h3>23.2 — Cas plus difficile : défaut d’automaticité fautif</h3>
+
+<p>Configuration : il faut démontrer que, en cas d’automaticité, <em>ce demandeur</em> précis aurait perçu la prestation. Réponse : l’automaticité du BIM 1ᵉʳ oct. 2024, le tarif social, FAMIWAL et l’expérience naturelle COVID-Flandre (premier supplément à 90 % de non-recours vs second à ≈ 0 %) démontrent que le procédé fonctionne, et le rapport BELMOD chiffre précisément les ouvertures de droits par automatisation. Le lien causal est donc <strong>statistiquement et techniquement démontrable</strong>, même s’il l’est moins immédiatement qu’en cas d’acte fautif individuel.</p>
+
+<h3>23.3 — Action collective : la stratégie « Klimaatzaak »</h3>
+
+<p>Une action visant à faire reconnaître la responsabilité de l’État pour le non-recours en général se heurterait à la difficulté de qualifier un dommage personnel et un lien causal précis pour chaque demandeur abstrait. La stratégie efficace consiste à structurer l’action comme un <strong>regroupement procédural</strong> de plusieurs ayants droit, chacun documentant son dommage personnel — comme dans <em>Klimaatzaak</em> où 60 000 citoyens étaient demandeurs.</p>
+
+<h2 id="s24"><span class="section-num">§ 24 · Sept voies</span>Les sept voies contentieuses et leur articulation</h2>
+
+<p>Le droit positif belge offre sept voies contentieuses utilisables pour combattre juridiquement le non-recours. Chacune a ses caractéristiques propres, ses délais, sa juridiction, son rendement. Deux d’entre elles — la voie 1 (recours individuel social) et la voie 5 (action en responsabilité Livre 6) — sont, depuis l’arrêt Cass. 5 sept. 2025, les voies prioritaires.</p>
+
+<div class="voies-grid">
+  <div class="voie voie--priority">
+    <div class="voie__num">VOIE 01 · PRIORITAIRE</div>
+    <div class="voie__title">Recours individuel social</div>
+    <p style="font-size:.9rem;color:var(--text-secondary);margin:.4rem 0">Pour les décisions de refus de RIS, BIM, chômage, incapacité, pension. Voie rapide, accessible, productrice de jurisprudence.</p>
+    <div class="voie__meta">
+      <span>Juridiction <strong>Tribunal du travail</strong></span>
+      <span>Délai <strong>3 mois</strong></span>
+    </div>
+  </div>
+
+  <div class="voie">
+    <div class="voie__num">VOIE 02</div>
+    <div class="voie__title">Action en cessation</div>
+    <p style="font-size:.9rem;color:var(--text-secondary);margin:.4rem 0">Loi anti-discrimination du 10 mai 2007. Groupements d’intérêt (syndicats, associations agréées, Unia). Cible : politique systémique discriminatoire.</p>
+    <div class="voie__meta">
+      <span>Juridiction <strong>Pdt trib. travail</strong></span>
+      <span>Délai <strong>Variable</strong></span>
+    </div>
+  </div>
+
+  <div class="voie">
+    <div class="voie__num">VOIE 03</div>
+    <div class="voie__title">Recours en annulation</div>
+    <p style="font-size:.9rem;color:var(--text-secondary);margin:.4rem 0">Pour les arrêtés royaux, ministériels, règlements communaux et circulaires. Suspension d’extrême urgence possible (art. 17 LCCE).</p>
+    <div class="voie__meta">
+      <span>Juridiction <strong>Conseil d’État</strong></span>
+      <span>Délai <strong>60 jours</strong></span>
+    </div>
+  </div>
+
+  <div class="voie">
+    <div class="voie__num">VOIE 04</div>
+    <div class="voie__title">Question préjudicielle</div>
+    <p style="font-size:.9rem;color:var(--text-secondary);margin:.4rem 0">Lorsqu’un juge doute de la constitutionnalité d’une loi (art. 23, standstill). Voie indirecte : suppose un litige individuel pendant.</p>
+    <div class="voie__meta">
+      <span>Juridiction <strong>Cour constitutionnelle</strong></span>
+      <span>Délai <strong>—</strong></span>
+    </div>
+  </div>
+
+  <div class="voie voie--priority">
+    <div class="voie__num">VOIE 05 · PRIORITAIRE</div>
+    <div class="voie__title">Action en responsabilité civile</div>
+    <p style="font-size:.9rem;color:var(--text-secondary);margin:.4rem 0">Livre 6 du Code civil. Voie privilégiée depuis Cass. 5 sept. 2025 : cible les fautes administratives d’exécution qui ne bénéficient d’aucune immunité.</p>
+    <div class="voie__meta">
+      <span>Juridiction <strong>Tribunal 1ère instance</strong></span>
+      <span>Délai <strong>5 ans (20 ans max)</strong></span>
+    </div>
+  </div>
+
+  <div class="voie">
+    <div class="voie__num">VOIE 06</div>
+    <div class="voie__title">Réclamation collective</div>
+    <p style="font-size:.9rem;color:var(--text-secondary);margin:.4rem 0">Charte sociale européenne révisée. Syndicats représentatifs et ONG agréées. Constats déjà produits contre la Belgique.</p>
+    <div class="voie__meta">
+      <span>Juridiction <strong>Comité européen droits sociaux</strong></span>
+      <span>Délai <strong>—</strong></span>
+    </div>
+  </div>
+
+  <div class="voie">
+    <div class="voie__num">VOIE 07</div>
+    <div class="voie__title">Requête CEDH</div>
+    <p style="font-size:.9rem;color:var(--text-secondary);margin:.4rem 0">Après épuisement des voies internes. Fondements : art. 3, 6, 8, 13, 14 CEDH ; art. 1 P1. Camara est le précédent récent.</p>
+    <div class="voie__meta">
+      <span>Juridiction <strong>Cour EDH</strong></span>
+      <span>Délai <strong>4 mois (Protocole 15)</strong></span>
+    </div>
+  </div>
+</div>
+
+<h3>24.9 — Combinaisons stratégiques recommandées</h3>
+
+<ul>
+  <li><strong>Action individuelle 1 + 5</strong> — recours immédiat au tribunal du travail (3 mois) pour le refus, et action en responsabilité en parallèle pour le dommage causé par le défaut d’information préalable (manquement à la Charte de l’assuré social).</li>
+  <li><strong>Action collective 2 + 5</strong> — action en cessation par groupement d’intérêt pour faire cesser une pratique systémique, et action en responsabilité regroupée pour indemniser les victimes (modèle Klimaatzaak).</li>
+  <li><strong>Voie européenne 6 + 7</strong> — réclamation collective à Strasbourg (Comité droits sociaux) doublée d’une requête CEDH après épuisement, pour produire un précédent à valeur internationale (modèle Camara).</li>
+  <li><strong>Voie « limitée » 3 + 4 + 5</strong> — recours en annulation, question préjudicielle, et action en responsabilité ; <strong>rendement contentieux réduit</strong> depuis Cass. 5 sept. 2025 mais valeur politique et déclaratoire conservée.</li>
+</ul>
+
+<h2 id="s25"><span class="section-num">§ 25 · Réorientation</span>L’arrêt Cass., 5 septembre 2025 : la nouvelle stratégie d’ensemble</h2>
+
+<h3>25.1 — Les faits et la question juridique</h3>
+
+<p>Par son arrêt du <strong>5 septembre 2025 (n° F.24.0060.F)</strong>, la Cour de cassation a tranché une question centrale pour le contentieux de la responsabilité de l’État-législateur : un citoyen peut-il obtenir réparation du dommage né de l’application d’une loi annulée par la Cour constitutionnelle, lorsque cette dernière a décidé, dans son arrêt d’annulation, de <strong>maintenir les effets temporels de la norme pour le passé</strong> en vertu des articles 8 et 9 de sa loi spéciale ?</p>
+
+<p>La Cour d’appel de Mons avait admis le droit à réparation, estimant que la modulation des effets par la Cour constitutionnelle ne pouvait faire obstacle au droit commun de la responsabilité civile du législateur lorsque la faute était avérée.</p>
+
+<h3>25.2 — La solution dégagée par la Cour de cassation</h3>
+
+<p>La Cour de cassation a <strong>cassé</strong> cette décision en opposant un raisonnement fondé sur l’<strong>autorité absolue de la chose jugée constitutionnelle</strong> :</p>
+
+<ul>
+  <li>L’autorité absolue de la chose jugée s’applique à <strong>toutes les composantes</strong> de l’arrêt de la Cour constitutionnelle, y compris à la décision de moduler les effets dans le temps.</li>
+  <li>Durant la période pour laquelle la Cour constitutionnelle a maintenu les effets de la norme annulée, <strong>celle-ci demeure un titre juridique valable</strong> et continue de produire tous ses effets légaux.</li>
+  <li>Par conséquent, <strong>le dommage subi par le citoyen durant cette période a pour cause juridique directe l’arrêt de la Cour constitutionnelle, et non la loi fautive du législateur</strong>.</li>
+</ul>
+
+<h3>25.3 — Les conséquences pour le contentieux du non-recours</h3>
+
+<p>Cette décision emporte des conséquences majeures :</p>
+
+<ul>
+  <li>Si un décret ou une loi relative à l’accès à l’aide sociale est inconstitutionnelle (par exemple : discriminatoire) et que la Cour constitutionnelle l’annule tout en maintenant ses effets pour le passé afin d’éviter un chaos budgétaire, <strong>les victimes exclues ne pourront pas intenter d’action en responsabilité contre l’État-législateur</strong> pour obtenir le remboursement rétroactif des aides non perçues durant la période de maintien.</li>
+  <li>Cette <strong>immunité temporaire</strong> du législateur (limitée à la période de maintien des effets) <strong>renforce l’importance cruciale de cibler les fautes administratives d’exécution</strong> commises par le pouvoir exécutif, les CPAS, les mutuelles et les organismes de paiement.</li>
+  <li>Ces institutions, lorsqu’elles <strong>appliquent mal les textes en vigueur</strong>, <strong>dépassent les délais légaux</strong> ou <strong>manquent à leurs obligations proactives</strong> découlant de la Charte de l’assuré social, commettent des fautes de gestion administrative qui ne bénéficient <strong>d’aucune immunité constitutionnelle</strong> et restent pleinement justiciables devant les tribunaux du travail.</li>
+</ul>
+
+<div class="callout callout--warning">
+  <span class="callout__label">Réorientation stratégique d’ensemble (post-Cass. 5 sept. 2025)</span>
+  <p>Le contentieux du non-recours doit désormais privilégier :</p>
+  <p>(1) les <strong>actions individuelles ou collectives contre les fautes administratives d’exécution</strong> (CPAS, ONEM, mutuelles, SPF Pensions), fondées sur la Charte de l’assuré social et la notion d’organe ;</p>
+  <p>(2) les <strong>actions en cessation</strong> par les groupements d’intérêt (loi 10.05.2007) ;</p>
+  <p>(3) les <strong>voies internationales</strong> (Comité européen des droits sociaux, CEDH) ;</p>
+  <p>et reléguer en seconde priorité les actions visant directement la responsabilité du législateur — qui conservent un intérêt politique mais un rendement indemnitaire désormais limité.</p>
+</div>
+
+<h2 id="s26"><span class="section-num">§ 26 · Limites</span>Limites, obstacles et précautions</h2>
+
+<p>Le rapport ne peut occulter les obstacles réels :</p>
+
+<ul>
+  <li><strong>Coût et durée des procédures</strong> — une action en responsabilité contre l’État dure souvent 3 à 7 ans en moyenne, avec un coût en frais et honoraires significatif. L’aide juridique de 2e ligne couvre partiellement selon les revenus.</li>
+  <li><strong>Difficulté probatoire</strong> — documenter le dommage et le lien de causalité demande des pièces (notifications, décomptes, expertises) que les justiciables précarisés ont rarement.</li>
+  <li><strong>Inégalité des armes</strong> — l’État dispose de services juridiques importants ; le justiciable, souvent non. L’encadrement associatif est crucial.</li>
+  <li><strong>Effets limités sur la réforme</strong> — une condamnation peut rester sans effet réformateur, comme le montre l’absence de révision de l’article 48 de la Constitution six ans après <em>Mugemangango c. Belgique</em> (CEDH, GC, 10 juill. 2020).</li>
+  <li><strong>Limite de l’action en réparation collective</strong> — le mécanisme du Code de droit économique reste réservé aux litiges de consommation entre particuliers et entreprises ; il <strong>n’est pas applicable</strong> aux litiges de droit public contre les CPAS ou institutions de sécurité sociale. Une extension législative serait nécessaire pour structurer une véritable <em>class action sociale</em>.</li>
+</ul>
+
+<div class="callout callout--key">
+  <span class="callout__label">Précaution méthodologique</span>
+  <p>La voie juridique est l’une des voies, pas la seule. Elle gagne en efficacité quand elle s’articule avec : (i) la mobilisation citoyenne et associative, (ii) la pression politique structurée (front commun, manifestation, lobbying parlementaire), (iii) l’investigation et la documentation indépendantes (sociologie, journalisme, expertise médicale), et (iv) la communication publique pédagogique. Le contentieux climatique en est l’exemple le plus abouti.</p>
+</div>
+
+</section>
+
+<div class="ornament">· · ·</div>
+
+<!-- ============================================================
+     CONCLUSION & RECOMMENDATIONS
+     ============================================================ -->
+<section class="partie">
+<div class="partie-opener">
+  <div class="partie-opener__num">V</div>
+  <div class="partie-opener__title-block">
+    <div class="partie-opener__label">Clôture</div>
+    <h2 class="partie-opener__title">Conclusion<br>et recommandations</h2>
+  </div>
+</div>
+
+<h2 id="s27"><span class="section-num">§ 27 · Synthèse</span>Synthèse</h2>
+
+<p>Le non-recours aux droits sociaux est, en Belgique, un phénomène : <strong>massif</strong> (de 25 à 77 % selon les prestations, plusieurs centaines de milliers de personnes), <strong>structurel</strong> (causes systémiques imputables à l’architecture institutionnelle), <strong>documenté</strong> (TAKE, BELMOD, ISADF 2025, expérience COVID-Flandre, rapports du Service interfédéral de lutte contre la pauvreté), et <strong>juridiquement qualifiable</strong> — la nouveauté de cette version 2 du rapport est de montrer que la qualification ne nécessite pas de constructions doctrinales innovantes : elle s’appuie sur des textes anciens (Charte de l’assuré social, 1995), une jurisprudence consolidée de la Cour de cassation (Cass. 23 nov. 2009 ; Cass. 27 mai 1963), et le Livre 6 du nouveau Code civil entré en vigueur en 2025.</p>
+
+<p>Les responsabilités sont identifiables et hiérarchisées. Elles concernent au premier chef le législateur fédéral (qui complexifie sans automatiser), les exécutifs (qui durcissent la conditionnalité), les administrations (qui peuvent fabriquer du « non-accès »), et — par effet de système — les Régions et Communautés. Les acteurs périphériques (mutualités, syndicats, associations, cliniques juridiques) jouent un rôle largement compensatoire mais ne peuvent suppléer durablement à la défaillance de l’État.</p>
+
+<p>Les conséquences sont documentées : aggravation de la pauvreté matérielle, effet Matthieu, dégradation de la santé mentale (multiplication par trois du risque dépressif), renoncement aux soins, effets différenciés par genre, âge, origine, handicap, et rupture du contrat social. Le précédent comparé de la <em>Toeslagenaffaire</em> néerlandaise rappelle que l’automatisation algorithmique doit être strictement encadrée pour ne pas devenir, à son tour, un facteur de violation des droits.</p>
+
+<p>Sur le plan juridique, les trois conditions de la responsabilité civile — <strong>faute, dommage, lien de causalité</strong> — sont réunies dans plusieurs configurations identifiables. <strong>La voie la plus solidement étayée</strong> est aujourd’hui le manquement aux obligations explicites de la Charte de l’assuré social, lu à la lumière de l’arrêt <em>Cass. 23 novembre 2009</em> (obligation d’information d’initiative sans demande préalable). Cette voie est doublée par la <strong>notion d’organe</strong> (Cass. 27 mai 1963) qui engage la responsabilité civile <em>objective</em> des CPAS dès que leurs organes (Conseil de l’Action sociale, Comité Spécial du Service Social) refusent à tort une demande.</p>
+
+<p>L’arrêt <em>Cass. 5 septembre 2025</em> impose une <strong>réorientation stratégique d’ensemble</strong> : le contentieux le plus efficace se déplace désormais de la responsabilité de l’État-législateur (limitée par l’autorité absolue de la chose jugée constitutionnelle quand les effets sont maintenus) vers la responsabilité des <strong>fautes administratives d’exécution</strong>, qui ne bénéficient d’aucune immunité comparable et restent pleinement justiciables devant les tribunaux du travail.</p>
+
+<h2 id="s28"><span class="section-num">§ 28 · Recommandations</span>Recommandations</h2>
+
+<h3>28.1 — Aux pouvoirs publics</h3>
+
+<ul>
+  <li><strong>Généraliser l’octroi automatique des droits</strong> (BIM, GRAPA, tarif social, allocations familiales, allocations PMR lorsque techniquement possible) sur le modèle FAMIWAL et de l’expérience COVID-Flandre. Le rapport BELMOD chiffre coût et bénéfice : un test unique RIS-GRAPA-BIM-AI/ARR-chauffage exonérant le logement propre coûterait +71,5 millions €/an et toucherait 2 916 nouveaux RIS, 9 309 GRAPA, 26 353 BIM, 770 allocations chauffage.</li>
+  <li><strong>Instituer l’actualisation automatique des situations individuelles</strong> sur la base des flux de données existants, évitant aux bénéficiaires de devoir signaler manuellement chaque changement et prévenant le risque de recouvrement rétroactif d’indus.</li>
+  <li><strong>Maintenir et investir dans les guichets physiques, le téléphone et la voie postale</strong> (arrêt Cour constit. n° 126/2025).</li>
+  <li><strong>Encadrer strictement les enquêtes sociales des CPAS</strong> : interdire les exigences de preuves intrusives superflues, proscrire les critères d’exclusion non prévus par la loi (rupture familiale pour étudiants), systématiser la remise d’un accusé de réception immédiat.</li>
+  <li><strong>Auditer indépendamment les algorithmes d’octroi</strong> pour prévenir une Toeslagenaffaire belge : transparence absolue des algorithmes, contrôle humain effectif, interdiction stricte du profilage ethnique ou socio-économique.</li>
+  <li><strong>Instituer un baromètre fédéral du non-recours</strong> publié annuellement (modèle DREES française / DWP britannique).</li>
+  <li><strong>Renverser la charge de la méfiance</strong> : présupposer la bonne foi du justiciable, restreindre les contrôles invasifs.</li>
+  <li><strong>Réviser les réformes Arizona</strong> dont l’effet prévisible est la production massive d’une nouvelle vague de non-recours.</li>
+  <li><strong>Étendre l’action en réparation collective</strong> au champ social (modification du Code de droit économique) pour rééquilibrer l’asymétrie procédurale entre l’État et les ayants droit précarisés.</li>
+</ul>
+
+<h3>28.2 — À la société civile</h3>
+
+<ul>
+  <li><strong>Documenter systématiquement</strong> les cas individuels de non-recours et les pratiques administratives illégales (pour nourrir le contentieux et l’expertise empirique).</li>
+  <li><strong>Mobiliser l’action en cessation</strong> de la loi du 10 mai 2007 (anti-discrimination) pour faire cesser les pratiques systémiques de CPAS (exigences illégales, exclusions de fait).</li>
+  <li><strong>Articuler</strong> contentieux + mobilisation + investigation + communication, à l’instar du modèle Klimaatzaak.</li>
+  <li><strong>Mutualiser les ressources juridiques</strong> entre Ligue des droits humains, BAPN, RWLP, Netwerk tegen Armoede, syndicats, mutualités, cliniques juridiques universitaires (Street Law Clinic ULB et autres).</li>
+</ul>
+
+<h3>28.3 — Au citoyen confronté à un non-recours</h3>
+
+<ul>
+  <li><strong>Garder trace écrite</strong> de toutes les démarches : courriers, accusés de réception, dates, noms d’agents, captures d’écran des portails.</li>
+  <li><strong>Demander une décision motivée écrite</strong> en cas de refus (obligation légale).</li>
+  <li><strong>Invoquer expressément la Charte de l’assuré social</strong> (articles 3, 4, 9 al. 3) dans tout recours : c’est la base juridique la plus solide en cas de défaut d’information ou de mauvaise orientation.</li>
+  <li><strong>Solliciter l’aide juridique de 2ᵉ ligne</strong> (BAJ de l’Ordre des avocats) : gratuité totale ou partielle selon les revenus.</li>
+  <li><strong>Saisir un syndicat, une mutualité ou une association</strong> (BAPN, RWLP, Solidaris, MC, FGTB, CSC) pour l’accompagnement et la rédaction de recours.</li>
+  <li><strong>Respecter les délais</strong> — 3 mois pour le tribunal du travail, 60 jours pour le Conseil d’État, 5 ans pour l’action en responsabilité (Livre 6).</li>
+</ul>
+
+<h2 id="s29"><span class="section-num">§ 29 · Mot final</span>Mot final</h2>
+
+<p>Le non-recours est un échec, mais un échec qui a un nom, des causes, des responsables et des remèdes. Sa réduction ne dépend ni d’une fatalité économique ni d’un « manque de moyens » : elle dépend de choix politiques explicites. L’État belge dispose, dès aujourd’hui, des données, des moyens techniques et <strong>de l’infrastructure juridique</strong> pour résorber l’essentiel du phénomène. Le maintien de son ampleur est un choix collectif.</p>
+
+<p>Sur le plan juridique, cette version 2 du rapport démontre que le droit positif belge offre, dès aujourd’hui, <strong>des leviers contentieux beaucoup plus solides qu’il n’y paraît</strong> — pour autant qu’on les cible correctement : Charte de l’assuré social et notion d’organe pour les fautes administratives d’exécution (voie la plus efficace) ; action en cessation pour les pratiques systémiques discriminatoires ; voies internationales pour produire des précédents. L’arrêt <em>Cass. 5 septembre 2025</em> ferme une porte (la responsabilité directe de l’État-législateur en cas de maintien des effets), mais en ouvre une autre, plus efficace : celle de l’administration.</p>
+
+<div class="pullquote">
+  <div class="pullquote__text">La question du non-recours interroge frontalement la qualité de notre démocratie sociale. Sa résolution est, dans tous les sens du terme, une question de responsabilité publique — politique, administrative, juridique.</div>
+</div>
+
+</section>
+
+<div class="ornament">· · ·</div>
+
+<!-- ============================================================
+     SOURCES ANNEX
+     ============================================================ -->
+<section class="partie" id="sources">
+<div class="partie-opener">
+  <div class="partie-opener__num">§</div>
+  <div class="partie-opener__title-block">
+    <div class="partie-opener__label">Annexe</div>
+    <h2 class="partie-opener__title">Principales sources<br>mobilisées</h2>
+  </div>
+</div>
+
+<h3 style="margin-top:2rem">Rapports officiels et institutionnels</h3>
+<ul>
+  <li>Service interfédéral de lutte contre la pauvreté, la précarité et l’exclusion sociale, 13ᵉ Rapport bisannuel 2024-2025, « L’humain comme boussole dans les services publics » (luttepauvrete.be).</li>
+  <li>Institut fédéral des Droits humains (IFDH), enquête sur l’exécution des décisions de justice, 18 novembre 2024.</li>
+  <li>IWEPS, Indicateur Synthétique d’Accès aux Droits Fondamentaux (ISADF) 2025, isadf.iweps.be.</li>
+  <li>Fondation Roi Baudouin, Baromètre de l’Inclusion Numérique 2022, basé sur les données Statbel.</li>
+  <li>Statbel, Statistiques sur le risque de pauvreté ou d’exclusion sociale, EU-SILC 2024-2025.</li>
+  <li>Rapport ONU A/HRC/56/61 du Rapporteur spécial sur l’extrême pauvreté et les droits de l’homme (Olivier De Schutter), 2024 — « pauvrétisme » et maltraitances institutionnelles.</li>
+  <li>Observatoire de la Santé et du Social de Bruxelles, Aperçus du non-recours aux droits sociaux (2016, 2021).</li>
+  <li>SPP Intégration sociale, plateforme « CPAS Online ».</li>
+</ul>
+
+<h3>Études académiques fondamentales</h3>
+<ul>
+  <li>Goedemé T., Janssens J., Bolland C. (UAntwerpen) et al., projet TAKE : « L’ampleur du non-recours à la GRAPA, à l’intervention majorée et à l’allocation de chauffage », Revue belge de sécurité sociale, vol. 64, n° 3, 2022.</li>
+  <li>Corselis A., Van Mechelen N. (SPF Sécurité sociale), projet BELMOD, rapport final 2022.</li>
+  <li>Hermans K., Cantillon B., Marchal S. (UAntwerpen), Journal of European Social Policy, 34/3, 2024.</li>
+  <li>Hermans K., Cantillon B. et al., Journal of Social Policy, Cambridge, 2024 (variation entre 119 communes).</li>
+  <li>Noël L. (OSS Bruxelles), « Aperçus du non-recours aux droits sociaux et de la sous-protection sociale en Région bruxelloise », Brussels Studies, n° 157, 2021.</li>
+  <li>Cantillon B. (Herman Deleeck CSB), The Tragic Decline of the Poverty Reducing Capacity of the Welfare State, working paper 2022.</li>
+  <li>Brotcorne P., Franssen A. (CIRTES, UCLouvain), travaux sur la transformation du travail social et le non-recours.</li>
+  <li>Warin Ph. (ODENORE), Working Paper n° 1 (juin 2010, actualisé décembre 2016) : typologie des non-recours.</li>
+  <li>Van Hootegem H., Demonty F., « Lutter contre le non-recours aux droits pour les rendre plus effectifs », Revue Droit en quart-monde, 2024.</li>
+  <li>Pour la Solidarité, Notice « Les étudiant·e·s face au non-recours aux droits sociaux », mars 2024.</li>
+  <li>Smart, dossier « Le non-recours aux droits : grand oublié des politiques sociales », novembre 2024.</li>
+</ul>
+
+<h3>Jurisprudence-clés</h3>
+<ul>
+  <li>Cass., 5 novembre 1920, Flandria — responsabilité civile de l’administration.</li>
+  <li>Cass., 27 mai 1963 — notion d’organe et responsabilité civile objective des personnes morales publiques.</li>
+  <li>Cass., 19 décembre 1991, Anca — responsabilité du pouvoir judiciaire.</li>
+  <li>Cass., 28 septembre 2006, Ferrara — responsabilité du pouvoir législatif.</li>
+  <li>Cass., 23 novembre 2009 — obligation d’information proactive de l’art. 3 Charte ASSU sans demande préalable écrite.</li>
+  <li>Cass., 17 décembre 2009 — théorie de la perte d’une chance.</li>
+  <li>Cass., 5 septembre 2025 (F.24.0060.F) — responsabilité de l’État-législateur et autorité de chose jugée constitutionnelle (maintien des effets temporels).</li>
+  <li>Cour d’appel de Bruxelles, 30 novembre 2023, VZW Klimaatzaak — faute par omission de l’État.</li>
+  <li>Cour du travail de Bruxelles, 4 mai 2023 (rôle 2023/CB/3) — rejet de la force majeure invoquée par l’État.</li>
+  <li>CEDH, 18 juillet 2023, Camara c. Belgique (req. n° 49255/22) — carence systémique d’exécution.</li>
+  <li>CEDH, GC, 21 janvier 2011, M.S.S. c. Belgique et Grèce — art. 3 CEDH et dénuement extrême.</li>
+  <li>CEDH, GC, 10 juillet 2020, Mugemangango c. Belgique — recours effectif.</li>
+  <li>CEDH, GC, 6 juillet 2005, Stec et autres c. Royaume-Uni — prestations sociales et art. 1 P1.</li>
+  <li>Cour constitutionnelle belge, arrêts n° 147/2005, 39/2020 (GRAPA), 60/2020 (ARR), 69/2023 (redéfinition standstill), 126/2025 du 25 septembre 2025 (Bruxelles numérique, droit au non-numérique).</li>
+</ul>
+
+<h3>Textes juridiques</h3>
+<ul>
+  <li>Constitution belge, articles 23 (dignité humaine, sécurité sociale, aide sociale, médicale, juridique), 159 (exception d’illégalité).</li>
+  <li>Livre 6 du Code civil (en vigueur depuis le 1ᵉʳ janvier 2025) — responsabilité extracontractuelle, art. 6.4 (égalité de traitement personnes physiques / morales publiques).</li>
+  <li>Loi du 11 avril 1995 visant à instituer la Charte de l’assuré social — art. 3 (information proactive), 4 (conseil), 9 (réorientation).</li>
+  <li>Loi du 26 mai 2002 instituant le droit à l’intégration sociale (RIS).</li>
+  <li>Loi du 8 juillet 1976 organique des CPAS.</li>
+  <li>Loi du 10 mai 2007 tendant à lutter contre certaines formes de discrimination.</li>
+  <li>Loi spéciale du 6 janvier 1989 sur la Cour constitutionnelle.</li>
+  <li>Lois coordonnées sur le Conseil d’État du 12 janvier 1973.</li>
+  <li>Charte sociale européenne révisée (1996).</li>
+  <li>Pacte international relatif aux droits économiques, sociaux et culturels (1966).</li>
+  <li>Convention européenne des droits de l’homme.</li>
+  <li>Charte des droits fondamentaux de l’Union européenne.</li>
+</ul>
+
+<h3>Doctrine spécialisée</h3>
+<ul>
+  <li>Dumont D. (ULB), travaux sur l’article 23 de la Constitution et le droit à la sécurité sociale.</li>
+  <li>Hachez I. (USL-B), travaux sur le standstill et la jurisprudence sociale de la Cour constitutionnelle.</li>
+  <li>Bouhon F. (ULiège), « La responsabilité civile pour la faute du législateur », Anno 2020, ORBi.</li>
+  <li>Dubuisson B. (UCLouvain), Droit de la responsabilité civile.</li>
+  <li>Dumont D. &amp; De Schutter O., Le revenu de base universel, avenir de la sécurité sociale ? (ouvrage collectif).</li>
+  <li>Forum for the Future, blog : « Responsabilité de l’État législateur et maintien des effets d’une loi fiscale annulée » (commentaire de Cass. 5 sept. 2025).</li>
+  <li>Terralaboris, base de données jurisprudentielle (notamment rubriques « Charte de l’assuré social » et « Responsabilité de l’organisme de paiement »).</li>
+  <li>Larcier-Intersentia, « Les actions collectives en Belgique : un vent nouveau souffle-t-il enfin ? ».</li>
+</ul>
+
+<h3>Médias et investigations</h3>
+<ul>
+  <li>Alter Échos, dossiers récurrents sur le non-recours.</li>
+  <li>La Revue Nouvelle, Politique, Médor, Bruzz, BX1.</li>
+  <li>Pano (VRT), reportage « CPAS à la dérive » (Anderlecht), 19 novembre 2024.</li>
+</ul>
+
+<div class="ornament">· · ·</div>
+
+<p style="text-align:center;font-family:var(--font-display);font-style:italic;color:var(--text-secondary);margin:3rem 0;">— Fin du rapport —</p>
+
+</section>
+
+</article>
+</main>
+</div>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div>
+      <h4>À propos de ce rapport</h4>
+      <p>Version 2 enrichie · 29 sections · 37 pages en PDF · Mai 2026.</p>
+      <p>Compilation, analyse et rédaction réalisées à partir de sources publiques (rapports TAKE, BELMOD, ISADF 2025, Service interfédéral de lutte contre la pauvreté, jurisprudence belge et européenne, presse spécialisée).</p>
+    </div>
+    <div>
+      <h4>Avertissement</h4>
+      <p>Ce document est un travail d’analyse et de synthèse. Il ne se substitue pas à un avis juridique. Toute démarche contentieuse doit être préparée avec un avocat spécialisé. Le rapport peut être cité, partagé et réutilisé, sous réserve de mention de la source.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Reading progress bar
+(function() {
+  const bar = document.getElementById('progressBar');
+  function update() {
+    const h = document.documentElement;
+    const scroll = h.scrollTop || document.body.scrollTop;
+    const height = h.scrollHeight - h.clientHeight;
+    const pct = height > 0 ? (scroll / height) * 100 : 0;
+    bar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+
+// TOC active section
+(function() {
+  const links = document.querySelectorAll('.toc__list a');
+  const targets = Array.from(links).map(a => {
+    const id = a.getAttribute('href').slice(1);
+    return { el: document.getElementById(id), link: a };
+  }).filter(t => t.el);
+
+  function update() {
+    const y = window.scrollY + 100;
+    let active = null;
+    for (const t of targets) {
+      if (t.el.offsetTop <= y) active = t;
+      else break;
+    }
+    links.forEach(l => l.classList.remove('active'));
+    if (active) active.link.classList.add('active');
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+
+// Mobile TOC toggle
+(function() {
+  const toggle = document.getElementById('tocToggle');
+  const toc = document.getElementById('toc');
+  const bd = document.getElementById('tocBackdrop');
+  function close() { toc.classList.remove('open'); bd.classList.remove('open'); }
+  toggle.addEventListener('click', () => {
+    toc.classList.toggle('open');
+    bd.classList.toggle('open');
+  });
+  bd.addEventListener('click', close);
+  toc.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    if (window.innerWidth <= 1100) close();
+  }));
+})();
+
+// Theme toggle
+(function() {
+  const btn = document.getElementById('themeToggle');
+  const stored = localStorage.getItem('theme');
+  if (stored === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  btn.addEventListener('click', () => {
+    const cur = document.documentElement.getAttribute('data-theme');
+    const next = cur === 'dark' ? '' : 'dark';
+    if (next) document.documentElement.setAttribute('data-theme', 'dark');
+    else document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('theme', next);
+  });
+})();
+
+// Animate comparison bars when they enter viewport
+(function() {
+  const bars = document.querySelectorAll('.comparison__bar');
+  bars.forEach(b => {
+    const target = b.dataset.width || '0';
+    b.style.width = '0%';
+    setTimeout(() => { b.style.width = target; }, 50);
+  });
+  // Re-animate on scroll
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const target = e.target.dataset.width || '0';
+          e.target.style.width = target;
+        }
+      });
+    }, { threshold: 0.3 });
+    bars.forEach(b => io.observe(b));
+  }
+})();
+</script>
+
+</body>
+</html>
