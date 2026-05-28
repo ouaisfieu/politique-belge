@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I. L'actualité du pouvoir — L'État impuni</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F2EEE3;
+  --paper-dark: #E8E2D3;
+  --ink: #14110F;
+  --ink-soft: #2C2620;
+  --blood: #8B2424;
+  --blood-deep: #5C1717;
+  --gold: #B68A3E;
+  --gold-dim: #8C6A2E;
+  --grey: #6B6358;
+  --grey-light: #A8A096;
+  --rule: rgba(20, 17, 15, 0.15);
+  --rule-strong: rgba(20, 17, 15, 0.4);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.6;
+  font-feature-settings: "kern", "liga", "onum";
+  overflow-x: hidden;
+}
+
+/* MASTHEAD */
+.masthead {
+  border-bottom: 1px solid var(--rule);
+  padding: 18px 5vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  background: rgba(242, 238, 227, 0.92);
+}
+.masthead-left { display: flex; gap: 24px; align-items: center; }
+.masthead-mark {
+  width: 28px; height: 28px;
+  border: 1.5px solid var(--ink);
+  display: grid; place-items: center;
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 14px;
+  font-style: italic;
+}
+.masthead-title { letter-spacing: 0.2em; }
+.masthead a { color: var(--ink-soft); text-decoration: none; transition: color 0.3s ease; }
+.masthead a:hover { color: var(--blood); }
+.masthead-progress {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.progress-dot {
+  width: 8px; height: 8px;
+  border: 1px solid var(--rule-strong);
+  border-radius: 50%;
+}
+.progress-dot.active {
+  background: var(--blood);
+  border-color: var(--blood);
+}
+.progress-dot.done {
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+/* HERO CHAPITRE */
+.chapter-hero {
+  padding: 8vw 5vw 6vw;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+  background: var(--paper-dark);
+  overflow: hidden;
+}
+.chapter-hero::before {
+  content: 'I';
+  position: absolute;
+  right: -2vw;
+  top: -8vw;
+  font-family: 'Fraunces', serif;
+  font-weight: 200;
+  font-size: 48vw;
+  line-height: 1;
+  color: var(--blood);
+  opacity: 0.06;
+  font-style: italic;
+  pointer-events: none;
+  font-variation-settings: "opsz" 144;
+}
+.chapter-hero-wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.chapter-tag-big {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--blood);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.chapter-tag-big::before {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--blood);
+}
+.chapter-num-display {
+  font-family: 'Fraunces', serif;
+  font-weight: 200;
+  font-size: clamp(72px, 12vw, 200px);
+  line-height: 0.85;
+  font-style: italic;
+  color: var(--gold);
+  letter-spacing: -0.03em;
+  font-variation-settings: "opsz" 144;
+  margin-bottom: 24px;
+}
+.chapter-title-big {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(36px, 5.5vw, 80px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  max-width: 1100px;
+  font-variation-settings: "opsz" 144;
+  margin-bottom: 48px;
+}
+.chapter-title-big em {
+  font-style: italic;
+  color: var(--blood);
+  font-weight: 400;
+}
+.chapter-meta-big {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4vw;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+  max-width: 1100px;
+}
+.chapter-meta-big dt {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-bottom: 8px;
+}
+.chapter-meta-big dd {
+  font-family: 'Source Serif 4', serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+/* CHAPTER INDEX */
+.chapter-index {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 4vw 5vw;
+}
+.chapter-index-wrap {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.chapter-index-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+}
+.chapter-index-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px 4vw;
+}
+.chapter-index-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 16px;
+  align-items: baseline;
+  text-decoration: none;
+  color: inherit;
+  padding: 12px 0;
+  border-top: 1px solid rgba(242, 238, 227, 0.15);
+  transition: all 0.3s ease;
+}
+.chapter-index-item:hover {
+  color: var(--gold);
+  border-top-color: var(--gold);
+}
+.chapter-index-item:hover .ci-num { color: var(--gold); }
+.ci-num {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: 24px;
+  font-style: italic;
+  color: var(--blood);
+  transition: color 0.3s ease;
+}
+.ci-text {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.3;
+}
+.ci-date {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: rgba(242, 238, 227, 0.5);
+  margin-top: 4px;
+}
+
+/* PROLOGUE */
+.prologue {
+  padding: 8vw 5vw;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.prologue-grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 5vw;
+  align-items: start;
+}
+.prologue-sidebar {
+  position: sticky;
+  top: 100px;
+}
+.prologue-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--blood);
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--blood);
+}
+.prologue-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--grey);
+  line-height: 1.8;
+}
+.prologue-body {
+  max-width: 760px;
+  font-size: 20px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+.prologue-body p { margin-bottom: 1.5em; }
+.prologue-body p:first-child::first-letter {
+  font-family: 'Fraunces', serif;
+  font-weight: 200;
+  font-size: 7em;
+  line-height: 0.85;
+  float: left;
+  padding: 8px 14px 0 0;
+  color: var(--blood);
+  font-variation-settings: "opsz" 144;
+}
+.prologue-body strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+.prologue-body em {
+  font-style: italic;
+  color: var(--blood);
+}
+
+/* AFFAIRE — main blocks */
+.affaire {
+  padding: 6vw 5vw 8vw;
+  border-top: 1px solid var(--rule);
+  position: relative;
+}
+.affaire:nth-child(even) {
+  background: var(--paper-dark);
+}
+.affaire-wrap {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.affaire-header {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 32px;
+  margin-bottom: 48px;
+  align-items: start;
+}
+.affaire-num {
+  font-family: 'Fraunces', serif;
+  font-weight: 200;
+  font-size: 72px;
+  line-height: 0.85;
+  color: var(--blood);
+  font-style: italic;
+  font-variation-settings: "opsz" 144;
+}
+.affaire-header-text {
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 24px;
+}
+.affaire-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--blood);
+  margin-bottom: 14px;
+}
+.affaire-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: clamp(32px, 4.5vw, 60px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 144;
+  margin-bottom: 20px;
+}
+.affaire-title em { font-style: italic; color: var(--blood); }
+.affaire-deck {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.4;
+  color: var(--ink-soft);
+  max-width: 900px;
+  font-variation-settings: "opsz" 60;
+}
+
+/* Fact sheet */
+.fact-sheet {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  background: var(--ink);
+  margin-bottom: 56px;
+  border: 1px solid var(--ink);
+}
+.fact-cell {
+  background: var(--paper);
+  padding: 24px 20px;
+}
+.affaire:nth-child(even) .fact-cell { background: var(--paper-dark); }
+.fact-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-bottom: 8px;
+}
+.fact-value {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--ink);
+}
+.fact-value.big {
+  font-size: clamp(22px, 2.5vw, 32px);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 144;
+}
+.fact-value .red { color: var(--blood); }
+
+/* Body */
+.affaire-body {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 5vw;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.affaire-text {
+  max-width: 720px;
+  font-size: 18px;
+  line-height: 1.75;
+}
+.affaire-text h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 26px;
+  letter-spacing: -0.01em;
+  margin-top: 2em;
+  margin-bottom: 0.7em;
+  line-height: 1.2;
+  font-variation-settings: "opsz" 144;
+}
+.affaire-text h3:first-child { margin-top: 0; }
+.affaire-text h3 em { font-style: italic; color: var(--blood); }
+.affaire-text p { margin-bottom: 1.2em; color: var(--ink-soft); }
+.affaire-text p strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+.affaire-text p em {
+  font-style: italic;
+}
+.affaire-text .highlight {
+  background: linear-gradient(transparent 60%, rgba(182, 138, 62, 0.3) 60%);
+  padding: 0 2px;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* Sidebar */
+.affaire-aside {
+  position: sticky;
+  top: 100px;
+  align-self: start;
+}
+.aside-block {
+  background: var(--paper);
+  border: 1px solid var(--rule-strong);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+.affaire:nth-child(even) .aside-block { background: var(--paper); }
+.aside-block.dark {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.aside-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--blood);
+  margin-bottom: 14px;
+}
+.aside-block.dark .aside-label { color: var(--gold); }
+.aside-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 19px;
+  line-height: 1.3;
+  margin-bottom: 12px;
+  font-variation-settings: "opsz" 144;
+}
+.aside-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.aside-block.dark .aside-text { color: rgba(242, 238, 227, 0.85); }
+
+/* Faille révélée — closing block */
+.faille {
+  margin-top: 56px;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 40px 48px;
+  position: relative;
+}
+.faille::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--blood);
+}
+.faille-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.faille-text {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: clamp(20px, 2.4vw, 28px);
+  line-height: 1.4;
+  font-variation-settings: "opsz" 144;
+  max-width: 900px;
+}
+.faille-text em { font-style: italic; color: var(--gold); }
+.faille-text strong { color: var(--paper); font-weight: 500; }
+
+/* Pull quote */
+.pull-quote {
+  margin: 64px 0;
+  padding: 0;
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--blood);
+  max-width: 1000px;
+  font-variation-settings: "opsz" 144;
+  position: relative;
+  padding-left: 32px;
+  border-left: 3px solid var(--blood);
+}
+.pull-quote-author {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-style: normal;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-top: 24px;
+  font-weight: 400;
+}
+
+/* REFLECTION — author's voice */
+.reflection {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 8vw 5vw;
+  position: relative;
+}
+.reflection::before {
+  content: 'INTERMÈDE';
+  position: absolute;
+  top: 30px;
+  left: 5vw;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+}
+.reflection-wrap {
+  max-width: 1100px;
+  margin: 50px auto 0;
+}
+.reflection-eyebrow {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--gold);
+  margin-bottom: 32px;
+}
+.reflection h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 48px;
+  font-variation-settings: "opsz" 144;
+  max-width: 1000px;
+}
+.reflection h2 em { font-style: italic; color: var(--gold); }
+.reflection-body {
+  font-size: 20px;
+  line-height: 1.7;
+  max-width: 760px;
+  color: rgba(242, 238, 227, 0.85);
+}
+.reflection-body p { margin-bottom: 1.4em; }
+.reflection-body strong {
+  color: var(--paper);
+  font-weight: 500;
+}
+.reflection-body em {
+  font-style: italic;
+  color: var(--gold);
+}
+.reflection-sig {
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(242, 238, 227, 0.2);
+  max-width: 760px;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: rgba(242, 238, 227, 0.5);
+}
+
+/* NAVIGATION */
+.chapter-nav {
+  padding: 5vw 5vw;
+  border-top: 1px solid var(--rule);
+  background: var(--paper-dark);
+}
+.chapter-nav-wrap {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4vw;
+}
+.nav-card {
+  padding: 32px;
+  background: var(--paper);
+  border: 1px solid var(--rule-strong);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.4s ease;
+  display: block;
+}
+.nav-card:hover {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.nav-card.next { text-align: right; }
+.nav-direction {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--blood);
+  margin-bottom: 12px;
+}
+.nav-card:hover .nav-direction { color: var(--gold); }
+.nav-card.disabled {
+  pointer-events: none;
+  opacity: 0.4;
+}
+.nav-chapter-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--grey);
+  margin-bottom: 8px;
+}
+.nav-card:hover .nav-chapter-num { color: rgba(242, 238, 227, 0.6); }
+.nav-chapter-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.2;
+  font-variation-settings: "opsz" 144;
+}
+.nav-card:hover .nav-chapter-title em { color: var(--gold); }
+
+/* FOOTER */
+.footer-mini {
+  background: var(--ink);
+  color: rgba(242, 238, 227, 0.5);
+  padding: 32px 5vw;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+.footer-mini a { color: var(--gold); text-decoration: none; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  body { font-size: 17px; }
+  .chapter-meta-big { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .chapter-index-list { grid-template-columns: 1fr; }
+  .prologue-grid { grid-template-columns: 1fr; }
+  .prologue-sidebar { position: static; margin-bottom: 24px; }
+  .affaire-header { grid-template-columns: 50px 1fr; gap: 16px; }
+  .affaire-num { font-size: 48px; }
+  .fact-sheet { grid-template-columns: 1fr 1fr; }
+  .affaire-body { grid-template-columns: 1fr; }
+  .affaire-aside { position: static; }
+  .chapter-nav-wrap { grid-template-columns: 1fr; }
+  .faille { padding: 32px 24px; }
+  .prologue-body p:first-child::first-letter { font-size: 5em; }
+}
+@media (max-width: 560px) {
+  .masthead { padding: 14px 4vw; font-size: 10px; }
+  .masthead-title { display: none; }
+  .fact-sheet { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-left">
+    <a href="index.html"><div class="masthead-mark">É</div></a>
+    <div class="masthead-title">L'État Impuni · Ch. I</div>
+  </div>
+  <div class="masthead-progress">
+    <span class="progress-dot done" title="Couverture"></span>
+    <span class="progress-dot active" title="I"></span>
+    <span class="progress-dot" title="II"></span>
+    <span class="progress-dot" title="III"></span>
+    <span class="progress-dot" title="IV"></span>
+    <span class="progress-dot" title="V"></span>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="chapter-hero">
+  <div class="chapter-hero-wrap">
+    <div class="chapter-tag-big">Chapitre I sur V · L'actualité du pouvoir</div>
+    <div class="chapter-num-display">I</div>
+    <h1 class="chapter-title-big">Six scandales que vous croyez connaître — et qui disent tous <em>la même chose</em></h1>
+    <dl class="chapter-meta-big">
+      <div>
+        <dt>Période</dt>
+        <dd>2020 — mai 2026</dd>
+      </div>
+      <div>
+        <dt>Affaires couvertes</dt>
+        <dd>Reynders · Qatargate · Samusocial · PFAS · Chovanec · Arizona</dd>
+      </div>
+      <div>
+        <dt>Statut judiciaire</dt>
+        <dd>Toutes en cours ou récemment tranchées</dd>
+      </div>
+      <div>
+        <dt>Temps de lecture</dt>
+        <dd>≈ 22 minutes</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- INDEX du chapitre -->
+<section class="chapter-index">
+  <div class="chapter-index-wrap">
+    <div class="chapter-index-label">Sommaire du chapitre I</div>
+    <div class="chapter-index-list">
+      <a href="#prologue" class="chapter-index-item">
+        <div class="ci-num">0</div>
+        <div><div class="ci-text">Prologue : six affaires, une grammaire</div><span class="ci-date">Mise en perspective</span></div>
+      </a>
+      <a href="#reynders" class="chapter-index-item">
+        <div class="ci-num">1</div>
+        <div><div class="ci-text">L'affaire Reynders</div><span class="ci-date">2024 — 2026 · en cours</span></div>
+      </a>
+      <a href="#qatargate" class="chapter-index-item">
+        <div class="ci-num">2</div>
+        <div><div class="ci-text">Le Qatargate</div><span class="ci-date">2022 — 2026 · en cours</span></div>
+      </a>
+      <a href="#samusocial" class="chapter-index-item">
+        <div class="ci-num">3</div>
+        <div><div class="ci-text">Le Samusocial</div><span class="ci-date">2017 — 2026 · renvoi correctionnel</span></div>
+      </a>
+      <a href="#pfas" class="chapter-index-item">
+        <div class="ci-num">4</div>
+        <div><div class="ci-text">PFAS, la pollution éternelle</div><span class="ci-date">2021 — 2024 · transaction</span></div>
+      </a>
+      <a href="#chovanec" class="chapter-index-item">
+        <div class="ci-num">5</div>
+        <div><div class="ci-text">L'affaire Chovanec</div><span class="ci-date">2018 — 2026 · non-lieu en appel</span></div>
+      </a>
+      <a href="#arizona" class="chapter-index-item">
+        <div class="ci-num">6</div>
+        <div><div class="ci-text">Arizona, gouvernement en crise</div><span class="ci-date">2025 — 2026 · en cours</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PROLOGUE -->
+<section id="prologue" class="prologue">
+  <div class="prologue-grid">
+    <aside class="prologue-sidebar">
+      <div class="prologue-label">Prologue</div>
+      <div class="prologue-meta">
+        2 200 mots<br>
+        ≈ 8 min de lecture<br>
+        Pas de jargon
+      </div>
+    </aside>
+    <div class="prologue-body">
+      <p>L'actualité belge des cinq dernières années offre, à qui veut bien la regarder ensemble plutôt qu'en bribes, une remarquable cohérence. Prenez un commissaire européen à la Justice qui dépose un million d'euros en liquide sur son compte sur deux décennies sans déclencher d'alerte ; une vice-présidente du Parlement européen arrêtée chez elle avec 600 000 euros en cash ; une ASBL communale dont les administrateurs touchent des dizaines de milliers d'euros de jetons indus ; une multinationale qui solde sa pollution éternelle par un chèque ; un homme tué en cellule par des policiers qui sourient et font le salut nazi ; et un gouvernement fédéral incapable de boucler son budget. <strong>Six affaires, six visages très différents — et exactement la même mécanique.</strong></p>
+
+      <p>Ce chapitre est consacré à l'<em>actualité du pouvoir</em>. Pas à son histoire ancienne, pas à ses scandales archivés. À ce qui se joue, là, maintenant, en mai 2026, dans les chambres du conseil, les commissions parlementaires, les rédactions et les bureaux du procureur du Roi. Nous le faisons parce que la plupart de ces dossiers sont encore juridiquement ouverts — la présomption d'innocence s'y applique, et nous le rappelons sans cesse — mais aussi parce que c'est dans le présent que se dessine la trajectoire institutionnelle du pays. On peut débattre longtemps de la responsabilité de Léopold II ; on ne peut pas attendre vingt ans pour comprendre Reynders.</p>
+
+      <p>Nous avons choisi six affaires plutôt que dix ou vingt parce qu'elles couvrent l'essentiel des <strong>points d'entrée</strong> par lesquels la corruption, l'opacité et la défaillance d'État s'introduisent dans nos institutions : un ancien ministre des Finances (le sommet de l'État), un eurodéputé sur sol belge (l'institution supranationale), une ASBL communale (le parastatal local), une pollution industrielle (la capture réglementaire), une bavure policière (la violence d'État), et un gouvernement bloqué (la décision publique elle-même). Si ces six terrains se ressemblent dans leurs symptômes, alors le diagnostic se confirme : <em>la maladie n'est pas dans les individus, elle est dans la structure</em>.</p>
+
+      <p>Vous lirez à la fin de chaque affaire un encadré « Faille révélée ». Il s'agit de notre lecture — ce que nous estimons, en tant qu'observateurs, que l'affaire révèle du fonctionnement institutionnel belge. Vous pouvez la contester ; les faits qui la précèdent, en revanche, sont sourcés. Nous insérons aussi un <em>intermède</em> à mi-chapitre — un moment où nous prenons un peu de recul pour énoncer la grammaire commune que nous voyons émerger. Le chapitre se clôt sur une synthèse et sur une question : pourquoi ces affaires, malgré leur gravité publique, ne semblent-elles produire <strong>aucune réforme structurelle</strong> ?</p>
+    </div>
+  </div>
+</section>
+
+<!-- AFFAIRE 1 - REYNDERS -->
+<article id="reynders" class="affaire">
+  <div class="affaire-wrap">
+    <div class="affaire-header">
+      <div class="affaire-num">01</div>
+      <div class="affaire-header-text">
+        <div class="affaire-tag">Octobre 2025 · en cours d'instruction</div>
+        <h2 class="affaire-title">L'affaire Reynders — quand le <em>sommet</em> de l'État dépose en liquide</h2>
+        <p class="affaire-deck">Un million d'euros en liquide sur le compte d'un ministre des Finances pendant douze ans, président de parti, puis commissaire européen à la Justice. Personne ne s'en est aperçu.</p>
+      </div>
+    </div>
+
+    <div class="fact-sheet">
+      <div class="fact-cell">
+        <div class="fact-label">Dates</div>
+        <div class="fact-value big">2001 — 2024</div>
+        <div class="fact-label" style="margin-top: 8px;">23 ans de flux suspects</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Montants totaux</div>
+        <div class="fact-value big"><span class="red">1 039 K€</span></div>
+        <div class="fact-label" style="margin-top: 8px;">836 K€ dépôts liquide + 202 K€ e-Lotto</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Acteur principal</div>
+        <div class="fact-value">Didier Reynders</div>
+        <div class="fact-label" style="margin-top: 8px;">MR · ex-min. Finances · ex-commissaire UE</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Statut</div>
+        <div class="fact-value">Inculpé · libre</div>
+        <div class="fact-label" style="margin-top: 8px;">ING : transaction pénale 1,6 M€</div>
+      </div>
+    </div>
+
+    <div class="affaire-body">
+      <div class="affaire-text">
+        <h3>Les <em>faits</em></h3>
+        <p>Didier Reynders n'est pas n'importe qui. <strong>Ministre des Finances de 1999 à 2011</strong>, vice-Premier ministre, président du MR pendant des années, ministre des Affaires étrangères, puis <strong>commissaire européen à la Justice de 2019 à 2024</strong> — il a occupé, sur deux décennies, presque toutes les positions où la transparence financière est censée être une exigence professionnelle. C'est précisément ce qui rend l'affaire stupéfiante.</p>
+
+        <p>Selon les éléments rendus publics par la RTBF en mai 2026, les enquêteurs reprochent à l'ancien commissaire d'avoir effectué <span class="highlight">245 dépôts en liquide sur son compte ING entre 2001 et 2017, pour environ 836 500 euros au total</span>. À partir de 2017 — date à laquelle, au passage, les banques européennes commencent à durcir la surveillance des dépôts en espèces — il aurait basculé sur un dispositif différent : <span class="highlight">779 achats de billets e-Lotto pour 202 491 euros entre 2017 et 2024</span>, dont les « gains » étaient ensuite virés sur son compte courant. Le total cumulé des flux suspects atteint <strong>1 038 991,35 euros</strong>.</p>
+
+        <p>La Loterie nationale — qui était sous la tutelle de Reynders pendant ses douze années aux Finances — a dénoncé les faits au parquet fédéral en mars 2022. ING n'a alerté la Cellule de traitement des informations financières (CTIF) qu'en décembre 2023, soit <strong>vingt-deux ans après le premier dépôt anormal</strong>.</p>
+
+        <h3>Ce qui se passe <em>maintenant</em></h3>
+        <p>En mai 2026, ING Belgique conclut avec le parquet fédéral une <strong>transaction pénale de 1,6 million d'euros</strong> — le maximum prévu par la loi pour le blanchiment d'argent commis par une personne morale. ING évite ainsi un procès. Deux proches de Reynders ont été inculpés en février 2026 : Jean-Claude Fontinoy, son ancien bras droit et ex-président de la SNCB (association de malfaiteurs, faux en écriture), et Olivier Theunissen, antiquaire du Sablon.</p>
+
+        <p>Les sources possibles de l'argent évoquées par le journaliste Philippe Engels de Médor incluent — au stade des hypothèses — le Kazakhgate, les avoirs libyens gelés, et les rétrocessions de commissions sur les opérations dites « sales and rent back » du SPF Finances que Reynders pilotait. L'enquête a aussi conduit à rouvrir, en 2025, un dossier classé sans suite en 2016 qui concernait l'oligarque russe Oleg Deripaska.</p>
+
+        <p>En mai 2026, malgré l'avis favorable des services juridiques de la Chambre, <span class="highlight">la majorité Arizona (N-VA, MR, Vooruit, CD&V, Les Engagés) a refusé la création d'une commission d'enquête parlementaire</span> sur le dossier. Le MR, parti de Reynders, a évidemment voté contre. Mais ses partenaires de coalition aussi.</p>
+
+        <blockquote class="pull-quote">
+          Pendant deux décennies, un ministre des Finances dépose un million d'euros en liquide sur son compte. Personne ne s'en aperçoit. C'est ça, le scandale.
+          <span class="pull-quote-author">Notre lecture</span>
+        </blockquote>
+
+        <h3>L'angle <em>systémique</em></h3>
+        <p>L'affaire Reynders n'est pas seulement un dossier financier ; c'est un test de résistance du dispositif anti-blanchiment belge appliqué à ses <strong>propres « personnes politiquement exposées »</strong> (PEP). Le résultat est sans appel : un homme cumulant successivement la tutelle sur la Loterie nationale, la direction d'un parti gouvernemental, et la responsabilité européenne de la Justice — soit le profil PEP le plus extrême qu'on puisse imaginer — a pu, pendant 22 ans, effectuer des opérations qui auraient dû déclencher un signalement automatique dès les premiers dépôts.</p>
+
+        <p>Le refus de constituer une commission d'enquête parlementaire fin mai 2026 prolonge le motif : <em>le pouvoir politique refuse de s'auto-examiner</em>, quitte à laisser la magistrature avancer seule, plus lentement, avec moins de moyens, et avec, à terme probable, une transaction pénale en guise d'épilogue.</p>
+
+        <div class="faille">
+          <div class="faille-label">Faille révélée</div>
+          <div class="faille-text">
+            Le dispositif anti-blanchiment européen est <em>conçu</em> pour les autres. Quand l'individu surveillé est lui-même le responsable politique de la surveillance, <strong>le système ne se déclenche pas</strong>. Et la classe politique refuse de s'y intéresser publiquement.
+          </div>
+        </div>
+      </div>
+
+      <aside class="affaire-aside">
+        <div class="aside-block">
+          <div class="aside-label">À retenir</div>
+          <div class="aside-title">12 ans de tutelle sur la Loterie nationale, qui sera la première à signaler.</div>
+          <div class="aside-text">Pas la banque (ING n'alerte qu'en décembre 2023), pas le Parlement, pas l'administration : l'institution publique sous tutelle.</div>
+        </div>
+        <div class="aside-block dark">
+          <div class="aside-label">Le précédent</div>
+          <div class="aside-title">Kazakhgate (2011) : la transaction pénale comme issue</div>
+          <div class="aside-text">La loi Chodiev permet d'éteindre les poursuites contre 23 M€. Quinze ans plus tard, ING solde son volet pour 1,6 M€.</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</article>
+
+<!-- AFFAIRE 2 - QATARGATE -->
+<article id="qatargate" class="affaire">
+  <div class="affaire-wrap">
+    <div class="affaire-header">
+      <div class="affaire-num">02</div>
+      <div class="affaire-header-text">
+        <div class="affaire-tag">Décembre 2022 · instruction en cours</div>
+        <h2 class="affaire-title">Le Qatargate — la corruption au cœur du Parlement européen, sur <em>sol belge</em></h2>
+        <p class="affaire-deck">Le 9 décembre 2022, la police belge interpelle une vice-présidente du Parlement européen avec 600 000 € en liquide chez elle. Le pays hôte du PE n'avait rien détecté.</p>
+      </div>
+    </div>
+
+    <div class="fact-sheet">
+      <div class="fact-cell">
+        <div class="fact-label">Déclencheur</div>
+        <div class="fact-value big">9 déc. 2022</div>
+        <div class="fact-label" style="margin-top: 8px;">16 perquisitions en une journée</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Argent saisi</div>
+        <div class="fact-value big"><span class="red">1,5 M€</span></div>
+        <div class="fact-label" style="margin-top: 8px;">en liquide, Bruxelles + Italie</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Acteurs principaux</div>
+        <div class="fact-value">Kaili · Panzeri · Tarabella</div>
+        <div class="fact-label" style="margin-top: 8px;">Pays soupçonnés : Qatar · Maroc</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Statut</div>
+        <div class="fact-value">Aucune condamnation définitive</div>
+        <div class="fact-label" style="margin-top: 8px;">≈ 4 ans après les faits</div>
+      </div>
+    </div>
+
+    <div class="affaire-body">
+      <div class="affaire-text">
+        <h3>Les <em>faits</em></h3>
+        <p>Le 9 décembre 2022, à l'issue d'une enquête de l'Office central pour la répression de la corruption belge, six personnes sont arrêtées et seize perquisitions sont menées simultanément à Bruxelles. Au centre du dispositif : <strong>Eva Kaili</strong>, vice-présidente grecque (PASOK) du Parlement européen. Elle est arrêtée en flagrant délit ; <span class="highlight">environ 600 000 euros en liquide sont retrouvés à son domicile et chez ses proches</span> — dont son père, interpellé alors qu'il tente de quitter un hôtel bruxellois avec un sac plein de billets.</p>
+
+        <p>Quatre jours plus tard, le 13 décembre 2022, Eva Kaili est destituée de sa vice-présidence par 625 voix sur 628. L'eurodéputé italien <strong>Pier Antonio Panzeri</strong> reconnaît partiellement les faits et collabore avec la justice. Le Belge <strong>Marc Tarabella</strong> est mis en cause. Au total, les autorités belges et italiennes saisissent <strong>environ 1,5 million d'euros en espèces</strong>.</p>
+
+        <p>Le mécanisme reproché : des élus européens auraient perçu des fonds du <strong>Qatar et du Maroc</strong> en échange d'interventions favorables — tentative de faire échouer six résolutions critiques sur les droits humains au Qatar, accord visa avec Doha, modération du texte sur la crise migratoire marocaine de 2021. Le Parquet européen (EPPO, dirigé par Laura Kövesi) a parallèlement ouvert une enquête pour fraude à hauteur de 150 000 euros sur les indemnités d'assistants parlementaires.</p>
+
+        <h3>Une justice <em>belge</em> qui prend son temps</h3>
+        <p>Trois ans et demi plus tard, en mai 2026, <strong>aucune condamnation définitive</strong> n'a été prononcée. Le 9 juillet 2025, le Tribunal de l'Union européenne annule la décision du Parlement européen qui refusait à Kaili l'accès à des documents internes sur les abus d'indemnités — une victoire procédurale pour la défense. Trois nouvelles inculpations interviennent fin 2024. En avril 2026, la justice belge prolonge la détention préventive de Kaili.</p>
+
+        <p>Le contraste mérite d'être posé : l'enquête a démarré sur un flagrant délit, avec saisie d'un million et demi en liquide, dans le pays qui héberge le Parlement européen — c'est-à-dire le pays qui, plus que tout autre, aurait dû montrer une réactivité judiciaire exemplaire pour des raisons d'image internationale. Et l'on n'a toujours pas, près de quatre ans après, de jugement au fond.</p>
+
+        <blockquote class="pull-quote">
+          Quand la Belgique tarde à juger une affaire de corruption européenne flagrante sur son sol, c'est l'autorité morale de toute l'Union qui s'érode.
+          <span class="pull-quote-author">Notre lecture</span>
+        </blockquote>
+
+        <h3>L'angle <em>systémique</em></h3>
+        <p>Le Qatargate révèle trois failles superposées. <strong>La première</strong> est l'absence de détection préalable : le pays hôte du Parlement européen, où sont concentrés les lobbies les plus puissants d'Europe, abritait un système de corruption massif sans qu'aucun signal ne se déclenche avant le flagrant délit. La deuxième est l'<strong>opacité institutionnelle européenne</strong> : « groupes d'amitié » avec États tiers non encadrés, immunité parlementaire défensive, registres de lobbyistes incomplets. La troisième est la <strong>lenteur judiciaire belge</strong>, dont on retrouvera le motif dans presque toutes les autres affaires de ce dossier.</p>
+
+        <div class="faille">
+          <div class="faille-label">Faille révélée</div>
+          <div class="faille-text">
+            La Belgique abrite physiquement les institutions de l'UE — Parlement, Commission, Conseil — mais sa propre culture institutionnelle est <em>perméable</em> à la corruption. Et sa machinerie judiciaire ne sait pas, ou ne veut pas, juger vite, même sur flagrant délit. <strong>Le pays hôte est devenu le maillon faible.</strong>
+          </div>
+        </div>
+      </div>
+
+      <aside class="affaire-aside">
+        <div class="aside-block">
+          <div class="aside-label">Chiffre clé</div>
+          <div class="aside-title">625 sur 628</div>
+          <div class="aside-text">Voix exprimées pour destituer Kaili de sa vice-présidence du PE — quasi-unanimité européenne, en quatre jours.</div>
+        </div>
+        <div class="aside-block dark">
+          <div class="aside-label">Le contraste</div>
+          <div class="aside-title">Sept ans en moyenne avant un premier jugement au fond</div>
+          <div class="aside-text">C'est la moyenne, en Belgique, pour les affaires politico-financières complexes des trente dernières années (notre estimation à partir des cas documentés).</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</article>
+
+<!-- AFFAIRE 3 - SAMUSOCIAL -->
+<article id="samusocial" class="affaire">
+  <div class="affaire-wrap">
+    <div class="affaire-header">
+      <div class="affaire-num">03</div>
+      <div class="affaire-header-text">
+        <div class="affaire-tag">Juin 2017 · renvoyé en correctionnelle le 27 février 2026</div>
+        <h2 class="affaire-title">Le Samusocial — neuf ans pour qu'une ASBL bruxelloise arrive enfin <em>au procès</em></h2>
+        <p class="affaire-deck">346 000 euros de jetons de présence indus pour 12 administrateurs d'une ASBL d'aide aux sans-abri financée à 90 % par les pouvoirs publics. Le bourgmestre de Bruxelles devra s'expliquer en justice.</p>
+      </div>
+    </div>
+
+    <div class="fact-sheet">
+      <div class="fact-cell">
+        <div class="fact-label">Déclencheur</div>
+        <div class="fact-value big">Juin 2017</div>
+        <div class="fact-label" style="margin-top: 8px;">Révélation par Le Vif</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Total jetons indus</div>
+        <div class="fact-value big"><span class="red">346 300 €</span></div>
+        <div class="fact-label" style="margin-top: 8px;">pour 12 administrateurs sur 2014-2016</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Principaux mis en cause</div>
+        <div class="fact-value">Mayeur · Peraïta · Degueldre · Glineur</div>
+        <div class="fact-label" style="margin-top: 8px;">Tous PS, sphère bruxelloise</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Statut</div>
+        <div class="fact-value">5 prévenus en correctionnelle</div>
+        <div class="fact-label" style="margin-top: 8px;">Décision : 27 février 2026</div>
+      </div>
+    </div>
+
+    <div class="affaire-body">
+      <div class="affaire-text">
+        <h3>Une <em>ASBL</em> pour faire glisser l'argent public</h3>
+        <p>Le Samusocial est, dans sa forme juridique, une <strong>association sans but lucratif</strong>. Dans sa réalité financière, c'est une structure publique : plus de 90 % de ses ressources proviennent de subsides — dont 10 millions d'euros annuels de la seule Commission communautaire commune. Elle est censée venir en aide aux sans-abri de Bruxelles. Pendant des années, elle a aussi servi à autre chose.</p>
+
+        <p>L'enquête révélée par Le Vif en juin 2017 a établi qu'<strong>Yvan Mayeur</strong> (bourgmestre PS de Bruxelles) et <strong>Pascale Peraïta</strong> (présidente du CPAS, ex-directrice du Samusocial) avaient touché chacun, en tant qu'administrateurs de l'ASBL, <span class="highlight">plus de 51 000 euros bruts de jetons de présence entre 2014 et 2016</span>. La commission d'enquête bruxelloise du 21 février 2018 a chiffré le total : <strong>346 300 euros de jetons indus pour 12 administrateurs</strong>, dont environ 113 000 euros pour Peraïta et 112 000 euros pour Mayeur.</p>
+
+        <h3>Le déclic — et la lenteur</h3>
+        <p>Mayeur démissionne de son poste de bourgmestre en juin 2017. Peraïta quitte le CPAS. Une commission d'enquête au Parlement bruxellois est convoquée. Et puis... rien, pendant huit ans et demi. L'instruction se poursuit en silence. Les rares avancées font la une de la presse, puis disparaissent.</p>
+
+        <p>Le <strong>27 février 2026, soit près de neuf ans après le déclenchement de l'instruction</strong>, la chambre du conseil de Bruxelles renvoie cinq prévenus devant le tribunal correctionnel pour détournement par personne exerçant une fonction publique, faux et usage de faux, abus de biens sociaux : <strong>Yvan Mayeur, Pascale Peraïta, Michel Degueldre</strong> (ex-président du CA), <strong>Rita Glineur</strong> (ex-secrétaire générale du CPAS) et l'ex-cheffe de cabinet de Peraïta.</p>
+
+        <blockquote class="pull-quote">
+          Le Samusocial montre que la justice belge finit parfois par arriver. Mais elle arrive si tard que la sanction politique a déjà été oubliée par les électeurs.
+          <span class="pull-quote-author">Notre lecture</span>
+        </blockquote>
+
+        <h3>L'angle <em>systémique</em></h3>
+        <p>L'historien <strong>Martin Conway</strong> (Université d'Oxford), spécialiste de la Belgique contemporaine, voit dans le Samusocial « une de ces institutions qui servent aussi à récompenser les courtisans des personnalités politiques ». Le politologue <strong>Kristof Titeca</strong> (UAntwerpen) relie la succession de scandales de ce type à « la complexité institutionnelle de la Belgique ».</p>
+
+        <p>Le motif est récurrent. Une ASBL juridiquement privée, financée par de l'argent public, gouvernée par des administrateurs politiques rémunérés en jetons sans contrôle effectif, dirigée par des cadres issus du même réseau partisan : c'est la <strong>matrice exacte</strong> du Samusocial, mais aussi de Publifin/Nethys à Liège (chapitre III), de la Carolorégienne à Charleroi (chapitre III), de l'ICDI (déchets), et de dizaines d'intercommunales que personne — pas la Cour des comptes, pas le Parlement régional, pas le Conseil supérieur de la Justice — n'arrive à surveiller pleinement.</p>
+
+        <div class="faille">
+          <div class="faille-label">Faille révélée</div>
+          <div class="faille-text">
+            Les structures hybrides — ASBL, intercommunales, parastatales — sont devenues le <em>moyen privilégié</em> de capter l'argent public en contournant les contrôles administratifs. Et la justice met huit ans, parfois plus, à arriver au procès. <strong>Le délai est lui-même la sanction.</strong>
+          </div>
+        </div>
+      </div>
+
+      <aside class="affaire-aside">
+        <div class="aside-block">
+          <div class="aside-label">À retenir</div>
+          <div class="aside-title">9 ans entre la révélation et le renvoi au tribunal</div>
+          <div class="aside-text">Yvan Mayeur n'est plus bourgmestre depuis longtemps quand son procès s'ouvrira. C'est un trait belge, pas une exception.</div>
+        </div>
+        <div class="aside-block dark">
+          <div class="aside-label">La grammaire</div>
+          <div class="aside-title">ASBL ≠ contrôle administratif</div>
+          <div class="aside-text">Une ASBL est juridiquement privée. Même quand son budget est public à 90 %. C'est dans cette zone grise que se logent les abus.</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</article>
+
+<!-- INTERMÈDE - RÉFLEXION -->
+<section class="reflection">
+  <div class="reflection-wrap">
+    <p class="reflection-eyebrow">— intermède à mi-chapitre —</p>
+    <h2>Trois affaires, déjà : la <em>grammaire commune</em> apparaît.</h2>
+    <div class="reflection-body">
+      <p>Avant de poursuivre, prenons un instant. Trois affaires ont été examinées : Reynders, Qatargate, Samusocial. Elles n'ont, en apparence, rien en commun. Un ministre des Finances et commissaire européen à la Justice ; une vice-présidente du Parlement européen ; un bourgmestre PS de Bruxelles. Trois univers, trois grammaires politiques. Et pourtant, déjà, le motif se répète.</p>
+
+      <p>Dans les trois cas, le <strong>dispositif de contrôle existait formellement</strong> : la Cellule de traitement des informations financières (CTIF) aurait dû repérer Reynders ; les registres de lobbyistes du Parlement européen auraient dû signaler les flux qataris ; la tutelle bruxelloise sur les ASBL était écrite dans les textes. Dans les trois cas, le contrôle <em>n'a pas fonctionné</em>. Pas parce qu'il n'existait pas. Mais parce qu'il était conçu pour des cas-types — et que les personnes mises en cause étaient précisément celles qui supervisaient le dispositif, ou qui étaient protégées par leur statut institutionnel.</p>
+
+      <p>Dans les trois cas, ensuite, le <strong>temps judiciaire est devenu un personnage</strong>. Sept ans pour le Qatargate sans jugement. Neuf ans pour le Samusocial avant le renvoi. Vingt-deux ans entre le premier dépôt suspect de Reynders et l'alerte d'ING. Quand on parle d'« impunité » en Belgique, on ne parle pas seulement de non-poursuites : on parle d'un temps procédural si long que <em>la sanction politique s'évapore</em> avant la sanction pénale.</p>
+
+      <p>Et dans les trois cas, enfin, le <strong>politique a refusé d'aller plus loin</strong> que ce que la justice a bien voulu produire. Pas de commission d'enquête parlementaire sur Reynders, malgré l'avis favorable des services juridiques. Pas de réforme structurelle du Parlement européen depuis le Qatargate, sinon symbolique. Pas de remise en cause du modèle « ASBL communale » après Samusocial. <em>Comme si l'événement individuel suffisait à clore le dossier institutionnel.</em></p>
+
+      <p>Cette grammaire — dispositif inefficace, temps procédural exorbitant, refus politique d'aller plus loin — n'est pas l'invention de 2026. Vous la retrouverez, identique, dans Publifin (chapitre III), dans Fortis (chapitre III), dans Agusta-Dassault (chapitre II). Elle traverse la Belgique politique depuis quatre décennies au moins.</p>
+
+      <p>Continuons. Les trois prochaines affaires — PFAS, Chovanec, Arizona — quittent un peu le terrain de la corruption pour celui de la capture réglementaire, de la violence d'État, et de la décision publique elle-même. Vous verrez : la grammaire ne change pas.</p>
+
+      <div class="reflection-sig">— Suite du chapitre I.</div>
+    </div>
+  </div>
+</section>
+
+<!-- AFFAIRE 4 - PFAS -->
+<article id="pfas" class="affaire">
+  <div class="affaire-wrap">
+    <div class="affaire-header">
+      <div class="affaire-num">04</div>
+      <div class="affaire-header-text">
+        <div class="affaire-tag">2021 — 2024 · transaction conclue</div>
+        <h2 class="affaire-title">PFAS — la <em>pollution éternelle</em> et le règlement amiable</h2>
+        <p class="affaire-deck">La plus grande pollution PFAS d'Europe en zone résidentielle est soldée par un chèque de 571 millions d'euros. La régulation savait depuis 2006.</p>
+      </div>
+    </div>
+
+    <div class="fact-sheet">
+      <div class="fact-cell">
+        <div class="fact-label">Site</div>
+        <div class="fact-value big">Zwijndrecht</div>
+        <div class="fact-label" style="margin-top: 8px;">Usine 3M, Anvers, active depuis 1971</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Accord transactionnel</div>
+        <div class="fact-value big"><span class="red">571 M€</span></div>
+        <div class="fact-label" style="margin-top: 8px;">3M / Région flamande, juillet 2022</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Données sanitaires</div>
+        <div class="fact-value">48 % de la population testée</div>
+        <div class="fact-label" style="margin-top: 8px;">au-delà du seuil de risque (ISSEP 2024)</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Sites contaminés</div>
+        <div class="fact-value">335+ identifiés</div>
+        <div class="fact-label" style="margin-top: 8px;">en Wallonie et Bruxelles, dont 36 « hotspots »</div>
+      </div>
+    </div>
+
+    <div class="affaire-body">
+      <div class="affaire-text">
+        <h3>L'usine que tout le monde savait — depuis 2006</h3>
+        <p>Les PFAS — pour <em>per- et polyfluoroalkylées</em> — sont une famille de molécules synthétiques. Imperméables à l'eau, à la graisse, à la chaleur. Présents dans les poêles antiadhésives, les emballages alimentaires, les vêtements imperméables, les mousses anti-incendie. Et dans l'organisme humain, où ils s'accumulent. On les appelle, à raison, les « polluants éternels ».</p>
+
+        <p>L'usine 3M de Zwijndrecht, dans la banlieue d'Anvers, en produit depuis 1971. La pollution est révélée publiquement en 2021, lors des travaux du gigantesque chantier Oosterweel (rocade anversoise). Mais des études internes de l'agence flamande des déchets <strong>OVAM datent de 2006</strong>. Personne, à l'époque, n'a imposé d'action significative. Greenpeace et Grondrecht qualifieront ce dossier de <strong>plus grande pollution PFAS d'Europe en zone résidentielle</strong>.</p>
+
+        <h3>Une « transaction » pour solder l'éternité</h3>
+        <p>Le 6 juillet 2022, la ministre flamande de l'Environnement Zuhal Demir (N-VA) annonce un accord avec 3M : <span class="highlight">571 millions d'euros au total</span>. La structure est complexe : 120 millions d'engagements antérieurs, 451 millions de fonds nouveaux, dont 250 millions pour l'assainissement, 100 millions versés directement au gouvernement flamand, 50 millions plus jusqu'à 50 millions de services pour Lantis (la société du chantier Oosterweel).</p>
+
+        <p>L'expression utilisée par les officiels est révélatrice : on parle d'un « accord ». Pas d'un procès. Pas d'une condamnation. Un <em>accord</em>. La multinationale règle, et le contentieux disparaît.</p>
+
+        <h3>La contamination ne s'arrête pas à Anvers</h3>
+        <p>Une enquête de la RTBF de novembre 2023 révèle qu'entre octobre 2021 et mars 2023, <strong>12 000 habitants de Chièvres</strong> (Hainaut) ont consommé une eau contaminée à un taux <em>cinq fois supérieur</em> à la dose tolérable de l'EFSA. Plus de 335 sites contaminés ont été identifiés en Wallonie et Bruxelles, dont 36 « hotspots » dépassant 100 ng/L. Le biomonitoring ISSEP 2024 indique que <strong>jusqu'à 48 % des 1 743 participants</strong> dépassent le seuil de risque sanitaire.</p>
+
+        <p>En août 2024, le ministre wallon de la Santé Yves Coppieters (Les Engagés) révèle que les résultats antérieurs étaient sous-estimés d'environ 50 %. Sous-estimés par qui ? Comment ? Les questions restent largement sans réponse.</p>
+
+        <blockquote class="pull-quote">
+          Quand une pollution éternelle se règle par un chèque, l'État reconnaît implicitement qu'il a renoncé à la sanction pénale.
+          <span class="pull-quote-author">Notre lecture</span>
+        </blockquote>
+
+        <h3>L'angle <em>systémique</em></h3>
+        <p>L'affaire PFAS est le cas-école de la <strong>capture réglementaire</strong> : une administration (OVAM) qui dispose d'informations dès 2006 et ne les transforme pas en action coercitive ; une transposition tardive de la norme européenne ; une impuissance régulatoire face à une multinationale ; et, à l'arrivée, un règlement amiable qui solde le contentieux civil sans jamais déboucher sur des poursuites pénales effectives contre l'entreprise ou ses dirigeants.</p>
+
+        <p>Si Reynders illustre la capture <em>au sommet</em>, PFAS illustre la capture <em>à la base</em> : celle de l'administration sectorielle par l'acteur économique qu'elle est censée surveiller. Le mécanisme est différent — il n'y a pas de corruption explicite, pas de mallettes en liquide — mais le résultat institutionnel est identique : <strong>l'État ne sanctionne pas</strong>.</p>
+
+        <div class="faille">
+          <div class="faille-label">Faille révélée</div>
+          <div class="faille-text">
+            Le règlement amiable n'est pas la <em>justice</em>. C'est le <em>contournement</em> de la justice. Et quand l'État belge accepte ce contournement pour la plus grande pollution PFAS d'Europe, <strong>il signale aux acteurs économiques qu'on peut, en Belgique, polluer pour l'éternité contre un chèque.</strong>
+          </div>
+        </div>
+      </div>
+
+      <aside class="affaire-aside">
+        <div class="aside-block">
+          <div class="aside-label">Chiffre clé</div>
+          <div class="aside-title">15 ans entre la connaissance et l'action</div>
+          <div class="aside-text">Les premières études internes OVAM datent de 2006. La pollution n'est révélée publiquement qu'en 2021.</div>
+        </div>
+        <div class="aside-block dark">
+          <div class="aside-label">À méditer</div>
+          <div class="aside-title">571 millions est un chiffre énorme — et dérisoire</div>
+          <div class="aside-text">Les PFAS sont éternels. Combien coûtera la dépollution réelle ? Les estimations indépendantes parlent de plusieurs milliards.</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</article>
+
+<!-- AFFAIRE 5 - CHOVANEC -->
+<article id="chovanec" class="affaire">
+  <div class="affaire-wrap">
+    <div class="affaire-header">
+      <div class="affaire-num">05</div>
+      <div class="affaire-header-text">
+        <div class="affaire-tag">23 février 2018 — 13 mars 2026 · non-lieu confirmé en appel</div>
+        <h2 class="affaire-title">L'affaire Chovanec — un homme tué en cellule, des sourires et un <em>salut nazi</em></h2>
+        <p class="affaire-deck">Jozef Chovanec meurt à l'hôpital après un plaquage ventral de seize minutes par la police de l'aéroport de Charleroi. La vidéo, révélée deux ans plus tard, montre une policière faisant le salut hitlérien. Aucun policier condamné.</p>
+      </div>
+    </div>
+
+    <div class="fact-sheet">
+      <div class="fact-cell">
+        <div class="fact-label">Date des faits</div>
+        <div class="fact-value big">23 fév. 2018</div>
+        <div class="fact-label" style="margin-top: 8px;">Cellule, aéroport de Charleroi</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Décès</div>
+        <div class="fact-value big"><span class="red">27 fév. 2018</span></div>
+        <div class="fact-label" style="margin-top: 8px;">Hôpital Marie Curie, Charleroi</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Politiques en charge</div>
+        <div class="fact-value">Jambon (N-VA) puis De Crem (CD&V)</div>
+        <div class="fact-label" style="margin-top: 8px;">Ministres successifs de l'Intérieur</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Statut</div>
+        <div class="fact-value">Non-lieu confirmé</div>
+        <div class="fact-label" style="margin-top: 8px;">Mons, 13 mars 2026 · CEDH saisie</div>
+      </div>
+    </div>
+
+    <div class="affaire-body">
+      <div class="affaire-text">
+        <h3>Le 23 février 2018, à l'aéroport de <em>Charleroi</em></h3>
+        <p>Jozef Chovanec, ressortissant slovaque, est interpellé à l'aéroport de Charleroi le 23 février 2018. Placé en cellule, il s'agite. Les policiers interviennent. Pendant <strong>seize minutes</strong>, il est maintenu au sol par plaquage ventral — une technique d'immobilisation dont la dangerosité est connue depuis des années dans la littérature policière internationale, notamment en raison du risque d'asphyxie positionnelle.</p>
+
+        <p>Il perd conscience. Transféré à l'hôpital Marie Curie de Charleroi. Décédé le 27 février 2018, soit quatre jours plus tard. Il avait 38 ans.</p>
+
+        <h3>Le scandale n'éclate que deux ans plus tard</h3>
+        <p>L'affaire passe quasi inaperçue pendant deux ans et demi. <strong>En août 2020, Het Laatste Nieuws diffuse les images de vidéosurveillance.</strong> On y voit Chovanec maintenu au sol pendant que des policiers, autour, sourient. Et plus précisément : <span class="highlight">une policière effectue un salut hitlérien au-dessus du corps inanimé</span>, sous le regard amusé de plusieurs collègues.</p>
+
+        <p>La séquence est rapidement diffusée à l'international. Slovaquie, Pologne, médias allemands, britanniques, français : la « banalité du salut nazi » dans la police belge devient un cas d'école commenté dans les revues académiques européennes.</p>
+
+        <h3>Aucune démission ministérielle</h3>
+        <p><strong>Jan Jambon (N-VA)</strong>, ministre de l'Intérieur au moment des faits, devenu entre-temps Ministre-président flamand, déclare qu'il n'a aucun souvenir d'avoir été informé — alors que les documents établissent que son cabinet a été averti dès le 2 mars 2018, soit cinq jours après le décès. Il ne démissionne pas. <strong>Pieter De Crem (CD&V)</strong>, son successeur à l'Intérieur, ne démissionne pas non plus. <strong>André Desenfants</strong>, numéro 2 de la police fédérale, se retire le 27 août 2020 — la seule sanction politique.</p>
+
+        <h3>Et la justice ?</h3>
+        <p>Le <strong>25 septembre 2024</strong>, la chambre du conseil de Charleroi prononce un <strong>non-lieu pour les trente-et-un inculpés</strong>. La décision est confirmée en appel à Mons le <strong>13 mars 2026</strong>. <em>Aucun policier n'a été condamné.</em></p>
+
+        <p>Le 27 février 2025, la Slovaquie introduit une <strong>requête interétatique contre la Belgique devant la Cour européenne des droits de l'homme (CEDH)</strong>, dénonçant les mauvais traitements (article 3 de la Convention) et l'absence d'enquête effective. C'est désormais, en mai 2026, l'unique voie judiciaire encore ouverte. Le verdict de la CEDH pourrait, à terme, contraindre la Belgique à des réformes structurelles du contrôle policier.</p>
+
+        <blockquote class="pull-quote">
+          Quand un homme meurt sous les sourires de policiers qui font le salut nazi, et qu'aucun de ces policiers n'est condamné, l'État belge a un problème — qui n'est plus seulement procédural.
+          <span class="pull-quote-author">Notre lecture</span>
+        </blockquote>
+
+        <h3>L'angle <em>systémique</em></h3>
+        <p>L'affaire Chovanec révèle quatre choses, superposées. <strong>Premièrement</strong>, la <em>banalisation</em> de la violence policière dans les zones de transit aéroportuaires — zones de droit international, statut des passagers fragilisé. <strong>Deuxièmement</strong>, la tolérance avérée à l'égard de symboles d'extrême droite dans certains corps de police. Pas la majorité des policiers, évidemment ; mais une présence persistante, documentée par d'autres incidents (Vlaams Belang, militants identitaires recrutés en gendarmerie dans les années 1980-1990 — cf. chapitre III sur les tueurs du Brabant). <strong>Troisièmement</strong>, la faillite de l'auto-saisine du <strong>Comité P</strong> (Comité permanent de contrôle des services de police), qui n'a pas joué son rôle d'alerte rapide. <strong>Quatrièmement</strong>, la quasi-impossibilité d'obtenir, dans le droit belge, des condamnations contre des policiers — non par malveillance des juges, mais par la combinaison du standard de preuve exigeant, de l'auto-protection corporative, et du défaut chronique d'enquête interne indépendante.</p>
+
+        <div class="faille">
+          <div class="faille-label">Faille révélée</div>
+          <div class="faille-text">
+            En Belgique, un homme peut mourir en cellule sous le sourire de ses gardiens — et le système judiciaire ne trouvera <em>personne</em> à condamner. Quand seule la CEDH peut encore espérer corriger ce résultat, <strong>la souveraineté judiciaire nationale a déjà cédé.</strong>
+          </div>
+        </div>
+      </div>
+
+      <aside class="affaire-aside">
+        <div class="aside-block">
+          <div class="aside-label">Le détail</div>
+          <div class="aside-title">2 ans et demi entre le décès et la vidéo</div>
+          <div class="aside-text">L'opinion publique n'a découvert l'affaire qu'en août 2020. C'est la presse qui l'a sortie, pas l'institution.</div>
+        </div>
+        <div class="aside-block dark">
+          <div class="aside-label">L'horizon</div>
+          <div class="aside-title">CEDH : la dernière porte</div>
+          <div class="aside-text">La Slovaquie a saisi la Cour européenne des droits de l'homme. Si Strasbourg condamne la Belgique, il faudra réformer le Comité P et l'enquête interne. Sinon, statu quo.</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</article>
+
+<!-- AFFAIRE 6 - ARIZONA -->
+<article id="arizona" class="affaire">
+  <div class="affaire-wrap">
+    <div class="affaire-header">
+      <div class="affaire-num">06</div>
+      <div class="affaire-header-text">
+        <div class="affaire-tag">Janvier 2025 — mai 2026 · gouvernement en cours</div>
+        <h2 class="affaire-title">Arizona — un gouvernement, un budget, et une <em>Cour des comptes</em> qui dit non</h2>
+        <p class="affaire-deck">Premier nationaliste flamand à diriger la Belgique, Bart De Wever a annoncé un effort budgétaire de 23 milliards en grande partie fondé sur des effets de retour que l'institution de contrôle qualifie de « difficilement atteignables ».</p>
+      </div>
+    </div>
+
+    <div class="fact-sheet">
+      <div class="fact-cell">
+        <div class="fact-label">Formation</div>
+        <div class="fact-value big">31 janvier 2025</div>
+        <div class="fact-label" style="margin-top: 8px;">Coalition N-VA · MR · Vooruit · CD&V · Engagés</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Effort budgétaire annoncé</div>
+        <div class="fact-value big"><span class="red">23 Mds €</span></div>
+        <div class="fact-label" style="margin-top: 8px;">dont chômage limité à 2 ans</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Avis Cour des comptes</div>
+        <div class="fact-value">« Difficilement atteignables »</div>
+        <div class="fact-label" style="margin-top: 8px;">Assemblée générale, 18 février 2026</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Statut</div>
+        <div class="fact-value">Délai accordé par le Roi</div>
+        <div class="fact-label" style="margin-top: 8px;">+50 jours, novembre 2025</div>
+      </div>
+    </div>
+
+    <div class="affaire-body">
+      <div class="affaire-text">
+        <h3>Un gouvernement <em>historique</em>, sur le fond et sur la forme</h3>
+        <p>Le 31 janvier 2025, après plusieurs mois de négociations, le gouvernement fédéral Arizona est formé. Cinq partis : N-VA, MR, Vooruit, CD&V, Les Engagés. Premier ministre : <strong>Bart De Wever</strong>, président de la N-VA, premier nationaliste flamand à diriger l'État belge depuis 1830. Pour beaucoup de commentateurs, c'est en soi un événement — paradoxe d'un homme qui n'a jamais caché son objectif confédéral assumant la fonction de Premier d'un État dont il souhaite la mutation.</p>
+
+        <p>Le plan budgétaire est ambitieux : <span class="highlight">23 milliards d'euros d'effort sur la législature</span>. La pièce maîtresse, sur le plan symbolique et social, est la <strong>limitation des allocations de chômage à deux ans</strong> — une rupture avec un modèle d'assurance-chômage à durée illimitée que la Belgique pratiquait depuis l'après-guerre.</p>
+
+        <h3>La Cour des comptes met le doigt sur le mécanisme</h3>
+        <p>Dans son rapport adopté en assemblée générale le <strong>18 février 2026</strong>, la Cour des comptes belge — l'institution indépendante chargée du contrôle des finances publiques — écrit : <em>« les effets retour attendus liés à des emplois supplémentaires semblent donc difficilement atteignables à ce stade »</em>. La phrase est diplomatique. La portée, elle, ne l'est pas : <strong>la justification publique du chiffre de 23 milliards repose en partie sur des effets de retour macroéconomiques que l'institution de contrôle juge irréalistes</strong>.</p>
+
+        <p>En novembre 2025, après l'échec du conclave budgétaire, Bart De Wever se rend au Palais. Il n'annonce pas sa démission. Il obtient du Roi <strong>cinquante jours supplémentaires</strong> pour trouver une solution.</p>
+
+        <blockquote class="pull-quote">
+          Quand le pouvoir exécutif présente comme « assainissement » des chiffres que la Cour des comptes juge irréalistes, ce n'est plus seulement un débat budgétaire. C'est une mise à l'épreuve de l'État de droit.
+          <span class="pull-quote-author">Notre lecture</span>
+        </blockquote>
+
+        <h3>L'angle <em>systémique</em></h3>
+        <p>Le cas Arizona est <strong>en cours</strong> — il faudra plusieurs mois ou années pour en évaluer pleinement les conséquences. Mais il signale, en mai 2026, un risque institutionnel précis : la <strong>communication politique</strong> du gouvernement entre en contradiction directe avec l'<strong>institution de contrôle</strong> qu'elle est censée respecter. Ce n'est pas un scandale au sens classique du terme — il n'y a pas, à notre connaissance, d'enrichissement personnel, pas de détournement, pas d'inculpé. Mais c'est, au sens institutionnel, une mise sous tension du dispositif d'<em>accountability</em> macroéconomique.</p>
+
+        <p>Le précédent qui hante ce dossier est belge : le rapport <strong>GRECO 2024</strong> du Conseil de l'Europe demande à la Belgique, depuis le 4ᵉ cycle (2014), de renforcer l'indépendance et les pouvoirs des organes de contrôle financier. La Belgique a partiellement répondu — 8 recommandations sur 15 du 4ᵉ cycle, 8 sur 22 du 5ᵉ — mais reste en non-conformité sur plusieurs points clés. Arizona, en plaçant la Cour des comptes en position publique de contradicteur, met précisément à l'épreuve cette indépendance.</p>
+
+        <div class="faille">
+          <div class="faille-label">Faille révélée</div>
+          <div class="faille-text">
+            L'État de droit ne s'effondre pas par les coups d'État. Il s'effondre par <em>l'érosion lente</em> des institutions de contrôle. Quand un gouvernement persiste à présenter des chiffres que sa propre Cour des comptes invalide, <strong>il décide implicitement que le débat démocratique se déroulera désormais sans elle.</strong>
+          </div>
+        </div>
+      </div>
+
+      <aside class="affaire-aside">
+        <div class="aside-block">
+          <div class="aside-label">À surveiller</div>
+          <div class="aside-title">Rapport intermédiaire GRECO : novembre 2026</div>
+          <div class="aside-text">Le porte-parole du GRECO Jaime Rodriguez Murphy a annoncé un nouvel examen intermédiaire de la Belgique fin 2026. Il dira si les écarts s'aggravent.</div>
+        </div>
+        <div class="aside-block dark">
+          <div class="aside-label">Le précédent à connaître</div>
+          <div class="aside-title">Pologne, Hongrie</div>
+          <div class="aside-text">L'érosion de l'État de droit en Pologne et en Hongrie a commencé par des conflits ouverts entre l'exécutif et les institutions de contrôle. La Belgique n'en est pas là. <em>Pas encore.</em></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</article>
+
+<!-- SYNTHESE de chapitre -->
+<section class="reflection" style="background: var(--blood-deep);">
+  <div class="reflection-wrap">
+    <p class="reflection-eyebrow">— synthèse du chapitre I —</p>
+    <h2>Six affaires, <em>une seule lecture</em>.</h2>
+    <div class="reflection-body">
+      <p>Récapitulons. Reynders : un million d'euros déposé en liquide pendant 23 ans sans alerte. Qatargate : 1,5 million saisi en flagrant délit, pas de jugement quatre ans plus tard. Samusocial : 346 000 euros de jetons indus, neuf ans pour arriver au renvoi en correctionnelle. PFAS : la plus grande pollution éternelle d'Europe soldée par un chèque. Chovanec : un mort en cellule, un salut nazi, aucun policier condamné. Arizona : un gouvernement et une Cour des comptes qui ne se parlent plus.</p>
+
+      <p><strong>Si vous deviez extraire une seule phrase de ce chapitre, ce serait celle-ci :</strong> les dispositifs de contrôle de l'État belge existent ; ils sont parfaitement écrits dans les textes ; ils ne fonctionnent pas quand les personnes ou les acteurs économiques surveillés sont ceux qui supervisent, financent ou occupent les positions clés du contrôle lui-même.</p>
+
+      <p>Le motif n'est pas idéologique. Il ne traverse pas la frontière gauche/droite — Reynders est libéral, Mayeur socialiste, Jambon nationaliste flamand, De Wever aussi. Il ne traverse pas non plus la frontière linguistique : Anvers, Bruxelles, Charleroi, Liège, Verviers, le motif est partout. Il est <em>structurel</em>, au sens propre du mot : il appartient à l'architecture institutionnelle de l'État belge plutôt qu'à ses occupants temporaires.</p>
+
+      <p>Cette architecture, nous allons maintenant remonter le temps pour comprendre comment elle s'est construite. Le chapitre II traite de la décennie 1985-2000, où la Belgique a vu, simultanément, ses Tueurs du Brabant impunis, le ministre Cools assassiné, l'affaire Agusta-Dassault, les enfants Dutroux, l'affaire INUSOP et la crise de la dioxine. <strong>Cinq scandales majeurs en quinze ans</strong> qui ont, à l'époque, semblé devoir produire un séisme institutionnel. Le chapitre II raconte aussi pourquoi le séisme n'a, finalement, presque rien déplacé.</p>
+
+      <div class="reflection-sig">— Fin du chapitre I.</div>
+    </div>
+  </div>
+</section>
+
+<!-- NAVIGATION -->
+<section class="chapter-nav">
+  <div class="chapter-nav-wrap">
+    <a href="index.html" class="nav-card">
+      <div class="nav-direction">← Retour</div>
+      <div class="nav-chapter-num">Couverture</div>
+      <div class="nav-chapter-title">Sommaire & préambule</div>
+    </a>
+    <a href="02-decennie-revelatrice.html" class="nav-card next">
+      <div class="nav-direction">Suivant →</div>
+      <div class="nav-chapter-num">Chapitre II</div>
+      <div class="nav-chapter-title">La décennie <em>révélatrice</em> · 1985 — 2000</div>
+    </a>
+  </div>
+</section>
+
+<footer class="footer-mini">
+  <p>L'État impuni · Chapitre I/V · <a href="index.html">↑ Retour à la couverture</a></p>
+</footer>
+
+</body>
+</html>

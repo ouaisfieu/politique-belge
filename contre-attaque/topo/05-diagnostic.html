@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>V. Le diagnostic — L'État impuni</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* Spécifiques au chapitre V */
+.pattern-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 6vw 5vw;
+}
+.pattern-card {
+  background: var(--paper);
+  border: 1px solid var(--rule-strong);
+  padding: 36px;
+  position: relative;
+  transition: all 0.4s ease;
+}
+.pattern-card:hover {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.pattern-card:hover .pattern-num { color: var(--gold); }
+.pattern-card:hover .pattern-title { color: var(--paper); }
+.pattern-card:hover .pattern-text { color: rgba(242, 238, 227, 0.85); }
+.pattern-num {
+  font-family: 'Fraunces', serif;
+  font-weight: 200;
+  font-size: 84px;
+  line-height: 0.85;
+  color: var(--blood);
+  font-style: italic;
+  font-variation-settings: "opsz" 144;
+  margin-bottom: 16px;
+  transition: color 0.4s ease;
+}
+.pattern-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  font-variation-settings: "opsz" 144;
+  transition: color 0.4s ease;
+}
+.pattern-title em { color: var(--blood); font-style: italic; }
+.pattern-card:hover .pattern-title em { color: var(--gold); }
+.pattern-text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  transition: color 0.4s ease;
+}
+.pattern-affairs {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+.pattern-card:hover .pattern-affairs {
+  border-top-color: rgba(242, 238, 227, 0.2);
+  color: var(--gold);
+}
+
+/* GRECO bar chart */
+.greco-section {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 8vw 5vw;
+}
+.greco-wrap { max-width: 1400px; margin: 0 auto; }
+.greco-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.greco-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(32px, 5vw, 60px);
+  line-height: 1.05;
+  margin-bottom: 56px;
+  font-variation-settings: "opsz" 144;
+  max-width: 1000px;
+}
+.greco-title em { font-style: italic; color: var(--gold); }
+.greco-bars {
+  display: grid;
+  gap: 32px;
+  margin-bottom: 56px;
+}
+.greco-bar {
+  display: grid;
+  grid-template-columns: 280px 1fr 100px;
+  gap: 24px;
+  align-items: center;
+}
+.greco-bar-label {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3;
+}
+.greco-bar-label small {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 400;
+  color: rgba(242, 238, 227, 0.5);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+.greco-bar-track {
+  height: 32px;
+  background: rgba(242, 238, 227, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+.greco-bar-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: var(--gold);
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--ink);
+  font-weight: 700;
+}
+.greco-bar-fill.low { background: var(--blood); color: var(--paper); }
+.greco-bar-value {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 1;
+  font-variation-settings: "opsz" 144;
+  text-align: right;
+}
+.greco-bar-value em { font-style: italic; color: var(--gold); }
+.greco-note {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 16px;
+  color: rgba(242, 238, 227, 0.65);
+  max-width: 800px;
+  line-height: 1.5;
+}
+
+/* Recommandations */
+.reco-section { padding: 8vw 5vw; max-width: 1400px; margin: 0 auto; }
+.reco-header {
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 24px;
+  margin-bottom: 56px;
+}
+.reco-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--blood);
+  margin-bottom: 14px;
+}
+.reco-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 144;
+}
+.reco-title em { font-style: italic; color: var(--blood); }
+.reco-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4vw;
+}
+.reco-block { }
+.reco-block h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.2;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--rule-strong);
+  font-variation-settings: "opsz" 144;
+}
+.reco-block h3 em { color: var(--blood); font-style: italic; }
+.reco-list {
+  list-style: none;
+  display: grid;
+  gap: 24px;
+}
+.reco-item {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+.reco-bullet {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 0.9;
+  font-style: italic;
+  color: var(--gold);
+  font-variation-settings: "opsz" 144;
+}
+.reco-item-text {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.reco-item-text strong { color: var(--ink); font-weight: 600; }
+
+/* Failles non corrigées */
+.failles-list {
+  background: var(--paper-dark);
+  padding: 8vw 5vw;
+}
+.failles-wrap { max-width: 1400px; margin: 0 auto; }
+.failles-item {
+  display: grid;
+  grid-template-columns: 60px 1fr 200px;
+  gap: 32px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: baseline;
+}
+.failles-num {
+  font-family: 'Fraunces', serif;
+  font-weight: 200;
+  font-size: 40px;
+  line-height: 1;
+  font-style: italic;
+  color: var(--blood);
+  font-variation-settings: "opsz" 144;
+}
+.failles-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.2;
+  font-variation-settings: "opsz" 144;
+}
+.failles-title small {
+  display: block;
+  font-family: 'Source Serif 4', serif;
+  font-weight: 400;
+  font-size: 15px;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+.failles-status {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blood);
+  text-align: right;
+}
+
+/* Final */
+.final-section {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 10vw 5vw;
+  position: relative;
+}
+.final-wrap { max-width: 900px; margin: 0 auto; }
+.final-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+.final-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(40px, 6vw, 80px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 56px;
+  font-variation-settings: "opsz" 144;
+}
+.final-title em { color: var(--gold); }
+.final-body {
+  font-size: 21px;
+  line-height: 1.75;
+  color: rgba(242, 238, 227, 0.9);
+}
+.final-body p { margin-bottom: 1.5em; }
+.final-body p:first-of-type::first-letter {
+  font-family: 'Fraunces', serif;
+  font-weight: 200;
+  font-size: 7em;
+  line-height: 0.85;
+  float: left;
+  padding: 10px 16px 0 0;
+  color: var(--gold);
+  font-variation-settings: "opsz" 144;
+}
+.final-body strong { color: var(--paper); font-weight: 500; }
+.final-body em { font-style: italic; color: var(--gold); }
+.final-body .blood { color: var(--blood); }
+.final-sig {
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(242, 238, 227, 0.2);
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 16px;
+  color: rgba(242, 238, 227, 0.6);
+}
+
+/* Caveats */
+.caveats {
+  background: var(--paper-dark);
+  padding: 5vw;
+  border-top: 1px solid var(--rule);
+}
+.caveats-wrap { max-width: 1100px; margin: 0 auto; }
+.caveats h3 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-bottom: 24px;
+}
+.caveats ul { list-style: none; }
+.caveats li {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  padding: 10px 0 10px 24px;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+}
+.caveats li::before {
+  content: '※';
+  position: absolute;
+  left: 0;
+  color: var(--blood);
+}
+.caveats li strong { color: var(--ink); }
+
+@media (max-width: 900px) {
+  .pattern-grid { grid-template-columns: 1fr; gap: 16px; padding: 8vw 5vw; }
+  .pattern-card { padding: 24px; }
+  .pattern-num { font-size: 60px; }
+  .greco-bar { grid-template-columns: 1fr; gap: 8px; }
+  .greco-bar-value { text-align: left; font-size: 28px; }
+  .reco-grid { grid-template-columns: 1fr; gap: 48px; }
+  .failles-item { grid-template-columns: 40px 1fr; gap: 16px; }
+  .failles-num { font-size: 28px; }
+  .failles-status { grid-column: 1 / -1; text-align: left; }
+  .final-body { font-size: 18px; }
+  .final-body p:first-of-type::first-letter { font-size: 5em; }
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-left">
+    <a href="index.html"><div class="masthead-mark">É</div></a>
+    <div class="masthead-title">L'État Impuni · Ch. V</div>
+  </div>
+  <div class="masthead-progress">
+    <span class="progress-dot done"></span>
+    <span class="progress-dot done"></span>
+    <span class="progress-dot done"></span>
+    <span class="progress-dot done"></span>
+    <span class="progress-dot done"></span>
+    <span class="progress-dot active"></span>
+  </div>
+</header>
+
+<section class="chapter-hero">
+  <div class="chapter-hero-bg">V</div>
+  <div class="chapter-hero-wrap">
+    <div class="chapter-tag-big">Chapitre V sur V · Le diagnostic</div>
+    <div class="chapter-num-display">V</div>
+    <h1 class="chapter-title-big">Ce que ces scandales nous disent — et ce qu'il faudrait, vraiment, en <em>faire</em></h1>
+    <dl class="chapter-meta-big">
+      <div><dt>Format</dt><dd>Synthèse réflexive</dd></div>
+      <div><dt>Contenu</dt><dd>6 patterns · GRECO · failles · recommandations</dd></div>
+      <div><dt>Question finale</dt><dd>Cette démocratie est-elle réparable de l'intérieur ?</dd></div>
+      <div><dt>Temps de lecture</dt><dd>≈ 18 minutes</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="prologue">
+  <div class="prologue-grid">
+    <aside class="prologue-sidebar">
+      <div class="prologue-label">Préambule</div>
+      <div class="prologue-meta">Synthèse des 4 chapitres<br>précédents<br>≈ 4 min</div>
+    </aside>
+    <div class="prologue-body">
+      <p>Nous arrivons au bout du parcours. Cinq affaires actuelles (chapitre I), neuf affaires des années 1985-2000 (chapitre II), cinq dossiers d'impunité longue (chapitre III), et le crime fondateur colonial (chapitre IV). <strong>Plus de vingt dossiers majeurs documentés sur 140 ans</strong>. Une chronologie inversée qui montre, pour qui la lit d'une traite, une remarquable continuité de la grammaire institutionnelle belge — depuis Léopold II jusqu'à l'affaire Reynders en passant par Dutroux, Agusta, Calice, Publifin et Chovanec.</p>
+
+      <p>Ce chapitre final n'ajoute pas de nouveau dossier. Il fait la synthèse de ce que nous avons appris. Et il prend position. Six patterns récurrents structurent, à notre sens, l'ensemble de la matière. Nous les présentons d'abord, en les renvoyant systématiquement aux affaires concrètes qui les illustrent. Puis nous comparons la Belgique à ses voisins européens à partir du rapport GRECO de mai 2024 — le diagnostic indépendant le plus récent disponible. Nous listons ensuite les huit failles structurelles que la Belgique <em>n'a pas corrigées</em>, malgré toutes les commissions d'enquête. Nous formulons enfin des recommandations concrètes — à dix ans, à cinq ans, à un an — pour que ce dossier ne soit pas qu'un constat.</p>
+
+      <p>Le chapitre se termine par une question, qui est aussi notre conclusion. <em>Cette démocratie est-elle réparable de l'intérieur ?</em> Nous avons une réponse. Elle n'est ni cynique, ni naïve. Vous la lirez à la fin.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6 PATTERNS -->
+<section style="padding: 6vw 5vw 0; max-width: 1400px; margin: 0 auto;">
+  <div style="border-bottom: 2px solid var(--ink); padding-bottom: 24px; margin-bottom: 16px;">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--blood); margin-bottom: 14px;">Première partie</div>
+    <h2 style="font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(36px, 5vw, 64px); line-height: 1; letter-spacing: -0.02em; font-variation-settings: 'opsz' 144;">Les six <em style="color: var(--blood); font-style: italic;">patterns</em> récurrents</h2>
+  </div>
+</section>
+
+<div class="pattern-grid">
+  <div class="pattern-card">
+    <div class="pattern-num">01</div>
+    <div class="pattern-title">L'opacité des structures <em>parastatales</em></div>
+    <div class="pattern-text">Intercommunales, ASBL communales, CPAS, organismes pararégionaux. Zone grise institutionnelle où le droit privé masque l'origine publique des fonds. La Cour des comptes n'y a qu'un droit de regard limité. Quand l'État belge invente une structure hybride, elle finit toujours par servir à capter de l'argent public.</div>
+    <div class="pattern-affairs">INUSOP · Carolorégienne · Publifin · Samusocial</div>
+  </div>
+
+  <div class="pattern-card">
+    <div class="pattern-num">02</div>
+    <div class="pattern-title">L'impunité par <em>épuisement procédural</em></div>
+    <div class="pattern-text">Cinq techniques différentes pour qu'une enquête ne débouche jamais sur sanction : prescription, transaction pénale, annulation pour vice de procédure, non-lieu prolongé, extinction de l'action publique. Le droit belge offre, aux défendeurs riches et bien conseillés, une palette d'issues sans condamnation.</div>
+    <div class="pattern-affairs">KB-Lux · Fortis · Kazakhgate · Calice · Brabant</div>
+  </div>
+
+  <div class="pattern-card">
+    <div class="pattern-num">03</div>
+    <div class="pattern-title">La <em>transaction pénale</em> comme institution de classe</div>
+    <div class="pattern-text">Étendue par la loi Chodiev de 2011 — votée deux mois avant que Chodiev paie 23 millions et évite son procès — la transaction pénale permet aux personnes morales et physiques disposant des ressources d'éteindre l'action publique. ING (1,6 M€) l'utilise en 2026 pour solder le dossier Reynders.</div>
+    <div class="pattern-affairs">Chodiev 2011 · Milquet · Mampaka · ING 2026 · Moreau 2025</div>
+  </div>
+
+  <div class="pattern-card">
+    <div class="pattern-num">04</div>
+    <div class="pattern-title">L'<em>amnésie d'État</em> organisée</div>
+    <div class="pattern-text">Trois techniques générationnelles. Léopold détruit les archives en 1908. La loi du 3 mai 1880 scelle pour toujours les témoignages des commissions parlementaires. En 2022, le MR et l'Open VLD quittent la session pour empêcher le vote des excuses pour la colonisation. Chaque époque invente sa forme d'oubli.</div>
+    <div class="pattern-affairs">Léopold · Lumumba · Commission Passé colonial</div>
+  </div>
+
+  <div class="pattern-card">
+    <div class="pattern-num">05</div>
+    <div class="pattern-title">L'extrême droite <em>tolérée</em> dans l'appareil sécuritaire</div>
+    <div class="pattern-text">Westland New Post infiltré par la Sûreté de l'État dans les années 1980 (Tueurs du Brabant). Pistes Gladio jamais creusées. Salut nazi par une policière dans l'affaire Chovanec en 2018. La permissivité historique à l'égard de militants d'extrême droite dans les forces sécuritaires n'a jamais été pleinement traitée.</div>
+    <div class="pattern-affairs">Brabant · CCC · WNP · Chovanec</div>
+  </div>
+
+  <div class="pattern-card">
+    <div class="pattern-num">06</div>
+    <div class="pattern-title">L'absence d'<em>accountability ministérielle</em></div>
+    <div class="pattern-text">Quelques démissions rituelles (Vande Lanotte/De Clerck en 1998, Colla/Pinxten en 1999, Leterme en 2008) ne masquent pas l'absence quasi totale de suites pénales contre les ministres en cause. Reynders, après 12 ans aux Finances, reste libre malgré son inculpation. Jambon n'a jamais répondu sur Chovanec.</div>
+    <div class="pattern-affairs">Dutroux 1998 · Dioxine 1999 · Fortis 2008 · Reynders 2026</div>
+  </div>
+</div>
+
+<!-- TRANSITION -->
+<section class="reflection" style="padding-top: 6vw;">
+  <div class="reflection-wrap">
+    <p class="reflection-eyebrow">— observation à mi-chapitre —</p>
+    <h2>Six patterns. <em>Aucun</em> n'est idéologique.</h2>
+    <div class="reflection-body">
+      <p>Avant de continuer, une observation qui nous semble cruciale pour le grand public. Les six patterns que nous venons d'identifier ne traversent pas, contrairement à ce que la presse politique laisse parfois entendre, la frontière gauche/droite. Le PS francophone est massivement présent dans le pattern n°1 (parastatales) — c'est documenté de Cools à Moreau. Mais le MR de Reynders incarne le pattern n°6 (absence d'accountability). La N-VA de Jambon valide le pattern n°5 (Chovanec). Le CD&V de Leterme a violé en 2008 la séparation des pouvoirs (Fortis). L'Open VLD a quitté la salle en 2022 pour empêcher les excuses coloniales.</p>
+
+      <p>Ces patterns ne traversent pas non plus la frontière linguistique. Anvers (3M-PFAS), Bruxelles (Samusocial, Qatargate, Reynders), Charleroi (Carolorégienne, Chovanec), Liège (Publifin, Cools). Flandre et francophonie sont également servies. L'extrême droite identitaire flamande (Vlaams Belang) n'a pas le monopole des sympathies pour les tueurs du Brabant ; et la particratie locale francophone n'a pas le monopole de la capture des structures parastatales.</p>
+
+      <p><strong>Le motif est structurel, pas politique.</strong> Il appartient à l'architecture institutionnelle plus qu'à ses occupants temporaires. C'est ce qui rend la situation à la fois plus rassurante (aucune force politique particulière n'est seule responsable) et plus inquiétante (aucune alternance ne suffira à la résoudre).</p>
+
+      <div class="reflection-sig">— Suite : la comparaison européenne.</div>
+    </div>
+  </div>
+</section>
+
+<!-- GRECO -->
+<section class="greco-section">
+  <div class="greco-wrap">
+    <div class="greco-label">Deuxième partie · La Belgique vue de l'extérieur</div>
+    <h2 class="greco-title">Le verdict <em>GRECO 2024</em> du Conseil de l'Europe</h2>
+    <div class="greco-bars">
+      <div class="greco-bar">
+        <div class="greco-bar-label">Recommandations 4ᵉ cycle<small>parlementaires · juges · procureurs</small></div>
+        <div class="greco-bar-track"><div class="greco-bar-fill low" style="width: 53%;">8 / 15</div></div>
+        <div class="greco-bar-value">53<em>%</em></div>
+      </div>
+      <div class="greco-bar">
+        <div class="greco-bar-label">Recommandations 5ᵉ cycle<small>gouvernement central · services répressifs</small></div>
+        <div class="greco-bar-track"><div class="greco-bar-fill low" style="width: 36%;">8 / 22</div></div>
+        <div class="greco-bar-value">36<em>%</em></div>
+      </div>
+      <div class="greco-bar">
+        <div class="greco-bar-label">Procédure de non-conformité<small>déclenchée en 2021 · toujours active</small></div>
+        <div class="greco-bar-track"><div class="greco-bar-fill" style="width: 100%; background: var(--blood); color: var(--paper);">ACTIVE</div></div>
+        <div class="greco-bar-value"><em>—</em></div>
+      </div>
+      <div class="greco-bar">
+        <div class="greco-bar-label">Lobbying régulé<small>au Parlement fédéral</small></div>
+        <div class="greco-bar-track"><div class="greco-bar-fill low" style="width: 5%;">NON</div></div>
+        <div class="greco-bar-value">0<em>%</em></div>
+      </div>
+      <div class="greco-bar">
+        <div class="greco-bar-label">Déclaration de patrimoine<small>des parlementaires · accessible</small></div>
+        <div class="greco-bar-track"><div class="greco-bar-fill low" style="width: 8%;">SECRÈTE</div></div>
+        <div class="greco-bar-value">0<em>%</em></div>
+      </div>
+    </div>
+    <p class="greco-note">Sources : Conseil de l'Europe, rapports d'évaluation du Groupe d'États contre la corruption (GRECO), 4ᵉ et 5ᵉ cycles, dernier rapport intermédiaire adopté en plénière le 22 mars 2024 et publié le 23 mai 2024. La Belgique se situe sur ces métriques en-dessous de la moyenne européenne occidentale et nettement derrière les pays scandinaves, l'Allemagne et les Pays-Bas. Le porte-parole du GRECO, Jaime Rodriguez Murphy, a annoncé un nouveau rapport intermédiaire pour novembre 2026.</p>
+  </div>
+</section>
+
+<!-- FAILLES NON CORRIGEES -->
+<section class="failles-list">
+  <div class="failles-wrap">
+    <div class="reco-header" style="border-bottom-color: var(--ink);">
+      <div class="reco-label">Troisième partie</div>
+      <h2 class="reco-title">Huit failles structurelles <em>non corrigées</em></h2>
+    </div>
+
+    <div class="failles-item">
+      <div class="failles-num">01</div>
+      <div class="failles-title">Pas de loi sur le <strong>lobbying</strong> au Parlement fédéral
+        <small>Alors qu'elle existe au Parlement européen depuis 2011, le Parlement fédéral belge n'a toujours pas de registre obligatoire des lobbyistes. Le Qatargate n'a rien changé.</small>
+      </div>
+      <div class="failles-status">Inaction · 2026</div>
+    </div>
+
+    <div class="failles-item">
+      <div class="failles-num">02</div>
+      <div class="failles-title">Déclaration de <strong>patrimoine</strong> secrète
+        <small>Les déclarations sont déposées à la Cour des comptes mais non rendues publiques. Reynders aurait sans doute été repéré plus tôt avec un dispositif transparent.</small>
+      </div>
+      <div class="failles-status">Inaction · 2026</div>
+    </div>
+
+    <div class="failles-item">
+      <div class="failles-num">03</div>
+      <div class="failles-title"><strong>Cabinets ministériels</strong> non régulés en taille ni en composition
+        <small>Vecteurs majeurs de capture d'État (Reynders/Fontinoy 2026, Mayeur/Glineur 2017, Pim Vanwalleghem détaché en 2008). Pas de plafonnement, pas de transparence des affectations.</small>
+      </div>
+      <div class="failles-status">Inaction · 2026</div>
+    </div>
+
+    <div class="failles-item">
+      <div class="failles-num">04</div>
+      <div class="failles-title"><strong>Cumul des mandats</strong> réformé mais maintenu pour les fonctions non-électives
+        <small>Conseils d'administration d'intercommunales, d'ASBL, de structures mixtes. Le cumul électif est plafonné ; le cumul para-public ne l'est pas vraiment.</small>
+      </div>
+      <div class="failles-status">Réforme partielle</div>
+    </div>
+
+    <div class="failles-item">
+      <div class="failles-num">05</div>
+      <div class="failles-title"><strong>Transaction pénale</strong> élargie maintenue malgré le scandale Chodiev
+        <small>Corrigée à la marge par la Cour constitutionnelle en 2016. Toujours opérationnelle pour des affaires économiques majeures. ING l'utilise en 2026 pour le dossier Reynders.</small>
+      </div>
+      <div class="failles-status">Inaction · 2026</div>
+    </div>
+
+    <div class="failles-item">
+      <div class="failles-num">06</div>
+      <div class="failles-title">Loi du <strong>3 mai 1880</strong> sur les enquêtes parlementaires
+        <small>Verrou perpétuel des huis clos qui empêche la justice d'accéder aux 200 cartons Lumumba. Texte vieux de 145 ans, jamais réformé pour permettre une levée du secret après dissolution.</small>
+      </div>
+      <div class="failles-status">Inaction · 1880-2026</div>
+    </div>
+
+    <div class="failles-item">
+      <div class="failles-num">07</div>
+      <div class="failles-title">Pas d'<strong>office indépendant anti-corruption</strong>
+        <small>L'OCRC (Office central pour la répression de la corruption) reste sous la tutelle de la police fédérale. Le GRECO recommande depuis le 4ᵉ cycle (2014) un organe à indépendance fonctionnelle renforcée.</small>
+      </div>
+      <div class="failles-status">Inaction · 2026</div>
+    </div>
+
+    <div class="failles-item">
+      <div class="failles-num">08</div>
+      <div class="failles-title"><strong>Question coloniale</strong> non soldée
+        <small>Pas d'excuses officielles votées. Pas de fonds de réparation. Restitution des biens culturels embryonnaire. Aucune commission de relais après l'expiration de Passé colonial le 31 décembre 2022.</small>
+      </div>
+      <div class="failles-status">Inaction · 2022-2026</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- RECOMMANDATIONS -->
+<section class="reco-section">
+  <div class="reco-header">
+    <div class="reco-label">Quatrième partie</div>
+    <h2 class="reco-title">Six <em>recommandations</em> concrètes</h2>
+  </div>
+  <div class="reco-grid">
+    <div class="reco-block">
+      <h3>À court terme <em>(2026-2027)</em></h3>
+      <ul class="reco-list">
+        <li class="reco-item">
+          <div class="reco-bullet">01</div>
+          <div class="reco-item-text"><strong>Créer la commission d'enquête parlementaire Reynders.</strong> Le refus de mai 2026 est intenable. Sans commission, le précédent est : un ex-commissaire UE peut être inculpé pour blanchiment sans que le Parlement examine les défaillances institutionnelles qui l'ont rendu possible.</div>
+        </li>
+        <li class="reco-item">
+          <div class="reco-bullet">02</div>
+          <div class="reco-item-text"><strong>Voter les excuses officielles pour la colonisation.</strong> La législature actuelle dispose d'une fenêtre pour reprendre les travaux de la commission Passé colonial expirée. La symbolique d'un vote en 2027 — 65 ans après l'assassinat de Lumumba — pèserait politiquement.</div>
+        </li>
+        <li class="reco-item">
+          <div class="reco-bullet">03</div>
+          <div class="reco-item-text"><strong>Publier la liste des transactions pénales conclues depuis 2011.</strong> Avec montants, infractions et défendeurs. La loi de 2016 impose une publicité partielle ; vérifier sa mise en œuvre effective. Sans ce suivi, l'opacité s'aggrave.</div>
+        </li>
+      </ul>
+    </div>
+    <div class="reco-block">
+      <h3>À moyen terme <em>(2028-2030)</em></h3>
+      <ul class="reco-list">
+        <li class="reco-item">
+          <div class="reco-bullet">04</div>
+          <div class="reco-item-text"><strong>Loi sur le lobbying et registre obligatoire.</strong> Calquée sur le modèle européen (Parlement UE 2011, Commission UE registre de transparence). Obligation de déclaration des rendez-vous ministériels et parlementaires avec lobbyistes accrédités.</div>
+        </li>
+        <li class="reco-item">
+          <div class="reco-bullet">05</div>
+          <div class="reco-item-text"><strong>Office indépendant anti-corruption.</strong> Sur le modèle français de l'Agence française anticorruption (AFA) ou roumain (DNA). Détachement de l'OCRC de la police fédérale, indépendance fonctionnelle, pouvoirs d'enquête propres, rattachement au Parlement plutôt qu'à l'exécutif.</div>
+        </li>
+        <li class="reco-item">
+          <div class="reco-bullet">06</div>
+          <div class="reco-item-text"><strong>Réforme de la loi du 3 mai 1880.</strong> Mécanisme automatique de levée du secret des enquêtes parlementaires après 30 ans pour les faits non personnels, ou après dissolution de la commission pour la justice. Le verrou Lumumba doit sauter.</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final-section">
+  <div class="final-wrap">
+    <div class="final-label">— conclusion personnelle —</div>
+    <h2 class="final-title">Cette démocratie est-elle <em>réparable</em> de l'intérieur ?</h2>
+    <div class="final-body">
+      <p>Nous voilà au bout. Et il faut bien répondre. Notre réponse n'est ni cynique ni naïve. La voici : <strong>oui, cette démocratie est réparable de l'intérieur — mais pas par la classe politique qui l'occupe actuellement</strong>. Nous avons documenté, sur 140 ans, l'incapacité structurelle des coalitions belges successives à réformer les six patterns que nous avons identifiés. Cette incapacité n'est pas conjoncturelle. Elle tient à la matrice : les partis qui devraient réformer les structures parastatales sont précisément ceux qui en bénéficient ; les cabinets ministériels qui devraient être régulés sont composés des hommes qui décideraient de cette régulation ; les commissions d'enquête qui devraient juger les ministres sont contrôlées par leurs partis de coalition. La réforme de l'intérieur, par le système lui-même, est un horizon que la chronologie de ce dossier rend, statistiquement, peu crédible.</p>
+
+      <p>Mais — et c'est le « mais » qui sauve la conclusion d'un pur fatalisme — <em>les marges existent</em>. Trois types d'acteurs ont, sur les quarante dernières années, produit des changements réels. <strong>D'abord</strong>, les commissions d'enquête parlementaires <em>quand elles sont dotées de pouvoirs effectifs et qu'elles travaillent en transversal aux coalitions</em> (Dutroux 1997, Kazakhgate 2018). <strong>Ensuite</strong>, la presse d'investigation indépendante — Le Vif révélant Publifin et Samusocial, RTBF documentant le Qatargate, la VRT diffusant Godvergeten et l'affaire Chovanec, Médor enquêtant sur Reynders. C'est elle qui ouvre, à chaque génération, les dossiers que le politique préférerait fermer. <strong>Enfin</strong>, les juridictions <span class="blood">extérieures</span> : la CEDH, qui a déjà condamné la Belgique sur INUSOP et est saisie sur Chovanec ; le GRECO du Conseil de l'Europe, dont les rapports publics constituent l'évaluation indépendante la plus précise dont nous disposions ; et les juridictions européennes qui ont, dans l'affaire Kaili, contredit le Parlement européen.</p>
+
+      <p>Notre lecture finale est donc la suivante. L'État belge ne se réformera pas spontanément — la chronologie de 140 ans est sans appel à cet égard. Il se réforme quand <em>plusieurs forces extérieures ou marginales</em> exercent une pression simultanée et soutenue : presse indépendante, opinion publique mobilisée (la Marche blanche de 1996 reste le précédent), instances internationales (GRECO, CEDH, UE), et — c'est nouveau — commissaires européens et autorités judiciaires d'autres États (Slovaquie sur Chovanec, EPPO sur Qatargate). Ces forces existent. Elles produisent, déjà, des effets. Le procès Samusocial qui s'ouvrira après le renvoi de février 2026, la transaction pénale ING au maximum légal en mai 2026, l'inculpation pour crimes de guerre d'Étienne Davignon en juin 2025 — toutes ces avancées sont récentes. Aucune n'aurait eu lieu sans la combinaison de ces pressions extérieures.</p>
+
+      <p>Le rôle du citoyen, dans cette configuration, n'est <strong>ni de désespérer</strong> — la chronologie suggère le désespoir mais l'actualité montre des fissures réelles dans la machine — <strong>ni de se contenter de voter</strong> — l'alternance électorale, en 140 ans, n'a réformé que ce qu'elle a été forcée de réformer. C'est de <em>soutenir</em> les contre-pouvoirs : la presse d'investigation par ses abonnements, les associations de défense des droits par sa participation, les commissions parlementaires sérieuses par sa pression, les instances européennes par son vote européen, et — quand l'occasion se présente — les marches blanches modernes par sa présence. <strong>Le système ne se répare pas tout seul. Il se répare quand on l'oblige à se réparer.</strong></p>
+
+      <p>Ce dossier n'aura pas de suite immédiate sur ce site. Mais il aura, sans doute, une suite ailleurs. Une autre affaire éclatera. Vous saurez, désormais, comment la lire — non comme une anomalie, mais comme un symptôme. Et vous saurez, surtout, ce qu'il faut en exiger : commission d'enquête transversale, refus des transactions pénales pour les puissants, transparence du patrimoine, accès des juges aux archives, réforme des structures parastatales, et confrontation honnête au passé colonial. Six exigences. <em>Ce sont les nôtres. Elles peuvent devenir les vôtres.</em></p>
+
+      <div class="final-sig">— La rédaction, Bruxelles, 27 mai 2026. Fin du dossier.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CAVEATS -->
+<section class="caveats">
+  <div class="caveats-wrap">
+    <h3>Méthodologie & avertissements</h3>
+    <ul>
+      <li><strong>Estimations chiffrées coloniales.</strong> La fourchette des morts du Congo Free State (1 million à 15 millions) reste académiquement contestée. La médiane consensuelle (5 à 10 millions, soit ~50 % de la population) est mobilisée ici en notant l'incertitude. Sources principales : Hochschild 1998, Van Reybrouck 2010, Vansina.</li>
+      <li><strong>Affaires en cours.</strong> Reynders, Chovanec (saisie CEDH), Lumumba/Davignon, Qatargate/Kaili, Samusocial restent juridiquement non-tranchées en mai 2026. Les conclusions définitives peuvent varier.</li>
+      <li><strong>Biais des sources.</strong> La presse belge de qualité (Le Soir, La Libre, RTBF, Knack, De Standaard, Médor, Apache) est très majoritairement représentée. L'historiographie coloniale néerlandophone (Van Reybrouck) tend à être plus mesurée que l'anglophone (Hochschild) ; les chiffres choisis ici incluent les deux gammes.</li>
+      <li><strong>Présomption d'innocence.</strong> Les personnes inculpées et non condamnées définitivement (Reynders, Kaili, Tarabella, Mayeur, Peraïta, Moreau, Fornieri, Davignon, etc.) sont présumées innocentes jusqu'à condamnation. Ce dossier décrit des faits sourcés et des défaillances institutionnelles, il ne désigne pas de coupables que la justice n'a pas désignés.</li>
+      <li><strong>Périmètre.</strong> Cette synthèse omet plusieurs affaires significatives mais secondaires (Inforama, Sabena 2001, affaires de l'aile diplomatique, dérives universitaires, etc.) faute d'espace ; elle privilégie les cas révélateurs des failles systémiques.</li>
+      <li><strong>Position éditoriale.</strong> Le ton analytique est assumé. Nous avons fait le choix d'écrire avec une voix identifiable et de tirer des conclusions explicites — encadrées comme « Notre lecture » dans le texte. Le lecteur peut les contester ; les faits qui les précèdent sont sourcés et vérifiables.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="chapter-nav">
+  <div class="chapter-nav-wrap">
+    <a href="04-crime-fondateur.html" class="nav-card">
+      <div class="nav-direction">← Précédent</div>
+      <div class="nav-chapter-num">Chapitre IV</div>
+      <div class="nav-chapter-title">Le crime <em>fondateur</em></div>
+    </a>
+    <a href="index.html" class="nav-card next">
+      <div class="nav-direction">↑ Retour</div>
+      <div class="nav-chapter-num">Couverture</div>
+      <div class="nav-chapter-title">Sommaire & <em>préambule</em></div>
+    </a>
+  </div>
+</section>
+
+<footer class="footer-mini">
+  <p>L'État impuni · Chapitre V/V · Fin du dossier · <a href="index.html">↑ Retour à la couverture</a></p>
+</footer>
+
+</body>
+</html>
