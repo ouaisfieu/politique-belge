@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>On s'habitue à tout — Petit manuel de réveil pour Belges fatigués d'avance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:opsz,wght@10..72,400..900&family=Crimson+Pro:ital,wght@0,300..600;1,300..500&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0c0d;
+    --bg2:#131214;
+    --ink:#f0eadd;
+    --ink-dim:#bdb6a6;
+    --mute:#857e6f;
+    --faint:#5c5648;
+    --line:#2a2826;
+    --red:#ff362a;
+    --red-dk:#cc2018;
+    --bone:#f0eadd;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Crimson Pro",Georgia,serif;font-size:21px;line-height:1.66;font-weight:380;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.55;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E")}
+  ::selection{background:var(--red);color:#0c0c0d}
+  a{color:var(--red)}
+
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;background:var(--red)}
+
+  .z{position:relative;z-index:2}
+  .col{max-width:680px;margin:0 auto;padding:0 26px}
+
+  /* HERO */
+  header{position:relative;z-index:2;padding:14vh 0 8vh;text-align:center}
+  .kick{font-family:"DM Mono",monospace;font-size:12px;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--red);margin-bottom:26px}
+  h1{font-family:"Big Shoulders Display",sans-serif;font-weight:800;text-transform:uppercase;
+    font-size:clamp(3.6rem,15vw,9.5rem);line-height:.82;letter-spacing:.01em;margin:0;color:var(--bone)}
+  h1 .b{display:block}
+  h1 .red{color:var(--red)}
+  .hsub{font-family:"Crimson Pro",serif;font-style:italic;font-weight:300;
+    font-size:clamp(1.15rem,2.6vw,1.5rem);color:var(--ink-dim);max-width:30ch;margin:34px auto 0;line-height:1.4}
+  .scroll{margin-top:48px;font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--mute);animation:pulse 2.6s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+
+  section{padding:46px 0 8px}
+  .ey{font-family:"DM Mono",monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:6px}
+  h2{font-family:"Big Shoulders Display",sans-serif;font-weight:700;text-transform:uppercase;
+    font-size:clamp(2rem,6vw,3.4rem);line-height:.94;letter-spacing:.01em;margin:.1em 0 .5em;color:var(--bone)}
+  p{margin:0 0 1.15em;color:var(--ink-dim)}
+  p strong{color:var(--ink);font-weight:600}
+  em{font-style:italic}
+  .big{font-size:1.3rem;line-height:1.5;color:var(--ink)}
+  .big::first-letter{font-family:"Big Shoulders Display",sans-serif;font-weight:800;float:left;
+    font-size:4.6rem;line-height:.66;padding:.06em .12em 0 0;color:var(--red)}
+
+  /* full-bleed red smash bands */
+  .smash{background:var(--red);color:#0c0c0d;margin:54px 0;padding:64px 0;position:relative;z-index:2}
+  .smash .col{max-width:760px}
+  .smash .l{font-family:"DM Mono",monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    color:#5c0a05;margin-bottom:16px}
+  .smash blockquote{margin:0;border:0;padding:0;
+    font-family:"Big Shoulders Display",sans-serif;font-weight:800;text-transform:uppercase;
+    font-size:clamp(2rem,7vw,4rem);line-height:.96;letter-spacing:.005em;color:#0c0c0d}
+  .smash .src{display:block;margin-top:20px;font-family:"DM Mono",monospace;font-size:12px;
+    text-transform:none;letter-spacing:.02em;color:#5c0a05;font-weight:500}
+
+  /* fact blocks */
+  .fact{border-top:1px solid var(--line);padding:30px 0 6px}
+  .fact .num{font-family:"Big Shoulders Display",sans-serif;font-weight:800;
+    font-size:clamp(3rem,12vw,6rem);line-height:.8;color:var(--red);letter-spacing:.01em}
+  .fact .num small{font-size:.34em;color:var(--ink);vertical-align:baseline;font-weight:700}
+  .fact h3{font-family:"Big Shoulders Display",sans-serif;font-weight:700;text-transform:uppercase;
+    font-size:1.5rem;margin:.3em 0 .35em;color:var(--bone);letter-spacing:.01em;line-height:1}
+  .fact p{font-size:1rem;margin:0 0 .8em}
+  .check{display:inline-block;font-family:"DM Mono",monospace;font-size:12px;color:var(--ink);
+    border:1px solid var(--line);border-left:3px solid var(--red);padding:8px 12px;margin-top:4px;line-height:1.5}
+  .check b{color:var(--red)}
+
+  blockquote.q{margin:36px 0;padding:4px 0 4px 26px;border-left:3px solid var(--red);
+    font-family:"Crimson Pro",serif;font-style:italic;font-weight:300;font-size:1.5rem;line-height:1.32;color:var(--bone)}
+  blockquote.q cite{display:block;font-style:normal;font-family:"DM Mono",monospace;font-size:11px;
+    color:var(--mute);margin-top:14px;letter-spacing:.03em}
+
+  hr.r{border:0;height:1px;background:var(--line);margin:8px 0 0}
+
+  /* act list */
+  .acts{list-style:none;margin:24px 0;padding:0;counter-reset:a}
+  .acts li{counter-increment:a;position:relative;padding:20px 0 20px 64px;border-bottom:1px solid var(--line)}
+  .acts li:last-child{border-bottom:0}
+  .acts li::before{content:counter(a);position:absolute;left:0;top:16px;
+    font-family:"Big Shoulders Display",sans-serif;font-weight:800;font-size:2.6rem;color:var(--red);line-height:1}
+  .acts h4{font-family:"Big Shoulders Display",sans-serif;font-weight:700;text-transform:uppercase;
+    font-size:1.25rem;margin:0 0 .25em;color:var(--bone);letter-spacing:.01em}
+  .acts p{font-size:.98rem;margin:0;color:var(--ink-dim)}
+
+  footer{position:relative;z-index:2;border-top:1px solid var(--line);margin-top:30px;background:#0a0a0b}
+  .fwrap{max-width:680px;margin:0 auto;padding:42px 26px 72px}
+  .coda{font-family:"Big Shoulders Display",sans-serif;font-weight:800;text-transform:uppercase;
+    font-size:clamp(1.8rem,6vw,3rem);line-height:.96;color:var(--bone);text-align:center;margin:0 0 26px}
+  .coda .red{color:var(--red)}
+  .note{font-family:"DM Mono",monospace;font-size:12px;color:var(--mute);line-height:1.8}
+  .note b{color:var(--ink-dim)}
+  .navlink{font-family:"DM Mono",monospace;font-size:11.5px;color:var(--faint);margin-top:22px;line-height:1.8}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.scroll{animation:none}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="z">
+  <div class="col">
+    <div class="kick">Dossier critique · 4ᵉ volet · à lire si vous avez baissé les bras</div>
+    <h1><span class="b">On s'habitue</span><span class="b red">à tout</span></h1>
+    <p class="hsub">Et c'est exactement le problème. Petit manuel de réveil, pour Belges fatigués d'avance.</p>
+    <div class="scroll">↓ ça ne prend que cinq minutes</div>
+  </div>
+</header>
+
+<div class="z">
+
+  <section>
+    <div class="col reveal">
+      <p class="big">Vous avez déjà tout entendu. «&nbsp;La politique est pourrie.&nbsp;» «&nbsp;Ils sont tous pareils.&nbsp;» «&nbsp;Ça ne changera jamais.&nbsp;» Vous le dites parfois vous-même, en haussant les épaules, en passant à autre chose. Ce haussement d'épaules&nbsp;: c'est exactement ce qu'on attend de vous. C'est même, d'une certaine manière, la plus grande réussite du système. Un peuple qui s'indigne, on doit le calmer. Un peuple qui s'est résigné, on n'a plus rien à lui expliquer.</p>
+      <p>Alors ce texte ne va pas vous indigner. Il va faire pire&nbsp;: il va vous donner trois faits que vous pouvez vérifier vous-même, ce soir, sur votre téléphone. Pas des opinions. Pas des «&nbsp;on dit&nbsp;». Des faits constatés par des juges, par des institutions que l'État belge a lui-même créées. Et quand vous les aurez vérifiés, vous ne pourrez plus dire «&nbsp;je ne savais pas&nbsp;».</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="col reveal">
+      <div class="ey">Fait nº 1 — vérifiable en 30 secondes</div>
+      <div class="fact">
+        <div class="num">des milliers</div>
+        <h3>de jugements que l'État refuse d'appliquer</h3>
+        <p>Des tribunaux belges ont ordonné à l'État d'héberger des demandeurs d'asile. L'État ne l'a pas fait — des milliers de fois. Pas par manque d'argent&nbsp;: il a préféré payer des amendes, des <em>centaines de millions d'euros</em> d'amendes, plutôt qu'obéir. À un moment, des huissiers sont entrés dans des bâtiments publics pour <strong>saisir le mobilier de l'État afin de payer les dettes de l'État.</strong></p>
+        <p>Ce n'est pas moi qui le dis. C'est la Cour européenne des droits de l'homme, qui a employé deux mots&nbsp;: «&nbsp;carence systémique&nbsp;». Et l'Institut fédéral des droits humains — un organe officiel belge — qui les a comptés.</p>
+        <span class="check">Cherchez vous-même&nbsp;: <b>«&nbsp;Camara Belgique CEDH&nbsp;»</b></span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="col reveal">
+      <div class="ey">Fait nº 2 — vérifiable en 30 secondes</div>
+      <div class="fact">
+        <div class="num">6 <small>/ 22</small></div>
+        <h3>la note de l'État sur la lutte anticorruption</h3>
+        <p>Le Conseil de l'Europe a un organe qui surveille la corruption&nbsp;: le GRECO. La Belgique a <strong>aidé à le fonder.</strong> Sur 22 mesures que cet organe lui demande d'appliquer, la Belgique en a pleinement mis en œuvre <strong>six.</strong> Depuis des années. Au point que la procédure de sanction a été enclenchée — celle qui n'a, jusqu'ici, frappé qu'un seul autre pays&nbsp;: la Biélorussie.</p>
+        <p>Lisez bien&nbsp;: ce ne sont pas des règles imposées de l'extérieur. Ce sont des règles que la Belgique a contribué à écrire — et qu'elle refuse de s'appliquer à elle-même.</p>
+        <span class="check">Cherchez vous-même&nbsp;: <b>«&nbsp;GRECO Belgique non-conformité&nbsp;»</b></span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="col reveal">
+      <div class="ey">Fait nº 3 — vérifiable en 30 secondes</div>
+      <div class="fact">
+        <div class="num">99,7 <small>%</small></div>
+        <h3>la «&nbsp;liberté&nbsp;» de votre élu</h3>
+        <p>La Constitution dit que votre député représente la Nation et vote selon sa conscience. La réalité&nbsp;: dans une majorité récente, les députés ont voté avec la consigne de leur parti <strong>99,7&nbsp;% du temps.</strong> Sur des centaines de lois. C'est statistiquement impossible si chacun pensait librement.</p>
+        <p>Autrement dit&nbsp;: la personne pour qui vous votez ne décide pas. Elle relaie. Les vraies décisions se prennent dans des réunions de chefs de parti que la Constitution ne mentionne même pas. Vous croyez choisir un représentant&nbsp;; vous choisissez un courroie de transmission.</p>
+        <span class="check">Cherchez vous-même&nbsp;: <b>«&nbsp;discipline de vote 99,73 % Belgique&nbsp;»</b></span>
+      </div>
+    </div>
+  </section>
+
+  <div class="smash z reveal">
+    <div class="col">
+      <div class="l">Et le plus beau, c'est ceci&nbsp;:</div>
+      <blockquote>Ils ont aussi arrangé les choses pour que vous ne puissiez même plus vous plaindre.</blockquote>
+      <span class="src">— accès au juge restreint, transparence votée puis vidée par exception. Volet III de ce dossier.</span>
+    </div>
+  </div>
+
+  <section>
+    <div class="col reveal">
+      <div class="ey">Pourquoi vous n'avez rien vu</div>
+      <h2>Ce n'est pas de la corruption de film</h2>
+      <p>Vous attendiez des valises de billets, des dictateurs, des fraudes spectaculaires. Il n'y en a pas — ou peu. Et c'est précisément pour ça que vous n'avez rien vu.</p>
+      <p>Ce qui se passe est <strong>légal d'apparence, poli, ennuyeux.</strong> On ne viole pas la loi&nbsp;: on la contourne. On ne ferme pas les tribunaux&nbsp;: on paie leurs amendes. On ne censure pas la transparence&nbsp;: on vote une loi de transparence avec une exception au bon endroit. On ne supprime pas votre droit de contester&nbsp;: on durcit discrètement les conditions pour le faire. Rien de tout cela ne fait un gros titre. Tout cela, mis bout à bout, fait une démocratie qui s'use.</p>
+      <p>Et ce n'est pas «&nbsp;la faute d'un parti&nbsp;». Tous les gouvernements, depuis des décennies, de toutes les couleurs, ont fait fonctionner la même machine. C'est ça, le vrai sujet&nbsp;: pas un coupable à élire contre, mais un système à regarder en face.</p>
+
+      <blockquote class="q">
+        On vous a appris à chercher le scandale. Pendant ce temps, c'est l'habitude qui vous gouverne.
+      </blockquote>
+    </div>
+  </section>
+
+  <div class="smash z reveal">
+    <div class="col">
+      <div class="l">Une vérité que personne ne vous dira</div>
+      <blockquote>Votre résignation n'est pas neutre. Elle est comptée. Elle est leur meilleur allié.</blockquote>
+    </div>
+  </div>
+
+  <section>
+    <div class="col reveal">
+      <div class="ey">Vous n'êtes pas seul à avoir lâché</div>
+      <h2>La résignation est déjà un parti</h2>
+      <p>Aux dernières élections, malgré le vote obligatoire, <strong>près d'un million et demi de Belges</strong> n'ont pas exprimé de choix valable&nbsp;: abstention, vote blanc, bulletin de refus. Ce n'est pas de la paresse. C'est un message. Mis ensemble, ces gens forment <strong>le deuxième «&nbsp;parti&nbsp;» du pays</strong> — le parti de ceux qui n'y croient plus.</p>
+      <p>Vous pensiez être seul dans votre coin à hausser les épaules&nbsp;? Vous êtes un million et demi. Le problème, c'est que le silence d'un million et demi de personnes ne pèse rien — alors que leur voix, organisée, pèserait tout. Le retrait ressemble à une protestation&nbsp;; c'est en réalité une démission. Et une démission, ça arrange exactement ceux que ça devrait inquiéter.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="col reveal">
+      <div class="ey">Ça vous concerne, vous</div>
+      <h2>Ce que ça coûte, vraiment</h2>
+      <p>Tout ceci semble lointain&nbsp;: l'asile, les institutions, les pourcentages. Mais c'est la même machine qui fait que des gens ayant <em>droit</em> à une aide ne la reçoivent pas&nbsp;: près d'<strong>un ayant droit sur deux</strong> ne touche pas le revenu d'intégration auquel il a droit. Que des personnes âgées ignorent une aide qui leur revient. Que des familles attendent des années un logement social pendant qu'on attribue des logements par des comités hors des règles.</p>
+      <p>Ce n'est pas «&nbsp;les autres&nbsp;». C'est votre voisin. C'est votre parent qui vieillit. C'est vous, le jour où vous tomberez malade, où vous perdrez un emploi, où vous aurez besoin que l'État tienne la promesse écrite dans ses lois. Une démocratie qui n'exécute pas ses propres jugements et n'ouvre pas ses propres droits, c'est une démocratie qui vous lâchera <em>au moment précis où vous compterez sur elle.</em></p>
+    </div>
+  </section>
+
+  <div class="smash z reveal">
+    <div class="col">
+      <div class="l">Maintenant, la seule chose qui compte</div>
+      <blockquote>Leur unique arme contre vous, c'est de vous avoir convaincu que c'est sans espoir.</blockquote>
+    </div>
+  </div>
+
+  <section>
+    <div class="col reveal">
+      <div class="ey">Le réveil — et il est concret</div>
+      <h2>Quatre gestes, ce mois-ci</h2>
+      <p>La résignation repose sur une fausse croyance&nbsp;: «&nbsp;on ne peut rien faire&nbsp;». C'est faux, et la preuve est belge. En 2023, <strong>60&nbsp;000 citoyens</strong> ont attaqué l'État pour son inaction climatique — et <em>ils ont gagné</em>&nbsp;: un juge a condamné l'État à agir. Ce que 60&nbsp;000 ont fait pour le climat, des citoyens peuvent le faire pour le reste. Voici par où commencer.</p>
+      <ul class="acts">
+        <li>
+          <h4>Vérifiez un fait — et brisez votre propre silence</h4>
+          <p>Tapez l'une des recherches de ce texte. Lisez. Puis dites-le à trois personnes. L'ignorance est la matière première du système&nbsp;; chaque personne qui sait est une perte pour lui.</p>
+        </li>
+        <li>
+          <h4>Posez une question, une seule</h4>
+          <p>À votre commune, à un·e parlementaire, par écrit&nbsp;: «&nbsp;combien de jugements l'État n'a-t-il pas exécutés&nbsp;? pourquoi&nbsp;?&nbsp;» Une question écrite oblige à une réponse écrite. C'est gratuit, c'est légal, et ça laisse une trace.</p>
+        </li>
+        <li>
+          <h4>Cessez de voter «&nbsp;par défaut&nbsp;» — ou de ne plus voter du tout</h4>
+          <p>Le retrait ne pèse rien&nbsp;; le vote informé pèse. Renseignez-vous sur qui, dans votre commune et votre région, défend réellement la transparence et l'exécution des jugements. Ce n'est pas une couleur&nbsp;; c'est une exigence.</p>
+        </li>
+        <li>
+          <h4>Rejoignez ce qui existe déjà</h4>
+          <p>Associations de défense des droits, actions collectives, collectifs citoyens. Seul, vous êtes désarmé — c'est conçu ainsi. Ensemble, vous êtes une partie qui a fait plier l'État devant un juge. La voix n'a de force qu'organisée.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="z">
+    <div class="fwrap reveal">
+      <p class="coda">Vous n'avez jamais été<br><span class="red">impuissant.</span><br>On vous a dit<br>que vous l'étiez.</p>
+      <p class="note">
+        <b>Ce texte ne vous demande pas de me croire.</b> Il vous demande de vérifier. Chaque fait avancé ici a été constaté par une juridiction, une institution publique ou une recherche universitaire&nbsp;; les termes de recherche sont fournis pour ça. Les chiffres sont donnés en ordres de grandeur, parce que les sources elles-mêmes varient — et qu'un fait n'a pas besoin d'être gonflé pour être grave.
+      </p>
+      <p class="note" style="margin-top:16px"><b>Et ne croyez pas non plus à la panique.</b> La Belgique n'est pas un régime autoritaire&nbsp;: ses juges sont libres, sa presse l'est, ses élections sont fiables. C'est justement pour ça qu'il est encore temps. Une démocratie qui s'use peut se ressaisir&nbsp;— mais seulement si ceux qui la composent cessent de croire que ce n'est pas leur affaire.</p>
+      <div class="navlink">
+        Volets précédents&nbsp;: I. L'illégalisme d'État · II. Défection · III. Au vitriol.<br>
+        Ceci est le quatrième. Le cinquième, c'est ce que vous en ferez.
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  const bar=document.getElementById('progress');
+  const onScroll=()=>{const h=document.documentElement;
+    bar.style.width=((h.scrollTop)/(h.scrollHeight-h.clientHeight)*100)+'%';};
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  const rev=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('in');rev.unobserve(e.target);}
+  }),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>rev.observe(el));
+</script>
+</body>
+</html>
