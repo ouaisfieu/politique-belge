@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Au vitriol — Autopsie d'un dossier et de l'État qu'il accuse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..700&family=Lora:ital,wght@0,400..600;1,400..500&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f1eee4;
+    --paper2:#e8e4d6;
+    --ink:#14130f;
+    --ink2:#33302a;
+    --mute:#6a6457;
+    --faint:#9a9384;
+    --line:#cbc3b0;
+    --red:#cf2417;       /* le stylo rouge */
+    --red-dk:#8f140b;
+    --blue:#1f4e6b;      /* annotation secondaire */
+    --shadow:rgba(20,19,15,.18);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Lora",Georgia,serif;font-size:19px;line-height:1.72;
+    -webkit-font-smoothing:antialiased}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.5;
+    mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E")}
+  ::selection{background:var(--red);color:#f1eee4}
+  a{color:var(--red-dk)}
+
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;background:var(--red)}
+
+  .wrap{position:relative;z-index:2;max-width:860px;margin:0 auto;padding:0 26px}
+
+  /* HERO */
+  header.hero{position:relative;z-index:2;max-width:860px;margin:0 auto;padding:74px 26px 22px}
+  .eyebrow{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--red);display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .eyebrow::after{content:"";flex:1;height:1px;background:var(--line);min-width:30px}
+  h1.title{font-family:"Bodoni Moda",serif;font-weight:900;font-size:clamp(3.4rem,11vw,7rem);
+    line-height:.9;letter-spacing:-.02em;margin:.2em 0 .15em}
+  h1.title .v{color:var(--red);font-style:italic;font-weight:700}
+  .sub{font-family:"Lora",serif;font-style:italic;font-size:clamp(1.1rem,2.4vw,1.45rem);
+    color:var(--ink2);max-width:44ch;line-height:1.45}
+  .stamp{display:inline-block;margin-top:26px;border:2.5px solid var(--red);color:var(--red);
+    font-family:"Space Mono",monospace;font-weight:700;font-size:12px;letter-spacing:.18em;
+    text-transform:uppercase;padding:8px 16px;transform:rotate(-3deg);border-radius:3px;
+    box-shadow:inset 0 0 0 1px var(--red)}
+  .meta{margin-top:26px;font-family:"Space Mono",monospace;font-size:12px;color:var(--mute);line-height:1.9}
+  .meta b{color:var(--ink)}
+
+  section{padding:34px 0 10px;scroll-margin-top:20px}
+  .sn{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.2em;color:var(--red);font-weight:700}
+  h2{font-family:"Bodoni Moda",serif;font-weight:800;font-size:clamp(1.8rem,4.6vw,2.7rem);
+    line-height:1.02;letter-spacing:-.01em;margin:.18em 0 .5em}
+  h3{font-family:"Bodoni Moda",serif;font-weight:700;font-size:1.32rem;margin:1.7em 0 .35em}
+  p{margin:0 0 1.12em}
+  .lead::first-letter{font-family:"Bodoni Moda",serif;font-weight:900;float:left;font-size:4.4rem;
+    line-height:.72;padding:.04em .1em 0 0;color:var(--red)}
+  strong{font-weight:600}
+  em{font-style:italic}
+  hr.r{border:0;height:1px;background:var(--line);margin:42px 0}
+  .small{font-size:.82em;color:var(--mute)}
+
+  /* strikethrough / corrigé effect */
+  .strike{text-decoration:line-through;text-decoration-color:var(--red);
+    text-decoration-thickness:2px;color:var(--mute)}
+  .ins{color:var(--red-dk);font-style:italic}
+
+  /* margin grievance markers */
+  .grief{position:relative;margin:30px 0;padding:22px 26px 18px 30px;background:#faf8f1;
+    border:1px solid var(--line);border-left:5px solid var(--red);box-shadow:0 14px 30px -26px var(--shadow)}
+  .grief .gid{position:absolute;top:-14px;left:18px;background:var(--red);color:#f7f4ec;
+    font-family:"Space Mono",monospace;font-weight:700;font-size:11px;letter-spacing:.12em;
+    padding:4px 11px;border-radius:2px}
+  .grief h4{font-family:"Bodoni Moda",serif;font-weight:700;font-size:1.18rem;margin:.2em 0 .4em}
+  .grief p{font-size:.95rem;margin:0 0 .7em} .grief p:last-child{margin-bottom:0}
+  .grief .verdict{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.04em;
+    color:var(--red-dk);border-top:1px dashed var(--line);padding-top:9px;margin-top:4px;display:block}
+
+  /* reflexive note (blue, self-directed) */
+  .me{margin:32px 0;padding:22px 26px 18px;background:#eef2f3;border:1px solid #b9cdd6;
+    border-left:5px solid var(--blue);border-radius:3px}
+  .me .tag{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--blue);font-weight:700;margin-bottom:9px}
+  .me p{font-size:.95rem;color:var(--ink2)} .me p:last-child{margin-bottom:0}
+
+  blockquote{margin:30px 0;padding:6px 0 6px 26px;border-left:4px solid var(--red);
+    font-family:"Bodoni Moda",serif;font-style:italic;font-weight:500;font-size:1.4rem;line-height:1.28}
+  blockquote cite{display:block;font-family:"Space Mono",monospace;font-style:normal;font-size:11px;
+    color:var(--mute);margin-top:13px;letter-spacing:.03em;line-height:1.6}
+
+  /* survivors / retired ledger */
+  .ledger{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:28px 0}
+  @media(max-width:640px){.ledger{grid-template-columns:1fr}}
+  .lc{border:1px solid var(--line);padding:22px;background:#faf8f1}
+  .lc.keep{border-top:4px solid var(--blue)} .lc.burn{border-top:4px solid var(--red)}
+  .lc h4{font-family:"Bodoni Moda",serif;font-size:1.12rem;margin:0 0 3px}
+  .lc.keep h4{color:var(--blue)} .lc.burn h4{color:var(--red)}
+  .lc .d{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-bottom:12px}
+  .lc ul{margin:0;padding:0;list-style:none}
+  .lc li{font-size:.88rem;color:var(--ink2);padding:8px 0 8px 18px;border-bottom:1px solid var(--line);position:relative}
+  .lc li:last-child{border-bottom:0;padding-bottom:0}
+  .lc li::before{position:absolute;left:0;top:7px;font-family:"Space Mono",monospace;font-weight:700;font-size:.85rem}
+  .lc.keep li::before{content:"✓";color:var(--blue)} .lc.burn li::before{content:"✕";color:var(--red)}
+
+  .src{font-family:"Space Mono",monospace;font-size:.66em;color:var(--faint);vertical-align:super;white-space:nowrap}
+
+  footer{position:relative;z-index:2;border-top:2px solid var(--ink);margin-top:56px;background:var(--paper2)}
+  .fwrap{max-width:860px;margin:0 auto;padding:44px 26px 70px}
+  footer h2{margin-top:0}
+  .end{font-family:"Bodoni Moda",serif;font-weight:900;font-size:1.7rem;color:var(--red);text-align:center;margin:36px 0 4px}
+  .navlink{font-family:"Space Mono",monospace;font-size:12px;color:var(--mute);margin-top:22px;line-height:1.8}
+
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="hero">
+  <div class="eyebrow">Dossier critique · 3ᵉ volet · Méta-critique</div>
+  <h1 class="title">Au <span class="v">vitriol</span></h1>
+  <p class="sub">Autopsie sans anesthésie — de l'État que ces sources accusent, des sources elles-mêmes, et des deux articles que j'en ai tirés.</p>
+  <div class="stamp">L'acide va dans les deux sens</div>
+  <div class="meta">
+    <b>Principe&nbsp;:</b> on n'a le droit d'être caustique avec un objet<br>
+    qu'à condition de l'être d'abord avec ses propres outils.<br>
+    <b>Cible 1&nbsp;:</b> l'État belge · <b>Cible 2&nbsp;:</b> le corpus · <b>Cible 3&nbsp;:</b> moi-même
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="reveal" style="padding-top:6px">
+    <p class="lead">Un réquisitoire qui ne s'examine pas lui-même n'est pas une analyse&nbsp;: c'est un sermon. Les deux premiers volets de ce dossier ont chargé l'État belge — non sans raisons. Ce troisième volet fait l'inverse de ce qu'on attend&nbsp;: il garde l'acide, mais le verse aussi sur le récipient. Car le corpus qui nourrit ce dossier a des défauts, parfois graves, et mes propres articles en ont hérité. Une critique qui se respecte commence par se retourner contre elle-même.</p>
+    <p>On procédera donc en trois temps&nbsp;: d'abord ce qui, dans l'État, mérite vraiment le vitriol&nbsp;; ensuite ce qui, dans nos sources, ne le mérite pas et qu'il faut dénoncer&nbsp;; enfin ce qui survit à l'acide une fois la rhétorique brûlée.</p>
+  </section>
+
+  <hr class="r">
+
+  <!-- I -->
+  <section class="reveal">
+    <span class="sn">I — Cible 1</span>
+    <h2>Ce qui mérite le vitriol</h2>
+    <p>Soyons clairs avant d'être justes&nbsp;: certaines choses, dans le dossier, sont indéfendables, et la sobriété serait ici une lâcheté. Trois exemples suffisent.</p>
+
+    <p><strong>La désobéissance budgétisée.</strong> Un État qui accumule des centaines de millions d'euros d'astreintes plutôt que d'héberger des demandeurs d'asile, et qui finit par se faire saisir <em>ses propres machines à café</em> par huissier dans les locaux de ses ministères, n'a pas un problème de gestion&nbsp;: il a un problème de civilisation juridique. La Cour de Strasbourg a trouvé le mot — «&nbsp;carence systémique&nbsp;» — et ce mot est exact. Quand l'obéissance au juge devient une ligne budgétaire optionnelle, l'État de droit n'est plus un principe&nbsp;; c'est un tarif.</p>
+
+    <p><strong>La transparence qui s'auto-saborde.</strong> La loi du 12 mai 2024 intègre enfin les cabinets ministériels au régime de publicité — et, dans le même texte, invente une exception «&nbsp;stratégie politique&nbsp;» qui en exempte précisément le cœur. Le Conseil d'État avait pourtant prévenu que les exceptions existantes étaient déjà «&nbsp;manifestement suffisantes&nbsp;». On a donc légiféré pour ne rien ouvrir, en se félicitant d'ouvrir. C'est le mensonge institutionnel dans sa forme la plus aboutie&nbsp;: non pas dissimuler, mais <em>performer la transparence pour mieux la confisquer</em>.</p>
+
+    <p><strong>Le boomerang de l'«&nbsp;État voyou&nbsp;».</strong> Que le chef d'un gouvernement aille qualifier l'Iran d'«&nbsp;État voyou&nbsp;» à la tribune des Nations unies, au moment précis où des magistrats belges emploient la même expression pour décrire un État qui refuse d'exécuter ses propres jugements, voilà une ironie que la fiction n'oserait pas. Le mot, lancé vers l'extérieur, revient se planter dans le dos de celui qui l'a lancé.</p>
+
+    <blockquote>
+      Une circulaire qui «&nbsp;ajoute à la loi&nbsp;» est un excès de pouvoir. Une loi qui ajoute une exception à sa propre transparence est un excès d'habileté.
+      <cite>Reformulation de la doctrine du Conseil d'État, appliquée à la loi du 12 mai 2024</cite>
+    </blockquote>
+
+    <p>Sur ces points, le dossier a raison et la colère est fondée. Mais c'est tout l'enjeu&nbsp;: la justesse de quelques griefs ne valide pas la totalité de la charge. C'est ici que l'acide doit changer de direction.</p>
+  </section>
+
+  <!-- II -->
+  <section class="reveal">
+    <span class="sn">II — Cible 2</span>
+    <h2>Le vitriol retourné&nbsp;: les défauts du dossier</h2>
+    <p>Voici les griefs que j'instruis contre nos propres sources. Aucun n'efface les faits&nbsp;; tous corrigent la manière dont on les a montés en accusation.</p>
+
+    <div class="grief reveal">
+      <span class="gid">GRIEF 1</span>
+      <h4>Un concept-éponge&nbsp;: la «&nbsp;paralégalité&nbsp;»</h4>
+      <p>Le mot-clé du dossier absorbe tout&nbsp;: pouvoir discrétionnaire, excès de pouvoir, opacité organisationnelle, particratie, non-recours. Le corpus l'avoue lui-même dans ses réserves — la paralégalité «&nbsp;n'est pas une catégorie juridique stricte&nbsp;» et «&nbsp;agrège des phénomènes hétérogènes&nbsp;» que la doctrine analyse d'ordinaire séparément. Un concept qui explique le Kern, une circulaire de l'Office des étrangers, une intercommunale liégeoise et un guichet de CPAS fermé n'explique en réalité <em>aucun</em> d'entre eux&nbsp;: il les baptise.</p>
+      <span class="verdict">VERDICT — Puissance de synthèse réelle, mais effet totalisant&nbsp;: transforme la friction administrative ordinaire en architecture du complot.</span>
+    </div>
+
+    <div class="grief reveal">
+      <span class="gid">GRIEF 2</span>
+      <h4>L'exceptionnalisme — démenti par le corpus lui-même</h4>
+      <p>L'essentiel des sources ruisselle de catastrophisme national&nbsp;: «&nbsp;honte internationale&nbsp;», «&nbsp;État voyou&nbsp;», «&nbsp;effondrement&nbsp;». Puis un seul fichier, froidement, démolit le reste&nbsp;: la discipline de vote est universelle, la Belgique n'est «&nbsp;ni l'inventrice ni le cas le plus extrême&nbsp;», le Danemark et le Royaume-Uni font pire. Le corpus se contredit donc — et le registre alarmiste l'emporte par <em>volume</em>, non par preuve. C'est un biais de sélection&nbsp;: dix textes qui s'indignent pèsent plus qu'un texte qui nuance, même si le second a raison.</p>
+      <span class="verdict">VERDICT — La conclusion honnête du corpus («&nbsp;cas ordinaire, complications extraordinaires&nbsp;») est enterrée sous sa propre rhétorique.</span>
+    </div>
+
+    <div class="grief reveal">
+      <span class="gid">GRIEF 3</span>
+      <h4>Des chiffres qui dérivent</h4>
+      <p>Combien de condamnations non exécutées dans l'asile&nbsp;? Selon les fichiers&nbsp;: «&nbsp;plus de 8&nbsp;000&nbsp;», «&nbsp;plus de 11&nbsp;000&nbsp;», «&nbsp;≈17&nbsp;000 fin 2025&nbsp;». Combien d'astreintes&nbsp;? «&nbsp;278,5 millions&nbsp;», «&nbsp;170 millions&nbsp;», «&nbsp;plus de 6 millions impayés&nbsp;». Ces nombres ne peuvent pas tous être justes, et le corpus ne les réconcilie presque jamais. Quant aux montants sur les intercommunales, ils sont, de l'aveu même des sources, «&nbsp;estimatifs&nbsp;». Le chiffre fait ici un travail rhétorique que sa provenance ne soutient pas toujours.</p>
+      <span class="verdict">VERDICT — L'ordre de grandeur est accablant&nbsp;; la précision affichée est trompeuse. Citer «&nbsp;278,5 M€&nbsp;» comme un fait stable est un abus.</span>
+    </div>
+
+    <div class="grief reveal">
+      <span class="gid">GRIEF 4</span>
+      <h4>Un dossier écrit depuis le futur</h4>
+      <p>Plusieurs sources datent leurs consultations d'«&nbsp;avril 2026&nbsp;» et affirment comme acquis des événements qui, pour certains, relèvent de la projection&nbsp;: un addendum GRECO «&nbsp;du 12 décembre 2025&nbsp;», des arrêts CEDH «&nbsp;de 2025-2026&nbsp;», des sondages «&nbsp;de mars 2026&nbsp;», des réformes annoncées dans une déclaration de politique. Le triptyque en a hérité&nbsp;: il assène au présent ce qui est parfois au conditionnel.</p>
+      <span class="verdict">VERDICT — À traiter comme un horizon prévisionnel, non comme un constat. La vigilance vaut pour tout ce qui est postérieur à début 2026.</span>
+    </div>
+
+    <div class="grief reveal">
+      <span class="gid">GRIEF 5</span>
+      <h4>Du plaidoyer déguisé en analyse</h4>
+      <p>Des pans entiers du corpus ne sont pas de la description&nbsp;: ce sont des manuels de contentieux — «&nbsp;arsenal&nbsp;», «&nbsp;triple-front legal strategy&nbsp;», modèles de question préjudicielle, lettres-types aux députés. C'est de l'<em>advocacy</em>&nbsp;: on y sélectionne les faits pour leur utilité dans un procès, pas pour leur représentativité. La théorie de la «&nbsp;lacune inconstitutionnelle&nbsp;» y est vendue comme presque certaine — alors que le corpus reconnaît ailleurs que la doctrine de référence (Delpérée, Verdussen, Alen) reste «&nbsp;prudente&nbsp;» sur sa justiciabilité. Traduction&nbsp;: la plupart des constitutionnalistes n'y croient pas.</p>
+      <span class="verdict">VERDICT — Argumentaire ingénieux, mais survendu. Un brief militant n'est pas une preuve&nbsp;; c'est une hypothèse de combat.</span>
+    </div>
+
+    <div class="grief reveal">
+      <span class="gid">GRIEF 6</span>
+      <h4>L'ouï-dire promu au rang d'indice</h4>
+      <p>Certaines pièces s'appuient sur des sources de presse anonymes — un président de parti qualifié de «&nbsp;tyran&nbsp;», de «&nbsp;maniaque du contrôle&nbsp;» — pour étayer un diagnostic structurel. Le corpus reconnaît lui-même que «&nbsp;leur valeur probatoire devant un juge serait limitée&nbsp;». Soit. Mais alors pourquoi les mobiliser&nbsp;? On ne fonde pas une thèse sur les institutions avec les humeurs anonymes rapportées sur un homme.</p>
+      <span class="verdict">VERDICT — À écarter du raisonnement structurel. La psychologie d'un dirigeant n'est pas une preuve de système.</span>
+    </div>
+
+    <div class="grief reveal">
+      <span class="gid">GRIEF 7</span>
+      <h4>Le procès d'intention systémique</h4>
+      <p>Le dossier glisse régulièrement vers l'idée d'un «&nbsp;choix politique assumé&nbsp;», d'une volonté unique orchestrant le non-recours pour faire des «&nbsp;économies tacites&nbsp;». C'est commode et c'est suspect. Une bonne part de ce qui est décrit relève aussi de l'incompétence, de l'austérité, de la complexité fédérale à six entités, de la pénurie réelle de places — pas d'un cerveau central. Attribuer une intention à un système est la plus vieille des erreurs d'analyse.</p>
+      <span class="verdict">VERDICT — Le mécanisme («&nbsp;déplacement hors contrôle&nbsp;») est réel&nbsp;; le metteur en scène unique est probablement une fiction.</span>
+    </div>
+
+    <div class="me reveal">
+      <div class="tag">Aparté — la matière de remplissage</div>
+      <p>Détail révélateur&nbsp;: le corpus contient aussi de purs remplissages — une pyramide «&nbsp;Données → Sagesse&nbsp;», un décompte des 116 postes diplomatiques belges — sans rapport avec la thèse. Signe d'un dossier assemblé en partie par accumulation, où la masse documentaire crée une impression de solidité que tout son contenu ne justifie pas. La quantité de sources n'est pas leur qualité.</p>
+    </div>
+  </section>
+
+  <!-- III -->
+  <section class="reveal">
+    <span class="sn">III — Le grief sérieux</span>
+    <h2>L'angle mort&nbsp;: et si la paralégalité <em>servait</em> à quelque chose&nbsp;?</h2>
+    <p>Voici la critique qui me paraît la plus dévastatrice pour le dossier, parce qu'elle ne porte pas sur la forme mais sur l'analyse. Le corpus traite la paralégalité belge comme une pure pathologie. Or les théoriciens qu'il cite — van de Kerchove, Ost — la voyaient comme tout autre chose&nbsp;: le mode par lequel un État plurinational <em>complexe survit sans se briser</em>.</p>
+    <p>Les pactes scolaire et culturel, le fédéralisme coopératif, la culture du compromis&nbsp;: ce sont précisément ces «&nbsp;zones grises&nbsp;» qui ont permis à la Belgique de négocier pacifiquement chacune de ses réformes d'État, sans l'effusion de sang qu'ont connue d'autres sociétés divisées. Le compromis particratique est <em>laid</em>&nbsp;; il est peut-être aussi ce qui a évité la partition violente. Le dossier dénonce comme corruption ce que des chercheurs sérieux analysent comme adaptation fonctionnelle. On ne peut pas avoir à la fois la paix communautaire belge et la pureté kelsénienne de la hiérarchie des normes&nbsp;; il faut choisir, ou au moins reconnaître l'arbitrage.</p>
+
+    <blockquote>
+      Ce que le dossier appelle «&nbsp;la maladie&nbsp;» est peut-être, pour partie, le prix de la survie. Encore faut-il oser poser la facture.
+      <cite>Objection fonctionnaliste, absente du corpus — et c'est là son défaut majeur</cite>
+    </blockquote>
+
+    <div class="me reveal">
+      <div class="tag">Nuance — pour ne pas tomber dans le piège inverse</div>
+      <p>Attention&nbsp;: «&nbsp;c'était utile hier&nbsp;» ne signifie pas «&nbsp;c'est tolérable aujourd'hui&nbsp;». Le compromis a pu pacifier la question linguistique sans légitimer pour autant le refus d'exécuter les jugements d'asile ou l'opacité des cabinets en 2026. L'argument fonctionnaliste explique l'<em>origine</em> du système&nbsp;; il n'absout pas ses <em>dérives</em> contemporaines. Mais un dossier honnête doit affronter cet argument — et celui-ci ne le fait jamais.</p>
+    </div>
+  </section>
+
+  <!-- IV -->
+  <section class="reveal">
+    <span class="sn">IV — Cible 3</span>
+    <h2>Et moi dans tout ça</h2>
+    <p>Il serait malhonnête de critiquer le corpus sans reconnaître que mes deux premiers volets en sont les enfants directs — et qu'ils en portent les tares.</p>
+    <p>J'ai écrit «&nbsp;<span class="strike">278,5 millions d'euros</span>&nbsp;» <span class="ins">comme un fait stable</span>, alors que le chiffre flotte d'une source à l'autre. J'ai adopté le registre dramatique du corpus — «&nbsp;désobéissance&nbsp;», «&nbsp;confiscation&nbsp;», «&nbsp;État voyou domestique&nbsp;» — en le tempérant de caveats, mais sans jamais renoncer à sa puissance d'accusation. J'ai présenté la grille «&nbsp;déplacement hors contrôle&nbsp;» comme une clé unique, ce qui est exactement le défaut du concept-éponge que je dénonce au Grief 1. Et dans le deuxième volet, j'ai habillé une note de recherche militante (la «&nbsp;sécession civique&nbsp;») d'un cadre théorique élégant (Hirschman) qui lui donnait une rigueur qu'elle n'avait pas entièrement.</p>
+    <p>Ce n'était pas malhonnête&nbsp;: les caveats étaient là, signalés. Mais l'effet cumulé d'un récit cohérent, bien écrit et émotionnellement orienté est de <em>convaincre au-delà de ce que les preuves autorisent</em>. C'est le danger propre à la synthèse réussie&nbsp;: plus elle est élégante, plus elle persuade, et moins le lecteur sent les coutures. Le présent volet est l'antidote que je me dois à moi-même.</p>
+
+    <div class="me reveal">
+      <div class="tag">Commentaire réflexif</div>
+      <p>La leçon vaut au-delà de ce dossier. Une IA qui produit de la prose fluide à partir d'un corpus orienté reproduira et amplifiera l'orientation du corpus, en lui ajoutant le vernis de la neutralité analytique. Mes deux articles étaient aussi bons que leurs sources — et pas meilleurs. Le lecteur devait le savoir&nbsp;; maintenant il le sait.</p>
+    </div>
+  </section>
+
+  <!-- V -->
+  <section class="reveal">
+    <span class="sn">V — Verdict</span>
+    <h2>Ce qui survit à l'acide</h2>
+    <p>Quand on a brûlé la rhétorique, l'exceptionnalisme, les chiffres flottants et les procès d'intention, que reste-t-il&nbsp;? Beaucoup, en réalité. Le tri est simple.</p>
+
+    <div class="ledger">
+      <div class="lc keep reveal">
+        <h4>Ce qui tient</h4>
+        <div class="d">étayé par des sources institutionnelles convergentes</div>
+        <ul>
+          <li>La non-exécution durable de décisions de justice (constat de la CEDH <em>et</em> de l'IFDH, deux sources indépendantes)</li>
+          <li>La non-conformité prolongée au GRECO — organe que la Belgique a co-fondé et ne peut récuser</li>
+          <li>L'écart mesuré entre l'article 42 et la discipline réelle (science politique, pas opinion)</li>
+          <li>La restriction <em>active</em> de l'intérêt à agir (texte officiel, la DPR)</li>
+          <li>Le non-recours massif aux droits sociaux (études académiques chiffrées)</li>
+        </ul>
+      </div>
+      <div class="lc burn reveal">
+        <h4>Ce qui brûle</h4>
+        <div class="d">à retirer ou à manier avec des pincettes</div>
+        <ul>
+          <li>La «&nbsp;paralégalité&nbsp;» comme clé unique de tout</li>
+          <li>L'exceptionnalisme belge («&nbsp;honte&nbsp;», «&nbsp;voyou&nbsp;», «&nbsp;effondrement&nbsp;»)</li>
+          <li>Les chiffres précis non réconciliés (278,5&nbsp;M€ &amp; co.)</li>
+          <li>Le procès d'intention d'un «&nbsp;cerveau&nbsp;» orchestrateur</li>
+          <li>L'ouï-dire anonyme et le plaidoyer contentieux pris pour preuve</li>
+          <li>Tout fait postérieur à début 2026 affirmé comme acquis</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>Le noyau dur, lui, est solide — et c'est peut-être l'observation la plus dérangeante de tout ce dossier&nbsp;: <strong>on n'a pas besoin de l'inflation rhétorique pour que l'accusation tienne.</strong> Une fois retirés les superlatifs, les chiffres incertains et le complotisme de bas étage, il reste un État qui n'exécute pas ses jugements, résiste à ses propres engagements anticorruption, vide sa transparence par exception et resserre l'accès au juge. C'est assez. Le vitriol était de trop&nbsp;; les faits suffisaient.</p>
+    <p>Et c'est là, finalement, la critique la plus sévère que l'on puisse adresser au corpus&nbsp;: à force de vouloir prouver trop, il a fragilisé une démonstration qui n'en avait pas besoin. La vérité belge n'est pas un scandale gothique&nbsp;; c'est quelque chose de plus banal et de plus inquiétant — une démocratie qui s'use proprement, par habitude, sous une magistrature qui tient encore. Ce constat-là n'a pas besoin d'acide. Il a besoin d'être regardé en face, sans trembler ni s'enflammer.</p>
+
+    <div class="end">∴</div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="fwrap">
+    <span class="sn">Note</span>
+    <h2>Sur cette méta-critique</h2>
+    <p class="small" style="max-width:62ch;color:var(--ink2)">Ce troisième volet est une critique <em>interne</em>&nbsp;: il ne mobilise pas de sources nouvelles, mais examine la cohérence, les biais et la solidité probatoire du corpus du projet et des deux articles qui en sont issus. Les réserves invoquées (hétérogénéité du concept, chiffres estimatifs, datation prospective, cadrage militant, doctrine prudente) proviennent en grande partie des <em>propres avertissements du corpus</em>, simplement remontés à la surface et pris au sérieux. La conclusion n'invalide pas le diagnostic des volets I et II&nbsp;: elle en sépare le noyau probant de l'enveloppe rhétorique.</p>
+    <div class="navlink">
+      Volet I — «&nbsp;L'illégalisme d'État. Anatomie d'une démocratie qui désobéit à elle-même.&nbsp;»<br>
+      Volet II — «&nbsp;Défection. Ce que font les citoyens quand le droit ne répond plus.&nbsp;»<br>
+      Volet III — le présent texte.
+    </div>
+  </div>
+</footer>
+
+<script>
+  const bar=document.getElementById('progress');
+  const onScroll=()=>{const h=document.documentElement;
+    bar.style.width=((h.scrollTop)/(h.scrollHeight-h.clientHeight)*100)+'%';};
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  const rev=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('in');rev.unobserve(e.target);}
+  }),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>rev.observe(el));
+</script>
+</body>
+</html>
