@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Défection — Ce que font les citoyens quand le droit ne répond plus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,400..800&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#141310;
+    --bg2:#1b1914;
+    --card:#211e17;
+    --card2:#262217;
+    --ink:#ece3cf;
+    --ink-dim:#c9bfa6;
+    --mute:#938a73;
+    --faint:#6e664f;
+    --line:#372f22;
+    --amber:#e6a23a;     /* sortie / défection */
+    --amber-2:#f2c878;
+    --teal:#63b3a6;      /* voix / prise de parole */
+    --teal-2:#8fd0c5;
+    --red:#d76a4f;
+    --shadow:rgba(0,0,0,.5);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Newsreader",Georgia,serif;font-size:19.5px;line-height:1.74;font-weight:350;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  /* subtle vignette + grain */
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:radial-gradient(120% 90% at 50% -5%, #221e15 0%, var(--bg) 55%, #100f0c 100%);}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.6;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");}
+  ::selection{background:var(--amber);color:#141310}
+  a{color:var(--teal-2);text-underline-offset:3px;text-decoration-thickness:1px}
+
+  #progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--teal),var(--amber))}
+
+  .z{position:relative;z-index:2}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 26px}
+
+  /* HERO */
+  header.hero{position:relative;z-index:2;max-width:1120px;margin:0 auto;padding:80px 26px 26px}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.34em;
+    text-transform:uppercase;color:var(--amber);display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  .eyebrow::after{content:"";flex:1;height:1px;background:var(--line);min-width:40px}
+  h1.title{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;
+    font-size:clamp(4rem,18vw,12rem);line-height:.84;letter-spacing:-.04em;margin:.18em 0 .12em;
+    background:linear-gradient(180deg,var(--ink) 0%,#b8ac8d 100%);-webkit-background-clip:text;
+    background-clip:text;-webkit-text-fill-color:transparent;}
+  .sub{font-family:"Newsreader",serif;font-style:italic;font-weight:300;
+    font-size:clamp(1.2rem,2.6vw,1.7rem);color:var(--ink-dim);max-width:46ch;line-height:1.4}
+  .sub b{font-style:normal;font-weight:500;color:var(--amber-2)}
+  .meta{margin-top:30px;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--mute);
+    line-height:1.95;letter-spacing:.02em}
+  .meta b{color:var(--ink)}
+
+  /* the two-door figure */
+  .doors{margin:46px auto 6px;max-width:560px;display:block}
+  .doors .cap{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--mute);
+    text-align:center;letter-spacing:.05em;margin-top:14px;line-height:1.6}
+
+  /* LAYOUT */
+  .grid{display:grid;grid-template-columns:1fr 218px;gap:54px;align-items:start;margin-top:30px}
+  @media(max-width:920px){.grid{grid-template-columns:1fr;gap:0}}
+  article{min-width:0}
+  nav.toc{position:sticky;top:30px;order:2;font-family:"IBM Plex Mono",monospace;font-size:12px}
+  @media(max-width:920px){nav.toc{position:relative;order:0;top:0;margin:6px 0 26px;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0}}
+  nav.toc .l{letter-spacing:.24em;text-transform:uppercase;color:var(--amber);font-size:10.5px;
+    font-weight:600;margin-bottom:14px;display:block}
+  nav.toc ol{list-style:none;margin:0;padding:0;counter-reset:t}
+  nav.toc li{counter-increment:t;margin:0 0 10px}
+  nav.toc a{display:block;text-decoration:none;color:var(--mute);padding-left:30px;position:relative;
+    border-left:2px solid transparent;transition:.25s;line-height:1.4}
+  nav.toc a::before{content:counter(t,decimal-leading-zero);position:absolute;left:6px;top:1px;
+    color:var(--faint);font-size:10.5px}
+  nav.toc a:hover,nav.toc a.active{color:var(--ink)}
+  nav.toc a.active{border-left-color:var(--amber)}
+  nav.toc a.active::before{color:var(--amber)}
+
+  section{padding:34px 0 12px;scroll-margin-top:24px}
+  .sn{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.26em;color:var(--amber);font-weight:600}
+  .sn.v{color:var(--teal)}
+  h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;letter-spacing:-.02em;
+    font-size:clamp(1.75rem,4vw,2.7rem);line-height:1.02;margin:.2em 0 .55em;max-width:22ch}
+  h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:1.28rem;
+    margin:1.7em 0 .35em;letter-spacing:-.01em;color:var(--ink)}
+  p{margin:0 0 1.15em;color:var(--ink-dim)}
+  p strong,li strong{color:var(--ink);font-weight:500}
+  em{font-style:italic}
+  .lead-p{font-size:1.16rem}
+  .lead-p::first-letter{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;float:left;
+    font-size:4.2rem;line-height:.7;padding:.05em .14em 0 0;color:var(--amber)}
+  hr.r{border:0;height:1px;background:linear-gradient(90deg,var(--line),transparent);margin:44px 0}
+  .small{font-size:.82em;color:var(--mute)}
+  .src{font-family:"IBM Plex Mono",monospace;font-size:.66em;color:var(--faint);vertical-align:super;
+    font-weight:500;white-space:nowrap}
+
+  /* stat band */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+    border:1px solid var(--line);margin:34px 0;border-radius:3px;overflow:hidden}
+  @media(max-width:680px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat{background:var(--card);padding:22px 18px}
+  .stat .n{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:2.1rem;
+    line-height:1;color:var(--amber)}
+  .stat.v .n{color:var(--teal)}
+  .stat .n small{font-size:1rem;color:var(--ink-dim);font-weight:600}
+  .stat .c{font-size:.78rem;color:var(--mute);margin-top:9px;line-height:1.45}
+
+  /* quote */
+  blockquote{margin:32px 0;padding:4px 0 4px 28px;border-left:3px solid var(--amber);
+    font-family:"Newsreader",serif;font-style:italic;font-weight:300;font-size:1.4rem;line-height:1.36;color:var(--ink)}
+  blockquote.v{border-left-color:var(--teal)}
+  blockquote cite{display:block;font-style:normal;font-family:"IBM Plex Mono",monospace;
+    font-size:11px;color:var(--mute);margin-top:14px;letter-spacing:.04em;line-height:1.6}
+
+  /* commentary */
+  .note{margin:34px 0;padding:24px 26px 20px;background:var(--card2);border:1px solid var(--line);
+    border-left:4px solid var(--teal);border-radius:3px}
+  .note .tag{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--teal-2);font-weight:600;margin-bottom:10px;display:flex;gap:9px;align-items:center}
+  .note .tag::before{content:"◆";font-size:9px}
+  .note p{font-size:.96em;color:var(--ink-dim)}
+  .note p:last-child{margin-bottom:0}
+
+  /* breach cards */
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:28px 0}
+  @media(max-width:680px){.cards{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--teal);
+    padding:22px 22px 20px;border-radius:3px;position:relative}
+  .card .bn{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--teal);font-weight:600;letter-spacing:.08em}
+  .card h4{font-family:"Bricolage Grotesque",sans-serif;font-size:1.16rem;margin:.4em 0 .4em;font-weight:600;line-height:1.12;color:var(--ink)}
+  .card p{font-size:.87rem;margin:0;line-height:1.55;color:var(--ink-dim)}
+  .card .k{display:block;margin-top:12px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+    color:var(--mute);letter-spacing:.02em;border-top:1px solid var(--line);padding-top:10px}
+
+  /* table */
+  .tbl{margin:30px 0;border:1px solid var(--line);border-radius:3px;overflow:hidden}
+  table{width:100%;border-collapse:collapse;font-size:.85rem;background:var(--card)}
+  caption{caption-side:top;text-align:left;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--amber);padding:14px 16px 4px;font-weight:600}
+  th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-dim)}
+  thead th{background:#0f0e0b;color:var(--ink);font-family:"IBM Plex Mono",monospace;font-size:10px;
+    letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+  tbody tr:last-child td{border-bottom:0}
+  td.mono{font-family:"IBM Plex Mono",monospace;font-size:.76rem;color:var(--amber-2);font-weight:500}
+
+  /* exit/voice ledger */
+  .ledger{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:30px 0}
+  @media(max-width:680px){.ledger{grid-template-columns:1fr}}
+  .col{border:1px solid var(--line);border-radius:3px;padding:22px;background:var(--card)}
+  .col.exit{border-top:3px solid var(--amber)}
+  .col.voice{border-top:3px solid var(--teal)}
+  .col h4{font-family:"Bricolage Grotesque",sans-serif;font-size:1.1rem;margin:0 0 4px;font-weight:700}
+  .col.exit h4{color:var(--amber)} .col.voice h4{color:var(--teal)}
+  .col .d{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:12px}
+  .col ul{margin:0;padding:0;list-style:none}
+  .col li{font-size:.88rem;padding:9px 0 9px 20px;border-bottom:1px solid var(--line);position:relative;color:var(--ink-dim)}
+  .col li:last-child{border-bottom:0;padding-bottom:0}
+  .col li::before{content:"";position:absolute;left:0;top:16px;width:7px;height:7px;border-radius:50%}
+  .col.exit li::before{background:var(--amber)} .col.voice li::before{background:var(--teal)}
+
+  /* footer */
+  footer{position:relative;z-index:2;border-top:1px solid var(--line);margin-top:64px;background:#100f0c}
+  .fwrap{max-width:1120px;margin:0 auto;padding:48px 26px 80px}
+  footer h2{margin-top:0}
+  .srclist{columns:2;column-gap:42px;font-size:.78rem;color:var(--mute);line-height:1.5}
+  @media(max-width:680px){.srclist{columns:1}}
+  .srclist p{break-inside:avoid;margin:0 0 .9em;padding-left:1.4em;text-indent:-1.4em;color:var(--mute)}
+  .end{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.5rem;color:var(--amber);text-align:center;margin:40px 0 4px}
+  .navlink{margin-top:28px;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--mute)}
+
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .65s ease,transform .65s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="hero">
+  <div class="eyebrow">Dossier critique · 2ᵉ volet · Belgique 2024–2026</div>
+  <h1 class="title">Défection</h1>
+  <p class="sub">Ce que font les citoyens quand le droit ne répond plus — et pourquoi leur <b>silence est un verdict</b>, pas une paresse.</p>
+  <div class="meta">
+    <b>Suite</b> du dossier «&nbsp;L'illégalisme d'État&nbsp;». Si le premier volet décrivait la maladie,<br>
+    celui-ci interroge la réponse&nbsp;: la prise de parole (les recours) et la sortie (le retrait civique).<br>
+    <b>Cadre&nbsp;:</b> A.&nbsp;O.&nbsp;Hirschman, <em>Défection et prise de parole</em> (1970) · <b>Format&nbsp;:</b> lecture longue
+  </div>
+
+  <!-- two doors figure -->
+  <svg class="doors z" viewBox="0 0 560 230" role="img" aria-label="Deux portes : la prise de parole, verrouillée ; la sortie, ouverte.">
+    <defs>
+      <linearGradient id="gv" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1f2a28"/><stop offset="1" stop-color="#161a18"/>
+      </linearGradient>
+      <linearGradient id="ge" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2a2114"/><stop offset="1" stop-color="#191510"/>
+      </linearGradient>
+    </defs>
+    <!-- voice door (locked) -->
+    <g>
+      <rect x="70" y="30" width="150" height="180" rx="3" fill="url(#gv)" stroke="#63b3a6" stroke-width="1.5"/>
+      <rect x="70" y="30" width="150" height="180" rx="3" fill="none" stroke="#63b3a6" stroke-width="1.5" stroke-dasharray="4 6" opacity=".5"/>
+      <circle cx="200" cy="120" r="4" fill="#63b3a6"/>
+      <!-- lock -->
+      <g transform="translate(135,108)">
+        <rect x="0" y="10" width="22" height="18" rx="2" fill="#63b3a6"/>
+        <path d="M4 10 V5 a7 7 0 0 1 14 0 V10" fill="none" stroke="#63b3a6" stroke-width="2.4"/>
+      </g>
+      <text x="145" y="20" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="2" fill="#63b3a6">VOIX</text>
+    </g>
+    <!-- exit door (open, light spilling) -->
+    <g>
+      <rect x="340" y="30" width="150" height="180" rx="3" fill="url(#ge)" stroke="#e6a23a" stroke-width="1.5"/>
+      <!-- open leaf -->
+      <path d="M340 30 L300 50 L300 200 L340 210 Z" fill="#e6a23a" opacity=".14" stroke="#e6a23a" stroke-width="1.2"/>
+      <!-- light -->
+      <path d="M340 36 L505 6 L505 234 L340 204 Z" fill="#e6a23a" opacity=".06"/>
+      <circle cx="328" cy="120" r="3.4" fill="#e6a23a"/>
+      <!-- walking figure -->
+      <g transform="translate(395,96)" fill="none" stroke="#f2c878" stroke-width="2.2" stroke-linecap="round">
+        <circle cx="14" cy="6" r="6" fill="#f2c878" stroke="none"/>
+        <path d="M14 13 L14 36"/>
+        <path d="M14 20 L4 30 M14 20 L26 27"/>
+        <path d="M14 36 L5 52 M14 36 L24 50"/>
+      </g>
+      <text x="415" y="20" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="2" fill="#e6a23a">SORTIE</text>
+    </g>
+  </svg>
+  <p class="doors cap">Deux issues, une seule praticable. La prise de parole est verrouillée par le droit&nbsp;;<br>la sortie reste grande ouverte — et c'est par là que l'on passe.</p>
+</header>
+
+<div class="wrap z">
+<div class="grid">
+  <nav class="toc" aria-label="Sommaire">
+    <span class="l">Sommaire</span>
+    <ol>
+      <li><a href="#s0">Le dilemme d'Hirschman</a></li>
+      <li><a href="#s1">La voix verrouillée</a></li>
+      <li><a href="#s2">Les quatre brèches</a></li>
+      <li><a href="#s3">La sortie, en chiffres</a></li>
+      <li><a href="#s4">Cas ordinaire, complications extraordinaires</a></li>
+      <li><a href="#s5">Le verdict du silence</a></li>
+      <li><a href="#sources">Sources</a></li>
+    </ol>
+  </nav>
+
+  <article>
+
+  <!-- 0 -->
+  <section id="s0" class="reveal" style="padding-top:6px">
+    <span class="sn">00 — Cadre</span>
+    <h2>Le dilemme d'Hirschman, appliqué à une démocratie</h2>
+    <p class="lead-p">En 1970, l'économiste Albert Hirschman propose une grille devenue classique. Quand une organisation se dégrade — une entreprise, un parti, un État — ceux qui en dépendent disposent de deux réponses fondamentales. Ils peuvent <strong>prendre la parole</strong> (<em>voice</em>)&nbsp;: protester, contester, réformer de l'intérieur. Ou ils peuvent <strong>faire défection</strong> (<em>exit</em>)&nbsp;: partir, se retirer, cesser de jouer. Un troisième facteur, la <strong>loyauté</strong>, retarde la sortie et donne du temps à la voix.</p>
+    <p>Transposée à une démocratie, la grille est limpide. La voix, ce sont les recours&nbsp;: le vote, la contestation en justice, la mobilisation, la pétition. La sortie, c'est l'abstention, le vote de rupture, le repli vers des structures parallèles. Et la loyauté, c'est cette confiance résiduelle qui fait que l'on continue de croire au système même quand il déçoit.</p>
+    <p>Le premier volet de ce dossier a décrit un État qui se soustrait à ses propres contrôles. La question qui suit n'est plus «&nbsp;que fait l'État&nbsp;?&nbsp;» mais «&nbsp;<strong>que font les citoyens en réponse&nbsp;?</strong>&nbsp;». Le corpus permet d'y répondre avec une précision rare — et la réponse dessine un paradoxe que ce volet entend nommer&nbsp;: <em>la voix est en train d'être verrouillée au moment même où la sortie explose.</em></p>
+    <div class="note reveal">
+      <div class="tag">Pourquoi cette grille</div>
+      <p>L'intérêt d'Hirschman est qu'il interdit de lire l'abstention comme de la paresse. Dans son modèle, la défection est un <em>signal</em> — souvent le plus rationnel quand la voix coûte cher et ne produit rien. Tout l'enjeu de ce volet est de prendre ce signal au sérieux, au lieu de le ranger sous l'étiquette commode du «&nbsp;désintérêt citoyen&nbsp;».</p>
+    </div>
+  </section>
+
+  <hr class="r">
+
+  <!-- 1 -->
+  <section id="s1" class="reveal">
+    <span class="sn v">01 — Voix</span>
+    <h2>La voix verrouillée&nbsp;: la porte d'entrée se referme</h2>
+    <p>Supposons un citoyen convaincu, après lecture du premier volet, qu'il veut <em>agir en droit</em> contre la confiscation particratique ou la désobéissance de l'État. Il découvre vite que la porte est étroite — et qu'elle rétrécit.</p>
+
+    <h3>Le verrou ancien&nbsp;: l'intérêt à agir</h3>
+    <p>Le droit belge ne connaît pas l'<em>actio popularis</em>. Devant la Cour constitutionnelle comme ailleurs, il faut justifier d'un intérêt «&nbsp;personnel, direct, actuel et certain&nbsp;». Or la jurisprudence constante juge que les qualités d'<strong>électeur</strong>, de <strong>contribuable</strong> ou de simple <strong>citoyen</strong> sont insuffisantes pour contester le financement des partis&nbsp;: le requérant n'est pas affecté «&nbsp;différemment de la collectivité tout entière&nbsp;». S'ajoutent deux obstacles&nbsp;: la <strong>forclusion</strong> (un recours en annulation doit être introduit dans les six mois de la publication — la loi de 1989 est hors délai depuis longtemps) et l'impossibilité d'attaquer frontalement une <strong>omission</strong> du législateur plutôt qu'un texte positif.</p>
+
+    <h3>Le verrou nouveau&nbsp;: on rétrécit la serrure</h3>
+    <p>Ce qui rend la période singulière, c'est que le pouvoir <em>resserre activement</em> l'accès au juge. La Déclaration de politique régionale wallonne 2024-2029 annonce de durcir les critères de l'«&nbsp;intérêt à la cause&nbsp;» et de restreindre le «&nbsp;périmètre éligible de contestation&nbsp;» des permis (CoDT), au nom de la lutte contre le phénomène NIMBY et de la «&nbsp;sécurité d'investissement&nbsp;». La participation est valorisée tant qu'elle reste consultative en amont&nbsp;; elle devient «&nbsp;menace bureaucratique&nbsp;» dès qu'elle se fait levier de blocage en aval. En parallèle, les contre-pouvoirs civiques sont asséchés&nbsp;: coupes annoncées à Unia et à l'Autorité de protection des données, durcissement de la fiscalité des ASBL, dispositif de la loi Quintin. Et la «&nbsp;médiarchie&nbsp;» — convergences d'intérêts entre certains médias privés et les états-majors — verrouille le récit, marginalisant les voix alternatives.</p>
+
+    <blockquote class="v">
+      Une participation citoyenne valorisée en amont, perçue comme une menace dès qu'elle devient un levier de blocage en aval.
+      <cite>Synthèse du corpus sur le virage de la gouvernance régionale wallonne, 2024-2029</cite>
+    </blockquote>
+
+    <div class="note reveal">
+      <div class="tag">Commentaire de l'analyste</div>
+      <p>Il faut mesurer ce que cela signifie. L'intérêt à agir n'est pas une formalité&nbsp;: c'est la clé qui ouvre la porte du juge. Le restreindre, c'est décider qui a le droit de se plaindre. Quand un système qui produit déjà beaucoup de griefs choisit, dans le même mouvement, de réduire le nombre de ceux qui peuvent les porter devant un tribunal, il ne réduit pas les griefs — il réduit leur visibilité. C'est exactement le mécanisme du premier volet, transposé à la contestation elle-même&nbsp;: on ne supprime pas le mécontentement, on le rend juridiquement muet.</p>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section id="s2" class="reveal">
+    <span class="sn v">02 — Voix</span>
+    <h2>Les quatre brèches qui restent ouvertes</h2>
+    <p>La porte est étroite, pas murée. Le corpus identifie quatre passages par lesquels la voix peut encore produire des effets réels. Aucun n'est une garantie&nbsp;; tous demandent de la méthode et de la patience.</p>
+
+    <div class="cards">
+      <div class="card reveal">
+        <div class="bn">BRÈCHE 1</div>
+        <h4>Contourner par la question préjudicielle</h4>
+        <p>Plutôt que d'attaquer la loi de front (forclusion, intérêt à agir), on ouvre un litige — souvent une action en responsabilité de l'État sur l'article 1382 (jurisprudence <em>Anca</em>, <em>Ferrara</em>) — et l'on demande au juge de poser une question préjudicielle à la Cour constitutionnelle. Là, l'intérêt s'apprécie au regard du litige, pas du contentieux constitutionnel&nbsp;; il n'y a pas de délai&nbsp;; et la Cour peut constater une <em>lacune inconstitutionnelle</em> par omission.</p>
+        <span class="k">requérant idéal&nbsp;: parlementaire sanctionné · parti émergent lésé</span>
+      </div>
+      <div class="card reveal">
+        <div class="bn">BRÈCHE 2</div>
+        <h4>L'action collective, modèle Klimaatzaak</h4>
+        <p>En 2023, la Cour d'appel de Bruxelles reconnaît la recevabilité d'une action portée par ≈60&nbsp;000 citoyens et prononce une injonction quantitative à l'État (−55&nbsp;% de GES d'ici 2030). La leçon&nbsp;: regrouper l'intérêt diffus dans une structure collective transforme un grief «&nbsp;de tous&nbsp;» en cause justiciable — et un juge peut suppléer l'inertie d'un exécutif paralysé.</p>
+        <span class="k">levier&nbsp;: art. 1382-1383 + art. 2 &amp; 8 CEDH</span>
+      </div>
+      <div class="card reveal">
+        <div class="bn">BRÈCHE 3</div>
+        <h4>Le détour par Strasbourg</h4>
+        <p>Quand l'ordre interne se ferme, la CEDH rouvre. <em>Mugemangango c. Belgique</em> (2020) a invalidé l'auto-vérification des pouvoirs par les assemblées&nbsp;; l'article 13 garantit un recours effectif&nbsp;; les mesures provisoires (art. 39) gèlent l'urgence&nbsp;; l'article 3 du Protocole 1 protège des élections libres. Strasbourg ne réforme pas la Belgique, mais il rend ses verrous internes contestables.</p>
+        <span class="k">condition&nbsp;: épuisement des voies internes · délai 4 mois</span>
+      </div>
+      <div class="card reveal">
+        <div class="bn">BRÈCHE 4</div>
+        <h4>Le levier non-juridictionnel</h4>
+        <p>Hors des tribunaux&nbsp;: la pression du GRECO (Règle 32), la conditionnalité budgétaire de l'UE (règlement 2020/2092), une rétrogradation par CIVICUS au coût diplomatique réel — et, surtout, <em>sortir le débat du cercle des initiés</em>. La technicité protège l'opacité&nbsp;; transformer une question constitutionnelle en cause civique est la condition d'une victoire durable.</p>
+        <span class="k">arme&nbsp;: publicité, honte institutionnelle, opinion</span>
+      </div>
+    </div>
+
+    <div class="note reveal">
+      <div class="tag">Commentaire de l'analyste</div>
+      <p>Ce qui frappe, en alignant ces quatre brèches, c'est qu'aucune n'est un recours individuel direct. Toutes supposent un <em>collectif</em>, un <em>détour</em> ou un <em>relais extérieur</em>. C'est le diagnostic implicite du corpus, et je le partage&nbsp;: le citoyen isolé est, face à la particratie, à peu près désarmé. La voix n'a de chance que coordonnée — entre citoyens (Klimaatzaak), entre juridictions (le préjudiciel, Strasbourg), entre l'interne et l'international (GRECO, UE). La démocratie de la plainte solitaire est un leurre&nbsp;; il ne reste que la démocratie de l'organisation. Ce n'est pas rien&nbsp;: c'est exigeant.</p>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section id="s3" class="reveal">
+    <span class="sn">03 — Sortie</span>
+    <h2>La sortie, en chiffres&nbsp;: la défection mesurée</h2>
+    <p class="lead-p">Puisque la voix coûte cher et rend peu, beaucoup choisissent l'autre porte. Le corpus établit que la «&nbsp;sécession civique&nbsp;» belge n'est plus un concept&nbsp;: c'est un fait mesurable, sur deux versants.</p>
+
+    <h3>Sortie négative&nbsp;: le retrait</h3>
+    <div class="stats">
+      <div class="stat"><div class="n" data-to="12.5" data-suf="%">0</div><div class="c">d'abstention à la Chambre le 9 juin 2024 — <em>malgré le vote obligatoire</em>, record depuis 1981 <span class="src">[SPF Intérieur]</span></div></div>
+      <div class="stat"><div class="n" data-to="1.5" data-pre="&gt;" data-suf=" M">0</div><div class="c">d'électeurs hors expression valide (abstention + blancs + «&nbsp;Blanco&nbsp;»)&nbsp;: virtuellement le 2ᵉ «&nbsp;parti&nbsp;» du pays <span class="src">[corpus]</span></div></div>
+      <div class="stat"><div class="n" data-to="35" data-pre="~" data-suf="%">0</div><div class="c">d'abstention aux communales flamandes d'octobre 2024, sans obligation de vote <span class="src">[corpus]</span></div></div>
+      <div class="stat"><div class="n" data-to="40" data-pre="35–" data-suf="%">0</div><div class="c">d'intentions VB&nbsp;+&nbsp;PTB cumulées dans les sondages de mars 2026&nbsp;: la rupture transcommunautaire <span class="src">[sondages]</span></div></div>
+    </div>
+    <p>Le retrait n'est «&nbsp;que très rarement le fruit d'une paresse civique&nbsp;»&nbsp;: c'est un message — le refus d'avaliser un système perçu comme verrouillé. Quand le deuxième bloc électoral du pays est celui des absents, l'abstention cesse d'être un résidu statistique pour devenir une <em>opposition</em>.</p>
+
+    <h3>Sortie positive&nbsp;: l'infrastructure parallèle</h3>
+    <p>L'autre versant est plus surprenant&nbsp;: une société civile «&nbsp;de substitution&nbsp;» qui assume des fonctions que l'État a abandonnées ou échoué à assurer.</p>
+    <div class="stats">
+      <div class="stat v"><div class="n" data-to="120000" data-pre="~">0</div><div class="c">coopérateurs énergétiques — sécurité énergétique citoyenne <span class="src">[corpus]</span></div></div>
+      <div class="stat v"><div class="n" data-to="209000">0</div><div class="c">bénéficiaires/mois des Banques alimentaires — sécurité alimentaire <span class="src">[corpus]</span></div></div>
+      <div class="stat v"><div class="n" data-to="422078">0</div><div class="c">nuitées d'hébergement assurées par BelRefugees en 2024 — là où l'État ne le fait pas <span class="src">[corpus]</span></div></div>
+      <div class="stat v"><div class="n" data-to="3.3" data-suf=" M">0</div><div class="c">de syndiqués — un capital d'organisation hérité de la pilarisation <span class="src">[corpus]</span></div></div>
+    </div>
+    <p>Le corpus en tire le diagnostic d'une <strong>«&nbsp;démocratie à deux étages&nbsp;»</strong>&nbsp;: en haut, un système électif en décrochage de légitimité&nbsp;; en bas, une société civile qui reconstruit, à ses frais et à bout de bras, des fonctions quasi régaliennes — énergie, alimentation, hébergement. Entre les deux, de moins en moins de passages.</p>
+
+    <div class="note reveal">
+      <div class="tag">Commentaire de l'analyste</div>
+      <p>La sortie positive est le détail qui retourne tout le tableau. On pourrait croire que la défection signe l'effondrement du civisme&nbsp;; c'est l'inverse. Ces 120&nbsp;000 coopérateurs, ces nuitées d'hébergement, ne sont pas du désengagement — ce sont des citoyens qui ont cessé d'<em>attendre</em> de l'État pour <em>faire</em>. C'est admirable et inquiétant à parts égales. Admirable, parce que la solidarité tient. Inquiétant, parce qu'une démocratie où les citoyens doivent réassurer eux-mêmes le régalien finit par n'avoir plus besoin de l'État que comme machine fiscale et policière — et un État réduit à cela perd ce qui le légitimait.</p>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section id="s4" class="reveal">
+    <span class="sn">04 — Honnêteté</span>
+    <h2>Cas ordinaire, complications extraordinaires</h2>
+    <p>Un dossier critique doit se garder de l'exceptionnalisme — la tentation de faire de la Belgique un cas pathologique unique. Le corpus l'interdit, et c'est sa rigueur.</p>
+    <p>La <strong>discipline de vote</strong> n'est pas une invention belge&nbsp;: le Danemark, la France, le Royaume-Uni affichent des scores de cohésion comparables ou supérieurs. Le fossé entre mandat libre constitutionnel et discipline réelle est universel — le Conseil de l'Europe le documente lui-même. Ce qui singularise la Belgique, ce n'est donc pas la discipline en soi, mais la <strong>particratie</strong>&nbsp;: l'emprise des partis sur <em>tout</em> l'écosystème — cabinets pléthoriques, nominations administratives, pilarisation de la société civile — combinée à une fragmentation linguistique sans équivalent. D'où un système paradoxal&nbsp;: <em>rigide au sein des partis, paralysé entre eux.</em></p>
+
+    <div class="tbl">
+      <table>
+        <caption>Ce qui est ordinaire, ce qui ne l'est pas</caption>
+        <thead><tr><th>Phénomène</th><th>Statut comparatif</th></tr></thead>
+        <tbody>
+          <tr><td>Discipline de vote / écart au mandat libre</td><td class="mono">universel — Belgique ni inventrice ni cas extrême</td></tr>
+          <tr><td>Non-recours aux droits sociaux</td><td class="mono">universel — existe dans tous les États sociaux</td></tr>
+          <tr><td>Particratie (emprise systémique des partis)</td><td class="mono">extraordinaire — aux côtés de l'Italie de la 1ʳᵉ République</td></tr>
+          <tr><td>Particratie × fragmentation linguistique</td><td class="mono">sans équivalent — rigidité + paralysie simultanées</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Et il faut porter à l'actif ce que le même corpus reconnaît&nbsp;: une <strong>culture du compromis</strong> qui a évité toute rupture violente lors des réformes de l'État&nbsp;; un <strong>fédéralisme</strong> qui rapproche certaines décisions du citoyen&nbsp;; une <strong>société civile</strong> dense héritée de la pilarisation&nbsp;; et un véritable <strong>laboratoire délibératif</strong> — panels citoyens tirés au sort en Communauté germanophone et à Bruxelles. La Belgique n'est pas un État failli&nbsp;; c'est une démocratie sous tension, riche d'anticorps qu'elle n'active pas toujours.</p>
+
+    <div class="note reveal">
+      <div class="tag">Commentaire de l'analyste</div>
+      <p>Cette section est, pour moi, la plus importante du volet — parce qu'elle est la plus facile à oublier. Dire «&nbsp;c'est partout pareil&nbsp;» serait un mensonge confortable&nbsp;; dire «&nbsp;la Belgique est un cas unique de pourriture&nbsp;» serait une caricature mobilisatrice mais fausse. La vérité est plus exigeante&nbsp;: un cas <em>ordinaire</em> sur les mécanismes, <em>extraordinaire</em> sur leur combinaison. C'est précisément parce que les anticorps existent — magistrature libre, panels délibératifs, société civile robuste — que la défection n'est pas une fatalité. La maladie est réelle&nbsp;; le patient n'est pas condamné.</p>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section id="s5" class="reveal">
+    <span class="sn">05 — Conclusion</span>
+    <h2>Le verdict du silence</h2>
+    <p class="lead-p">Reprenons Hirschman une dernière fois. Dans son modèle, la loyauté est ce qui retient la sortie et laisse à la voix le temps d'agir. Quand la loyauté meurt, il ne reste que la défection. Les chiffres belges racontent exactement cela&nbsp;: une loyauté qui s'effrite — confiance en berne, abstention record, vote de rupture — pendant que la voix se heurte à des portes que l'on resserre.</p>
+
+    <p>Voici le récapitulatif des deux issues, telles que le corpus les documente&nbsp;:</p>
+    <div class="ledger">
+      <div class="col voice reveal">
+        <h4>La voix</h4>
+        <div class="d">prise de parole — coûteuse, bridée</div>
+        <ul>
+          <li>Recours individuel direct&nbsp;: quasi verrouillé (intérêt à agir, forclusion)</li>
+          <li>Intérêt à agir activement <em>restreint</em> (DPR wallonne 2024-2029)</li>
+          <li>Brèches réelles mais exigeantes&nbsp;: préjudiciel, collectif, Strasbourg, GRECO/UE</li>
+          <li>Toutes supposent organisation, détour ou relais — jamais l'isolé</li>
+        </ul>
+      </div>
+      <div class="col exit reveal">
+        <h4>La sortie</h4>
+        <div class="d">défection — large ouverte, en hausse</div>
+        <ul>
+          <li>Abstention record&nbsp;: 2ᵉ bloc du pays, malgré le vote obligatoire</li>
+          <li>Vote de rupture transcommunautaire (VB + PTB)</li>
+          <li>Société de substitution&nbsp;: énergie, alimentation, hébergement</li>
+          <li>Diagnostic&nbsp;: une démocratie à deux étages, sans escalier</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>Ma conclusion tient en une phrase&nbsp;: <strong>une démocratie qui verrouille sa porte d'entrée pousse ses citoyens vers la porte de derrière</strong> — et confond ensuite leur sortie avec de l'apathie. C'est l'erreur de lecture la plus grave qu'un pouvoir puisse commettre, parce qu'elle le rassure&nbsp;: «&nbsp;ils ne disent rien, donc tout va bien&nbsp;». Or le million et demi d'électeurs hors système ne disent pas rien&nbsp;; ils disent qu'ils ont cessé de croire que dire servait à quelque chose.</p>
+
+    <p>La seule réparation durable n'est pas de mieux gérer la sortie&nbsp;; c'est de <em>rouvrir l'entrée</em>. Concrètement, dans le langage des deux volets&nbsp;: exécuter les arrêts en souffrance, ouvrir les cabinets et le Kern au contrôle, élargir — non restreindre — l'intérêt à agir, automatiser l'accès aux droits pour résorber le non-recours, et sanctuariser les panels délibératifs au lieu de les laisser s'enliser. Chacune de ces mesures rend une parcelle de voix à ceux qui l'ont perdue. Aucune n'est hors de portée d'une démocratie qui dispose encore d'une magistrature libre et d'une société civile vivante.</p>
+
+    <p>Le premier volet finissait sur une ligne de crête. Celui-ci finit sur une mesure simple, et que je crois juste&nbsp;: la santé d'une démocratie ne se lit pas à ce que ses citoyens peuvent voter, mais à ce qui se passe <em>quand ils frappent à la porte</em>. Si elle s'ouvre, la voix vit. Si elle reste close, il ne reste que la sortie — et un pays qui se vide de l'intérieur sans bruit, en silence, un bulletin blanc à la fois.</p>
+
+    <div class="end">↳</div>
+  </section>
+
+  </article>
+</div>
+</div>
+
+<footer>
+  <div class="fwrap z">
+    <span class="sn">Note</span>
+    <h2>Sources &amp; méthode</h2>
+    <p class="small" style="max-width:64ch;color:var(--ink-dim)">Deuxième volet d'une synthèse réflexive du corpus documentaire du projet. Le cadre analytique est emprunté à Albert O. Hirschman, <em>Exit, Voice, and Loyalty</em> (1970&nbsp;; trad. fr. <em>Défection et prise de parole</em>). Les données empiriques (abstention, société de substitution, recours) proviennent du corpus&nbsp;; certains chiffres relatifs aux décisions non exécutées et aux astreintes varient selon les sources et les dates de mesure, et sont donnés en ordres de grandeur. Les encadrés «&nbsp;Commentaire de l'analyste&nbsp;» relèvent de l'interprétation.</p>
+    <hr class="r">
+    <div class="srclist">
+      <p>— A. O. Hirschman, <em>Défection et prise de parole</em> (1970).</p>
+      <p>— Note de recherche «&nbsp;Empirie de la sécession civique en Belgique, 2024-2026&nbsp;»&nbsp;: abstention (SPF Intérieur, 9 juin 2024), communales flamandes oct. 2024, sondages mars 2026, société de substitution.</p>
+      <p>— Cour d'appel de Bruxelles, <em>Klimaatzaak</em>, 30 nov. 2023 (recevabilité de l'action collective, ≈60&nbsp;000 citoyens).</p>
+      <p>— Cour de cassation, <em>Anca</em> (19 déc. 1991) et <em>Ferrara</em> (28 sept. 2006)&nbsp;: responsabilité de l'État législateur (art. 1382).</p>
+      <p>— CEDH, <em>Mugemangango c. Belgique</em> (2020)&nbsp;; art. 13, art. 39 du Règlement, art. 3 Protocole 1.</p>
+      <p>— Cour constitutionnelle&nbsp;: jurisprudence sur l'intérêt à agir et l'absence d'<em>actio popularis</em>&nbsp;; lacune inconstitutionnelle par omission.</p>
+      <p>— Déclaration de politique régionale wallonne 2024-2029 (durcissement de l'intérêt à la cause, CoDT).</p>
+      <p>— GRECO (Règle 32)&nbsp;; règlement UE 2020/2092 (conditionnalité)&nbsp;; CIVICUS Monitor&nbsp;; Liberties (2025-2026).</p>
+      <p>— Travaux comparatifs sur la particratie&nbsp;: De Winter, Dewachter&nbsp;; <em>The Winter of Democracy: Partitocracy in Belgium</em> (Baudewyns, Brans, Reuchamps, Rihoux, Van Ingelgom, 2022)&nbsp;; Merrill, Grofman &amp; Brunell (2023).</p>
+      <p>— Atouts institutionnels&nbsp;: culture du compromis, fédéralisme, société civile pilarisée, panels délibératifs (Communauté germanophone, Bruxelles).</p>
+    </div>
+    <div class="navlink">Premier volet&nbsp;: «&nbsp;L'illégalisme d'État — Anatomie d'une démocratie qui désobéit à elle-même&nbsp;».</div>
+    <p class="small" style="margin-top:18px">Synthèse réflexive — état du corpus à la date indiquée. Données empiriques susceptibles d'actualisation.</p>
+  </div>
+</footer>
+
+<script>
+  const bar=document.getElementById('progress');
+  const onScroll=()=>{const h=document.documentElement;
+    bar.style.width=((h.scrollTop)/(h.scrollHeight-h.clientHeight)*100)+'%';};
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  const links=[...document.querySelectorAll('nav.toc a')];
+  const map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){links.forEach(l=>l.classList.remove('active'));
+      const a=map.get(e.target.id);if(a)a.classList.add('active');}
+  }),{rootMargin:'-25% 0px -65% 0px'});
+  document.querySelectorAll('section[id]').forEach(s=>obs.observe(s));
+
+  const rev=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('in');rev.unobserve(e.target);}
+  }),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>rev.observe(el));
+
+  const fmt=n=>{
+    if(n>=1000)return Math.round(n).toLocaleString('fr-FR').replace(/\u202f/g,'\u00a0');
+    if(Number.isInteger(n))return String(n);
+    return n.toFixed(1).replace('.',',');
+  };
+  const run=el=>{
+    const to=parseFloat(el.dataset.to),pre=el.dataset.pre||'',suf=el.dataset.suf||'',t0=performance.now(),d=1100;
+    const step=t=>{const p=Math.min(1,(t-t0)/d),e=1-Math.pow(1-p,3);
+      el.innerHTML=pre+fmt(to*e)+(suf?'<small>'+suf+'</small>':'');
+      if(p<1)requestAnimationFrame(step);else el.innerHTML=pre+fmt(to)+(suf?'<small>'+suf+'</small>':'');};
+    requestAnimationFrame(step);
+  };
+  const nObs=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){run(e.target);nObs.unobserve(e.target);}
+  }),{threshold:.6});
+  document.querySelectorAll('.stat .n[data-to]').forEach(n=>nObs.observe(n));
+</script>
+</body>
+</html>
