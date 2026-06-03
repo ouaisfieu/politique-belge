@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Qui tient le récit — Guerre narrative et médiarchie en Belgique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Hanken+Grotesk:ital,wght@0,300..700;1,300..500&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0e15;
+    --bg2:#0f141d;
+    --panel:#121823;
+    --panel2:#161d2a;
+    --ink:#e8ecf2;
+    --ink-dim:#a8b2c0;
+    --mute:#6f7c8f;
+    --faint:#4a5566;
+    --line:#243043;
+    --cyan:#38d0e6;     /* signal */
+    --cyan-dk:#1c8fa0;
+    --red:#ff5a4d;      /* alerte / manipulation */
+    --gold:#e9b949;
+    --shadow:rgba(0,0,0,.55);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Hanken Grotesk",system-ui,sans-serif;font-size:18.5px;line-height:1.68;font-weight:360;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden}
+  /* scanlines + vignette */
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(130% 90% at 50% -10%, #14202f 0%, var(--bg) 60%, #070a0f 100%)}
+  body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.5;mix-blend-mode:overlay;
+    background:repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 3px)}
+  ::selection{background:var(--cyan);color:#0a0e15}
+  a{color:var(--cyan)}
+
+  #progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--cyan),var(--red))}
+
+  .z{position:relative;z-index:2}
+  .col{max-width:720px;margin:0 auto;padding:0 24px}
+
+  /* HERO */
+  header{position:relative;z-index:2;padding:78px 0 26px}
+  .transmit{font-family:"Spline Sans Mono",monospace;font-size:11.5px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--cyan);display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .transmit .dot{width:8px;height:8px;border-radius:50%;background:var(--red);animation:blink 1.4s steps(1) infinite}
+  @keyframes blink{50%{opacity:.2}}
+  .transmit::after{content:"";flex:1;height:1px;background:var(--line);min-width:30px}
+  h1{font-family:"Syne",sans-serif;font-weight:800;font-size:clamp(2.9rem,9vw,6rem);
+    line-height:.92;letter-spacing:-.02em;margin:.28em 0 .15em;color:var(--ink)}
+  h1 .g{color:var(--cyan);position:relative}
+  .dek{font-size:clamp(1.1rem,2.4vw,1.4rem);color:var(--ink-dim);max-width:44ch;font-weight:300;line-height:1.45}
+  .dek b{color:var(--cyan);font-weight:600}
+  .meta{margin-top:28px;font-family:"Spline Sans Mono",monospace;font-size:12px;color:var(--mute);line-height:1.9}
+  .meta b{color:var(--ink)}
+
+  section{padding:36px 0 8px}
+  h2{font-family:"Syne",sans-serif;font-weight:700;font-size:clamp(1.7rem,4.4vw,2.6rem);
+    line-height:1;letter-spacing:-.015em;margin:.15em 0 .5em;color:var(--ink)}
+  h3{font-family:"Syne",sans-serif;font-weight:600;font-size:1.25rem;margin:1.7em 0 .35em;color:var(--ink)}
+  p{margin:0 0 1.12em;color:var(--ink-dim)}
+  p strong{color:var(--ink);font-weight:600}
+  em{font-style:italic}
+  .lead{font-size:1.18rem;color:var(--ink)}
+  .lead::first-letter{font-family:"Syne",sans-serif;font-weight:800;float:left;font-size:4rem;
+    line-height:.74;padding:.05em .12em 0 0;color:var(--cyan)}
+  hr.r{border:0;height:1px;background:var(--line);margin:42px 0}
+  .small{font-size:.82em;color:var(--mute)}
+  .src{font-family:"Spline Sans Mono",monospace;font-size:.66em;color:var(--faint);vertical-align:super;white-space:nowrap}
+
+  /* channel header */
+  .chan{margin:46px 0 22px;border:1px solid var(--line);background:linear-gradient(180deg,var(--panel),var(--bg2));
+    border-radius:4px;overflow:hidden}
+  .chan .bar{display:flex;align-items:center;gap:12px;padding:11px 16px;background:#0c1119;
+    border-bottom:1px solid var(--line);font-family:"Spline Sans Mono",monospace;font-size:11px;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--cyan)}
+  .chan .bar .live{margin-left:auto;color:var(--red);display:flex;align-items:center;gap:7px}
+  .chan .bar .live .dot{width:7px;height:7px;border-radius:50%;background:var(--red);animation:blink 1.4s steps(1) infinite}
+  .chan .body{padding:20px 20px 6px}
+  .chan h2{margin-top:.1em}
+
+  /* stat band */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+    border:1px solid var(--line);margin:30px 0;border-radius:4px;overflow:hidden}
+  @media(max-width:620px){.stats{grid-template-columns:1fr 1fr}}
+  .stat{background:var(--panel);padding:20px 16px}
+  .stat .n{font-family:"Syne",sans-serif;font-weight:800;font-size:2rem;line-height:1;color:var(--cyan)}
+  .stat .n small{font-size:.9rem;color:var(--ink);font-weight:600}
+  .stat.r .n{color:var(--red)}
+  .stat .c{font-size:.76rem;color:var(--mute);margin-top:8px;line-height:1.45}
+
+  /* flag box */
+  .flag{margin:28px 0;padding:18px 22px;background:rgba(255,90,77,.07);border:1px solid rgba(255,90,77,.3);
+    border-left:4px solid var(--red);border-radius:3px}
+  .flag .t{font-family:"Spline Sans Mono",monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--red);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+  .flag .t::before{content:"⚠"}
+  .flag p{font-size:.93rem;margin:0;color:var(--ink-dim)}
+
+  /* analyst note */
+  .note{margin:30px 0;padding:22px 24px 18px;background:var(--panel2);border:1px solid var(--line);
+    border-left:4px solid var(--cyan);border-radius:3px}
+  .note .tag{font-family:"Spline Sans Mono",monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--cyan);font-weight:600;margin-bottom:9px}
+  .note p{font-size:.94rem;color:var(--ink-dim)} .note p:last-child{margin-bottom:0}
+
+  blockquote{margin:32px 0;padding:4px 0 4px 24px;border-left:3px solid var(--cyan);
+    font-family:"Syne",sans-serif;font-style:normal;font-weight:600;font-size:1.4rem;line-height:1.2;color:var(--ink)}
+  blockquote cite{display:block;font-family:"Spline Sans Mono",monospace;font-weight:400;font-size:11px;
+    color:var(--mute);margin-top:13px;letter-spacing:.03em;line-height:1.6}
+
+  /* loop diagram */
+  .loop{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:28px 0;text-align:center}
+  @media(max-width:620px){.loop{grid-template-columns:1fr 1fr}}
+  .node{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:16px 12px;position:relative}
+  .node .k{font-family:"Spline Sans Mono",monospace;font-size:10px;letter-spacing:.1em;color:var(--cyan);text-transform:uppercase}
+  .node p{font-size:.8rem;margin:.5em 0 0;color:var(--ink-dim);line-height:1.4}
+  .node:not(:last-child)::after{content:"→";position:absolute;right:-9px;top:50%;transform:translateY(-50%);
+    color:var(--cyan);font-weight:700;z-index:3}
+  @media(max-width:620px){.node:not(:last-child)::after{content:none}}
+
+  footer{position:relative;z-index:2;border-top:1px solid var(--line);margin-top:54px;background:#070a0f}
+  .fwrap{max-width:720px;margin:0 auto;padding:44px 24px 72px}
+  footer h2{margin-top:0}
+  .srclist{columns:2;column-gap:38px;font-size:.76rem;color:var(--mute);line-height:1.5}
+  @media(max-width:620px){.srclist{columns:1}}
+  .srclist p{break-inside:avoid;margin:0 0 .85em;padding-left:1.4em;text-indent:-1.4em;color:var(--mute)}
+  .end{font-family:"Syne",sans-serif;font-weight:800;font-size:1.6rem;color:var(--cyan);text-align:center;margin:36px 0 4px}
+  .navlink{font-family:"Spline Sans Mono",monospace;font-size:11.5px;color:var(--faint);margin-top:22px;line-height:1.8}
+
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.dot{animation:none}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="z">
+  <div class="col">
+    <div class="transmit"><span class="dot"></span>Dossier critique · 5ᵉ volet · Information &amp; pouvoir</div>
+    <h1>Qui tient<br>le <span class="g">récit</span></h1>
+    <p class="dek">En démocratie, le pouvoir n'est pas seulement celui qui décide. C'est celui qui contrôle <b>l'histoire qu'on raconte sur la décision.</b> En Belgique, cette histoire est captée à trois étages à la fois.</p>
+    <div class="meta">
+      <b>Grille d'analyse&nbsp;:</b> macro (l'étranger) · méso (médias &amp; partis) · micro (vous)<br>
+      <b>Période&nbsp;:</b> 2022–2026 · <b>Avertissement&nbsp;:</b> plusieurs faits récents restent prospectifs (voir clôture)
+    </div>
+  </div>
+</header>
+
+<div class="z">
+
+  <section>
+    <div class="col reveal">
+      <p class="lead">Vous croyez vous faire votre propre opinion. C'est le but&nbsp;: que vous le croyiez. Mais entre l'événement brut et ce que vous en pensez, il y a une chaîne d'intermédiaires — des États étrangers, des familles propriétaires de journaux, des partis qui achètent votre attention, des algorithmes qui décident de ce que vous voyez. Aucun ne vous force à penser quoi que ce soit. Ensemble, ils déterminent le <em>champ</em> de ce qu'il vous est possible de penser.</p>
+      <p>Et il y a, en Belgique, une cruauté supplémentaire&nbsp;: <strong>il n'existe pas d'opinion publique belge.</strong> Il en existe deux — une flamande, une francophone — qui ne lisent pas les mêmes journaux, ne regardent pas les mêmes chaînes, ne font pas confiance aux mêmes voix, et ne se croisent presque jamais. Cette fracture n'est pas un détail&nbsp;: c'est ce qui empêche un pays de se mettre d'accord, ne serait-ce qu'une fois, sur ce qui ne va pas.</p>
+      <p>Suivons la chaîne, de l'étage le plus lointain au plus intime.</p>
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <div class="col"><div class="chan reveal">
+    <div class="bar"><span>Canal 01 — MACRO</span><span class="live"><span class="dot"></span>le récit vient de loin</span></div>
+    <div class="body">
+      <h2>L'ingérence&nbsp;: une arme qui n'a presque rien d'illégal</h2>
+      <p>La Belgique est une cible de choix&nbsp;: siège de l'OTAN, des institutions européennes, du dépositaire financier Euroclear. Entre 2022 et 2026, elle est devenue un laboratoire d'opérations d'influence étrangères. Le vocabulaire a changé&nbsp;: on ne parle plus seulement de propagande, mais de <em>sharp power</em> (manipuler les audiences démocratiques en déformant l'information qui leur parvient) et de <em>guerre cognitive</em>.</p>
+      <p>Les épisodes sont documentés&nbsp;: l'affaire <strong>Voice of Europe</strong> (réseau de paiements présumés à des responsables politiques européens, 2024)&nbsp;; l'opération <strong>Doppelganger</strong> (faux sites clonant de vrais médias)&nbsp;; l'affaire visant l'ancien élu <strong>Frank Creyelman</strong> pour des liens présumés avec des services chinois&nbsp;; le réseau pro-Kremlin francophone <strong>Russosphère</strong>. Et, signe des temps, le 18 décembre 2025, une fausse vidéo TikTok imitant une journaliste de la RTBF — générée par IA (Sora 2) — a circulé avant d'être démasquée par ses incohérences.</p>
+    </div>
+  </div></div>
+
+  <div class="col reveal">
+    <div class="stats">
+      <div class="stat"><div class="n" data-to="505">0</div><div class="c">incidents d'ingérence analysés par le service diplomatique européen (rapport 2025) <span class="src">[SEAE/FIMI]</span></div></div>
+      <div class="stat r"><div class="n" data-to="1" data-suf=" / 4">0</div><div class="c">de ces incidents mobilisent désormais de l'IA générative <span class="src">[SEAE 2026]</span></div></div>
+      <div class="stat"><div class="n" data-to="38000">0</div><div class="c">comptes impliqués, sur 25 plateformes <span class="src">[SEAE/FIMI]</span></div></div>
+    </div>
+
+    <div class="flag reveal">
+      <div class="t">Le piège juridique</div>
+      <p>L'Union européenne définit ces manipulations comme «&nbsp;intentionnelles, coordonnées… et <strong>généralement non illégales</strong>&nbsp;». C'est tout le problème&nbsp;: on ne peut pas poursuivre ce qui n'enfreint aucune loi. La démocratie est attaquée par ses propres libertés — l'ouverture, la liberté d'expression — retournées contre elle.</p>
+    </div>
+  </div>
+
+  <!-- MÉSO -->
+  <div class="col"><div class="chan reveal">
+    <div class="bar"><span>Canal 02 — MÉSO</span><span class="live"><span class="dot"></span>le récit appartient à quelques-uns</span></div>
+    <div class="body">
+      <h2>La médiarchie&nbsp;: quand l'information tient dans quelques mains</h2>
+      <p>Descendons d'un étage. Le récit local, lui, est de plus en plus la propriété de très peu d'acteurs. Au sud du pays, deux groupes rivaux historiques — Rossel et IPM — ont scellé en 2025 une fusion-absorption. Résultat&nbsp;: <strong>un seul groupe contrôlera l'essentiel de la presse quotidienne francophone.</strong></p>
+    </div>
+  </div></div>
+
+  <div class="col reveal">
+    <div class="stats">
+      <div class="stat"><div class="n" data-to="94" data-suf="%">0</div><div class="c">de l'audience de la presse quotidienne francophone, dans un seul groupe après fusion <span class="src">[calcul AJP-FEJ]</span></div></div>
+      <div class="stat"><div class="n" data-to="60" data-suf="%">0</div><div class="c">des recettes publicitaires numériques captées par les GAFAM — double étau sur les médias locaux <span class="src">[CSA / UMA]</span></div></div>
+      <div class="stat r"><div class="n" data-to="98" data-suf="%">0</div><div class="c">des revenus radio francophones concentrés sur quatre acteurs <span class="src">[CSA]</span></div></div>
+    </div>
+    <blockquote>
+      Je n'ai pas connaissance d'un autre exemple de monopole comparable en Europe.
+      <cite>Ricardo Gutiérrez, secrétaire général de la Fédération européenne des journalistes, sur la fusion Rossel-IPM</cite>
+    </blockquote>
+
+    <h3>La diversion&nbsp;: viser les faibles plutôt que les puissants</h3>
+    <p>Un média sous pression financière a une tentation simple&nbsp;: faire de l'audience sans se fâcher avec les puissants. La cible facile, ce n'est pas le ministre&nbsp;; c'est l'allocataire social. En novembre 2025, une émission d'une chaîne privée intitulée «&nbsp;<em>Sans boulot&nbsp;: tous fraudeurs&nbsp;?</em>&nbsp;» a déclenché une centaine de plaintes au régulateur audiovisuel, accusée de mettre tous les chômeurs «&nbsp;dans le même sac&nbsp;». Pour ses critiques, l'épisode illustre un mécanisme&nbsp;: stigmatiser la précarité génère du clic <em>et</em> sert un récit politique — pendant que les dérives du pouvoir, elles, restent hors champ.</p>
+
+    <div class="flag reveal">
+      <div class="t">Précaution — ce qui est établi, ce qui est thèse</div>
+      <p>L'émission, les plaintes et l'instruction du régulateur sont des faits. L'idée d'une «&nbsp;médiarchie&nbsp;» — une collusion organisée entre certains médias privés et des états-majors de parti — est, elle, une <strong>thèse</strong> avancée dans nos sources, pas un fait prouvé. Elle décrit une convergence d'intérêts, pas nécessairement un complot. À manier comme une grille de lecture, pas comme un verdict.</p>
+    </div>
+
+    <h3>Les partis ont industrialisé le récit</h3>
+    <p>Les élections de 2024 ont été les plus chères de l'histoire belge sur les plateformes&nbsp;: environ <strong>15 millions d'euros</strong> de publicité en ligne pour les partis — près de cinq fois et demie le montant de 2019. Un seul parti a investi à lui seul de l'ordre d'<strong>un million et demi d'euros</strong> sur Meta. Des réseaux de comptes «&nbsp;fantômes&nbsp;» sur TikTok ont relayé des slogans sans mentionner leur affiliation, en exploitant l'algorithme. Et selon une étude européenne, parmi les dix plus gros annonceurs politiques sur Facebook et Instagram du continent, <strong>sept étaient belges.</strong></p>
+  </div>
+
+  <!-- MICRO -->
+  <div class="col"><div class="chan reveal">
+    <div class="bar"><span>Canal 03 — MICRO</span><span class="live"><span class="dot"></span>le récit s'installe dans votre poche</span></div>
+    <div class="body">
+      <h2>Vous, votre fatigue, et votre téléphone</h2>
+      <p>Dernier étage&nbsp;: le vôtre. C'est là que tout converge — et c'est là que vos défenses sont les plus basses, pour une raison qui n'a rien d'une faiblesse morale. Le flux est conçu pour capter l'attention par l'émotion&nbsp;: ce qui est moral, indignant, identitaire, prestigieux remonte&nbsp;; le reste disparaît. Votre cerveau, lui, ne traite qu'une poignée d'informations à la fois. La surcharge produit du cortisol, de la fatigue, du <em>doomscrolling</em> — et, au bout, le désengagement.</p>
+    </div>
+  </div></div>
+
+  <div class="col reveal">
+    <div class="stats">
+      <div class="stat"><div class="n" data-to="70" data-suf="%">0</div><div class="c">des Belges ont rencontré de la désinformation dans la semaine précédant l'enquête <span class="src">[Eurobaromètre]</span></div></div>
+      <div class="stat r"><div class="n" data-to="64" data-suf="%">0</div><div class="c">d'évitement de l'actualité en Flandre en 2025 (48&nbsp;% en 2017) <span class="src">[Reuters DNR]</span></div></div>
+      <div class="stat"><div class="n" data-to="71.5" data-suf="%">0</div><div class="c">des 16-24 ans consultent TikTok quotidiennement <span class="src">[corpus]</span></div></div>
+    </div>
+
+    <p>Et la fracture revient, plus nette&nbsp;: la confiance dans l'information est de <strong>51&nbsp;% en Flandre contre 35&nbsp;% en Wallonie</strong>. Chez les jeunes, TikTok, Instagram et YouTube ont remplacé les marques historiques — alors que près d'un utilisateur sur deux avoue ne pas savoir y évaluer la fiabilité. Deux publics, deux régimes d'information, aucune conversation commune.</p>
+
+    <div class="note reveal">
+      <div class="tag">Commentaire de l'analyste</div>
+      <p>Voici le diagnostic le plus dérangeant que nos sources permettent de poser&nbsp;: les Belges ont une conscience des <em>symptômes</em> (justice lente, défiance, sentiment d'injustice) mais pas des <em>causes</em> (non-exécution des jugements, particratie, concentration médiatique), réservées à une petite élite. Et les médias, fragilisés, clarifient rarement ces mécanismes&nbsp;: pressés par l'audience, ils privilégient le récit binaire et l'émotion. Autrement dit, l'outil censé vous expliquer la crise participe, parfois, à la rendre illisible.</p>
+    </div>
+  </div>
+
+  <!-- BOUCLE -->
+  <section>
+    <div class="col reveal">
+      <div class="transmit" style="margin-bottom:6px"><span class="dot"></span>Synchronisation des trois canaux</div>
+      <h2>La boucle qui se referme</h2>
+      <p>Les trois étages ne sont pas indépendants&nbsp;: ils s'alimentent. Un scandale démocratique <em>réel</em> (un cas de corruption européenne, par exemple) est repris et déformé par des opérations étrangères sous le récit «&nbsp;Bruxelles corrompue&nbsp;»&nbsp;; ce récit est amplifié par les algorithmes jusque dans votre fil&nbsp;; il érode votre confiance&nbsp;; cette défiance nourrit le vote de rupture et le repli&nbsp;; le repli creuse la fracture entre les deux opinions publiques — qui, séparées, n'ont plus la force commune de démêler le vrai du faux. Et la boucle recommence.</p>
+      <div class="loop reveal">
+        <div class="node"><div class="k">Faille réelle</div><p>une vraie défaillance démocratique</p></div>
+        <div class="node"><div class="k">Capture</div><p>reprise &amp; déformation par l'ingérence</p></div>
+        <div class="node"><div class="k">Amplification</div><p>l'algorithme la pousse dans votre fil</p></div>
+        <div class="node"><div class="k">Érosion</div><p>défiance → rupture → fracture</p></div>
+      </div>
+      <p>La manipulation la plus efficace n'invente pas&nbsp;: elle <strong>part d'un fait vrai</strong> et le tord. C'est pourquoi nier les dysfonctionnements serait la pire des défenses — cela laisse le monopole de la vérité à ceux qui la déforment. La seule parade est de regarder les failles en face <em>avant</em> que d'autres ne s'en emparent.</p>
+    </div>
+  </section>
+
+  <hr class="r">
+
+  <!-- CLÔTURE -->
+  <section>
+    <div class="col reveal">
+      <h2>Ce qui brise le verrou</h2>
+      <p>Restons honnêtes, comme l'exigeait le volet III de ce dossier. Une part des faits cités ici est récente et encore mouvante&nbsp;: la fusion médiatique reste suspendue à l'autorité de la concurrence, certains chiffres varient d'une source à l'autre, plusieurs épisodes datent de fin 2025 ou de 2026. Rien de tout cela n'est gravé&nbsp;; tout demande vérification. Mais la tendance, elle, est robuste&nbsp;: concentration, micro-ciblage, fracture, fatigue.</p>
+      <p>La bonne nouvelle, c'est qu'on sait ce qui marche — et que ce n'est pas hors de portée.</p>
+      <h3>À l'échelle des institutions</h3>
+      <p>Le <strong>règlement européen sur les services numériques (DSA)</strong> impose désormais aux grandes plateformes une transparence publicitaire et une atténuation des risques pour «&nbsp;le débat civique et les processus électoraux&nbsp;», sous peine d'amendes pouvant atteindre 6&nbsp;% du chiffre d'affaires mondial. Le soutien au <strong>journalisme local</strong> est un investissement démocratique mesurable&nbsp;: là où il est fort, la corruption recule et la participation monte. Les démocraties consensuelles — pays nordiques, Suisse — résistent mieux, grâce à la confiance sociale et à des médias de qualité.</p>
+      <h3>À votre échelle</h3>
+      <p>La recherche est nette sur un point&nbsp;: le <strong>pré-bunking</strong> — apprendre à reconnaître les techniques de manipulation <em>avant</em> de les rencontrer — protège plus durablement que le démenti après coup, comme un vaccin. Concrètement&nbsp;: diversifier ses sources&nbsp;; se méfier de ce qui déclenche une émotion forte (c'est souvent le signe d'un contenu optimisé pour ça)&nbsp;; vérifier avant de partager. Et, geste le plus radical dans un pays à deux récits&nbsp;: <strong>aller lire l'autre communauté linguistique.</strong> Traverser la frontière médiatique entre le nord et le sud, c'est reconstituer, à soi seul, l'opinion publique nationale que le système a cessé de produire.</p>
+
+      <blockquote>
+        Dans un espace informationnel capturé, l'acte le plus subversif n'est pas de crier plus fort. C'est de vérifier — et de refuser le récit binaire qu'on vous tend.
+      </blockquote>
+
+      <p>On vous propose en permanence deux camps, deux indignations, deux vérités qui s'excluent. Le pouvoir réel, lui, prospère exactement dans l'angle mort entre les deux — là où personne ne regarde parce que tout le monde se dispute. Reprendre le récit, ce n'est pas choisir un camp. C'est refuser qu'on choisisse à votre place ce dont vous avez le droit de débattre.</p>
+
+      <div class="end">⊚</div>
+    </div>
+  </section>
+
+</div>
+
+<footer class="z">
+  <div class="fwrap reveal">
+    <div class="transmit" style="margin-bottom:10px"><span class="dot"></span>Sources &amp; méthode</div>
+    <h2 style="font-size:1.6rem">Note</h2>
+    <p class="small" style="max-width:62ch;color:var(--ink-dim)">Cinquième volet d'une synthèse réflexive du corpus du projet. La grille macro/méso/micro est empruntée à un dossier d'éducation aux médias du corpus. Conformément à la discipline posée au volet III&nbsp;: les chiffres sont donnés en ordres de grandeur (les sources divergent), les événements postérieurs à début 2026 sont signalés comme prospectifs, et la thèse de la «&nbsp;médiarchie&nbsp;» est présentée comme grille de lecture, non comme fait établi. Les épisodes nominatifs (émission télévisée, affaires d'ingérence) renvoient à des faits documentés ou à des procédures en cours&nbsp;; aucune intention n'est imputée au-delà de ce que les sources permettent.</p>
+    <hr class="r">
+    <div class="srclist">
+      <p>— SEAE / cadre FIMI (Foreign Information Manipulation and Interference)&nbsp;; rapports annuels 2025-2026.</p>
+      <p>— Walker &amp; Ludwig (NED, 2017) sur le <em>sharp power</em>&nbsp;; concept OTAN de <em>cognitive warfare</em> (2024).</p>
+      <p>— Affaires Voice of Europe, Doppelganger, Creyelman, réseau Russosphère (RTBF, VRT, BBC, Logically).</p>
+      <p>— Deepfake RTBF/Sora 2 (EDMO BELUX, Faky, déc. 2025).</p>
+      <p>— Concentration médiatique&nbsp;: CSA (Media Pluralism Monitor 2023-2024), VRM, CIM, AJP-FEJ, <em>Médor</em> n°41&nbsp;; fusion Rossel-IPM (protocole juin 2025).</p>
+      <p>— Reuters Digital News Report 2025 (confiance 51&nbsp;% FL / 35&nbsp;% W&nbsp;; évitement d'actualité)&nbsp;; Eurobaromètre désinformation.</p>
+      <p>— Publicité électorale en ligne 2024 (≈15&nbsp;M€, x5,5 vs 2019)&nbsp;; comptes fantômes TikTok (VRT NWS, 30 mai 2024)&nbsp;; étude Meta Ads européenne.</p>
+      <p>— Controverse «&nbsp;Sans boulot&nbsp;: tous fraudeurs&nbsp;?&nbsp;» (nov. 2025) et instruction du CSA.</p>
+      <p>— DSA (règlement 2022/2065, art. 26-28 &amp; 34-35)&nbsp;; littérature sur le pré-bunking (IREX «&nbsp;Learn to Discern&nbsp;», Bad News Game).</p>
+    </div>
+    <div class="navlink">
+      Volets&nbsp;: I. L'illégalisme d'État · II. Défection · III. Au vitriol · IV. On s'habitue à tout · V. Qui tient le récit.
+    </div>
+  </div>
+</footer>
+
+<script>
+  const bar=document.getElementById('progress');
+  const onScroll=()=>{const h=document.documentElement;
+    bar.style.width=((h.scrollTop)/(h.scrollHeight-h.clientHeight)*100)+'%';};
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  const rev=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('in');rev.unobserve(e.target);}
+  }),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>rev.observe(el));
+
+  const fmt=n=>{
+    if(n>=1000)return Math.round(n).toLocaleString('fr-FR').replace(/\u202f/g,'\u00a0');
+    if(Number.isInteger(n))return String(n);
+    return n.toFixed(1).replace('.',',');
+  };
+  const run=el=>{const to=parseFloat(el.dataset.to),suf=el.dataset.suf||'',t0=performance.now(),d=1050;
+    const step=t=>{const p=Math.min(1,(t-t0)/d),e=1-Math.pow(1-p,3);
+      el.innerHTML=fmt(to*e)+(suf?'<small>'+suf+'</small>':'');
+      if(p<1)requestAnimationFrame(step);else el.innerHTML=fmt(to)+(suf?'<small>'+suf+'</small>':'');};
+    requestAnimationFrame(step);};
+  const nObs=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){run(e.target);nObs.unobserve(e.target);}
+  }),{threshold:.6});
+  document.querySelectorAll('.stat .n[data-to]').forEach(n=>nObs.observe(n));
+</script>
+</body>
+</html>
