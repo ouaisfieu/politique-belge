@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Présumés coupables ? — Protection sociale et santé mentale en Belgique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..600;1,8..60,300..500&family=Archivo:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f7f4 ee;
+    --paper:#f7f4ee;
+    --paper2:#efe9dc;
+    --card:#fbf9f3;
+    --ink:#1d1b16;
+    --ink-soft:#46413a;
+    --blue:#1b5a73;       /* l'institution */
+    --blue-dk:#103e51;
+    --blue-tint:#e7eef1;
+    --clay:#bd5b39;       /* la voix humaine */
+    --clay-dk:#8f3f23;
+    --mute:#827a6b;
+    --faint:#aaa294;
+    --line:#d9d0bf;
+    --shadow:rgba(29,27,22,.12);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Source Serif 4",Georgia,serif;font-size:19.5px;line-height:1.72;font-weight:380;
+    -webkit-font-smoothing:antialiased}
+  ::selection{background:var(--blue);color:#f7f4ee}
+  a{color:var(--blue-dk)}
+  img{max-width:100%}
+
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;background:var(--clay)}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 26px}
+
+  /* HERO */
+  header.hero{max-width:1080px;margin:0 auto;padding:64px 26px 26px}
+  .kicker{font-family:"Archivo",sans-serif;font-weight:700;font-size:12px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--clay);display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .kicker::after{content:"";flex:1;height:1px;background:var(--line);min-width:30px}
+  h1.title{font-family:"DM Serif Display",serif;font-weight:400;font-size:clamp(3rem,8.5vw,6rem);
+    line-height:.98;letter-spacing:-.01em;margin:.2em 0 .15em;color:var(--ink)}
+  h1.title em{font-style:italic;color:var(--clay)}
+  .dek{font-size:clamp(1.18rem,2.5vw,1.5rem);max-width:42ch;color:var(--ink-soft);font-weight:380;line-height:1.45}
+  .byline{margin-top:28px;font-family:"Archivo",sans-serif;font-size:12.5px;color:var(--mute);
+    letter-spacing:.02em;line-height:1.85}
+  .byline b{color:var(--ink)}
+
+  /* layout with TOC */
+  .grid{display:grid;grid-template-columns:1fr 210px;gap:52px;align-items:start;max-width:1080px;margin:18px auto 0;padding:0 26px}
+  @media(max-width:940px){.grid{grid-template-columns:1fr;gap:0;padding:0 26px}}
+  article{min-width:0}
+  nav.toc{position:sticky;top:28px;order:2;font-family:"Archivo",sans-serif;font-size:12.5px}
+  @media(max-width:940px){nav.toc{position:relative;order:0;top:0;margin:8px 0 26px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0}}
+  nav.toc .l{font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--clay);font-size:10.5px;margin-bottom:13px;display:block}
+  nav.toc ol{list-style:none;margin:0;padding:0;counter-reset:t}
+  nav.toc li{counter-increment:t;margin:0 0 10px}
+  nav.toc a{display:block;text-decoration:none;color:var(--mute);padding-left:26px;position:relative;border-left:2px solid transparent;transition:.2s;line-height:1.35}
+  nav.toc a::before{content:counter(t,decimal-leading-zero);position:absolute;left:4px;top:0;color:var(--faint);font-size:10.5px}
+  nav.toc a:hover,nav.toc a.active{color:var(--ink)}
+  nav.toc a.active{border-left-color:var(--clay)}
+  nav.toc a.active::before{color:var(--clay)}
+
+  section{padding:30px 0 6px;scroll-margin-top:22px}
+  .sn{font-family:"Archivo",sans-serif;font-weight:700;font-size:12px;letter-spacing:.16em;color:var(--clay);text-transform:uppercase}
+  h2{font-family:"DM Serif Display",serif;font-weight:400;font-size:clamp(1.8rem,4.2vw,2.6rem);
+    line-height:1.05;letter-spacing:-.005em;margin:.16em 0 .5em;color:var(--ink);max-width:24ch}
+  h3{font-family:"DM Serif Display",serif;font-weight:400;font-size:1.4rem;margin:1.6em 0 .35em;color:var(--ink)}
+  p{margin:0 0 1.12em;color:var(--ink-soft)}
+  p strong{color:var(--ink);font-weight:600}
+  em{font-style:italic}
+  .lead{font-size:1.16rem;color:var(--ink)}
+  .lead::first-letter{font-family:"DM Serif Display",serif;float:left;font-size:4.6rem;line-height:.68;padding:.04em .12em 0 0;color:var(--clay)}
+  hr.r{border:0;height:1px;background:var(--line);margin:40px 0}
+  .small{font-size:.82em;color:var(--mute)}
+  .src{font-family:"Archivo",sans-serif;font-size:.62em;font-weight:600;color:var(--faint);vertical-align:super;white-space:nowrap;letter-spacing:.02em}
+
+  /* stat strip */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin:32px 0;border-radius:4px;overflow:hidden}
+  @media(max-width:680px){.stats{grid-template-columns:1fr 1fr}}
+  .stat{background:var(--card);padding:20px 16px}
+  .stat .n{font-family:"Archivo",sans-serif;font-weight:800;font-size:2rem;line-height:1;color:var(--blue)}
+  .stat .n small{font-size:.95rem;color:var(--ink)}
+  .stat.c .n{color:var(--clay)}
+  .stat .c{font-size:.77rem;color:var(--mute);margin-top:8px;line-height:1.45}
+
+  /* explainer box */
+  .box{margin:30px 0;padding:22px 24px;background:var(--blue-tint);border:1px solid #cddde3;border-radius:5px}
+  .box .t{font-family:"Archivo",sans-serif;font-weight:700;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-dk);margin-bottom:10px}
+  .box p{font-size:.92rem;color:var(--ink-soft);margin:0 0 .6em} .box p:last-child{margin-bottom:0}
+  .box dl{margin:0;font-size:.92rem}
+  .box dt{font-weight:700;color:var(--ink);font-family:"Archivo",sans-serif;font-size:.84rem;margin-top:10px}
+  .box dt:first-child{margin-top:0}
+  .box dd{margin:2px 0 0;color:var(--ink-soft)}
+
+  /* testimony / pull quote */
+  blockquote{margin:34px 0;padding:6px 0 6px 26px;border-left:3px solid var(--clay)}
+  blockquote p{font-family:"DM Serif Display",serif;font-style:italic;font-weight:400;font-size:1.5rem;line-height:1.28;color:var(--ink);margin:0}
+  blockquote cite{display:block;font-style:normal;font-family:"Archivo",sans-serif;font-size:11.5px;color:var(--mute);margin-top:13px;letter-spacing:.02em}
+
+  /* timeline of reforms */
+  .tl{margin:28px 0;border:1px solid var(--line);border-radius:5px;overflow:hidden}
+  .tl .row{display:grid;grid-template-columns:130px 1fr;gap:0;border-bottom:1px solid var(--line)}
+  .tl .row:last-child{border-bottom:0}
+  @media(max-width:600px){.tl .row{grid-template-columns:1fr}}
+  .tl .when{background:#0f3e51;color:#eaf2f5;padding:14px 16px;font-family:"Archivo",sans-serif;font-size:11px;font-weight:600;letter-spacing:.04em}
+  .tl .when .tag{display:inline-block;margin-top:6px;padding:2px 7px;border-radius:3px;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase}
+  .tl .tag.law{background:#2f7d52;color:#fff}
+  .tl .tag.prop{background:#c0603f;color:#fff}
+  .tl .what{background:var(--card);padding:14px 16px;font-size:.9rem;color:var(--ink-soft)}
+  .tl .what b{color:var(--ink)}
+
+  /* two-column ledger */
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0}
+  @media(max-width:640px){.duo{grid-template-columns:1fr}}
+  .duo .c2{border:1px solid var(--line);border-radius:5px;padding:20px;background:var(--card)}
+  .duo .c2.a{border-top:3px solid var(--blue)} .duo .c2.b{border-top:3px solid var(--clay)}
+  .duo h4{font-family:"Archivo",sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin:0 0 10px}
+  .duo .c2.a h4{color:var(--blue-dk)} .duo .c2.b h4{color:var(--clay-dk)}
+  .duo p{font-size:.9rem;margin:0;color:var(--ink-soft)}
+
+  /* care + sources */
+  .care{margin:36px 0 0;padding:24px;background:var(--clay);color:#fdf6f2;border-radius:6px}
+  .care .t{font-family:"DM Serif Display",serif;font-size:1.3rem;margin-bottom:8px}
+  .care p{color:#fbeee7;margin:0 0 .7em;font-size:.95rem} .care p:last-child{margin-bottom:0}
+  .care b{color:#fff}
+  .care a{color:#fff;text-decoration:underline}
+
+  footer{border-top:2px solid var(--ink);margin-top:54px;background:var(--paper2)}
+  .fwrap{max-width:1080px;margin:0 auto;padding:44px 26px 72px}
+  footer h2{margin-top:0}
+  .srclist{columns:2;column-gap:40px;font-size:.78rem;color:var(--mute);line-height:1.5}
+  @media(max-width:680px){.srclist{columns:1}}
+  .srclist p{break-inside:avoid;margin:0 0 .85em;padding-left:1.4em;text-indent:-1.4em;color:var(--mute)}
+  .end{font-family:"DM Serif Display",serif;font-size:1.7rem;color:var(--clay);text-align:center;margin:34px 0 4px}
+  .navlink{font-family:"Archivo",sans-serif;font-size:11.5px;color:var(--faint);margin-top:20px;line-height:1.8}
+
+  .reveal{opacity:0;transform:translateY(15px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="hero">
+  <div class="kicker">Grand format · Belgique 2023–2026 · enquête sourcée</div>
+  <h1 class="title">Présumés<br><em>coupables&nbsp;?</em></h1>
+  <p class="dek">En Belgique, il faut désormais prouver qu'on est vraiment pauvre, vraiment malade. Enquête sur une protection sociale devenue une épreuve — et sur ce qu'elle fait à la santé de celles et ceux qu'elle devrait protéger.</p>
+  <div class="byline">
+    <b>Article de synthèse, accessible à tous.</b> Données 2023-2026 vérifiées&nbsp;:<br>
+    Sciensano, INAMI, ONEM, Mutualité chrétienne–UGent, Autorité de protection des données,<br>
+    Fondation Roi Baudouin, projet TAKE (universités d'Anvers et de Liège), presse belge.
+  </div>
+</header>
+
+<div class="grid">
+  <nav class="toc" aria-label="Sommaire">
+    <span class="l">Au sommaire</span>
+    <ol>
+      <li><a href="#s1">Une convocation</a></li>
+      <li><a href="#s2">Ce que disent les chiffres</a></li>
+      <li><a href="#s3">Le grand paradoxe</a></li>
+      <li><a href="#s4">De quoi parle-t-on&nbsp;?</a></li>
+      <li><a href="#s5">Les réformes de 2024-2026</a></li>
+      <li><a href="#s6">Le contrôle entre chez le médecin</a></li>
+      <li><a href="#s7">Le guichet fermé</a></li>
+      <li><a href="#s8">Ce que ça fait aux gens</a></li>
+      <li><a href="#s9">Ce n'est pas une fatalité</a></li>
+      <li><a href="#sources">Sources &amp; aide</a></li>
+    </ol>
+  </nav>
+
+  <article>
+
+  <section id="s1" class="reveal" style="padding-top:6px">
+    <p class="lead">Il y a une enveloppe dans une boîte aux lettres. À sa forme, la personne qui la tient sait déjà qu'il s'agit d'une convocation — chez le médecin-conseil de sa mutuelle, à un guichet, devant une commission. Elle sait aussi ce qui peut suivre&nbsp;: une allocation suspendue, un loyer soudain impossible, la chute. Cette personne n'a rien fait de mal. Elle est seulement pauvre, ou malade, ou les deux. Et l'État, qui devrait la protéger, est devenu ce qu'elle redoute.</p>
+    <p>C'est l'histoire que racontent, en 2026, des milliers de Belges&nbsp;: chômeurs de longue durée, malades, personnes âgées, allocataires sociaux. La protection sociale existe toujours sur le papier. Mais y accéder, et y rester, est devenu une épreuve — une épreuve qui, à force, rend malade. Cet article essaie de raconter cette mécanique simplement, chiffres et témoignages à l'appui, sans la noircir ni la nier.</p>
+  </section>
+
+  <hr class="r">
+
+  <section id="s2" class="reveal">
+    <span class="sn">01 · L'état des lieux</span>
+    <h2>Ce que disent les chiffres — et ils sont récents</h2>
+    <p>Commençons par le sol. En octobre 2025, l'institut de santé publique Sciensano a publié les résultats de sa grande Enquête de santé 2023-2024. Le tableau est sans ambiguïté&nbsp;: la santé mentale des Belges s'est dégradée, et elle se dégrade <em>par le bas</em>.</p>
+
+    <div class="stats">
+      <div class="stat"><div class="n" data-to="17.8" data-suf="%">0</div><div class="c">de la population (15 ans et +) souffre d'un trouble anxieux et/ou dépressif — contre 14,4 % en 2018 <span class="src">[Sciensano 2025]</span></div></div>
+      <div class="stat"><div class="n" data-to="22" data-suf="%">0</div><div class="c">présentent une détresse psychique sévère <span class="src">[Sciensano 2025]</span></div></div>
+      <div class="stat"><div class="n" data-to="23.1" data-suf="%">0</div><div class="c">des 15-24 ans concernés par un trouble anxieux ou dépressif <span class="src">[Sciensano 2025]</span></div></div>
+      <div class="stat c"><div class="n" data-to="3" data-suf="×">0</div><div class="c">plus de troubles chez les personnes en difficulté financière <span class="src">[Sciensano 2025]</span></div></div>
+    </div>
+
+    <p>La souffrance psychique n'est pas répartie au hasard&nbsp;: elle frappe davantage les femmes, les jeunes, les personnes peu diplômées et les bas revenus. Ce n'est pas une impression, c'est ce qu'on appelle un <strong>gradient social</strong>&nbsp;: plus on descend l'échelle, plus la santé mentale se détériore. La consommation d'antidépresseurs suit la même pente — et une vaste étude de la Mutualité chrétienne et de l'Université de Gand (mars 2026, sur plus de 700 000 affiliés) le confirme&nbsp;: les bénéficiaires du statut social «&nbsp;BIM&nbsp;» en prennent davantage, et plus longtemps.</p>
+    <p>Cette même étude pointe un travers belge que retiendra tout le reste de cet article. Dans 80&nbsp;% des cas, l'antidépresseur est prescrit par un médecin généraliste, souvent sans suivi psychologique. Pour la vice-présidente de la mutualité, Elise Derroitte, le pays soigne <strong>les symptômes plutôt que les causes</strong> — un réflexe que l'on retrouve, dit-elle, jusque dans la manière de traiter les arrêts maladie.</p>
+    <div class="box reveal">
+      <div class="t">Une précaution d'honnêteté</div>
+      <p>Ces chiffres décrivent une <em>corrélation</em> forte entre précarité et souffrance psychique, pas une preuve mécanique que telle réforme cause telle dépression. La pauvreté abîme la santé mentale, c'est solidement établi&nbsp;; relier chaque décision politique à un effet sanitaire précis demande davantage de prudence. Cet article s'y tient&nbsp;: il distingue ce qui est démontré de ce qui est plausible.</p>
+    </div>
+  </section>
+
+  <section id="s3" class="reveal">
+    <span class="sn">02 · Le cœur du sujet</span>
+    <h2>Le grand paradoxe&nbsp;: on traque la fraude, on oublie les droits</h2>
+    <p>Voici le fait le plus méconnu, et le plus dérangeant. Pendant qu'on parle sans cesse de «&nbsp;fraude sociale&nbsp;» et de «&nbsp;faux malades&nbsp;», un phénomène bien plus massif passe sous silence&nbsp;: le <strong>non-recours aux droits</strong>. Des centaines de milliers de personnes ont droit à une aide… et ne la reçoivent jamais.</p>
+
+    <div class="stats">
+      <div class="stat c"><div class="n" data-to="51" data-pre="37–" data-suf="%">0</div><div class="c">de non-recours au revenu d'intégration (le «&nbsp;RIS&nbsp;», l'aide minimale du CPAS) <span class="src">[projet TAKE]</span></div></div>
+      <div class="stat c"><div class="n" data-to="59" data-pre="42–" data-suf="%">0</div><div class="c">de non-recours à la GRAPA (revenu garanti aux personnes âgées)&nbsp;: 46 000 à 86 000 personnes <span class="src">[TAKE]</span></div></div>
+      <div class="stat c"><div class="n" data-to="52" data-pre="39–" data-suf="%">0</div><div class="c">de non-recours au statut BIM (remboursements de soins majorés) <span class="src">[TAKE]</span></div></div>
+      <div class="stat c"><div class="n" data-to="80" data-suf="%">0</div><div class="c">de non-recours à l'allocation de chauffage <span class="src">[TAKE]</span></div></div>
+    </div>
+
+    <p>Ces chiffres viennent du projet de recherche TAKE, mené par les universités d'Anvers et de Liège. Leur conclusion est limpide&nbsp;: le non-recours <strong>n'est pas un oubli des gens, c'est un produit de la machine</strong>. Plus un droit est conditionnel, complexe, semé de formulaires, plus les ayants droit décrochent. La preuve par l'inverse&nbsp;? Quand l'État a rendu le statut BIM <em>automatique</em> pour certains publics, le non-recours s'est effondré. Là où l'on simplifie, les gens reçoivent leur dû. Là où l'on complique, ils renoncent.</p>
+    <p>D'un côté, donc, un État qui investit dans la détection des abus. De l'autre, un non-recours qui se chiffre en centaines de milliers de personnes et reste largement sous-traité. C'est cette <strong>asymétrie</strong> — beaucoup de soupçon, peu d'effectivité — qui structure tout le reste. Elle revient à présumer la mauvaise foi du faible, tout en laissant filer l'aide qu'on lui doit.</p>
+    <blockquote><p>La précarité est aussi un régime d'attente, qui crée de la souffrance psychique et des douleurs physiques.</p><cite>Anissa Tahri, intervenante sociale, citée par Question Santé (Bruxelles)</cite></blockquote>
+  </section>
+
+  <section id="s4" class="reveal">
+    <span class="sn">03 · Petit mode d'emploi</span>
+    <h2>De quoi parle-t-on, au juste&nbsp;?</h2>
+    <p>Le système social belge est un labyrinthe de sigles. En voici les clés, pour suivre la suite sans se perdre.</p>
+    <div class="box reveal">
+      <div class="t">Le lexique essentiel</div>
+      <dl>
+        <dt>CPAS</dt><dd>Centre public d'action sociale&nbsp;: le dernier filet, au niveau communal. Il verse notamment le revenu d'intégration.</dd>
+        <dt>RIS — revenu d'intégration sociale</dt><dd>L'allocation minimale de survie versée par le CPAS à qui n'a pas d'autres ressources.</dd>
+        <dt>ONEM</dt><dd>L'Office national de l'emploi&nbsp;: il gère et contrôle les allocations de chômage.</dd>
+        <dt>INAMI & médecin-conseil</dt><dd>L'INAMI pilote l'assurance maladie. Le médecin-conseil, employé par la mutuelle, décide si un malade reste reconnu «&nbsp;en incapacité&nbsp;» — et donc s'il garde ses indemnités.</dd>
+        <dt>BIM — bénéficiaire de l'intervention majorée</dt><dd>Un statut qui donne droit à de meilleurs remboursements de soins. Plus de 2,5 millions de Belges en bénéficient.</dd>
+        <dt>GRAPA</dt><dd>La garantie de revenus aux personnes âgées&nbsp;: un complément pour les pensions trop faibles.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section id="s5" class="reveal">
+    <span class="sn">04 · Ce qui change</span>
+    <h2>Les réformes de 2024-2026&nbsp;: comprendre les deux camps</h2>
+    <p>Depuis 2025, le gouvernement fédéral dit «&nbsp;Arizona&nbsp;» (dirigé par Bart De Wever) a engagé une série de réformes sociales. Pour être juste, il faut d'abord entendre sa logique.</p>
+    <p><strong>L'argument du gouvernement.</strong> Le coût de l'invalidité a doublé entre 2008 et 2022&nbsp;; le nombre de malades de longue durée est passé d'environ 448 000 (2019) à près de 577 000 (2025). Le budget est sous tension, la population vieillit, et — c'est vrai — beaucoup de personnes sans emploi <em>souhaitent</em> travailler&nbsp;: une enquête de la mutualité Solidaris indique que près de 7 Belges francophones sur 10 au chômage ou en maladie se disent frustrés de ne pas exercer d'activité. Remettre les gens au travail peut donc être un objectif légitime, et même bon pour eux.</p>
+    <p><strong>Ce que disent les critiques.</strong> Syndicats (FGTB, CSC), Ligue des droits humains, fédérations de CPAS et chercheurs répondent que les moyens choisis sont surtout punitifs, qu'ils confondent «&nbsp;le travail qui rend malade&nbsp;» et «&nbsp;le travailleur malade&nbsp;», et qu'ils déplacent la pauvreté plutôt qu'ils ne la résorbent. Voici, concrètement, ce qui a changé — en distinguant clairement ce qui est <strong>déjà loi</strong> de ce qui n'est <strong>qu'une proposition</strong>.</p>
+
+    <div class="tl reveal">
+      <div class="row"><div class="when">1ᵉʳ mars 2026<span class="tag law">en vigueur</span></div><div class="what"><b>Chômage limité à deux ans.</b> Au-delà, l'allocation s'arrête. Selon les sources, de <b>100 000</b> à <b>320 000</b> personnes seraient concernées d'ici 2028. <span class="src">[ONEM ; Ligue des droits humains ; cabinet Emploi]</span></div></div>
+      <div class="row"><div class="when">2025-2029<span class="tag law">en cours</span></div><div class="what"><b>Activation des malades de longue durée.</b> Objectif affiché&nbsp;: «&nbsp;remettre au travail&nbsp;» 100 000 personnes d'ici 2029, via des trajets de réintégration et des contrôles renforcés. <span class="src">[INAMI ; RTBF]</span></div></div>
+      <div class="row"><div class="when">1ᵉʳ jan. 2026<span class="tag law">en vigueur</span></div><div class="what"><b>Arrêts maladie plus surveillés.</b> Premier certificat limité à 3 semaines, puis à 3 mois la première année&nbsp;; rendez-vous médicaux rapprochés&nbsp;; baisse d'indemnité en cas d'absence aux convocations. <span class="src">[FGTB ; presse médicale]</span></div></div>
+      <div class="row"><div class="when">2026<span class="tag prop">proposition</span></div><div class="what"><b>Resserrement du statut BIM.</b> Plusieurs responsables veulent tenir compte du patrimoine (épargne, biens) pour l'octroyer. <b>Non voté</b> à ce jour. <span class="src">[La Libre ; L'Avenir]</span></div></div>
+    </div>
+
+    <p>L'effet le mieux documenté est aussi le plus parlant&nbsp;: l'exclusion du chômage ne «&nbsp;remet pas au travail&nbsp;», elle <strong>déplace</strong>. Selon les données de l'ONEM pour 2025, environ <strong>30&nbsp;% des exclus basculent vers le CPAS</strong> — jusqu'à 36&nbsp;% en Wallonie. La dépense ne disparaît pas&nbsp;: elle change de guichet, et la précarité s'approfondit. Un magazine résumait l'équation budgétaire d'un mot&nbsp;: l'État pourrait gagner deux milliards en renvoyant les malades au travail, et en perdre trois en ignorant <em>pourquoi</em> ils en sont sortis.</p>
+  </section>
+
+  <section id="s6" class="reveal">
+    <span class="sn">05 · L'angle neuf</span>
+    <h2>Quand le contrôle entre dans le cabinet du médecin</h2>
+    <p>C'est sans doute l'évolution la plus discrète, et la plus lourde de sens. Le contrôle ne s'arrête plus aux portes de l'administration&nbsp;: il pénètre désormais dans la relation entre un patient et son médecin.</p>
+    <p>L'INAMI a mis en place une base de données, baptisée GAOCIT, qui enregistre les certificats médicaux pour repérer les médecins aux prescriptions jugées «&nbsp;anormales&nbsp;». En août 2025, l'<strong>Autorité de protection des données</strong> — le gendarme belge de la vie privée — a rendu un avis sévère (n°&nbsp;73/2025)&nbsp;: le dispositif lui paraît disproportionné au regard de la liberté du médecin de poser son diagnostic. Des syndicats de médecins protestent dans le même sens. Pour l'un d'eux, le généraliste ne doit être «&nbsp;ni le notaire, ni le gendarme&nbsp;» de la sécurité sociale.</p>
+    <blockquote><p>Un médecin était en larmes dans mon bureau parce qu'il ne supportait plus la pression de la mutuelle.</p><cite>Un médecin-conseil aujourd'hui à la retraite, dans La Libre (mai 2026)</cite></blockquote>
+    <p>La limitation des certificats inquiète aussi les soignants&nbsp;: trois semaines, c'est court pour bien des pathologies, et certains craignent qu'on renvoie au travail des personnes encore fragiles. Le risque, dénoncé sur le terrain, est double&nbsp;: une rechute pour le patient, et une défiance qui s'installe entre lui et celui censé le soigner. Quand le médecin devient un contrôleur, à qui le malade peut-il encore se confier&nbsp;?</p>
+  </section>
+
+  <section id="s7" class="reveal">
+    <span class="sn">06 · La barrière invisible</span>
+    <h2>Le guichet fermé&nbsp;: la fracture numérique</h2>
+    <p>Il existe une autre violence, totalement silencieuse&nbsp;: celle du guichet qui ferme et du formulaire qui passe «&nbsp;en ligne uniquement&nbsp;». Pour beaucoup, c'est une commodité. Pour d'autres, c'est un mur.</p>
+    <div class="stats">
+      <div class="stat"><div class="n" data-to="40" data-suf="%">0</div><div class="c">des Belges de 16-74 ans sont en vulnérabilité numérique (compétences faibles ou pas d'usage d'internet) <span class="src">[Fondation Roi Baudouin, 2024]</span></div></div>
+      <div class="stat"><div class="n" data-to="68" data-suf="%">0</div><div class="c">des personnes peu diplômées sont concernées <span class="src">[FRB, 2024]</span></div></div>
+      <div class="stat c"><div class="n" data-to="29" data-suf="%">0</div><div class="c">des ménages à faibles revenus n'ont pas de connexion à domicile — contre 1 % des hauts revenus <span class="src">[FRB, 2024]</span></div></div>
+      <div class="stat"><div class="n" data-to="200" data-pre="+">0</div><div class="c">associations ont alerté&nbsp;: la dématérialisation «&nbsp;mettra en difficulté un Bruxellois sur deux&nbsp;» <span class="src">[carte blanche, La Libre]</span></div></div>
+    </div>
+    <p>Fait nouveau et révélateur&nbsp;: en 2024-2025, plusieurs organisations — dont Unia, le Service de lutte contre la pauvreté, Lire & Écrire et la Ligue des droits humains — ont lancé une <strong>plainte collective contre la Belgique</strong> devant le Comité européen des droits sociaux. Le motif&nbsp;? Le passage au tout-numérique entrave l'accès aux droits fondamentaux des publics fragiles. Pour la première fois, la disparition des guichets humains est attaquée comme une atteinte aux droits. C'est le maillon qui relie tout le reste&nbsp;: un droit qui existe mais devient inatteignable n'est pas «&nbsp;sous-utilisé&nbsp;», il est annulé en silence.</p>
+  </section>
+
+  <section id="s8" class="reveal">
+    <span class="sn">07 · Au bout de la chaîne</span>
+    <h2>Ce que ça fait aux gens</h2>
+    <p>Derrière les sigles et les pourcentages, il y a des personnes. Les travailleurs sociaux et les associations emploient désormais un terme précis pour décrire ce qu'ils observent&nbsp;: la <strong>violence institutionnelle</strong>. Non pas des coups, mais une mécanique froide qui épuise.</p>
+    <p>Au CPAS, demander de l'aide suppose d'exposer toute sa vie. Un responsable syndical décrit l'expérience comme «&nbsp;une mise à nu&nbsp;»&nbsp;: on étale ses comptes, on doit parfois renoncer à une activité, à un sport. Une femme exclue du chômage, encore sous le choc, résume sa situation par une question&nbsp;: elle est propriétaire de sa maison — devra-t-elle vraiment la vendre&nbsp;? Un délégué rappelle l'évidence qu'on oublie&nbsp;: rester vingt ans au chômage n'est pas un choix, mais une suite d'accidents de la vie, de problèmes de santé, de drames familiaux.</p>
+    <blockquote><p>Pour une femme de ménage ou un ouvrier du bâtiment, comment tenir 45 ans sans avoir mal&nbsp;?</p><cite>Un représentant de la FGTB, dans Moustique (mai 2026)</cite></blockquote>
+    <p>Cette pression a un coût humain que la psychiatrie connaît bien. La précarité, ce n'est pas seulement «&nbsp;avoir peu&nbsp;»&nbsp;: c'est vivre dans la peur permanente de perdre ce qui reste — le logement, le statut, le chauffage. Cette angoisse chronique use le sommeil, la concentration, la confiance. Et elle peut conduire au pire. Les comportements suicidaires suivent, eux aussi, un gradient social et régional&nbsp;: la Belgique compte parmi les pays d'Europe de l'Ouest aux taux les plus élevés, avec de fortes disparités entre régions. Ces vies, souvent, ne laissent aucune trace dans les statistiques administratives. Elles sont la part muette du pays.</p>
+    <div class="box reveal">
+      <div class="t">Important</div>
+      <p>Si ce passage résonne avec ce que vous vivez&nbsp;: cet épuisement n'est pas une faiblesse personnelle, et il existe des personnes à qui en parler, gratuitement et en confiance. Les numéros figurent en bas de cet article.</p>
+    </div>
+  </section>
+
+  <section id="s9" class="reveal">
+    <span class="sn">08 · L'issue</span>
+    <h2>Ce n'est pas une fatalité</h2>
+    <p>Rien de tout cela n'est inéluctable, et il serait malhonnête de finir sur du noir. Les solutions existent&nbsp;; certaines ont même déjà fait leurs preuves en Belgique.</p>
+    <div class="duo reveal">
+      <div class="c2 a"><h4>Ce qui marche déjà</h4><p>L'automatisation des droits&nbsp;: rendre le BIM ou le tarif social automatiques a massivement réduit le non-recours. Quand l'État va vers les gens au lieu d'attendre qu'ils prouvent leur misère, l'aide arrive.</p></div>
+      <div class="c2 b"><h4>Ce qu'il faudrait oser</h4><p>Traiter les causes, pas les symptômes&nbsp;: agir sur le travail qui épuise, garder des guichets humains à côté du numérique, et cesser de présumer la fraude. Soigner coûte moins cher, à terme, que punir.</p></div>
+    </div>
+    <p>La protection sociale belge reste l'une des plus développées au monde&nbsp;; le pays dispose d'un tissu associatif dense, de mutualités puissantes, d'une recherche publique de qualité qui documente tout cela sans complaisance. Les anticorps existent. La vraie question n'est pas budgétaire, elle est de principe&nbsp;: une société se juge à la manière dont elle traite la personne la plus fragile qui frappe à sa porte. Quand cette porte s'ouvre, l'aide tient sa promesse. Quand elle reste close, ou hérissée de soupçons, ce n'est pas la fraude qu'on combat&nbsp;: c'est la dignité qu'on abîme.</p>
+    <p>Entre les deux, il n'y a pas de fatalité. Il y a des choix — et des citoyens, des soignants, des travailleurs sociaux pour les exiger.</p>
+
+    <div class="care reveal">
+      <div class="t">Besoin de parler&nbsp;? Vous n'êtes pas seul·e.</div>
+      <p>Ces services sont <b>gratuits, confidentiels et accessibles à tous</b>, en Belgique&nbsp;:</p>
+      <p>• <b>Centre de Prévention du Suicide — 0800 32 123</b> (24h/24, 7j/7, anonyme)<br>
+      • <b>Télé-Accueil — 107</b> (écoute, 24h/24&nbsp;; chat sur tele-accueil.be)<br>
+      • <b>Zelfmoordlijn 1813</b> (en néerlandais, 24h/24)<br>
+      • <b>Écoute-Enfants — 103</b> · <b>Tele-Onthaal — 106</b> · <b>Telefonhilfe (DG) — 108</b><br>
+      • En cas d'urgence vitale&nbsp;: <b>112</b>.</p>
+      <p>Et pour faire valoir vos droits&nbsp;: un CPAS, un syndicat, une mutualité ou une association comme Lire & Écrire ou la LUSS peuvent vous accompagner gratuitement dans vos démarches.</p>
+    </div>
+  </section>
+
+  </article>
+</div>
+
+<footer>
+  <div class="fwrap reveal">
+    <span class="sn">Transparence</span>
+    <h2 style="font-size:1.7rem">Sources &amp; méthode</h2>
+    <p class="small" style="max-width:64ch;color:var(--ink-soft)">Cet article de vulgarisation s'appuie sur des sources publiques, académiques et journalistiques vérifiées (2023-2026), strictement centrées sur la Belgique. Les chiffres sont donnés en ordres de grandeur lorsque les sources divergent (par exemple le nombre de personnes touchées par la réforme du chômage). Les mesures encore au stade de proposition sont signalées comme telles. Les données relatives au suicide sont traitées au seul niveau épidémiologique et social. Cet article informe&nbsp;; il ne remplace pas un avis médical, juridique ou social personnalisé.</p>
+    <hr class="r">
+    <div class="srclist">
+      <p>— Sciensano, <em>Enquête de santé 2023-2024&nbsp;: Santé mentale</em> (rapport L. Gisle, C. Duveau, L. Hermans, oct. 2025), enquetesante.be.</p>
+      <p>— Mutualité chrétienne &amp; UGent, étude sur la consommation d'antidépresseurs 2013-2023 (communiqué, mars 2026).</p>
+      <p>— Projet TAKE (UAntwerpen, ULiège, Bureau fédéral du Plan, SPF Sécurité sociale&nbsp;; Goedemé et al., 2022) sur le non-recours (RIS, GRAPA, BIM, chauffage).</p>
+      <p>— INAMI&nbsp;: statistiques sur l'incapacité de longue durée et les troubles psychosociaux&nbsp;; bénéficiaires BIM (2025).</p>
+      <p>— ONEM&nbsp;: chiffres d'exclusions et de transferts vers les CPAS (2025)&nbsp;; reprises par Éconostrum et la presse.</p>
+      <p>— Autorité de protection des données, <em>Avis n° 73/2025</em> (29 août 2025) sur la base de données GAOCIT.</p>
+      <p>— Fondation Roi Baudouin, <em>Baromètre de l'inclusion numérique</em> (3ᵉ éd., 2024, données Statbel 2023).</p>
+      <p>— Plainte collective devant le Comité européen des droits sociaux (Unia, Service de lutte contre la pauvreté, Lire &amp; Écrire, Ligue des droits humains, 2024-2025).</p>
+      <p>— Presse et secteur&nbsp;: RTBF, La Libre, Alter Échos, Moustique, L'Avenir&nbsp;; FGTB (<em>Syndicats Magazine</em>), Union des Villes et Communes de Wallonie, Fédération des maisons médicales, Question Santé, enquête Solidaris.</p>
+    </div>
+    <div class="navlink">
+      Cet article complète un dossier en plusieurs volets sur la démocratie et l'État de droit en Belgique. Il en constitue le versant le plus concret&nbsp;: la vie des gens.
+    </div>
+    <div class="end">✦</div>
+  </div>
+</footer>
+
+<script>
+  const bar=document.getElementById('progress');
+  const onScroll=()=>{const h=document.documentElement;
+    bar.style.width=((h.scrollTop)/(h.scrollHeight-h.clientHeight)*100)+'%';};
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  const links=[...document.querySelectorAll('nav.toc a')];
+  const map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){links.forEach(l=>l.classList.remove('active'));
+      const a=map.get(e.target.id);if(a)a.classList.add('active');}
+  }),{rootMargin:'-25% 0px -65% 0px'});
+  document.querySelectorAll('section[id]').forEach(s=>obs.observe(s));
+
+  const rev=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('in');rev.unobserve(e.target);}
+  }),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>rev.observe(el));
+
+  const fmt=n=>{
+    if(n>=1000)return Math.round(n).toLocaleString('fr-FR').replace(/\u202f/g,'\u00a0');
+    if(Number.isInteger(n))return String(n);
+    return n.toFixed(1).replace('.',',');
+  };
+  const run=el=>{const to=parseFloat(el.dataset.to),pre=el.dataset.pre||'',suf=el.dataset.suf||'',t0=performance.now(),d=1050;
+    const step=t=>{const p=Math.min(1,(t-t0)/d),e=1-Math.pow(1-p,3);
+      el.innerHTML=pre+fmt(to*e)+(suf?'<small>'+suf+'</small>':'');
+      if(p<1)requestAnimationFrame(step);else el.innerHTML=pre+fmt(to)+(suf?'<small>'+suf+'</small>':'');};
+    requestAnimationFrame(step);};
+  const nObs=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){run(e.target);nObs.unobserve(e.target);}
+  }),{threshold:.6});
+  document.querySelectorAll('.stat .n[data-to]').forEach(n=>nObs.observe(n));
+</script>
+</body>
+</html>
