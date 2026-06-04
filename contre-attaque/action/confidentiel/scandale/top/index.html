@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anatomie d'une démocratie à plusieurs étages — Synthèse classée</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,400..700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f4f0e7;
+    --paper-2:#ece6d8;
+    --ink:#1b1714;
+    --ink-soft:#4a423a;
+    --line:#cabfa8;
+    --illegal:#9e2b25;       /* rouge profond */
+    --illegal-bg:#f3dcd8;
+    --antidem:#a8641a;       /* ocre brûlé */
+    --antidem-bg:#f3e4cb;
+    --paralegal:#3f5363;     /* ardoise */
+    --paralegal-bg:#dde4e8;
+    --gold:#8a6d1f;
+    --shadow:rgba(27,23,20,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Spectral",Georgia,serif;
+    font-size:18px;
+    line-height:1.72;
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(circle at 12% 18%, rgba(168,100,26,.05), transparent 38%),
+      radial-gradient(circle at 88% 70%, rgba(63,83,99,.05), transparent 42%);
+  }
+  /* grain overlay */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.04;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap{max-width:880px;margin:0 auto;padding:0 28px}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    padding:90px 0 54px;border-bottom:3px double var(--ink);
+    position:relative;
+  }
+  .kicker{
+    font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.32em;
+    text-transform:uppercase;color:var(--illegal);font-weight:600;margin-bottom:26px;
+  }
+  h1{
+    font-family:"Fraunces",serif;font-weight:600;font-size:clamp(2.5rem,6.4vw,4.5rem);
+    line-height:1.02;letter-spacing:-.015em;margin-bottom:24px;
+  }
+  h1 em{font-style:italic;color:var(--illegal)}
+  .standfirst{
+    font-size:clamp(1.05rem,2.2vw,1.32rem);color:var(--ink-soft);max-width:640px;
+    font-weight:400;
+  }
+  .meta-row{
+    display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:38px;
+    font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.06em;
+    color:var(--ink-soft);text-transform:uppercase;
+  }
+  .meta-row span b{color:var(--ink);font-weight:600}
+
+  /* ---------- SECTION ---------- */
+  section{padding:56px 0;border-bottom:1px solid var(--line)}
+  h2{
+    font-family:"Fraunces",serif;font-weight:600;font-size:clamp(1.7rem,4vw,2.5rem);
+    line-height:1.08;letter-spacing:-.01em;margin-bottom:22px;
+  }
+  h2 .num{
+    font-family:"IBM Plex Mono",monospace;font-size:.9rem;color:var(--gold);
+    display:block;letter-spacing:.2em;margin-bottom:10px;font-weight:500;
+  }
+  h3{font-family:"Fraunces",serif;font-weight:600;font-size:1.35rem;margin:34px 0 12px}
+  p{margin-bottom:18px}
+  p.lead{font-size:1.16rem;color:var(--ink-soft)}
+  a{color:var(--illegal);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+  strong{font-weight:600}
+  .note{
+    background:var(--paper-2);border-left:4px solid var(--gold);
+    padding:22px 26px;margin:30px 0;font-size:.97rem;border-radius:2px;
+  }
+  .note p:last-child{margin-bottom:0}
+  .note .label{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--gold);display:block;margin-bottom:8px;font-weight:600}
+
+  /* ---------- METHOD CRITERIA ---------- */
+  .crit-grid{display:grid;gap:14px;margin-top:28px}
+  .crit{
+    display:grid;grid-template-columns:42px 1fr;gap:18px;align-items:start;
+    padding:18px 20px;background:var(--paper-2);border-radius:4px;
+  }
+  .crit .c-letter{
+    font-family:"Fraunces",serif;font-size:1.7rem;font-weight:600;color:var(--illegal);
+    line-height:1;
+  }
+  .crit b{display:block;font-family:"Spectral";font-size:1.02rem;margin-bottom:2px}
+  .crit span{font-size:.93rem;color:var(--ink-soft)}
+  .scale{
+    font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.04em;
+    color:var(--ink-soft);margin-top:22px;text-align:center;
+  }
+
+  /* ---------- REGISTER LEGEND ---------- */
+  .legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .chip{
+    font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:600;
+    letter-spacing:.12em;text-transform:uppercase;padding:6px 13px;border-radius:30px;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .chip::before{content:"";width:8px;height:8px;border-radius:50%}
+  .chip.illegal{background:var(--illegal-bg);color:var(--illegal)}
+  .chip.illegal::before{background:var(--illegal)}
+  .chip.antidem{background:var(--antidem-bg);color:var(--antidem)}
+  .chip.antidem::before{background:var(--antidem)}
+  .chip.paralegal{background:var(--paralegal-bg);color:var(--paralegal)}
+  .chip.paralegal::before{background:var(--paralegal)}
+
+  /* ---------- RANKING TABLE ---------- */
+  .rank-list{margin-top:30px;display:flex;flex-direction:column;gap:2px}
+  .rank-row{
+    display:grid;grid-template-columns:48px 1fr 150px 64px;gap:16px;align-items:center;
+    padding:16px 14px;border-radius:5px;background:var(--paper-2);
+    transition:transform .25s ease, box-shadow .25s ease;
+    text-decoration:none;color:var(--ink);
+  }
+  .rank-row:hover{transform:translateX(5px);box-shadow:-5px 0 0 0 var(--gold)}
+  .rank-pos{
+    font-family:"Fraunces",serif;font-size:1.7rem;font-weight:600;color:var(--ink);
+    text-align:center;line-height:1;
+  }
+  .rank-row:nth-child(1) .rank-pos,
+  .rank-row:nth-child(2) .rank-pos,
+  .rank-row:nth-child(3) .rank-pos{color:var(--illegal)}
+  .rank-title{font-weight:500;font-size:1.02rem;line-height:1.3}
+  .rank-bar-wrap{height:8px;background:#d9d0bd;border-radius:6px;overflow:hidden}
+  .rank-bar{height:100%;border-radius:6px}
+  .rank-bar.illegal{background:var(--illegal)}
+  .rank-bar.antidem{background:var(--antidem)}
+  .rank-bar.paralegal{background:var(--paralegal)}
+  .rank-score{
+    font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:1.15rem;text-align:right;
+  }
+  .rank-score small{font-size:.65em;color:var(--ink-soft);font-weight:400}
+
+  /* ---------- DOSSIER CARDS ---------- */
+  .dossier{margin-top:14px}
+  .entry{
+    padding:42px 0;border-top:1px solid var(--line);position:relative;
+  }
+  .entry-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:6px}
+  .entry-rank{
+    font-family:"Fraunces",serif;font-size:2.6rem;font-weight:600;line-height:.8;
+    color:var(--line);
+  }
+  .entry h3{margin:0;font-size:clamp(1.3rem,3vw,1.75rem);flex:1;min-width:240px}
+  .entry-score{
+    font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:1.5rem;
+    white-space:nowrap;
+  }
+  .entry-score small{font-size:.5em;color:var(--ink-soft);font-weight:400}
+  .entry-meta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:12px 0 22px}
+  .subscores{
+    display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 6px;
+    font-family:"IBM Plex Mono",monospace;font-size:11px;
+  }
+  .ss{
+    background:var(--paper-2);padding:5px 10px;border-radius:4px;color:var(--ink-soft);
+    letter-spacing:.03em;
+  }
+  .ss b{color:var(--ink);font-weight:600}
+  .sources{
+    font-size:.88rem;color:var(--ink-soft);margin-top:16px;
+    padding-top:14px;border-top:1px dashed var(--line);
+  }
+  .sources .label{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--gold);font-weight:600;margin-right:6px}
+
+  /* ---------- SYNTHESIS PULLQUOTE ---------- */
+  .pull{
+    font-family:"Fraunces",serif;font-style:italic;font-size:clamp(1.4rem,3.4vw,2rem);
+    line-height:1.3;color:var(--ink);margin:34px 0;padding-left:26px;
+    border-left:4px solid var(--illegal);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:60px 0 90px;text-align:center}
+  footer .disc{font-size:.85rem;color:var(--ink-soft);max-width:600px;margin:0 auto 26px}
+  footer .sig{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--line)}
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:640px){
+    body{font-size:16.5px}
+    .rank-row{grid-template-columns:38px 1fr 56px;gap:10px}
+    .rank-bar-wrap{display:none}
+    .entry-rank{font-size:2rem}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Synthèse de corpus · État de droit · Belgique · 2024–2026</div>
+    <h1>Anatomie d'une démocratie à <em>plusieurs étages</em></h1>
+    <p class="standfirst">Quinze failles de l'État belge passées au crible et hiérarchisées : ce qui relève de l'illégalité avérée, ce qui érode la démocratie sans toujours la violer, et ce qui prospère dans la zone grise du « paralégal ».</p>
+    <div class="meta-row">
+      <span><b>15</b> éléments analysés</span>
+      <span><b>3</b> registres</span>
+      <span><b>5</b> critères de notation</span>
+      <span>Score sur <b>100</b></span>
+    </div>
+  </div>
+</header>
+
+<section class="reveal">
+  <div class="wrap">
+    <h2><span class="num">00 — PRÉALABLE</span>De quoi parle-t-on, et avec quelles précautions</h2>
+    <p class="lead">Ce document agrège un corpus de recherche citoyenne consacré au fonctionnement réel des institutions belges. Il ne formule pas d'accusation individuelle : les affaires citées relèvent de sources publiques (arrêts, rapports d'institutions de contrôle, presse, travaux universitaires). Il ne constitue pas un avis juridique.</p>
+    <p>L'enjeu n'est pas de dire « la Belgique est une dictature » — elle reste classée parmi les régimes libres et figure haut dans les indices électoraux. L'enjeu est de cartographier un décalage : entre la norme écrite et la pratique du pouvoir, entre les droits proclamés et leur effectivité, entre les engagements internationaux et leur exécution. Trois registres permettent de trier ce décalage.</p>
+    <div class="legend">
+      <span class="chip illegal">Illégal</span>
+      <span class="chip antidem">Antidémocratique</span>
+      <span class="chip paralegal">Paralégal</span>
+    </div>
+    <div class="note">
+      <span class="label">Lexique</span>
+      <p><strong>Illégal</strong> : contraire à une norme contraignante (Constitution, loi, Convention européenne des droits de l'homme), généralement constaté par un juge. <strong>Antidémocratique</strong> : subvertit un principe démocratique (souveraineté, mandat libre, concurrence électorale, reddition de comptes) sans nécessairement constituer une infraction formelle. <strong>Paralégal</strong> : ce qui occupe la zone grise entre légalité de forme et illégalité de fond — circulaires non publiées tenant lieu de loi, structures hybrides échappant au contrôle, canaux de financement « gris ».</p>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="wrap">
+    <h2><span class="num">01 — MÉTHODE</span>Comment chaque élément a été noté</h2>
+    <p>Chaque faille reçoit une note sur cinq critères, chacun coté de 0 à 20, pour un total sur 100. La grille privilégie ce qui est <strong>documenté et reconnu</strong> par des tiers indépendants plutôt que l'indignation. Un score élevé combine gravité juridique, caractère structurel, ampleur de l'impact, reconnaissance externe et persistance de l'impunité.</p>
+    <div class="crit-grid">
+      <div class="crit"><span class="c-letter">A</span><div><b>Gravité juridique</b><span>Violation établie d'une norme contraignante (du simple manquement à l'engagement international jusqu'à la condamnation par la CEDH).</span></div></div>
+      <div class="crit"><span class="c-letter">B</span><div><b>Caractère systémique</b><span>Dérive isolée et corrigible, ou rouage intégré à l'architecture même du pouvoir.</span></div></div>
+      <div class="crit"><span class="c-letter">C</span><div><b>Ampleur de l'impact</b><span>Nombre de personnes affectées, montants en jeu, portée sur la production des lois et l'accès aux droits.</span></div></div>
+      <div class="crit"><span class="c-letter">D</span><div><b>Reconnaissance externe</b><span>Constat par le GRECO, la CEDH, la Commission européenne, la Cour des comptes, la recherche académique.</span></div></div>
+      <div class="crit"><span class="c-letter">E</span><div><b>Impunité / non-correction</b><span>Persistance dans le temps malgré les alertes ; absence de sanction ou de réforme effective.</span></div></div>
+    </div>
+    <p class="scale">A + B + C + D + E = note /100 · couleur = registre dominant</p>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="wrap">
+    <h2><span class="num">02 — LE CLASSEMENT</span>Les quinze failles, de la plus à la moins grave</h2>
+    <p class="lead">Vue d'ensemble. Cliquez sur une ligne pour rejoindre sa fiche détaillée.</p>
+    <div class="rank-list">
+
+      <a class="rank-row" href="#f1">
+        <div class="rank-pos">1</div>
+        <div class="rank-title">Non-exécution des décisions de justice (accueil des demandeurs d'asile)</div>
+        <div class="rank-bar-wrap"><div class="rank-bar illegal" style="width:92%"></div></div>
+        <div class="rank-score">92<small>/100</small></div>
+      </a>
+
+      <a class="rank-row" href="#f2">
+        <div class="rank-pos">2</div>
+        <div class="rank-title">Intercommunales &amp; ASBL parapubliques (Publifin / Nethys, Samusocial…)</div>
+        <div class="rank-bar-wrap"><div class="rank-bar illegal" style="width:81%"></div></div>
+        <div class="rank-score">81<small>/100</small></div>
+      </a>
+
+      <a class="rank-row" href="#f3">
+        <div class="rank-pos">3</div>
+        <div class="rank-title">Discipline de vote &amp; mandat impératif <em>de facto</em></div>
+        <div class="rank-bar-wrap"><div class="rank-bar antidem" style="width:80%"></div></div>
+        <div class="rank-score">80<small>/100</small></div>
+      </a>
+
+      <a class="rank-row" href="#f4">
+        <div class="rank-pos">4</div>
+        <div class="rank-title">Financement public des partis &amp; cartellisation</div>
+        <div class="rank-bar-wrap"><div class="rank-bar antidem" style="width:79%"></div></div>
+        <div class="rank-score">79<small>/100</small></div>
+      </a>
+
+      <a class="rank-row" href="#f5">
+        <div class="rank-pos">5</div>
+        <div class="rank-title">Non-conformité chronique aux recommandations du GRECO</div>
+        <div class="rank-bar-wrap"><div class="rank-bar antidem" style="width:78%"></div></div>
+        <div class="rank-score">78<small>/100</small></div>
+      </a>
+
+      <a class="rank-row" href="#f6">
+        <div class="rank-pos">6</div>
+        <div class="rank-title">Non-recours massif aux droits sociaux</div>
+        <div class="rank-bar-wrap"><div class="rank-bar paralegal" style="width:75%"></div></div>
+        <div class="rank-score">75<small>/100</small></div>
+      </a>
+
+      <a class="rank-row" href="#f7">
+        <div class="rank-pos">7</div>
+        <div class="rank-title">Impunité par épuisement procédural</div>
+        <div class="rank-bar-wrap"><div class="rank-bar illegal" style="width:73%"></div></div>
+        <div class="rank-score">73<small>/100</small></div>
+      </a>
+
+      <a class="rank-row" href="#f8">
+        <div class="rank-pos">8</div>
+        <div class="rank-title">Cabinets ministériels pléthoriques &amp; opaques</div>
+        <div class="rank-bar-wrap"><div class="rank-bar paralegal" style="width:72%"></div></div>
+        <div class="rank-score">72<small>/100</small></div>
+      </a>
+
+      <a class="rank-row" href="#f9">
+        <div class="rank-pos">9</div>
+        <div class="rank-title">Circulaires &amp; instructions non publiées tenant lieu de loi</div>
+        <div class="rank-bar-wrap"><div class="rank-bar paralegal" style="width:71%"></div></div>
+        <div class="rank-score">71<small>/100</small></div>
+      </a>
+
+      <a class="rank-row" href="#f10">
+        <div class="rank-pos">10</div>
+        <div class="rank-title">Transaction pénale « sur mesure » &amp; capture législative (Kazakhgate)</div>
+        <div class="rank-bar-wrap"><div class="rank-bar illegal" style="width:70%"></div></div>
+        <div class="rank-score">70<small>/100</small></div>
+      </a>
+
+      <a class="rank-row" href="#f11">
+        <div class="rank-pos">11</div>
+        <div class="rank-title">Lobbying non régulé &amp; portes tournantes (revolving doors)</div>
+        <div class="rank-bar-wrap"><div class="rank-bar paralegal" style="width:69%"></div></div>
+        <div class="rank-score">69<small>/100</small></div>
+      </a>
+
+      <a class="rank-row" href="#f12">
+        <div class="rank-pos">12</div>
+        <div class="rank-title">Pressions sur la magistrature &amp; politisation (Fortisgate, nominations)</div>
+        <div class="rank-bar-wrap"><div class="rank-bar antidem" style="width:66%"></div></div>
+        <div class="rank-score">66<small>/100</small></div>
+      </a>
+
+      <a class="rank-row" href="#f13">
+        <div class="rank-pos">13</div>
+        <div class="rank-title">Violence institutionnelle &amp; activation coercitive</div>
+        <div class="rank-bar-wrap"><div class="rank-bar paralegal" style="width:65%"></div></div>
+        <div class="rank-score">65<small>/100</small></div>
+      </a>
+
+      <a class="rank-row" href="#f14">
+        <div class="rank-pos">14</div>
+        <div class="rank-title">Opacité des déclarations de patrimoine</div>
+        <div class="rank-bar-wrap"><div class="rank-bar antidem" style="width:63%"></div></div>
+        <div class="rank-score">63<small>/100</small></div>
+      </a>
+
+      <a class="rank-row" href="#f15">
+        <div class="rank-pos">15</div>
+        <div class="rank-title">Concentration des médias &amp; fabrique du consentement</div>
+        <div class="rank-bar-wrap"><div class="rank-bar antidem" style="width:56%"></div></div>
+        <div class="rank-score">56<small>/100</small></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section class="dossier">
+  <div class="wrap">
+    <h2 class="reveal"><span class="num">03 — LES FICHES</span>Le détail, faille par faille</h2>
+
+    <!-- 1 -->
+    <article class="entry reveal" id="f1">
+      <div class="entry-head">
+        <span class="entry-rank">01</span>
+        <h3>Non-exécution des décisions de justice</h3>
+        <span class="entry-score">92<small>/100</small></span>
+      </div>
+      <div class="entry-meta"><span class="chip illegal">Illégal</span></div>
+      <p>C'est la faille la plus grave parce qu'elle s'attaque au cœur de l'État de droit : un gouvernement qui choisit les jugements qu'il applique. Saisis par des demandeurs d'asile privés d'hébergement, les tribunaux du travail ont condamné l'État belge à plusieurs milliers de reprises — les estimations du corpus vont de <strong>plus de 8 000 à plus de 12 000 condamnations</strong> — à fournir un accueil d'urgence. L'État a refusé de s'exécuter de manière délibérée et systématique, malgré le caractère définitif des décisions.</p>
+      <p>La Cour européenne des droits de l'homme a franchi un seuil rare dans l'arrêt <em>Camara c. Belgique</em> (2023, violation de l'article 6) puis dans <em>M.V. et autres c. Belgique</em> (2026), qui constate cette fois une violation de l'article 3 (traitement dégradant). Les astreintes prononcées ne sont pas payées. Fait inédit à l'échelle continentale, la Belgique est le seul État membre à avoir reçu de la Commission européenne une recommandation spécifique exigeant l'exécution de ses propres jugements. En avril 2026, environ 500 travailleurs de Fedasil ont publiquement dénoncé des « violations quotidiennes de l'État de droit ».</p>
+      <div class="subscores">
+        <span class="ss">A·Gravité <b>20</b></span><span class="ss">B·Systémique <b>18</b></span><span class="ss">C·Ampleur <b>16</b></span><span class="ss">D·Reconnaissance <b>20</b></span><span class="ss">E·Impunité <b>18</b></span>
+      </div>
+      <p class="sources"><span class="label">Reconnu par</span> CEDH (Camara ; M.V. c. Belgique) · Commission européenne (Rapport État de droit) · Amnesty International · Liberties · ENNHRI.</p>
+    </article>
+
+    <!-- 2 -->
+    <article class="entry reveal" id="f2">
+      <div class="entry-head">
+        <span class="entry-rank">02</span>
+        <h3>Intercommunales &amp; ASBL parapubliques</h3>
+        <span class="entry-score">81<small>/100</small></span>
+      </div>
+      <div class="entry-meta"><span class="chip illegal">Illégal</span><span class="chip paralegal">Paralégal</span></div>
+      <p>L'épicentre belge de la zone grise. Des structures à capitaux publics mais gérées en droit privé — Publifin/Nethys/Énodia, Samusocial, Vivaqua, GIAL, Igretec — combinent statut hybride, double tutelle dégradée, comités internes rémunérés et opacité comptable, le tout largement hors de portée de la Cour des comptes et des conseils élus.</p>
+      <p>L'affaire Publifin a révélé des mandataires de presque tous les partis traditionnels rémunérés par des jetons de présence pour des comités parfois fictifs — certains payés « à la minute » pour des réunions auxquelles ils n'assistaient pas. La mutation en Énodia/Nethys a produit des dérives plus graves encore : indemnités de départ dépassant 12 millions d'euros pour un dirigeant, ventes secrètes et sous-évaluées de filiales lucratives. Au Samusocial, des fonds destinés à l'aide aux sans-abri ont alimenté des jetons indus. Plusieurs poursuites pénales (abus de biens sociaux, détournement, faux) ont suivi — mais les réformes restent largement cosmétiques et l'impunité fréquente.</p>
+      <div class="subscores">
+        <span class="ss">A·Gravité <b>17</b></span><span class="ss">B·Systémique <b>18</b></span><span class="ss">C·Ampleur <b>15</b></span><span class="ss">D·Reconnaissance <b>16</b></span><span class="ss">E·Impunité <b>14</b></span>
+      </div>
+      <p class="sources"><span class="label">Reconnu par</span> Cour des comptes (rapports triennaux intercommunales wallonnes) · commissions d'enquête parlementaire wallonne · justice (Parquet de Liège) · presse d'investigation (Le Vif, Médor, Apache).</p>
+    </article>
+
+    <!-- 3 -->
+    <article class="entry reveal" id="f3">
+      <div class="entry-head">
+        <span class="entry-rank">03</span>
+        <h3>Discipline de vote &amp; mandat impératif <em>de facto</em></h3>
+        <span class="entry-score">80<small>/100</small></span>
+      </div>
+      <div class="entry-meta"><span class="chip antidem">Antidémocratique</span></div>
+      <p>L'article 42 de la Constitution interdit le mandat impératif : l'élu représente la Nation, pas son parti. Dans la pratique, la cohésion partisane atteint des niveaux qui vident ce principe de sa substance — un taux de discipline de vote de <strong>99,73 %</strong> a été mesuré sous le gouvernement Wilmès II, paradoxalement un gouvernement minoritaire où la liberté parlementaire aurait dû s'épanouir.</p>
+      <p>La contrainte n'est pas juridique mais matérielle : un parlementaire qui rompt la discipline risque l'exclusion du groupe, la non-réinvestiture et la perte de toute infrastructure logistique et financière. Le corpus relève des dispositifs encore plus directs, comme l'obligation contractuelle imposée à certains élus de reverser une partie de leur indemnité à leur parti. Le Parlement s'en trouve transformé, selon la formule du corpus, en « chambre d'enregistrement » — une violation de l'esprit constitutionnel qui n'est toutefois pas justiciable, faute de contrôle juridictionnel de la discipline interne des partis.</p>
+      <div class="subscores">
+        <span class="ss">A·Gravité <b>14</b></span><span class="ss">B·Systémique <b>20</b></span><span class="ss">C·Ampleur <b>16</b></span><span class="ss">D·Reconnaissance <b>12</b></span><span class="ss">E·Impunité <b>18</b></span>
+      </div>
+      <p class="sources"><span class="label">Reconnu par</span> Constitution (art. 33, 42, 58) · politologie comparée (cohésion partisane) · doctrine constitutionnelle belge.</p>
+    </article>
+
+    <!-- 4 -->
+    <article class="entry reveal" id="f4">
+      <div class="entry-head">
+        <span class="entry-rank">04</span>
+        <h3>Financement public des partis &amp; cartellisation</h3>
+        <span class="entry-score">79<small>/100</small></span>
+      </div>
+      <div class="entry-meta"><span class="chip antidem">Antidémocratique</span><span class="chip paralegal">Paralégal</span></div>
+      <p>Conçue après les scandales Agusta-Dassault pour assainir la vie politique, la loi du 4 juillet 1989 a fini par produire l'inverse de son intention. Le financement public direct atteint environ <strong>108,7 millions d'euros par an</strong> et représente en moyenne <strong>87 % des revenus</strong> des partis traditionnels. Les partis ne dépendent donc plus de leurs membres ni de la société civile, mais quasi exclusivement de l'État.</p>
+      <p>Cette manne agit comme une barrière à l'entrée — un « cartel » qui protège les formations installées et fige le paysage politique. Le contrôle est confié à une commission composée des parlementaires des partis qu'elle est censée auditer : un auto-contrôle régulièrement dénoncé. À cela s'ajoutent des canaux « gris » (collaborateurs parlementaires affectés au siège du parti, estimés à ~84 M€/an, fondations satellites, dons aux composantes échappant aux plafonds). La légalité formelle du dispositif est précisément ce qui le rend difficile à attaquer ; quelques petits partis ont néanmoins porté l'affaire en justice fin 2023.</p>
+      <div class="subscores">
+        <span class="ss">A·Gravité <b>10</b></span><span class="ss">B·Systémique <b>20</b></span><span class="ss">C·Ampleur <b>17</b></span><span class="ss">D·Reconnaissance <b>16</b></span><span class="ss">E·Impunité <b>16</b></span>
+      </div>
+      <p class="sources"><span class="label">Reconnu par</span> GRECO · Cour des comptes · recherche (KU Leuven, B. Maddens) · recours Vista/Pro/Oxygène/Collectif Citoyen.</p>
+    </article>
+
+    <!-- 5 -->
+    <article class="entry reveal" id="f5">
+      <div class="entry-head">
+        <span class="entry-rank">05</span>
+        <h3>Non-conformité chronique au GRECO</h3>
+        <span class="entry-score">78<small>/100</small></span>
+      </div>
+      <div class="entry-meta"><span class="chip antidem">Antidémocratique</span></div>
+      <p>Membre fondateur du Groupe d'États contre la corruption du Conseil de l'Europe, la Belgique — pays hôte des institutions européennes — peine à appliquer les recommandations anticorruption qu'elle a contribué à écrire. Le 5ᵉ cycle (hautes fonctions de l'exécutif) reste lourdement déficitaire : sur 22 recommandations, une minorité seulement est pleinement mise en œuvre, plusieurs restent non appliquées.</p>
+      <p>Surtout, la procédure de non-conformité (Règle 32) a été activée à répétition. Lors de la plénière de novembre 2025, le GRECO a franchi un cran d'escalade rare en invitant le Secrétaire général du Conseil de l'Europe à écrire directement au ministre belge des Affaires étrangères — l'avant-dernier stade avant la déclaration publique de non-conformité. Quatre points concentrent les blocages : registre des lobbyistes, déclarations de patrimoine, encadrement des cabinets, période de carence pour les anciens ministres.</p>
+      <div class="subscores">
+        <span class="ss">A·Gravité <b>11</b></span><span class="ss">B·Systémique <b>17</b></span><span class="ss">C·Ampleur <b>13</b></span><span class="ss">D·Reconnaissance <b>20</b></span><span class="ss">E·Impunité <b>17</b></span>
+      </div>
+      <p class="sources"><span class="label">Reconnu par</span> GRECO (4ᵉ et 5ᵉ cycles, Règle 32) · Conseil de l'Europe · Commission européenne (Rapports État de droit 2024-2025).</p>
+    </article>
+
+    <!-- 6 -->
+    <article class="entry reveal" id="f6">
+      <div class="entry-head">
+        <span class="entry-rank">06</span>
+        <h3>Non-recours massif aux droits sociaux</h3>
+        <span class="entry-score">75<small>/100</small></span>
+      </div>
+      <div class="entry-meta"><span class="chip paralegal">Paralégal</span></div>
+      <p>Un droit qui existe sur le papier mais que l'on n'atteint pas est un droit fictif. Les taux de non-recours documentés sont vertigineux : <strong>~45 %</strong> pour le revenu d'intégration sociale (l'ultime filet anti-indigence), <strong>~50 % et jusqu'à 79 %</strong> historiquement pour la GRAPA des aînés, <strong>67 à 94 %</strong> pour l'allocation de chauffage selon les publics. Même une prime ciblant des ménages déjà identifiés et prévenus par courrier laisse 46 % des ayants droit de côté, simplement parce qu'il faut renvoyer un formulaire.</p>
+      <p>Le constat le plus dérangeant : plus un ménage est pauvre, plus il subit le non-recours — l'inverse du préjugé sur les « profiteurs ». La cause n'est pas l'usager mais l'architecture administrative : complexité croissante, « course aux fraudeurs » qui produit mécaniquement de l'exclusion, et numérisation forcée alors que près de la moitié des Belges étaient en vulnérabilité numérique en 2021. Ce n'est pas une infraction de l'État au sens strict, mais une carence systémique qui touche les droits fondamentaux de centaines de milliers de personnes.</p>
+      <div class="subscores">
+        <span class="ss">A·Gravité <b>11</b></span><span class="ss">B·Systémique <b>17</b></span><span class="ss">C·Ampleur <b>18</b></span><span class="ss">D·Reconnaissance <b>14</b></span><span class="ss">E·Impunité <b>15</b></span>
+      </div>
+      <p class="sources"><span class="label">Reconnu par</span> IWEPS (ISADF 2025) · HIVA-KU Leuven / CIRTES-UCLouvain (étude TAKE) · ODENORE · Observatoire bruxellois de la Santé et du Social.</p>
+    </article>
+
+    <!-- 7 -->
+    <article class="entry reveal" id="f7">
+      <div class="entry-head">
+        <span class="entry-rank">07</span>
+        <h3>Impunité par épuisement procédural</h3>
+        <span class="entry-score">73<small>/100</small></span>
+      </div>
+      <div class="entry-meta"><span class="chip illegal">Illégal</span></div>
+      <p>Le motif récurrent des grandes affaires belges n'est pas l'acquittement : c'est la dissolution lente. Prescriptions, transactions pénales, non-lieux, peines symboliques avec sursis — la quasi-totalité des grands dossiers politico-financiers (KB-Lux, Kazakhgate, Samusocial, Nethys) se termine sans sanction ferme proportionnée. Les rares condamnations fermes tombent une décennie après les faits.</p>
+      <p>Cette impunité de fait découle d'un appareil judiciaire structurellement engorgé, sous-financé et historiquement perméable aux nominations politiques, dont l'arriéré a valu à la Belgique des condamnations répétées de la CEDH. Le résultat est un déni de justice diffus : non pas un juge corrompu, mais un système où le temps lui-même devient l'allié des puissants.</p>
+      <div class="subscores">
+        <span class="ss">A·Gravité <b>12</b></span><span class="ss">B·Systémique <b>17</b></span><span class="ss">C·Ampleur <b>13</b></span><span class="ss">D·Reconnaissance <b>13</b></span><span class="ss">E·Impunité <b>18</b></span>
+      </div>
+      <p class="sources"><span class="label">Reconnu par</span> jurisprudence CEDH (arriéré judiciaire) · Transparency International · chronologie documentée des scandales (corpus).</p>
+    </article>
+
+    <!-- 8 -->
+    <article class="entry reveal" id="f8">
+      <div class="entry-head">
+        <span class="entry-rank">08</span>
+        <h3>Cabinets ministériels pléthoriques &amp; opaques</h3>
+        <span class="entry-score">72<small>/100</small></span>
+      </div>
+      <div class="entry-meta"><span class="chip paralegal">Paralégal</span></div>
+      <p>Là où d'autres démocraties s'appuient sur une administration neutre, les ministres belges s'entourent de « cellules stratégiques » de dizaines de conseillers qui exercent le véritable pouvoir de conception législative. Les moyennes sont parlantes : jusqu'à 50 équivalents temps plein par ministre en Wallonie ; le cabinet du ministre-président bruxellois comptait 81 personnes en 2023.</p>
+      <p>Le recrutement se fait sur la seule « confiance politique », sans procédure de sélection ni vérification d'intégrité. Plus problématique encore : une part majeure du coût est invisible. La Cour des comptes évalue à près de 15 M€/an la seule rémunération des agents détachés « à titre gratuit » en Wallonie, qui n'apparaît dans aucun budget, portant le coût réel bien au-delà du plafond affiché. Le GRECO pointe l'absence de stratégie d'intégrité et de sanctions déontologiques réelles.</p>
+      <div class="subscores">
+        <span class="ss">A·Gravité <b>9</b></span><span class="ss">B·Systémique <b>18</b></span><span class="ss">C·Ampleur <b>14</b></span><span class="ss">D·Reconnaissance <b>16</b></span><span class="ss">E·Impunité <b>15</b></span>
+      </div>
+      <p class="sources"><span class="label">Reconnu par</span> GRECO (5ᵉ cycle, reco i-iv) · Cour des comptes (rapport cabinets wallons) · enquêtes RTBF.</p>
+    </article>
+
+    <!-- 9 -->
+    <article class="entry reveal" id="f9">
+      <div class="entry-head">
+        <span class="entry-rank">09</span>
+        <h3>Circulaires &amp; instructions tenant lieu de loi</h3>
+        <span class="entry-score">71<small>/100</small></span>
+      </div>
+      <div class="entry-meta"><span class="chip paralegal">Paralégal</span></div>
+      <p>Une circulaire ministérielle se situe « au plus bas niveau des règles de droit » et ne lie en principe ni les tiers ni les juges. La paralégalité naît du glissement : une instruction interprétative devient une norme de fait que l'administration applique strictement, que les administrés subissent et que les juges finissent par invoquer — sans être passée par la section de législation du Conseil d'État ni publiée au Moniteur.</p>
+      <p>Les exemples documentés se concentrent là où les personnes sont les plus vulnérables : Office des étrangers (articles 9bis/9ter), Service des décisions anticipées, administrations sociales, et jusqu'à des instructions internes de Fedasil suspendant en 2023 l'accueil d'hommes seuls. Le Conseil d'État a pourtant jugé qu'une circulaire « ajoutant à la loi » constitue un excès de pouvoir — ce qui n'empêche pas la pratique de perdurer.</p>
+      <div class="subscores">
+        <span class="ss">A·Gravité <b>14</b></span><span class="ss">B·Systémique <b>16</b></span><span class="ss">C·Ampleur <b>14</b></span><span class="ss">D·Reconnaissance <b>14</b></span><span class="ss">E·Impunité <b>13</b></span>
+      </div>
+      <p class="sources"><span class="label">Reconnu par</span> Conseil d'État (arrêt n° 198.769, 2009) · CRISP · doctrine de technique législative.</p>
+    </article>
+
+    <!-- 10 -->
+    <article class="entry reveal" id="f10">
+      <div class="entry-head">
+        <span class="entry-rank">10</span>
+        <h3>Transaction pénale « sur mesure » &amp; capture législative</h3>
+        <span class="entry-score">70<small>/100</small></span>
+      </div>
+      <div class="entry-meta"><span class="chip illegal">Illégal</span></div>
+      <p>Le Kazakhgate illustre la porosité de l'appareil législatif fédéral aux intérêts étrangers. Pour sécuriser un contrat d'armement franco-kazakh, des émissaires de haut niveau ont sollicité le président du Sénat belge afin d'accélérer le vote d'une loi élargissant la transaction pénale. Cette modification, votée dans l'urgence, a permis à des oligarques de clore leurs poursuites pour blanchiment contre une amende de 23 millions d'euros, quelques jours avant la signature du contrat.</p>
+      <p>La commission d'enquête a conclu à un rapport édulcoré par la majorité de l'époque, selon l'opposition. La « culture de la transaction » consacrée par cette loi continue de jouer en 2026. Au-delà de l'épisode, c'est un mécanisme qui se rejoue : la loi belge devient un service rendu, et l'impunité un produit négociable.</p>
+      <div class="subscores">
+        <span class="ss">A·Gravité <b>16</b></span><span class="ss">B·Systémique <b>14</b></span><span class="ss">C·Ampleur <b>11</b></span><span class="ss">D·Reconnaissance <b>13</b></span><span class="ss">E·Impunité <b>16</b></span>
+      </div>
+      <p class="sources"><span class="label">Reconnu par</span> commission d'enquête parlementaire Kazakhgate · Cour constitutionnelle (correctifs 2016) · presse.</p>
+    </article>
+
+    <!-- 11 -->
+    <article class="entry reveal" id="f11">
+      <div class="entry-head">
+        <span class="entry-rank">11</span>
+        <h3>Lobbying non régulé &amp; portes tournantes</h3>
+        <span class="entry-score">69<small>/100</small></span>
+      </div>
+      <div class="entry-meta"><span class="chip paralegal">Paralégal</span></div>
+      <p>La Chambre dispose depuis 2018 d'un registre des lobbies, mais non contraignant, sans sanctions, géré par une seule personne, et ne couvrant ni le gouvernement, ni le Sénat, ni les cabinets, ni les régions. Le citoyen n'a aucun moyen de savoir qui a pesé sur une loi. La réforme clé — l'« empreinte législative » qui obligerait à annexer la liste des intérêts consultés — reste à l'état de proposition.</p>
+      <p>Le phénomène est décuplé par les portes tournantes : la circulation des élites entre cabinets ministériels et secteur privé/conseil. Le modèle belge des cabinets pléthoriques en fait un terreau particulièrement fertile. À Bruxelles, capitale du lobbying européen, jusqu'à la moitié du personnel des grands cabinets de lobbying aurait une expérience institutionnelle antérieure — la valeur d'un ancien décideur tenant à sa maîtrise des procédures et des failles des textes qu'il a parfois contribué à écrire.</p>
+      <div class="subscores">
+        <span class="ss">A·Gravité <b>9</b></span><span class="ss">B·Systémique <b>15</b></span><span class="ss">C·Ampleur <b>13</b></span><span class="ss">D·Reconnaissance <b>16</b></span><span class="ss">E·Impunité <b>16</b></span>
+      </div>
+      <p class="sources"><span class="label">Reconnu par</span> GRECO · OCDE · Cour des comptes européenne (audit Registre de transparence) · Transparency International EU · Corporate Europe Observatory.</p>
+    </article>
+
+    <!-- 12 -->
+    <article class="entry reveal" id="f12">
+      <div class="entry-head">
+        <span class="entry-rank">12</span>
+        <h3>Pressions sur la magistrature &amp; politisation</h3>
+        <span class="entry-score">66<small>/100</small></span>
+      </div>
+      <div class="entry-meta"><span class="chip antidem">Antidémocratique</span></div>
+      <p>L'indépendance de la justice a longtemps été entamée par les nominations à la « carte de parti ». La réforme post-Dutroux (Conseil supérieur de la Justice, 1998) a objectivé le recrutement, mais l'emprise s'est sophistiquée : les membres non-magistrats du CSJ sont nommés par le Sénat à la majorité des deux tiers, ce qui garantit d'âpres négociations inter-partis.</p>
+      <p>Quand les puissants sont en cause, le contre-pouvoir vacille. Le Fortisgate (2008) a vu l'exécutif tenter d'influencer directement la Cour d'appel de Bruxelles sur la vente forcée de la banque Fortis — une atteinte caractérisée à la séparation des pouvoirs qui a fait chuter le gouvernement. Le parquet, par ailleurs, reste hiérarchiquement rattaché au ministre de la Justice, avec un droit d'injonction positive : une indépendance que les analystes qualifient de « relative ».</p>
+      <div class="subscores">
+        <span class="ss">A·Gravité <b>14</b></span><span class="ss">B·Systémique <b>14</b></span><span class="ss">C·Ampleur <b>11</b></span><span class="ss">D·Reconnaissance <b>13</b></span><span class="ss">E·Impunité <b>14</b></span>
+      </div>
+      <p class="sources"><span class="label">Reconnu par</span> Constitution (art. 151) · GRECO · doctrine · chronologie Fortisgate.</p>
+    </article>
+
+    <!-- 13 -->
+    <article class="entry reveal" id="f13">
+      <div class="entry-head">
+        <span class="entry-rank">13</span>
+        <h3>Violence institutionnelle &amp; activation coercitive</h3>
+        <span class="entry-score">65<small>/100</small></span>
+      </div>
+      <div class="entry-meta"><span class="chip paralegal">Paralégal</span></div>
+      <p>Le glissement de l'État-providence vers l'« État social actif » a, dans sa version 2024-2026, produit une « violence froide » : labyrinthes administratifs, climat de suspicion, sanctions financières, examens médicaux expéditifs, politiques de « retour au travail » strictement coercitives. Le filet de sécurité se mue en outil de pénalisation de la précarité.</p>
+      <p>Le corpus relie cette pression à un coût neurocognitif documenté : la charge mentale de la survie administrative dégrade les fonctions exécutives et fabrique mécaniquement le non-recours (voir nº 6). Ce n'est pas illégal, c'est un choix idéologique de politique publique — mais il entre en tension avec les droits sociaux fondamentaux et avec les données probantes de l'épidémiologie sociale.</p>
+      <div class="subscores">
+        <span class="ss">A·Gravité <b>9</b></span><span class="ss">B·Systémique <b>15</b></span><span class="ss">C·Ampleur <b>16</b></span><span class="ss">D·Reconnaissance <b>12</b></span><span class="ss">E·Impunité <b>13</b></span>
+      </div>
+      <p class="sources"><span class="label">Reconnu par</span> Sciensano · Ligue des droits humains · recherches en santé publique et sciences cognitives (corpus).</p>
+    </article>
+
+    <!-- 14 -->
+    <article class="entry reveal" id="f14">
+      <div class="entry-head">
+        <span class="entry-rank">14</span>
+        <h3>Opacité des déclarations de patrimoine</h3>
+        <span class="entry-score">63<small>/100</small></span>
+      </div>
+      <div class="entry-meta"><span class="chip antidem">Antidémocratique</span></div>
+      <p>Les déclarations de patrimoine des élus et hauts responsables existent, mais sont envoyées sous pli fermé et ne peuvent être consultées que dans le cadre d'une enquête pénale. Le GRECO plaide de longue date pour leur publication, ou au moins pour un contrôle proactif des intérêts — recommandations qui restent non mises en œuvre.</p>
+      <p>L'opacité n'est pas anodine : sans transparence patrimoniale, les conflits d'intérêts et l'enrichissement inexpliqué deviennent presque impossibles à détecter en amont. C'est l'un des points sur lesquels le Parlement, dominé par les appareils de parti, oppose la résistance la plus tenace à toute contrainte qu'il s'imposerait à lui-même.</p>
+      <div class="subscores">
+        <span class="ss">A·Gravité <b>10</b></span><span class="ss">B·Systémique <b>12</b></span><span class="ss">C·Ampleur <b>9</b></span><span class="ss">D·Reconnaissance <b>16</b></span><span class="ss">E·Impunité <b>16</b></span>
+      </div>
+      <p class="sources"><span class="label">Reconnu par</span> GRECO (reco xii, xiii — non mises en œuvre) · Commission européenne.</p>
+    </article>
+
+    <!-- 15 -->
+    <article class="entry reveal" id="f15">
+      <div class="entry-head">
+        <span class="entry-rank">15</span>
+        <h3>Concentration des médias &amp; fabrique du consentement</h3>
+        <span class="entry-score">56<small>/100</small></span>
+      </div>
+      <div class="entry-meta"><span class="chip antidem">Antidémocratique</span></div>
+      <p>La faille la moins « dure » du classement, mais elle conditionne toutes les autres : sans visibilité publique, une dérive documentée reste sans conséquence électorale. La presse belge est concentrée entre quelques groupes (IPM, Rossel, Mediahuis, DPG), et la couverture des scandales suit un filtre : le Qatargate fait la une, le Kazakhgate beaucoup moins ; les affaires structurelles (non-exécution des jugements, particratie) ne font l'objet que de dépêches sans mise en perspective.</p>
+      <p>S'y ajoute l'usage du financement public des partis pour une « campagne permanente » sur les réseaux sociaux — la Belgique figurant en tête des dépenses publicitaires politiques en Europe. La conséquence est mesurable : la confiance dans le parlement national tourne autour de 35 %, et près de 6 Belges sur 10 estiment la corruption répandue, sans que cette défiance ne se traduise en sanction du système.</p>
+      <div class="subscores">
+        <span class="ss">A·Gravité <b>7</b></span><span class="ss">B·Systémique <b>13</b></span><span class="ss">C·Ampleur <b>12</b></span><span class="ss">D·Reconnaissance <b>11</b></span><span class="ss">E·Impunité <b>13</b></span>
+      </div>
+      <p class="sources"><span class="label">Reconnu par</span> recherche en sociologie des médias (grilles Bourdieu, Herman-Chomsky) · Eurobaromètre · études électorales (P. Delwit, ULB).</p>
+    </article>
+
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="wrap">
+    <h2><span class="num">04 — LECTURE TRANSVERSALE</span>Ce que le classement révèle</h2>
+    <p class="lead">Trois enseignements émergent une fois les quinze failles alignées.</p>
+    <p><strong>1. La gravité maximale n'est pas la corruption, c'est le refus du droit.</strong> En haut du classement figure non pas un détournement, mais un État qui refuse d'exécuter ses propres jugements. C'est le signe le plus clair que le problème belge n'est pas seulement éthique : il est constitutionnel.</p>
+    <p><strong>2. Le vrai pouvoir s'exerce hors des lieux contrôlés.</strong> Discipline de vote, cabinets, intercommunales, circulaires, lobbying : le fil commun n'est pas l'illégalité, c'est le <em>déplacement</em> de la décision hors du Parlement, du Conseil d'État et de la Cour des comptes, vers des sites moins observables. La paralégalité est moins une exception qu'une méthode de gouvernement.</p>
+    <p class="pull">Le moteur de tout le système est financier : la dotation publique a transformé les partis en quasi-organes d'État, déconnectés de la société civile et protégés de l'alternance.</p>
+    <p><strong>3. Le coût retombe sur les plus faibles.</strong> Les failles « institutionnelles » (financement, cabinets, lobbying) et les failles « humaines » (non-recours, violence institutionnelle) ne sont pas deux dossiers séparés : ce sont les deux bouts d'une même chaîne. Un appareil capté par ses propres intérêts produit mécaniquement de la friction administrative et de l'exclusion — pendant que les puissants bénéficient de l'épuisement procédural.</p>
+    <div class="note">
+      <span class="label">Limites de l'exercice</span>
+      <p>Les scores sont une grille de lecture, pas une vérité métrique. Ils traduisent un jugement argumenté à partir d'un corpus, non une mesure objective. Certains chiffres du corpus sont des fourchettes ou des estimations (montants de financement, nombre de condamnations, taux de non-recours) ; ils sont présentés comme tels. Le classement gagnerait à être confronté à la contradiction et aux sources primaires citées en regard de chaque fiche.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="disc">Synthèse réalisée à partir d'un corpus de recherche citoyenne sur la démocratie belge (état au printemps 2026). Document de travail à visée informative — ni avis juridique, ni mise en cause individuelle. Les appréciations relèvent de la posture de la recherche ; les faits renvoient à des sources publiques.</p>
+    <p class="sig">Fin du dossier · 15 failles · 3 registres · /100</p>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // animate ranking bars on first view
+  const barIO = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const bar = e.target;
+        const w = bar.style.width;
+        bar.style.width='0';
+        requestAnimationFrame(()=>{ bar.style.transition='width 1.1s cubic-bezier(.2,.8,.2,1)'; bar.style.width=w; });
+        barIO.unobserve(bar);
+      }
+    });
+  },{threshold:.4});
+  document.querySelectorAll('.rank-bar').forEach(b=>barIO.observe(b));
+</script>
+
+</body>
+</html>
