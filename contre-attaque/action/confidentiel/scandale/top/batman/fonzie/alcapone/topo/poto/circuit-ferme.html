@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Le circuit fermé — pourquoi le système belge ne se corrige pas, et où le forcer</title>
+<meta name="description" content="La pièce maîtresse du dossier : un système où l'audité finance l'auditeur ne peut pas se réparer de l'intérieur. Théorie du circuit fermé, puits de responsabilité, épreuve de réfutation, meilleur argument adverse et véritable point de levier.">
+<meta name="keywords" content="particratie, circuit fermé, autocorrection, financement des partis, mandat libre, sélection des candidats, listes bloquées, état de droit, Belgique, point de levier, réfutation, accountability">
+<meta name="author" content="Recherche citoyenne">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://exemple.be/circuit-ferme">
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fr_BE">
+<meta property="og:title" content="Le circuit fermé — pourquoi le système belge ne se corrige pas">
+<meta property="og:description" content="Quand l'audité finance l'auditeur, aucun acteur interne ne peut réformer. La théorie du dossier, ses conditions de réfutation, et le vrai point de rupture.">
+<meta property="og:site_name" content="Recherche citoyenne — démocratie belge">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Le circuit fermé — anatomie d'un système qui finance son propre contrôle">
+<meta name="twitter:description" content="Théorie du circuit fermé, puits de responsabilité, épreuve de réfutation, et le véritable point de levier.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Le circuit fermé — pourquoi le système belge ne se corrige pas, et où le forcer",
+  "description": "Pièce maîtresse analytique d'un projet de recherche citoyen sur la particratie belge : modèle du circuit fermé d'autoreproduction, concept de puits de responsabilité, conditions de réfutation de la thèse, meilleur argument adverse, et identification du véritable point de levier.",
+  "inLanguage": "fr-BE",
+  "datePublished": "2026-06-10",
+  "keywords": "particratie, circuit fermé, financement des partis, mandat libre, sélection des candidats, point de levier",
+  "about": [
+    {"@type":"Thing","name":"Particratie"},
+    {"@type":"Thing","name":"Autocorrection institutionnelle"},
+    {"@type":"Thing","name":"Sélection des candidats"}
+  ],
+  "articleSection": "Analyse"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,640;1,9..144,440&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,420&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:#E9E5D8;--paper-2:#E2DDCC;--ink:#15161A;--ink-soft:#4C4E54;--ink-faint:#6E6F73;
+    --redline:#A33223;--seal:#897A41;--rule:rgba(21,22,26,.16);--rule-soft:rgba(21,22,26,.09);
+    --display:"Fraunces",Georgia,serif;--body:"Newsreader",Georgia,serif;--mono:"IBM Plex Mono",ui-monospace,monospace;
+    --measure:34rem;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);
+    font-size:1.18rem;line-height:1.62;-webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(circle at 50% -5%,rgba(137,122,65,.06),transparent 45%),
+      radial-gradient(circle at 90% 95%,rgba(163,50,35,.04),transparent 50%);}
+  ::selection{background:var(--ink);color:var(--paper)}
+  .wrap{max-width:71rem;margin:0 auto;padding:0 7vw}
+  .col{max-width:var(--measure)}
+
+  .masthead{border-bottom:2px solid var(--ink);margin-top:2.4rem;padding-bottom:1rem}
+  .gazette-line{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--mono);
+    font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);
+    border-bottom:1px solid var(--rule);padding-bottom:.7rem;margin-bottom:1.1rem;gap:1rem;flex-wrap:wrap}
+  .gazette-line .seal{color:var(--seal)}
+  .companion{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;color:var(--ink-soft);margin-top:.4rem}
+  .companion a{color:var(--ink);text-decoration-color:var(--seal)}
+
+  .hero{padding:4.2rem 0 2.4rem}
+  .eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--redline);margin:0 0 1.4rem}
+  h1{font-family:var(--display);font-weight:560;font-size:clamp(2.5rem,6.6vw,4.7rem);line-height:1.0;
+    letter-spacing:-.018em;margin:0 0 1.5rem;max-width:18ch}
+  .standfirst{font-family:var(--body);font-style:italic;color:var(--ink-soft);
+    font-size:clamp(1.18rem,2.2vw,1.45rem);line-height:1.45;max-width:46ch;margin:0}
+
+  .premise{border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:2.4rem 0;margin-top:1.8rem}
+  .premise .lab{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--seal);margin-bottom:1rem}
+  .premise p{max-width:46ch;margin:0 0 1rem}.premise p:last-child{margin-bottom:0}
+
+  section.chapter{padding:4.4rem 0 1rem;border-top:1px solid var(--rule-soft)}
+  .chapnum{font-family:var(--mono);font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--seal);margin:0 0 .9rem}
+  h2{font-family:var(--display);font-weight:560;font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.05;
+    letter-spacing:-.012em;margin:0 0 1.5rem;max-width:21ch}
+  h3{font-family:var(--display);font-weight:560;font-size:1.3rem;line-height:1.2;margin:2.4rem 0 .6rem}
+  p{margin:0 0 1.25rem;max-width:var(--measure)}
+  p.lede{font-size:1.3rem;line-height:1.5;color:var(--ink);max-width:42ch}
+  strong{font-weight:500}em{font-style:italic}
+  a{color:var(--ink);text-decoration-color:var(--seal);text-underline-offset:3px}
+
+  /* diagramme du circuit */
+  .loop-fig{margin:2.4rem auto 1.4rem;max-width:30rem}
+  .loop-fig svg{width:100%;height:auto;display:block}
+  .loop-fig .node circle{fill:var(--paper);stroke:var(--ink);stroke-width:1.4}
+  .loop-fig .node text{font-family:var(--mono);font-size:11px;fill:var(--ink);letter-spacing:.01em}
+  .loop-fig .edge{stroke:var(--ink-soft);stroke-width:1.5;fill:none}
+  .loop-fig .edge.close{stroke:var(--redline);stroke-width:2}
+  .loop-fig .ah{fill:var(--ink-soft)}
+  .loop-fig .ah.close{fill:var(--redline)}
+  .figcap{font-family:var(--mono);font-size:.74rem;color:var(--ink-faint);letter-spacing:.04em;
+    text-align:center;max-width:38rem;margin:0 auto;line-height:1.6}
+  .figcap b{color:var(--redline);font-weight:500}
+
+  blockquote{margin:2.6rem 0;padding:0;border:none;font-family:var(--display);font-style:italic;
+    font-weight:400;font-size:clamp(1.4rem,3vw,2rem);line-height:1.28;max-width:27ch}
+  blockquote cite{display:block;margin-top:1rem;font-family:var(--mono);font-style:normal;
+    font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+
+  /* puits de responsabilité */
+  .sinks{margin:2rem 0 1rem;max-width:50rem;border-top:1px solid var(--ink)}
+  .sink{display:grid;grid-template-columns:1fr 1.3fr;gap:1.6rem;padding:1.5rem 0;border-bottom:1px solid var(--rule)}
+  .sink .where{font-family:var(--display);font-weight:560;font-size:1.12rem;line-height:1.25}
+  .sink .how{font-size:1.0rem;color:var(--ink-soft);line-height:1.5}
+  .sink .how span{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--seal);margin-bottom:.35rem}
+
+  /* épreuve de réfutation */
+  .test{margin:1.6rem 0 1rem;max-width:50rem}
+  .test .claim{background:var(--paper-2);border-left:3px solid var(--ink);padding:1.4rem 1.6rem;
+    font-family:var(--display);font-size:1.18rem;line-height:1.35;margin-bottom:2rem}
+  .cond{display:grid;grid-template-columns:auto 1fr;gap:1.2rem;padding:1.2rem 0;border-top:1px solid var(--rule);align-items:start}
+  .cond .ck{font-family:var(--mono);color:var(--redline);font-size:1.1rem;line-height:1.2;padding-top:.15rem}
+  .cond p{margin:0;font-size:1.02rem;line-height:1.5}
+  .cond .state{display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--ink-faint);margin-top:.4rem}
+
+  /* steelman */
+  .steel{background:var(--paper-2);border:1px solid var(--rule);border-radius:2px;
+    padding:2.4rem clamp(1.6rem,4vw,3rem);margin:2.6rem 0}
+  .steel .chapnum{color:var(--ink-soft)}
+  .steel h2{font-size:1.6rem}
+  .steel p{font-size:1.04rem;color:var(--ink-soft);line-height:1.55}
+  .steel .reb{color:var(--ink);border-top:1px solid var(--rule);margin-top:1.6rem;padding-top:1.6rem}
+  .steel .reb .lab{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--redline);display:block;margin-bottom:.7rem}
+
+  /* levier */
+  .lever{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--ink);margin:2.2rem 0}
+  .lever > div{padding:1.7rem 1.6rem}
+  .lever .a{border-right:1px solid var(--rule)}
+  .lever .head{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--seal);margin-bottom:.8rem}
+  .lever .a .head{color:var(--ink-faint)}
+  .lever h3{margin:0 0 .6rem;font-size:1.18rem}
+  .lever p{margin:0;font-size:1.0rem;color:var(--ink-soft);line-height:1.5}
+
+  .epilogue{padding:4.2rem 0 3rem;border-top:2px solid var(--ink);margin-top:2.6rem}
+  .epilogue p{font-size:1.26rem;line-height:1.55;max-width:42ch}
+  .signoff{font-family:var(--display);font-style:italic;font-size:1.45rem;margin-top:2.2rem;color:var(--redline)}
+
+  footer{border-top:1px solid var(--ink);margin-top:3rem;padding:2.6rem 0 5rem;font-size:.95rem;color:var(--ink-soft)}
+  footer h2{font-size:1.1rem;font-family:var(--mono);font-weight:500;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--ink);margin-bottom:1rem}
+  .disclaimer{margin-top:1.4rem;font-style:italic;font-size:.86rem;max-width:62ch}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:640px){
+    body{font-size:1.08rem}.wrap{padding:0 6vw}
+    .sink{grid-template-columns:1fr;gap:.5rem}
+    .lever{grid-template-columns:1fr}.lever .a{border-right:none;border-bottom:1px solid var(--rule)}
+  }
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="gazette-line">
+      <span>Dossier citoyen — démocratie belge</span>
+      <span class="seal">Pièce maîtresse · analyse · juin 2026</span>
+    </div>
+    <p class="companion">Capstone du dossier — après le manifeste <a href="democratie-confisquee.html">« La démocratie confisquée »</a>. Non un résumé : l'argument qui manquait.</p>
+  </header>
+
+  <div class="hero col">
+    <p class="eyebrow">La théorie du dossier</p>
+    <h1>Le circuit fermé</h1>
+    <p class="standfirst">Le dossier prouve que le système est capturé. Il ne dit pas <em>pourquoi il ne se répare pas</em>. La réponse tient en une phrase : dans ce système, l'audité finance l'auditeur. Tant que la boucle reste fermée, aucun acteur interne ne peut la rouvrir.</p>
+  </div>
+
+  <div class="premise col reveal">
+    <p class="lab">Le problème que cette page résout</p>
+    <p>Toutes les pièces du projet sont <strong>additives</strong> : chacune documente un dysfonctionnement de plus — le financement, le mandat libre vidé, les jugements ignorés, le coût humain. L'accumulation est écrasante, mais elle laisse une question sans réponse.</p>
+    <p>Si tous ces faits sont connus, mesurés, dénoncés par le GRECO, la CEDH, Transparency, les universités — <strong>pourquoi le système les absorbe-t-il sans changer&nbsp;?</strong> Ce n'est pas un défaut de preuve. C'est un trait de conception. Le nommer, c'est passer du constat au mécanisme.</p>
+  </div>
+
+  <!-- I — LE CIRCUIT -->
+  <section class="chapter col reveal">
+    <p class="chapnum">I — Le mécanisme</p>
+    <h2>Un système qui finance son propre contrôle</h2>
+    <p class="lede">Le projet parle de « trois verrous ». C'est exact, mais incomplet : trois verrous alignés se forcent un par un. Ce que décrit la réalité belge n'est pas une ligne — c'est un <strong>cercle</strong>.</p>
+    <p>Suivez l'argent et le pouvoir, et vous revenez à votre point de départ. Le financement public alimente un trésor de guerre. Ce trésor finance la machine qui confectionne les listes électorales. Le monopole des listes discipline les élus — non par la sanction, mais par l'anticipation : on ne s'écarte pas de la ligne quand son investiture future en dépend. Les élus disciplinés composent le Parlement. Et c'est ce même Parlement qui peuple la commission chargée de contrôler… le financement des partis.</p>
+
+    <div class="loop-fig reveal">
+      <svg viewBox="0 0 360 360" role="img" aria-label="Diagramme circulaire : le financement public alimente un trésor de guerre, qui contrôle les listes, qui discipline les élus, qui composent le Parlement, qui contrôle l'audit du financement — bouclant le cercle.">
+        <defs>
+          <marker id="ah" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+            <path class="ah" d="M0,0 L6,3 L0,6 Z"/>
+          </marker>
+          <marker id="ahc" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+            <path class="ah close" d="M0,0 L6,3 L0,6 Z"/>
+          </marker>
+        </defs>
+        <!-- pentagon nodes around center 180,180 r=120 -->
+        <!-- A top (180,60) B (294,142) C (250,276) D (110,276) E (66,142) -->
+        <!-- edges clockwise A->B->C->D->E, then close E->A in red -->
+        <path class="edge" d="M210,72 A120,120 0 0 1 290,128" marker-end="url(#ah)"/>
+        <path class="edge" d="M296,162 A120,120 0 0 1 268,262" marker-end="url(#ah)"/>
+        <path class="edge" d="M236,286 A120,120 0 0 1 124,286" marker-end="url(#ah)"/>
+        <path class="edge" d="M92,262 A120,120 0 0 1 64,162" marker-end="url(#ah)"/>
+        <path class="edge close" d="M70,128 A120,120 0 0 1 150,72" marker-end="url(#ahc)"/>
+
+        <g class="node">
+          <circle cx="180" cy="60" r="6"/>
+          <text x="180" y="42" text-anchor="middle">Financement public</text>
+          <circle cx="294" cy="142" r="6"/>
+          <text x="318" y="146" text-anchor="start">Trésor de guerre</text>
+          <circle cx="250" cy="276" r="6"/>
+          <text x="262" y="296" text-anchor="start">Monopole des listes</text>
+          <circle cx="110" cy="276" r="6"/>
+          <text x="98" y="296" text-anchor="end">Discipline · Parlement</text>
+          <circle cx="66" cy="142" r="6"/>
+          <text x="42" y="146" text-anchor="end">Audit « interne »</text>
+        </g>
+      </svg>
+    </div>
+    <p class="figcap">L'organe qui contrôle le financement est composé des élus que ce financement a produits. <b>La flèche rouge ferme le cercle</b> : la sortie alimente l'entrée.</p>
+
+    <p>Voilà l'engrenage que le dossier décrit par morceaux sans jamais le refermer. Et sa fermeture explique tout le reste. Un cercle n'a pas de point d'entrée extérieur : chaque correcteur potentiel — la commission de contrôle, la majorité parlementaire, l'autorité de nomination — est lui-même un produit du circuit. On ne demande pas à un mécanisme de se débrancher tout seul.</p>
+
+    <h3>Pourquoi les outils anti-corruption échouent ici</h3>
+    <p>C'est l'implication la plus dérangeante, et elle est inédite dans le dossier : <strong>il n'y a, le plus souvent, aucune infraction à poursuivre.</strong> La capture est légale. Le système n'a pas besoin de violer les règles puisqu'il les écrit. Les instruments classiques — parquet, déontologie, transparence — cherchent un coupable, un pot-de-vin, un secret. Or il n'y a ni l'un ni l'autre : seulement une boucle de financement parfaitement déclarée, qui produit l'impunité sans jamais produire de délit. C'est pourquoi le GRECO peut accumuler les recommandations sans effet : il lutte contre la corruption, et le problème belge n'en est pas une. C'en est la version légalisée.</p>
+
+    <blockquote>
+      La corruption détourne les règles. La capture les rédige. La première laisse des preuves ; la seconde laisse des lois.
+      <cite>Proposition centrale de cette analyse</cite>
+    </blockquote>
+  </section>
+
+  <!-- II — PUITS DE RESPONSABILITÉ -->
+  <section class="chapter col reveal">
+    <p class="chapnum">II — Le motif récurrent</p>
+    <h2>Les puits de responsabilité</h2>
+    <p class="lede">Le dossier traite séparément le Kern, les cabinets, les intercommunales, les circulaires, la loi de transparence neutralisée. Ce ne sont pas cinq anomalies. C'est un seul motif de conception, répété.</p>
+    <p>Appelons-le le <strong>puits de responsabilité</strong> : une structure conçue pour qu'une décision s'y exerce sans que personne n'en réponde. À chaque fois, le mécanisme est identique — déplacer la décision vers un lieu où elle devient <em>non attribuable</em> et <em>non auditable</em>. Une fois qu'on le voit, on le voit partout.</p>
+
+    <div class="sinks">
+      <div class="sink">
+        <div class="where">Le Kern</div>
+        <div class="how"><span>Décision sans trace</span>Comité ministériel restreint sans base légale claire et sans procès-verbal : l'épicentre du pouvoir exécutif, par construction, ne laisse rien à auditer.</div>
+      </div>
+      <div class="sink">
+        <div class="where">Les cabinets ministériels</div>
+        <div class="how"><span>Administration parallèle</span>Une structure de fidèles qui double la fonction publique et échappe à sa redevabilité : la compétence est déplacée hors du périmètre contrôlable.</div>
+      </div>
+      <div class="sink">
+        <div class="where">Les intercommunales</div>
+        <div class="how"><span>Filialisation</span>Des montages en cascade qui soustraient des pans entiers de l'économie publique à la supervision démocratique — l'argent quitte le champ du contrôle.</div>
+      </div>
+      <div class="sink">
+        <div class="where">La paralégalité</div>
+        <div class="how"><span>Norme sans contrôle</span>La circulaire interne non publiée impose des contraintes aux citoyens sans passer par le législateur ni le juge : la règle existe sans avoir été soumise.</div>
+      </div>
+      <div class="sink">
+        <div class="where">La transparence désamorcée</div>
+        <div class="how"><span>Exception qui avale la règle</span>Une loi d'accès aux documents neutralisée par une exception « stratégie politique » : l'outil de contrôle est livré déjà cassé.</div>
+      </div>
+    </div>
+
+    <p>Le motif compte plus que chaque cas. Tant qu'on les traite comme des scandales distincts, chacun appelle un correctif distinct — et la correction, on l'a vu, retombe dans le circuit. Reconnaître le <em>pattern</em>, c'est comprendre qu'on ne le réformera pas par retouches : un puits qu'on rebouche est remplacé par un autre, parce que c'est la <em>fonction</em> qui est recherchée, pas l'accident.</p>
+  </section>
+
+  <!-- III — ÉPREUVE DE RÉFUTATION -->
+  <section class="chapter col reveal">
+    <p class="chapnum">III — L'honnêteté de la thèse</p>
+    <h2>Ce qui prouverait que nous avons tort</h2>
+    <p class="lede">Une thèse qui ne peut pas être réfutée n'est pas une thèse, c'est une humeur. Voici donc, posément, ce qui démentirait l'analyse de tout ce projet. Rien de tel n'existe ailleurs dans le dossier — et c'est ce qui le rendra crédible devant un sceptique, un journaliste, un juge.</p>
+
+    <div class="test">
+      <p class="claim">Thèse testable : le mandat libre est vidé par un circuit de capture qui se reproduit lui-même et qu'aucun acteur interne ne peut rompre.</p>
+
+      <div class="cond">
+        <span class="ck">×</span>
+        <p>Si la cohésion de vote partisane tombait durablement sous 90 % et que des majorités gouvernementales étaient régulièrement mises en échec en séance.
+        <span class="state">État actuel — cohésion ≈ 99 %, mises en minorité ≈ 0,6 % des votes</span></p>
+      </div>
+      <div class="cond">
+        <span class="ck">×</span>
+        <p>Si un organe réellement indépendant — extérieur au Parlement — contrôlait le financement des partis.
+        <span class="state">État actuel — contrôle assuré par les parlementaires eux-mêmes</span></p>
+      </div>
+      <div class="cond">
+        <span class="ck">×</span>
+        <p>Si la part des lois d'initiative parlementaire dépassait largement celle des projets gouvernementaux.
+        <span class="state">État actuel — l'essentiel des lois reste d'initiative gouvernementale</span></p>
+      </div>
+      <div class="cond">
+        <span class="ck">×</span>
+        <p>Si la Belgique se mettait en conformité substantielle avec les recommandations du GRECO et sortait de sa procédure de non-conformité.
+        <span class="state">État actuel — Règle 32 active</span></p>
+      </div>
+      <div class="cond">
+        <span class="ck">~</span>
+        <p>Si l'investiture cessait de dépendre du sommet du parti — par des candidatures ouvertes, hors listes bloquées.
+        <span class="state">État actuel — quelques expérimentations isolées, sans effet systémique</span></p>
+      </div>
+    </div>
+    <p>Aucune de ces conditions n'est aujourd'hui remplie ; une seule est en frémissement. La thèse n'est pas invulnérable — elle est seulement, pour l'instant, non démentie. C'est une position scientifique, pas une conviction.</p>
+  </section>
+
+  <!-- IV — STEELMAN -->
+  <section class="steel col reveal">
+    <p class="chapnum">IV — Le procès équitable</p>
+    <h2>Le meilleur argument de la défense</h2>
+    <p>Un dossier à charge n'est solide que s'il a soutenu le poids de la meilleure défense. La voici, sans caricature.</p>
+    <p>Le système belge n'est pas né de la cupidité, mais de la paix. Le consociationalisme et la discipline de coalition ont permis de gouverner un pays que ses fractures linguistiques auraient pu disloquer. Le financement public de 1989 a tué le financement occulte qui pourrissait la vie politique d'avant : il a assaini, pas corrompu. La discipline de vote produit de la stabilité et de la lisibilité — les démocraties les plus disciplinées d'Europe, les pays nordiques, sont aussi les mieux classées. Et la Belgique reste un pays libre, doté de juridictions indépendantes qui, à plusieurs reprises, ont fait plier l'exécutif. Le citoyen n'est pas sans recours.</p>
+    <div class="reb">
+      <span class="lab">Ce que la défense n'explique pas</span>
+      <p>Tout cela est vrai — pour 1970 à 1989. La défense justifie l'<em>origine</em> du système, non sa <em>dérive</em>. Elle explique pourquoi la discipline fut utile, pas pourquoi le circuit s'est refermé sur son propre contrôle. Le reproche du dossier ne vise pas la cohésion ni la stabilité ; il vise le moment précis où l'organe censé surveiller le financement est devenu une émanation des financés. La paix consociative a été un médicament. La question est de savoir à partir de quelle dose elle est devenue la maladie.</p>
+    </div>
+  </section>
+
+  <!-- V — POINT DE LEVIER -->
+  <section class="chapter col reveal">
+    <p class="chapnum">V — Là où forcer</p>
+    <h2>Le vrai point de rupture n'est pas l'argent</h2>
+    <p class="lede">Ici, je m'écarte de la conclusion du dossier. Le projet répète que l'assèchement du financement est « le levier unique ». À l'examen du circuit, c'est en partie faux.</p>
+    <p>L'argent est le <em>carburant</em> de la boucle. Mais le mécanisme qui <em>vide</em> le mandat libre ne passe pas par la sanction financière a posteriori : il passe par la <strong>sélection des candidats</strong>, en amont. La cohésion belge, la recherche le montre, ne s'obtient pas en punissant les rebelles — elle s'obtient parce qu'il n'y a pas de rebelles : on ne s'écarte pas d'une ligne quand sa réinvestiture dépend du sommet. Couper le financement affaiblit le trésor de guerre. Cela ne rend pas, à soi seul, sa liberté à l'élu.</p>
+
+    <div class="lever">
+      <div class="a">
+        <p class="head">Ce que dit le dossier</p>
+        <h3>Assécher le financement</h3>
+        <p>Frapper le carburant : conditionner, plafonner, interdire les rétrocessions. Nécessaire — mais le circuit peut tourner au ralenti et se reproduire quand même.</p>
+      </div>
+      <div class="b">
+        <p class="head">Ce que suggère le circuit</p>
+        <h3>Briser le monopole des listes</h3>
+        <p>Découpler le siège du bon vouloir du parti : candidatures ouvertes, fin des listes bloquées. C'est l'amont qui produit la discipline — donc le vrai point de rupture du mandat impératif de fait.</p>
+      </div>
+    </div>
+
+    <p>D'où une conclusion stratégique que le dossier n'avait pas formulée : il ne faut pas <em>un</em> levier, mais <strong>deux, dans cet ordre</strong>. D'abord rouvrir le cercle — un contrôle du financement réellement extérieur au Parlement, pour qu'un correcteur cesse d'être un produit du circuit. Ensuite seulement, l'assèchement et la réforme de la sélection ont prise, parce qu'il existe enfin un organe que la boucle ne possède pas. Attaquer l'argent sans rouvrir le cercle, c'est demander au mécanisme de se réformer lui-même — exactement ce qu'il est conçu pour ne pas faire.</p>
+  </section>
+
+  <section class="epilogue col reveal">
+    <p class="chapnum">Pour conclure</p>
+    <p>Ce que le dossier avait, c'est la preuve : un empilement de faits qu'aucun pouvoir n'a su contredire. Ce qui lui manquait, c'est le moteur — l'explication de leur persistance — et l'épreuve qui rend la thèse réfutable plutôt que militante.</p>
+    <p>Les deux sont maintenant posés. Reste une lucidité : nommer le circuit ne le rompt pas. Une boucle ne se défait pas par la démonstration de son existence ; elle se défait par un acte qui vient de <em>l'extérieur</em> d'elle — un juge, un référendum, une majorité qui accepte de se priver d'un avantage. C'est rare. Ce n'est pas impossible. Et savoir précisément où couper est la condition de tout le reste.</p>
+    <p class="signoff">Le cercle est nommé. Le rompre demandera une main qu'il ne tient pas.</p>
+  </section>
+
+  <footer class="reveal">
+    <h2>Note</h2>
+    <p style="max-width:62ch">Cette pièce est une contribution analytique originale au projet : elle ne réplique aucune autre étude du dossier mais en articule les conclusions en un modèle unique (le circuit fermé), un concept (les puits de responsabilité), une épreuve de réfutation, un examen contradictoire et une révision du point de levier. Les faits mobilisés — cohésion ≈ 99 %, contrôle parlementaire du financement, procédure GRECO Règle 32, primauté des projets gouvernementaux, sélection par listes bloquées — sont établis dans les pièces sources du projet et leurs références primaires (Constitution, CRISP, Depauw, Verleden, GRECO, CEDH).</p>
+    <p class="disclaimer">Document d'analyse et d'opinion citoyenne à visée réformatrice, sans valeur d'avis juridique. Les jugements analytiques engagent ce texte ; ils portent sur des institutions et des mécanismes, non sur l'intention de personnes. État des données : juin 2026.</p>
+  </footer>
+
+</div>
+
+<script>
+  (function(){
+    var els=document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver'in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      els.forEach(function(e){e.classList.add('in')});return;}
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){
+      if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.12});
+    els.forEach(function(e){io.observe(e)});
+  })();
+</script>
+
+</body>
+</html>
