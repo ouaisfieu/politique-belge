@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO primaire -->
+<title>La démocratie confisquée — Manifeste citoyen contre la particratie belge</title>
+<meta name="description" content="Financement public sans contrôle indépendant, mandat libre vidé à 99 %, milliers de jugements ignorés : enquête documentée sur la particratie belge et dix propositions pour refonder la démocratie.">
+<meta name="keywords" content="particratie, Belgique, démocratie, état de droit, financement des partis, mandat libre, article 42, GRECO, Transparency International, réforme institutionnelle, cabinets ministériels, discipline de vote">
+<meta name="author" content="Recherche citoyenne">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://exemple.be/democratie-confisquee">
+
+<!-- Open Graph / partage social -->
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fr_BE">
+<meta property="og:title" content="La démocratie confisquée — Manifeste citoyen contre la particratie belge">
+<meta property="og:description" content="Le mandat libre dit que l'élu représente la Nation. La pratique dit 99 % de discipline de parti. Enquête documentée et dix propositions de refondation.">
+<meta property="og:site_name" content="Recherche citoyenne — démocratie belge">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="La démocratie confisquée — contre la particratie belge">
+<meta name="twitter:description" content="Financement opaque, mandat libre vidé, jugements ignorés. Le réquisitoire documenté et dix propositions.">
+
+<!-- Données structurées (référencement enrichi) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "La démocratie confisquée — Manifeste citoyen contre la particratie belge",
+  "description": "Enquête documentée sur la particratie belge : financement public des partis, mandat libre vidé par la discipline de vote, non-exécution des décisions de justice, et dix propositions de refondation démocratique.",
+  "inLanguage": "fr-BE",
+  "datePublished": "2026-06-10",
+  "keywords": "particratie, Belgique, démocratie, état de droit, financement des partis, mandat libre, article 42, GRECO",
+  "about": [
+    {"@type": "Thing", "name": "Particratie"},
+    {"@type": "Thing", "name": "État de droit en Belgique"},
+    {"@type": "Thing", "name": "Financement des partis politiques"}
+  ],
+  "articleSection": "Politique et institutions"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,640;1,9..144,440&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,420&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:#E9E5D8;
+    --paper-2:#E2DDCC;
+    --ink:#15161A;
+    --ink-soft:#4C4E54;
+    --ink-faint:#6E6F73;
+    --redline:#A33223;
+    --seal:#897A41;
+    --rule:rgba(21,22,26,.16);
+    --rule-soft:rgba(21,22,26,.09);
+    --display:"Fraunces", Georgia, serif;
+    --body:"Newsreader", Georgia, serif;
+    --mono:"IBM Plex Mono", ui-monospace, monospace;
+    --measure:34rem;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:1.18rem;
+    line-height:1.62;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(circle at 18% 12%, rgba(137,122,65,.05), transparent 60%),
+      radial-gradient(circle at 86% 78%, rgba(163,50,35,.04), transparent 55%);
+  }
+  ::selection{background:var(--redline);color:var(--paper)}
+
+  .wrap{max-width:71rem;margin:0 auto;padding:0 7vw}
+  .col{max-width:var(--measure)}
+
+  /* ---------- MASTHEAD ---------- */
+  .masthead{
+    border-bottom:2px solid var(--ink);
+    margin-top:2.4rem;
+    padding-bottom:1rem;
+  }
+  .gazette-line{
+    display:flex;justify-content:space-between;align-items:baseline;
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ink-soft);
+    border-bottom:1px solid var(--rule);padding-bottom:.7rem;margin-bottom:1.1rem;
+    gap:1rem;flex-wrap:wrap;
+  }
+  .gazette-line .seal{color:var(--redline)}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:4.5rem 0 3.2rem}
+  .eyebrow{
+    font-family:var(--mono);font-size:.74rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--redline);margin:0 0 1.4rem;
+  }
+  h1{
+    font-family:var(--display);
+    font-weight:560;
+    font-size:clamp(2.7rem,7.4vw,5.4rem);
+    line-height:.98;
+    letter-spacing:-.018em;
+    margin:0 0 1.6rem;
+    max-width:18ch;
+  }
+  .standfirst{
+    font-family:var(--body);
+    font-size:clamp(1.2rem,2.3vw,1.5rem);
+    line-height:1.45;
+    color:var(--ink-soft);
+    max-width:42ch;
+    font-style:italic;
+    margin:0 0 2.6rem;
+  }
+
+  /* ---------- THESIS / l'article rayé ---------- */
+  .thesis{
+    border-top:1px solid var(--ink);
+    border-bottom:1px solid var(--ink);
+    padding:3rem 0;margin:1rem 0 0;
+  }
+  .thesis .ref{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--seal);margin-bottom:1rem;
+  }
+  .promise{
+    font-family:var(--display);font-style:italic;font-weight:400;
+    font-size:clamp(1.5rem,3.6vw,2.5rem);line-height:1.22;
+    max-width:24ch;margin:0;
+    position:relative;
+  }
+  .promise .struck{position:relative;display:inline}
+  .promise .struck::after{
+    content:"";position:absolute;left:-.05em;right:-.05em;top:54%;height:3px;
+    background:var(--redline);transform:rotate(-1.4deg);
+    transform-origin:left;
+  }
+  .reality{
+    margin-top:1.8rem;display:flex;align-items:baseline;gap:1.1rem;flex-wrap:wrap;
+  }
+  .reality .pen{
+    font-family:var(--mono);color:var(--redline);font-size:.78rem;
+    letter-spacing:.1em;text-transform:uppercase;
+    border:1px solid var(--redline);padding:.25em .6em;border-radius:2px;
+    transform:rotate(-.6deg);
+  }
+  .reality .num{
+    font-family:var(--display);font-weight:640;color:var(--redline);
+    font-size:clamp(2.4rem,6vw,4rem);line-height:1;letter-spacing:-.02em;
+  }
+  .reality .num small{font-size:.4em;font-weight:560}
+  .reality .gloss{font-style:italic;color:var(--ink-soft);max-width:30ch;font-size:1.02rem}
+
+  /* ---------- SECTIONS ---------- */
+  section.chapter{padding:4.6rem 0 1rem;border-top:1px solid var(--rule-soft)}
+  section.chapter:first-of-type{border-top:none}
+  .chapnum{
+    font-family:var(--mono);font-size:.74rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--seal);margin:0 0 .9rem;
+  }
+  h2{
+    font-family:var(--display);font-weight:560;
+    font-size:clamp(1.8rem,4vw,2.9rem);line-height:1.04;
+    letter-spacing:-.012em;margin:0 0 1.6rem;max-width:20ch;
+  }
+  h3{
+    font-family:var(--display);font-weight:560;font-size:1.35rem;
+    line-height:1.2;margin:2.6rem 0 .7rem;letter-spacing:-.005em;
+  }
+  p{margin:0 0 1.25rem;max-width:var(--measure)}
+  p.lede{font-size:1.32rem;line-height:1.5;color:var(--ink);max-width:40ch}
+  a{color:var(--ink);text-decoration-color:var(--redline);text-underline-offset:3px}
+  strong{font-weight:500}
+  em{font-style:italic}
+
+  /* annotation marginale "stylo rouge" */
+  .annot{
+    font-family:var(--mono);font-size:.82rem;line-height:1.5;color:var(--redline);
+    border-left:2px solid var(--redline);padding:.2rem 0 .2rem 1rem;
+    margin:1.6rem 0;max-width:30rem;transform:rotate(-.15deg);
+  }
+  .annot b{font-weight:500}
+
+  /* pièces à conviction (chiffres) */
+  .exhibits{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));
+    gap:0;margin:2.4rem 0 1rem;border:1px solid var(--ink);
+  }
+  .exhibit{
+    padding:1.6rem 1.5rem;border-right:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+  }
+  .exhibit .tag{
+    font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--seal);margin-bottom:.7rem;
+  }
+  .exhibit .big{
+    font-family:var(--display);font-weight:640;font-size:2.5rem;line-height:.95;
+    letter-spacing:-.02em;display:block;margin-bottom:.5rem;
+  }
+  .exhibit .big.red{color:var(--redline)}
+  .exhibit .cap{font-size:.96rem;color:var(--ink-soft);line-height:1.4;font-style:italic}
+
+  /* citation pleine largeur */
+  blockquote{
+    margin:2.8rem 0;padding:0;border:none;
+    font-family:var(--display);font-style:italic;font-weight:400;
+    font-size:clamp(1.4rem,3vw,2rem);line-height:1.28;
+    max-width:26ch;color:var(--ink);
+  }
+  blockquote cite{
+    display:block;margin-top:1rem;font-family:var(--mono);font-style:normal;
+    font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);
+  }
+
+  /* propositions */
+  .proposals{counter-reset:prop;margin:2rem 0 0;max-width:48rem}
+  .proposal{
+    display:grid;grid-template-columns:3.4rem 1fr;gap:1.4rem;
+    padding:1.5rem 0;border-top:1px solid var(--rule);align-items:start;
+  }
+  .proposal::before{
+    counter-increment:prop;content:counter(prop,decimal-leading-zero);
+    font-family:var(--mono);font-size:.95rem;color:var(--redline);
+    padding-top:.35rem;
+  }
+  .proposal h4{
+    font-family:var(--display);font-weight:560;font-size:1.18rem;
+    margin:0 0 .35rem;line-height:1.2;
+  }
+  .proposal p{margin:0;font-size:1.02rem;color:var(--ink-soft);line-height:1.5}
+
+  /* contradictoire */
+  .counterpoint{
+    background:var(--paper-2);border:1px solid var(--rule);
+    padding:2.4rem clamp(1.6rem,4vw,3rem);margin:3rem 0;border-radius:2px;
+  }
+  .counterpoint .chapnum{color:var(--ink-soft)}
+
+  /* épilogue */
+  .epilogue{padding:4.6rem 0 3rem;border-top:2px solid var(--ink);margin-top:3rem}
+  .epilogue p{font-size:1.28rem;line-height:1.55;max-width:40ch}
+  .signoff{
+    font-family:var(--display);font-style:italic;font-size:1.5rem;
+    margin-top:2.4rem;color:var(--redline);
+  }
+
+  /* footer / sources */
+  footer{
+    border-top:1px solid var(--ink);margin-top:3rem;padding:2.6rem 0 5rem;
+    font-size:.95rem;color:var(--ink-soft);
+  }
+  footer h2{font-size:1.1rem;font-family:var(--mono);font-weight:500;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--ink);margin-bottom:1.2rem}
+  .sources{columns:2;column-gap:3rem;font-size:.88rem;line-height:1.5;max-width:none}
+  .sources p{margin:0 0 .8rem;break-inside:avoid;max-width:none}
+  .disclaimer{margin-top:2rem;font-style:italic;font-size:.86rem;max-width:60ch}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease, transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:640px){
+    body{font-size:1.08rem}
+    .wrap{padding:0 6vw}
+    .sources{columns:1}
+    .reality{gap:.7rem}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="gazette-line">
+      <span>Dossier citoyen — démocratie belge</span>
+      <span class="seal">Pièce versée au débat public · 2026</span>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero col">
+    <p class="eyebrow">Manifeste — particratie &amp; refondation démocratique</p>
+    <h1>La démocratie confisquée</h1>
+    <p class="standfirst">La Belgique n'est pas une dictature. C'est plus subtil, et plus durable : une démocratie dont les électeurs ont gardé le bulletin, mais perdu la décision.</p>
+  </div>
+
+  <!-- THÈSE : l'article rayé -->
+  <div class="thesis reveal">
+    <p class="ref">Constitution belge · Article 42 · texte de 1831</p>
+    <p class="promise">« Les membres des deux Chambres représentent <span class="struck">la Nation</span>, et non uniquement ceux qui les ont élus. »</p>
+    <div class="reality">
+      <span class="pen">Annotation du réel</span>
+      <span class="num">99&nbsp;<small>%</small></span>
+      <span class="gloss">de cohésion de vote partisane. L'élu vote ce que décide l'état-major du parti. Le mandat libre est juste sur le papier ; il est vide dans les faits.</span>
+    </div>
+  </div>
+
+  <!-- CHAPITRE 1 -->
+  <section class="chapter col reveal">
+    <p class="chapnum">I — Le diagnostic</p>
+    <h2>Un régime de partis, pas un régime de citoyens</h2>
+    <p class="lede">Le mot existe dans les facultés de science politique depuis cinquante ans : <strong>particratie</strong>. Il décrit un système où le pouvoir réel n'appartient ni au Parlement, ni au gouvernement, mais aux directions de quelques partis.</p>
+    <p>La Belgique n'a pas inventé la discipline de parton. Toutes les démocraties parlementaires d'Europe la connaissent : l'Allemagne, la France, les Pays-Bas, le Royaume-Uni affichent des taux de cohésion comparables. Ce qui distingue la Belgique, ce n'est pas le chiffre. C'est la <strong>conjonction</strong> : une emprise des appareils sur l'ensemble de la chaîne — la confection des listes électorales, les cabinets ministériels, les nominations, le financement, jusqu'aux organes de contrôle censés les surveiller.</p>
+    <p>Le politologue Lieven De Winter a résumé ce degré de pénétration : les partis y contrôlent « le gouvernement, le parlement, l'administration et la justice ». La représentation ne passe plus par l'élu individuel ; elle passe par l'intermédiation partisane. Le citoyen vote pour un nom, mais c'est une ligne d'appareil qu'il élit.</p>
+    <div class="annot"><b>Au banc des nuances —</b> Une certaine discipline est le prix de la stabilité gouvernementale. Le débat ne porte pas sur son existence, mais sur son <i>degré</i> et sur la part de coercition : discipline persuadée, ou discipline imposée par la menace de sanction&nbsp;?</div>
+  </section>
+
+  <!-- CHAPITRE 2 -->
+  <section class="chapter col reveal">
+    <p class="chapnum">II — La mécanique</p>
+    <h2>Trois verrous qui se renforcent l'un l'autre</h2>
+    <p>La confiscation n'a rien d'un complot. C'est une ingénierie, lisible, légale, et c'est précisément ce qui la rend redoutable. Elle tient sur trois verrous.</p>
+
+    <h3>1. Le verrou financier</h3>
+    <p>La loi du 4 juillet 1989, conçue pour assainir la vie politique, a fait des partis des organes perfusés par l'impôt. Les fonds publics représentent aujourd'hui de <strong>80 à 87 %</strong> des recettes des grandes formations. Le financement public direct dépasse la centaine de millions d'euros par an ; en cumulant les flux indirects (groupes parlementaires, collaborateurs, infrastructures), certaines estimations dépassent <strong>180 millions d'euros annuels</strong>, pour une rente cumulée de l'ordre de <strong>7 milliards</strong> depuis 1989.</p>
+    <p>Cette manne crée une barrière à l'entrée presque infranchissable : les partis installés disposent de moyens qu'aucun mouvement neuf ne peut égaler. C'est un cartel — au sens littéral du terme employé par les chercheurs Katz et Mair.</p>
+
+    <div class="exhibits">
+      <div class="exhibit">
+        <div class="tag">Pièce A · financement</div>
+        <span class="big">≈ 80–87 %</span>
+        <span class="cap">des recettes des grands partis proviennent de fonds publics.</span>
+      </div>
+      <div class="exhibit">
+        <div class="tag">Pièce B · contrôle</div>
+        <span class="big red">0</span>
+        <span class="cap">instance indépendante : la Commission de contrôle est composée des parlementaires des partis qu'elle audite.</span>
+      </div>
+      <div class="exhibit">
+        <div class="tag">Pièce C · campagne permanente</div>
+        <span class="big">15 M€+</span>
+        <span class="cap">de publicité ciblée en 2024. La Belgique figure en tête des dépenses Meta Ads en Europe.</span>
+      </div>
+    </div>
+
+    <h3>2. Le verrou parlementaire</h3>
+    <p>Sur 13 397 votes nominatifs à la Chambre entre 1995 et 2019, la coalition n'a voté de façon divisée que dans 2,5 % des cas, et n'a été mise en minorité que 78 fois — soit 0,6 %. La séance plénière ratifie ; elle ne décide pas. Les arbitrages se font ailleurs : en réunion de groupe, en conférence des présidents de parti, dans l'accord de gouvernement.</p>
+    <p>La preuve la plus nette est récente. En septembre 2024, alors que des textes sur l'avortement disposaient d'une majorité de principe à la Chambre, les cinq partis de la coalition en formation ont convenu de les écarter « indépendamment de leur position sur le fond » — y compris des partis qui revendiquaient officiellement la liberté de vote de leurs élus sur les questions éthiques. La conscience individuelle du parlementaire a cédé devant l'accord d'appareil.</p>
+    <div class="annot"><b>Le mandat impératif de facto —</b> Certains partis vont plus loin : ils imposent par contrat à leurs élus de ne conserver qu'un salaire plafonné et de reverser le surplus de l'indemnité. La dépendance pécuniaire transforme un mandat libre en subordination — exactement ce que l'article&nbsp;42 prohibe.</div>
+
+    <h3>3. Le verrou administratif</h3>
+    <p>Les cabinets ministériels — administrations parallèles peuplées de fidèles — court-circuitent la haute fonction publique et échappent à la redevabilité. Les partis colonisent aussi les intercommunales, ces structures qui gèrent un bilan cumulé de <strong>45,6 milliards d'euros</strong> et servent de réservoir de mandats. Le GRECO le dénonce depuis des années ; rien, ou presque, ne change.</p>
+  </section>
+
+  <!-- CHAPITRE 3 -->
+  <section class="chapter col reveal">
+    <p class="chapnum">III — L'État de droit</p>
+    <h2>Un État qui n'obéit plus à ses propres juges</h2>
+    <p class="lede">La particratie ne serait qu'un défaut de représentation si elle ne produisait pas, en bout de chaîne, un État qui se croit au-dessus de la loi qu'il édicte.</p>
+    <p>Depuis octobre 2021, l'État belge et Fedasil ont été condamnés plus de <strong>16 000 fois</strong> pour défaut d'hébergement de demandeurs d'asile. Les astreintes ont dépassé 278 millions d'euros. La réponse d'une ministre fut d'une franchise désarmante : elle « ne peut ni ne veut payer ». La Cour européenne des droits de l'homme, dans l'arrêt <em>Camara c. Belgique</em> (2023), a qualifié les faits de « carence systémique » et de « refus caractérisé de se conformer aux injonctions du juge ».</p>
+
+    <blockquote>
+      « Que vaut une décision de justice si elle n'est pas mise en œuvre&nbsp;? »
+      <cite>Institut fédéral des droits humains, rapport État de droit 2025</cite>
+    </blockquote>
+
+    <p>Ce n'est pas un dossier isolé. Nuisances aériennes : l'État a préféré payer une vingtaine de millions d'astreintes plutôt que de modifier les routes aériennes. Climat : l'arrêt <em>Klimaatzaak</em> impose une réduction des émissions, contesté plutôt qu'appliqué. À chaque fois, la même logique : payer, contester, contourner — tout sauf obéir.</p>
+
+    <h3>Le thermomètre international rougit</h3>
+    <p>Le GRECO, l'organe anti-corruption du Conseil de l'Europe, a placé la Belgique sous sa procédure de non-conformité (Règle 32) : sur 22 recommandations de son 5ᵉ cycle, une minorité seulement a été pleinement appliquée. Registre des lobbyistes non contraignant, déclarations de patrimoine sous pli fermé, absence de période de carence pour les anciens ministres : les angles morts persistent. À ce stade de la procédure, seul un autre État a jamais reçu une déclaration publique de non-conformité : la Biélorussie.</p>
+    <p>Transparency International, de son côté, classe la Belgique parmi les <em>significant decliners</em> : <strong>69/100</strong> en 2024, contre 77 et une 15ᵉ place mondiale en 2016. Huit points perdus en moins d'une décennie.</p>
+
+    <div class="exhibits">
+      <div class="exhibit">
+        <div class="tag">Pièce D · justice ignorée</div>
+        <span class="big red">16 000+</span>
+        <span class="cap">condamnations non exécutées dans le seul dossier de l'accueil.</span>
+      </div>
+      <div class="exhibit">
+        <div class="tag">Pièce E · anti-corruption</div>
+        <span class="big">Règle 32</span>
+        <span class="cap">procédure de non-conformité GRECO activée contre la Belgique.</span>
+      </div>
+      <div class="exhibit">
+        <div class="tag">Pièce F · perception</div>
+        <span class="big red">−8 pts</span>
+        <span class="cap">d'indice de transparence depuis 2016. Déclin continu.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPITRE 4 -->
+  <section class="chapter col reveal">
+    <p class="chapnum">IV — Le coût humain</p>
+    <h2>Ce que la mécanique fait aux gens</h2>
+    <p>Tout cela resterait abstrait sans la facture humaine. Un système qui ne se corrige pas laisse les problèmes s'accumuler sur les plus fragiles.</p>
+    <p>En Flandre, <strong>215 000 ménages</strong> attendent un logement social. En Fédération Wallonie-Bruxelles, <strong>un enseignant sur quatre</strong> devant les classes n'est pas qualifié. Des dizaines de milliers de personnes basculent du chômage vers l'aide sociale résiduaire à mesure que l'accès aux droits se durcit. Et près de la moitié des citoyens interrogés en Wallonie — <strong>49,8 %</strong> — se déclarent mal informés sur les démarches vitales pour faire valoir leurs droits.</p>
+    <p>Ces chiffres ne sont pas des fatalités. Vienne loge ses habitants autrement, l'Estonie enseigne autrement, l'Allemagne protège autrement. Ce qui est spécifiquement belge, ce n'est pas la difficulté — c'est l'<strong>incapacité structurelle à la corriger</strong>, parce que l'architecture multiplie les blocages, dilue les responsabilités et immunise les décideurs contre les conséquences de leurs choix.</p>
+    <div class="annot"><b>La réponse silencieuse —</b> Face au décrochage, une partie de la population fait « sécession » : retrait électoral d'un côté, auto-organisation de l'autre — coopératives d'énergie, banques alimentaires, accueil citoyen. La société civile rebouche les trous que l'État laisse béants. Ce n'est pas une solution. C'est un symptôme.</div>
+  </section>
+
+  <!-- CHAPITRE 5 -->
+  <section class="chapter col reveal">
+    <p class="chapnum">V — Que faire</p>
+    <h2>Dix leviers pour rendre la décision aux citoyens</h2>
+    <p class="lede">Un pamphlet qui ne propose rien n'est qu'une humeur. Voici dix réformes — toutes documentées, toutes praticables, aucune ne demandant de renverser quoi que ce soit, sauf l'habitude.</p>
+
+    <div class="proposals">
+      <div class="proposal">
+        <div>
+          <h4>Conditionner la dotation publique à l'indépendance de vote</h4>
+          <p>Toute exclusion d'un élu motivée par un vote conforme à sa conscience suspend le financement du parti. Le principe existe déjà pour d'autres motifs — il suffit de l'étendre.</p>
+        </div>
+      </div>
+      <div class="proposal">
+        <div>
+          <h4>Interdire les rétrocessions obligatoires d'indemnité</h4>
+          <p>Aucun parti ne peut exiger d'un élu plus qu'une cotisation de membre plafonnée. Fin de la subordination financière déguisée.</p>
+        </div>
+      </div>
+      <div class="proposal">
+        <div>
+          <h4>Plafonner les réserves financières des partis</h4>
+          <p>Empêcher la transformation des appareils en fonds d'investissement immobilier et casser la rente du cartel.</p>
+        </div>
+      </div>
+      <div class="proposal">
+        <div>
+          <h4>Créer un contrôle indépendant du financement</h4>
+          <p>Remplacer la commission de parlementaires par une instance juridictionnelle présidée par des magistrats — comme l'exige, en substance, la jurisprudence européenne <em>Mugemangango</em>.</p>
+        </div>
+      </div>
+      <div class="proposal">
+        <div>
+          <h4>Rendre le registre des lobbyistes contraignant</h4>
+          <p>Étendu au gouvernement, au Sénat et aux entités fédérées, avec publication des contacts. Recommandation GRECO, restée lettre morte.</p>
+        </div>
+      </div>
+      <div class="proposal">
+        <div>
+          <h4>Publier les déclarations de patrimoine et instaurer une carence</h4>
+          <p>Transparence des intérêts, et interdiction de pantouflage immédiat pour les anciens ministres.</p>
+        </div>
+      </div>
+      <div class="proposal">
+        <div>
+          <h4>Mettre fin au cumul des mandats</h4>
+          <p>Revendication citoyenne constante, source documentée de conflits d'intérêts.</p>
+        </div>
+      </div>
+      <div class="proposal">
+        <div>
+          <h4>Encadrer juridiquement les partis</h4>
+          <p>Statut légal, démocratie interne, transparence des conclaves. Les partis sont « politiquement centraux mais juridiquement évanescents » — il faut combler ce vide.</p>
+        </div>
+      </div>
+      <div class="proposal">
+        <div>
+          <h4>Institutionnaliser les assemblées citoyennes délibératives</h4>
+          <p>Sur le modèle permanent de la Communauté germanophone, avec obligation de suivi parlementaire — pas un vernis consultatif.</p>
+        </div>
+      </div>
+      <div class="proposal">
+        <div>
+          <h4>Discipliner la formation des gouvernements</h4>
+          <p>Délais contraignants et sanctions sur les dotations en cas de blocage prolongé, pour briser la logique des coalitions à rallonge.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTRADICTOIRE -->
+  <section class="counterpoint col reveal">
+    <p class="chapnum">Le contradictoire — ce que ce texte ne dit pas</p>
+    <h2 style="font-size:1.5rem">Honnêteté du dossier</h2>
+    <p>Un réquisitoire crédible expose aussi ce qui l'affaiblit. Trois objections méritent d'être entendues.</p>
+    <p><strong>Un.</strong> La Belgique reste classée « libre » (96/100 chez Freedom House) et figure dans le haut de l'indice électoral V-Dem. Les recours existent : Cour constitutionnelle, Conseil d'État, Cour de Strasbourg. La thèse du « citoyen sans recours » est, sur ce point précis, exagérée.</p>
+    <p><strong>Deux.</strong> La cohésion partisane n'est pas pathologique en soi : elle produit de la stabilité et de la lisibilité des politiques. Les pays nordiques, très disciplinés, trônent au sommet des classements démocratiques.</p>
+    <p><strong>Trois.</strong> Les chiffres de financement varient selon le périmètre retenu (direct seul, ou flux indirects inclus) ; ils doivent être maniés avec précaution. Ce texte signale ses fourchettes plutôt que d'asséner un nombre unique.</p>
+    <p>Rien de tout cela n'efface le diagnostic. Cela le rend défendable.</p>
+  </section>
+
+  <!-- ÉPILOGUE -->
+  <section class="epilogue col reveal">
+    <p class="chapnum">Épilogue</p>
+    <p>La démocratie belge ne s'effondrera pas dans un coup d'éclat. Elle s'étouffe lentement, par l'hypertrophie de ses propres rouages — un système qui a confondu la survie des appareils avec l'intérêt général.</p>
+    <p>Le bulletin de vote reste. C'est la décision qui s'est éloignée. La rendre aux citoyens ne demande pas une révolution dans la rue : elle demande une révolution dans la loi — celle, patiente et documentée, qui rebranche l'élu sur sa conscience, l'argent public sur le contrôle, et l'État sur ses propres juges.</p>
+    <p class="signoff">La preuve est versée au dossier. À chacun, maintenant, d'en faire quelque chose.</p>
+  </section>
+
+  <footer class="reveal">
+    <h2>Sources &amp; références</h2>
+    <div class="sources">
+      <p>Constitution belge, article 42 (texte de 1831, coordination du 17 février 1994).</p>
+      <p>Loi du 4 juillet 1989 sur le financement des partis politiques.</p>
+      <p>F. Verleden, <em>Les votes nominatifs à la Chambre des représentants</em>, Courrier hebdomadaire du CRISP, 2021.</p>
+      <p>S. Depauw, <em>Rebellen in het Parlement</em>, Leuven University Press, 2002.</p>
+      <p>CEDH, <em>Camara c. Belgique</em>, 18 juillet 2023 ; <em>Mugemangango c. Belgique</em>, 2020.</p>
+      <p>GRECO, 5ᵉ cycle d'évaluation et rapports de conformité (2019–2025), procédure Règle 32.</p>
+      <p>Transparency International, Indice de perception de la corruption, 2016–2024.</p>
+      <p>Institut fédéral des droits humains (IFDH), rapport État de droit 2025.</p>
+      <p>Commission européenne, rapports annuels sur l'État de droit, 2022–2025.</p>
+      <p>IWEPS, Baromètre social de la Wallonie ; enquête ISADF 2025 (24 087 réponses).</p>
+      <p>CRISP, travaux sur la particratie et la formation du gouvernement De Wever (2024–2026).</p>
+      <p>L. De Winter, K. Deschouwer, B. Maddens, F. Wauters et al., science politique belge comparée.</p>
+    </div>
+    <p class="disclaimer">Ce document est un travail d'analyse et d'opinion citoyenne à visée réformatrice. Il n'a pas valeur d'avis juridique. Les jugements de valeur reflètent la posture de ce texte et non un acte d'accusation visant des personnes ; les éléments factuels proviennent de sources publiques et sont, autant que possible, présentés avec leurs incertitudes. Les chiffres correspondent à l'état des données 2024–2026.</p>
+  </footer>
+
+</div>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      els.forEach(function(e){e.classList.add('in')});
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}
+      });
+    },{threshold:.12});
+    els.forEach(function(e){io.observe(e)});
+  })();
+</script>
+
+</body>
+</html>
