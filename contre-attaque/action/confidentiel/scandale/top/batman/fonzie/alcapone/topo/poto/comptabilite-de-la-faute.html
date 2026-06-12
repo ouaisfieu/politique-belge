@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La comptabilité de la faute — anatomie d'un État qui budgète son illégalité</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#E7E6DF;
+    --paper-2:#DFDDD3;
+    --paper-band:#D6D3C7;
+    --ink:#15181E;
+    --ink-soft:#4C5057;
+    --ink-faint:#8A8B82;
+    --rule:#C2BFB3;
+    --rule-strong:#9C988B;
+    --debit:#8A1620;       /* encre rouge : le coût de la faute, côté État */
+    --debit-soft:#A8434A;
+    --credit:#1C4E48;      /* vert-de-gris : la contre-écriture, côté citoyen */
+    --credit-bright:#2C6E64;
+    --gold:#8a7322;
+    --dim:#9b988d;
+    --maxw:1180px;
+  }
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Spectral",Georgia,serif;
+    font-size:19px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      linear-gradient(transparent 0%, transparent calc(100% - 1px), rgba(156,152,139,0.10) 100%);
+    background-size:100% 2.6em;
+  }
+
+  ::selection{background:var(--debit);color:var(--paper);}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+
+  /* ---------- MASTHEAD ---------- */
+  header.mast{
+    border-bottom:2.5px solid var(--ink);
+    padding-top:34px;
+  }
+  .mast .meta{
+    display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;
+    font-family:"IBM Plex Mono",monospace;
+    font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;
+    color:var(--ink-soft);
+    padding-bottom:18px;
+    border-bottom:1px solid var(--rule);
+  }
+  .mast .meta b{color:var(--debit);font-weight:600;}
+
+  .kicker{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:12.5px;letter-spacing:0.34em;text-transform:uppercase;
+    color:var(--debit);
+    margin:30px 0 14px;
+    display:flex;align-items:center;gap:14px;
+  }
+  .kicker::after{content:"";flex:1;height:1px;background:var(--rule-strong);}
+
+  h1.title{
+    font-family:"Fraunces",serif;
+    font-optical-sizing:auto;
+    font-weight:600;
+    font-size:clamp(48px,9vw,116px);
+    line-height:0.92;
+    letter-spacing:-0.02em;
+    margin:0 0 6px;
+    color:var(--ink);
+  }
+  h1.title em{font-style:italic;font-weight:400;color:var(--debit);}
+
+  .deck{
+    font-family:"Spectral",serif;
+    font-size:clamp(20px,2.4vw,26px);
+    line-height:1.4;
+    max-width:30ch;
+    margin:22px 0 38px;
+    color:var(--ink);
+    font-weight:500;
+  }
+  .deck .hl{color:var(--credit-bright);font-style:italic;}
+
+  /* ---------- TOGGLE ---------- */
+  .console{
+    border:1.5px solid var(--ink);
+    background:var(--paper-2);
+    margin:0 0 6px;
+    display:grid;
+    grid-template-columns:1fr auto;
+    align-items:center;
+    gap:18px;
+    padding:16px 20px;
+  }
+  .console .lede{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:12px;letter-spacing:0.08em;line-height:1.5;
+    color:var(--ink-soft);text-transform:uppercase;
+  }
+  .console .lede strong{color:var(--ink);}
+  .switch{
+    display:inline-flex;border:1.5px solid var(--ink);
+    font-family:"IBM Plex Mono",monospace;font-size:12px;
+    letter-spacing:0.05em;text-transform:uppercase;
+    background:var(--paper);white-space:nowrap;
+  }
+  .switch button{
+    appearance:none;border:0;background:transparent;cursor:pointer;
+    padding:11px 16px;font:inherit;color:var(--ink-soft);
+    transition:background .25s ease,color .25s ease;
+  }
+  .switch button:first-child{border-right:1.5px solid var(--ink);}
+  .switch button[aria-pressed="true"]:first-child{background:var(--debit);color:var(--paper);}
+  .switch button[aria-pressed="true"]:last-child{background:var(--credit);color:var(--paper);}
+  .switch button:focus-visible{outline:3px solid var(--gold);outline-offset:-3px;}
+
+  /* ---------- LEDE / PROSE ---------- */
+  .lede-block{padding:46px 0 10px;border-bottom:1px solid var(--rule);}
+  .lede-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 56px;}
+  .lede-grid p{margin:0 0 1.25em;}
+  .lede-grid p:first-child::first-letter{
+    font-family:"Fraunces",serif;font-weight:600;
+    float:left;font-size:4.4em;line-height:0.74;
+    padding:6px 12px 0 0;color:var(--debit);
+  }
+  .standfirst{
+    font-family:"Fraunces",serif;font-weight:500;font-style:italic;
+    font-size:clamp(22px,3vw,30px);line-height:1.32;
+    color:var(--ink);margin:0 0 0.6em;letter-spacing:-0.01em;
+  }
+
+  /* ---------- LEDGER ENTRIES ---------- */
+  .ledger{margin:0;padding:0;}
+  .ecriture{
+    border-bottom:1px solid var(--rule);
+    padding:54px 0 48px;
+  }
+  .ec-head{
+    display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;
+    margin-bottom:6px;
+  }
+  .ec-folio{
+    font-family:"IBM Plex Mono",monospace;font-weight:600;
+    font-size:12px;letter-spacing:0.2em;text-transform:uppercase;
+    color:var(--debit);
+    border:1px solid var(--debit);padding:4px 9px;
+  }
+  .ec-tag{
+    font-family:"IBM Plex Mono",monospace;font-size:11.5px;
+    letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-faint);
+  }
+  h2.ec-title{
+    font-family:"Fraunces",serif;font-weight:600;
+    font-size:clamp(30px,4.4vw,52px);line-height:1.0;
+    letter-spacing:-0.015em;margin:8px 0 26px;color:var(--ink);
+    max-width:18ch;
+  }
+
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--rule-strong);}
+  .col{padding:24px 26px;transition:opacity .35s ease,background .35s ease,filter .35s ease;}
+  .col.debit{border-right:1px solid var(--rule-strong);background:var(--paper);}
+  .col.credit{background:var(--paper-2);}
+  .col-label{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;
+    letter-spacing:0.18em;text-transform:uppercase;
+    padding-bottom:12px;margin-bottom:16px;border-bottom:1px solid var(--rule);
+    display:flex;justify-content:space-between;align-items:center;gap:10px;
+  }
+  .col.debit .col-label{color:var(--debit);}
+  .col.credit .col-label{color:var(--credit);}
+  .col-label .chip{
+    font-size:9.5px;letter-spacing:0.1em;border:1px solid currentColor;
+    padding:2px 6px;border-radius:1px;opacity:.85;
+  }
+  .col p{font-size:16.5px;line-height:1.55;margin:0 0 1em;}
+  .col p:last-child{margin-bottom:0;}
+  .col .num{
+    font-family:"IBM Plex Mono",monospace;font-weight:600;
+    font-size:clamp(26px,4vw,40px);line-height:1;letter-spacing:-0.01em;
+    display:block;margin:2px 0 4px;
+  }
+  .col.debit .num{color:var(--debit);}
+  .col.credit .num{color:var(--credit-bright);}
+  .col .num-cap{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;
+    letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-soft);
+    display:block;margin-bottom:18px;
+  }
+  .col .instr{
+    font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.5;
+    color:var(--credit);border-left:2px solid var(--credit);
+    padding:4px 0 4px 12px;margin-top:14px;
+  }
+  .col .instr b{color:var(--ink);font-weight:600;}
+
+  /* dim logic driven by master view */
+  body.view-state .col.credit{opacity:.34;filter:grayscale(0.5);}
+  body.view-citizen .col.debit{opacity:.40;filter:grayscale(0.45);}
+  body.view-citizen .col.credit{background:#dfe7e2;}
+
+  .ec-foot{
+    margin-top:22px;font-size:16.5px;line-height:1.55;color:var(--ink);
+    max-width:62ch;
+  }
+  .ec-foot .lead-in{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;
+    letter-spacing:0.16em;text-transform:uppercase;color:var(--debit);
+    margin-right:8px;
+  }
+
+  /* ---------- SOLDE ---------- */
+  .solde{
+    border:2.5px solid var(--ink);background:var(--ink);color:var(--paper);
+    margin:60px 0;padding:46px 40px 40px;
+  }
+  .solde .kicker{color:#d99;}
+  .solde .kicker::after{background:#55585e;}
+  .solde h2{
+    font-family:"Fraunces",serif;font-weight:600;font-size:clamp(28px,4vw,46px);
+    line-height:1.02;letter-spacing:-0.015em;margin:0 0 24px;color:var(--paper);max-width:20ch;
+  }
+  .solde h2 em{font-style:italic;color:#e6b3b6;}
+  .solde p{font-size:18px;line-height:1.6;color:#d9d8d0;max-width:66ch;margin:0 0 1.1em;}
+  .solde p strong{color:var(--paper);font-weight:600;}
+  .solde .balance-line{
+    font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:0.04em;
+    color:#bdbcb4;border-top:1px solid #4a4d53;margin-top:26px;padding-top:18px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+  }
+  .solde .balance-line span:last-child{color:#7fb8ad;font-weight:600;}
+  .caveat{
+    border-left:2px solid var(--debit-soft);padding-left:16px;margin-top:24px;
+    font-style:italic;color:#c9c8c0;font-size:16px;
+  }
+
+  /* ---------- APPARATUS ---------- */
+  .apparatus{padding:8px 0 70px;}
+  .apparatus h3{
+    font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;
+    letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-soft);
+    border-bottom:1px solid var(--rule);padding-bottom:10px;margin:0 0 18px;
+  }
+  .apparatus .src{
+    columns:2;column-gap:48px;font-family:"IBM Plex Mono",monospace;
+    font-size:12px;line-height:1.65;color:var(--ink-soft);
+  }
+  .apparatus .src p{margin:0 0 11px;break-inside:avoid;}
+  .apparatus .src b{color:var(--ink);font-weight:600;}
+  .disclaimer{
+    margin-top:30px;font-size:14px;color:var(--ink-faint);font-style:italic;
+    max-width:74ch;line-height:1.55;
+  }
+
+  footer.colophon{
+    border-top:2.5px solid var(--ink);padding:22px 0 60px;
+    font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:0.1em;
+    text-transform:uppercase;color:var(--ink-faint);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:820px){
+    body{font-size:18px;}
+    .lede-grid{grid-template-columns:1fr;gap:0;}
+    .cols{grid-template-columns:1fr;}
+    .col.debit{border-right:0;border-bottom:1px solid var(--rule-strong);}
+    .apparatus .src{columns:1;}
+    .console{grid-template-columns:1fr;}
+    .switch{width:100%;}
+    .switch button{flex:1;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important;}
+  }
+
+  /* load-in */
+  .fade{opacity:0;transform:translateY(10px);animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards;}
+  @keyframes rise{to{opacity:1;transform:none;}}
+</style>
+</head>
+<body class="view-state">
+<div class="wrap">
+
+  <header class="mast">
+    <div class="meta">
+      <span>Contre-expertise structurelle</span>
+      <span>État fédéral belge &middot; <b>2021 — 2026</b></span>
+      <span>Essai &middot; appareil critique en pied</span>
+    </div>
+
+    <div class="kicker fade">Grand livre de la faute</div>
+    <h1 class="title fade" style="animation-delay:.06s">La comptabilité<br>de <em>la faute</em></h1>
+    <p class="deck fade" style="animation-delay:.12s">
+      L'État belge a perfectionné une technologie de gouvernement : convertir ses propres
+      violations du droit en lignes budgétaires. C'est son chef-d'œuvre administratif.
+      C'est aussi, écriture après écriture, <span class="hl">l'aveu écrit qui permet de le retourner contre lui-même.</span>
+    </p>
+  </header>
+
+  <div class="console" role="group" aria-label="Sélecteur de lecture du grand livre">
+    <p class="lede">
+      Ce registre se lit deux fois. <strong>Vue de l'État&nbsp;:</strong> chaque faute portée au débit, normalisée, provisionnée.
+      <strong>Vue du citoyen&nbsp;:</strong> la même écriture, retournée en preuve opposable.
+    </p>
+    <div class="switch">
+      <button id="btn-state" aria-pressed="true">Vue de l'État</button>
+      <button id="btn-citizen" aria-pressed="false">Vue du citoyen</button>
+    </div>
+  </div>
+
+  <!-- ============ LEDE ============ -->
+  <section class="lede-block">
+    <p class="standfirst">
+      Il existe une lecture rassurante de la Belgique : un pays riche qu'une plomberie
+      institutionnelle byzantine empêche seulement de fonctionner. Cette lecture est fausse par omission.
+    </p>
+    <div class="lede-grid">
+      <p>
+        Les défaillances de l'État belge ne sont pas une collection de scandales dispersés —
+        la crise de l'accueil ici, le non-recours là-bas, la particratie ailleurs, la « lasagne »
+        des compétences par-dessus. Elles partagent une seule grammaire. Toutes procèdent du même
+        geste : transformer une obligation que l'on ne veut pas honorer en un coût que l'on sait gérer.
+        L'astreinte que l'on inscrit au budget plutôt que d'obéir. Le droit social que l'on laisse
+        s'évaporer parce que la friction administrative est, comptablement, une économie. L'indemnité
+        publique que l'on taxe d'un côté pour mieux la capter de l'autre. Le verrou constitutionnel
+        que l'on entretient parce qu'il dispense de réformer.
+      </p>
+      <p>
+        Les juristes belges ont déjà nommé l'épicentre de ce dispositif : la
+        <em>désobéissance budgétisée</em>. Mais le terme décrit bien plus qu'une politique d'asile.
+        Il décrit une doctrine de gouvernement. Un État qui a découvert que l'illégalité,
+        une fois provisionnée, cesse d'être un interdit pour devenir une charge d'exploitation.
+        On ne se demande plus si l'on a le droit ; on calcule combien cela coûtera de ne pas l'avoir.
+      </p>
+      <p>
+        Le paradoxe est que cette ingéniosité est aussi la faille fatale. Une charge, pour être
+        provisionnée, doit être <em>écrite</em>. Chaque montant inscrit au budget des astreintes est
+        un aveu daté ; chaque asymétrie fiscale, un syllogisme que le citoyen n'a plus qu'à terminer
+        devant un juge ; chaque arrêt ignoré, une auto-certification de carence. Les serrures qui
+        rendent l'État irréformable de l'intérieur sont précisément ce qui autorise sa correction
+        depuis l'extérieur. Quatre écritures de ce grand livre, lues deux fois.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ LEDGER ============ -->
+  <main class="ledger">
+
+    <!-- ÉCRITURE I -->
+    <article class="ecriture">
+      <div class="ec-head">
+        <span class="ec-folio">Écriture I</span>
+        <span class="ec-tag">Asile &middot; Fedasil &middot; séparation des pouvoirs</span>
+      </div>
+      <h2 class="ec-title">La désobéissance, portée au budget.</h2>
+
+      <div class="cols">
+        <div class="col debit">
+          <div class="col-label"><span>Au débit de l'État</span><span class="chip">provision</span></div>
+          <span class="num">278,5 M€</span>
+          <span class="num-cap">astreintes cumulées &middot; +16 000 condamnations</span>
+          <p>
+            Depuis l'automne 2021, l'État et l'agence Fedasil ont été condamnés plus de seize mille fois
+            par leurs propres tribunaux pour défaut d'hébergement de demandeurs d'asile. La réponse n'a
+            pas été d'exécuter, mais de comptabiliser : la ministre compétente a déclaré publiquement
+            qu'elle « ne peut ni ne veut » payer, et l'insaisissabilité des biens publics (art. 1412bis
+            C. jud.) a ramené la dette « encore due » à quelques millions — non par paiement, mais par contestation.
+          </p>
+          <p>
+            Le pays a alors offert le spectacle d'huissiers saisissant le mobilier, les ordinateurs
+            et jusqu'aux machines à café dans les locaux de l'État, pour contraindre la puissance
+            publique à respecter la loi qu'elle a elle-même promulguée.
+          </p>
+        </div>
+        <div class="col credit">
+          <div class="col-label"><span>Au crédit du citoyen</span><span class="chip">levier</span></div>
+          <span class="num">Art. 6 &amp; 46</span>
+          <span class="num-cap">CEDH &middot; Camara c. Belgique, 18 juill. 2023</span>
+          <p>
+            Strasbourg n'a pas constaté un retard : un « refus caractérisé », et surtout une
+            <em>carence systémique</em> au sens de l'article 46. L'État s'est ainsi délivré à lui-même
+            un certificat d'illégalité structurelle, opposable dans chaque domaine parallèle.
+          </p>
+          <p>
+            Provisionner l'astreinte n'efface pas la faute : cela en prouve le caractère délibéré.
+            Une dépense sciemment inscrite pour persister dans l'illégalité est l'élément matériel d'une
+            <em>faute intentionnelle</em> de l'État.
+          </p>
+          <p class="instr">
+            <b>Instrument →</b> action en responsabilité de l'État (Cass., Ferrara, 28 sept. 2006) ;
+            le budget des astreintes comme preuve du dol ; le communiqué inédit de la Cour de cassation
+            et des procureurs généraux (oct. 2025) comme constat d'atteinte à la séparation des pouvoirs.
+          </p>
+        </div>
+      </div>
+
+      <p class="ec-foot">
+        <span class="lead-in">Retournement</span>
+        L'État voulait traiter le juge comme un fournisseur que l'on règle en retard.
+        En payant, il signe ; en signant, il avoue. La même ligne budgétaire qui banalise la faute
+        en administre la preuve.
+      </p>
+    </article>
+
+    <!-- ÉCRITURE II -->
+    <article class="ecriture">
+      <div class="ec-head">
+        <span class="ec-folio">Écriture II</span>
+        <span class="ec-tag">Non-recours &middot; sécurité sociale &middot; numérisation</span>
+      </div>
+      <h2 class="ec-title">L'austérité qui ne dit jamais son nom.</h2>
+
+      <div class="cols">
+        <div class="col debit">
+          <div class="col-label"><span>Au débit de l'État</span><span class="chip">économie tacite</span></div>
+          <span class="num">45 → 77 %</span>
+          <span class="num-cap">non-recours : RIS ≈45 % &middot; GRAPA ≈50 % &middot; chauffage ≈77 %</span>
+          <p>
+            Pendant que l'on agite les 250 millions de fraude détectée — 0,3 % du budget de la sécurité
+            sociale — le projet TAKE chiffre l'inverse, infiniment plus vaste : la moitié des aînés
+            éligibles ne touchent pas la GRAPA, jusqu'à trois sur quatre l'allocation de chauffage.
+            Plus un ménage est pauvre, plus il décroche : l'effet Matthieu à rebours.
+          </p>
+          <p>
+            Chaque droit non versé est une économie qui n'apparaît dans aucun document, parce qu'elle
+            résulte d'une absence. La complexité, la numérisation forcée, le formulaire à renvoyer :
+            autant de filtres dont l'État connaît parfaitement le rendement.
+          </p>
+        </div>
+        <div class="col credit">
+          <div class="col-label"><span>Au crédit du citoyen</span><span class="chip">levier</span></div>
+          <span class="num">90 % vs 0 %</span>
+          <span class="num-cap">Flandre, supplément COVID : demande manuelle vs octroi automatique</span>
+          <p>
+            La démonstration est imparable et elle est belge : le même public, le même droit. Géré sur
+            demande manuelle, près de 90 % de non-recours. Octroyé automatiquement sur les flux fiscaux,
+            quasi zéro. L'État <em>sait</em> automatiser. L'inaction n'est donc pas une fatalité technique :
+            c'est un choix de politique publique.
+          </p>
+          <p>
+            Et ce choix est devenu, en partie, illégal. La Cour constitutionnelle (arrêt n°&nbsp;126/2025)
+            a consacré un droit au guichet, au non-numérique ; l'obligation d'information proactive (Cass.,
+            23 nov. 2009) et le standstill social complètent l'étau.
+          </p>
+          <p class="instr">
+            <b>Instrument →</b> faute par omission de l'État (modèle Klimaatzaak, Bruxelles 2023) ;
+            le coût humain documenté du non-recours comme dommage chiffrable ; l'expérience flamande comme
+            preuve que la solution existe et fut écartée.
+          </p>
+        </div>
+      </div>
+
+      <p class="ec-foot">
+        <span class="lead-in">Retournement</span>
+        Une austérité qui passe par le silence administratif croit échapper au débat politique.
+        Mais elle laisse une trace : le contraste, mesuré, entre ce que l'État fait et ce qu'il pourrait
+        faire. Ce différentiel est précisément la matière d'un procès.
+      </p>
+    </article>
+
+    <!-- ÉCRITURE III -->
+    <article class="ecriture">
+      <div class="ec-head">
+        <span class="ec-folio">Écriture III</span>
+        <span class="ec-tag">Particratie &middot; mandat libre &middot; droit fiscal</span>
+      </div>
+      <h2 class="ec-title">La dîme déguisée en Constitution.</h2>
+
+      <div class="cols">
+        <div class="col debit">
+          <div class="col-label"><span>Au débit de l'État</span><span class="chip">captation</span></div>
+          <span class="num">≈ 11,1 M€</span>
+          <span class="num-cap">rétrocessions annuelles d'élus vers les partis (« subventions indirectes », CRISP)</span>
+          <p>
+            L'article 66 de la Constitution garantit une indemnité afin de rendre l'élu <em>indépendant</em>.
+            La pratique l'a renversé : les statuts des partis imposent à leurs mandataires de reverser une
+            part de cet argent public — jusqu'à 60-70 % pour certains — sous peine d'exclusion. L'instrument
+            d'émancipation est devenu instrument de sujétion, et le mandat libre (art. 42) un mandat impératif de fait.
+          </p>
+          <p>
+            L'État entérine ce circuit par trois actes contradictoires : il qualifie l'indemnité de
+            « profit » (art. 27 CIR 92), refuse d'en déduire la rétrocession comme frais professionnel
+            (art. 53), et exonère le parti bénéficiaire via le régime des personnes morales.
+          </p>
+        </div>
+        <div class="col credit">
+          <div class="col-label"><span>Au crédit du citoyen</span><span class="chip">levier</span></div>
+          <span class="num">Cause illicite</span>
+          <span class="num-cap">art. 42 Const. &middot; requalification à l'impôt des sociétés</span>
+          <p>
+            La triple position de l'État <em>est</em> l'aveu. S'il refuse la déductibilité, il affirme
+            lui-même que cette rétrocession n'est pas inhérente à la fonction ; or, dans les faits, elle en
+            est la condition d'accès. Monnayer la permanence d'un mandat heurte frontalement l'ordre public
+            constitutionnel : la clause statutaire est nulle, de cause illicite.
+          </p>
+          <p>
+            Dès lors le parti, qui « vend » de fait l'investiture et le logo, agit en franchiseur :
+            il perd les conditions de l'impôt des personnes morales et devient redevable de l'impôt des
+            sociétés, redressements rétroactifs compris. Le seul levier capable d'inquiéter un appareil.
+          </p>
+          <p class="instr">
+            <b>Instrument →</b> hybridation obligatoire : nullité civile de la clause d'abord, arme fiscale
+            ensuite ; appui de la CEDH (<em>Tomenko c. Ukraine</em>, 2025) qualifiant la sujétion de l'élu
+            au parti de violation du droit à des élections libres.
+          </p>
+        </div>
+      </div>
+
+      <p class="ec-foot">
+        <span class="lead-in">Retournement</span>
+        L'État a écrit, noir sur blanc dans son propre Code des impôts, que cet argent change de nature
+        à chaque étage. Il suffit de lire ses qualifications les unes contre les autres pour qu'elles
+        s'annulent — et que la dîme apparaisse pour ce qu'elle est.
+      </p>
+    </article>
+
+    <!-- ÉCRITURE IV -->
+    <article class="ecriture">
+      <div class="ec-head">
+        <span class="ec-folio">Écriture IV</span>
+        <span class="ec-tag">Fédéralisme &middot; verrous &middot; gestion de crise</span>
+      </div>
+      <h2 class="ec-title">L'architecture conçue pour ne pas changer.</h2>
+
+      <div class="cols">
+        <div class="col debit">
+          <div class="col-label"><span>Au débit de l'État</span><span class="chip">paralysie</span></div>
+          <span class="num">6 réformes</span>
+          <span class="num-cap">équipollence des normes &middot; double majorité &middot; para-fédéralisme</span>
+          <p>
+            Six réformes de l'État ont sédimenté une « lasagne » où un décret régional pèse autant qu'une
+            loi fédérale, et où rien de fond ne se décide sans majorités écrasantes. Le résultat n'est pas
+            théorique : il est mortel. En maison de repos lors de la pandémie, l'atomisation des compétences
+            a laissé des institutions sans directives ni matériel pendant les semaines critiques.
+          </p>
+          <p>
+            Dans la vallée de la Vesdre en 2021, le morcellement entre aménagement régional, protection
+            civile fédérale et aide communautaire a interdit toute planification d'urgence cohérente.
+            Le RER, lui, reste un mirage, sacrifié à la compétition fiscale entre Régions.
+          </p>
+        </div>
+        <div class="col credit">
+          <div class="col-label"><span>Au crédit du citoyen</span><span class="chip">levier</span></div>
+          <span class="num">Carence législative</span>
+          <span class="num-cap">le verrou interne comme titre de compétence du juge</span>
+          <p>
+            L'irréformabilité que l'État invoque comme excuse est aussi sa condamnation. Si les serrures
+            constitutionnelles rendent impossible la correction par le législateur — et les commissions de
+            « renouveau » l'ont prouvé —, alors le pouvoir de corriger se déplace, par défaut, vers le juge.
+          </p>
+          <p>
+            Ce qui était présenté comme une contrainte neutre devient l'élément qualifiant d'une
+            <em>carence</em> : l'État ne peut plus dire qu'il va réformer ; il a organisé son incapacité
+            à le faire. L'aveu d'impuissance ouvre la voie à la contrainte externe.
+          </p>
+          <p class="instr">
+            <b>Instrument →</b> responsabilité de l'État-législateur pour carence inconstitutionnelle ;
+            contentieux national, constitutionnel et conventionnel coordonnés ; le verrou cité comme preuve,
+            non comme alibi.
+          </p>
+        </div>
+      </div>
+
+      <p class="ec-foot">
+        <span class="lead-in">Retournement</span>
+        Un système bâti pour geler les tensions au prix de l'efficacité finit par geler sa propre défense.
+        « Nous ne pouvons pas réformer » n'est pas une circonstance atténuante : c'est le constat qui
+        transfère la décision ailleurs.
+      </p>
+    </article>
+
+  </main>
+
+  <!-- ============ SOLDE ============ -->
+  <section class="solde">
+    <div class="kicker">Solde du grand livre</div>
+    <h2>Le génie de l'État est le mécanisme exact de <em>sa reddition.</em></h2>
+    <p>
+      Mettre la faute en comptabilité, c'était la rendre supportable : un coût parmi d'autres, lissé,
+      provisionné, dépolitisé. Mais la comptabilité a une exigence que la dissimulation n'a pas —
+      <strong>elle écrit.</strong> Et tout ce qui est écrit par l'État sur sa propre conduite devient,
+      entre les mains d'un citoyen, d'une association ou d'un avocat, un document opposable.
+    </p>
+    <p>
+      L'astreinte budgétisée prouve le dol. Le contraste flamand prouve que l'inaction sociale est un choix.
+      Les trois qualifications fiscales de l'indemnité s'auto-réfutent. Le verrou constitutionnel, invoqué
+      comme excuse, devient le titre de compétence du juge. <strong>À chaque fois, ce n'est pas une faille
+      du système qu'on exploite : c'est l'écriture par laquelle le système a consigné sa propre faute.</strong>
+    </p>
+    <p class="caveat">
+      Réserve méthodologique — et elle est décisive. Un assaut frontal, mal calibré, « fait pire » : il
+      arrache au juge une décision qui consolide le système au lieu de l'ébranler. Le retournement n'est
+      pas un cri ; c'est une procédure. Il suppose le bon véhicule, le bon ordre — nullité civile avant
+      arme fiscale, droit interne articulé au droit conventionnel —, faute de quoi l'aveu reste lettre morte
+      et la jurisprudence se referme. La faille existe ; encore faut-il la plaider juste.
+    </p>
+    <div class="balance-line">
+      <span>Doit — coût de l'illégalité, normalisé par l'État</span>
+      <span>Avoir — preuve opposable, à l'actif du citoyen</span>
+    </div>
+  </section>
+
+  <!-- ============ APPARATUS ============ -->
+  <section class="apparatus">
+    <h3>Appareil critique</h3>
+    <div class="src">
+      <p><b>Non-recours.</b> Projet TAKE (UAntwerpen / ULiège / Bureau fédéral du Plan / SPF Sécurité sociale, 2022) ; projet BELMOD (SPF Sécurité sociale) ; <i>Revue belge de sécurité sociale</i>, vol. 64, n°3, 2022. Démonstration COVID-Flandre : octroi manuel vs automatique.</p>
+      <p><b>État de droit / asile.</b> CEDH, <i>Camara c. Belgique</i>, 18 juill. 2023 (req. 49255/22), art. 6 §1 et 46, « carence systémique » ; condamnations Fedasil et astreintes cumulées (données RTBF) ; communiqué conjoint Cassation / procureurs généraux / Collège des cours et tribunaux, oct. 2025.</p>
+      <p><b>Particratie.</b> Art. 42 et 66 de la Constitution ; CIR 92, art. 27, 53 ; régime IPM ; chiffrage des rétrocessions et « subventions indirectes » (CRISP, KU Leuven) ; écosystème d'analyse « Ouaisfieu » ; CEDH, <i>Tomenko c. Ukraine</i>, 2025.</p>
+      <p><b>Responsabilité de l'État.</b> Cass., <i>Ferrara</i>, 28 sept. 2006 (État-législateur) ; <i>Flandria</i> (1920) ; Cour d'appel de Bruxelles, <i>Klimaatzaak</i>, 30 nov. 2023 (faute par omission).</p>
+      <p><b>Architecture institutionnelle.</b> Six réformes de l'État ; équipollence des normes ; analyses du para-fédéralisme et de la dérive confédérale ; gestion de crise (maisons de repos, COVID ; inondations de la Vesdre, 2021) ; blocage du RER.</p>
+      <p><b>Numérisation.</b> Cour constitutionnelle, arrêt n°126/2025 (25 sept. 2025), droit au non-numérique ; Cass., 23 nov. 2009 (information proactive) ; Baromètre de l'inclusion numérique (Fondation Roi Baudouin).</p>
+    </div>
+    <p class="disclaimer">
+      Texte d'analyse et d'opinion. Il articule un corpus de recherches, de rapports et de décisions de
+      justice en une thèse interprétative ; les qualifications juridiques avancées dans la « vue du citoyen »
+      sont des arguments plaidables, non des certitudes acquises, et n'engagent aucun conseil juridique.
+      Les voies d'action évoquées sont strictement contentieuses, démocratiques et légales.
+    </p>
+  </section>
+
+  <footer class="colophon">
+    <span>Grand livre de la faute</span>
+    <span>Lecture double &middot; Doit / Avoir</span>
+    <span>État belge — 2021/2026</span>
+  </footer>
+
+</div>
+
+<script>
+  (function(){
+    var body = document.body;
+    var s = document.getElementById('btn-state');
+    var c = document.getElementById('btn-citizen');
+    function setView(view){
+      var citizen = view === 'citizen';
+      body.classList.toggle('view-citizen', citizen);
+      body.classList.toggle('view-state', !citizen);
+      s.setAttribute('aria-pressed', String(!citizen));
+      c.setAttribute('aria-pressed', String(citizen));
+    }
+    s.addEventListener('click', function(){ setView('state'); });
+    c.addEventListener('click', function(){ setView('citizen'); });
+  })();
+</script>
+</body>
+</html>
