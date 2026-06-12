@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Belgique face à sa Constitution : critique du système et analyse juridique (2026)</title>
+
+  <!-- SEO : meta description & mots-clés -->
+  <meta name="description" content="Particratie, article 42, mandat libre vidé de sa substance, condamnations CEDH non exécutées : analyse juridique documentée du fossé entre la Constitution belge et la pratique du pouvoir en 2026.">
+  <meta name="keywords" content="Constitution belge, article 42, particratie, mandat impératif, état de droit Belgique, Cour constitutionnelle, GRECO, financement des partis, CEDH Camara, discipline de vote">
+  <meta name="author" content="Observatoire citoyen de la démocratie belge">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://example.org/analyses/belgique-face-a-sa-constitution">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="fr_BE">
+  <meta property="og:title" content="La Belgique face à sa Constitution : critique du système et analyse juridique">
+  <meta property="og:description" content="L'article 42 garantit le mandat libre ; la discipline de vote atteint 99,73 %. L'article 33 confie le pouvoir à la Nation ; les présidents de partis l'exercent. Analyse du décalage.">
+  <meta property="og:url" content="https://example.org/analyses/belgique-face-a-sa-constitution">
+  <meta property="og:site_name" content="Observatoire citoyen de la démocratie belge">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="La Belgique face à sa Constitution : critique du système et analyse juridique">
+  <meta name="twitter:description" content="Particratie, mandat libre fictif, décisions de justice inexécutées : ce que disent le droit, la doctrine et les juridictions européennes.">
+
+  <!-- Données structurées : Article + FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "La Belgique face à sa Constitution : critique du système et analyse juridique",
+        "description": "Analyse documentée du décalage entre la Constitution belge (articles 33 et 42) et la pratique institutionnelle : particratie, discipline de vote, financement des partis, non-exécution des décisions de justice.",
+        "inLanguage": "fr-BE",
+        "datePublished": "2026-06-12",
+        "dateModified": "2026-06-12",
+        "author": { "@type": "Organization", "name": "Observatoire citoyen de la démocratie belge" },
+        "publisher": { "@type": "Organization", "name": "Observatoire citoyen de la démocratie belge" },
+        "mainEntityOfPage": "https://example.org/analyses/belgique-face-a-sa-constitution",
+        "articleSection": "Droit constitutionnel",
+        "keywords": "Constitution belge, particratie, article 42, mandat impératif, état de droit"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "La particratie belge viole-t-elle la Constitution ?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Formellement, non : aucune sanction juridique ne lie l'élu à son parti. Matériellement, la doctrine converge pour constater que la discipline de parti, les rétrocessions d'indemnités et le contrôle des listes vident l'article 42 de sa substance, sans qu'un juge puisse aisément le sanctionner." }
+          },
+          {
+            "@type": "Question",
+            "name": "Que dit l'article 42 de la Constitution belge ?",
+            "acceptedAnswer": { "@type": "Answer", "text": "« Les membres des deux Chambres représentent la Nation, et non uniquement ceux qui les ont élus. » Il consacre le mandat représentatif libre et interdit le mandat impératif : aucun parti ne peut, en droit, dicter le vote d'un parlementaire ni lui retirer son siège." }
+          },
+          {
+            "@type": "Question",
+            "name": "Pourquoi la CEDH parle-t-elle de « carence systémique » en Belgique ?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Dans l'arrêt Camara c. Belgique (18 juillet 2023), la Cour européenne des droits de l'homme a constaté que l'État belge refusait d'exécuter des décisions de justice définitives en matière d'accueil des demandeurs d'asile, qualifiant ce refus de carence systémique et non d'un simple retard." }
+          },
+          {
+            "@type": "Question",
+            "name": "Des recours juridiques contre la particratie sont-ils possibles ?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Plusieurs voies étroites existent : question préjudicielle à la Cour constitutionnelle sur la loi de 1989, recours en annulation contre les lois modificatives de financement, action en responsabilité de l'État-législateur (Cass., 28 septembre 2006), plainte au GRECO et requête à la CEDH après épuisement des voies internes." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,700;0,800;1,400&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --ink:#16181f;          /* encre du texte */
+      --paper:#fcfbf7;        /* papier du Moniteur */
+      --ledger:#f2efe6;       /* fond des encadrés */
+      --rule:#d8d3c4;         /* filets */
+      --seal:#7a1f1f;         /* rouge sceau : accent juridique */
+      --night:#1d2742;        /* bleu nuit institutionnel */
+      --muted:#5d6068;
+      --max:74ch;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{animation:none!important;transition:none!important}
+    }
+    body{
+      font-family:'Spectral',Georgia,serif;
+      background:var(--paper);
+      color:var(--ink);
+      line-height:1.72;
+      font-size:1.06rem;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    /* Barre de progression de lecture */
+    #progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--seal);z-index:60;transition:width .08s linear}
+
+    /* ===== En-tête façon gazette officielle ===== */
+    header.masthead{
+      border-bottom:3px double var(--ink);
+      background:var(--paper);
+      padding:2.2rem 1.5rem 1.6rem;
+    }
+    .masthead-inner{max-width:980px;margin:0 auto}
+    .kicker{
+      font-family:'Archivo',sans-serif;font-size:.72rem;letter-spacing:.22em;
+      text-transform:uppercase;color:var(--seal);font-weight:600;
+      display:flex;align-items:center;gap:.8rem;
+    }
+    .kicker::after{content:"";flex:1;height:1px;background:var(--rule)}
+    h1{
+      font-weight:800;font-size:clamp(1.9rem,4.6vw,3.3rem);
+      line-height:1.12;margin:.7rem 0 .9rem;letter-spacing:-.01em;
+    }
+    h1 em{font-style:italic;font-weight:400}
+    .standfirst{
+      font-size:clamp(1.02rem,1.6vw,1.22rem);font-style:italic;color:var(--muted);
+      max-width:62ch;line-height:1.6;
+    }
+    .byline{
+      margin-top:1.2rem;font-family:'Archivo',sans-serif;font-size:.78rem;
+      color:var(--muted);display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;
+    }
+    .byline strong{color:var(--ink);font-weight:600}
+
+    /* ===== Mise en page : marge d'articles + colonne ===== */
+    main{max-width:980px;margin:0 auto;padding:0 1.5rem 4rem}
+
+    /* Sommaire */
+    nav.toc{
+      margin:2.4rem 0;border:1px solid var(--rule);background:var(--ledger);
+      padding:1.4rem 1.6rem;
+    }
+    nav.toc h2{
+      font-family:'Archivo',sans-serif;font-size:.74rem;letter-spacing:.2em;
+      text-transform:uppercase;color:var(--muted);margin-bottom:.8rem;font-weight:600;
+    }
+    nav.toc ol{list-style:none;counter-reset:toc}
+    nav.toc li{counter-increment:toc;padding:.32rem 0;border-bottom:1px dotted var(--rule)}
+    nav.toc li:last-child{border-bottom:none}
+    nav.toc a{
+      color:var(--ink);text-decoration:none;display:flex;gap:.9rem;align-items:baseline;
+    }
+    nav.toc a::before{
+      content:"§ " counter(toc);font-family:'Archivo',sans-serif;font-size:.72rem;
+      color:var(--seal);font-weight:600;min-width:2.4rem;
+    }
+    nav.toc a:hover{color:var(--seal)}
+
+    /* Sections numérotées comme des articles de loi */
+    section{margin-top:3.4rem;position:relative}
+    .art-marker{
+      font-family:'Archivo',sans-serif;font-size:.7rem;font-weight:600;
+      letter-spacing:.2em;text-transform:uppercase;color:var(--seal);
+      display:flex;align-items:center;gap:.8rem;margin-bottom:.6rem;
+    }
+    .art-marker::after{content:"";flex:1;height:1px;background:var(--rule)}
+    h2{
+      font-size:clamp(1.45rem,2.6vw,2rem);font-weight:700;line-height:1.22;
+      margin-bottom:1.1rem;max-width:30ch;
+    }
+    h3{font-size:1.16rem;font-weight:700;margin:1.9rem 0 .7rem}
+    p{max-width:var(--max);margin-bottom:1.05rem}
+    p+h3{margin-top:2.1rem}
+    strong{font-weight:700}
+    a{color:var(--night)}
+
+    /* Citation constitutionnelle : le geste signature */
+    blockquote.const{
+      margin:2rem 0;padding:1.6rem 1.8rem 1.4rem;position:relative;
+      background:var(--night);color:#f4f2ea;max-width:var(--max);
+    }
+    blockquote.const::before{
+      content:attr(data-art);position:absolute;top:-0.85rem;left:1.4rem;
+      background:var(--seal);color:#fff;font-family:'Archivo',sans-serif;
+      font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+      padding:.3rem .7rem;
+    }
+    blockquote.const p{font-size:1.18rem;font-style:italic;line-height:1.55;margin:0;max-width:none}
+    blockquote.const footer{
+      margin-top:.8rem;font-family:'Archivo',sans-serif;font-size:.74rem;
+      letter-spacing:.08em;color:#b9c0d4;font-style:normal;
+    }
+
+    /* Tableau norme / pratique */
+    .ledger{
+      margin:1.8rem 0;border:1px solid var(--rule);max-width:var(--max);
+      font-size:.95rem;background:#fff;
+    }
+    .ledger-row{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule)}
+    .ledger-row:last-child{border-bottom:none}
+    .ledger-row>div{padding:.85rem 1rem}
+    .ledger-row>div:first-child{border-right:1px solid var(--rule)}
+    .ledger-head{font-family:'Archivo',sans-serif;font-size:.72rem;font-weight:600;
+      letter-spacing:.14em;text-transform:uppercase;background:var(--ledger)}
+    .ledger-head .de-jure{color:var(--night)}
+    .ledger-head .de-facto{color:var(--seal)}
+
+    /* Chiffres clés */
+    .figures{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+      gap:1px;background:var(--rule);border:1px solid var(--rule);margin:2rem 0;
+    }
+    .figure{background:var(--paper);padding:1.2rem 1.1rem}
+    .figure b{
+      display:block;font-size:1.85rem;font-weight:800;line-height:1.1;color:var(--seal);
+      font-variant-numeric:tabular-nums;
+    }
+    .figure span{font-family:'Archivo',sans-serif;font-size:.76rem;color:var(--muted);line-height:1.4;display:block;margin-top:.35rem}
+
+    /* Notes latérales */
+    aside.note{
+      border-left:3px solid var(--seal);background:var(--ledger);
+      padding:1rem 1.3rem;margin:1.6rem 0;max-width:var(--max);font-size:.95rem;
+    }
+    aside.note .note-label{
+      font-family:'Archivo',sans-serif;font-size:.68rem;font-weight:700;
+      letter-spacing:.18em;text-transform:uppercase;color:var(--seal);display:block;margin-bottom:.3rem;
+    }
+
+    ul.legal{max-width:var(--max);margin:0 0 1.1rem 1.2rem}
+    ul.legal li{margin-bottom:.55rem}
+
+    /* FAQ accordéon */
+    .faq details{
+      border:1px solid var(--rule);background:#fff;margin-bottom:.6rem;max-width:var(--max);
+    }
+    .faq summary{
+      cursor:pointer;padding:1rem 1.2rem;font-weight:700;list-style:none;
+      display:flex;justify-content:space-between;align-items:center;gap:1rem;
+    }
+    .faq summary::-webkit-details-marker{display:none}
+    .faq summary::after{content:"+";font-family:'Archivo',sans-serif;color:var(--seal);font-size:1.2rem;font-weight:600}
+    .faq details[open] summary::after{content:"–"}
+    .faq details p{padding:0 1.2rem 1.1rem;color:#33363e}
+
+    /* Sources */
+    .sources{font-size:.9rem;color:var(--muted)}
+    .sources ol{margin-left:1.3rem}
+    .sources li{margin-bottom:.45rem}
+
+    footer.colophon{
+      border-top:3px double var(--ink);margin-top:4rem;padding:1.6rem 1.5rem 2.4rem;
+      font-family:'Archivo',sans-serif;font-size:.78rem;color:var(--muted);
+    }
+    .colophon-inner{max-width:980px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-between}
+
+    /* Bouton retour haut */
+    #toTop{
+      position:fixed;bottom:1.4rem;right:1.4rem;width:44px;height:44px;
+      border:1px solid var(--ink);background:var(--paper);color:var(--ink);
+      font-family:'Archivo',sans-serif;font-size:.85rem;cursor:pointer;
+      opacity:0;pointer-events:none;transition:opacity .25s;z-index:50;
+    }
+    #toTop.visible{opacity:1;pointer-events:auto}
+    #toTop:hover{background:var(--ink);color:var(--paper)}
+    :focus-visible{outline:2px solid var(--seal);outline-offset:2px}
+
+    /* Apparition au scroll */
+    .reveal{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}
+    .reveal.in{opacity:1;transform:none}
+
+    @media (max-width:640px){
+      .ledger-row{grid-template-columns:1fr}
+      .ledger-row>div:first-child{border-right:none;border-bottom:1px dashed var(--rule)}
+      blockquote.const{padding:1.4rem 1.2rem 1.2rem}
+    }
+  </style>
+</head>
+<body>
+
+<div id="progress" role="presentation"></div>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <p class="kicker">Analyse juridique · Droit constitutionnel belge · 12 juin 2026</p>
+    <h1>La Belgique face à sa Constitution&nbsp;:<br><em>le texte, la pratique, le fossé</em></h1>
+    <p class="standfirst">L'article 42 garantit aux parlementaires un mandat libre&nbsp;; la discipline de vote frôle les 100&nbsp;%. L'article 33 confie tous les pouvoirs à la Nation&nbsp;; les présidents de partis les exercent. Et l'État, condamné des milliers de fois, choisit parfois de ne pas exécuter les jugements. Critique documentée d'un système, et inventaire des recours juridiques qui restent.</p>
+    <div class="byline">
+      <span>Par <strong>Observatoire citoyen de la démocratie belge</strong></span>
+      <span>Lecture&nbsp;: <strong>≈ 14 min</strong></span>
+      <span>Mis à jour&nbsp;: <strong>12 juin 2026</strong></span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <nav class="toc" aria-label="Sommaire">
+    <h2>Sommaire</h2>
+    <ol>
+      <li><a href="#fiction">La fiction fondatrice&nbsp;: articles 33 et 42</a></li>
+      <li><a href="#particratie">La particratie, ou la Constitution vidée de l'intérieur</a></li>
+      <li><a href="#financement">Le moteur économique&nbsp;: la loi de 1989 et la rente des dotations</a></li>
+      <li><a href="#verrous">Les verrous&nbsp;: pourquoi le système ne se réforme pas lui-même</a></li>
+      <li><a href="#etat-droit">L'épreuve de l'État de droit&nbsp;: quand l'exécutif n'exécute plus</a></li>
+      <li><a href="#recours">Analyse légale&nbsp;: les voies de recours qui subsistent</a></li>
+      <li><a href="#contrepoints">Contrepoints et limites de la critique</a></li>
+      <li><a href="#faq">Questions fréquentes</a></li>
+      <li><a href="#sources">Sources et références</a></li>
+    </ol>
+  </nav>
+
+  <!-- ============ 1 ============ -->
+  <section id="fiction" class="reveal">
+    <p class="art-marker">§ 1 — Le cadre normatif</p>
+    <h2>La fiction fondatrice&nbsp;: ce que disent les articles 33 et 42</h2>
+
+    <p>La Constitution belge de 1831 ne fonde pas une démocratie directe, ni même une souveraineté populaire&nbsp;: elle institue un <strong>régime représentatif strict</strong>, bâti sur la souveraineté de la Nation. Sous l'influence de Benjamin Constant et de l'héritage de Sieyès, les constituants ont sciemment écarté le «&nbsp;peuple&nbsp;» — entité jugée trop concrète, trop volatile — au profit d'une abstraction juridique&nbsp;: la Nation, indivisible et atemporelle, qui ne peut s'exprimer que par ses représentants.</p>
+
+    <blockquote class="const" data-art="Art. 33">
+      <p>«&nbsp;Tous les pouvoirs émanent de la Nation. Ils sont exercés de la manière établie par la Constitution.&nbsp;»</p>
+      <footer>Constitution belge, article 33 (ancien article 25)</footer>
+    </blockquote>
+
+    <blockquote class="const" data-art="Art. 42">
+      <p>«&nbsp;Les membres des deux Chambres représentent la Nation, et non uniquement ceux qui les ont élus.&nbsp;»</p>
+      <footer>Constitution belge, article 42 (ancien article 32 du texte de 1831)</footer>
+    </blockquote>
+
+    <p>De l'article 42 découle un dogme du droit public belge&nbsp;: l'<strong>interdiction du mandat impératif</strong>. L'élu délibère librement, en son âme et conscience&nbsp;; ni les électeurs, ni les lobbys, ni — surtout — les partis politiques ne peuvent juridiquement lui dicter son vote. Trois conséquences en droit&nbsp;: aucune sanction juridique ne peut frapper un parlementaire pour un vote contraire aux instructions de son parti&nbsp;; le siège est personnel et irrévocable durant la législature&nbsp;; toute démission «&nbsp;provoquée&nbsp;» — la lettre de démission pré-signée — est en principe nulle pour vice du consentement.</p>
+
+    <p>Détail capital&nbsp;: la Constitution de 1831 est <strong>muette sur les partis politiques</strong>. Ce silence n'était pas un oubli mais un choix — rejet jacobin des «&nbsp;corps intermédiaires&nbsp;», idéologie unioniste d'une jeune nation, partis encore réduits à des cercles de notables. Contrairement à l'article 21 de la Loi fondamentale allemande ou à l'article 4 de la Constitution française, aucune disposition belge n'encadre les acteurs qui, deux siècles plus tard, exercent l'essentiel du pouvoir réel.</p>
+  </section>
+
+  <!-- ============ 2 ============ -->
+  <section id="particratie" class="reveal">
+    <p class="art-marker">§ 2 — La critique du système</p>
+    <h2>La particratie, ou la Constitution vidée de l'intérieur</h2>
+
+    <p>Le terme n'est pas polémique&nbsp;: il est utilisé par la doctrine belge elle-même — de Wilfried Dewachter (<em>Le mythe de la démocratie parlementaire</em>) à Marc Verdussen, de Frederik Verleden (<em>Aux sources de la particratie</em>, CRISP) à Sam Depauw. Le constat convergent&nbsp;: la particratie ne viole pas <em>formellement</em> l'article 42, elle le <strong>vide de sa substance</strong>. La violation est matérielle, pas textuelle — et c'est précisément ce qui la rend si difficile à saisir pour un juge.</p>
+
+    <div class="figures" role="list" aria-label="Chiffres clés de la particratie">
+      <div class="figure" role="listitem"><b data-count="99,73">0</b><span>% de discipline de vote mesurée sous le gouvernement Wilmès II — pourtant minoritaire</span></div>
+      <div class="figure" role="listitem"><b data-count="100">0</b><span>% (ou presque)&nbsp;: cohésion des groupes à la Chambre, de 97,33&nbsp;% à 99,95&nbsp;% selon les partis (2003-2007, F. Verleden)</span></div>
+      <div class="figure" role="listitem"><b data-count="75">0</b><span>millions € et plus de dotations publiques annuelles aux partis, tous niveaux confondus (estimations supérieures&nbsp;: ≈ 108 M€)</span></div>
+      <div class="figure" role="listitem"><b data-count="6">0</b><span>juges sur 12 à la Cour constitutionnelle sont d'anciens parlementaires, nommés à la majorité des 2/3</span></div>
+    </div>
+
+    <h3>Les trois leviers de la captation</h3>
+    <p>La doctrine identifie trois mécanismes par lesquels les appareils partisans ont capté la souveraineté que l'article 33 attribue à la Nation&nbsp;:</p>
+    <ul class="legal">
+      <li><strong>Le monopole de la sélection.</strong> Le contrôle des listes électorales par les présidents de partis transforme l'élu en mandataire de l'appareil&nbsp;: sa survie politique dépend de sa place sur la liste, pas de son indépendance d'esprit.</li>
+      <li><strong>L'hégémonie du «&nbsp;Kern&nbsp;»</strong> et des conclaves de présidents de partis&nbsp;: le centre de gravité législatif a quitté l'hémicycle. Le Parlement ratifie des accords négociés ailleurs, à huis clos.</li>
+      <li><strong>La dépendance financière.</strong> Rétrocessions d'indemnités aux appareils (le PTB plafonne statutairement la rémunération de ses élus à un «&nbsp;salaire d'ouvrier&nbsp;», le surplus alimentant la caisse du parti), chartes de loyauté, menace d'exclusion du groupe — des sanctions extrajuridiques plus dissuasives qu'aucune poursuite.</li>
+    </ul>
+
+    <div class="ledger" role="table" aria-label="Comparaison entre la norme constitutionnelle et la pratique">
+      <div class="ledger-row ledger-head" role="row">
+        <div class="de-jure" role="columnheader">Ce que dit le droit</div>
+        <div class="de-facto" role="columnheader">Ce que montre la pratique</div>
+      </div>
+      <div class="ledger-row" role="row">
+        <div role="cell">L'élu représente la Nation et vote librement (art. 42)</div>
+        <div role="cell">Cohésion de vote proche de 100&nbsp;%&nbsp;; «&nbsp;l'un des plus hauts degrés de cohésion en Europe occidentale&nbsp;» (S. Depauw)</div>
+      </div>
+      <div class="ledger-row" role="row">
+        <div role="cell">Tous les pouvoirs émanent de la Nation (art. 33)</div>
+        <div role="cell">Présidents de partis qualifiés par le CRISP de pouvoir «&nbsp;prépondérant&nbsp;» et «&nbsp;extra-constitutionnel&nbsp;»</div>
+      </div>
+      <div class="ledger-row" role="row">
+        <div role="cell">Le mandat impératif est interdit&nbsp;; toute démission contrainte est nulle</div>
+        <div role="cell">Lettres de démission pré-signées, rétrocessions obligatoires, retraits de commission documentés</div>
+      </div>
+      <div class="ledger-row" role="row">
+        <div role="cell">La loi est délibérée et votée par les Chambres (art. 36 et s.)</div>
+        <div role="cell">Accords de gouvernement rigides fonctionnant comme des mandats impératifs collectifs</div>
+      </div>
+    </div>
+
+    <aside class="note">
+      <span class="note-label">Nuance doctrinale</span>
+      La séance plénière n'est pas pure mise en scène&nbsp;: elle assure la publicité du vote, le contrôle politique (questions d'actualité, interpellations) et la légitimation des lois. Mais la décision substantielle se prend en amont — en groupe parlementaire, en commission et dans les conclaves partisans. La Belgique n'est pas isolée en Europe&nbsp;; elle est un <strong>cas extrême</strong> d'un phénomène général.
+    </aside>
+  </section>
+
+  <!-- ============ 3 ============ -->
+  <section id="financement" class="reveal">
+    <p class="art-marker">§ 3 — Le nerf de la guerre</p>
+    <h2>Le moteur économique&nbsp;: la loi de 1989 et la rente des dotations</h2>
+
+    <p>Votée après les scandales Agusta-Dassault pour «&nbsp;moraliser&nbsp;» la vie politique, la <strong>loi du 4 juillet 1989</strong> sur la limitation et le contrôle des dépenses électorales a produit un effet paradoxal&nbsp;: en substituant le financement public aux dons privés, elle a rendu les partis financièrement autonomes vis-à-vis de leurs membres — et dépendants de leur seule capacité à conserver des sièges. Les dotations annuelles, tous niveaux de pouvoir confondus, sont estimées à plus de 75 millions d'euros, certaines consolidations récentes avançant un ordre de grandeur proche de 108 millions.</p>
+
+    <p>Trois anomalies structurelles concentrent la critique juridique&nbsp;:</p>
+    <ul class="legal">
+      <li><strong>Les contrôlés sont les contrôleurs.</strong> La Commission de contrôle des dépenses électorales est composée de parlementaires — donc des partis eux-mêmes, juges et parties. Le GRECO (Conseil de l'Europe) dénonce ce défaut d'indépendance opérationnelle depuis son rapport de 2009&nbsp;; une procédure de non-conformité est ouverte depuis 2011.</li>
+      <li><strong>Des partis juridiquement évanescents.</strong> Les partis belges sont des associations de fait <em>sans personnalité juridique</em>&nbsp;; seules leurs ASBL satellites, désignées pour percevoir les dotations, ont un statut légal. Résultat&nbsp;: l'argent public irrigue des structures que le droit public ne peut presque pas atteindre.</li>
+      <li><strong>Une lacune sanctionnatrice.</strong> L'article 15ter de la loi de 1989 permet de suspendre la dotation d'un parti hostile aux droits de l'homme — mais aucune disposition ne sanctionne un parti qui détruit le mandat libre de ses propres élus par des chartes coercitives ou des rétrocessions obligatoires. C'est cette omission que plusieurs stratégies contentieuses qualifient d'<em>inconstitutionnalité par omission</em>.</li>
+    </ul>
+  </section>
+
+  <!-- ============ 4 ============ -->
+  <section id="verrous" class="reveal">
+    <p class="art-marker">§ 4 — L'auto-immunité du système</p>
+    <h2>Les verrous&nbsp;: pourquoi le système ne se réforme pas lui-même</h2>
+
+    <p>Le diagnostic le plus sévère que permet l'analyse juridique n'est pas la dérive elle-même — toute démocratie en connaît — mais le <strong>verrouillage de ses correctifs</strong>. Ceux qui contrôlent le système contrôlent aussi les clés de sa réforme&nbsp;:</p>
+
+    <ul class="legal">
+      <li><strong>La Cour constitutionnelle</strong> compte, par construction légale, 6 juges sur 12 issus du personnel politique (anciens parlementaires), nommés à la majorité des deux tiers — c'est-à-dire par accord entre les grands partis. Son arrêt n° 40/90 a validé le principe des dotations, et le tribunal de première instance de Bruxelles a refusé, le 7 avril 2025, de lui transmettre une question préjudicielle soulevée par quatre petits partis (Vista, PRO, Oxygène, Collectif Citoyen), la question étant jugée «&nbsp;déjà tranchée&nbsp;».</li>
+      <li><strong>L'autonomie parlementaire</strong> (articles 48 et 60 de la Constitution) soustrait largement la vie interne des assemblées — et donc des groupes politiques — au contrôle juridictionnel.</li>
+      <li><strong>L'absence de justiciabilité</strong>&nbsp;: la sanction partisane (non-réinvestiture, exclusion du groupe) étant extrajuridique et infligée par des associations de fait privées, elle échappe au contrôle constitutionnel. La doctrine — d'Alen à Uyttendaele — reconnaît unanimement la tension, mais la qualifie de non justiciable en l'état.</li>
+    </ul>
+
+    <p>Deux arrêts de la Cour européenne des droits de l'homme ont fissuré ce verrou sans l'ouvrir&nbsp;: <strong><em>G.K. c. Belgique</em> (2019)</strong>, sur une démission de mandat obtenue sous pression, et <strong><em>Mugemangango c. Belgique</em> (2020)</strong>, où la Grande Chambre a condamné le système belge de validation des élections par les assemblées elles-mêmes — encore une situation où l'institution était juge et partie.</p>
+  </section>
+
+  <!-- ============ 5 ============ -->
+  <section id="etat-droit" class="reveal">
+    <p class="art-marker">§ 5 — Le symptôme aigu</p>
+    <h2>L'épreuve de l'État de droit&nbsp;: quand l'exécutif n'exécute plus</h2>
+
+    <p>La critique du système ne resterait qu'un débat de constitutionnalistes si elle n'avait pas trouvé, ces dernières années, une traduction concrète et brutale&nbsp;: la <strong>non-exécution assumée de décisions de justice</strong> par l'exécutif. Le contentieux de l'accueil des demandeurs d'asile en est devenu le cas d'école européen.</p>
+
+    <div class="figures" role="list" aria-label="Chiffres du contentieux Fedasil">
+      <div class="figure" role="listitem"><b data-count="16000">0</b><span>condamnations de l'État belge et de Fedasil par les juridictions nationales depuis octobre 2021</span></div>
+      <div class="figure" role="listitem"><b data-count="278,5">0</b><span>millions € d'astreintes cumulées (données RTBF 2024), très largement impayées</span></div>
+      <div class="figure" role="listitem"><b data-count="2200">0</b><span>mesures provisoires imposées à la Belgique par la CEDH dans ce contentieux</span></div>
+    </div>
+
+    <p>Dans l'arrêt <strong><em>Camara c. Belgique</em></strong> (18 juillet 2023, req. n° 49255/22), la Cour de Strasbourg constate une violation de l'article 6 §&nbsp;1 — le droit à un procès équitable est illusoire si une décision définitive peut rester lettre morte — et, fait rare, diagnostique au titre de l'article 46 une «&nbsp;<strong>carence systémique</strong>&nbsp;» des autorités belges&nbsp;: non un retard, précise-t-elle, mais un «&nbsp;refus caractérisé&nbsp;» d'exécuter.</p>
+
+    <p>La séquence s'est aggravée depuis&nbsp;: déclaration publique de la ministre compétente affirmant ne pouvoir «&nbsp;ni vouloir&nbsp;» payer les astreintes&nbsp;; recours à l'article 1412bis du Code judiciaire (insaisissabilité des biens publics) pour neutraliser l'exécution forcée&nbsp;; suspension par la Cour constitutionnelle, en février 2026, de dispositions restrictives de la loi accueil&nbsp;; instruction ministérielle contournant cette suspension, elle-même suspendue par le Conseil d'État en extrême urgence (arrêt n° 266.219 du 27 mars 2026). En octobre 2025, la Cour de cassation, le Collège des procureurs généraux et le Collège des cours et tribunaux ont publié un communiqué commun inédit dénonçant «&nbsp;une atteinte à la séparation des pouvoirs&nbsp;».</p>
+
+    <aside class="note">
+      <span class="note-label">Pourquoi c'est constitutionnellement central</span>
+      Un État qui choisit les jugements qu'il exécute ne viole pas une politique sectorielle&nbsp;: il suspend le principe même de l'article 33 — le pouvoir exercé «&nbsp;de la manière établie par la Constitution&nbsp;». La crise de l'asile n'est pas une parenthèse migratoire&nbsp;; c'est le point où le fossé entre texte et pratique devient mesurable en décisions de justice ignorées.
+    </aside>
+  </section>
+
+  <!-- ============ 6 ============ -->
+  <section id="recours" class="reveal">
+    <p class="art-marker">§ 6 — Analyse légale</p>
+    <h2>Les voies de recours qui subsistent</h2>
+
+    <p>Le droit belge n'est pas totalement désarmé. L'analyse contentieuse identifie cinq pistes, classées ici de la plus praticable à la plus incertaine&nbsp;:</p>
+
+    <h3>1. Le levier GRECO&nbsp;: la pression par la non-conformité</h3>
+    <p>Les recommandations du Groupe d'États contre la corruption ne sont pas contraignantes en droit interne, mais leur force probatoire et politique est réelle&nbsp;: la Belgique est en non-conformité persistante sur le financement des partis (procédure ouverte en 2011) et affichait fin 2024 le plus fort taux de non-mise en œuvre pour ses parlementaires. Chaque rapport renforce le dossier de toute action ultérieure.</p>
+
+    <h3>2. Attaquer les lois modificatives récentes du financement</h3>
+    <p>Le principe de la dotation est validé (arrêt 40/90), mais chaque loi modificative — dont celle gelant l'indexation des dotations pour 2025-2029 — <strong>rouvre un délai de six mois</strong> pour un recours en annulation devant la Cour constitutionnelle, avec des griefs nouveaux&nbsp;: proportionnalité, égalité entre partis établis et entrants, dépenses numériques non régulées. Condition de réussite&nbsp;: présenter un grief réellement distinct de ceux déjà rejetés.</p>
+
+    <h3>3. La responsabilité de l'État-législateur</h3>
+    <p>Depuis l'arrêt de la Cour de cassation du <strong>28 septembre 2006</strong>, le juge judiciaire peut condamner l'État pour une faute du législateur, y compris une <strong>abstention fautive de légiférer</strong>. Appliquée à la lacune de la loi de 1989 (absence de sanction des partis qui détruisent le mandat libre), cette voie permet de demander réparation — et surtout d'obtenir, en cours d'instance, la transmission d'une question préjudicielle à la Cour constitutionnelle sur l'inconstitutionnalité par omission.</p>
+
+    <h3>4. La question préjudicielle combinée à la CEDH</h3>
+    <p>Lecture combinée de l'article 15ter de la loi de 1989 avec l'article 3 du Protocole n° 1 de la Convention (droit à des élections libres)&nbsp;: la jurisprudence <em>G.K.</em> et <em>Mugemangango</em> fournit l'ancrage. Les requérants les plus crédibles sont les <strong>parlementaires dissidents</strong> ayant subi un préjudice matériel documenté (rétrocessions, retraits de commission), épaulés par des ASBL de défense des droits et des partis émergents lésés par l'asymétrie de financement.</p>
+
+    <h3>5. La requête à Strasbourg après épuisement des voies internes</h3>
+    <p>Voie longue, mais le précédent <em>Camara</em> démontre que la Cour n'hésite plus à qualifier les défaillances belges de systémiques — un levier qui transforme chaque échec interne en pièce du dossier européen.</p>
+
+    <aside class="note">
+      <span class="note-label">Évaluation honnête des chances</span>
+      Les analyses contentieuses les plus élaborées chiffrent la probabilité d'un constat d'inconstitutionnalité par omission entre 30 et 50&nbsp;%, mais soulignent l'asymétrie des bénéfices&nbsp;: même un succès partiel — une question préjudicielle transmise, un constat motivé — modifie durablement le rapport de force et nourrit la pression GRECO et CEDH.
+    </aside>
+  </section>
+
+  <!-- ============ 7 ============ -->
+  <section id="contrepoints" class="reveal">
+    <p class="art-marker">§ 7 — L'autre lecture</p>
+    <h2>Contrepoints et limites de la critique</h2>
+
+    <p>Une analyse rigoureuse doit énoncer ce que ses adversaires diraient — et ils n'auraient pas entièrement tort.</p>
+
+    <ul class="legal">
+      <li><strong>La discipline de parti est la norme européenne, pas l'exception belge.</strong> Presque toutes les démocraties parlementaires connaissent une forte cohésion de vote&nbsp;; sans elle, aucun gouvernement de coalition ne serait gouvernable. La Belgique est un cas intense d'un phénomène universel.</li>
+      <li><strong>La particratie est aussi un instrument de pacification.</strong> Dans un pays traversé par des clivages linguistiques, philosophiques et sociaux, le compromis négocié entre appareils a longtemps été la condition de la stabilité — c'est la logique consociative décrite par la science politique.</li>
+      <li><strong>Le système conserve des contre-pouvoirs réels.</strong> Les suspensions prononcées par la Cour constitutionnelle et le Conseil d'État en 2026, la réaction commune des plus hautes juridictions, montrent un appareil judiciaire qui résiste — la crise révèle aussi la vitalité des institutions qu'elle éprouve.</li>
+      <li><strong>Le financement public a des vertus.</strong> Il a réduit la dépendance aux donateurs privés et la corruption qui avait motivé la loi de 1989&nbsp;; le débat porte sur son contrôle et ses conditions, pas nécessairement sur son principe.</li>
+    </ul>
+
+    <p>La critique du système n'implique donc pas que la Belgique soit une démocratie de façade — elle reste, aux standards internationaux, un État de droit développé. Elle implique que le <strong>fossé entre la norme constitutionnelle et la pratique du pouvoir s'est creusé au point d'être documenté par les juridictions européennes elles-mêmes</strong>, et que les mécanismes censés le combler sont contrôlés par ceux qui en bénéficient. C'est cette configuration — pas tel scandale, pas tel ministre — qui constitue le problème constitutionnel belge.</p>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section id="faq" class="reveal faq">
+    <p class="art-marker">§ 8 — Pour aller à l'essentiel</p>
+    <h2>Questions fréquentes</h2>
+
+    <details>
+      <summary>La particratie belge viole-t-elle la Constitution&nbsp;?</summary>
+      <p>Formellement, non&nbsp;: aucune règle de parti n'a de valeur juridique contraignante sur le vote d'un élu. Matériellement, la doctrine constate que la discipline de vote, les rétrocessions et le contrôle des listes vident l'article 42 de sa substance — une «&nbsp;inconstitutionnalité matérielle sans juge&nbsp;», car la sanction partisane échappe au contrôle juridictionnel.</p>
+    </details>
+    <details>
+      <summary>Un député peut-il être contraint de démissionner par son parti&nbsp;?</summary>
+      <p>Non, en droit&nbsp;: le siège appartient personnellement à l'élu pour toute la législature, et toute démission obtenue sous contrainte est nulle pour vice du consentement. En pratique, la menace de non-réinvestiture sur les listes suffit le plus souvent à obtenir le même résultat.</p>
+    </details>
+    <details>
+      <summary>Pourquoi la Cour constitutionnelle ne tranche-t-elle pas&nbsp;?</summary>
+      <p>Parce que la question lui parvient rarement (le tribunal de Bruxelles a refusé une transmission en avril 2025), parce que sa jurisprudence de 1990 valide le principe des dotations, et parce que sa composition — six juges sur douze issus du personnel politique, nommés par accord entre grands partis — fait elle-même partie du diagnostic.</p>
+    </details>
+    <details>
+      <summary>Que peut faire un citoyen&nbsp;?</summary>
+      <p>Individuellement&nbsp;: agir en annulation contre une loi dans les six mois de sa publication s'il justifie d'un intérêt, ou faire soulever une question préjudicielle dans un litige. Collectivement&nbsp;: les stratégies les plus solides combinent des ASBL de défense des droits, des élus dissidents lésés et des partis émergents — chacun apportant l'intérêt à agir que les autres n'ont pas.</p>
+    </details>
+  </section>
+
+  <!-- ============ Sources ============ -->
+  <section id="sources" class="reveal sources">
+    <p class="art-marker">§ 9 — Appareil critique</p>
+    <h2>Sources et références</h2>
+    <ol>
+      <li>Constitution belge coordonnée, articles 33, 42, 48 et 60 — Sénat de Belgique, senate.be.</li>
+      <li>Loi du 4 juillet 1989 relative à la limitation et au contrôle des dépenses électorales, art. 1er et 15ter.</li>
+      <li>Cour constitutionnelle, arrêts n° 40/90&nbsp;; n° 10/2001&nbsp;; n° 130/2016&nbsp;; n° 35/2024.</li>
+      <li>Cour de cassation, 28 septembre 2006 (responsabilité de l'État-législateur)&nbsp;; arrêt <em>Anca</em>, 19 décembre 1991.</li>
+      <li>CEDH, <em>G.K. c. Belgique</em>, 2019&nbsp;; <em>Mugemangango c. Belgique</em> (GC), 2020&nbsp;; <em>Camara c. Belgique</em>, 18 juillet 2023, req. n° 49255/22.</li>
+      <li>Conseil d'État, arrêt n° 266.219 du 27 mars 2026 (suspension de l'instruction ministérielle Fedasil).</li>
+      <li>GRECO, rapports des 3e et 4e cycles d'évaluation sur la Belgique&nbsp;; rapport de conformité, 101e réunion plénière, novembre 2025.</li>
+      <li>W. Dewachter, <em>De mythe van de parlementaire democratie</em>, Acco, 2001&nbsp;; F. Verleden, <em>Aux sources de la particratie</em>, CRISP, 2019&nbsp;; S. Depauw, <em>Rebellen in het parlement</em>, Leuven University Press, 2005.</li>
+      <li>CRISP, analyses sur le financement des partis et la Commission de contrôle&nbsp;; ABSP, <em>La réglementation des partis politiques</em>.</li>
+      <li>Tribunal de première instance néerlandophone de Bruxelles, jugement du 7 avril 2025 (Vista, PRO, Oxygène, Collectif Citoyen c. État belge).</li>
+      <li>Données chiffrées du contentieux Fedasil&nbsp;: juridictions du travail et données RTBF 2024.</li>
+    </ol>
+    <p style="margin-top:1.2rem"><em>Avertissement&nbsp;: cet article propose une analyse critique fondée sur des sources publiques, doctrinales et jurisprudentielles. Il ne constitue pas un avis juridique individualisé&nbsp;; toute action contentieuse requiert le conseil d'un avocat.</em></p>
+  </section>
+
+</main>
+
+<footer class="colophon">
+  <div class="colophon-inner">
+    <span>© 2026 — Observatoire citoyen de la démocratie belge</span>
+    <span>Analyse publiée le 12 juin 2026 · fr-BE</span>
+  </div>
+</footer>
+
+<button id="toTop" aria-label="Retour en haut de page">↑</button>
+
+<script>
+  // Barre de progression de lecture
+  const progress = document.getElementById('progress');
+  const toTop = document.getElementById('toTop');
+  function onScroll(){
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    progress.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+    toTop.classList.toggle('visible', h.scrollTop > 700);
+  }
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  toTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+  // Révélation des sections au scroll
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const sections = document.querySelectorAll('.reveal');
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:.08});
+    sections.forEach(s => io.observe(s));
+  } else {
+    sections.forEach(s => s.classList.add('in'));
+  }
+
+  // Compteurs animés sur les chiffres clés
+  function animateCount(el){
+    const target = el.dataset.count;
+    const isDecimal = target.includes(',');
+    const end = parseFloat(target.replace(',', '.'));
+    if (reduceMotion) { el.textContent = target; return; }
+    const dur = 1100, t0 = performance.now();
+    function frame(t){
+      const p = Math.min((t - t0) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const val = end * eased;
+      el.textContent = isDecimal
+        ? val.toFixed(2).replace('.', ',')
+        : Math.round(val).toLocaleString('fr-BE');
+      if (p < 1) requestAnimationFrame(frame);
+      else el.textContent = isDecimal ? target : end.toLocaleString('fr-BE');
+    }
+    requestAnimationFrame(frame);
+  }
+  const counters = document.querySelectorAll('[data-count]');
+  if ('IntersectionObserver' in window) {
+    const cio = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { animateCount(e.target); cio.unobserve(e.target); }
+      });
+    }, {threshold:.4});
+    counters.forEach(c => cio.observe(c));
+  } else {
+    counters.forEach(c => c.textContent = c.dataset.count);
+  }
+</script>
+
+</body>
+</html>
