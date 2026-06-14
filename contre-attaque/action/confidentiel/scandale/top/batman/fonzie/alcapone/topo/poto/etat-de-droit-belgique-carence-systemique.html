@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La carence systémique — Anatomie d'un État de droit qui se dérobe à ses juges (Belgique, 2024–2026)</title>
+<meta name="description" content="Enquête long format sur l'érosion de l'état de droit en Belgique : déni d'exécution des décisions de justice, asphyxie judiciaire, lacunes anticorruption, espace civique et crise carcérale.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1A24;        /* petrol-navy near-black */
+    --petrol:#143B4A;     /* deep teal structural */
+    --paper:#EFECE3;      /* warm institutional paper */
+    --paper-2:#E6E2D7;    /* slightly deeper panel */
+    --seal:#A6311F;       /* oxblood — breach / refusé */
+    --brass:#9C7E3F;      /* muted brass — eyebrows, numerals */
+    --mute:#5A6470;       /* slate grey caption */
+    --line:rgba(14,26,36,.16);
+    --line-strong:rgba(14,26,36,.32);
+    --maxw:720px;
+    --display:"Fraunces",Georgia,serif;
+    --body:"Spectral",Georgia,serif;
+    --mono:"IBM Plex Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:19px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  /* ---------- reading progress ---------- */
+  #progress{
+    position:fixed;top:0;left:0;height:3px;width:0%;
+    background:var(--seal);z-index:100;transition:width .08s linear;
+  }
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--ink);
+    color:var(--paper);
+    padding:clamp(28px,6vw,72px) 24px clamp(44px,7vw,92px);
+    position:relative;
+    overflow:hidden;
+    border-bottom:1px solid rgba(239,236,227,.14);
+  }
+  .hero::after{
+    /* faint grid / blueprint texture */
+    content:"";position:absolute;inset:0;
+    background-image:linear-gradient(rgba(239,236,227,.04) 1px,transparent 1px);
+    background-size:100% 30px;pointer-events:none;mix-blend-mode:overlay;
+  }
+  .hero-inner{max-width:980px;margin:0 auto;position:relative;z-index:2}
+  .kicker{
+    font-family:var(--mono);font-size:12.5px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--brass);
+    display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;
+    margin-bottom:clamp(24px,5vw,46px);
+  }
+  .kicker .dot{width:5px;height:5px;background:var(--seal);border-radius:50%;display:inline-block}
+  .hero h1{
+    font-family:var(--display);
+    font-weight:900;
+    font-size:clamp(40px,8.2vw,92px);
+    line-height:.98;
+    letter-spacing:-.015em;
+    margin:0 0 .42em;
+    max-width:14ch;
+  }
+  .hero h1 em{font-style:italic;font-weight:400;color:var(--brass)}
+  .hero .lede{
+    font-size:clamp(18px,2.3vw,23px);
+    line-height:1.5;color:rgba(239,236,227,.82);
+    max-width:54ch;margin:0;font-weight:400;
+  }
+  /* seal stamp signature */
+  .seal-stamp{
+    position:absolute;top:clamp(18px,5vw,40px);right:clamp(18px,5vw,60px);
+    z-index:3;transform:rotate(-11deg);
+    border:2.5px solid var(--seal);color:var(--seal);
+    padding:10px 16px 8px;border-radius:4px;
+    font-family:var(--mono);text-align:center;line-height:1.15;
+    box-shadow:0 0 0 1px rgba(166,49,31,.25);
+    opacity:.92;
+  }
+  .seal-stamp b{display:block;font-size:16px;letter-spacing:.16em;font-weight:600;text-transform:uppercase}
+  .seal-stamp span{display:block;font-size:9.5px;letter-spacing:.28em;margin-top:3px;opacity:.85}
+  @media (max-width:640px){.seal-stamp{transform:rotate(-8deg) scale(.82);top:14px;right:12px}}
+  /* indicator ledger */
+  .ledger{
+    margin-top:clamp(38px,6vw,64px);
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:1px;background:rgba(239,236,227,.14);
+    border:1px solid rgba(239,236,227,.14);
+  }
+  .ledger .cell{background:var(--ink);padding:20px 18px 18px}
+  .ledger .num{
+    font-family:var(--display);font-weight:600;font-size:clamp(28px,4.4vw,42px);
+    line-height:1;color:var(--paper);letter-spacing:-.01em;
+  }
+  .ledger .num .u{font-family:var(--mono);font-size:.42em;color:var(--brass);font-weight:500;margin-left:3px}
+  .ledger .lbl{
+    font-family:var(--mono);font-size:11px;letter-spacing:.04em;
+    color:rgba(239,236,227,.6);margin-top:9px;line-height:1.35;text-transform:uppercase;
+  }
+  @media (max-width:720px){.ledger{grid-template-columns:repeat(2,1fr)}}
+  /* ---------- ARTICLE BODY ---------- */
+  main{padding:clamp(40px,7vw,90px) 24px}
+  .col{max-width:var(--maxw);margin:0 auto}
+  .standfirst{
+    font-family:var(--display);font-weight:400;font-style:italic;
+    font-size:clamp(21px,3vw,27px);line-height:1.45;
+    color:var(--petrol);margin:0 0 2.4em;
+    padding-bottom:1.4em;border-bottom:1px solid var(--line);
+  }
+  .byline{
+    font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:var(--mute);
+    margin:0 0 2.6em;display:flex;flex-wrap:wrap;gap:6px 16px;
+  }
+  .byline b{color:var(--ink);font-weight:500}
+  /* section header device */
+  .sec{margin-top:clamp(56px,9vw,108px)}
+  .sec-eyebrow{
+    display:flex;align-items:baseline;gap:16px;margin-bottom:1.1em;
+    flex-wrap:wrap;
+  }
+  .sec-eyebrow .idx{
+    font-family:var(--display);font-weight:900;font-size:clamp(34px,6vw,56px);
+    line-height:.8;color:var(--paper-2);-webkit-text-stroke:1.4px var(--brass);
+    color:transparent;
+  }
+  .sec-eyebrow .tag{
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--seal);border:1px solid var(--seal);border-radius:3px;
+    padding:5px 9px;line-height:1;white-space:nowrap;
+  }
+  .sec-eyebrow .tag.norm{color:var(--petrol);border-color:var(--line-strong)}
+  .sec h2{
+    font-family:var(--display);font-weight:600;
+    font-size:clamp(27px,4.6vw,42px);line-height:1.08;
+    letter-spacing:-.012em;margin:.18em 0 .7em;max-width:20ch;
+  }
+  .sec h3{
+    font-family:var(--display);font-weight:600;font-size:clamp(20px,2.6vw,25px);
+    line-height:1.2;margin:2.1em 0 .55em;color:var(--petrol);
+  }
+  p{margin:0 0 1.25em}
+  .col p a{color:var(--seal);text-underline-offset:3px}
+  strong{font-weight:600}
+  em{font-style:italic}
+  /* drop cap on first para */
+  .dropcap::first-letter{
+    font-family:var(--display);font-weight:900;float:left;
+    font-size:3.5em;line-height:.74;padding:.06em .12em 0 0;color:var(--seal);
+  }
+  /* verdict / pull quote */
+  .verdict{
+    margin:2.2em 0;padding:24px 26px;background:var(--ink);color:var(--paper);
+    border-left:4px solid var(--seal);position:relative;
+  }
+  .verdict .q{
+    font-family:var(--display);font-weight:400;font-style:italic;
+    font-size:clamp(20px,2.7vw,25px);line-height:1.36;margin:0 0 .5em;
+  }
+  .verdict .src{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--brass);text-transform:uppercase}
+  /* RECOUPEMENT — cross-reference box */
+  .recoup{
+    margin:2em 0;border:1px solid var(--line-strong);background:var(--paper-2);
+    border-radius:4px;padding:22px 24px 18px;position:relative;
+  }
+  .recoup::before{
+    content:"⟁ Recoupement dossier";
+    font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--brass);display:block;margin-bottom:.85em;
+    border-bottom:1px dashed var(--line-strong);padding-bottom:.7em;font-weight:600;
+  }
+  .recoup p{font-size:17.5px;line-height:1.55;margin-bottom:.9em}
+  .recoup p:last-child{margin-bottom:0}
+  .recoup .ref{font-family:var(--mono);font-size:11px;color:var(--mute);letter-spacing:.02em}
+  /* data table */
+  .tw{margin:2.2em 0;overflow-x:auto;border:1px solid var(--line-strong)}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:15.5px}
+  caption{
+    font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--mute);text-align:left;padding:12px 14px;background:var(--paper-2);
+    border-bottom:1px solid var(--line-strong);
+  }
+  th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.4}
+  thead th{
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;text-transform:uppercase;
+    font-weight:600;color:var(--petrol);background:rgba(20,59,74,.06);
+  }
+  tbody tr:last-child td{border-bottom:none}
+  td .hl{color:var(--seal);font-weight:600}
+  td.mono,th.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+  /* inline figure stat */
+  .statline{
+    display:flex;flex-wrap:wrap;gap:1px;margin:2em 0;
+    background:var(--line);border:1px solid var(--line);
+  }
+  .statline .s{flex:1 1 130px;background:var(--paper);padding:16px 16px 14px}
+  .statline .s .n{font-family:var(--display);font-weight:900;font-size:clamp(24px,3.4vw,32px);color:var(--seal);line-height:1}
+  .statline .s .t{font-family:var(--mono);font-size:11px;color:var(--mute);margin-top:8px;line-height:1.35;text-transform:uppercase;letter-spacing:.02em}
+  /* footnote-ish source note */
+  .note{
+    font-size:16px;color:var(--mute);font-style:italic;
+    border-left:2px solid var(--brass);padding-left:16px;margin:2em 0;line-height:1.5;
+  }
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--ink);color:rgba(239,236,227,.72);
+    padding:clamp(48px,7vw,80px) 24px clamp(36px,5vw,56px);margin-top:clamp(60px,9vw,110px);
+  }
+  .foot-col{max-width:var(--maxw);margin:0 auto}
+  footer h4{
+    font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--brass);margin:0 0 1.1em;font-weight:600;
+  }
+  footer p{font-size:16px;line-height:1.6;color:rgba(239,236,227,.72)}
+  .src-grid{
+    margin-top:1.4em;display:grid;grid-template-columns:1fr 1fr;gap:.4em 28px;
+    font-family:var(--mono);font-size:12.5px;color:rgba(239,236,227,.6);line-height:1.5;
+  }
+  .src-grid span{padding:5px 0;border-bottom:1px solid rgba(239,236,227,.1)}
+  @media (max-width:600px){.src-grid{grid-template-columns:1fr}}
+  .foot-meta{
+    margin-top:2.6em;padding-top:1.4em;border-top:1px solid rgba(239,236,227,.16);
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:rgba(239,236,227,.5);
+    display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between;
+  }
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+  /* small screens body size */
+  @media (max-width:600px){body{font-size:18px}.recoup p{font-size:16.5px}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="hero">
+  <div class="seal-stamp" aria-hidden="true"><b>Carence<br>systémique</b><span>CEDH · Art. 46</span></div>
+  <div class="hero-inner">
+    <div class="kicker">
+      <span>Dossier</span><span class="dot"></span>
+      <span>État de droit</span><span class="dot"></span>
+      <span>Belgique 2024–2026</span>
+    </div>
+    <h1>L'État qui se dérobe à <em>ses propres</em> juges</h1>
+    <p class="lede">Longtemps citée comme un modèle de stabilité européenne, la Belgique est désormais classée parmi les démocraties occidentales en recul. Au cœur du diagnostic : un exécutif qui assume publiquement de ne pas exécuter les décisions de justice qui le condamnent.</p>
+
+    <div class="ledger" aria-label="Indicateurs clés">
+      <div class="cell"><div class="num" data-count="17000" data-suffix="+">0</div><div class="lbl">ordonnances Fedasil restées inexécutées</div></div>
+      <div class="cell"><div class="num" data-count="278.5" data-decimals="1"><span class="pre"></span>0<span class="u">M€</span></div><div class="lbl">astreintes accumulées (fin 2024)</div></div>
+      <div class="cell"><div class="num" data-count="124" data-suffix="%">0</div><div class="lbl">taux d'occupation des prisons</div></div>
+      <div class="cell"><div class="num"><span data-count="8">0</span>/22</div><div class="lbl">recommandations GRECO 5ᵉ cycle satisfaites</div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <article class="col">
+    <p class="byline"><b>Enquête de synthèse</b><span>Recherche citoyenne · démocratie belge</span><span>14 juin 2026</span><span>≈ 18 min de lecture</span></p>
+
+    <p class="standfirst">Quatre crises, un même fil rouge. Entre l'accueil des demandeurs d'asile, l'asphyxie des tribunaux, les lacunes anticorruption et la surpopulation carcérale, ce n'est pas la gravité isolée d'un pilier qui inquiète les vigies européennes — c'est la dimension transversale qui les relie : la rupture, assumée, entre l'autorité de la chose jugée et la volonté de l'exécutif.</p>
+
+    <p class="dropcap">L'analyse de l'état de droit en Belgique révèle une dynamique où la solidité historique des institutions se heurte à des défaillances devenues structurelles. Le constat ne provient plus de cercles militants isolés : il converge depuis les rapports de la Commission européenne, du Conseil de l'Europe, de l'Institut fédéral pour la protection et la promotion des droits humains (FIRM-IFDH) et d'organisations indépendantes qui rangent désormais le pays parmi les démocraties affichant des signes préoccupants de stagnation, voire de recul, sur plusieurs dimensions essentielles.</p>
+
+    <p>La tension est devenue frontale entre, d'un côté, des décisions de justice contraignantes et, de l'autre, une inertie — ou une résistance délibérée — du pouvoir exécutif. Elle se double d'un sous-financement chronique de l'appareil judiciaire, de réformes législatives contestées et d'un cadre de lutte contre la corruption dont la mise en œuvre est jugée insuffisante par les instances internationales. Cet article reprend le diagnostic posé dans une analyse approfondie de l'état de droit belge et le recoupe, à chaque étape, avec les pièces réunies dans le dossier de recherche : chiffres consolidés, jurisprudence, données de terrain.</p>
+
+    <!-- SECTION 1 -->
+    <section class="sec reveal">
+      <div class="sec-eyebrow">
+        <span class="idx">I</span>
+        <span class="tag">Art. 6 §1 · Art. 3 CEDH</span>
+      </div>
+      <h2>Le déni d'exécution : une crise de la séparation des pouvoirs</h2>
+      <p>Le refus persistant et concerté des autorités de se conformer aux décisions de justice nationales et internationales constitue la brèche la plus sévère. Les juridictions belges elles-mêmes ont qualifié cette dérive de pratique <em>délibérée, concertée et persistante</em>, mettant en péril le principe même de la séparation des pouvoirs et le droit à un recours effectif.</p>
+
+      <h3>De l'accueil des demandeurs d'asile à l'escalade jurisprudentielle</h3>
+      <p>La gestion de l'accueil des personnes demandant la protection internationale en est l'illustration la plus aiguë. Malgré des milliers d'ordonnances enjoignant à l'agence fédérale Fedasil de fournir un hébergement d'urgence, l'État s'est installé dans une politique d'inexécution systématique. Deux arrêts de la Cour européenne des droits de l'homme (CEDH) ont fait franchir à cette crise un palier juridique et symbolique majeur.</p>
+      <p>L'arrêt <strong>Camara c. Belgique</strong> (18 juillet 2023) condamne le pays pour violation de l'article 6 §1 — droit à un procès équitable —, constatant un <em>refus caractérisé</em> d'exécuter une décision de justice, qui atteint la substance même du droit de recours. Au titre de l'article 46, la Cour diagnostique une <em>carence systémique</em> : non un retard logistique, mais une rupture organisée.</p>
+      <p>L'arrêt <strong>M.V. et autres c. Belgique</strong> (9 avril 2026) marque un seuil supplémentaire : pour la première fois dans ce contentieux, la CEDH conclut à l'unanimité à une violation de l'article 3 — interdiction des traitements inhumains ou dégradants. Laissés à la rue dans un dénuement total pendant 111 à 338 jours malgré des décisions favorables, les requérants ont été victimes, selon la Cour, d'un système d'exclusion délibéré. La Belgique est en outre condamnée au titre de l'article 34 pour son manque de diligence à exécuter les mesures provisoires ordonnées par Strasbourg.</p>
+
+      <div class="tw">
+        <table>
+          <caption>Arrêt M.V. et autres c. Belgique — CEDH, 9 avril 2026</caption>
+          <thead><tr><th>Requérant</th><th class="mono">Privation d'hébergement (j)</th><th class="mono">Délai d'exécution mesure provisoire (j)</th><th>Violations constatées</th></tr></thead>
+          <tbody>
+            <tr><td>Requérant 1</td><td class="mono">111</td><td class="mono">21</td><td>Art. 3 · 6 §1 · 34</td></tr>
+            <tr><td>Requérant 2</td><td class="mono">134</td><td class="mono">107</td><td>Art. 3 · 6 §1 · 34</td></tr>
+            <tr><td>Requérant 3</td><td class="mono">212</td><td class="mono">261</td><td>Art. 3 · 6 §1 · 34</td></tr>
+            <tr><td>Requérant 4</td><td class="mono"><span class="hl">338</span></td><td class="mono">64</td><td>Art. 3 · 6 §1 · 34</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Les rapports de terrain d'Amnesty International et d'autres organisations de la société civile documentent l'impact humain : des demandeurs d'asile livrés à eux-mêmes dans les rues de Bruxelles, dormant sur des cartons, privés d'accès à l'assainissement de base.</p>
+
+      <div class="recoup reveal">
+        <p>Le document source chiffre les astreintes <em>encore dues</em> à 6,6 M€. Le dossier de recherche restitue la dynamique réelle : depuis octobre 2021, l'État et Fedasil ont été condamnés <strong>plus de 16 000 fois</strong>, le cumul des astreintes atteignant <strong>278,5 M€</strong> (données RTBF 2024). Le montant « encore dû » n'a été ramené à quelques millions <em>ni par paiement, ni par régularisation</em>, mais par contestations systématiques et recours à l'article 1412bis du Code judiciaire — l'insaisissabilité des biens publics.</p>
+        <p>La ministre de l'Asile Anneleen Van Bossuyt (N-VA) a déclaré publiquement qu'elle <em>ne peut ni ne veut payer ces astreintes</em>, préférant financer un durcissement migratoire. Faute de paiement volontaire, des huissiers mandatés par les avocats des parties lésées se sont présentés au siège de Fedasil — et jusque dans des cabinets ministériels — pour inventorier mobilier, ordinateurs et matériel en vue d'une vente publique : l'État contraint, par la force publique, de respecter la loi qu'il a lui-même promulguée.</p>
+        <p class="ref">Sources dossier : Evaluation_Etat_de_droit_Belgique_2024-2026 · État Belge — Constats critiques · Dérives et Scandales en Belgique</p>
+      </div>
+
+      <h3>Une fracture interne, et un avertissement inédit du judiciaire</h3>
+      <p>Cette ligne s'inscrit dans un choix politique assumé par la coalition « Arizona » dirigée par Bart De Wever : la feuille de route migratoire prévoit de réduire le volume de demandes traitées de 36 205 en 2025 à 12 000 en 2029. Au sein même de Fedasil, employés et directeurs ont publié une lettre ouverte dénonçant des <em>violations quotidiennes de l'État de droit et de la dignité humaine</em> ; l'exécutif a répondu par des pressions administratives, jusqu'à des convocations et des menaces de licenciement, déclenchant une grève de solidarité.</p>
+
+      <div class="verdict reveal">
+        <p class="q">En octobre 2025, la Cour de cassation, le Collège des procureurs généraux et le Collège des cours et tribunaux publient un communiqué commun — fait sans précédent — dénonçant une atteinte à la séparation des pouvoirs.</p>
+        <p class="src">Recoupement : crise institutionnelle entre pouvoirs, octobre 2025</p>
+      </div>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section class="sec reveal">
+      <div class="sec-eyebrow">
+        <span class="idx">II</span>
+        <span class="tag norm">Délai raisonnable · Indépendance</span>
+      </div>
+      <h2>La justice asphyxiée : budget, effectifs et lignes de fracture</h2>
+      <p>Le système judiciaire belge conserve un niveau élevé d'indépendance perçue — 64 % auprès du public, 72 % auprès des entreprises. Mais son efficacité opérationnelle est compromise par un sous-financement chronique, un déficit d'attractivité des fonctions de magistrat et des réformes qui menacent l'équilibre des pouvoirs.</p>
+      <p>Le déclenchement, en juin 2024, d'une procédure de déficit excessif par l'Union européenne place le pays sous forte contrainte budgétaire. L'accord de gouvernement vise à ramener le déficit sous 3 % d'ici 2030 — un cap qui s'oppose frontalement au refinancement massif de la justice réclamé de longue date pour résorber l'arriéré.</p>
+
+      <div class="tw">
+        <table>
+          <caption>Démographie judiciaire — Belgique vs Europe</caption>
+          <thead><tr><th>Indicateur</th><th class="mono">Belgique</th><th class="mono">Médiane / moyenne UE</th></tr></thead>
+          <tbody>
+            <tr><td>Juges pour 100 000 hab.</td><td class="mono">13,2 – 14,4</td><td class="mono">17,6 / 22,2</td></tr>
+            <tr><td>Procureurs pour 100 000 hab.</td><td class="mono">7,3</td><td class="mono">15,2</td></tr>
+            <tr><td>Déficit statutaire de magistrats à recruter</td><td class="mono"><span class="hl">258</span></td><td class="mono">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>La pénurie de personnel et de moyens engendre des délais déraisonnables, au point que certains procès ont été reportés jusqu'en 2040 dans l'arrondissement de Bruxelles. La revalorisation statutaire (loi du 12 mai 2024) et la transition numérique — pointée comme tardive par la Cour des comptes en décembre 2024 — n'ont pas inversé la tendance.</p>
+
+      <div class="recoup reveal">
+        <p>Le dossier précise l'ampleur du gouffre : le Collège des cours et tribunaux estime qu'il faudrait <strong>augmenter les effectifs de 43 %</strong> pour résorber l'arriéré et garantir le respect du délai raisonnable — dont le dépassement vaut à la Belgique des condamnations régulières par la CEDH. Le budget de la justice reste sous la médiane des pays du Conseil de l'Europe. L'asphyxie financière n'est pas un détail technique : elle se traduit par un déni de justice de fait pour le justiciable ordinaire.</p>
+        <p class="ref">Sources dossier : Belgique — Démocratie, État de droit, Opacité</p>
+      </div>
+
+      <h3>Le transfert de gestion, ou la discipline en monnaie d'échange</h3>
+      <p>Le gouvernement maintient son intention de transférer la gestion des budgets de personnel vers le pouvoir judiciaire (Entité Cassation, Collège des cours et tribunaux, Collège des procureurs généraux). Mais la ministre de la Justice conditionne ce transfert à une réforme du droit disciplinaire et de l'évaluation des magistrats — corrélation vivement contestée par le Conseil supérieur de la Justice et la Cour de cassation, qui y décèlent un risque de pression indirecte de l'exécutif sur les magistrats du siège. La coalition prévoit par ailleurs l'audition parlementaire des candidats à la Cour constitutionnelle, et de nouvelles règles pour le Conseil du Contentieux des Étrangers que le FIRM-IFDH craint de voir affaiblir l'indépendance d'une instance déjà au cœur des tensions migratoires.</p>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section class="sec reveal">
+      <div class="sec-eyebrow">
+        <span class="idx">III</span>
+        <span class="tag">GRECO · 4ᵉ &amp; 5ᵉ cycles</span>
+      </div>
+      <h2>Anticorruption : l'inertie érigée en méthode</h2>
+      <p>L'efficacité des politiques de prévention de la corruption suscite de sérieuses réserves du Groupe d'États contre la corruption (GRECO) du Conseil de l'Europe. Deux rapports d'évaluation confirment des retards importants dans l'implémentation des standards européens d'intégrité.</p>
+
+      <div class="tw">
+        <table>
+          <caption>Conformité GRECO — bilan</caption>
+          <thead><tr><th>Cycle</th><th class="mono">Recos</th><th class="mono">Satisfaites</th><th>Griefs principaux</th></tr></thead>
+          <tbody>
+            <tr><td>4ᵉ — Parlementaires, juges, procureurs</td><td class="mono">15</td><td class="mono">8</td><td>Inertie parlementaire sur cadeaux et lobbying ; règles de répartition des dossiers</td></tr>
+            <tr><td>5ᵉ — Exécutif central, forces de l'ordre</td><td class="mono">22</td><td class="mono"><span class="hl">8</span></td><td>Progrès « minimaux » : cabinets, ministres, lobbying, pantouflage</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Du côté législatif, les recommandations adressées aux parlementaires n'ont été suivies que dans une <em>mesure très limitée</em> ; la transparence des relations avec les lobbyistes et la réglementation des cadeaux restent des questions ouvertes depuis 2014. Du côté exécutif, le GRECO qualifie les progrès de <em>minimaux</em> : déclarations de patrimoine peu contrôlées, absence de mécanismes de sanction éthique réels.</p>
+
+      <div class="recoup reveal">
+        <p>Le dossier identifie le point de bascule du modèle belge : l'hypertrophie des <strong>cabinets ministériels</strong>. Là où d'autres démocraties s'appuient sur une administration neutre, les ministres belges s'entourent de centaines de collaborateurs recrutés sur la seule <em>confiance politique</em>, sans procédure de sélection formelle ni vérification d'intégrité — la « zone grise » du pouvoir que ciblent les recommandations i, ii et iii du 5ᵉ cycle, restées partiellement ou totalement lettre morte.</p>
+        <p>Le GRECO rejette l'argument belge selon lequel le contrôle politique tiendrait lieu de contrôle éthique : dans un système de coalition, sanctionner un ministre partenaire menace la survie du gouvernement. L'impunité déontologique y est donc <em>structurellement garantie par l'instabilité</em>. Quant au pantouflage, la loi du 6 août 1931 sur les incompatibilités des anciens ministres n'a jamais été appliquée ; les avis de la Commission fédérale de déontologie (quarantaine de 2 ans, entretiens de sortie) n'ont pas été légiférés.</p>
+        <p class="ref">Sources dossier : Asymétrie d'information et opacité institutionnelle · Lobbying et Pantouflage en Belgique · Belgique — Démocratie, État de droit, Opacité</p>
+      </div>
+
+      <h3>Le socle souterrain : la particratie et son financement</h3>
+      <p>Ces lacunes ne flottent pas dans le vide : elles reposent sur une architecture de pouvoir que la science politique décrit comme un type idéal de <em>particratie</em>. Le diagnostic anticorruption et le diagnostic démocratique se rejoignent ici.</p>
+
+      <div class="statline reveal">
+        <div class="s"><div class="n">108,7 M€</div><div class="t">financement public annuel des partis (2026)</div></div>
+        <div class="s"><div class="n">≈ 87 %</div><div class="t">part du public dans le financement des partis</div></div>
+        <div class="s"><div class="n">99,73 %</div><div class="t">alignement des votes parlementaires</div></div>
+      </div>
+
+      <p>La loi du 4 juillet 1989, conçue pour assainir la vie publique après les scandales politico-financiers, a substitué aux dons privés un système de dotations publiques massives. En trois décennies, l'outil de moralisation s'est mué en rente de situation : le contrôle de ces budgets est confié à une commission composée des parlementaires des partis qu'elle est censée auditer — un <em>financement par les partis, contrôlé par les partis</em>. Cette manne agit comme une barrière à l'entrée protégeant les formations installées. Et elle entre en tension directe avec l'article 42 de la Constitution, qui garantit au parlementaire un <strong>mandat libre</strong> : la discipline de vote quasi totale subordonne en fait l'élu aux états-majors, sous peine d'exclusion des listes — un « arrêt de mort politique ».</p>
+    </section>
+
+    <!-- SECTION 4 -->
+    <section class="sec reveal">
+      <div class="sec-eyebrow">
+        <span class="idx">IV</span>
+        <span class="tag">Art. 25 Const. · Anti-SLAPP</span>
+      </div>
+      <h2>Espace civique et médias : des garanties à géométrie variable</h2>
+      <p>Le paysage médiatique belge bénéficie de garanties constitutionnelles historiques, mais des réformes et des pratiques juridiques en modifient l'équilibre. Le 21 mai 2026, le Parlement fédéral a transposé la directive européenne anti-SLAPP, protégeant les participants au débat public contre les poursuites-bâillons. La loi belge dépasse même les exigences minimales en étendant les garanties aux affaires civiles purement internes.</p>
+      <p>Mais le texte comporte une faille majeure, dénoncée par les syndicats de journalistes, le Conseil supérieur de la Justice et le FIRM-IFDH : <strong>il exclut totalement les procédures pénales</strong>. Or, en Belgique, une entreprise ou une personnalité peut contourner le filtre civil en lançant une poursuite pénale pour diffamation — par citation directe ou plainte avec constitution de partie civile. L'omission risque d'inciter les plaignants de mauvaise foi à privilégier la voie pénale, maintenant l'effet dissuasif sur le débat démocratique.</p>
+
+      <h3>L'affaire Conner Rousseau : la censure préventive ressuscitée</h3>
+      <p>Fin 2023, le président de Vooruit obtient d'un juge des référés, par requête unilatérale, l'interdiction préventive — sous astreinte de 1 000 € par heure — faite à deux rédactions de publier des informations sur un procès-verbal le concernant. Les constitutionnalistes y voient unanimement une violation caractérisée de l'article 25 de la Constitution, qui pose l'interdiction absolue de la censure préventive : l'illustration de la propension de certains magistrats à s'affranchir de garanties séculaires au nom d'intérêts personnels d'acteurs politiques majeurs.</p>
+
+      <div class="recoup reveal">
+        <p>Le dossier replace ces deux signaux dans un environnement médiatique fragilisé. Le Media Pluralism Monitor classe la Belgique en risque <em>élevé</em> sur la concentration : la fusion Rossel-IPM (2025) portera à <strong>≈ 94 %</strong> la part d'un acteur unique sur la presse quotidienne francophone — une situation jugée sans équivalent en Europe par la Fédération européenne des journalistes.</p>
+        <p>C'est la presse spécialisée (Médor, Apache, Le Vif, Knack) qui a porté l'essentiel des révélations — Publifin/Nethys, Samusocial, Reynders — et c'est elle qui a été la cible répétée de SLAPP. En parallèle, la confiance dans les partis est tombée à <strong>22 %</strong> en Wallonie, et l'abstention a atteint un record de 12,5 % en juin 2024 : la défiance monte, mais la connaissance fine des dysfonctionnements structurels reste minoritaire et fragmentée par la frontière linguistique.</p>
+        <p class="ref">Sources dossier : Belgique — Conscience démocratique et rôle des médias</p>
+      </div>
+    </section>
+
+    <!-- SECTION 5 -->
+    <section class="sec reveal">
+      <div class="sec-eyebrow">
+        <span class="idx">V</span>
+        <span class="tag">Art. 3 · Art. 5 CEDH</span>
+      </div>
+      <h2>Prisons : la surpopulation et la tentation de l'externalisation</h2>
+      <p>Le système pénitentiaire traverse une crise chronique, plusieurs fois sanctionnée par la CEDH. Au second semestre 2025, la population carcérale a atteint un pic historique de 13 397 détenus pour 10 795 places.</p>
+
+      <div class="tw">
+        <table>
+          <caption>Indicateurs pénitentiaires — Belgique 2025-2026</caption>
+          <thead><tr><th>Indicateur</th><th class="mono">Belgique</th><th class="mono">Standard UE</th></tr></thead>
+          <tbody>
+            <tr><td>Taux d'occupation</td><td class="mono"><span class="hl">124 – 125 %</span></td><td class="mono">&lt; 100 %</td></tr>
+            <tr><td>Taux de détention préventive</td><td class="mono">32 %</td><td class="mono">24,7 %</td></tr>
+            <tr><td>Détenus dormant au sol</td><td class="mono">~ 614 – 700</td><td class="mono">0</td></tr>
+            <tr><td>Durée moyenne d'incarcération</td><td class="mono">9,9 mois</td><td class="mono">8,2 mois</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>S'y ajoute l'insuffisance de soins pour les personnes internées, faute de places en psychiatrie légale — un maintien en détention que la CEDH a jugé contraire à l'article 5. La loi d'urgence du 18 juillet 2025 (libérations anticipées, surveillance électronique) a été critiquée par le Conseil pénitentiaire comme une solution temporaire qui n'attaque pas les causes profondes.</p>
+      <p>Dans ce contexte, le gouvernement a proposé d'externaliser la détention en louant ou construisant des prisons à l'étranger pour y incarcérer les personnes condamnées en situation irrégulière (≈ 31 % des détenus). Le Mécanisme national de prévention y voit une menace pour le maintien des liens familiaux, l'accès à l'assistance médicale et juridique, et la capacité même de la Belgique à garantir un contrôle indépendant hors de ses frontières.</p>
+    </section>
+
+    <!-- SECTION 6 -->
+    <section class="sec reveal">
+      <div class="sec-eyebrow">
+        <span class="idx">VI</span>
+        <span class="tag norm">Art. 23 Const. · Dignité</span>
+      </div>
+      <h2>Le coût humain : quand l'État fabrique des exclus</h2>
+      <p>Le document source s'arrête au seuil des grandes institutions. Le dossier de recherche, lui, suit la chaîne causale jusqu'à son terme : le justiciable ordinaire. Car la même logique — une action publique qui se soustrait à ses obligations — produit une « violence institutionnelle silencieuse ». Le non-recours aux droits sociaux en est la mesure la plus crue.</p>
+
+      <div class="statline reveal">
+        <div class="s"><div class="n">37–51 %</div><div class="t">des éligibles ne perçoivent pas le revenu d'intégration (RIS)</div></div>
+        <div class="s"><div class="n">≈ 50 %</div><div class="t">des aînés pauvres éligibles n'accèdent pas à la GRAPA</div></div>
+        <div class="s"><div class="n">77 %</div><div class="t">des +65 ans éligibles à l'allocation chauffage, laissés pour compte</div></div>
+        <div class="s"><div class="n">0,3 %</div><div class="t">part de la fraude sociale détectée dans le budget de la sécu</div></div>
+      </div>
+
+      <div class="recoup reveal">
+        <p>Le contraste est le cœur de la démonstration : un État qui déploie des moyens massifs pour traquer une fraude sociale représentant <strong>0,3 %</strong> du budget, tout en tolérant un non-recours qui touche jusqu'à la moitié des plus vulnérables — et qui génère, de fait, des milliards d'économies cyniques. Des chercheurs (Philippe Warin, Service interfédéral de lutte contre la pauvreté) proposent d'abandonner le terme « non-recours », qui fait peser la faute sur l'individu, au profit d'<em>ineffectivité des droits</em> : la charge de la preuve et l'obligation de proactivité reviennent aux pouvoirs publics, non au citoyen épuisé par des seuils administratifs byzantins.</p>
+        <p>Le résultat est une <strong>dépossession citoyenne</strong> : perte du pouvoir d'agir, invisibilisation dans les bases de données de l'État, érosion de la confiance dans les fondements mêmes de l'État de droit. La boucle se referme : l'inexécution des décisions de justice et la défaillance de l'accès aux droits sont deux symptômes du même décrochage.</p>
+        <p class="ref">Sources dossier : Non-recours aux droits en Belgique — dépossessions · Analyse critique des recours juridiques belges (TAKE, BELMOD)</p>
+      </div>
+    </section>
+
+    <!-- SECTION 7 -->
+    <section class="sec reveal">
+      <div class="sec-eyebrow">
+        <span class="idx">VII</span>
+        <span class="tag norm">Synthèse</span>
+      </div>
+      <h2>Perspectives : replacer la légalité au centre</h2>
+      <p>L'analyse transversale met en évidence une fragilisation des piliers démocratiques sous l'effet conjugué de crises budgétaires et de choix politiques axés sur la fermeté administrative. L'indépendance de la magistrature demeure globalement préservée — mais le déni d'exécution en matière d'accueil et l'asphyxie des cours et tribunaux constituent des menaces majeures pour l'équilibre des pouvoirs.</p>
+      <p>La condamnation historique de 2026 sous l'angle de l'article 3 confirme que le gouvernement ne peut plus s'abriter derrière l'argument d'une simple « crise logistique » pour justifier le non-respect de la chose jugée. L'exclusion du volet pénal de la loi anti-SLAPP, la persistance de la surpopulation carcérale et l'ineffectivité massive des droits sociaux témoignent d'une même réticence : appliquer de façon cohérente et complète les standards de protection des droits fondamentaux.</p>
+
+      <div class="verdict reveal">
+        <p class="q">Pour restaurer sa crédibilité démocratique, l'État belge se trouve face à une obligation simple à formuler, exigeante à tenir : replacer le respect de la légalité et des décisions de justice au centre de ses politiques publiques — et garantir un refinancement structurel de son système judiciaire et pénitentiaire.</p>
+        <p class="src">Conclusion</p>
+      </div>
+
+      <p class="note">Le GRECO impose à la Belgique de remettre un rapport de situation détaillé au plus tard le 30 novembre 2026. La prochaine échéance n'est pas seulement un délai administratif : elle dira si le décrochage diagnostiqué par toutes les vigies européennes commence enfin à se résorber — ou s'il s'installe comme un mode de gouvernement.</p>
+    </section>
+  </article>
+</main>
+
+<footer>
+  <div class="foot-col">
+    <h4>Note méthodologique</h4>
+    <p>Cet article reprend le diagnostic d'une analyse approfondie de l'état de droit en Belgique (2024-2026) et le recoupe avec les pièces du dossier de recherche citoyen. Les blocs « Recoupement dossier » signalent les données ajoutées par croisement de sources. Le document n'a pas valeur d'avis juridique ; les jugements de valeur, lorsqu'ils apparaissent, relèvent de la posture de la recherche citoyenne. Les personnalités citées le sont à partir de sources publiques.</p>
+
+    <h4 style="margin-top:2.4em">Sources primaires mobilisées</h4>
+    <div class="src-grid">
+      <span>CEDH — Camara c. Belgique (2023)</span>
+      <span>CEDH — M.V. et autres c. Belgique (2026)</span>
+      <span>GRECO — 4ᵉ &amp; 5ᵉ cycles d'évaluation</span>
+      <span>Commission européenne — Rapports État de droit</span>
+      <span>FIRM-IFDH — Rapport État de droit 2025</span>
+      <span>Constitution belge — art. 23, 25, 42</span>
+      <span>Loi du 4 juillet 1989 (financement des partis)</span>
+      <span>Conseil pénitentiaire — Avis 2025</span>
+      <span>Media Pluralism Monitor 2024</span>
+      <span>Service interfédéral de lutte contre la pauvreté</span>
+      <span>Amnesty International Belgique</span>
+      <span>Cour des comptes (déc. 2024)</span>
+    </div>
+
+    <div class="foot-meta">
+      <span>Dossier · Démocratie belge à l'épreuve</span>
+      <span>Version au 14 juin 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* reading progress */
+  var bar = document.getElementById("progress");
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var p = max > 0 ? (h.scrollTop || document.body.scrollTop) / max : 0;
+    bar.style.width = (p*100).toFixed(2) + "%";
+  }
+  document.addEventListener("scroll", onScroll, {passive:true});
+  onScroll();
+
+  /* count-up for ledger numbers */
+  function formatNum(val, decimals){
+    if(decimals){
+      return val.toFixed(decimals).replace(".", ",");
+    }
+    // thousands separator (thin space)
+    return Math.round(val).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "\u202F");
+  }
+  function animateCount(el){
+    var target = parseFloat(el.getAttribute("data-count"));
+    var decimals = parseInt(el.getAttribute("data-decimals")||"0",10);
+    var suffix = el.getAttribute("data-suffix")||"";
+    // preserve trailing markup (unit spans) by only writing into text node
+    var unitHtml = "";
+    var unitEl = el.querySelector(".u");
+    if(unitEl){ unitHtml = unitEl.outerHTML; }
+    if(reduce){
+      el.firstChild ? null : null;
+      el.innerHTML = formatNum(target, decimals) + suffix + unitHtml;
+      return;
+    }
+    var dur = 1400, start = null;
+    function step(ts){
+      if(!start) start = ts;
+      var t = Math.min((ts-start)/dur, 1);
+      var eased = 1 - Math.pow(1-t, 3);
+      el.innerHTML = formatNum(target*eased, decimals) + suffix + unitHtml;
+      if(t < 1) requestAnimationFrame(step);
+      else el.innerHTML = formatNum(target, decimals) + suffix + unitHtml;
+    }
+    requestAnimationFrame(step);
+  }
+  var ledgerNums = document.querySelectorAll(".ledger .num[data-count], .ledger .num [data-count]");
+  // run after slight delay for hero presence
+  setTimeout(function(){
+    ledgerNums.forEach(function(el){ animateCount(el); });
+  }, 350);
+
+  /* scroll reveal */
+  if("IntersectionObserver" in window && !reduce){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, {threshold:0.12, rootMargin:"0px 0px -8% 0px"});
+    document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll(".reveal").forEach(function(el){ el.classList.add("in"); });
+  }
+})();
+</script>
+</body>
+</html>
