@@ -1,410 +1,809 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Particratie vs Mandat Libre | Analyse Constitutionnelle</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-main: #f9f7f2;
-            --accent-gold: #c5a059;
-            --text-dark: #2c2c2c;
-            --card-bg: #ffffff;
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arizona : qui s'entend, qui se déchire, qui décide — la salle des machines du gouvernement De Wever</title>
+<meta name="description" content="Anatomie des relations de pouvoir au sein de la coalition Arizona (gouvernement De Wever, 2025-2026) : la méthode du « masseur », la carte des alliances et inimitiés, et l'attribution des responsabilités dossier par dossier.">
+<meta name="author" content="ouaisfieu">
+<link rel="canonical" href="https://ouaisfieu.github.io/politique-belge/arizona/bonus/">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fr_BE">
+<meta property="og:site_name" content="ouaisfieu — politique belge">
+<meta property="og:title" content="Arizona : qui s'entend, qui se déchire, qui décide">
+<meta property="og:description" content="La salle des machines de la coalition De Wever : méthode du « masseur », carte des alliances et inimitiés, attribution des responsabilités dossier par dossier.">
+<meta property="og:url" content="https://ouaisfieu.github.io/politique-belge/arizona/bonus/">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Arizona : qui s'entend, qui se déchire, qui décide">
+<meta name="twitter:description" content="La salle des machines de la coalition De Wever : relations interpersonnelles et attribution des responsabilités (2025-2026).">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Arizona : qui s'entend, qui se déchire, qui décide — la salle des machines du gouvernement De Wever",
+      "description": "Anatomie des relations de pouvoir au sein de la coalition Arizona : méthode du « masseur », carte des alliances et inimitiés, attribution des responsabilités dossier par dossier.",
+      "author": { "@type": "Organization", "name": "ouaisfieu" },
+      "publisher": { "@type": "Organization", "name": "ouaisfieu" },
+      "datePublished": "2026-06-23",
+      "dateModified": "2026-06-23",
+      "inLanguage": "fr-BE",
+      "mainEntityOfPage": "https://ouaisfieu.github.io/politique-belge/arizona/bonus/",
+      "about": [
+        { "@type": "GovernmentOrganization", "name": "Gouvernement De Wever" },
+        { "@type": "Thing", "name": "Coalition Arizona" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Politique belge", "item": "https://ouaisfieu.github.io/politique-belge/" },
+        { "@type": "ListItem", "position": 2, "name": "Coalition Arizona", "item": "https://ouaisfieu.github.io/politique-belge/arizona/" },
+        { "@type": "ListItem", "position": 3, "name": "Bonus : la salle des machines", "item": "https://ouaisfieu.github.io/politique-belge/arizona/bonus/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Pourquoi dit-on que Bart De Wever est un « masseur » ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Parce qu'il décrit lui-même sa méthode de gestion des tensions comme un massage : temporiser (« attendre que l'affaire se tasse »), morceler les dossiers entre kern et réunions bilatérales, et apaiser les egos plutôt que trancher. Le journaliste Ivan De Vadder (VRT) le compare à Wilfried Martens, qui cherchait le compromis, plutôt qu'à Jean-Luc Dehaene, qui forçait la décision. La méthode désamorce les crises mais reporte les arbitrages au lieu de les résoudre." }
+        },
+        {
+          "@type": "Question",
+          "name": "Quelle est la relation entre Georges-Louis Bouchez et Conner Rousseau ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "C'est l'inimitié la plus ancienne et la mieux documentée de la coalition. Dès août 2024, Bouchez (MR) a qualifié Rousseau (Vooruit) de « petit gamin » ; Melissa Depraetere (Vooruit) a en retour présenté Bouchez comme un partenaire indigne de confiance. La presse y voit une dimension générationnelle, ces deux jeunes présidents s'opposant là où De Wever et Prévot, d'une autre génération, s'entendent bien." }
+        },
+        {
+          "@type": "Question",
+          "name": "Qui a porté la réforme des pensions (le « malus Jambon ») ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "La réforme est le chantier de Jan Jambon (N-VA), adoptée à la Chambre dans la nuit du 28 au 29 mai 2026. Elle instaure un malus pour qui n'a pas travaillé un nombre minimal de jours sur au moins 35 ans. Vooruit, qui visait une pension minimale renforcée, est accusé par le PTB d'avoir cédé. Le Conseil d'État avait freiné le projet et les syndicats (FGTB, CSC) ont annoncé ou introduit des recours." }
+        },
+        {
+          "@type": "Question",
+          "name": "Qui a obtenu la taxe sur les plus-values ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "C'est le trophée de Vooruit et de Conner Rousseau, une condition de son entrée dans la coalition. Cette contribution de solidarité de 10 % sur les plus-values financières est entrée en vigueur le 1er janvier 2026 et a été votée à la Chambre dans la nuit du 3 au 4 avril 2026, contre l'opposition du MR. Rousseau a refusé de relever l'exonération que réclamait le CD&V." }
+        },
+        {
+          "@type": "Question",
+          "name": "Pourquoi la ministre Verlinden a-t-elle été « contournée » ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Le 16 mars 2026, après l'attentat de la synagogue de Liège, les ministres Bernard Quintin (Intérieur, MR) et Theo Francken (Défense, N-VA) ont annoncé le déploiement de militaires devant des sites juifs sans concertation avec Annelies Verlinden (Justice, CD&V). Le déploiement était jusque-là lié à un plan contre la surpopulation carcérale bloqué par le MR. Verlinden a réagi en demandant à chacun de « se regarder dans le miroir »." }
+        },
+        {
+          "@type": "Question",
+          "name": "Quelle est la principale ligne de faille de la coalition Arizona ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Au-delà du clivage gauche-droite, la fracture la plus vive est communautaire et culturelle : sur les dossiers internationaux et éthiques (Russie, Gaza, IVG, sécurité), une vision portée notamment par Theo Francken et Georges-Louis Bouchez s'oppose à une lecture défendue par Maxime Prévot et Conner Rousseau. C'est sur ces dossiers que surviennent les frictions et les contournements les plus spectaculaires." }
         }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-dark);
-        }
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-        }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 350px;
-            max-height: 400px;
-        }
-        .custom-shadow {
-            box-shadow: 0 10px 30px -15px rgba(0,0,0,0.1);
-        }
-        .nav-link {
-            position: relative;
-            transition: color 0.3s ease;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: var(--accent-gold);
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        .verrou-card {
-            transition: transform 0.3s ease;
-        }
-        .verrou-card:hover {
-            transform: translateY(-5px);
-        }
-    </style>
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --ink:#221c17; --ink-soft:#4f463b; --ink-faint:#7a6f60;
+    --paper:#f3ede3; --paper-2:#ece4d6; --card:#f8f3ea; --line:#d8cdb9; --line-2:#c8bca4;
+    --copper:#b04a1a; --copper-deep:#8a3a14; --gold:#cf9425; --blue:#1d3c57; --blue-soft:#356087;
+    --rel-trust:#2f7d57; --rel-fragile:#cf9425; --rel-conflict:#c0392b; --rel-work:#9c8f7b;
+    --p-nva:#ffd200; --p-mr:#1763a6; --p-vooruit:#e2231a; --p-cdv:#f47b20; --p-engages:#00b0a6;
+    --p-vb:#a4862b; --p-ptb:#c8102e; --p-ps:#e2001a;
+    --maxw:1180px; --read:74ch;
+    --shadow:0 1px 2px rgba(34,28,23,.06), 0 8px 28px rgba(34,28,23,.07);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation:none!important;transition:none!important} }
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    font-size:18px; line-height:1.7; -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  .progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--copper));z-index:60}
+
+  /* ---- top bar / breadcrumb ---- */
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(243,237,227,.86);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .topbar .in{max-width:var(--maxw);margin:0 auto;padding:.7rem 1.25rem;display:flex;align-items:center;gap:1rem;justify-content:space-between}
+  .crumb{font-family:"Space Mono",monospace;font-size:.74rem;letter-spacing:.02em;color:var(--ink-faint);display:flex;gap:.45rem;flex-wrap:wrap;align-items:center}
+  .crumb a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid transparent}
+  .crumb a:hover{border-bottom-color:var(--copper)}
+  .crumb .sep{color:var(--line-2)}
+  .backlink{font-family:"Space Mono",monospace;font-size:.74rem;color:var(--copper-deep);text-decoration:none;white-space:nowrap;border:1px solid var(--line-2);padding:.32rem .6rem;border-radius:999px;background:var(--card)}
+  .backlink:hover{border-color:var(--copper);color:var(--copper)}
+
+  /* ---- shell ---- */
+  .shell{max-width:var(--maxw);margin:0 auto;padding:0 1.25rem}
+
+  /* ---- hero ---- */
+  .hero{padding:3.4rem 0 1.4rem;border-bottom:1px solid var(--line)}
+  .hero__eyebrow{font-family:"Space Mono",monospace;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--copper-deep);margin:0 0 1rem}
+  .hero__eyebrow b{color:var(--ink);font-weight:700}
+  .hero h1{
+    font-family:"Fraunces",Georgia,serif;font-weight:600;font-optical-sizing:auto;
+    font-size:clamp(2.1rem,5.6vw,4rem);line-height:1.02;letter-spacing:-.015em;margin:.2rem 0 0;max-width:18ch;
+  }
+  .hero h1 em{font-style:italic;color:var(--copper)}
+  .hero__sub{font-size:clamp(1.05rem,2.2vw,1.32rem);color:var(--ink-soft);max-width:62ch;margin:1.3rem 0 0;line-height:1.55}
+  .hero__meta{display:flex;flex-wrap:wrap;gap:.5rem .9rem;margin-top:1.6rem;font-family:"Space Mono",monospace;font-size:.72rem;color:var(--ink-faint)}
+  .hero__meta span{display:inline-flex;align-items:center;gap:.4rem}
+  .hero__meta .dot{width:6px;height:6px;border-radius:50%;background:var(--copper)}
+
+  /* ---- relationship map ---- */
+  .mapwrap{margin:2.4rem 0 .4rem;background:linear-gradient(170deg,var(--card),var(--paper-2));border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+  .mapwrap figcaption{padding:1rem 1.2rem;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;align-items:baseline}
+  .mapwrap figcaption b{font-family:"Fraunces",serif;font-weight:600;font-size:1.12rem}
+  .mapwrap figcaption span{font-family:"Space Mono",monospace;font-size:.7rem;color:var(--ink-faint)}
+  .map{display:block;width:100%;height:auto;padding:.4rem .6rem}
+  .legend{list-style:none;margin:0;padding:.4rem 1.2rem 1.2rem;display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;font-size:.86rem;color:var(--ink-soft)}
+  .legend li{display:flex;align-items:center;gap:.55rem}
+  .legend i{width:30px;height:0;border-top-width:3px;border-top-style:solid;display:inline-block;flex:none}
+  .lg-trust{border-color:var(--rel-trust)}
+  .lg-fragile{border-color:var(--rel-fragile);border-top-style:dashed}
+  .lg-conflict{border-color:var(--rel-conflict)}
+  .lg-work{border-color:var(--rel-work);opacity:.8}
+
+  /* ---- layout: toc + content ---- */
+  .layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:3rem;padding:2.6rem 0 1rem;align-items:start}
+  .toc{position:sticky;top:74px;font-size:.9rem}
+  .toc__title{font-family:"Space Mono",monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 .8rem;padding-bottom:.6rem;border-bottom:1px solid var(--line)}
+  .toc ol{list-style:none;margin:0;padding:0;counter-reset:t}
+  .toc li{counter-increment:t;margin:.1rem 0}
+  .toc a{display:flex;gap:.6rem;text-decoration:none;color:var(--ink-soft);padding:.34rem .5rem;border-radius:7px;line-height:1.3;transition:background .15s,color .15s}
+  .toc a::before{content:counter(t,decimal-leading-zero);font-family:"Space Mono",monospace;font-size:.72rem;color:var(--ink-faint);flex:none}
+  .toc a:hover{background:var(--paper-2);color:var(--ink)}
+  .toc a.active{background:var(--ink);color:var(--paper)}
+  .toc a.active::before{color:var(--gold)}
+  .toc__toggle{display:none}
+
+  main{min-width:0}
+
+  /* ---- sections ---- */
+  section{padding:2.2rem 0;border-top:1px solid var(--line);scroll-margin-top:80px}
+  section:first-of-type{border-top:0;padding-top:.4rem}
+  .sec-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:1.1rem}
+  .sec-num{font-family:"Space Mono",monospace;font-size:.92rem;font-weight:700;color:var(--copper);flex:none;padding-top:.35rem}
+  h2{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(1.55rem,3.4vw,2.25rem);line-height:1.1;letter-spacing:-.01em;margin:0}
+  h3{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:1.28rem;line-height:1.25;margin:2rem 0 .5rem;color:var(--ink)}
+  h4{font-family:"Inter",sans-serif;font-weight:700;font-size:1.02rem;margin:1.4rem 0 .3rem;color:var(--copper-deep)}
+  p{margin:.7rem 0;max-width:var(--read)}
+  .lead{font-size:1.16rem;color:var(--ink-soft);line-height:1.6;max-width:68ch}
+  ul,ol{max-width:var(--read);padding-left:1.2rem}
+  li{margin:.45rem 0}
+  strong{font-weight:700;color:var(--ink)}
+  em{font-style:italic}
+  a.inl{color:var(--copper-deep);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:2px}
+  a.inl:hover{text-decoration-color:var(--copper)}
+
+  /* ---- party chips ---- */
+  .chip{display:inline-flex;align-items:center;gap:.4rem;font-family:"Space Mono",monospace;font-size:.7rem;font-weight:700;letter-spacing:.02em;padding:.12rem .5rem .12rem .42rem;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--ink);white-space:nowrap;line-height:1.6}
+  .chip::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--c,#999);flex:none}
+  .c-nva{--c:var(--p-nva)} .c-mr{--c:var(--p-mr)} .c-vooruit{--c:var(--p-vooruit)}
+  .c-cdv{--c:var(--p-cdv)} .c-engages{--c:var(--p-engages)} .c-vb{--c:var(--p-vb)}
+  .c-ptb{--c:var(--p-ptb)} .c-ps{--c:var(--p-ps)}
+
+  /* ---- pull quote ---- */
+  .pull{margin:1.8rem 0;padding:0 0 0 1.4rem;border-left:3px solid var(--copper)}
+  .pull blockquote{margin:0;font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:500;font-size:clamp(1.25rem,2.6vw,1.6rem);line-height:1.32;color:var(--ink);max-width:30ch}
+  .pull cite{display:block;margin-top:.7rem;font-style:normal;font-family:"Space Mono",monospace;font-size:.74rem;color:var(--ink-faint);letter-spacing:.01em}
+
+  /* ---- boxes ---- */
+  .box{margin:1.6rem 0;padding:1.1rem 1.25rem;border-radius:12px;border:1px solid var(--line);background:var(--card);max-width:var(--read)}
+  .box p{margin:.4rem 0}
+  .box p:first-child{margin-top:0}
+  .box p:last-child{margin-bottom:0}
+  .box__tag{font-family:"Space Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin:0 0 .5rem!important}
+  .box.risk{border-color:#e0b3a3;background:linear-gradient(0deg,#fbeee7,#f9efe9)}
+  .box.risk .box__tag{color:var(--copper-deep)}
+  .box.note{border-color:var(--line-2);background:var(--paper-2)}
+  .box.note .box__tag{color:var(--blue)}
+  .box.read{border-color:#bcd0c5;background:linear-gradient(0deg,#eef5f0,#f1f6f2)}
+  .box.read .box__tag{color:var(--rel-trust)}
+
+  /* ---- stats ---- */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.9rem;margin:1.6rem 0;max-width:var(--read)}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1rem}
+  .stat b{display:block;font-family:"Fraunces",serif;font-weight:600;font-size:1.7rem;line-height:1;color:var(--copper-deep)}
+  .stat span{display:block;margin-top:.4rem;font-size:.82rem;color:var(--ink-soft);line-height:1.35}
+
+  /* ---- table ---- */
+  .tbl-wrap{overflow-x:auto;margin:1.4rem 0;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+  table{border-collapse:collapse;width:100%;min-width:640px;font-size:.92rem}
+  caption{caption-side:top;text-align:left;padding:.9rem 1rem .2rem;font-family:"Space Mono",monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
+  th,td{text-align:left;padding:.7rem .9rem;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{font-family:"Space Mono",monospace;font-size:.68rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-faint);background:var(--paper-2);position:sticky;top:0}
+  tbody tr:last-child td{border-bottom:0}
+  td b{color:var(--ink)}
+  .td-issue{color:var(--ink-soft)}
+
+  /* ---- source / flags ---- */
+  .src{font-size:.82rem;color:var(--ink-faint);max-width:var(--read);margin:.6rem 0}
+  .flag{display:inline-block;font-family:"Space Mono",monospace;font-size:.62rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#7a4a12;background:#f4e6cf;border:1px solid #e0c79a;border-radius:5px;padding:.05rem .35rem;vertical-align:.08em}
+
+  /* ---- FAQ ---- */
+  .faq details{border:1px solid var(--line);border-radius:10px;margin:.6rem 0;background:var(--card);max-width:var(--read);overflow:hidden}
+  .faq summary{cursor:pointer;list-style:none;padding:.95rem 1.1rem;font-family:"Fraunces",serif;font-weight:600;font-size:1.06rem;display:flex;justify-content:space-between;gap:1rem;align-items:center}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq .pm{flex:none;width:18px;height:18px;position:relative}
+  .faq .pm::before,.faq .pm::after{content:"";position:absolute;background:var(--copper);border-radius:2px;left:50%;top:50%}
+  .faq .pm::before{width:14px;height:2px;transform:translate(-50%,-50%)}
+  .faq .pm::after{width:2px;height:14px;transform:translate(-50%,-50%);transition:transform .2s}
+  .faq details[open] .pm::after{transform:translate(-50%,-50%) scaleY(0)}
+  .faq .a{padding:0 1.1rem 1.05rem}
+  .faq .a p{margin:.3rem 0}
+
+  /* ---- glossary ---- */
+  .gloss{max-width:var(--read);margin:1.2rem 0;display:grid;gap:.1rem}
+  .gloss dt{font-weight:700;font-family:"Inter",sans-serif;margin-top:.9rem;color:var(--ink)}
+  .gloss dd{margin:.15rem 0 0;color:var(--ink-soft);font-size:.96rem}
+
+  /* ---- footer ---- */
+  .foot{position:relative;margin-top:3rem;background:var(--ink);color:#e9e0d2;overflow:hidden}
+  .foot__sun{position:absolute;right:-120px;top:-120px;width:360px;height:360px;border-radius:50%;
+    background:radial-gradient(circle at center,var(--gold) 0 22%,transparent 23%),
+    conic-gradient(from 0deg, var(--copper) 0 7.69%, transparent 0 15.38%, var(--gold) 0 23.07%, transparent 0 30.76%, var(--copper) 0 38.46%, transparent 0 46.15%, var(--gold) 0 53.84%, transparent 0 61.53%, var(--copper) 0 69.23%, transparent 0 76.92%, var(--gold) 0 84.61%, transparent 0 92.30%, var(--copper) 0 100%);
+    opacity:.16;filter:blur(.3px)}
+  .foot__in{position:relative;max-width:var(--maxw);margin:0 auto;padding:2.6rem 1.25rem;display:grid;grid-template-columns:1.4fr 1fr;gap:2rem}
+  .foot h3{font-family:"Fraunces",serif;font-weight:600;color:#fff;margin:0 0 .5rem;font-size:1.25rem}
+  .foot p{color:#c9bda9;max-width:48ch;font-size:.94rem}
+  .foot a{color:var(--gold);text-decoration:none;border-bottom:1px solid transparent}
+  .foot a:hover{border-bottom-color:var(--gold)}
+  .foot__nav{display:flex;flex-direction:column;gap:.4rem;font-size:.92rem}
+  .foot small{display:block;margin-top:1.4rem;color:#8f8472;font-family:"Space Mono",monospace;font-size:.68rem;line-height:1.6}
+
+  /* ---- back to top ---- */
+  .totop{position:fixed;right:1.1rem;bottom:1.1rem;z-index:40;width:44px;height:44px;border-radius:50%;
+    border:1px solid var(--line-2);background:var(--card);color:var(--ink);cursor:pointer;
+    display:grid;place-items:center;box-shadow:var(--shadow);opacity:0;transform:translateY(10px);transition:opacity .2s,transform .2s,border-color .2s}
+  .totop.show{opacity:1;transform:none}
+  .totop:hover{border-color:var(--copper);color:var(--copper)}
+  .totop svg{width:18px;height:18px}
+
+  :focus-visible{outline:2.5px solid var(--copper);outline-offset:2px;border-radius:3px}
+
+  /* ---- responsive ---- */
+  @media (max-width:880px){
+    body{font-size:17px}
+    .layout{grid-template-columns:1fr;gap:0;padding-top:1.4rem}
+    .toc{position:static;margin-bottom:1.4rem;border:1px solid var(--line);border-radius:12px;background:var(--card);padding:0}
+    .toc__title{padding:.9rem 1rem;margin:0;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+    .toc__title::after{content:"▾";color:var(--copper);transition:transform .2s}
+    .toc[data-open="false"] .toc__title::after{transform:rotate(-90deg)}
+    .toc[data-open="false"] ol{display:none}
+    .toc ol{padding:.4rem .6rem .8rem}
+    .foot__in{grid-template-columns:1fr;gap:1.6rem}
+  }
+  @media (max-width:520px){
+    .shell{padding:0 1rem}
+    .sec-head{gap:.7rem}
+    .hero__sub{font-size:1.05rem}
+  }
+</style>
 </head>
-<body class="antialiased">
+<body>
+<div class="progress" id="progress" aria-hidden="true"></div>
 
-    <!-- Navigation -->
-    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-stone-200">
-        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-            <span class="text-xl font-bold tracking-tight text-stone-800">CONSTITUTIO<span class="text-[#c5a059]">.BE</span></span>
-            <div class="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-widest text-stone-500">
-                <a href="#paradoxe" class="nav-link hover:text-stone-900">Le Paradoxe</a>
-                <a href="#norme" class="nav-link hover:text-stone-900">La Norme</a>
-                <a href="#realite" class="nav-link hover:text-stone-900">La Réalité</a>
-                <a href="#dissident" class="nav-link hover:text-stone-900">Le Dissident</a>
-            </div>
-        </div>
+<div class="topbar">
+  <div class="in">
+    <nav class="crumb" aria-label="Fil d'Ariane">
+      <a href="https://ouaisfieu.github.io/politique-belge/">Politique belge</a>
+      <span class="sep">/</span>
+      <a href="../">Coalition Arizona</a>
+      <span class="sep">/</span>
+      <span aria-current="page">Bonus</span>
     </nav>
+    <a class="backlink" href="../">← Dossier principal</a>
+  </div>
+</div>
 
-    <main class="max-w-5xl mx-auto px-6 py-12">
-        
-        <!-- Section Hero: Le Paradoxe -->
-        <section id="paradoxe" class="mb-24 text-center">
-            <span class="inline-block px-3 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-full mb-4">ÉTUDE DE CAS : BELGIQUE</span>
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 text-stone-900 leading-tight">La Particratie à l'épreuve du Mandat Libre</h1>
-            <p class="text-xl text-stone-600 leading-relaxed max-w-3xl mx-auto italic">
-                "Une déconstruction du trompe-l'œil constitutionnel où la souveraineté nationale de 1831 se heurte à la discipline de fer des partis modernes."
-            </p>
-            <div class="mt-12 p-8 bg-white rounded-2xl custom-shadow border border-stone-100 text-left">
-                <h3 class="text-2xl font-bold mb-4">Le Paradoxe Belge</h3>
-                <p class="text-stone-700 leading-relaxed">
-                    La Belgique est souvent citée comme l'« idéal-type » de la particratie. D'un côté, le droit constitutionnel sacralise l'indépendance de l'élu. De l'autre, la sociologie politique observe une mainmise quasi absolue des états-majors sur le processus législatif. Cette application analyse si cette tension constitue une violation de la Charte fondamentale ou une mutation pragmatique du régime.
-                </p>
-            </div>
-        </section>
+<header class="hero shell">
+  <p class="hero__eyebrow"><b>Bonus</b> · Coalition Arizona — la salle des machines</p>
+  <h1>Qui s'entend, qui se déchire, <em>qui décide</em></h1>
+  <p class="hero__sub">Le dossier principal racontait les faits&nbsp;: la composition, le budget, les réformes, les sondages. Cette page entre dans la pièce d'à côté — celle des egos, des alliances tactiques, des inimitiés tenaces et des arbitrages de dernière minute. Comment cinq partis que presque tout oppose tiennent-ils ensemble&nbsp;? Réponse&nbsp;: par une mécanique humaine très particulière, dont Bart De Wever est à la fois l'ingénieur et l'otage.</p>
+  <div class="hero__meta">
+    <span><i class="dot"></i>Période couverte&nbsp;: février 2025 → juin 2026</span>
+    <span><i class="dot"></i>Mise à jour&nbsp;: 23 juin 2026</span>
+    <span><i class="dot"></i>Sources&nbsp;: presse belge de référence</span>
+  </div>
 
-        <!-- Section 1: La Norme Constitutionnelle -->
-        <section id="norme" class="mb-24 scroll-mt-20">
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="md:w-1/2">
-                    <h2 class="text-3xl font-bold mb-6 border-l-4 border-amber-600 pl-4 uppercase tracking-tighter">Les Fondements de 1831</h2>
-                    <p class="text-stone-700 mb-6 leading-relaxed">
-                        Le système belge repose sur la <strong>souveraineté nationale</strong>. Le parlementaire ne représente pas ses électeurs, mais la Nation entière. Cette doctrine exclut tout mandat impératif.
-                    </p>
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <span class="w-8 h-8 flex items-center justify-center bg-stone-800 text-white rounded-full text-xs font-bold mr-4 shrink-0">33</span>
-                            <div>
-                                <h4 class="font-bold">Article 33</h4>
-                                <p class="text-sm text-stone-600 italic">"Tous les pouvoirs émanent de la Nation."</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="w-8 h-8 flex items-center justify-center bg-stone-800 text-white rounded-full text-xs font-bold mr-4 shrink-0">42</span>
-                            <div>
-                                <h4 class="font-bold">Article 42</h4>
-                                <p class="text-sm text-stone-600 italic">"Les membres des deux Chambres représentent la Nation, et non uniquement ceux qui les ont élus."</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="w-8 h-8 flex items-center justify-center bg-stone-800 text-white rounded-full text-xs font-bold mr-4 shrink-0">58</span>
-                            <div>
-                                <h4 class="font-bold">Article 58</h4>
-                                <p class="text-sm text-stone-600 italic">L'irresponsabilité parlementaire absolue pour les votes et opinions.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="md:w-1/2 bg-stone-800 p-8 rounded-3xl text-white">
-                    <h4 class="text-amber-500 font-bold mb-4 uppercase text-sm tracking-widest">Vision Constitutionnelle</h4>
-                    <div class="border-2 border-stone-600 p-6 rounded-xl relative">
-                        <div class="absolute -top-3 left-6 bg-stone-800 px-2 text-xs font-mono">SOUVERAINETÉ NATIONALE</div>
-                        <p class="text-lg leading-relaxed font-light">
-                            L'élu est un organe de la Nation. Son mandat est <span class="text-amber-400 font-bold italic underline">libre</span>. Aucune instruction, aucun contrat, aucun parti ne peut légalement lui dicter son vote.
-                        </p>
-                        <div class="mt-6 flex items-center justify-center space-x-2 text-amber-500 font-bold">
-                            <span>Électeur</span>
-                            <span class="text-xl">→</span>
-                            <span class="border border-amber-500 px-2 rounded">Nation</span>
-                            <span class="text-xl">→</span>
-                            <span>Représentant</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <figure class="mapwrap">
+    <figcaption>
+      <b>La carte des relations de pouvoir</b>
+      <span>5 présidents · 3 axes structurants</span>
+    </figcaption>
+    <svg class="map" viewBox="0 0 800 560" role="img" aria-labelledby="maptitle mapdesc">
+      <title id="maptitle">Carte des relations entre les cinq présidents de la coalition Arizona</title>
+      <desc id="mapdesc">Bart De Wever est au centre. Une relation de confiance solide le lie à Maxime Prévot ; une relation forte mais instable le lie à Georges-Louis Bouchez ; des relations de travail le lient à Conner Rousseau et Sammy Mahdi. Une inimitié marquée oppose Bouchez et Rousseau. Prévot sert de médiateur vers Bouchez ; une friction éthique oppose Mahdi et Rousseau.</desc>
 
-        <!-- Section 2: La Réalité Particratique -->
-        <section id="realite" class="mb-24 scroll-mt-20">
-            <h2 class="text-3xl font-bold mb-6 text-center uppercase tracking-tighter">La Capture du Pouvoir</h2>
-            <p class="text-stone-700 text-center mb-12 max-w-2xl mx-auto">
-                La pratique institutionnelle a remplacé le mandat libre par une discipline de vote "soviétique". Voici les données factuelles de cette emprise.
-            </p>
+      <!-- edges -->
+      <!-- DW-Prévot : trust -->
+      <line x1="392" y1="288" x2="262" y2="430" stroke="var(--rel-trust)" stroke-width="4"/>
+      <!-- DW-Bouchez : fragile -->
+      <line x1="360" y1="246" x2="196" y2="186" stroke="var(--rel-fragile)" stroke-width="3.5" stroke-dasharray="9 7"/>
+      <!-- DW-Rousseau : work -->
+      <line x1="424" y1="246" x2="588" y2="186" stroke="var(--rel-work)" stroke-width="2.4"/>
+      <!-- DW-Mahdi : work -->
+      <line x1="412" y1="288" x2="528" y2="430" stroke="var(--rel-work)" stroke-width="2.4"/>
+      <!-- Bouchez-Rousseau : conflict (the headline) -->
+      <line x1="214" y1="168" x2="586" y2="168" stroke="var(--rel-conflict)" stroke-width="4.5"/>
+      <!-- Prévot-Bouchez : mediation (trust dashed) -->
+      <line x1="246" y1="426" x2="182" y2="206" stroke="var(--rel-trust)" stroke-width="2.6" stroke-dasharray="3 6"/>
+      <!-- Mahdi-Rousseau : ethics friction -->
+      <line x1="540" y1="424" x2="600" y2="190" stroke="var(--rel-conflict)" stroke-width="2.4" stroke-dasharray="6 7"/>
 
-            <!-- Chart Section -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-                <div class="md:col-span-2 bg-white p-8 rounded-2xl custom-shadow border border-stone-100">
-                    <h4 class="text-xl font-bold mb-6">Discipline de Vote : La fin de la délibération ?</h4>
-                    <p class="text-sm text-stone-500 mb-8 italic">Analyse des votes stratégiques (Base : Gouvernement Wilmès II). Le taux de déviation est quasi inexistant.</p>
-                    <div class="chart-container">
-                        <canvas id="disciplineChart"></canvas>
-                    </div>
-                </div>
-                <div class="bg-amber-600 p-8 rounded-2xl text-white flex flex-col justify-center text-center">
-                    <div class="text-6xl font-bold mb-2">99,7%</div>
-                    <p class="text-sm font-medium uppercase tracking-widest opacity-80">Taux de cohésion de vote</p>
-                    <div class="mt-8 pt-8 border-t border-white/20">
-                        <p class="text-sm italic">"Le parlementaire est devenu une main qui se lève sur instruction du président de parti."</p>
-                    </div>
-                </div>
-            </div>
+      <!-- edge labels -->
+      <g font-family="Space Mono, monospace" font-size="12.5" fill="var(--ink-soft)">
+        <rect x="332" y="150" width="136" height="20" rx="5" fill="#f8f3ea" stroke="var(--line)"/>
+        <text x="400" y="164" text-anchor="middle" fill="var(--rel-conflict)" font-weight="700">inimitié</text>
+        <rect x="262" y="350" width="92" height="19" rx="5" fill="#f8f3ea" stroke="var(--line)"/>
+        <text x="308" y="363" text-anchor="middle" fill="var(--rel-trust)" font-weight="700">confiance</text>
+        <rect x="232" y="206" width="96" height="19" rx="5" fill="#f8f3ea" stroke="var(--line)"/>
+        <text x="280" y="219" text-anchor="middle" fill="var(--copper-deep)" font-weight="700">bromance</text>
+      </g>
 
-            <!-- Les Verrous -->
-            <h3 class="text-2xl font-bold mb-8 text-stone-800">Les Trois Verrous de la Confiscation</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="verrou-card p-6 bg-white rounded-xl border-t-4 border-stone-800 custom-shadow">
-                    <h4 class="font-bold text-lg mb-3">1. Le Verrou Financier</h4>
-                    <p class="text-sm text-stone-600 leading-relaxed">
-                        Les dotations publiques sont versées aux <strong>structures centrales</strong> des partis, pas aux élus. Le parti contrôle les ressources logistiques et de campagne.
-                    </p>
-                </div>
-                <div class="verrou-card p-6 bg-white rounded-xl border-t-4 border-stone-800 custom-shadow">
-                    <h4 class="font-bold text-lg mb-3">2. Le Verrou Électoral</h4>
-                    <p class="text-sm text-stone-600 leading-relaxed">
-                        Grâce au vote de liste, les présidents de parti ont le monopole de la <strong>place utile</strong>. Contester, c'est s'assurer un déclassement définitif.
-                    </p>
-                </div>
-                <div class="verrou-card p-6 bg-white rounded-xl border-t-4 border-stone-800 custom-shadow">
-                    <h4 class="font-bold text-lg mb-3">3. Le Verrou de Coalition</h4>
-                    <p class="text-sm text-stone-600 leading-relaxed">
-                        L'accord de gouvernement est un contrat liant les partis. Un élu dissident menace la <strong>stabilité du cabinet</strong>, risquant de provoquer une crise d'État.
-                    </p>
-                </div>
-            </div>
-        </section>
+      <!-- nodes -->
+      <!-- De Wever (center, PM) -->
+      <g>
+        <circle cx="400" cy="262" r="46" fill="var(--ink)" stroke="var(--p-nva)" stroke-width="5"/>
+        <text x="400" y="258" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-weight="700" font-size="18">De Wever</text>
+        <text x="400" y="278" text-anchor="middle" fill="var(--gold)" font-family="Space Mono,monospace" font-size="11">Premier ministre</text>
+      </g>
+      <!-- Bouchez -->
+      <g>
+        <circle cx="170" cy="168" r="38" fill="var(--ink)" stroke="var(--p-mr)" stroke-width="4.5"/>
+        <text x="170" y="173" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-weight="700" font-size="15">Bouchez</text>
+        <text x="170" y="120" text-anchor="middle" fill="var(--ink-soft)" font-family="Space Mono,monospace" font-size="11" font-weight="700">MR</text>
+      </g>
+      <!-- Rousseau -->
+      <g>
+        <circle cx="630" cy="168" r="38" fill="var(--ink)" stroke="var(--p-vooruit)" stroke-width="4.5"/>
+        <text x="630" y="173" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-weight="700" font-size="15">Rousseau</text>
+        <text x="630" y="120" text-anchor="middle" fill="var(--ink-soft)" font-family="Space Mono,monospace" font-size="11" font-weight="700">Vooruit</text>
+      </g>
+      <!-- Prévot -->
+      <g>
+        <circle cx="232" cy="452" r="38" fill="var(--ink)" stroke="var(--p-engages)" stroke-width="4.5"/>
+        <text x="232" y="457" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-weight="700" font-size="15">Prévot</text>
+        <text x="232" y="506" text-anchor="middle" fill="var(--ink-soft)" font-family="Space Mono,monospace" font-size="11" font-weight="700">Les Engagés</text>
+      </g>
+      <!-- Mahdi -->
+      <g>
+        <circle cx="560" cy="452" r="38" fill="var(--ink)" stroke="var(--p-cdv)" stroke-width="4.5"/>
+        <text x="560" y="457" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-weight="700" font-size="15">Mahdi</text>
+        <text x="560" y="506" text-anchor="middle" fill="var(--ink-soft)" font-family="Space Mono,monospace" font-size="11" font-weight="700">CD&amp;V</text>
+      </g>
+    </svg>
+    <ul class="legend">
+      <li><i class="lg-trust"></i>Confiance / alliance</li>
+      <li><i class="lg-fragile"></i>Lien fort mais instable («&nbsp;bromance&nbsp;»)</li>
+      <li><i class="lg-conflict"></i>Inimitié / friction</li>
+      <li><i class="lg-work"></i>Relation de travail</li>
+    </ul>
+  </figure>
+</header>
 
-        <!-- Section 3: Le Dissident -->
-        <section id="dissident" class="mb-24 scroll-mt-20">
-            <h2 class="text-3xl font-bold mb-8 uppercase tracking-tighter">Le Sort de l'Élu Dissident</h2>
-            <p class="text-stone-700 mb-8 leading-relaxed">
-                Si un député invoque son mandat libre (Art. 42) pour rompre avec son parti, il ne perd pas son siège (la loi protège l'individu), mais il subit une <strong>mort civile parlementaire</strong>.
-            </p>
+<div class="shell">
+<div class="layout">
+  <aside class="toc" id="toc" data-open="true" aria-label="Sommaire">
+    <p class="toc__title" id="tocToggle">Sommaire</p>
+    <ol>
+      <li><a href="#methode">La méthode De Wever&nbsp;: anatomie d'un «&nbsp;masseur&nbsp;»</a></li>
+      <li><a href="#carte">La carte des liens&nbsp;: la coalition comme réseau</a></li>
+      <li><a href="#bouchez-rousseau">Le couple antagoniste&nbsp;: Bouchez–Rousseau</a></li>
+      <li><a href="#dewever-bouchez">La bromance fragile&nbsp;: De Wever–Bouchez</a></li>
+      <li><a href="#dewever-prevot">L'axe de confiance&nbsp;: De Wever–Prévot</a></li>
+      <li><a href="#intra">Lignes de faille internes aux partis</a></li>
+      <li><a href="#attribution">Le système «&nbsp;trophée + véto&nbsp;»</a></li>
+      <li><a href="#dossiers">Dossier par dossier&nbsp;: qui a porté, qui a bloqué</a></li>
+      <li><a href="#communautaire">La ligne de faille flamand / francophone</a></li>
+      <li><a href="#contournement">Le contournement comme symptôme</a></li>
+      <li><a href="#synthese">Ce que la salle des machines dit du pouvoir belge</a></li>
+      <li><a href="#faq">Questions fréquentes</a></li>
+      <li><a href="#methodo">Méthode, sources &amp; limites</a></li>
+    </ol>
+  </aside>
 
-            <div class="bg-stone-100 p-8 rounded-3xl">
-                <div class="flex flex-col lg:flex-row gap-8">
-                    <!-- Interactive Simulation Toggle -->
-                    <div class="lg:w-1/3">
-                        <h4 class="font-bold mb-4">Simulateur de statut</h4>
-                        <div class="space-y-4">
-                            <button onclick="updateDissidentView('groupe')" id="btn-groupe" class="w-full py-4 px-6 rounded-xl border-2 border-stone-800 bg-stone-800 text-white font-bold transition-all flex items-center justify-between">
-                                Membre d'un Groupe
-                                <span class="text-xs">✓ Actif</span>
-                            </button>
-                            <button onclick="updateDissidentView('independant')" id="btn-indep" class="w-full py-4 px-6 rounded-xl border-2 border-stone-300 text-stone-600 font-bold hover:border-amber-600 transition-all flex items-center justify-between">
-                                Élu Indépendant
-                                <span class="text-xs">Dissidence</span>
-                            </button>
-                        </div>
-                    </div>
-                    <!-- Result Display -->
-                    <div class="lg:w-2/3 bg-white p-8 rounded-2xl shadow-inner border border-stone-200" id="dissident-result">
-                        <h5 class="text-xl font-bold mb-6 text-stone-900" id="result-title">Statut : Membre du Caucus</h5>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div class="p-4 bg-stone-50 rounded-lg border-l-4 border-green-500">
-                                <span class="text-xs uppercase font-bold text-stone-400 block mb-1">Temps de parole</span>
-                                <p class="font-semibold text-stone-800" id="result-speech">Proportionnel au groupe (Large)</p>
-                            </div>
-                            <div class="p-4 bg-stone-50 rounded-lg border-l-4 border-green-500">
-                                <span class="text-xs uppercase font-bold text-stone-400 block mb-1">Commissions</span>
-                                <p class="font-semibold text-stone-800" id="result-comm">Sièges de plein droit</p>
-                            </div>
-                            <div class="p-4 bg-stone-50 rounded-lg border-l-4 border-green-500">
-                                <span class="text-xs uppercase font-bold text-stone-400 block mb-1">Financement</span>
-                                <p class="font-semibold text-stone-800" id="result-funds">Dotations de groupe complètes</p>
-                            </div>
-                            <div class="p-4 bg-stone-50 rounded-lg border-l-4 border-green-500">
-                                <span class="text-xs uppercase font-bold text-stone-400 block mb-1">Logistique</span>
-                                <p class="font-semibold text-stone-800" id="result-staff">Accès aux conseillers juridiques</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mt-8 p-6 bg-amber-50 rounded-xl border border-amber-200">
-                <h4 class="font-bold text-amber-900 mb-2">La Résistance du Droit : "Les démissions en blanc"</h4>
-                <p class="text-sm text-amber-800 italic">
-                    Note Juridique : La pratique consistant à faire signer une lettre de démission non datée avant l'élection est <strong>radicalement nulle</strong> en droit belge. Aucun contrat privé ne peut aliéner un mandat public.
-                </p>
-            </div>
-        </section>
+  <main>
 
-        <!-- Section 4: Comparaison Finale -->
-        <section class="mb-24">
-            <h2 class="text-3xl font-bold mb-8 text-center uppercase tracking-tighter">Théorie vs Pratique</h2>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse bg-white rounded-2xl overflow-hidden custom-shadow">
-                    <thead>
-                        <tr class="bg-stone-800 text-white">
-                            <th class="p-6 uppercase text-xs tracking-widest">Dimension</th>
-                            <th class="p-6 uppercase text-xs tracking-widest">Constitution de 1831</th>
-                            <th class="p-6 uppercase text-xs tracking-widest">Particratie Réelle</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-stone-100">
-                        <tr>
-                            <td class="p-6 font-bold text-stone-500 text-sm italic">Souveraineté</td>
-                            <td class="p-6">La Nation indivisible (Art. 33)</td>
-                            <td class="p-6 font-semibold">Les présidents de coalition</td>
-                        </tr>
-                        <tr>
-                            <td class="p-6 font-bold text-stone-500 text-sm italic">Mandat</td>
-                            <td class="p-6">Libre et représentatif</td>
-                            <td class="p-6 font-semibold">Discipline impérative de fait</td>
-                        </tr>
-                        <tr>
-                            <td class="p-6 font-bold text-stone-500 text-sm italic">La Loi</td>
-                            <td class="p-6">Produit de la délibération</td>
-                            <td class="p-6 font-semibold">Ratification de l'accord de cabinet</td>
-                        </tr>
-                        <tr>
-                            <td class="p-6 font-bold text-stone-500 text-sm italic">Contrôle</td>
-                            <td class="p-6">Le Parlement contrôle l'Exécutif</td>
-                            <td class="p-6 font-semibold text-amber-700">Le Parlement est une chambre d'enregistrement</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+    <section id="methode">
+      <div class="sec-head"><span class="sec-num">01</span><h2>La méthode De Wever&nbsp;: anatomie d'un «&nbsp;masseur&nbsp;»</h2></div>
+      <p class="lead">Pour comprendre pourquoi l'Arizona ne tombe pas, il faut d'abord comprendre comment travaille son Premier ministre. Bart De Wever ne gouverne pas en tranchant&nbsp;: il gouverne en absorbant. Sa méthode tient en quatre gestes, qu'il théorise lui-même presque ouvertement.</p>
 
-        <!-- Conclusion -->
-        <section class="p-12 bg-white rounded-3xl border border-stone-200 text-center relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-full h-1 bg-amber-600"></div>
-            <h2 class="text-3xl font-bold mb-6 italic tracking-tight">Le Verdict du Droit</h2>
-            <div class="max-w-2xl mx-auto space-y-6">
-                <p class="text-lg text-stone-700 leading-relaxed">
-                    La particratie belge viole-t-elle la Constitution ? <br>
-                    <strong>Juridiquement : Non.</strong> Le mandat libre survit comme une garantie individuelle inviolable (un député ne peut être déchu de son siège par son parti).
-                </p>
-                <p class="text-lg text-stone-700 leading-relaxed">
-                    <strong>Matériellement : Oui.</strong> La Constitution de 1831 fonctionne désormais comme une "fiction nécessaire" ou un décor de théâtre. Le pouvoir réel s'exerce dans des structures extra-constitutionnelles (comités de concertation, cabinets).
-                </p>
-                <div class="pt-8">
-                    <span class="text-xs font-mono uppercase tracking-widest text-stone-400">Fin de l'analyse — Sources : Crisp, Dewachter, Ergec</span>
-                </div>
-            </div>
-        </section>
+      <p>Le premier geste est la <strong>temporisation</strong>. Face à une polémique, sa doctrine est de ne pas se battre. Lors de la controverse sur ses propos concernant la Russie, il résume sa philosophie&nbsp;: mieux vaut ne pas lutter et attendre que l'affaire se tasse. Il a qualifié l'épisode de «&nbsp;tempête dans une tasse de thé&nbsp;» — une formule qui n'est pas une maladresse mais une stratégie&nbsp;: en refusant de dramatiser, il prive la crise de l'oxygène dont elle a besoin pour grandir.</p>
 
-    </main>
+      <p>Le deuxième geste est le <strong>morcellement</strong>. Plutôt que d'affronter les lignes rouges de chaque parti d'un seul bloc — ce qui mènerait au «&nbsp;surplace&nbsp;» qu'il reproche à la Vivaldi —, il découpe les dossiers, multiplie les réunions bilatérales, isole les sujets les uns des autres et fait avancer ce qui peut l'être pendant qu'il gèle ce qui bloque. Le kern (conseil des ministres restreint) sert d'arène officielle, mais l'essentiel se joue dans des tête-à-tête où chaque président peut sauver la face séparément.</p>
 
-    <footer class="bg-stone-900 text-white py-12 px-6 text-center">
-        <p class="text-stone-500 text-sm mb-4">Plateforme interactive d'analyse constitutionnelle</p>
-        <div class="flex justify-center space-x-6 text-xs uppercase tracking-tighter text-stone-400">
-            <span>Données 2024</span>
-            <span>Système Fédéral Belge</span>
-            <span>Mandat Libre</span>
-        </div>
-    </footer>
+      <p>Le troisième geste, c'est le <strong>massage</strong> proprement dit — le mot est de lui. À propos de l'irritation d'Annelies Verlinden après un contournement, il a déclaré que le gouvernement allait «&nbsp;masser pour la faire disparaître&nbsp;». <em>La Libre</em> a fait de la formule un portrait, le qualifiant de «&nbsp;masseur expérimenté&nbsp;». Le massage soulage la douleur&nbsp;; il ne soigne pas la blessure.</p>
 
-    <script>
-        // Data and Logic
-        document.addEventListener('DOMContentLoaded', () => {
-            initCharts();
-        });
+      <div class="pull">
+        <blockquote>Nous allons masser pour la faire disparaître.</blockquote>
+        <cite>Bart De Wever, sur l'irritation d'Annelies Verlinden — rapporté par La Libre, 20 mars 2026</cite>
+      </div>
 
-        function initCharts() {
-            const ctx = document.getElementById('disciplineChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Discipline (Majorité)', 'Indépendance Réelle', 'Abstentions Stratégiques'],
-                    datasets: [{
-                        label: 'Pourcentage de cohésion (%)',
-                        data: [99.73, 0.2, 0.07],
-                        backgroundColor: [
-                            'rgba(197, 160, 89, 0.9)',
-                            'rgba(44, 44, 44, 0.7)',
-                            'rgba(44, 44, 44, 0.4)'
-                        ],
-                        borderColor: '#2c2c2c',
-                        borderWidth: 1,
-                        borderRadius: 8
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false },
-                        tooltip: {
-                            callbacks: {
-                                label: (context) => `Valeur : ${context.parsed.y}%`
-                            }
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 100,
-                            grid: { color: 'rgba(0,0,0,0.05)' }
-                        },
-                        x: {
-                            grid: { display: false }
-                        }
-                    }
-                }
-            });
+      <p>Le quatrième geste est le plus spectaculaire&nbsp;: la <strong>mise en scène de la démission</strong>. À deux reprises au moins, dont lors du conclave budgétaire de novembre 2025, De Wever s'est rendu chez le roi Philippe pour lui offrir sa démission plutôt que de la présenter réellement — un rituel que le politologue Carl Devos (UGent) analyse comme une «&nbsp;mise en scène&nbsp;» partagée entre le Premier ministre et le souverain. Le geste sert d'électrochoc&nbsp;: il rappelle à la majorité que l'alternative à l'accord, c'est le vide, et il transforme la peur de la chute en ciment.</p>
+
+      <p>Les politologues ont une référence pour ce style. Le journaliste de la VRT Ivan De Vadder le compare à <strong>Wilfried Martens plutôt qu'à Jean-Luc Dehaene</strong>&nbsp;: là où Dehaene «&nbsp;fonçait&nbsp;» et voulait forcer la décision, De Wever est plus calme et cherche le compromis pour déminer les tensions. C'est une lecture, pas un fait&nbsp;; mais elle éclaire un paradoxe central. Le chef du parti le plus dur idéologiquement de la coalition gouverne avec la patience d'un conciliateur.</p>
+
+      <div class="box note">
+        <p class="box__tag">Ce que la méthode résout — et ce qu'elle laisse ouvert</p>
+        <p>Le «&nbsp;massage&nbsp;» est redoutablement efficace pour la <strong>survie</strong>&nbsp;: il désamorce les crises une à une et évite la rupture. Mais il a un coût structurel. En reportant les arbitrages plutôt qu'en les rendant, il produit un gouvernement qui agit par <strong>juxtaposition</strong> — une addition de victoires séparées — plutôt que par synthèse. Les conflits ne sont pas résolus&nbsp;; ils sont mis en attente. C'est pourquoi les mêmes lignes de faille (Russie, Gaza, éthique, fiscalité) reviennent sans cesse&nbsp;: rien n'a été tranché, tout a été massé.</p>
+      </div>
+    </section>
+
+    <section id="carte">
+      <div class="sec-head"><span class="sec-num">02</span><h2>La carte des liens&nbsp;: la coalition comme réseau</h2></div>
+      <p class="lead">La carte en tête de page n'est pas décorative. Elle dit l'essentiel&nbsp;: la coalition tient sur deux relations positives et est menacée par une relation négative. Tout le reste découle de cette géométrie.</p>
+
+      <p>Il faut distinguer trois types de liens, qui ne se confondent pas. Le premier est l'<strong>axe idéologique</strong>, qui rapproche la <span class="chip c-nva">N-VA</span> et le <span class="chip c-mr">MR</span>&nbsp;: De Wever et Bouchez se reconnaissent sur le fond (rigueur budgétaire, marché du travail, sécurité). Le deuxième est l'<strong>axe de confiance</strong>, plus personnel, qui lie De Wever à <span class="chip c-engages">Maxime Prévot</span> et qui structure réellement le fonctionnement quotidien de la coalition. Le troisième est l'<strong>axe d'antagonisme</strong>, l'inimitié entre Bouchez et <span class="chip c-vooruit">Conner Rousseau</span>, qui traverse la coalition de part en part puisqu'il oppose ses deux ailes — la droite libérale et la seule gauche de l'attelage.</p>
+
+      <p>Un quatrième lien, plus discret, mérite d'être noté&nbsp;: l'entente technique entre De Wever et <strong>Frank Vandenbroucke</strong> (Vooruit). <em>Knack</em> relève qu'il «&nbsp;n'est pas étonnant&nbsp;» que les deux hommes s'entendent bien — deux profils intellectuels, malgré l'éloignement idéologique. Cette affinité de tempérament, par-dessus la frontière partisane, est l'un des amortisseurs invisibles de la coalition.</p>
+
+      <h3>Le piège de la particratie</h3>
+      <p>Pour lire correctement cette carte, il faut rappeler une singularité belge. Deux des cinq présidents — Bouchez et Rousseau — <strong>ne sont pas ministres</strong>&nbsp;: ils dirigent leur parti depuis l'extérieur du gouvernement. Bouchez a explicitement renoncé à l'Intérieur pour garder la présidence du MR. Cette configuration fait d'eux ce que la presse appelle des «&nbsp;monstres sacrés&nbsp;»&nbsp;: des acteurs qui pèsent sur chaque décision sans en porter la responsabilité ministérielle directe, et qui peuvent à tout moment menacer depuis la tribune médiatique.</p>
+
+      <p>De Wever, lui, cumule les deux casquettes&nbsp;: il est Premier ministre <em>et</em> président de fait de sa famille politique. C'est sa force — il n'a pas de président de parti dans son dos qui pourrait le désavouer. Mais c'est aussi ce qui le place au centre exact de la toile&nbsp;: il doit composer, simultanément, avec deux présidents externes imprévisibles et avec ses propres ministres. La carte ressemble à une étoile parce que la coalition <em>est</em> centrée sur un seul homme.</p>
+    </section>
+
+    <section id="bouchez-rousseau">
+      <div class="sec-head"><span class="sec-num">03</span><h2>Le couple antagoniste&nbsp;: Bouchez–Rousseau</h2></div>
+      <p class="lead">C'est le clivage interpersonnel le plus ancien, le plus documenté et le plus structurant de l'Arizona. Et il était là bien avant le gouvernement.</p>
+
+      <p>Dès le 20 août 2024, en pleine négociation, <em>La DH</em> écrivait que ce n'était «&nbsp;un secret pour personne&nbsp;» que Bouchez et Rousseau «&nbsp;ont des difficultés&nbsp;». Lors d'un coup de sang, Bouchez a traité Rousseau de «&nbsp;petit gamin&nbsp;». En retour, Melissa Depraetere (Vooruit), proche de Rousseau, a publiquement présenté le président du MR comme un partenaire indigne de confiance. L'animosité est réciproque et assumée.</p>
+
+      <p>La presse y voit une <strong>dimension générationnelle</strong>. <em>La DH</em> la formule nettement&nbsp;: Bouchez et Rousseau sont «&nbsp;deux jeunes profils qui ont toujours eu des tensions&nbsp;», d'une autre génération que De Wever et Prévot, «&nbsp;qui s'entendent très bien&nbsp;». Deux ambitieux du même âge, occupant des positions symétriques aux deux extrémités de la coalition, se disputant la même lumière médiatique&nbsp;: la rivalité était presque programmée.</p>
+
+      <h3>Pourquoi cette inimitié est un risque systémique</h3>
+      <p>On aurait tort de réduire ce duel à du bruit de personnalités. Il se loge exactement sur la couture la plus fragile de l'attelage. Vooruit est <strong>le seul parti de gauche</strong> d'une coalition dominée par le centre-droit et la droite nationaliste. Pour justifier sa participation devant son électorat et les syndicats, Rousseau exige des garanties écrites et une loyauté sans faille de ses partenaires. Or l'imprévisibilité médiatique de Bouchez — coutumier des déclarations à l'emporte-pièce et des revirements de dernière minute — rend cette confiance structurellement <strong>inopérante</strong>. Chaque sortie du président du MR est vécue côté Vooruit comme une trahison potentielle de l'accord.</p>
+
+      <p>Résultat&nbsp;: le kern, qui devrait être le lieu de la décision, devient une arène où chaque conseil restreint peut tourner à la confrontation. L'antagonisme Bouchez–Rousseau n'est pas un accident&nbsp;; c'est le point de tension permanent d'une coalition qui demande à sa gauche isolée une confiance que sa droite la plus volatile ne cesse de fragiliser.</p>
+
+      <div class="box risk">
+        <p class="box__tag">Ce qu'il faut surveiller</p>
+        <p>Le scénario le plus corrosif n'est pas une nouvelle insulte&nbsp;: c'est le jour où Vooruit estimera que les garanties écrites ne valent plus rien. Tant que Rousseau croit pouvoir «&nbsp;tenir&nbsp;» Bouchez via De Wever et Prévot, la coalition tient. Le jour où ce calcul s'inverse, l'aile gauche n'a plus de raison de rester.</p>
+      </div>
+    </section>
+
+    <section id="dewever-bouchez">
+      <div class="sec-head"><span class="sec-num">04</span><h2>La bromance fragile&nbsp;: De Wever–Bouchez</h2></div>
+      <p class="lead">C'est la relation la plus commentée de la législature, et la plus instable&nbsp;: une admiration idéologique réelle, minée par une exaspération communicationnelle constante.</p>
+
+      <p>De Wever a livré le portrait le plus net de cette relation à l'occasion d'un an d'Arizona, lors des «&nbsp;Grandes conférences&nbsp;» de <em>La Libre</em> au Bozar (début décembre 2025). Idéologiquement, dit-il, «&nbsp;je l'aime beaucoup, on se ressemble&nbsp;»&nbsp;; il juge Bouchez «&nbsp;très, très, très fort&nbsp;». Mais il pointe aussitôt la différence de tempérament&nbsp;: Bouchez serait «&nbsp;un latin&nbsp;», quand lui se décrit comme «&nbsp;un calme germanique&nbsp;» qui ne partage pas son goût du stoïcisme. Dans un entretien ultérieur, il ajoute qu'il «&nbsp;admire&nbsp;» le président du MR.</p>
+
+      <p>Côté MR, l'affection est mise en scène avec éclat. En septembre 2025, au congrès du parti à Walibi, Bouchez officialise ce qu'il présente comme «&nbsp;l'une des relations les plus fortes du paysage politique belge&nbsp;».</p>
+
+      <div class="pull">
+        <blockquote>Idéologiquement, je l'aime beaucoup, on se ressemble. Il est très, très, très fort.</blockquote>
+        <cite>Bart De Wever à propos de Georges-Louis Bouchez — La Libre / DH, décembre 2025</cite>
+      </div>
+
+      <h3>La fissure</h3>
+      <p>La lune de miel s'est pourtant fissurée. Lorsque Bouchez a renouvelé son refus de tout compromis sur la TVA, la N-VA «&nbsp;a grincé des dents&nbsp;» devant ses volte-face. En octobre 2025, <em>De Standaard</em> a qualifié une accolade entre les deux hommes de «&nbsp;baiser de Judas&nbsp;» — l'image, venue de la presse flamande, dit la défiance qui couve sous l'affichage d'amitié.</p>
+
+      <p>La réponse de De Wever à cette tension est, une fois encore, le massage. Le 25 mars 2026, il invite Bouchez à <strong>déjeuner à Mons</strong>, sur le terrain de ce dernier, pour recoller les morceaux. Bouchez en sortira en disant que le Premier ministre lui a confié comprendre «&nbsp;beaucoup mieux&nbsp;» pourquoi il refuse un saut d'index. Le repas n'a rien tranché sur le fond&nbsp;; il a entretenu la relation. C'est précisément le but.</p>
+
+      <p>La leçon de cette relation est analytique&nbsp;: la proximité idéologique <em>ne suffit pas</em> à produire de la stabilité. Ce qui use De Wever, ce n'est pas le désaccord de fond — il n'y en a guère — mais la <strong>méthode</strong> de Bouchez, ses ultimatums, ses sorties, ses revirements. La bromance est réelle&nbsp;; elle est aussi le chantier permanent du «&nbsp;masseur&nbsp;», appliqué à la relation dont il a le plus besoin.</p>
+    </section>
+
+    <section id="dewever-prevot">
+      <div class="sec-head"><span class="sec-num">05</span><h2>L'axe de confiance&nbsp;: De Wever–Prévot</h2></div>
+      <p class="lead">Si une relation porte réellement la coalition, c'est celle-ci. Discrète, sans éclat médiatique, c'est elle qui permet au système de fonctionner.</p>
+
+      <p>De Wever ne tarit pas d'éloges sur le président des Engagés&nbsp;: «&nbsp;Nous appartenons à la même génération, je l'apprécie vraiment, la confiance entre nous est complète.&nbsp;» Le mot «&nbsp;complète&nbsp;» est rare dans la bouche d'un homme aussi mesuré. Dorian de Meeûs, rédacteur en chef de <em>La Libre</em>, explique cette entente par deux facteurs&nbsp;: le contexte international, qui pousse le Premier ministre à travailler très étroitement avec son ministre des Affaires étrangères&nbsp;; et le pragmatisme de Prévot, qu'il décrit comme un partenaire «&nbsp;utile et souvent nécessaire&nbsp;».</p>
+
+      <div class="pull">
+        <blockquote>La confiance entre nous est complète.</blockquote>
+        <cite>Bart De Wever à propos de Maxime Prévot</cite>
+      </div>
+
+      <h3>Le traducteur de la coalition</h3>
+      <p>Le rôle de Prévot ne s'improvise pas&nbsp;: il a été <strong>médiateur royal</strong> lors de la formation, en août 2024, chargé par le roi de rapprocher des positions devenues inconciliables. Cette expérience l'a installé dans une fonction qu'il n'a jamais quittée&nbsp;: celle de <em>go-between</em>. C'est lui qui fait l'interface entre Bouchez et les partis flamands, lesquels devenaient — selon la formule rapportée — «&nbsp;parfois fous&nbsp;» des tactiques de «&nbsp;pitbull&nbsp;» du président du MR.</p>
+
+      <p>On touche ici au cœur du système. Le «&nbsp;masseur&nbsp;» ne masse pas tout seul. De Wever <strong>délègue à Prévot</strong> la médiation la plus difficile — celle avec Bouchez —, exactement comme le roi la lui avait déléguée en 2024. La confiance De Wever–Prévot n'est donc pas une amitié parmi d'autres&nbsp;: c'est l'infrastructure sur laquelle repose la gestion des tensions. Retirez cet axe, et le Premier ministre se retrouve seul face à l'imprévisibilité de son partenaire le plus turbulent.</p>
+
+      <div class="box read">
+        <p class="box__tag">À retenir</p>
+        <p>L'Arizona repose sur une division du travail relationnel&nbsp;: De Wever tient le centre et arbitre&nbsp;; Prévot amortit Bouchez&nbsp;; Vandenbroucke maintient un canal technique avec la gauche. Trois hommes d'une même génération, plutôt cérébraux, forment la véritable colonne vertébrale humaine de la coalition — par-dessus les clivages de partis.</p>
+      </div>
+    </section>
+
+    <section id="intra">
+      <div class="sec-head"><span class="sec-num">06</span><h2>Lignes de faille internes aux partis</h2></div>
+      <p class="lead">Les tensions ne courent pas seulement entre les partis&nbsp;: elles traversent chacun d'eux. Et la manière dont chaque formation gère ses propres dissensions explique en grande partie sa santé électorale.</p>
+
+      <h3><span class="chip c-nva">N-VA</span> — la discipline comme doctrine</h3>
+      <p>En quittant la présidence pour la primature, De Wever a confié son parti à <strong>Valerie Van Peel</strong>, élue le 26 avril 2025 avec 96,26&nbsp;% des voix, seule candidate. Le politologue Carl Devos la présente comme «&nbsp;non une copie de De Wever&nbsp;», issue d'une aile plus sociale. Mais sa ligne est limpide&nbsp;: la discipline. Dès son entrée en fonction, elle déclare qu'il vaut mieux «&nbsp;ne pas opposer son veto et ne pas faire de grandes déclarations dans la presse&nbsp;». La N-VA a choisi le silence des rangs.</p>
+
+      <h3><span class="chip c-cdv">CD&amp;V</span> — le technocrate et l'offensif</h3>
+      <p>Au CD&amp;V cohabitent deux profils que tout oppose en style. <strong>Vincent Van Peteghem</strong>, passé des Finances (sous la Vivaldi) au Budget (sous l'Arizona), «&nbsp;a perdu en force de frappe politique&nbsp;» et se retrouve, selon la presse, «&nbsp;condamné à regarder agir Jan Jambon&nbsp;». Face à lui, le président <strong>Sammy Mahdi</strong>, offensif et médiatique. Les deux hommes furent concurrents pour la présidence du parti en 2019.</p>
+      <p><strong>Attention à la sur-interprétation, toutefois.</strong> Les sources documentent davantage une <em>complémentarité affichée</em> qu'une rivalité ouverte&nbsp;: Mahdi a publiquement soutenu son ministre, notamment lorsque Bouchez s'en est pris à lui. La «&nbsp;rivalité&nbsp;» Mahdi–Van Peteghem relève plus de la différence de profil et de ligne que d'un conflit déclaré.</p>
+
+      <h3><span class="chip c-mr">MR</span> — l'usure par le centre</h3>
+      <p>C'est au MR que les tensions internes sont les plus visibles. Le député <strong>Michel De Maegd</strong> a quitté le parti pour Les Engagés, se disant «&nbsp;las des excès&nbsp;» de Bouchez. <strong>Sophie Wilmès</strong> et <strong>Adrien Dolimont</strong> ont mis en garde contre le cumul, par Bouchez, de la présidence et d'une vice-primature. La fronde reste contenue, mais elle existe.</p>
+
+      <div class="box note">
+        <p class="box__tag">La leçon des tensions internes</p>
+        <p>Les partis de l'Arizona répondent à une même question — faut-il <strong>discipliner</strong> ou <strong>se différencier</strong>&nbsp;? — par des réponses opposées. La N-VA de Van Peel choisit la discipline et reste stable. Le MR de Bouchez choisit la différenciation permanente et saigne dans les sondages. Le contraste n'est pas anodin&nbsp;: il suggère que, dans une coalition aussi exposée, la visibilité tapageuse coûte plus qu'elle ne rapporte.</p>
+      </div>
+    </section>
+
+    <section id="attribution">
+      <div class="sec-head"><span class="sec-num">07</span><h2>Le système «&nbsp;trophée + véto&nbsp;»</h2></div>
+      <p class="lead">L'Arizona ne fonctionne pas comme un programme commun. Elle fonctionne comme un marché&nbsp;: chaque parti repart avec un trophée et pose, en échange, ses vétos. De Wever arbitre en dernier ressort. Cette logique explique presque tout.</p>
+
+      <p>Le principe est simple. Chaque formation a obtenu <strong>une mesure-totem</strong> qu'elle pourra brandir devant son électorat&nbsp;: la taxe sur les plus-values pour Vooruit, la réforme des pensions pour la N-VA, le durcissement du marché du travail pour le MR. En contrepartie, chacune a planté <strong>ses lignes rouges</strong>&nbsp;: le MR refuse toute nouvelle taxe et le saut d'index&nbsp;; Vooruit refuse le saut d'index et réclame une taxe sur les grandes fortunes&nbsp;; le CD&amp;V s'arc-boute sur la Justice et l'éthique.</p>
+
+      <p>La conséquence est lourde de sens&nbsp;: <strong>chaque victoire d'un parti est une défaite pour un autre</strong>. La taxe plus-values est un triomphe pour Vooruit, une concession arrachée au MR. Le malus pension est un succès N-VA obtenu au détriment de Vooruit. Le gouvernement n'avance pas en construisant un compromis partagé, mais en distribuant des gains adverses. C'est cette mécanique qui <em>fabrique</em> les rancunes que le «&nbsp;masseur&nbsp;» doit ensuite gérer.</p>
+
+      <div class="tbl-wrap">
+        <table>
+          <caption>Attribution des grands dossiers&nbsp;: porteur · opposant · arbitre / issue</caption>
+          <thead>
+            <tr><th>Dossier</th><th>Porteur</th><th>Opposant principal</th><th>Arbitre / issue</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><b>Pensions / malus</b></td><td>Jan Jambon <span class="chip c-nva">N-VA</span></td><td>Vooruit, syndicats, Conseil d'État</td><td class="td-issue">De Wever&nbsp;; adoptée nuit du 28-29 mai 2026, avec corrections (temps partiels, femmes)</td></tr>
+            <tr><td><b>Taxe plus-values</b></td><td>Rousseau <span class="chip c-vooruit">Vooruit</span> ; Van Peteghem au plan technique</td><td>Bouchez <span class="chip c-mr">MR</span></td><td class="td-issue">Compromis juillet 2025&nbsp;; votée nuit du 3-4 avril 2026</td></tr>
+            <tr><td><b>Budget 2025-2026</b></td><td>De Wever / Van Peteghem (Budget)</td><td>MR (taxes), Vooruit (saut d'index)</td><td class="td-issue">Accord avant Noël 2025 (≈ 9,2 Mds €)</td></tr>
+            <tr><td><b>Chômage limité dans le temps</b></td><td>Clarinval <span class="chip c-mr">MR</span> / N-VA</td><td>Syndicats, opposition</td><td class="td-issue">Loi du 29 juillet 2025, en vigueur 1<sup>er</sup> mars 2026&nbsp;; exceptions 55 ans / 30 ans</td></tr>
+            <tr><td><b>Éthique (IVG, euthanasie, GPA)</b></td><td>Verlinden <span class="chip c-cdv">CD&amp;V</span></td><td>Vooruit (menace de majorité alternative)</td><td class="td-issue">Bloqué&nbsp;; deadline d'un paquet global au 1<sup>er</sup> décembre</td></tr>
+            <tr><td><b>Énergie / nucléaire</b></td><td>De Wever / Jambon <span class="chip c-nva">N-VA</span></td><td>MR (aides aux prix)</td><td class="td-issue">Attentisme&nbsp;; reprise des réacteurs Engie négociée en 2026</td></tr>
+            <tr><td><b>Gaza / Palestine</b></td><td>Prévot <span class="chip c-engages">Les Engagés</span></td><td>Bouchez / Francken (frein)</td><td class="td-issue">Compromis nocturne du 2 septembre 2025</td></tr>
+            <tr><td><b>Sécurité sites juifs</b></td><td>Quintin <span class="chip c-mr">MR</span> + Francken <span class="chip c-nva">N-VA</span></td><td>Verlinden (Justice, contournée)</td><td class="td-issue">Décision unilatérale du 16 mars 2026</td></tr>
+            <tr><td><b>Horaires accordéon</b></td><td>Clarinval <span class="chip c-mr">MR</span></td><td>Vooruit</td><td class="td-issue">Bloqué (mi-2026)</td></tr>
+            <tr><td><b>Suppression du Sénat</b></td><td>De Wever <span class="chip c-nva">N-VA</span></td><td>CD&amp;V (réticent), absence de majorité des 2/3</td><td class="td-issue">Bloqué de facto</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="src">Lecture&nbsp;: le «&nbsp;porteur&nbsp;» est le ministre ou le président qui a fait avancer le dossier&nbsp;; l'«&nbsp;opposant&nbsp;» celui qui l'a freiné ou combattu. Sauf mention contraire, l'arbitrage final revient à Bart De Wever.</p>
+    </section>
+
+    <section id="dossiers">
+      <div class="sec-head"><span class="sec-num">08</span><h2>Dossier par dossier&nbsp;: qui a porté, qui a bloqué</h2></div>
+      <p class="lead">Derrière chaque ligne du tableau, il y a une bataille. Voici, dossier par dossier, qui a gagné quoi — et ce que chaque arbitrage révèle.</p>
+
+      <h3>Pensions&nbsp;: le malus de Jan Jambon</h3>
+      <p>Réforme-phare de <strong>Jan Jambon</strong> (N-VA), adoptée à la Chambre dans la nuit du 28 au 29 mai 2026, «&nbsp;majorité contre opposition&nbsp;». Le cœur du dispositif, selon la RTBF, est un <strong>malus</strong> à l'encontre des personnes qui n'ont pas travaillé un nombre minimal de jours (de l'ordre de 156 par an) sur au moins 35 ans. Le Conseil d'État avait freiné le projet, estimant qu'il devait être mieux motivé et pouvait créer certaines discriminations — notamment envers les femmes, aux carrières plus souvent fragmentées. Vooruit, qui visait une pension minimale renforcée, est accusé par le <span class="flag">source militante</span> PTB d'avoir cédé («&nbsp;promesse non tenue&nbsp;»). Le parti a tout de même arraché des corrections, avec Les Engagés (assimilation de la maladie, traitement de certaines périodes). Sur le plan contentieux, la <span class="flag">syndicat</span> FGTB annonce un recours en front commun&nbsp;; la <span class="flag">syndicat</span> CSC indique avoir introduit dès octobre 2025 un recours devant la Cour constitutionnelle.</p>
+
+      <h3>Taxe sur les plus-values&nbsp;: le trophée de Vooruit</h3>
+      <p>C'est <strong>la</strong> condition d'entrée de Vooruit dans la coalition. La contribution de solidarité de 10&nbsp;% sur les plus-values financières est entrée en vigueur le 1<sup>er</sup> janvier 2026, avec une exonération de 10&nbsp;000&nbsp;€ (pouvant atteindre 15&nbsp;000&nbsp;€). En vitesse de croisière, elle devrait rapporter, en théorie, de l'ordre de 500&nbsp;millions d'euros par an. <strong>Rousseau</strong> a refusé tout relèvement de l'exonération réclamé par le CD&amp;V — Mahdi voulait la doubler pour «&nbsp;le papa et la maman qui mettent 100 euros de côté&nbsp;».</p>
+      <div class="pull">
+        <blockquote>Si tout le monde, à la moindre opposition, revient sur l'accord conclu, il ne sortira pas grand-chose de ce gouvernement.</blockquote>
+        <cite>Conner Rousseau, sur les tentatives de rouvrir la taxe plus-values</cite>
+      </div>
+      <p>De Wever a arraché le compromis «&nbsp;au forceps&nbsp;» entre MR et Vooruit en juillet 2025. La taxe a été votée à la Chambre dans la nuit du 3 au 4 avril 2026. <strong>À noter&nbsp;:</strong> plusieurs économistes (dont à l'UCLouvain) et le PTB soulignent que la mesure épargnerait largement les plus fortunés, qui gèrent leurs actifs via des sociétés, hors du champ de l'impôt des personnes physiques.</p>
+
+      <h3>Budget&nbsp;: les vétos croisés</h3>
+      <p>Le feuilleton budgétaire est l'illustration parfaite du système des vétos. Le MR refuse toute nouvelle taxe — Bouchez aurait affirmé qu'«&nbsp;il n'y aura plus aucune taxe jusqu'à la fin de la vie de ce gouvernement&nbsp;» — et Clarinval rejette la hausse de TVA comme le saut d'index. Vooruit pousse au contraire sa «&nbsp;taxe des millionnaires&nbsp;». Le CD&amp;V vise les sociétés de management. De Wever, accusé de s'y être pris trop tard, boucle l'accord avant Noël 2025. Détail savoureux&nbsp;: Bouchez aurait écrit au groupe WhatsApp du MR «&nbsp;on a le meilleur accord de l'histoire&nbsp;», Clarinval répondant qu'il n'en était pas si sûr.</p>
+
+      <h3>Chômage limité dans le temps&nbsp;: la mesure-totem du MR</h3>
+      <p>Portée par <strong>David Clarinval</strong> (MR), la limitation des allocations à 24 mois a été adoptée par une loi-programme de l'été 2025, entrée en vigueur le 1<sup>er</sup> mars 2026. De Wever l'a justifiée d'une phrase&nbsp;: «&nbsp;Nous étions pratiquement le dernier pays au monde où l'inactivité pouvait être un choix de vie.&nbsp;» Une exception a été négociée pour les plus de 55 ans ayant 30 ans de carrière. La réforme toucherait, au total, plus de 184&nbsp;000 personnes, avec un report vers les CPAS dont la compensation financière n'a pas été chiffrée officiellement — Clarinval promettant seulement des montants «&nbsp;conséquents et suffisants&nbsp;». La mise en œuvre est échelonnée en plusieurs vagues d'exclusion de l'ONEM.</p>
+
+      <h3>Éthique&nbsp;: la menace de la «&nbsp;majorité alternative&nbsp;»</h3>
+      <p>C'est l'opposition la plus frontale&nbsp;: <strong>Vooruit contre le CD&amp;V</strong>. Annelies Verlinden (CD&amp;V, Justice) tient la plume sur l'extension du délai d'IVG de 12 à 14 semaines et la réduction du délai de réflexion — jugées insuffisantes par Vooruit, qui veut 18 semaines. Frank Vandenbroucke a averti en kern qu'il ne pourrait empêcher ses députés de voter «&nbsp;en leur âme et conscience&nbsp;» les textes de l'opposition. La menace est explosive&nbsp;: elle reviendrait à constituer une <strong>majorité alternative</strong> contre un partenaire de coalition. De Wever, agacé que la proposition ait fuité dans la presse, a confié l'avoir «&nbsp;lue dans la presse&nbsp;». La majorité s'est donné jusqu'au 1<sup>er</sup> décembre pour un paquet global (IVG, euthanasie des déments, GPA).</p>
+
+      <h3>Énergie et nucléaire&nbsp;: le «&nbsp;sous-marin&nbsp;»</h3>
+      <p>Sur les aides aux prix, De Wever et Jambon prônent l'attentisme contre un MR qui réclamait un «&nbsp;cliquet inversé&nbsp;» à la pompe. Le Premier ministre a refusé un large paquet de soutien d'une métaphore restée célèbre&nbsp;: avec des finances dégradées, le pays est «&nbsp;un sous-marin&nbsp;», et «&nbsp;on n'ouvre pas la fenêtre d'un sous-marin&nbsp;». Une aide ciblée et temporaire a finalement été votée fin mai 2026. Sur le nucléaire, la majorité a abrogé la loi de sortie (15 mai 2025) et signé, le 30 avril 2026, une lettre d'intention avec Engie pour le rachat par l'État de sept réacteurs.</p>
+
+      <h3>Gaza&nbsp;: la victoire de Prévot</h3>
+      <p>Le compromis nocturne du 2 septembre 2025 est une victoire de <strong>Maxime Prévot</strong> (Affaires étrangères)&nbsp;: la Belgique se joint à la «&nbsp;Déclaration de New York&nbsp;» mais conditionne la reconnaissance formelle de la Palestine à la libération des otages et à l'écartement du Hamas. La RTBF a résumé l'affrontement de deux visions — l'une, incarnée par Francken ou Bouchez, lisant le conflit «&nbsp;avec un regard civilisationnel ou identitaire&nbsp;»&nbsp;; l'autre, incarnée par Prévot ou Rousseau, à l'aune du droit international. Fait notable&nbsp;: une partie du MR (Charlotte Deborsu, Michel De Maegd) s'est publiquement désolidarisée de la ligne Bouchez.</p>
+
+      <h3>Sécurité des sites juifs&nbsp;: le contournement de Verlinden</h3>
+      <p>Le 16 mars 2026, après l'attentat de la synagogue de Liège, <strong>Bernard Quintin</strong> (Intérieur, MR) et <strong>Theo Francken</strong> (Défense, N-VA) annoncent le déploiement de militaires devant des sites juifs <strong>sans concertation</strong> avec Verlinden (Justice). Or le déploiement était jusque-là bloqué par le CD&amp;V, qui le liait à son plan contre la surpopulation carcérale, lui-même bloqué par le MR.</p>
+      <div class="pull">
+        <blockquote>Chacun doit se regarder dans le miroir et se demander si c'est ainsi que nous prenons les décisions au sein du gouvernement.</blockquote>
+        <cite>Annelies Verlinden, après avoir été contournée — mars 2026</cite>
+      </div>
+
+      <h3>Russie&nbsp;: la sortie recadrée</h3>
+      <p>Mi-mars 2026, dans <em>L'Echo</em>, De Wever plaide pour «&nbsp;normaliser les relations avec la Russie&nbsp;» et regagner «&nbsp;l'accès à une énergie bon marché&nbsp;». Le recadrage est immédiat — et il vient de sa propre majorité. Prévot juge que «&nbsp;parler de normalisation est un signal d'affaiblissement qui mine l'unité européenne&nbsp;». Rousseau ironise&nbsp;: le Premier ministre «&nbsp;ne peut pas dire au nom du gouvernement que l'on souhaite soudainement aller supplier Poutine&nbsp;». Le CD&amp;V se rallie à Prévot. De Wever clôt l'épisode d'une formule&nbsp;: «&nbsp;une tempête dans une tasse de thé&nbsp;».</p>
+
+      <h3>L'ambassadeur Bill White&nbsp;: l'incident diplomatique</h3>
+      <p>Le 17 février 2026, l'ambassadeur américain <strong>Bill White</strong> exige du gouvernement belge qu'il condamne Rousseau, après une vidéo (27 janvier) comparant l'administration Trump et l'ICE au nazisme. Rousseau refuse&nbsp;: «&nbsp;Je ne suis pas membre du gouvernement, je suis président de parti.&nbsp;» White évoque une possible interdiction d'entrée aux États-Unis&nbsp;; Prévot convoque l'ambassadeur et appelle à la désescalade. L'épisode est un cas d'école de la particratie&nbsp;: un président de parti, hors gouvernement, déclenche une crise diplomatique que l'exécutif doit gérer.</p>
+
+      <h3>Suppression du Sénat&nbsp;: l'objectif hors d'atteinte</h3>
+      <p>Objectif central de la N-VA, piloté par De Wever, mais <strong>bloqué de facto</strong>. Le CD&amp;V est réticent et, surtout, l'Arizona n'a pas la majorité des deux tiers — que l'accord interdit de constituer avec le Vlaams Belang ou le PTB. Au Sénat, le 3 avril 2026, une révision n'a pu passer que grâce à une voix du Vlaams Belang, le MR s'abstenant&nbsp;; Jean-Paul Wahl (MR) a prévenu&nbsp;: «&nbsp;Une fois mais pas deux.&nbsp;» En juin 2026, le PS, «&nbsp;numériquement indispensable&nbsp;», refuse ses voix d'appoint sans contreparties. La réforme de l'État, totem identitaire de la N-VA, reste lettre morte.</p>
+
+      <h3>Horaires accordéon&nbsp;: le blocage en chaîne</h3>
+      <p>Porté par Clarinval (MR), l'annualisation du temps de travail est bloquée par Vooruit, qui craint des dérives pour les contrats à temps partiel à horaire variable. Détail révélateur de l'enchevêtrement des dossiers&nbsp;: ce blocage en <strong>gèle un autre</strong> — l'interdiction d'importation des produits des colonies israéliennes, chère à Vooruit, au CD&amp;V et aux Engagés. Les dossiers sont pris en otage les uns des autres.</p>
+    </section>
+
+    <section id="communautaire">
+      <div class="sec-head"><span class="sec-num">09</span><h2>La ligne de faille flamand / francophone</h2></div>
+      <p class="lead">On présente souvent l'Arizona comme une coalition de droite traversée par un clivage gauche-droite. C'est vrai sur le plan socio-économique. Mais la fracture la plus vive est ailleurs&nbsp;: elle est communautaire et culturelle.</p>
+
+      <p>Le constat saute aux yeux quand on regarde <em>où</em> éclatent les crises. Les dossiers purement socio-économiques (pensions, chômage, budget) produisent des batailles dures mais «&nbsp;normales&nbsp;»&nbsp;: un porteur, un opposant, un arbitrage. En revanche, les frictions les plus spectaculaires — celles qui débouchent sur des recadrages publics et des contournements — se concentrent sur les dossiers <strong>internationaux et éthiques</strong>&nbsp;: la Russie, Gaza, l'IVG, la sécurité.</p>
+
+      <p>Ce n'est pas un hasard. La RTBF a mis des mots sur cette ligne de partage à propos de Gaza&nbsp;: d'un côté, une vision portée notamment par <strong>Theo Francken</strong> et <strong>Georges-Louis Bouchez</strong>, qui lisent les conflits «&nbsp;avec un regard civilisationnel ou identitaire&nbsp;»&nbsp;; de l'autre, une lecture défendue par <strong>Maxime Prévot</strong> et <strong>Conner Rousseau</strong>, fondée sur les principes du droit international. Cette opposition se retrouve, à l'identique, sur la Russie&nbsp;: De Wever et l'aile flamande nationaliste d'un côté, Prévot et les francophones de l'autre.</p>
+
+      <p>La conséquence institutionnelle est frappante&nbsp;: c'est un francophone, Prévot, qui tient les <strong>Affaires étrangères</strong>, et qui joue de facto le rôle de stabilisateur sur tous les dossiers où l'aile flamande nationaliste tend à déraper. La géographie des portefeuilles n'est pas neutre&nbsp;; elle compense, en partie, la géographie des tensions.</p>
+
+      <div class="box note">
+        <p class="box__tag">Le clivage caché</p>
+        <p>Sur l'économie, l'Arizona est une coalition de droite à peu près cohérente. Sur l'international et l'éthique, elle se fend selon une couture <strong>flamand-nationaliste / francophone-centriste</strong> qui ne suit pas la ligne gauche-droite. C'est cette seconde fracture, moins commentée, qui produit les épisodes les plus violents — et qui rappelle que la Belgique reste, sous la surface, une démocratie de compromis entre communautés.</p>
+      </div>
+    </section>
+
+    <section id="contournement">
+      <div class="sec-head"><span class="sec-num">10</span><h2>Le contournement comme symptôme</h2></div>
+      <p class="lead">Un même geste revient, dossier après dossier&nbsp;: un ministre, ou un parti, agit sans attendre l'accord des autres et place la coalition devant le fait accompli. Ce n'est pas une série d'accidents. C'est un symptôme.</p>
+
+      <p>L'exemple le plus net est la sécurité des sites juifs&nbsp;: Quintin et Francken annoncent le déploiement de militaires sans concertation avec la ministre de la Justice, alors même que ce déploiement était l'objet d'un marchandage bloqué. Mais le contournement prend d'autres formes&nbsp;: la menace de Vooruit de voter l'IVG <strong>avec l'opposition</strong> contre le CD&amp;V (la fameuse «&nbsp;majorité alternative&nbsp;»)&nbsp;; les fuites permanentes de notes et de propositions dans la presse, devenues une arme de négociation à part entière&nbsp;; les sorties solitaires de De Wever lui-même sur la Russie, parlant «&nbsp;en son nom&nbsp;» tout en engageant l'image du gouvernement.</p>
+
+      <p>Que révèle ce réflexe&nbsp;? Qu'une coalition qui ne décide pas <em>collectivement</em> finit par décider <em>séparément</em>. Quand le kern n'arrive pas à produire un arbitrage — parce que le «&nbsp;masseur&nbsp;» a préféré temporiser —, la pression s'accumule, et un acteur finit par forcer le passage. Le contournement est l'envers exact de la méthode De Wever&nbsp;: à force de reporter les décisions pour préserver la paix, on pousse les ministres à se passer de la table commune.</p>
+
+      <p>La protestation de Verlinden — «&nbsp;chacun doit se regarder dans le miroir&nbsp;» — est, à cet égard, plus qu'une plainte personnelle. C'est le rappel de ce que devrait être la décision gouvernementale collective, formulé au moment précis où cette collégialité s'érode. La RTBF a d'ailleurs titré, dans une chronique d'analyse, sur un De Wever «&nbsp;en lévitation&nbsp;» au-dessus de la mêlée — formule éditoriale <span class="flag">registre d'opinion</span> à manier avec prudence, mais qui dit bien la position du Premier ministre&nbsp;: au-dessus des contournements qu'il laisse, parfois, se produire.</p>
+    </section>
+
+    <section id="synthese">
+      <div class="sec-head"><span class="sec-num">11</span><h2>Ce que la salle des machines dit du pouvoir belge</h2></div>
+      <p class="lead">En entrant dans les coulisses de l'Arizona, on ne découvre pas seulement un gouvernement. On découvre un mode de fonctionnement très belge, poussé à l'extrême.</p>
+
+      <p><strong>D'abord, la particratie.</strong> Le vrai pouvoir appartient aux présidents de parti, pas aux ministres. Deux des hommes les plus déterminants de la législature — Bouchez et Rousseau — ne siègent même pas au gouvernement. De Wever, lui, est l'exception qui confirme la règle&nbsp;: en cumulant la primature et l'autorité sur sa famille politique, il échappe à la tutelle d'un président dans son dos. C'est la clé de sa force.</p>
+
+      <p><strong>Ensuite, l'érosion de la discrétion.</strong> Le consociationalisme belge — l'art de forger des compromis entre familles antagonistes — reposait historiquement sur le secret des négociations. L'Arizona a fait sauter ce verrou&nbsp;: les fuites sont devenues une tactique, et chaque dossier se négocie en partie dans les pages des journaux. Une coalition qui négocie en public est une coalition qui se méfie d'elle-même.</p>
+
+      <p><strong>Enfin, l'asymétrie électorale.</strong> C'est la vulnérabilité centrale, et elle explique les comportements. La N-VA reste stable en Flandre, De Wever atteint des sommets de popularité&nbsp;; à l'inverse, ses partenaires francophones — le MR surtout — s'effondrent dans les sondages au profit du PS et du PTB. Le Premier ministre est <strong>immunisé</strong>&nbsp;; ses alliés <strong>saignent</strong>. Cela donne à De Wever une autorité tranquille — il peut attendre — et pousse ses partenaires fragilisés à la surenchère médiatique pour exister. La méthode du «&nbsp;masseur&nbsp;» n'est possible que parce que son auteur n'a, lui, rien à perdre.</p>
+
+      <p>Au bout du compte, la salle des machines révèle un paradoxe&nbsp;: l'Arizona est à la fois remarquablement stable et structurellement instable. Stable, parce qu'aucune alternative arithmétique n'existe et que la peur du vide soude la majorité. Instable, parce que rien n'a été vraiment tranché — tout a été massé, reporté, juxtaposé. Le «&nbsp;masseur&nbsp;» achète du temps&nbsp;; il ne supprime pas l'échéance.</p>
+
+      <div class="box risk">
+        <p class="box__tag">Les seuils qui changeraient le tableau</p>
+        <p>Trois événements feraient basculer l'analyse&nbsp;: <strong>(1)</strong> un nouvel échec budgétaire à l'automne 2026, le test que la méthode De Wever n'a fait que reporter&nbsp;; <strong>(2)</strong> le départ d'un président de parti — singulièrement si Vooruit estimait que ses garanties ne valent plus rien&nbsp;; <strong>(3)</strong> l'aboutissement, ou l'échec définitif et assumé, de la réforme de l'État. Tant qu'aucun de ces seuils n'est franchi, le massage continue.</p>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="sec-head"><span class="sec-num">12</span><h2>Questions fréquentes</h2></div>
+      <div class="faq">
+        <details>
+          <summary>Pourquoi dit-on que Bart De Wever est un «&nbsp;masseur&nbsp;»&nbsp;?<span class="pm" aria-hidden="true"></span></summary>
+          <div class="a"><p>Parce qu'il décrit lui-même sa gestion des tensions comme un massage&nbsp;: temporiser («&nbsp;attendre que l'affaire se tasse&nbsp;»), morceler les dossiers entre kern et bilatérales, et apaiser les egos plutôt que trancher. Le journaliste Ivan De Vadder (VRT) le compare à Wilfried Martens, qui cherchait le compromis, plutôt qu'à Jean-Luc Dehaene, qui forçait la décision. La méthode désamorce les crises mais reporte les arbitrages.</p></div>
+        </details>
+        <details>
+          <summary>Quelle est la relation entre Bouchez et Rousseau&nbsp;?<span class="pm" aria-hidden="true"></span></summary>
+          <div class="a"><p>C'est l'inimitié la plus ancienne et la mieux documentée de la coalition. Dès août 2024, Bouchez (MR) a qualifié Rousseau (Vooruit) de «&nbsp;petit gamin&nbsp;»&nbsp;; Melissa Depraetere (Vooruit) a en retour présenté Bouchez comme indigne de confiance. La presse y voit une dimension générationnelle, ces deux jeunes présidents s'opposant là où De Wever et Prévot, d'une autre génération, s'entendent bien.</p></div>
+        </details>
+        <details>
+          <summary>Pourquoi la relation De Wever–Bouchez est-elle qualifiée de «&nbsp;bromance&nbsp;»&nbsp;?<span class="pm" aria-hidden="true"></span></summary>
+          <div class="a"><p>Parce qu'elle mêle une admiration idéologique réelle («&nbsp;je l'aime beaucoup, on se ressemble&nbsp;») et une exaspération constante face au style de Bouchez. La presse flamande (De Standaard) a parlé d'un «&nbsp;baiser de Judas&nbsp;» pour décrire la défiance qui couve sous l'affichage d'amitié. De Wever a organisé un déjeuner de réconciliation à Mons en mars 2026.</p></div>
+        </details>
+        <details>
+          <summary>Quel rôle joue Maxime Prévot dans la coalition&nbsp;?<span class="pm" aria-hidden="true"></span></summary>
+          <div class="a"><p>Un rôle de stabilisateur central. Ancien médiateur royal (2024), il sert de go-between entre Bouchez et les partis flamands, et entretient une relation de confiance «&nbsp;complète&nbsp;» avec De Wever. Ministre des Affaires étrangères, il joue aussi un rôle modérateur sur les dossiers internationaux (Gaza, Russie, incident de l'ambassadeur américain).</p></div>
+        </details>
+        <details>
+          <summary>Comment les responsabilités sont-elles réparties&nbsp;?<span class="pm" aria-hidden="true"></span></summary>
+          <div class="a"><p>Selon une logique de «&nbsp;trophée + véto&nbsp;»&nbsp;: chaque parti a obtenu une mesure-totem (taxe plus-values pour Vooruit, pensions pour la N-VA, marché du travail pour le MR) et a posé ses lignes rouges. De Wever arbitre en dernier ressort. Comme chaque victoire d'un parti est une concession arrachée à un autre, le système fabrique lui-même les tensions que le Premier ministre doit ensuite gérer.</p></div>
+        </details>
+        <details>
+          <summary>Quelle est la principale ligne de faille de l'Arizona&nbsp;?<span class="pm" aria-hidden="true"></span></summary>
+          <div class="a"><p>Au-delà du clivage gauche-droite, la fracture la plus vive est communautaire et culturelle. Sur les dossiers internationaux et éthiques (Russie, Gaza, IVG, sécurité), une vision portée notamment par Francken et Bouchez s'oppose à une lecture défendue par Prévot et Rousseau. C'est sur ces dossiers que surviennent les frictions et les contournements les plus spectaculaires.</p></div>
+        </details>
+        <details>
+          <summary>Qu'est-ce que le «&nbsp;contournement&nbsp;» d'un ministre&nbsp;?<span class="pm" aria-hidden="true"></span></summary>
+          <div class="a"><p>C'est lorsqu'un ou plusieurs ministres prennent une décision sans concertation avec le ministre normalement compétent. Le cas le plus net&nbsp;: en mars 2026, Quintin (Intérieur) et Francken (Défense) annoncent le déploiement de militaires devant des sites juifs sans en référer à Verlinden (Justice). Ce réflexe trahit une coalition qui peine à décider collectivement.</p></div>
+        </details>
+      </div>
+    </section>
+
+    <section id="methodo">
+      <div class="sec-head"><span class="sec-num">13</span><h2>Méthode, sources &amp; limites</h2></div>
+      <p class="lead">Cette page est une analyse, pas un tract. Voici comment elle a été construite et ce qu'elle ne prétend pas faire.</p>
+
+      <h4>Principes</h4>
+      <p>Les faits (qui a dit ou fait quoi, daté et attribué) sont distingués des interprétations d'analystes (Carl Devos, Dave Sinardet, Ivan De Vadder, Dorian de Meeûs). Les caractérisations polémiques sont rapportées en les attribuant à leurs auteurs, plutôt que reprises à notre compte. Les sources militantes, syndicales ou d'opinion sont signalées par une étiquette <span class="flag">source militante</span> / <span class="flag">syndicat</span> / <span class="flag">registre d'opinion</span> pour ne pas être confondues avec un fait neutre.</p>
+
+      <h4>Sources</h4>
+      <p>Presse belge de référence&nbsp;: RTBF, Le Soir, La Libre, L'Echo, Le Vif, De Standaard, De Tijd, Knack, La DH, L'Avenir, Belga. Les verbatims néerlandophones cités ont, le cas échéant, été traduits. Une partie des sources les plus détaillées est en partie derrière paywall.</p>
+
+      <h4>Limites</h4>
+      <ul>
+        <li>Plusieurs épisodes de coulisses reposent sur des <strong>indiscrétions de presse</strong> (négociateurs anonymes), notamment pour les clashs de négociation de 2024.</li>
+        <li>La «&nbsp;rivalité&nbsp;» Mahdi–Van Peteghem est <strong>moins documentée</strong> qu'une simple divergence de profil et de ligne&nbsp;: les sources montrent plutôt une complémentarité affichée.</li>
+        <li>Certaines formules fortes («&nbsp;De Wever en lévitation&nbsp;», «&nbsp;baiser de Judas&nbsp;») relèvent du <strong>registre éditorial</strong> et non du compte rendu factuel.</li>
+        <li>Restent mal éclairées&nbsp;: la dynamique fine intra-N-VA, le rôle des ministres plus techniques et discrets, et les coulisses exactes des bilatérales budgétaires.</li>
+      </ul>
+
+      <div class="box note">
+        <p class="box__tag">Photo arrêtée</p>
+        <p>L'analyse est arrêtée au <strong>23 juin 2026</strong>. Une chute du gouvernement, le départ d'un président de parti ou un dénouement de la réforme de l'État modifieraient l'équilibre décrit. Cette page ne constitue pas un avis juridique, fiscal ou électoral. Aucune photographie de personnalité n'est utilisée (droits à l'image)&nbsp;: les seuls visuels sont en SVG/CSS.</p>
+      </div>
+
+      <p class="src">Pour les faits structurants (composition, budget, réformes, sondages, chronologie), voir le <a class="inl" href="../">dossier principal sur la coalition Arizona</a>.</p>
+    </section>
+
+  </main>
+</div>
+</div>
+
+<footer class="foot">
+  <div class="foot__sun" aria-hidden="true"></div>
+  <div class="foot__in">
+    <div>
+      <h3>Arizona — la salle des machines</h3>
+      <p>Un complément au dossier de référence sur le gouvernement De Wever&nbsp;: les relations interpersonnelles entre acteurs clés et l'attribution des responsabilités, dossier par dossier, de février 2025 à juin 2026.</p>
+      <p style="margin-top:1rem"><a href="../">← Revenir au dossier principal sur la coalition Arizona</a></p>
+    </div>
+    <nav class="foot__nav" aria-label="Navigation de pied de page">
+      <a href="https://ouaisfieu.github.io/politique-belge/">Politique belge</a>
+      <a href="../">Coalition Arizona — le dossier</a>
+      <a href="#methode">La méthode De Wever</a>
+      <a href="#attribution">L'attribution des responsabilités</a>
+      <a href="#faq">Questions fréquentes</a>
+    </nav>
+    <small>© 2026 ouaisfieu · Analyse indépendante à partir de sources de presse belge · Pas d'utilisation commerciale · Citer l'auteur·e est apprécié.</small>
+  </div>
+</footer>
+
+<button class="totop" id="totop" aria-label="Revenir en haut de la page">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script>
+(function(){
+  // progress bar
+  var prog = document.getElementById('progress');
+  var totop = document.getElementById('totop');
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var p = max > 0 ? (h.scrollTop || document.body.scrollTop) / max : 0;
+    prog.style.width = (p*100) + '%';
+    if((h.scrollTop||document.body.scrollTop) > 600){ totop.classList.add('show'); }
+    else { totop.classList.remove('show'); }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  totop.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+  });
+
+  // TOC active highlighting via IntersectionObserver
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var map = {};
+  links.forEach(function(a){ var id = a.getAttribute('href').slice(1); map[id] = a; });
+  var sections = links.map(function(a){ return document.getElementById(a.getAttribute('href').slice(1)); }).filter(Boolean);
+  if('IntersectionObserver' in window){
+    var current = null;
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          if(current) current.classList.remove('active');
+          var a = map[e.target.id];
+          if(a){ a.classList.add('active'); current = a; }
         }
+      });
+    }, {rootMargin: '-15% 0px -70% 0px', threshold: 0});
+    sections.forEach(function(s){ obs.observe(s); });
+  }
 
-        function updateDissidentView(mode) {
-            const title = document.getElementById('result-title');
-            const speech = document.getElementById('result-speech');
-            const comm = document.getElementById('result-comm');
-            const funds = document.getElementById('result-funds');
-            const staff = document.getElementById('result-staff');
-            const btnGroupe = document.getElementById('btn-groupe');
-            const btnIndep = document.getElementById('btn-indep');
-            const container = document.getElementById('dissident-result');
+  // mobile TOC toggle
+  var toc = document.getElementById('toc');
+  var toggle = document.getElementById('tocToggle');
+  if(toggle){
+    toggle.addEventListener('click', function(){
+      if(window.matchMedia('(max-width:880px)').matches){
+        toc.setAttribute('data-open', toc.getAttribute('data-open') === 'true' ? 'false' : 'true');
+      }
+    });
+    // collapse by default on small screens
+    if(window.matchMedia('(max-width:880px)').matches){ toc.setAttribute('data-open','false'); }
+  }
+})();
+</script>
 
-            if (mode === 'independant') {
-                title.innerText = 'Statut : Député Non Apparenté (Dissident)';
-                speech.innerText = 'Réduit au minimum (Souvent 1 min)';
-                comm.innerText = 'Exclu (Accès sans droit de vote)';
-                funds.innerText = 'Supprimées (Allocation min. individuelle)';
-                staff.innerText = 'Perte totale des experts du parti';
-                
-                btnIndep.className = "w-full py-4 px-6 rounded-xl border-2 border-amber-600 bg-amber-600 text-white font-bold transition-all flex items-center justify-between shadow-lg";
-                btnGroupe.className = "w-full py-4 px-6 rounded-xl border-2 border-stone-300 text-stone-600 font-bold hover:border-amber-600 transition-all flex items-center justify-between";
-                container.className = "lg:w-2/3 bg-stone-50 p-8 rounded-2xl shadow-inner border-2 border-amber-200 transition-all";
-                
-                // Change border indicators
-                document.querySelectorAll('#dissident-result .border-l-4').forEach(el => {
-                    el.classList.replace('border-green-500', 'border-red-500');
-                });
-            } else {
-                title.innerText = 'Statut : Membre du Caucus';
-                speech.innerText = 'Proportionnel au groupe (Large)';
-                comm.innerText = 'Sièges de plein droit';
-                funds.innerText = 'Dotations de groupe complètes';
-                staff.innerText = 'Accès aux conseillers juridiques';
-                
-                btnGroupe.className = "w-full py-4 px-6 rounded-xl border-2 border-stone-800 bg-stone-800 text-white font-bold transition-all flex items-center justify-between shadow-lg";
-                btnIndep.className = "w-full py-4 px-6 rounded-xl border-2 border-stone-300 text-stone-600 font-bold hover:border-amber-600 transition-all flex items-center justify-between";
-                container.className = "lg:w-2/3 bg-white p-8 rounded-2xl shadow-inner border border-stone-200 transition-all";
-
-                document.querySelectorAll('#dissident-result .border-l-4').forEach(el => {
-                    el.classList.replace('border-red-500', 'border-green-500');
-                });
-            }
-        }
-    </script>
 </body>
 </html>
