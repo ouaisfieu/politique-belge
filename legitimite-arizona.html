@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Légitimité du pouvoir en Belgique sous le gouvernement Arizona (2025-2026)</title>
+  <meta name="description" content="Le gouvernement Arizona de Bart De Wever est-il légitime ? Élection, particratie, mandat libre, loi Quintin, État de droit : enquête sourcée et équilibrée.">
+  <meta property="og:title" content="Légitimité du pouvoir en Belgique sous l'Arizona (2025-2026)">
+  <meta property="og:description" content="Enquête sur une démocratie sous tension. Pour le meilleur et pour le pire.">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="fr_BE">
+  <link rel="canonical" href="https://example.com/legitimite-pouvoir-belgique-gouvernement-arizona">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Légitimité du pouvoir en Belgique sous le gouvernement Arizona (2025-2026)",
+    "description": "Enquête sur une démocratie sous tension — pour le meilleur et pour le pire.",
+    "datePublished": "2026-06-24",
+    "inLanguage": "fr",
+    "keywords": ["particratie belge","gouvernement Arizona","légitimité démocratique","mandat libre article 42","état de droit Belgique","Bart De Wever","loi Quintin"],
+    "author": {"@type": "Organization", "name": "Dossier analytique"}
+  }
+  </script>
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS — Constitutional Document
+       ============================================================ */
+    :root {
+      --navy:         #0D1B2A;
+      --navy-mid:     #162336;
+      --parchment:    #F7F5F0;
+      --parchment-2:  #EEEAE2;
+      --charcoal:     #252525;
+      --mid:          #666;
+      --rule:         #DDD9D1;
+      --white:        #fff;
+
+      --green:        #1A5C35;
+      --green-pale:   #EAF4EE;
+      --green-bd:     #2E8049;
+      --amber:        #9A6C00;
+      --amber-pale:   #FBF5E6;
+      --amber-bd:     #C49A1A;
+      --red:          #8F1F2C;
+      --red-pale:     #FCEDEF;
+      --red-bd:       #B83040;
+
+      --f-display:    'Playfair Display', Georgia, serif;
+      --f-body:       'Source Serif 4', Georgia, serif;
+      --f-ui:         'DM Sans', system-ui, sans-serif;
+
+      --col:          720px;
+      --col-wide:     900px;
+    }
+
+    /* ============================================================
+       RESET + BASE
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 17px; scroll-behavior: smooth; }
+    body {
+      font-family: var(--f-body);
+      background: var(--parchment);
+      color: var(--charcoal);
+      line-height: 1.78;
+    }
+    ::selection { background: rgba(184,48,64,.18); }
+    :focus-visible { outline: 2px solid var(--amber-bd); outline-offset: 3px; }
+
+    /* ============================================================
+       PROGRESS BAR
+       ============================================================ */
+    #prog {
+      position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+      background: linear-gradient(90deg, var(--green-bd) 0%, var(--amber-bd) 50%, var(--red-bd) 100%);
+      z-index: 200; transition: width .08s linear;
+      pointer-events: none;
+    }
+
+    /* ============================================================
+       STICKY NAV
+       ============================================================ */
+    nav.topbar {
+      position: sticky; top: 0;
+      height: 50px;
+      background: rgba(247,245,240,.94);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 1.5rem;
+    }
+    .nav-brand {
+      font-family: var(--f-ui); font-size: .67rem; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--navy);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .nav-dots { display: flex; gap: 9px; align-items: center; flex-shrink: 0; margin-left: 1rem; }
+    .nav-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--rule); border: none; cursor: pointer;
+      transition: background .2s, transform .2s;
+      flex-shrink: 0;
+    }
+    .nav-dot:hover, .nav-dot.active { background: var(--navy); transform: scale(1.5); }
+    @media (max-width: 580px) { .nav-dots { display: none; } }
+
+    /* ============================================================
+       HERO
+       ============================================================ */
+    .hero {
+      background: var(--navy);
+      background-image: repeating-linear-gradient(
+        -55deg, transparent, transparent 22px,
+        rgba(255,255,255,.012) 22px, rgba(255,255,255,.012) 23px
+      );
+      color: var(--white);
+      padding: 5rem 1.5rem 4rem;
+    }
+    .hero-in { max-width: var(--col); margin: 0 auto; }
+
+    .eyebrow {
+      font-family: var(--f-ui); font-size: .63rem; font-weight: 600;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: rgba(255,255,255,.45); margin-bottom: 1.4rem; display: block;
+    }
+    .hero h1 {
+      font-family: var(--f-display); font-weight: 900;
+      font-size: clamp(2rem, 5.5vw, 3.3rem); line-height: 1.13;
+      color: var(--white); margin-bottom: 1.4rem; max-width: 640px;
+    }
+    .hero-deck {
+      font-family: var(--f-body); font-style: italic;
+      font-size: 1.05rem; color: rgba(255,255,255,.75);
+      line-height: 1.68; margin-bottom: 3rem; max-width: 580px;
+    }
+
+    /* ── TRIPTYQUE (signature element) ── */
+    .triptyque {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1px; border-radius: 5px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,.13);
+      margin-bottom: 2.75rem;
+    }
+    .tri-panel {
+      background: rgba(255,255,255,.05);
+      border: none; text-align: left;
+      padding: 1.2rem 1rem;
+      cursor: pointer; color: var(--white);
+      transition: background .22s;
+    }
+    .tri-panel:hover { background: rgba(255,255,255,.1); }
+    .tri-type {
+      display: block; font-family: var(--f-ui); font-size: .58rem;
+      font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+      color: rgba(255,255,255,.42); margin-bottom: .3rem;
+    }
+    .tri-name {
+      display: block; font-family: var(--f-display); font-weight: 700;
+      font-size: 1rem; margin-bottom: .55rem; line-height: 1.25;
+    }
+    .tri-dots { display: flex; gap: 4px; margin-bottom: .5rem; }
+    .td { width: 8px; height: 8px; border-radius: 50%; }
+    .td-on-g  { background: #52C788; }
+    .td-on-a  { background: #F0B52A; }
+    .td-on-r  { background: #E06070; }
+    .td-off   { background: rgba(255,255,255,.18); }
+    .tri-desc { font-family: var(--f-ui); font-size: .7rem; color: rgba(255,255,255,.56); line-height: 1.45; }
+    .tri-g { border-top: 3px solid #52C788; }
+    .tri-a { border-top: 3px solid #F0B52A; }
+    .tri-r { border-top: 3px solid #E06070; }
+
+    @media (max-width: 560px) {
+      .triptyque { grid-template-columns: 1fr; }
+      .hero { padding: 3rem 1.25rem 2.5rem; }
+    }
+
+    .hero-meta { display: flex; gap: 1.75rem; flex-wrap: wrap; }
+    .hm-item {
+      font-family: var(--f-ui); font-size: .68rem;
+      color: rgba(255,255,255,.38);
+    }
+    .hm-item strong { color: rgba(255,255,255,.68); font-weight: 500; }
+    .tag-live {
+      font-family: var(--f-ui); font-size: .58rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .1em;
+      border: 1px solid rgba(240,181,42,.5); color: #F0B52A;
+      padding: 1px 7px; border-radius: 2px;
+    }
+
+    /* ============================================================
+       EN BREF (dark continuation of hero)
+       ============================================================ */
+    .en-bref {
+      background: var(--navy-mid);
+      padding: 2.25rem 1.5rem 2.5rem;
+    }
+    .eb-in { max-width: var(--col); margin: 0 auto; }
+    .eb-label {
+      font-family: var(--f-ui); font-size: .6rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .2em;
+      color: rgba(255,255,255,.3); margin-bottom: 1.2rem; display: block;
+    }
+    .eb-list { list-style: none; display: flex; flex-direction: column; gap: .9rem; }
+    .eb-item { display: grid; grid-template-columns: 10px 1fr; gap: 1rem; align-items: start; }
+    .eb-dot { width: 10px; height: 10px; border-radius: 50%; margin-top: .44rem; flex-shrink: 0; }
+    .eb-item p { font-family: var(--f-body); font-size: .9rem; color: rgba(255,255,255,.72); line-height: 1.65; }
+    .eb-item p strong { color: rgba(255,255,255,.95); }
+
+    /* ============================================================
+       ARTICLE BODY
+       ============================================================ */
+    .body-wrap { max-width: var(--col); margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ── SECTION ── */
+    .sec {
+      padding: 3.75rem 0 3rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .sec:last-child { border-bottom: none; }
+
+    .sec-num {
+      display: block; font-family: var(--f-ui); font-size: .62rem;
+      font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--amber-bd); margin-bottom: .45rem;
+    }
+    .sec h2 {
+      font-family: var(--f-display); font-weight: 700;
+      font-size: clamp(1.4rem, 3.2vw, 1.85rem); line-height: 1.22;
+      color: var(--navy); margin-bottom: 1.6rem;
+    }
+    .sec h3 {
+      font-family: var(--f-ui); font-weight: 600; font-size: .88rem;
+      text-transform: uppercase; letter-spacing: .045em;
+      color: var(--navy); margin-top: 1.9rem; margin-bottom: .65rem;
+      padding-bottom: .35rem; border-bottom: 2px solid var(--rule);
+    }
+    .sec p { font-size: 1rem; line-height: 1.8; color: var(--charcoal); margin-bottom: 1rem; }
+    .sec p:last-child { margin-bottom: 0; }
+    .sec p strong { color: var(--navy); }
+
+    /* ── CONST REF BADGE ── */
+    .cr {
+      display: inline-block; font-family: var(--f-ui); font-size: .65rem;
+      font-weight: 700; background: var(--navy); color: var(--white);
+      padding: 1px 5px; border-radius: 2px; vertical-align: middle;
+      letter-spacing: .02em; margin-right: 1px;
+    }
+
+    /* ── PULL QUOTE ── */
+    .pq {
+      font-family: var(--f-display); font-style: italic;
+      font-size: 1.2rem; font-weight: 400;
+      color: var(--navy); line-height: 1.55;
+      border-left: 4px solid var(--amber-bd);
+      background: var(--amber-pale);
+      padding: .85rem 1.4rem;
+      margin: 2rem -1rem;
+    }
+    @media (max-width: 600px) { .pq { margin: 1.5rem 0; } }
+
+    /* ── ARGUMENTS GRID ── */
+    .args { display: grid; grid-template-columns: 1fr 1fr; gap: .85rem; margin: 1.6rem 0; }
+    @media (max-width: 600px) { .args { grid-template-columns: 1fr; } }
+
+    .arg {
+      padding: .9rem 1rem; border-radius: 3px; border-left: 4px solid;
+    }
+    .arg.ch  { background: var(--red-pale);   border-color: var(--red-bd); }
+    .arg.dc  { background: var(--green-pale);  border-color: var(--green-bd); }
+    .arg.fw  { grid-column: 1 / -1; }
+    .arg.neu { background: var(--amber-pale);  border-color: var(--amber-bd); }
+
+    .arg-lbl {
+      display: block; font-family: var(--f-ui); font-size: .58rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: .14em;
+      margin-bottom: .45rem;
+    }
+    .arg.ch  .arg-lbl { color: var(--red); }
+    .arg.dc  .arg-lbl { color: var(--green); }
+    .arg.neu .arg-lbl { color: var(--amber); }
+
+    .arg p { font-size: .88rem !important; line-height: 1.62 !important; margin-bottom: 0 !important; }
+
+    /* ── CRITICAL FINDING ── */
+    .crit {
+      background: var(--red-pale); border: 1px solid var(--red-bd);
+      border-left: 5px solid var(--red-bd);
+      padding: 1.1rem 1.4rem; border-radius: 3px; margin: 1.7rem 0;
+    }
+    .crit-lbl {
+      display: block; font-family: var(--f-ui); font-size: .58rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: .14em;
+      color: var(--red); margin-bottom: .45rem;
+    }
+    .crit p { font-size: .93rem !important; line-height: 1.7 !important; margin-bottom: 0 !important; color: #5a1515 !important; }
+
+    /* ── METRICS GRID ── */
+    .mets { display: grid; grid-template-columns: 1fr 1fr; gap: .85rem; margin: 1.7rem 0; }
+    @media (max-width: 560px) { .mets { grid-template-columns: 1fr; } }
+
+    .met {
+      background: var(--white); border: 1px solid var(--rule);
+      border-radius: 3px; padding: 1rem 1.1rem;
+    }
+    .met-org {
+      display: block; font-family: var(--f-ui); font-size: .6rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: .11em;
+      color: var(--mid); margin-bottom: .3rem;
+    }
+    .met-body { font-family: var(--f-body); font-size: .87rem; line-height: 1.58; color: var(--charcoal); }
+    .met-body strong { color: var(--navy); }
+    .met-tag {
+      display: inline-block; font-family: var(--f-ui); font-size: .6rem;
+      font-weight: 600; padding: 1px 6px; border-radius: 2px; margin-top: .55rem;
+    }
+    .t-warn  { background: var(--amber-pale); color: var(--amber); }
+    .t-alert { background: var(--red-pale);   color: var(--red); }
+    .t-ok    { background: var(--green-pale);  color: var(--green); }
+
+    /* ── DEFENSE LIST ── */
+    .def-list { list-style: none; display: flex; flex-direction: column; gap: 1.4rem; margin: 1.5rem 0; }
+    .def-item { display: grid; grid-template-columns: 2.4rem 1fr; gap: .9rem; align-items: start; }
+    .def-n {
+      font-family: var(--f-display); font-weight: 900; font-size: 1.9rem;
+      color: var(--rule); line-height: 1; text-align: right; padding-top: .05rem;
+    }
+    .def-body h4 { font-family: var(--f-ui); font-weight: 600; font-size: .87rem; color: var(--navy); margin-bottom: .3rem; }
+    .def-body p  { font-size: .9rem !important; color: var(--mid) !important; margin-bottom: 0 !important; line-height: 1.6 !important; }
+
+    /* ============================================================
+       VERDICT
+       ============================================================ */
+    #verdict {
+      background: var(--navy);
+      background-image: repeating-linear-gradient(
+        135deg, transparent, transparent 30px,
+        rgba(255,255,255,.008) 30px, rgba(255,255,255,.008) 31px
+      );
+      padding: 4.5rem 1.5rem;
+    }
+    .v-in { max-width: var(--col); margin: 0 auto; }
+    #verdict .sec-num { color: rgba(255,255,255,.28); }
+    #verdict h2 {
+      font-family: var(--f-display); font-weight: 900;
+      font-size: clamp(1.55rem, 4vw, 2.2rem);
+      color: var(--white); line-height: 1.18; margin-bottom: 2rem;
+    }
+    .vp {
+      font-family: var(--f-body); font-size: 1.01rem;
+      color: rgba(255,255,255,.8); line-height: 1.8; margin-bottom: 1rem;
+    }
+    .vp strong { color: var(--white); }
+    .vp:first-of-type::first-letter {
+      font-family: var(--f-display); font-weight: 900;
+      font-size: 4.2rem; line-height: .72;
+      float: left; margin-right: .1em; margin-top: .1em;
+      color: #F0B52A;
+    }
+    .v-triptych {
+      margin-top: 2.5rem; display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1px; background: rgba(255,255,255,.1);
+    }
+    @media (max-width: 600px) { .v-triptych { grid-template-columns: 1fr; } }
+    .vt-panel { background: var(--navy); padding: 1.4rem 1.2rem; }
+    .vt-verdict { font-family: var(--f-display); font-size: .97rem; font-weight: 700; margin-bottom: .5rem; }
+    .v-yes  { color: #52C788; }
+    .v-no   { color: #E06070; }
+    .v-deep { color: #F0B52A; }
+    .vt-text { font-family: var(--f-ui); font-size: .75rem; color: rgba(255,255,255,.55); line-height: 1.55; }
+
+    /* ============================================================
+       FAQ
+       ============================================================ */
+    .faq { background: var(--parchment-2); padding: 4rem 1.5rem; }
+    .faq-in { max-width: var(--col); margin: 0 auto; }
+    .faq h2 {
+      font-family: var(--f-display); font-size: 1.45rem; font-weight: 700;
+      color: var(--navy); margin-bottom: .3rem;
+    }
+    .faq-sub { font-family: var(--f-ui); font-size: .75rem; color: var(--mid); margin-bottom: 2rem; }
+
+    details.fq { border-bottom: 1px solid var(--rule); }
+    details.fq summary {
+      font-family: var(--f-body); font-weight: 600; font-size: .96rem;
+      color: var(--navy); padding: 1rem 2rem 1rem 0;
+      cursor: pointer; list-style: none;
+      position: relative; line-height: 1.42;
+    }
+    details.fq summary::-webkit-details-marker { display: none; }
+    details.fq summary::after {
+      content: '+'; position: absolute; right: 0; top: 50%;
+      transform: translateY(-50%); font-family: var(--f-ui);
+      font-size: 1.3rem; font-weight: 300; color: var(--mid);
+    }
+    details[open].fq summary::after { content: '−'; }
+    .fq-ans {
+      padding: 0 0 1.2rem; font-family: var(--f-body);
+      font-size: .91rem; color: #444; line-height: 1.76;
+    }
+
+    /* ============================================================
+       SOURCES
+       ============================================================ */
+    .src { padding: 3.5rem 1.5rem; border-top: 1px solid var(--rule); }
+    .src-in { max-width: var(--col); margin: 0 auto; }
+    .src h2 {
+      font-family: var(--f-ui); font-size: .6rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .2em;
+      color: var(--mid); margin-bottom: 1.4rem;
+    }
+    .src-grp { margin-bottom: 1.3rem; }
+    .src-grp h3 {
+      font-family: var(--f-ui); font-size: .67rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .09em;
+      color: var(--charcoal); margin-bottom: .35rem;
+    }
+    .src-grp p { font-family: var(--f-ui); font-size: .76rem; color: var(--mid); line-height: 1.7; }
+    .src-grp em { font-style: italic; }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    footer {
+      background: var(--navy); color: rgba(255,255,255,.35);
+      padding: 2.5rem 1.5rem; text-align: center;
+    }
+    footer p { font-family: var(--f-ui); font-size: .7rem; line-height: 1.72; max-width: 560px; margin: 0 auto; }
+    footer p + p { margin-top: .5rem; }
+    footer strong { color: rgba(255,255,255,.6); }
+    footer .divider { width: 40px; height: 1px; background: rgba(255,255,255,.12); margin: 1.2rem auto; }
+
+    /* ============================================================
+       REDUCED MOTION
+       ============================================================ */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="prog" role="progressbar" aria-label="Progression de lecture" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+<!-- NAV -->
+<nav class="topbar" aria-label="Navigation">
+  <span class="nav-brand">Légitimité · Belgique 2025–2026</span>
+  <div class="nav-dots" role="list" aria-label="Sections">
+    <button class="nav-dot" role="listitem" aria-label="Légitimité d'origine" data-target="s-origine"></button>
+    <button class="nav-dot" role="listitem" aria-label="Particratie" data-target="s-particratie"></button>
+    <button class="nav-dot" role="listitem" aria-label="Financement" data-target="s-financement"></button>
+    <button class="nav-dot" role="listitem" aria-label="Exercice du pouvoir" data-target="s-exercice"></button>
+    <button class="nav-dot" role="listitem" aria-label="Regard international" data-target="s-regard"></button>
+    <button class="nav-dot" role="listitem" aria-label="Recours" data-target="s-recours"></button>
+    <button class="nav-dot" role="listitem" aria-label="Verdict" data-target="verdict"></button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════ -->
+<header class="hero" role="banner">
+  <div class="hero-in">
+    <span class="eyebrow">Analyse politique · Belgique · Juin 2026</span>
+
+    <h1>La légitimité du pouvoir en Belgique sous le gouvernement Arizona</h1>
+
+    <p class="hero-deck">Le gouvernement « Arizona » de Bart De Wever dispose-t-il d'une légitimité démocratique pleine et entière ? Entre un mandat électoral incontestable et des critiques nourries sur l'exercice du pouvoir — particratie, mandat libre vidé de sa substance, loi Quintin, gel des dotations, décisions de justice ignorées — ce dossier propose un examen complet, sourcé et volontairement contradictoire. Pour le meilleur et pour le pire.</p>
+
+    <!-- ■ SIGNATURE ELEMENT : TRIPTYQUE DE LÉGITIMITÉ ■ -->
+    <nav class="triptyque" aria-label="Dimensions de la légitimité">
+      <button class="tri-panel tri-g" data-target="s-origine">
+        <span class="tri-type">Dimension 1</span>
+        <span class="tri-name">Légitimité d'origine</span>
+        <div class="tri-dots" aria-label="Score : 3/3">
+          <span class="td td-on-g"></span><span class="td td-on-g"></span><span class="td td-on-g"></span>
+        </div>
+        <span class="tri-desc">Coalition élue, 82/150 sièges, procédure constitutionnelle respectée</span>
+      </button>
+      <button class="tri-panel tri-a" data-target="s-exercice">
+        <span class="tri-type">Dimension 2</span>
+        <span class="tri-name">Légitimité d'exercice</span>
+        <div class="tri-dots" aria-label="Score : 2/3">
+          <span class="td td-on-a"></span><span class="td td-on-a"></span><span class="td td-off"></span>
+        </div>
+        <span class="tri-desc">Austérité contestée, loi Quintin, non-respect de décisions de justice</span>
+      </button>
+      <button class="tri-panel tri-r" data-target="s-particratie">
+        <span class="tri-type">Dimension 3</span>
+        <span class="tri-name">Légitimité du système</span>
+        <div class="tri-dots" aria-label="Score : 1/3">
+          <span class="td td-on-r"></span><span class="td td-off"></span><span class="td td-off"></span>
+        </div>
+        <span class="tri-desc">Particratie structurelle, article 42 vidé, pouvoir extra-constitutionnel</span>
+      </button>
+    </nav>
+
+    <div class="hero-meta">
+      <span class="hm-item"><strong>Juin 2026</strong></span>
+      <span class="hm-item"><strong>~40 min</strong> de lecture</span>
+      <span class="hm-item"><strong>10 sections</strong> · FAQ · Sources</span>
+      <span class="hm-item"><span class="tag-live">Actualisable</span></span>
+    </div>
+  </div>
+</header>
+
+<!-- EN BREF -->
+<section class="en-bref" aria-label="Résumé">
+  <div class="eb-in">
+    <span class="eb-label">En bref</span>
+    <ul class="eb-list">
+      <li class="eb-item">
+        <span class="eb-dot" style="background:#52C788" aria-hidden="true"></span>
+        <p><strong>La légitimité d'origine est solide.</strong> La coalition N-VA, MR, Vooruit, Les Engagés et CD&V a remporté les élections du 9 juin 2024 avec 82 sièges sur 150. Parler de pouvoir « illégitime » est juridiquement infondé.</p>
+      </li>
+      <li class="eb-item">
+        <span class="eb-dot" style="background:#F0B52A" aria-hidden="true"></span>
+        <p><strong>La légitimité d'exercice est contestée.</strong> Austérité socialement douloureuse, avant-projet Quintin sur la dissolution d'associations sans juge, et surtout non-exécution répétée de décisions de justice — déjà sanctionnée par la Cour européenne des droits de l'homme.</p>
+      </li>
+      <li class="eb-item">
+        <span class="eb-dot" style="background:#E06070" aria-hidden="true"></span>
+        <p><strong>Le procès le plus profond vise le système belge, pas l'Arizona.</strong> La <em>particratie</em> et la discipline de vote (99,73 % de cohésion mesurée) vident matériellement l'article 42 de la Constitution. Phénomène structurel, antérieur à De Wever.</p>
+      </li>
+      <li class="eb-item">
+        <span class="eb-dot" style="background:rgba(255,255,255,.22)" aria-hidden="true"></span>
+        <p><strong>La nuance est essentielle.</strong> Les contre-pouvoirs fonctionnent encore. La Belgique est classée « Slider » aux côtés du Danemark, de la France et de l'Allemagne — pas parmi les régimes autoritaires.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CORPS DE L'ARTICLE
+     ═══════════════════════════════════════ -->
+<main>
+<div class="body-wrap">
+
+  <!-- § 1 -->
+  <article class="sec" id="s-intro">
+    <span class="sec-num">§ 1</span>
+    <h2>Deux légitimités qu'il ne faut jamais confondre</h2>
+    <p>Toute discussion sérieuse sur la « légitimité du pouvoir » bute sur une confusion récurrente. La science politique distingue depuis Max Weber au moins deux questions radicalement différentes, qu'il faut séparer pour ne pas transformer le débat en procès d'intention.</p>
+
+    <h3>La légitimité d'origine (ou d'investiture)</h3>
+    <p>Elle répond à la question : <em>ce gouvernement a-t-il accédé au pouvoir selon les règles ?</em> A-t-il été désigné par un processus électoral et constitutionnel reconnu ? C'est une question largement factuelle et juridique.</p>
+
+    <h3>La légitimité d'exercice</h3>
+    <p>Elle répond à une question distincte : <em>ce gouvernement exerce-t-il le pouvoir d'une manière conforme aux principes démocratiques et à l'État de droit ?</em> Respecte-t-il les contre-pouvoirs, les décisions de justice, les libertés fondamentales, le consentement raisonnable des gouvernés ? C'est une question d'appréciation, plus politique et normative.</p>
+
+    <blockquote class="pq">Un gouvernement peut parfaitement cumuler une légitimité d'origine impeccable et une légitimité d'exercice contestée — c'est précisément le cœur du débat belge.</blockquote>
+
+    <h3>La légitimité du système lui-même</h3>
+    <p>Indépendamment de tel ou tel gouvernement, l'architecture institutionnelle belge garantit-elle que le pouvoir réel s'exerce là où la Constitution le prévoit ? C'est ici que se loge la critique la plus radicale — celle de la <em>particratie</em> — qui ne vise pas l'Arizona en propre, mais le fonctionnement du Royaume depuis des décennies.</p>
+    <p>Confondre ces trois dimensions conduit aux deux erreurs symétriques qui polluent le débat public : croire qu'un mandat électoral suffit à clore toute question de légitimité (erreur du pouvoir) ; ou inversement, conclure d'un exercice contestable à une illégitimité d'origine inexistante (erreur de l'opposition radicale).</p>
+  </article>
+
+  <!-- § 2 -->
+  <article class="sec" id="s-origine">
+    <span class="sec-num">§ 2</span>
+    <h2>La légitimité d'origine&nbsp;: un gouvernement bel et bien élu</h2>
+    <p>Commençons par le terrain le plus solide pour le pouvoir en place, car l'honnêteté l'exige.</p>
+
+    <h3>Une victoire électorale nette</h3>
+    <p>Le 9 juin 2024, les Belges ont voté simultanément aux niveaux fédéral, régional et européen. En Flandre, la N-VA de Bart De Wever reste le premier parti du pays (24 sièges sur 150). En Belgique francophone, le MR de Georges-Louis Bouchez réalise une victoire historique, ravissant pour la première fois depuis 1995 la première place au Parti Socialiste. Les Engagés de Maxime Prévot triplent leur représentation. À l'inverse, le PS atteint un étiage historiquement bas, Ecolo perd plus de la moitié de ses sièges, et l'Open VLD du Premier ministre sortant s'effondre.</p>
+    <p>La coalition Arizona — N-VA, MR, Vooruit, Les Engagés et CD&V — totalise <strong>82 sièges sur 150</strong>, soit une majorité parlementaire confortable.</p>
+
+    <h3>Une «&nbsp;coalition miroir&nbsp;», fait politique notable</h3>
+    <p>Pour la première fois dans l'histoire politique belge, cette coalition réunit au niveau fédéral l'ensemble des partis de gouvernement des Régions flamande et wallonne. Les politologues parlent d'<em>afspiegelingscoalitie</em>. Loin d'être une combinaison d'appareils déconnectée des territoires, l'Arizona reflète assez fidèlement les majorités régionales issues du même scrutin : argument fort en faveur de sa légitimité.</p>
+
+    <h3>Un mandat thématique explicite</h3>
+    <p>Bart De Wever n'a jamais caché sur quoi il sollicitait la confiance : l'assainissement des finances publiques. « Le budget doit être assaini, c'est pour cela que j'ai été élu », répète-t-il. Le gouvernement peut légitimement revendiquer un mandat clair.</p>
+
+    <h3>Procédure constitutionnelle respectée</h3>
+    <p>L'investiture s'est déroulée selon les formes : missions royales d'informateur, de préformateur puis de formateur confiées à De Wever, accord de gouvernement, prestation de serment devant le Roi en février 2025, vote de confiance à la Chambre. À aucun moment l'accès au pouvoir n'a violé la lettre de la Constitution.</p>
+
+    <div class="args">
+      <div class="arg dc fw">
+        <span class="arg-lbl">Conclusion § 2</span>
+        <p>Sur le plan de la légitimité d'origine, le dossier à charge est vide. Quiconque affirme que le gouvernement De Wever serait « illégitime » ou « usurpé » se trompe factuellement. C'est un acquis à poser fermement avant d'examiner le reste.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- § 3 -->
+  <article class="sec" id="s-machinerie">
+    <span class="sec-num">§ 3</span>
+    <h2>Mais une investiture qui dévoile la machinerie particratique</h2>
+    <p>Le respect des formes ne dissipe pas pour autant un malaise plus profond, perceptible dès la formation du gouvernement.</p>
+
+    <h3>237 jours de négociations entre présidents de partis</h3>
+    <p>Entre les élections de juin 2024 et l'investiture de février 2025, il s'est écoulé près de huit mois. Durant cette période, les décisions cruciales — composition de l'équipe, lignes rouges, arbitrages budgétaires — se sont prises non pas au Parlement, théoriquement compétent, mais dans des <strong>conclaves fermés entre présidents de partis</strong>. Ces derniers ne détiennent aucune fonction exécutive prévue par la Constitution ; ils en sont pourtant les véritables architectes. C'est le premier symptôme de la <em>particratie</em>.</p>
+
+    <h3>L'accord de gouvernement comme «&nbsp;bible&nbsp;»</h3>
+    <p>Le résultat est un accord de coalition de plus de deux cents pages qui prédétermine l'essentiel des votes parlementaires à venir. Or ce document n'a aucune existence constitutionnelle. Les députés de la majorité sont politiquement tenus de le ratifier, sous peine de faire tomber le gouvernement. Le Parlement se trouve lié, en amont, par un texte négocié hors de lui.</p>
+
+    <h3>Le «&nbsp;Kern&nbsp;», l'organe qui n'existe pas</h3>
+    <p>Le centre de gravité se déplace vers le <strong>« Kern »</strong> — le comité ministériel restreint, composé du Premier ministre et des vice-Premiers ministres agissant comme ambassadeurs de leurs partis. C'est là que se tranchent les budgets lors de marathons nocturnes. Le Kern n'a aucune base constitutionnelle, ne publie aucun procès-verbal public, et n'est responsable devant aucune assemblée. Les conclaves budgétaires De Wever de l'automne 2025, où le budget 2026 s'est négocié à huis clos pendant plusieurs nuits blanches, en sont l'illustration la plus récente.</p>
+
+    <h3>Les cabinets ministériels, administration parallèle</h3>
+    <p>L'exécutif s'appuie sur des cabinets ministériels pléthoriques (50 à 80 collaborateurs par ministre), qui confisquent l'initiative législative : plus de 90 % des lois adoptées proviennent de projets élaborés par l'exécutif, non par le Parlement. Pour comparaison, un ministre néerlandais a droit à deux conseillers politiques.</p>
+    <p><strong>Le point clé :</strong> rien de tout cela n'est <em>illégal</em>. Le Kern est une coutume, les cabinets reposent sur un arrêté royal. Mais l'ensemble dessine une « constitution parallèle non écrite » où le pouvoir réel s'exerce dans des lieux que la Constitution de 1831 n'a jamais prévus — et ce, bien avant l'Arizona.</p>
+  </article>
+
+  <!-- § 4 -->
+  <article class="sec" id="s-particratie">
+    <span class="sec-num">§ 4</span>
+    <h2>Le cœur du procès&nbsp;: la particratie et le mandat libre <span class="cr">Art. 42</span></h2>
+
+    <h3>Ce que dit la Constitution</h3>
+    <p>L'<strong>article 42</strong> dispose que « les membres des deux Chambres représentent la Nation, et non uniquement ceux qui les ont élus ». Hérité de l'article 32 de 1831, inspiré de la pensée de Sieyès, il consacre le mandat représentatif libre et interdit absolument le mandat impératif. Combiné à l'article 33 (souveraineté nationale) et à l'article 58 (irresponsabilité parlementaire), il forme la clé de voûte de la démocratie représentative belge.</p>
+
+    <h3>Ce que dit la réalité&nbsp;: 99,73&nbsp;%</h3>
+    <p>Dans les faits, le mandat libre est largement neutralisé par la <strong>discipline de vote</strong> (<em>fractiediscipline</em>). Une analyse du Centre de droit public de l'ULB a mesuré, sur des scrutins stratégiques sous le gouvernement Wilmès II, un taux de cohésion partisane de <strong>99,73 %</strong>. Des travaux de Frederik Verleden (KU Leuven) établissaient une cohésion entre 97,33 % et 99,95 % sur plus de 1 800 votes entre 2003 et 2007. Sam Depauw situe la Belgique « parmi les plus hauts degrés de cohésion d'Europe occidentale ».</p>
+    <p>Cette discipline repose sur trois « verrous » structurels : le <strong>verrou financier</strong> (le financement public est versé aux partis, non aux élus individuels) ; le <strong>verrou des listes</strong> (le scrutin proportionnel donne aux directions de parti un quasi-monopole sur l'accès aux mandats) ; et le <strong>verrou de l'accord de coalition</strong> (qui lie les députés politiquement, sous peine de crise de cabinet).</p>
+
+    <blockquote class="pq">Constitutionnalistes (Uyttendaele, Verdussen) et politologues (Dewachter, Deschouwer, De Winter) convergent : le Royaume est un « idéal-type » de la particratie, où les partis contrôlent simultanément le gouvernement, le Parlement, l'administration et une partie des nominations.</blockquote>
+
+    <h3>Les nuances décisives</h3>
+    <div class="args">
+      <div class="arg dc">
+        <span class="arg-lbl">Le mandat résiste formellement</span>
+        <p>La contrainte partisane est <em>politique</em>, pas <em>juridique</em>. Les « démissions en blanc » sont nulles d'ordre public absolu. Un élu exclu conserve son siège et ses indemnités jusqu'au terme de la législature (cas Emir Kir, PS, 2020).</p>
+      </div>
+      <div class="arg dc">
+        <span class="arg-lbl">Pas une exception belge</span>
+        <p>Toutes les démocraties parlementaires connaissent une forte discipline de parti. La Belgique se situe à l'extrémité du spectre, non en dehors de lui.</p>
+      </div>
+      <div class="arg dc">
+        <span class="arg-lbl">La plénière n'est pas du pur théâtre</span>
+        <p>Le travail législatif réel se fait en commission (amendements, auditions, vote article par article). Les questions hebdomadaires au gouvernement maintiennent un contrôle politique réel.</p>
+      </div>
+      <div class="arg ch">
+        <span class="arg-lbl">Inconstitutionnalité matérielle</span>
+        <p>La Cour constitutionnelle (arrêt 130/2016) juge que la discipline de vote n'entache pas la <em>validité</em> des lois — reconnaissant ainsi implicitement que la Constitution est contournée dans son esprit, sans être formellement violée.</p>
+      </div>
+    </div>
+    <p><strong>Synthèse :</strong> le mandat libre fonctionne comme une « fiction nécessaire » — un décor institutionnel rassurant derrière lequel s'exerce le pouvoir d'élites partisanes. Ce phénomène est une dérive du système belge tout entier, que l'Arizona hérite sans l'avoir créé. Lui en imputer la responsabilité serait malhonnête ; prétendre qu'il n'en exploite aucun ressort le serait tout autant.</p>
+  </article>
+
+  <!-- § 5 — Ingénierie financière (NOUVEAU) -->
+  <article class="sec" id="s-financement">
+    <span class="sec-num">§ 5</span>
+    <h2>L'ingénierie financière de l'hégémonie particratique</h2>
+    <p>L'accaparement de la sphère politique par les états-majors des partis nécessite un carburant financier considérable. L'oligopole s'est doté d'une ingénierie de financement public sophistiquée qui, tout en respectant formellement la loi du 4 juillet 1989 sur le financement électoral, exploite méthodiquement ses lacunes. Cette dynamique — conceptualisée par Katz et Mair comme la «&nbsp;colonisation de l'État par les partis-cartels&nbsp;» — verrouille l'écosystème électoral contre l'émergence d'alternatives citoyennes.</p>
+
+    <h3>Une manne publique hors de proportion</h3>
+    <p>Les masses financières en jeu sont considérables. Le financement public direct des partis s'élève à approximativement <strong>78,3 millions d'euros par an</strong>. À ce montant s'ajoute une perfusion indirecte massive&nbsp;: <strong>84,4 millions d'euros</strong> annuels alloués aux rémunérations du personnel parlementaire, dont une large fraction est, dans les faits, siphonnée vers les quartiers généraux des partis. Le total dépasse les <strong>160 millions d'euros annuels</strong>. Sous l'effet cumulé de ces dotations et des subventions de fonctionnement des groupes parlementaires, les actifs patrimoniaux des partis ont plus que doublé&nbsp;: de 74,9 millions d'euros en 1999 à <strong>161 millions d'euros en 2017</strong>.</p>
+
+    <h3>Quatre failles légales au cœur du système</h3>
+    <div class="args">
+      <div class="arg ch">
+        <span class="arg-lbl">Transferts internes illimités</span>
+        <p>La loi du 19 novembre 1998 a exclu de la définition des «&nbsp;dons&nbsp;» les transferts entre une formation et ses composantes locales. Résultat&nbsp;: le plafond légal de 500&nbsp;€ par donateur ne s'applique pas aux flux intra-partis — ouvrant la voie à des injections de capitaux quasi-illimitées hors de tout contrôle.</p>
+      </div>
+      <div class="arg ch">
+        <span class="arg-lbl">L'archipel des ASBL satellites</span>
+        <p>Les partis ont érigé un réseau de structures périphériques — Centre Jean Gol (MR), Institut Émile Vandervelde (PS), CEPESS (Les Engagés), Stichting Mens&nbsp;&amp;&nbsp;Politiek (N-VA) — qui canalisent des dépenses de propagande et de communication hors des budgets de campagne plafonnés.</p>
+      </div>
+      <div class="arg ch">
+        <span class="arg-lbl">Détachement de fonctionnaires</span>
+        <p>Des agents publics sont extraits de leurs administrations pour servir dans des cabinets ou cellules de partis, tout en continuant d'être rémunérés par les finances publiques. La Cour des comptes wallonne a chiffré ce personnel non facturé à <strong>14,8&nbsp;millions d'euros pour la seule année 2021</strong>.</p>
+      </div>
+      <div class="arg neu">
+        <span class="arg-lbl">Contrôle par les contrôlés</span>
+        <p>La Commission de contrôle du financement est composée de 17 parlementaires — ceux-là mêmes dont elle contrôle les formations. Le GRECO recommande depuis plus d'une décennie un organe réellement indépendant. La recommandation est restée lettre morte.</p>
+      </div>
+    </div>
+
+    <h3>Quand l'opacité frôle le pénal</h3>
+    <p>Des investigations menées en 2024-2025 par des consortiums de presse (<em>Médor</em>, <em>Follow the Money</em>) ont documenté des suspicions de blanchiment financier via des tickets de loterie visant notamment l'ancien ministre Didier Reynders et Jean-Claude Fontinoy (période 2008-2019), ayant donné lieu à des perquisitions judiciaires. Par ailleurs, le ministre Frank Vandenbroucke aurait bloqué en 2025 une réforme dotant la CADA d'un pouvoir d'injonction coercitif, pour protéger des données relatives au scandale «&nbsp;Medista&nbsp;» — gestion opaque de 100 millions d'euros de matériel médical périmé.</p>
+    <div class="args">
+      <div class="arg dc fw">
+        <span class="arg-lbl">Nuance impérative</span>
+        <p>Ces informations sont des <em>révélations de presse</em> et des <em>suspicions judiciaires</em>&nbsp;: aucune des personnes nommées n'est condamnée à ce jour. Leur intérêt analytique est double&nbsp;: illustrer la faiblesse des mécanismes de contrôle, et démontrer que l'opacité structurelle crée un terreau propice aux conflits d'intérêts, même sans preuve de corruption avérée.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- § 6 — Légitimité d'exercice (ancien § 5) -->
+  <article class="sec" id="s-exercice">
+    <span class="sec-num">§ 6</span>
+    <h2>La légitimité d'exercice en question&nbsp;: le bilan Arizona (2025–2026)</h2>
+
+    <h3>6.1 Austérité et consentement social</h3>
+    <p>Le gouvernement a fait de l'assainissement budgétaire sa priorité absolue dans un contexte objectivement dégradé. En novembre 2025, la majorité s'est accordée sur 8,1 milliards d'euros d'assainissement annuel ; au printemps 2026, un effort complémentaire de 6,7 milliards était encore jugé nécessaire. Concrètement : indexation seulement partielle des salaires au-dessus de 4 000 € bruts en 2026 et 2028, blocage de la norme salariale, hausses ciblées de TVA, réforme restrictive du chômage, suppression du bonus pension.</p>
+    <div class="args">
+      <div class="arg ch">
+        <span class="arg-lbl">Charge</span>
+        <p>L'effort est concentré sur les salariés, chômeurs et populations précaires. Le plafonnement de l'index ne recueille qu'environ 30 % de soutien dans les sondages VRT–De Standaard. Les mobilisations syndicales ont été massives tout au long de 2025-2026.</p>
+      </div>
+      <div class="arg dc">
+        <span class="arg-lbl">Décharge</span>
+        <p>Gouverner contre une partie de l'opinion n'est pas illégitime. La contrainte européenne est réelle et documentée. De Wever revendique un mandat explicite sur la rigueur budgétaire — et ce mandat était clair avant les élections.</p>
+      </div>
+    </div>
+
+    <h3>6.2 La loi Quintin&nbsp;: le test le plus sérieux pour l'État de droit</h3>
+    <p>L'avant-projet de loi du ministre de l'Intérieur Bernard Quintin (MR), approuvé en Conseil des ministres en juillet 2025, visait à permettre au pouvoir exécutif de <strong>dissoudre ou interdire administrativement</strong> des organisations — y compris de simples groupements de fait — considérées comme une « menace grave et actuelle », <strong>sans passage par un juge</strong>. Une large coalition (Amnesty International, Ligue des droits humains, Liga voor Mensenrechten, Greenpeace, FGTB, CSC, CGSLB) a dénoncé une atteinte frontale à la liberté d'association garantie par l'article 27 de la Constitution.</p>
+    <div class="args">
+      <div class="arg ch">
+        <span class="arg-lbl">Charge initiale</span>
+        <p>Le texte d'origine conférait à l'exécutif un pouvoir de dissolution sans garanties judiciaires — glissement dangereux du judiciaire vers l'exécutif. L'IFDH a rendu un avis défavorable, jugeant le texte trop vague et disproportionné.</p>
+      </div>
+      <div class="arg dc">
+        <span class="arg-lbl">Les contre-pouvoirs ont fonctionné</span>
+        <p>Le Conseil d'État a pointé des failles constitutionnelles majeures (risque de violation de l'art. 27). Quintin a accepté une révision profonde en 2026 : la dissolution redevient judiciaire. Le texte n'est pas encore voté.</p>
+      </div>
+    </div>
+
+    <h3>6.3 Le gel des dotations&nbsp;: probité ou arme asymétrique&nbsp;?</h3>
+    <p>Le gouvernement a cessé l'indexation des dotations publiques aux partis pour toute la législature (2025-2029), mesure présentée comme un effort de moralisation.</p>
+    <div class="args">
+      <div class="arg ch">
+        <span class="arg-lbl">Charge</span>
+        <p>La N-VA, de loin la formation la plus riche du pays, n'est affectée qu'à la marge. Le gel pèse surtout sur les partis aux finances fragiles, avantageant le partenaire dominant avant les élections de 2029.</p>
+      </div>
+      <div class="arg dc">
+        <span class="arg-lbl">Décharge</span>
+        <p>Le financement public belge est parmi les plus élevés d'Europe (~75 M€ en 2022, deux fois plus par électeur qu'en Allemagne). La mesure répondait à des pétitions citoyennes et aux recommandations du GRECO.</p>
+      </div>
+    </div>
+
+    <h3>6.4 Le non-respect des décisions de justice&nbsp;: la critique qui tient</h3>
+    <div class="crit">
+      <span class="crit-lbl">Point non négociable</span>
+      <p>Depuis des années, l'État belge n'exécute pas systématiquement des décisions de justice définitives. Plus de 2 200 mesures provisoires ordonnées par les juridictions sont restées lettre morte, notamment dans l'accueil des demandeurs d'asile. La CEDH a sanctionné cette défaillance systémique dans l'arrêt <em>Camara c. Belgique</em> (18 juillet 2023), et de nouveau dans l'arrêt <em>M.V. et autres c. Belgique</em> (9 avril 2026). Aucun mandat électoral ne couvre la désobéissance d'État aux décisions de justice. Sur ce point précis, la légitimité d'exercice est entamée — non par l'opinion, mais par le droit lui-même.</p>
+    </div>
+
+    <h3>6.5 Espace civique et droit de grève</h3>
+    <p>L'accord de gouvernement prévoit un « encadrement du droit de grève ». Des projets d'extension de l'interdiction de manifester et des restrictions budgétaires ciblant le secteur associatif (réduction de la déductibilité des dons aux ONG, coupe de 25 % dans la coopération au développement) ont nourri, chez les organisations de droits humains, le sentiment d'un rétrécissement de l'espace civique. Le rapport 2026 de la Ligue des droits humains parle d'un « assaut coordonné sur les contre-pouvoirs ».</p>
+    <div class="args">
+      <div class="arg neu">
+        <span class="arg-lbl">Nuance</span>
+        <p>Encadrer le droit de grève par un service minimum est une option défendue dans plusieurs démocraties et n'est pas en soi liberticide. La question est celle de la mesure et de la finalité. Le cumul de ces initiatives mérite néanmoins une vigilance soutenue.</p>
+      </div>
+    </div>
+  </article>
+
+</div><!-- /body-wrap -->
+
+<!-- § 7 — Regard extérieur (pleine largeur pour les cartes) -->
+<div class="body-wrap">
+  <article class="sec" id="s-regard">
+    <span class="sec-num">§ 7</span>
+    <h2>Le regard extérieur&nbsp;: GRECO, Commission européenne et Strasbourg</h2>
+    <p>Pour sortir du débat franco-belge interne, il est utile de convoquer les évaluateurs internationaux. Leur verdict est convergent — et instructif par sa mesure.</p>
+
+    <div class="mets">
+      <div class="met">
+        <span class="met-org">GRECO — Conseil de l'Europe</span>
+        <p class="met-body">Non-conformité persistante sur le financement des partis depuis 2011. Au terme des 4e et 5e cycles, une large part des recommandations reste non mise en œuvre (registre des lobbyistes, déclarations de patrimoine, cabinets). <strong>Règle 32 activée : rapport de progrès dû fin 2026</strong>, ultime stade avant déclaration publique de non-conformité.</p>
+        <span class="met-tag t-alert">Non-conformité persistante</span>
+      </div>
+      <div class="met">
+        <span class="met-org">Transparency International</span>
+        <p class="met-body">Indice de perception de la corruption : 77/100 en 2016 → <strong>69/100 en 2024 et 2025</strong>. La Belgique figure parmi les « décliners significatifs » aux côtés de l'Autriche, de la France et du Royaume-Uni.</p>
+        <span class="met-tag t-warn">–8 points depuis 2016</span>
+      </div>
+      <div class="met">
+        <span class="met-org">Liberties Rule of Law Report 2026</span>
+        <p class="met-body">Belgique classée parmi les <strong>« Sliders »</strong> — démocraties dont les standards reculent sans stratégie illibérale délibérée. Groupe comprenant le Danemark, la France, l'Allemagne, Malte et la Suède.</p>
+        <span class="met-tag t-warn">Slider — pas Backslider</span>
+      </div>
+      <div class="met">
+        <span class="met-org">CEDH — Strasbourg</span>
+        <p class="met-body"><em>Camara c. Belgique</em> (2023) : carence systémique dans l'exécution des jugements. <em>M.V. et autres</em> (9 avril 2026) : nouvelle condamnation pour non-hébergement. <strong>Plus de 2 200 mesures provisoires</strong> imposées (2023–2026). L'arrêt <em>Tomenko c. Ukraine</em> (juill. 2025), interdisant la destitution partisane des élus, ouvre un levier jurisprudentiel applicable au système belge.</p>
+        <span class="met-tag t-alert">Condamnations répétées</span>
+      </div>
+    </div>
+
+    <p><strong>Bilan du regard extérieur :</strong> la Belgique n'est pas un « État voyou » ni une autocratie ; c'est une démocratie consolidée présentant des défaillances structurelles d'accountability et un glissement mesurable. Le maintien de la confiance des citoyens dans l'impartialité de leurs juges (~64 % selon la Commission européenne) reste le dernier rempart de la légitimité du système.</p>
+  </article>
+
+  <!-- § 8 — Voies de recours (NOUVEAU) -->
+  <article class="sec" id="s-recours">
+    <span class="sec-num">§ 8</span>
+    <h2>Les voies de recours&nbsp;: du triple front judiciaire aux outils citoyens</h2>
+    <p>Face au blocage de toute dynamique d'auto-réforme interne — la Chambre des représentants est restée silencieuse face aux 34 recommandations du panel citoyen <em>We Need To Talk</em> (2023) sur le financement des partis — la contestation a muté vers le litige stratégique systémique. Une architecture de recours en trois fronts s'est dégagée dans la doctrine et la société civile belges.</p>
+
+    <h3>Front 1 — L'action civile pour omission inconstitutionnelle</h3>
+    <p>Le pilier central consiste à intenter un procès en responsabilité aquilienne contre l'<strong>État-législateur</strong> sur la base de l'article 1382 du Code civil, en s'appuyant sur la jurisprudence <em>Ferrara</em> (Cour de cassation, 2006), qui a consacré la notion de «&nbsp;faute par omission inconstitutionnelle&nbsp;»&nbsp;: l'État engage sa responsabilité s'il omet de combler une lacune législative inconstitutionnelle.</p>
+    <p>Le grief central vise l'<strong>article 15ter de la loi du 4 juillet 1989</strong>&nbsp;: ce texte sanctionne l'«&nbsp;hostilité externe&nbsp;» d'un parti envers la CEDH, mais reste totalement muet sur les partis qui violent l'indépendance de leurs propres élus — l'«&nbsp;hostilité interne&nbsp;» à l'article 42. Cette asymétrie constitue une omission fautive discriminatoire. Le juge ordinaire serait invité à poser une <strong>question préjudicielle</strong> à la Cour constitutionnelle sur la compatibilité de cette lacune avec les articles 10, 11 et 42 de la Constitution. Les demandeurs idéaux&nbsp;: des élus exclus pour dissidence et des partis émergents (Volt, Vista) privés de financement public, pouvant arguer d'une distorsion anti-concurrentielle du marché électoral.</p>
+
+    <h3>Front 2 — La scène européenne et conventionnelle</h3>
+    <p>L'arrêt <strong><em>Tomenko c. Ukraine</em> (CEDH, juillet 2025)</strong> constitue le jalon jurisprudentiel le plus récent&nbsp;: statuant à l'unanimité, la Cour a interdit à un parti politique de destituer un élu de son mandat pour cause de dissidence idéologique, confirmant que le mandat appartient au peuple souverain et au représentant désigné. L'absence de protection légale de l'élu contre le despotisme partisan est incompatible avec l'article 3 du Protocole n°&nbsp;1 de la CEDH. Lu conjointement avec <em>Mugemangango c. Belgique</em> (Grande Chambre, 2020), <em>Karácsony c. Hongrie</em> et <em>Demirtaş c. Turquie&nbsp;n°&nbsp;2</em> (2020), cet arrêt forme l'armature doctrinale d'un recours à Strasbourg. La <strong>Convention d'Aarhus</strong> offre un volet subsidiaire sur la transparence administrative et environnementale.</p>
+
+    <h3>Front 3 — La guérilla administrative et les défenses contre la loi Quintin</h3>
+    <p>Ce front vise à débusquer la prise de décision informelle par une <strong>saturation institutionnelle via le harcèlement documentaire légal</strong>&nbsp;: requêtes CADA, recours devant le Conseil d'État, application directe de l'article 10 de la CEDH (arrêt <em>Magyar Helsinki Bizottság</em>, 2016 — droit d'accès à l'information d'intérêt général). Face aux suspensions prononcées en vertu de la loi Quintin, l'arsenal de défense comprend l'article 11 de la CEDH, la jurisprudence stricte de Strasbourg sur la proportionnalité (<em>Refah Partisi c. Turquie</em>, <em>Vona c. Hongrie</em>), l'exception d'illégalité de l'article 159 de la Constitution contre les arrêtés fondés sur des critères vagues, et des plaintes pénales personnalisées pour abus d'autorité (articles 151, 233-234 du Code pénal). Face aux poursuites-bâillons, la <strong>directive anti-SLAPP 2024/1069/UE</strong> est désormais mobilisable.</p>
+
+    <h3>Recours citoyens ordinaires&nbsp;: sans avocat</h3>
+    <div class="args">
+      <div class="arg dc">
+        <span class="arg-lbl">Interpellation au conseil communal</span>
+        <p>Ancré dans le Code de la démocratie locale (Wallonie dès 18 ans, Bruxelles parfois dès 16 ans), ce droit garantit 10 minutes de parole contraignantes en séance publique. Politiquement dévastateur lorsqu'il cible l'opacité d'une ASBL communale ou la distribution de deniers locaux.</p>
+      </div>
+      <div class="arg dc">
+        <span class="arg-lbl">Consultation populaire locale</span>
+        <p>La collecte de 10 à 20&nbsp;% des signatures du corps électoral communal déclenche un référendum consultatif. Non liant légalement, il produit une pression médiatique qui peut bouleverser l'agenda d'un collège des bourgmestre et échevins.</p>
+      </div>
+      <div class="arg dc">
+        <span class="arg-lbl">Pétition parlementaire (25&nbsp;000 signatures)</span>
+        <p>La loi du 2 mai 2019 impose une <strong>audition obligatoire</strong> en commission pour toute pétition dépassant 25&nbsp;000 signatures valides. C'est ce mécanisme qui a forcé en 2023 le débat sur le financement des partis, via le panel <em>We Need To Talk</em>.</p>
+      </div>
+      <div class="arg neu">
+        <span class="arg-lbl">Le levier GRECO (automatique)</span>
+        <p>Les organisations de la société civile peuvent contribuer aux consultations annuelles du GRECO. Ces contributions alimentent les rapports de conformité et, in fine, la déclaration publique de non-conformité projetée pour fin 2026 — le coût diplomatique que la Belgique cherche à éviter.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- § 9 — La défense (ancien § 7) -->
+  <article class="sec" id="s-defense">
+    <span class="sec-num">§ 9</span>
+    <h2>La défense&nbsp;: pourquoi parler de «&nbsp;régime illégitime&nbsp;» est excessif</h2>
+    <p>L'équité commande d'exposer sous sa forme la plus forte la thèse inverse de la critique radicale.</p>
+
+    <ol class="def-list">
+      <li class="def-item">
+        <span class="def-n" aria-hidden="true">1</span>
+        <div class="def-body">
+          <h4>Le mandat démocratique est réel et récent</h4>
+          <p>Le gouvernement procède d'élections libres (juin 2024), dispose d'une majorité parlementaire et applique un programme annoncé. L'impopularité de certaines mesures n'est pas un déficit de légitimité.</p>
+        </div>
+      </li>
+      <li class="def-item">
+        <span class="def-n" aria-hidden="true">2</span>
+        <div class="def-body">
+          <h4>Les contre-pouvoirs fonctionnent</h4>
+          <p>Le recul sur la loi Quintin après l'avis du Conseil d'État, l'indépendance maintenue des juridictions, la liberté de la presse qui documente les crises de la coalition, la vigueur syndicale : un régime réellement illégitime ne tolère pas qu'on le mette en échec.</p>
+        </div>
+      </li>
+      <li class="def-item">
+        <span class="def-n" aria-hidden="true">3</span>
+        <div class="def-body">
+          <h4>La contrainte budgétaire est objective</h4>
+          <p>L'austérité n'est pas un caprice idéologique : la trajectoire de la dette belge est insoutenable à droit constant. Reprocher au gouvernement de prendre des mesures impopulaires pour redresser les comptes, c'est parfois lui reprocher de gouverner.</p>
+        </div>
+      </li>
+      <li class="def-item">
+        <span class="def-n" aria-hidden="true">4</span>
+        <div class="def-body">
+          <h4>La particratie a une fonction historique légitime</h4>
+          <p>Le modèle consociatif belge (Lijphart) a pacifié une société profondément divisée par les clivages linguistique, philosophique et socio-économique. La critique pertinente n'est pas que ce système soit illégitime, mais qu'il se perpétue au-delà de sa nécessité.</p>
+        </div>
+      </li>
+      <li class="def-item">
+        <span class="def-n" aria-hidden="true">5</span>
+        <div class="def-body">
+          <h4>La comparaison internationale relativise</h4>
+          <p>Classée « Slider » aux côtés du Danemark et de la Suède, la Belgique présente des symptômes de fatigue démocratique partagés par tout l'Occident. En faire un cas singulier d'illégitimité, c'est perdre le sens de la mesure.</p>
+        </div>
+      </li>
+    </ol>
+
+    <p><strong>Ce que la défense ne peut pas balayer :</strong> même l'avocat le plus convaincu du gouvernement doit concéder le non-respect des décisions de justice. Sur ce terrain, la légitimité d'exercice est entamée — non par l'opinion, mais par le droit lui-même, et établi à Strasbourg.</p>
+  </article>
+
+</div><!-- /body-wrap -->
+
+<!-- § 8 — VERDICT -->
+<section id="verdict" aria-label="Verdict">
+  <div class="v-in">
+    <span class="sec-num">§ 10</span>
+    <h2>Verdict&nbsp;: une démocratie à deux étages, ni voyou ni irréprochable</h2>
+
+    <p class="vp">Au terme de cet examen, le diagnostic honnête refuse les deux conclusions faciles. <strong>Non, le gouvernement Arizona n'est pas un pouvoir illégitime.</strong> Sa légitimité d'origine est entière : élu, majoritaire, investi selon les règles, porteur d'un mandat thématique explicite. Les contre-pouvoirs qui le contestent et parfois le font reculer prouvent qu'il opère dans un cadre démocratique fonctionnel. Quiconque parle de « coup d'État » ou de pouvoir « usurpé » se paie de mots.</p>
+
+    <p class="vp"><strong>Mais non, sa légitimité d'exercice n'est pas hors d'atteinte.</strong> Sur un point au moins — le refus persistant d'exécuter des décisions de justice, sanctionné à Strasbourg — l'État belge contrevient à une exigence non négociable de l'État de droit. Sur d'autres terrains (loi Quintin, gel asymétrique des dotations, austérité contestée), le débat est ouvert et légitime, mais relève de l'arbitrage politique plus que de l'illégitimité.</p>
+
+    <p class="vp"><strong>Et surtout, le procès le plus profond ne vise pas l'Arizona : il vise le système belge lui-même.</strong> La particratie, la discipline de vote quasi totale, le déplacement du pouvoir réel vers des organes extra-constitutionnels (Kern, cabinets, conclaves, présidents de partis) vident matériellement l'esprit de la Constitution de 1831. Ce n'est pas une rupture de légalité : c'est un contournement fonctionnel, installé depuis des décennies, que ce gouvernement prolonge sans l'avoir inventé. La vraie question n'est plus « ce gouvernement est-il légitime ? » — il l'est, à l'origine — mais « le système belge garantit-il encore que le pouvoir s'exerce là où les citoyens croient l'avoir placé ? ».</p>
+
+    <div class="v-triptych">
+      <div class="vt-panel">
+        <p class="vt-verdict v-yes">Légitimité d'origine&nbsp;: acquise</p>
+        <p class="vt-text">Élection libre, majorité parlementaire, procédure constitutionnelle respectée. Aucune contestation sérieuse possible sur ce plan.</p>
+      </div>
+      <div class="vt-panel">
+        <p class="vt-verdict v-no">Légitimité d'exercice&nbsp;: entamée</p>
+        <p class="vt-text">Non-respect de décisions de justice sanctionné par la CEDH. Loi Quintin (recul obtenu). Austérité à la répartition contestée. Relève majoritairement de l'arbitrage politique.</p>
+      </div>
+      <div class="vt-panel">
+        <p class="vt-verdict v-deep">Légitimité du système&nbsp;: fragilisée</p>
+        <p class="vt-text">Particratie structurelle, mandat libre vidé de substance, pouvoir extra-constitutionnel. Maladie chronique belge — préexistante à l'Arizona, mais prolongée par lui.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq" aria-label="Questions fréquentes">
+  <div class="faq-in">
+    <h2>Questions fréquentes</h2>
+    <p class="faq-sub">Réponses aux interrogations les plus courantes sur le gouvernement Arizona et la démocratie belge</p>
+
+    <details class="fq">
+      <summary>Le gouvernement Arizona de Bart De Wever est-il légitime ?</summary>
+      <p class="fq-ans">Oui, sur le plan de sa légitimité d'origine : il est issu des élections du 9 juin 2024, dispose d'une majorité de 82 sièges sur 150 et a été investi selon les procédures constitutionnelles. Sa légitimité d'exercice est en revanche contestée sur des points précis, le plus sérieux étant le non-respect répété de décisions de justice — déjà sanctionné à Strasbourg.</p>
+    </details>
+
+    <details class="fq">
+      <summary>Qu'est-ce que la particratie belge ?</summary>
+      <p class="fq-ans">C'est le régime dans lequel les partis politiques — et singulièrement leurs présidents — concentrent le pouvoir réel : ils négocient les gouvernements, désignent les ministres, fixent les lignes législatives et imposent une discipline de vote quasi totale. Le Parlement devient une chambre d'enregistrement de décisions prises ailleurs. La Belgique est considérée comme un « idéal-type » de la particratie par la science politique (Dewachter, Deschouwer, De Winter).</p>
+    </details>
+
+    <details class="fq">
+      <summary>L'article 42 de la Constitution est-il violé par la particratie ?</summary>
+      <p class="fq-ans">Pas au sens juridique strict. L'article 42 garantit le mandat libre et interdit le mandat impératif ; il protège toujours formellement l'élu (les démissions en blanc sont nulles d'ordre public, un député ne peut être privé de son siège). Mais la discipline de vote le vide <em>matériellement</em> de sa substance. La Cour constitutionnelle a jugé (arrêt 130/2016) qu'une telle discipline n'entache pas la validité des lois. On parle donc d'inconstitutionnalité matérielle, non formelle.</p>
+    </details>
+
+    <details class="fq">
+      <summary>Qu'est-ce que la loi Quintin ?</summary>
+      <p class="fq-ans">Un avant-projet de loi du ministre de l'Intérieur Bernard Quintin (MR) visant initialement à permettre au gouvernement de dissoudre ou interdire administrativement des organisations jugées dangereuses, sans juge. Après un avis critique du Conseil d'État (risque de violation de l'art. 27 — liberté d'association) et un avis défavorable de l'IFDH, le texte a été révisé en 2026 : la dissolution redevient judiciaire. Il n'est pas voté à ce jour.</p>
+    </details>
+
+    <details class="fq">
+      <summary>Pourquoi le gel des dotations des partis est-il controversé ?</summary>
+      <p class="fq-ans">Parce qu'il est présenté comme un effort de probité, mais qu'il affecte surtout les partis aux finances fragiles, tandis que la N-VA, de loin la formation la plus riche du pays, n'en souffre qu'à la marge. Certains y voient une arme asymétrique avant les élections de 2029, derrière une justification de moralisation par ailleurs défendable en soi.</p>
+    </details>
+
+    <details class="fq">
+      <summary>La Belgique est-elle encore un État de droit ?</summary>
+      <p class="fq-ans">Oui, mais un État de droit sous tension. Les juridictions restent indépendantes et la confiance dans l'impartialité des juges demeure élevée (~64 % selon la Commission européenne). Cependant, le non-respect de décisions de justice (sanctionné par la CEDH), les lacunes de transparence pointées par le GRECO et la chute de l'indice de corruption traduisent une érosion réelle. Les rapports européens classent la Belgique parmi les démocraties « en glissement », non parmi les régimes illibéraux.</p>
+    </details>
+
+    <details class="fq">
+      <summary>Le gouvernement Arizona est-il responsable de la crise de légitimité belge ?</summary>
+      <p class="fq-ans">Non, pas à lui seul. La particratie, l'opacité des cabinets et des conclaves, la faiblesse du contrôle du financement des partis sont des traits structurels qui précèdent largement ce gouvernement. L'Arizona les prolonge et en exploite certains, mais ne les a pas créés. Le débat sur sa légitimité gagne à distinguer ce qui relève de ce gouvernement de ce qui relève du système belge lui-même.</p>
+    </details>
+
+    <details class="fq">
+      <summary>Peut-on contester juridiquement la particratie belge&nbsp;?</summary>
+      <p class="fq-ans">Oui, via plusieurs voies. La principale stratégie académique est une action en responsabilité civile contre l'État-législateur pour «&nbsp;omission inconstitutionnelle&nbsp;» (jurisprudence <em>Ferrara</em>, Cour de cassation, 2006), visant l'article 15ter de la loi de 1989 qui sanctionne l'«&nbsp;hostilité externe&nbsp;» d'un parti envers la CEDH mais reste muet sur l'«&nbsp;hostilité interne&nbsp;» à l'article 42. Cette action vise à forcer une question préjudicielle à la Cour constitutionnelle. Sur le plan européen, l'arrêt <em>Tomenko c. Ukraine</em> (CEDH, juillet 2025) offre un levier direct contre la destitution partisane des élus. Enfin, des outils citoyens sans avocat existent&nbsp;: interpellation communale (10 min, dès 18 ans), consultation populaire (10-20&nbsp;% de signatures), pétition parlementaire (25&nbsp;000 signatures → audition obligatoire en commission, loi du 2 mai 2019).</p>
+    </details>
+
+  </div>
+</section>
+
+<!-- SOURCES -->
+<section class="src" id="sources" aria-label="Sources">
+  <div class="src-in">
+    <h2>Sources et références</h2>
+    <div class="src-grp">
+      <h3>Cadre constitutionnel et particratie</h3>
+      <p>Constitution belge (art. 33, 42, 58) · CRISP, <em>Aux sources de la particratie</em> · W. Dewachter, K. Deschouwer, L. De Winter · M. Uyttendaele, M. Verdussen · Centre de droit public ULB (discipline de vote 99,73 %) · F. Verleden (KU Leuven) · Cour constitutionnelle, arrêt n° 130/2016</p>
+    </div>
+    <div class="src-grp">
+      <h3>Pouvoir extra-constitutionnel</h3>
+      <p>CRISP, fiches « Comité de concertation » et « cabinets ministériels » · M. Göransson &amp; A. Eraly, <em>Les cabinets ministériels en Belgique</em> (2015) · A.-E. Bourgaux, J. Pitseys · Tribunal de première instance de Bruxelles, ordonnance du 31 mars 2021 · Cour constitutionnelle, arrêt n° 170/2022</p>
+    </div>
+    <div class="src-grp">
+      <h3>Gouvernement Arizona et budget (2025–2026)</h3>
+      <p>Accord de coalition fédérale 2025-2029 · RTBF, La Libre, L'Avenir, DH (couverture des conclaves budgétaires) · Déclarations publiques de Bart De Wever (Matin Première, févr. 2026) · Bureau fédéral du Plan, catalogue de mesures (juin 2026)</p>
+    </div>
+    <div class="src-grp">
+      <h3>Loi Quintin</h3>
+      <p>News.belgium (avant-projet, juill. 2025) · Avis du Conseil d'État et de l'IFDH · Coalition « Droit de protester » (Amnesty, Ligue des droits humains, syndicats) · RTBF, L'Avenir, DH (révision 2026, mouture révisée mai 2026)</p>
+    </div>
+    <div class="src-grp">
+      <h3>Évaluations internationales</h3>
+      <p>GRECO, 4e et 5e cycles d'évaluation · Commission européenne, Rapports sur l'État de droit 2024 et 2025 · Transparency International, CPI 2024 et 2025 · Civil Liberties Union for Europe, <em>Liberties Rule of Law Report 2026</em> · CEDH, <em>Camara c. Belgique</em> (2023), <em>Mugemangango c. Belgique</em> GC (2020), <em>M.V. c. Belgique</em> (2026)</p>
+    </div>
+    <div class="src-grp">
+      <h3>Ingénierie financière des partis</h3>
+      <p>R. Katz &amp; P. Mair, «&nbsp;The Emergence of the Cartel Party&nbsp;» (1995) · Loi du 19 novembre 1998 (modification de la loi du 4 juillet 1989) · Cour des comptes wallonne, rapport sur le personnel détaché 2021 · B. Maddens &amp; M. Wolfs (colonisation de l'État par les partis) · <em>Médor</em>, <em>Follow the Money</em> (investigations 2024-2025) · We Need To Talk, panel citoyen, Chambre, 2023 (34 recommandations)</p>
+    </div>
+    <div class="src-grp">
+      <h3>Stratégies de recours</h3>
+      <p>Cour de cassation belge, arrêt <em>Ferrara</em> (2006) — faute par omission inconstitutionnelle · CEDH, <em>Tomenko c. Ukraine</em> (juill. 2025) — interdiction de la destitution partisane · CEDH, <em>Magyar Helsinki Bizottság c. Hongrie</em> (2016) — droit d'accès à l'information · CEDH, <em>Refah Partisi c. Turquie</em> (2003) et <em>Vona c. Hongrie</em> (2013) — proportionnalité · Directive (UE) 2024/1069 anti-SLAPP · Convention d'Aarhus, mécanisme ACCC · Loi du 2 mai 2019 (pétitions parlementaires, 25&nbsp;000 signatures) · Code de la démocratie locale et de la décentralisation (Wallonie)</p>
+    </div>
+    <div class="src-grp">
+      <h3>Non-recours aux droits sociaux</h3>
+      <p>Projet TAKE, HIVA-CIRTES (UCLouvain)&nbsp;: taux de non-recours au revenu d'intégration sociale (45-48&nbsp;%) et à la GRAPA (67-88&nbsp;%)</p>
+    </div>
+    <div class="src-grp">
+      <h3>Théorie politique</h3>
+      <p>A. Lijphart (consociationalisme) · K. Deschouwer (démocratie de cartel) · R. Ergec (fédéralisme oligarchique) · D. Van Reybrouck, <em>Contre les élections</em> (2013) · B. Manin, <em>Principes du gouvernement représentatif</em></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Dossier rédigé en juin 2026.</strong> Les données budgétaires, l'état d'avancement de la loi Quintin et la composition du gouvernement sont susceptibles d'évoluer. Ce document devra être actualisé en cas de chute de la coalition, de vote de la loi Quintin ou de nouvelle décision juridictionnelle majeure.</p>
+  <div class="divider" aria-hidden="true"></div>
+  <p>Ce dossier est une analyse journalistique et académique. Il s'efforce de présenter les arguments de toutes les parties de manière équilibrée. Les appréciations synthétiques sont des jugements analytiques, non des positions partisanes.</p>
+</footer>
+
+<script>
+  // ── Progress bar ──────────────────────────────────
+  const prog = document.getElementById('prog');
+  function updateProg() {
+    const st = window.scrollY;
+    const dh = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = dh > 0 ? (st / dh) * 100 : 0;
+    prog.style.width = pct + '%';
+    prog.setAttribute('aria-valuenow', Math.round(pct));
+  }
+  window.addEventListener('scroll', updateProg, { passive: true });
+  updateProg();
+
+  // ── Nav dot highlighting ──────────────────────────
+  const dots = document.querySelectorAll('.nav-dot');
+  const targets = ['s-origine','s-particratie','s-financement','s-exercice','s-regard','s-recours','verdict'];
+  function updateDots() {
+    let cur = 0;
+    targets.forEach((id, i) => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= 90) cur = i;
+    });
+    dots.forEach((d, i) => d.classList.toggle('active', i === cur));
+  }
+  window.addEventListener('scroll', updateDots, { passive: true });
+  updateDots();
+
+  // ── Smooth scroll on all [data-target] buttons ────
+  document.querySelectorAll('[data-target]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const el = document.getElementById(btn.dataset.target);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
