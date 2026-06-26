@@ -1,0 +1,1319 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dossier — L'affaire M.A. Solution · Domiciliation, conformité et politique à Anderlecht</title>
+<link rel="canonical" href="https://ouaisfieu.github.io/politique-belge/mr/ma-solution/">
+<meta name="description" content="Évaluation d'intégrité et de conformité de l'affaire de domiciliation M.A. Solution (Sint-Pieters-Leeuw / Anderlecht). Une page de référence qui distingue les faits établis, les interprétations et les hypothèses. État des sources au 26 juin 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+/* ============================================================
+   TOKENS
+   Design : « pièce au dossier » — la langue visuelle d'un rapport
+   de renseignement financier. Sobre, technique, monochrome,
+   ponctué d'un système chromatique qui encode le STATUT
+   ÉPISTÉMIQUE de chaque affirmation (la signature du dossier).
+   ============================================================ */
+:root{
+  --abyss:#0F1518;       /* fond « renseignement » : encre pétrole */
+  --abyss-2:#141C20;
+  --vellum:#E7E6DF;      /* fond document : os froid, pas crème chaude */
+  --vellum-2:#DEDDD3;
+  --vellum-3:#D4D3C8;
+  --ink:#191D1F;         /* texte sur clair */
+  --ink-soft:#4C5256;
+  --ink-faint:#727873;
+  --line:#C8C7BB;
+  --line-soft:#D6D5CB;
+  --bone:#E7E6DF;        /* texte sur sombre */
+  --bone-soft:#9CA6A4;
+  --bone-faint:#6E7A79;
+  --line-dark:#26312F;
+  --line-dark-2:#33403D;
+
+  /* Système épistémique (4 statuts) + 1 signal d'alarme */
+  --ep-fact:#2E3539;     /* FAIT — la ligne de base, neutre */
+  --ep-fact-tint:#2e35391a;
+  --ep-interp:#9A6A1E;   /* INTERPRÉTATION — ocre, lecture/prudence */
+  --ep-interp-tint:#9a6a1e1f;
+  --ep-hypo:#4C6B86;     /* HYPOTHÈSE — bleu poussière, conditionnel */
+  --ep-hypo-tint:#4c6b861f;
+  --ep-def:#6E5675;      /* DÉFENSE — prune, la position adverse */
+  --ep-def-tint:#6e56751f;
+  --signal:#9E382C;      /* alarme : réservé aux 2-3 points cardinaux */
+  --signal-tint:#9e382c1a;
+
+  --font-display:'Archivo', "Helvetica Neue", Arial, sans-serif;
+  --font-body:'Spectral', Georgia, 'Times New Roman', serif;
+  --font-mono:'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --rail-w:268px;
+  --measure:70ch;
+  --pad:clamp(20px,5vw,64px);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--vellum);color:var(--ink);
+  font-family:var(--font-body);font-size:18px;line-height:1.62;
+  font-weight:400;letter-spacing:.002em;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+::selection{background:#1a1d1f;color:#E7E6DF}
+
+a{color:inherit}
+img{max-width:100%}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.06;margin:0;letter-spacing:-.012em}
+p{margin:0 0 1.05em}
+strong{font-weight:600}
+em{font-style:italic}
+abbr{text-decoration:none;border-bottom:1px dotted var(--ink-faint);cursor:help}
+
+.skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--bone);
+  padding:10px 16px;z-index:1000;font-family:var(--font-mono);font-size:13px}
+.skip:focus{left:8px;top:8px}
+
+/* ============================================================
+   STRUCTURE : rail + flux principal
+   ============================================================ */
+.shell{display:grid;grid-template-columns:var(--rail-w) 1fr;min-height:100vh}
+
+.rail{
+  position:sticky;top:0;align-self:start;height:100vh;
+  border-right:1px solid var(--line);
+  background:linear-gradient(180deg,var(--vellum),var(--vellum-2));
+  display:flex;flex-direction:column;
+  padding:26px 22px 18px;overflow-y:auto;overflow-x:hidden;
+}
+.rail__brand{font-family:var(--font-mono);font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px}
+.rail__case{font-family:var(--font-display);font-weight:800;font-size:19px;
+  letter-spacing:-.02em;line-height:1.05;margin-bottom:2px}
+.rail__sub{font-family:var(--font-mono);font-size:10.5px;color:var(--ink-faint);
+  letter-spacing:.04em;line-height:1.45;margin-bottom:18px}
+.rail__hr{height:1px;background:var(--line);margin:2px 0 14px;border:0}
+
+.toc{list-style:none;margin:0 0 auto;padding:0;display:flex;flex-direction:column;gap:1px}
+.toc a{display:flex;gap:9px;align-items:baseline;text-decoration:none;
+  padding:6px 8px;border-radius:4px;color:var(--ink-soft);
+  font-family:var(--font-display);font-weight:500;font-size:13.5px;
+  letter-spacing:-.005em;line-height:1.2;transition:background .18s,color .18s}
+.toc a .n{font-family:var(--font-mono);font-size:10.5px;color:var(--ink-faint);
+  min-width:18px;font-weight:500;transition:color .18s}
+.toc a:hover{background:var(--vellum-3);color:var(--ink)}
+.toc a.active{background:var(--ink);color:var(--vellum)}
+.toc a.active .n{color:var(--bone-soft)}
+
+.legend{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.legend__t{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink-faint);margin-bottom:9px}
+.legend__row{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.legend__dot{width:9px;height:9px;border-radius:2px;flex:0 0 auto}
+.legend__lab{font-family:var(--font-mono);font-size:11px;color:var(--ink-soft);line-height:1.3}
+.legend__lab b{font-weight:600;color:var(--ink)}
+
+/* topbar mobile */
+.topbar{display:none}
+
+.main{min-width:0}
+
+/* ============================================================
+   BANDES (sections pleine largeur)
+   sombre = « là où le dossier réfléchit / juge »
+   clair  = « là où le dossier consigne »
+   ============================================================ */
+.band{padding:clamp(56px,8vw,108px) var(--pad);border-bottom:1px solid var(--line)}
+.band--dark{background:var(--abyss);color:var(--bone);border-bottom:1px solid var(--line-dark)}
+.band--dark h1,.band--dark h2,.band--dark h3{color:var(--bone)}
+.band__inner{max-width:1080px;margin:0 auto}
+.measure{max-width:var(--measure)}
+
+.eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ink-faint);
+  display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.eyebrow .ix{color:var(--signal);font-weight:600}
+.band--dark .eyebrow{color:var(--bone-faint)}
+.band--dark .eyebrow .ix{color:#D98A7C}
+.eyebrow::after{content:"";flex:1;height:1px;background:var(--line);max-width:90px}
+.band--dark .eyebrow::after{background:var(--line-dark-2)}
+
+.h-sec{font-size:clamp(28px,4.4vw,46px);letter-spacing:-.022em;margin-bottom:.5em}
+.h-sub{font-size:clamp(19px,2.4vw,23px);font-weight:600;letter-spacing:-.01em;
+  margin:2.2em 0 .7em}
+.lede{font-size:clamp(19px,2.3vw,22px);line-height:1.5;color:var(--ink);
+  font-weight:500;letter-spacing:-.004em;max-width:64ch;margin-bottom:1.4em}
+.band--dark .lede{color:var(--bone)}
+.prose{max-width:var(--measure)}
+.prose p{color:var(--ink)}
+.band--dark .prose p{color:#D7DAD4}
+
+/* ============================================================
+   TAGS ÉPISTÉMIQUES (signature)
+   ============================================================ */
+.tag{display:inline-flex;align-items:center;gap:5px;vertical-align:baseline;
+  font-family:var(--font-mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;
+  padding:2px 7px;border-radius:3px;border:1px solid;white-space:nowrap;
+  line-height:1.4;transform:translateY(-1px)}
+.tag::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.tag--fact{color:var(--ep-fact);border-color:#2e353940;background:var(--ep-fact-tint)}
+.tag--interp{color:var(--ep-interp);border-color:#9a6a1e44;background:var(--ep-interp-tint)}
+.tag--hypo{color:var(--ep-hypo);border-color:#4c6b8644;background:var(--ep-hypo-tint)}
+.tag--def{color:var(--ep-def);border-color:#6e567544;background:var(--ep-def-tint)}
+.band--dark .tag{filter:none}
+.band--dark .tag--fact{color:#AEB7B4;border-color:#ffffff22;background:#ffffff10}
+.band--dark .tag--interp{color:#E0A653;border-color:#e0a65340;background:#e0a6531a}
+.band--dark .tag--hypo{color:#8FB0CC;border-color:#8fb0cc40;background:#8fb0cc1a}
+.band--dark .tag--def{color:#BFA3C6;border-color:#bfa3c640;background:#bfa3c61a}
+
+/* ============================================================
+   FICHE : bloc encadré, bord coloré selon le statut
+   ============================================================ */
+.fiche{position:relative;background:var(--vellum);border:1px solid var(--line);
+  border-left:4px solid var(--ep-fact);border-radius:0 6px 6px 0;
+  padding:20px 22px 16px;margin:26px 0}
+.fiche--interp{border-left-color:var(--ep-interp)}
+.fiche--hypo{border-left-color:var(--ep-hypo)}
+.fiche--def{border-left-color:var(--ep-def)}
+.fiche--signal{border-left-color:var(--signal);background:linear-gradient(180deg,#fff,var(--vellum));}
+.fiche__k{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px;
+  display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.fiche__t{font-family:var(--font-display);font-weight:700;font-size:17px;
+  letter-spacing:-.01em;margin:0 0 8px;line-height:1.2}
+.fiche p{margin-bottom:.7em;font-size:16.5px}
+.fiche p:last-child{margin-bottom:.2em}
+.band--dark .fiche{background:var(--abyss-2);border-color:var(--line-dark-2)}
+.band--dark .fiche p{color:#CDD2CC}
+.band--dark .fiche__k{color:var(--bone-faint)}
+
+/* mono inline (numéros d'entreprise, montants techniques) */
+.mono{font-family:var(--font-mono);font-size:.86em;letter-spacing:.01em;
+  background:#1a1d1f0d;padding:.5px 5px;border-radius:3px}
+.band--dark .mono{background:#ffffff12}
+
+.cite{font-family:var(--font-mono);font-size:.62em;font-weight:600;
+  vertical-align:super;color:var(--ink-faint);padding:0 1px;cursor:help}
+.band--dark .cite{color:var(--bone-faint)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{background:radial-gradient(120% 90% at 80% 0%,#16201F 0%,var(--abyss) 55%);
+  color:var(--bone);padding:clamp(48px,7vw,86px) var(--pad) clamp(40px,5vw,64px);
+  border-bottom:1px solid var(--line-dark)}
+.hero__inner{max-width:1080px;margin:0 auto}
+.hero__top{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--bone-faint);margin-bottom:24px;
+  display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center}
+.statuspill{display:inline-flex;align-items:center;gap:8px;
+  border:1px solid #D98A7c55;color:#E7A99D;background:#9e382c1a;
+  padding:5px 12px;border-radius:100px;font-size:11px;letter-spacing:.1em;font-weight:600}
+.statuspill::before{content:"";width:7px;height:7px;border-radius:50%;
+  background:#D98A7C;box-shadow:0 0 0 0 #d98a7c80;animation:pulse 2.6s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 #d98a7c66}70%{box-shadow:0 0 0 7px #d98a7c00}100%{box-shadow:0 0 0 0 #d98a7c00}}
+
+.hero h1{font-size:clamp(38px,7vw,82px);font-weight:800;letter-spacing:-.035em;
+  line-height:.98;margin:0 0 .22em;max-width:16ch}
+.hero h1 .thin{font-weight:600;color:#A9B3B0}
+.hero__thesis{font-family:var(--font-body);font-size:clamp(19px,2.5vw,25px);
+  line-height:1.42;color:#CDD2CC;max-width:50ch;font-weight:400;margin-bottom:38px}
+.hero__thesis b{color:var(--bone);font-weight:600}
+
+.figs{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--line-dark-2);border:1px solid var(--line-dark-2);
+  border-radius:8px;overflow:hidden;margin-bottom:30px}
+.fig{background:var(--abyss);padding:22px 18px 18px;position:relative}
+.fig__n{font-family:var(--font-display);font-weight:800;
+  font-size:clamp(36px,5.5vw,58px);letter-spacing:-.04em;line-height:.9;
+  color:var(--bone);font-variant-numeric:tabular-nums}
+.fig--zero .fig__n{color:#E2776A}
+.fig__arrow{position:absolute;top:50%;right:-1px;transform:translate(50%,-50%);
+  z-index:2;color:var(--bone-faint);font-family:var(--font-mono);font-size:14px}
+.fig__l{font-family:var(--font-mono);font-size:11px;line-height:1.35;
+  color:var(--bone-soft);margin-top:11px;letter-spacing:.01em}
+.fig__l b{color:var(--bone);font-weight:600}
+.fig--zero .fig__l b{color:#E2776A}
+
+.hero__meta{font-family:var(--font-mono);font-size:11.5px;color:var(--bone-faint);
+  letter-spacing:.02em;line-height:1.6;border-top:1px solid var(--line-dark);
+  padding-top:18px;display:flex;flex-wrap:wrap;gap:4px 26px}
+.hero__meta span b{color:var(--bone-soft);font-weight:600}
+
+/* ============================================================
+   COMPOSANTS DATA
+   ============================================================ */
+/* portefeuille — barre proportionnelle */
+.portfolio{margin:30px 0 8px}
+.pf-bar{display:flex;height:54px;border-radius:6px;overflow:hidden;
+  border:1px solid var(--line);background:var(--vellum-2);font-family:var(--font-mono)}
+.pf-seg{display:flex;align-items:center;justify-content:center;color:#fff;
+  font-size:12px;font-weight:600;position:relative;min-width:2px;
+  transition:flex-basis .9s cubic-bezier(.2,.7,.2,1)}
+.pf-seg.ok{background:#3b4a45;color:#cfd6d0}
+.pf-seg.rad{background:var(--ep-interp)}
+.pf-seg.liq{background:#8a5234}
+.pf-seg.fail{background:var(--signal)}
+.pf-key{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:12px;margin-top:18px}
+.pf-item{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;
+  border:1px solid var(--line);border-radius:6px;background:var(--vellum)}
+.pf-sw{width:12px;height:12px;border-radius:3px;flex:0 0 auto;margin-top:4px}
+.pf-item .v{font-family:var(--font-mono);font-weight:600;font-size:20px;
+  letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1}
+.pf-item .v small{font-size:12px;color:var(--ink-faint);font-weight:500;margin-left:4px}
+.pf-item .l{font-family:var(--font-mono);font-size:11.5px;color:var(--ink-soft);
+  margin-top:4px;line-height:1.35}
+
+.calc{font-family:var(--font-mono);font-size:14px;background:var(--abyss);
+  color:#CDD2CC;padding:16px 18px;border-radius:6px;margin:22px 0;
+  line-height:1.7;overflow-x:auto}
+.calc .op{color:#8FB0CC}
+.calc .res{color:#E0A653;font-weight:600}
+.calc .cmt{color:var(--bone-faint)}
+
+/* tendance nationale — barres */
+.trend{display:flex;gap:14px;align-items:flex-end;height:170px;margin:24px 0 10px;
+  padding:0 4px;border-bottom:1px solid var(--line)}
+.tb{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:8px;height:100%}
+.tb__bar{width:100%;max-width:74px;background:linear-gradient(180deg,#5a6b64,#3b4a45);
+  border-radius:4px 4px 0 0;position:relative;transition:height 1s cubic-bezier(.2,.7,.2,1)}
+.tb__v{font-family:var(--font-mono);font-size:14px;font-weight:600;
+  font-variant-numeric:tabular-nums}
+.tb__y{font-family:var(--font-mono);font-size:11.5px;color:var(--ink-faint)}
+
+/* matrice GAFI */
+.matrix{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));
+  gap:8px;margin:22px 0}
+.cell{border:1px solid var(--line);border-radius:6px;padding:12px 12px 11px;
+  background:var(--vellum)}
+.cell__io{font-family:var(--font-mono);font-size:11px;font-weight:600;
+  color:var(--ink-faint);letter-spacing:.04em}
+.cell__n{font-family:var(--font-display);font-size:13px;font-weight:600;
+  margin:5px 0 9px;line-height:1.18;letter-spacing:-.01em;min-height:2.3em}
+.cell__lv{font-family:var(--font-mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;display:inline-block;
+  padding:3px 8px;border-radius:100px}
+.lv-me{background:var(--signal-tint);color:var(--signal);border:1px solid #9e382c33}
+.lv-se{background:#2e6e5a18;color:#2C6A57;border:1px solid #2c6a5733}
+.cell.flag{border-color:#9e382c66;box-shadow:inset 0 0 0 1px #9e382c22}
+
+.tcsummary{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.tcpill{font-family:var(--font-mono);font-size:13px;border:1px solid var(--line);
+  border-radius:6px;padding:9px 14px;background:var(--vellum);display:flex;gap:8px;align-items:baseline}
+.tcpill b{font-size:18px;font-weight:600}
+.tcpill .c{color:#2C6A57}.tcpill .lc{color:#4C6B86}
+.tcpill .pc{color:var(--ep-interp)}.tcpill .nc{color:var(--signal)}
+
+/* trois plans */
+.planes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
+.plane{border:1px solid var(--line);border-radius:8px;background:var(--vellum);
+  padding:22px 20px;display:flex;flex-direction:column}
+.plane__tag{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;margin-bottom:10px;font-weight:600}
+.plane:nth-child(1) .plane__tag{color:var(--ep-interp)}
+.plane:nth-child(2) .plane__tag{color:var(--ink-faint)}
+.plane:nth-child(3) .plane__tag{color:var(--ep-hypo)}
+.plane h3{font-size:20px;margin-bottom:6px;letter-spacing:-.015em}
+.plane__role{font-family:var(--font-mono);font-size:11.5px;color:var(--ink-soft);
+  margin-bottom:14px;line-height:1.4}
+.plane p{font-size:15.5px;margin-bottom:.7em}
+.plane__status{margin-top:auto;padding-top:14px;border-top:1px dashed var(--line);
+  font-family:var(--font-mono);font-size:12px;line-height:1.45}
+.plane__status b{display:block;font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px;font-weight:600}
+.heat-low{color:#2C6A57}.heat-mid{color:var(--ep-interp)}.heat-high{color:var(--signal)}
+
+/* cartes entités */
+.entgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:14px;margin:28px 0}
+.entcard{border:1px solid var(--line);border-radius:8px;background:var(--vellum);
+  overflow:hidden;transition:border-color .2s,transform .2s}
+.entcard:hover{border-color:var(--ink-faint)}
+.entcard__h{width:100%;text-align:left;background:none;border:0;cursor:pointer;
+  padding:18px 18px 16px;display:flex;flex-direction:column;gap:7px;color:inherit;font:inherit}
+.entcard__role{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-faint);display:flex;align-items:center;gap:8px}
+.entcard__role .pip{width:8px;height:8px;border-radius:2px;background:var(--ep-fact)}
+.entcard.legacy .pip{background:var(--signal)}
+.entcard.oper .pip{background:var(--ep-interp)}
+.entcard.satellite .pip{background:var(--ep-hypo)}
+.entcard__name{font-family:var(--font-display);font-weight:700;font-size:18px;
+  letter-spacing:-.015em;line-height:1.1}
+.entcard__num{font-family:var(--font-mono);font-size:12px;color:var(--ink-soft)}
+.entcard__more{font-family:var(--font-mono);font-size:11px;color:var(--ink-faint);
+  display:flex;align-items:center;gap:6px;margin-top:2px}
+.entcard__more .chev{transition:transform .25s}
+.entcard[aria-expanded="true"] .chev{transform:rotate(90deg)}
+.entcard__body{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.entcard__bodyinner{padding:0 18px 18px;border-top:1px solid var(--line-soft)}
+.entcard__bodyinner dl{margin:14px 0 0;display:grid;grid-template-columns:auto 1fr;gap:6px 14px}
+.entcard__bodyinner dt{font-family:var(--font-mono);font-size:11px;color:var(--ink-faint);
+  letter-spacing:.03em}
+.entcard__bodyinner dd{margin:0;font-size:14.5px;line-height:1.4}
+
+.people{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.person{border:1px solid var(--line);border-radius:8px;padding:20px;background:var(--vellum)}
+.person__name{font-family:var(--font-display);font-weight:700;font-size:21px;letter-spacing:-.015em}
+.person__roles{font-family:var(--font-mono);font-size:12px;color:var(--ink-soft);
+  margin:8px 0 14px;line-height:1.5}
+.person p{font-size:15px;margin-bottom:.6em}
+
+/* timeline */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 26px}
+.chip{font-family:var(--font-mono);font-size:12px;font-weight:500;cursor:pointer;
+  border:1px solid var(--line);background:var(--vellum);color:var(--ink-soft);
+  padding:7px 13px;border-radius:100px;display:inline-flex;align-items:center;gap:7px;
+  transition:all .18s}
+.chip .d{width:8px;height:8px;border-radius:2px}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--vellum);border-color:var(--ink)}
+.chip.mas .d{background:var(--signal)}.chip.foy .d{background:var(--ep-hypo)}.chip.nat .d{background:var(--ep-fact)}
+.chip.all .d{background:linear-gradient(90deg,var(--signal),var(--ep-hypo))}
+
+.timeline{position:relative;margin:0;padding:0 0 0 4px;list-style:none}
+.timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;
+  width:2px;background:var(--line)}
+.tl{position:relative;padding:0 0 26px 34px;transition:opacity .3s,filter .3s}
+.tl.dim{opacity:.18;filter:saturate(0)}
+.tl::before{content:"";position:absolute;left:1px;top:5px;width:14px;height:14px;
+  border-radius:50%;background:var(--vellum);border:3px solid var(--ep-fact)}
+.tl.mas::before{border-color:var(--signal)}
+.tl.foy::before{border-color:var(--ep-hypo)}
+.tl.nat::before{border-color:var(--ep-fact)}
+.tl.future::before{background:var(--vellum);border-style:dashed}
+.tl__date{font-family:var(--font-mono);font-size:11.5px;font-weight:600;
+  color:var(--ink-faint);letter-spacing:.02em;margin-bottom:3px;
+  display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.tl__track{font-size:9.5px;letter-spacing:.1em;padding:1px 6px;border-radius:3px;text-transform:uppercase}
+.tl.mas .tl__track{background:var(--signal-tint);color:var(--signal)}
+.tl.foy .tl__track{background:var(--ep-hypo-tint);color:var(--ep-hypo)}
+.tl.nat .tl__track{background:var(--ep-fact-tint);color:var(--ep-fact)}
+.tl__t{font-family:var(--font-display);font-weight:600;font-size:16.5px;
+  letter-spacing:-.01em;line-height:1.2;margin-bottom:4px}
+.tl__d{font-size:15px;color:var(--ink-soft);line-height:1.45;max-width:62ch}
+
+/* échelle de certitude */
+.scale{margin:24px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--vellum);padding:20px}
+.scale__track{position:relative;height:8px;border-radius:100px;margin:30px 6px 10px;
+  background:linear-gradient(90deg,#4c6b86 0%,#9a6a1e 50%,#2e3539 100%)}
+.scale__ax{display:flex;justify-content:space-between;font-family:var(--font-mono);
+  font-size:10.5px;color:var(--ink-faint);letter-spacing:.04em;margin:0 4px}
+.scale__pt{position:absolute;top:50%;transform:translate(-50%,-50%);
+  width:14px;height:14px;border-radius:50%;background:var(--vellum);
+  border:3px solid var(--ink);cursor:help}
+.scale__cap{font-family:var(--font-mono);font-size:11.5px;color:var(--ink-soft);
+  line-height:1.5;margin-top:14px}
+.scale__cap span{display:inline-block;width:10px;height:10px;border-radius:50%;
+  border:2px solid var(--ink);margin-right:6px;vertical-align:middle}
+
+/* tableau récap */
+.tbl{width:100%;border-collapse:collapse;margin:22px 0;font-size:14.5px}
+.tbl th,.tbl td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);
+  vertical-align:top}
+.tbl th{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-faint);font-weight:600;border-bottom:1.5px solid var(--ink-faint)}
+.tbl td.mono-c{font-family:var(--font-mono);font-size:13px;white-space:nowrap}
+.tbl tr:hover td{background:#1a1d1f06}
+
+/* pull / accent */
+.pull{font-family:var(--font-display);font-weight:600;
+  font-size:clamp(21px,3vw,30px);line-height:1.22;letter-spacing:-.02em;
+  margin:36px 0;max-width:24ch;color:var(--ink)}
+.pull--dark{color:var(--bone)}
+.pull em{font-style:italic;color:var(--signal)}
+.band--dark .pull em{color:#E2776A}
+
+.note{font-family:var(--font-mono);font-size:13px;line-height:1.6;
+  color:var(--ink-soft);border-left:2px solid var(--line);padding:2px 0 2px 16px;margin:22px 0}
+.band--dark .note{color:var(--bone-soft);border-color:var(--line-dark-2)}
+
+.callbox{border:1px solid var(--line);border-radius:8px;padding:22px 24px;
+  background:var(--vellum-2);margin:26px 0}
+.callbox h3{font-size:18px;margin-bottom:10px;letter-spacing:-.01em}
+.band--dark .callbox{background:var(--abyss-2);border-color:var(--line-dark-2)}
+
+/* sources */
+.src{list-style:none;margin:18px 0 0;padding:0;
+  columns:2;column-gap:40px}
+.src li{break-inside:avoid;margin-bottom:14px;font-size:13.5px;line-height:1.45;
+  padding-left:30px;position:relative}
+.src li .sn{position:absolute;left:0;top:0;font-family:var(--font-mono);
+  font-size:11px;color:var(--ink-faint);font-weight:600}
+.src li a,.src li .u{color:var(--ink-soft);text-decoration:none;
+  font-family:var(--font-mono);font-size:11.5px;word-break:break-all;display:block;margin-top:2px}
+.src li b{font-weight:600}
+
+/* footer */
+.foot{background:var(--abyss);color:var(--bone-soft);padding:54px var(--pad) 60px}
+.foot__inner{max-width:1080px;margin:0 auto}
+.foot h4{color:var(--bone);font-size:15px;letter-spacing:.02em;margin-bottom:14px;
+  font-family:var(--font-mono);font-weight:600;text-transform:uppercase;letter-spacing:.12em;font-size:12px}
+.foot p{font-size:14px;line-height:1.6;max-width:78ch;color:var(--bone-soft)}
+.foot__meta{font-family:var(--font-mono);font-size:11.5px;color:var(--bone-faint);
+  margin-top:26px;padding-top:22px;border-top:1px solid var(--line-dark);line-height:1.8}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(14px)}
+.rv.in{opacity:1;transform:none;transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:1080px){
+  .planes{grid-template-columns:1fr}
+  .people{grid-template-columns:1fr}
+}
+@media(max-width:880px){
+  .shell{grid-template-columns:1fr}
+  .rail{display:none}
+  .topbar{display:flex;position:sticky;top:0;z-index:60;
+    align-items:center;justify-content:space-between;gap:12px;
+    padding:12px 18px;background:var(--vellum);border-bottom:1px solid var(--line)}
+  .topbar__case{font-family:var(--font-display);font-weight:800;font-size:15px;letter-spacing:-.02em}
+  .topbar__case small{display:block;font-family:var(--font-mono);font-weight:400;
+    font-size:9.5px;color:var(--ink-faint);letter-spacing:.08em;text-transform:uppercase}
+  .menubtn{font-family:var(--font-mono);font-size:12px;border:1px solid var(--line);
+    background:var(--vellum);padding:8px 12px;border-radius:6px;cursor:pointer;color:var(--ink)}
+  .drawer{position:fixed;inset:0;z-index:80;background:#0f1518f2;
+    display:none;flex-direction:column;padding:24px 22px;overflow-y:auto}
+  .drawer.open{display:flex}
+  .drawer .toc a{color:var(--bone-soft);font-size:16px;padding:10px 8px}
+  .drawer .toc a .n{color:var(--bone-faint)}
+  .drawer .toc a.active{background:var(--bone);color:var(--abyss)}
+  .drawer .legend{border-color:var(--line-dark)}
+  .drawer .legend__t,.drawer .legend__lab{color:var(--bone-soft)}
+  .drawer .legend__lab b{color:var(--bone)}
+  .drawer__close{align-self:flex-end;color:var(--bone);background:none;border:1px solid var(--line-dark);
+    font-family:var(--font-mono);font-size:12px;padding:7px 12px;border-radius:6px;cursor:pointer;margin-bottom:14px}
+  .figs{grid-template-columns:1fr 1fr}
+  .fig__arrow{display:none}
+  .matrix{grid-template-columns:1fr 1fr}
+  .src{columns:1}
+}
+@media(max-width:520px){
+  body{font-size:17px}
+  .figs{grid-template-columns:1fr 1fr}
+  .pf-bar{height:44px}
+  .trend{height:140px;gap:8px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<div class="shell">
+
+  <!-- ============ RAIL ============ -->
+  <aside class="rail" aria-label="Sommaire et légende">
+    <div class="rail__brand">Dossier · Évaluation d'intégrité</div>
+    <div class="rail__case">M.A. Solution</div>
+    <div class="rail__sub">Domiciliation · Conformité · Politique<br>Anderlecht / Sint-Pieters-Leeuw</div>
+    <hr class="rail__hr">
+    <nav aria-label="Sections">
+      <ul class="toc" id="toc">
+        <li><a href="#enbref"><span class="n">01</span>En bref</a></li>
+        <li><a href="#lecture"><span class="n">02</span>Note de lecture</a></li>
+        <li><a href="#chiffres"><span class="n">03</span>Les chiffres</a></li>
+        <li><a href="#cartographie"><span class="n">04</span>Cartographie</a></li>
+        <li><a href="#chronologie"><span class="n">05</span>Chronologie</a></li>
+        <li><a href="#droit"><span class="n">06</span>Le cœur juridique</a></li>
+        <li><a href="#structure"><span class="n">07</span>Contexte structurel</a></li>
+        <li><a href="#politique"><span class="n">08</span>Dimension politique</a></li>
+        <li><a href="#precedents"><span class="n">09</span>Précédents &amp; Europe</a></li>
+        <li><a href="#bascule"><span class="n">10</span>Points de bascule</a></li>
+        <li><a href="#limites"><span class="n">11</span>Limites</a></li>
+        <li><a href="#sources"><span class="n">12</span>Sources</a></li>
+      </ul>
+    </nav>
+    <div class="legend">
+      <div class="legend__t">Clé de lecture</div>
+      <div class="legend__row"><span class="legend__dot" style="background:var(--ep-fact)"></span><span class="legend__lab"><b>Fait</b> — établi, documenté</span></div>
+      <div class="legend__row"><span class="legend__dot" style="background:var(--ep-interp)"></span><span class="legend__lab"><b>Interpr.</b> — lecture d'experts</span></div>
+      <div class="legend__row"><span class="legend__dot" style="background:var(--ep-hypo)"></span><span class="legend__lab"><b>Hypothèse</b> — non démontrée</span></div>
+      <div class="legend__row"><span class="legend__dot" style="background:var(--ep-def)"></span><span class="legend__lab"><b>Défense</b> — position des mis en cause</span></div>
+    </div>
+  </aside>
+
+  <!-- ============ TOPBAR mobile ============ -->
+  <div class="topbar">
+    <div class="topbar__case">M.A. Solution<small>Dossier d'intégrité</small></div>
+    <button class="menubtn" id="menubtn" aria-expanded="false" aria-controls="drawer">Sommaire ▾</button>
+  </div>
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <button class="drawer__close" id="drawerclose">Fermer ✕</button>
+    <nav aria-label="Sections (mobile)">
+      <ul class="toc">
+        <li><a href="#enbref"><span class="n">01</span>En bref</a></li>
+        <li><a href="#lecture"><span class="n">02</span>Note de lecture</a></li>
+        <li><a href="#chiffres"><span class="n">03</span>Les chiffres</a></li>
+        <li><a href="#cartographie"><span class="n">04</span>Cartographie</a></li>
+        <li><a href="#chronologie"><span class="n">05</span>Chronologie</a></li>
+        <li><a href="#droit"><span class="n">06</span>Le cœur juridique</a></li>
+        <li><a href="#structure"><span class="n">07</span>Contexte structurel</a></li>
+        <li><a href="#politique"><span class="n">08</span>Dimension politique</a></li>
+        <li><a href="#precedents"><span class="n">09</span>Précédents &amp; Europe</a></li>
+        <li><a href="#bascule"><span class="n">10</span>Points de bascule</a></li>
+        <li><a href="#limites"><span class="n">11</span>Limites</a></li>
+        <li><a href="#sources"><span class="n">12</span>Sources</a></li>
+      </ul>
+    </nav>
+    <div class="legend">
+      <div class="legend__t">Clé de lecture</div>
+      <div class="legend__row"><span class="legend__dot" style="background:#9CA6A4"></span><span class="legend__lab"><b>Fait</b> · <b>Interpr.</b> · <b>Hypothèse</b> · <b>Défense</b></span></div>
+    </div>
+  </div>
+
+  <!-- ============ MAIN ============ -->
+  <main class="main" id="main">
+
+    <!-- ===== HERO ===== -->
+    <header class="hero">
+      <div class="hero__inner">
+        <div class="hero__top">
+          <span>Évaluation d'intégrité &amp; de conformité</span>
+          <span class="statuspill">Aucune enquête judiciaire ouverte</span>
+        </div>
+        <h1>Une boîte aux&nbsp;lettres,<br><span class="thin">560 sociétés,<br>108 effacées.</span></h1>
+        <p class="hero__thesis">Au <b>24 Bergensesteenweg</b>, à la frontière de Bruxelles, un centre d'affaires tenu par deux élus libéraux. Derrière la façade : un portefeuille de sociétés radiées, liquidées, en faillite — et <b>pas un seul signalement</b> à la cellule anti-blanchiment. Entre la statistique et la preuve, voici un dossier qui n'en est pas (encore) un.</p>
+
+        <div class="figs">
+          <div class="fig">
+            <div class="fig__n">560</div>
+            <div class="fig__arrow">→</div>
+            <div class="fig__l">sociétés <b>domiciliées</b> à l'adresse</div>
+          </div>
+          <div class="fig">
+            <div class="fig__n">108</div>
+            <div class="fig__arrow">→</div>
+            <div class="fig__l"><b>radiations d'office</b> (mars 2023&nbsp;– mai 2026)</div>
+          </div>
+          <div class="fig">
+            <div class="fig__n">45</div>
+            <div class="fig__arrow">→</div>
+            <div class="fig__l"><b>coquilles</b> : 34&nbsp;liquidations + 11&nbsp;faillites</div>
+          </div>
+          <div class="fig fig--zero">
+            <div class="fig__n">0</div>
+            <div class="fig__l">signalement à la <b>CTIF</b>, de l'aveu même de la gérante</div>
+          </div>
+        </div>
+
+        <div class="hero__meta">
+          <span><b>Locus</b> · 24, chaussée de Mons, 1600 Sint-Pieters-Leeuw</span>
+          <span><b>Source primaire</b> · enquête de L'Echo, 25 juin 2026</span>
+          <span><b>État des données</b> · 26 juin 2026</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== 01 — EN BREF ===== -->
+    <section class="band" id="enbref">
+      <div class="band__inner">
+        <div class="eyebrow rv"><span class="ix">01</span>En bref</div>
+        <h2 class="h-sec rv">Ce que l'on sait — et ce que l'on ne sait pas</h2>
+        <p class="lede rv">Trois affirmations résument l'état du dossier au 26 juin 2026. Aucune ne dit la même chose, et c'est précisément l'écart entre elles qui fait l'intérêt — et la difficulté — de l'affaire.</p>
+
+        <div class="fiche rv">
+          <div class="fiche__k">Premier plan <span class="tag tag--fact">Fait</span></div>
+          <div class="fiche__t">Il n'existe, à ce jour, aucune enquête judiciaire.</div>
+          <p>Les parquets de Bruxelles et de Hal-Vilvorde l'ont confirmé à L'Echo<span class="cite">L'Echo</span>. L'affaire vit entièrement dans le registre du <em>soupçon médiatique et politique</em>, nourri par des données ouvertes de la Banque-Carrefour des Entreprises. Rien n'y est, en l'état, pénalement établi contre Achille Vandyck ou Marcela Gori. La présomption d'innocence n'est pas une formule de politesse : c'est la situation juridique réelle.</p>
+        </div>
+
+        <div class="fiche fiche--signal rv">
+          <div class="fiche__k">Le point le plus sensible <span class="tag tag--fact">Fait</span> <span class="tag tag--def">Défense</span></div>
+          <div class="fiche__t">L'absence totale de signalement à la CTIF est reconnue.</div>
+          <p>Marcela Gori admet que M.A. Solution n'a jamais transmis de <em>déclaration de soupçon</em> à la Cellule de traitement des informations financières<span class="cite">L'Echo</span>. Or les centres d'affaires sont, en droit belge, des « prestataires de services aux sociétés » assujettis à la loi anti-blanchiment du 18 septembre 2017. Ce n'est pas le nombre de radiations qui constitue ici le risque juridique le plus direct — c'est ce silence, sur un portefeuille où les anomalies s'accumulaient. Le maximum théorique de l'amende administrative encourue par un tel prestataire : <span class="mono">1 250 000 €</span>.</p>
+        </div>
+
+        <div class="fiche fiche--hypo rv">
+          <div class="fiche__k">La lecture politique <span class="tag tag--hypo">Hypothèse</span></div>
+          <div class="fiche__t">La révélation tombe un mois après que Gori s'est posée en justicière.</div>
+          <p>Dans le scandale parallèle du Foyer anderlechtois, Marcela Gori est <em>lanceuse d'alerte</em> contre le président socialiste Lotfi Mostefa. La publication du dossier M.A. Solution, le 25 juin, neutralise l'avantage moral du MR et renvoie les deux camps dos à dos. L'hypothèse d'une riposte politique est plausible et largement relayée — mais elle n'est <em>pas démontrée</em>, et ce dossier se garde de la présenter comme un fait.</p>
+        </div>
+
+        <p class="prose rv" style="margin-top:30px">La tentation, face à ce genre d'affaire, est de choisir un camp : y voir soit la preuve d'un système de blanchiment, soit une cabale politique contre des entrepreneurs. Les deux lectures sont confortables ; aucune n'est honnête. Ce dossier propose un troisième chemin — plus lent — qui consiste à tenir séparés, à chaque ligne, ce qui est <strong>établi</strong>, ce qui est <strong>interprété</strong> par des experts, et ce qui relève de l'<strong>hypothèse</strong>. La couleur des marqueurs, partout dans la page, n'est pas décorative : c'est l'outil de cette discipline.</p>
+      </div>
+    </section>
+
+    <!-- ===== 02 — NOTE DE LECTURE ===== -->
+    <section class="band band--dark" id="lecture">
+      <div class="band__inner">
+        <div class="eyebrow rv"><span class="ix">02</span>Note de lecture</div>
+        <h2 class="h-sec rv">Sur quoi repose ce dossier, et jusqu'où il peut aller</h2>
+        <p class="lede rv">Une page de référence ne vaut que par la solidité de ce qu'elle avance. Avant les faits, voici donc l'examen de leurs fondations — la condition de toute lecture honnête.</p>
+
+        <h3 class="h-sub rv">Une source primaire unique, des reprises convergentes</h3>
+        <p class="prose rv">Tous les chiffres-clés — les 560 sociétés, les 108 radiations, les 45 coquilles — proviennent d'une seule enquête, celle du quotidien économique <em>L'Echo</em>, publiée le 25 juin 2026 à partir des données ouvertes de la Banque-Carrefour des Entreprises<span class="cite">L'Echo</span>. Elle a été reprise de façon convergente par BX1, BRUZZ, La Libre, La DH, L'Avenir et BruxellesToday. Cette convergence renforce la crédibilité des données, mais ne multiplie pas les sources : derrière les reprises, <strong>une seule investigation originale</strong>, dont l'article — payant — n'a pas été consulté directement dans la documentation à l'origine de cette page. C'est une force (des données de registre, vérifiables) et une fragilité (un seul regard les a agrégées et qualifiées).</p>
+
+        <div class="note rv">Les qualificatifs les plus lourds — « vrai indice de fraude » — émanent d'<strong>experts cités anonymement</strong> par L'Echo. Ils relèvent de l'interprétation, non du constat. Ce dossier les rapporte comme tels : une lecture autorisée, pas un verdict.</div>
+
+        <h3 class="h-sub rv">Quatre statuts, tenus séparés</h3>
+        <p class="prose rv">Chaque affirmation importante porte l'un de quatre marqueurs. Le <span class="tag tag--fact">Fait</span> est documenté par une donnée de registre, un acte ou une déclaration publique vérifiable. L'<span class="tag tag--interp">Interpr.</span> est une lecture — d'un expert, d'un régulateur, ou de cette analyse — qui va au-delà de la donnée brute. L'<span class="tag tag--hypo">Hypothèse</span> est une explication plausible mais non établie. La <span class="tag tag--def">Défense</span> restitue la position des personnes mises en cause, à laquelle ce dossier tient à donner toute sa place.</p>
+
+        <div class="scale rv">
+          <div class="scale__ax"><span>← Conjectural</span><span>Interprétatif</span><span>Établi →</span></div>
+          <div class="scale__track">
+            <span class="scale__pt" style="left:84%" title="Les chiffres de la BCE : données de registre, hautement fiables"></span>
+            <span class="scale__pt" style="left:80%" title="L'absence de signalement CTIF : reconnue par l'intéressée"></span>
+            <span class="scale__pt" style="left:50%" title="« Indice de fraude » : lecture d'experts anonymes"></span>
+            <span class="scale__pt" style="left:46%" title="La portée de la scission MAS / MAS Business : à vérifier au registre"></span>
+            <span class="scale__pt" style="left:20%" title="La manœuvre politique : plausible, non démontrée"></span>
+          </div>
+          <div class="scale__cap"><span></span>Où se situent les principales affirmations du dossier, sur l'axe de la certitude. À droite, les données de registre et l'aveu sur la CTIF. Au centre, les lectures d'experts. À gauche, l'hypothèse de la riposte politique. <em>Survolez les points.</em></div>
+        </div>
+
+        <h3 class="h-sub rv">Ce que ce dossier peut établir — et ce qu'il refuse de faire</h3>
+        <p class="prose rv">Il peut documenter un <strong>faisceau d'indices</strong> et une <strong>défaillance de conformité reconnue</strong>. Il peut situer cette affaire dans un contexte sectoriel et réglementaire précis. Il ne peut pas — et ne tentera pas — d'établir une infraction pénale, de trancher l'intention des protagonistes, ni d'affirmer comme un fait ce que seul un juge pourrait dire. Distinguer ces registres n'est pas de la prudence excessive : c'est la seule manière de produire quelque chose qui mérite le nom de « référence ».</p>
+      </div>
+    </section>
+
+    <!-- ===== 03 — LES CHIFFRES ===== -->
+    <section class="band" id="chiffres">
+      <div class="band__inner">
+        <div class="eyebrow rv"><span class="ix">03</span>Les chiffres</div>
+        <h2 class="h-sec rv">Anatomie d'un portefeuille</h2>
+        <p class="lede rv">Sur 560 sociétés hébergées, 153 présentaient une anomalie majeure de conformité ou de viabilité. C'est le chiffre qui a déclenché l'affaire. Reste à savoir ce qu'il prouve — et ce qu'il ne prouve pas.</p>
+
+        <div class="portfolio rv">
+          <div class="pf-bar" id="pfbar">
+            <div class="pf-seg ok" style="flex-basis:72.68%">73 %</div>
+            <div class="pf-seg rad" style="flex-basis:19.29%">19 %</div>
+            <div class="pf-seg liq" style="flex-basis:6.07%">6 %</div>
+            <div class="pf-seg fail" style="flex-basis:1.96%">2 %</div>
+          </div>
+          <div class="pf-key">
+            <div class="pf-item"><span class="pf-sw" style="background:#3b4a45"></span><div><div class="v">407<small>≈ 73 %</small></div><div class="l">sans anomalie recensée</div></div></div>
+            <div class="pf-item"><span class="pf-sw" style="background:var(--ep-interp)"></span><div><div class="v">108<small>19,29 %</small></div><div class="l">radiations d'office (BCE)</div></div></div>
+            <div class="pf-item"><span class="pf-sw" style="background:#8a5234"></span><div><div class="v">34<small>6,07 %</small></div><div class="l">liquidations judiciaires</div></div></div>
+            <div class="pf-item"><span class="pf-sw" style="background:var(--signal)"></span><div><div class="v">11<small>1,96 %</small></div><div class="l">faillites / insolvabilité</div></div></div>
+          </div>
+        </div>
+
+        <div class="calc rv">
+<span class="cmt"># Taux de radiation d'office</span>
+R<sub>radiation</sub> = 108 <span class="op">/</span> 560 <span class="op">×</span> 100  =  <span class="res">19,29 %</span>
+
+<span class="cmt"># Indice global d'anomalie (radiations + défaillances judiciaires)</span>
+I<sub>anomalie</sub> = (108 + 45) <span class="op">/</span> 560 <span class="op">×</span> 100  =  <span class="res">27,32 %</span>
+        </div>
+
+        <p class="prose rv">La période couverte va de mars 2023 à mai 2026. Certaines radiations sont intervenues <em>deux mois à peine</em> après la domiciliation<span class="cite">L'Echo</span>. Une part significative des sociétés concernées n'avait jamais déposé de comptes annuels. Les secteurs sur-représentés — construction, nettoyage, horeca — sont précisément ceux que la lutte contre le blanchiment et la fraude sociale surveille de près. Et huit des trente-quatre liquidations judiciaires se concentrent sur le seul mois de mai 2026 ; la dernière faillite a été ouverte le 9 juin 2026. <span class="tag tag--fact">Fait</span></p>
+
+        <h3 class="h-sub rv">La question que personne ne pose : 19 %, est-ce anormal&nbsp;?</h3>
+        <p class="prose rv">C'est ici que l'analyse doit ralentir. Un pourcentage sans point de comparaison n'accuse personne. Or, à l'échelle nationale, les ordres de grandeur sont vertigineux : <strong>près de 400 000 entreprises seraient aujourd'hui considérées comme « fantômes » en Belgique, soit plus d'une société sur cinq</strong><span class="cite">L'Avenir</span>. Rapporté à ce bruit de fond, un taux de radiation de 19 % sur un portefeuille de domiciliation n'est pas, <em>en soi</em>, une aberration statistique. Le brandir seul, comme preuve, serait malhonnête — et la défense de Marcela Gori n'a pas tort de juger cette présentation « particulièrement réductrice ». <span class="tag tag--def">Défense</span></p>
+
+        <p class="prose rv">Ce qui déplace le curseur, ce n'est pas le taux : ce sont les <strong>traits qualitatifs</strong> que la moyenne nationale ne capture pas. La <em>vitesse</em> (des radiations à deux mois), la <em>concentration</em> (une cascade de liquidations groupées sur les derniers mois), la <em>spécialisation sectorielle</em> (les secteurs à risque), et surtout la <em>synchronie</em> troublante entre l'expansion du réseau, à l'automne 2025, et l'envol des défaillances. <span class="tag tag--interp">Interpr.</span> Aucun de ces traits n'est, isolément, une infraction. Ensemble, ils forment le « faisceau » que les experts qualifient d'indice — un mot qui désigne une direction d'enquête, pas une culpabilité.</p>
+
+        <div class="fiche fiche--signal rv">
+          <div class="fiche__k">Le sous-ensemble qui résiste à la défense <span class="tag tag--fact">Fait</span></div>
+          <div class="fiche__t">26 des 108 sociétés radiées avaient confié leurs formalités à M.A. Solution.</div>
+          <p>Pour la grande masse des sociétés hébergées, on peut plaider que le domiciliataire n'est qu'un bailleur de boîtes aux lettres, ignorant de ce qui se trame chez ses clients. Cet argument s'effondre pour ces 26 sociétés — près d'<span class="mono">une radiation sur quatre</span> — dont M.A. Solution exécutait directement les démarches administratives par mandat<span class="cite">L'Echo</span>. Là, la relation d'affaires est incontestable, et avec elle l'obligation de vigilance. C'est le noyau dur du dossier : non pas l'hébergement passif, mais l'<em>accompagnement actif</em> de structures qui ont fini radiées.</p>
+        </div>
+
+        <h3 class="h-sub rv">Un angle mort qui joue, lui, en faveur de la défense</h3>
+        <p class="prose rv">La rigueur impose aussi de signaler la faille inverse. Le droit belge n'impose <strong>aucune vérification croisée</strong> entre l'acte notarié qui fixe un siège social et l'existence réelle d'un contrat de domiciliation signé<span class="cite">BX1</span>. Certains notaires valident une adresse sans exiger la preuve d'une convention active. Conséquence : des « sociétés fantômes » peuvent <em>usurper</em> l'adresse d'un centre d'affaires légitime sans jamais en être clientes — et gonfler, mécaniquement, le décompte des sociétés « hébergées » à une adresse donnée. <span class="tag tag--interp">Interpr.</span> Une partie des 560 et des 108 pourrait donc relever de cette usurpation, hors de tout lien contractuel avec M.A. Solution. Le chiffre brut surestime peut-être l'empreinte réelle du prestataire. Les 26 mandats, eux, échappent à cette objection.</p>
+
+        <h3 class="h-sub rv">Un cas d'école : Bruma S.D.</h3>
+        <p class="prose rv">Une société illustre la mécanique de rotation que les enquêteurs scrutent. <strong>Bruma S.D.</strong> <span class="mono">BE 0791.577.309</span>, active dans la construction générale, avait son établissement au « 24 Bergensesteenweg, boîte 8 ». Son chiffre d'affaires bondit de <span class="mono">145 639 €</span> (2023) à <span class="mono">224 526 €</span> (2024)<span class="cite">Pappers</span> — puis l'unité d'établissement ferme, et l'activité résiduelle migre vers Morlanwelz. Pour les spécialistes anti-blanchiment, cette délocalisation rapide d'une activité logée dans une boîte aux lettres partagée est un <em>indicateur d'opacification</em> typique. <span class="tag tag--interp">Interpr.</span> Un cas n'est pas une preuve systémique ; c'est une vignette de ce que le faisceau désigne.</p>
+      </div>
+    </section>
+
+    <!-- ===== 04 — CARTOGRAPHIE ===== -->
+    <section class="band" id="cartographie">
+      <div class="band__inner">
+        <div class="eyebrow rv"><span class="ix">04</span>Cartographie</div>
+        <h2 class="h-sec rv">Le réseau : deux personnes, cinq structures</h2>
+        <p class="lede rv">Comprendre l'affaire suppose de démêler une architecture d'entités aux statuts distincts. Cette répartition n'est pas un détail : elle est au cœur de la ligne de défense.</p>
+
+        <div class="people rv">
+          <div class="person">
+            <div class="person__name">Achille Vandyck</div>
+            <div class="person__roles">MR · Échevin de la Propreté et des Espaces verts (Anderlecht) · Vice-président du MR local · Administrateur unique de M.A. Solution SRL depuis août 2025</div>
+            <p>Né à Anderlecht en 1988. Sa fiche de transparence (Cumuleo) cumule mandats publics et privés ; sa rémunération globale 2024 est estimée entre <span class="mono">18 393 €</span> et <span class="mono">79 691 €</span><span class="cite">Cumuleo</span>. Deux infractions administratives anciennes y figurent : déclaration de mandats (2018) et de patrimoine (2013). <span class="tag tag--fact">Fait</span></p>
+            <p>Sa défense est nette : un domiciliataire « n'exerce aucun contrôle opérationnel » et ne gère ni la fiscalité ni la comptabilité de ses clients. <span class="tag tag--def">Défense</span></p>
+          </div>
+          <div class="person">
+            <div class="person__name">Marcela Gori</div>
+            <div class="person__roles">MR · Avocate · Conseillère communale · Vice-présidente du CPAS · Vice-présidente puis présidente par intérim du Foyer anderlechtois · Actionnaire à 50 % de M.A. Solution SRL</div>
+            <p>La figure pivot du dossier. Démissionnaire de son mandat d'administratrice de M.A. Solution SRL en août 2025, elle en reste actionnaire à parité. C'est elle qui porte la défense publique du couple — et c'est elle qui, simultanément, incarne le rôle de lanceuse d'alerte dans le scandale du Foyer. <span class="tag tag--fact">Fait</span></p>
+            <p>Sa thèse : toutes les radiations ont été <em>demandées</em> par le prestataire, au titre de ses obligations ; et l'activité de domiciliation relève désormais d'une autre société. <span class="tag tag--def">Défense</span></p>
+          </div>
+        </div>
+
+        <p class="prose rv" style="margin-top:8px">Le cumul, en lui-même, dessine déjà un risque : des élus exerçant des fonctions exécutives — dont l'un est échevin de la <em>Propreté</em>, l'autre présidente par intérim d'un bailleur social — tirent par ailleurs un revenu d'une activité privée de domiciliation, dans un secteur classé à haut risque réglementaire. <span class="tag tag--interp">Interpr.</span> C'est le plan déontologique, distinct des plans administratif et pénal, sur lequel nous reviendrons.</p>
+
+        <h3 class="h-sub rv">Les cinq structures</h3>
+        <p class="prose rv"><em>Cliquez pour déplier chaque entité.</em> La couleur du repère indique la fonction : <b style="color:var(--signal)">structure historique</b>, <b style="color:var(--ep-interp)">entité opérationnelle</b>, <b style="color:var(--ep-hypo)">satellite / expansion</b>.</p>
+
+        <div class="entgrid rv">
+          <div class="entcard legacy">
+            <button class="entcard__h" aria-expanded="false">
+              <span class="entcard__role"><span class="pip"></span>Structure historique</span>
+              <span class="entcard__name">M.A. Solution SRL</span>
+              <span class="entcard__num">BE 0777.963.952 · Sint-Pieters-Leeuw</span>
+              <span class="entcard__more"><span class="chev">▸</span> Détails &amp; chiffres</span>
+            </button>
+            <div class="entcard__body"><div class="entcard__bodyinner"><dl>
+              <dt>Constituée</dt><dd>2 décembre 2021, acte du notaire Damien Hisette (Bruxelles)</dd>
+              <dt>Capital</dt><dd>500 € · 100 parts de 5 €, détenues 50/50 par Gori et Vandyck</dd>
+              <dt>Gouvernance</dt><dd>Vandyck administrateur unique depuis août 2025 ; Gori actionnaire à 50 %</dd>
+              <dt>Comptes 2024</dt><dd>Marge brute 460 016 € · bénéfice net ≈ 70 000 € · 3 ETP · derniers comptes déposés le 31 juillet 2025</dd>
+              <dt>Rôle</dt><dd>Société d'origine. Adresse de l'hébergement des 560 dossiers. Plusieurs adresses annexes : Strombeek-Bever, Anvers, Ixelles.</dd>
+            </dl></div></div>
+          </div>
+
+          <div class="entcard oper">
+            <button class="entcard__h" aria-expanded="false">
+              <span class="entcard__role"><span class="pip"></span>Entité opérationnelle</span>
+              <span class="entcard__name">M.A. Solution Business SRL</span>
+              <span class="entcard__num">BE 1000.395.543 · Ixelles (Elsene)</span>
+              <span class="entcard__more"><span class="chev">▸</span> Détails &amp; chiffres</span>
+            </button>
+            <div class="entcard__body"><div class="entcard__bodyinner"><dl>
+              <dt>Gouvernance</dt><dd>Vandyck administrateur ; Gori administratrice</dd>
+              <dt>Secteur déclaré</dt><dd>Bureaux de recouvrement</dd>
+              <dt>Marge brute</dt><dd>10 266 €</dd>
+              <dt>Enjeu</dt><dd>Selon la défense, c'est cette société, et non la structure historique, qui porte aujourd'hui l'activité de domiciliation. Pivot de l'argumentaire de Gori — à vérifier au registre quant aux dates et au transfert exact d'activité.</dd>
+            </dl></div></div>
+          </div>
+
+          <div class="entcard satellite">
+            <button class="entcard__h" aria-expanded="false">
+              <span class="entcard__role"><span class="pip"></span>Satellite · expansion</span>
+              <span class="entcard__name">House of Work SRL</span>
+              <span class="entcard__num">Créée en septembre 2025</span>
+              <span class="entcard__more"><span class="chev">▸</span> Détails</span>
+            </button>
+            <div class="entcard__body"><div class="entcard__bodyinner"><dl>
+              <dt>Fondateurs</dt><dd>Achille Vandyck &amp; Marcela Gori</dd>
+              <dt>Objet</dt><dd>Déploiement d'un réseau national de centres d'affaires en Belgique</dd>
+              <dt>À noter</dt><dd>Sa création coïncide, selon BRUZZ, avec l'« envol » des liquidations à l'adresse historique — une corrélation, non une démonstration de causalité.</dd>
+            </dl></div></div>
+          </div>
+
+          <div class="entcard satellite">
+            <button class="entcard__h" aria-expanded="false">
+              <span class="entcard__role"><span class="pip"></span>Satellite · expansion</span>
+              <span class="entcard__name">House of Network ASBL</span>
+              <span class="entcard__num">Créée en septembre 2025</span>
+              <span class="entcard__more"><span class="chev">▸</span> Détails</span>
+            </button>
+            <div class="entcard__body"><div class="entcard__bodyinner"><dl>
+              <dt>Fondateurs</dt><dd>Achille Vandyck &amp; Marcela Gori</dd>
+              <dt>Objet</dt><dd>Structure associative d'accompagnement et de réseautage professionnel, volet « réseau » de l'expansion</dd>
+            </dl></div></div>
+          </div>
+
+          <div class="entcard satellite">
+            <button class="entcard__h" aria-expanded="false">
+              <span class="entcard__role"><span class="pip"></span>Satellite · même immeuble</span>
+              <span class="entcard__name">VAVI – Vandyck Assurances SRL</span>
+              <span class="entcard__num">BE 0799.461.429 · Bergensesteenweg 24/8</span>
+              <span class="entcard__more"><span class="chev">▸</span> Détails</span>
+            </button>
+            <div class="entcard__body"><div class="entcard__bodyinner"><dl>
+              <dt>Fondée</dt><dd>13 mars 2023</dd>
+              <dt>Siège</dt><dd>Même immeuble que la structure historique (boîte 8)</dd>
+              <dt>Profil</dt><dd>Marge brute 5 729 € · aucun employé déclaré · Achille Vandyck administrateur</dd>
+            </dl></div></div>
+          </div>
+        </div>
+
+        <div class="callbox rv">
+          <h3>La scission, clé de voûte de la défense</h3>
+          <p class="prose" style="margin-bottom:0">L'argument central de Marcela Gori tient en une distinction : elle n'est <em>plus administratrice</em> de la société qui a hébergé les sociétés défaillantes, et l'activité de domiciliation serait désormais portée par M.A. Solution Business, entité juridiquement distincte. <span class="tag tag--def">Défense</span> C'est juridiquement recevable — et c'est exactement le point qui mérite une vérification documentaire au registre : qui détient quoi, depuis quelle date, et à quel moment précis le transfert d'activité a eu lieu. Tant que cette chronologie n'est pas établie pièce par pièce, la scission reste un <em>argument</em>, pas un fait acquis. <span class="tag tag--hypo">Hypothèse</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 05 — CHRONOLOGIE ===== -->
+    <section class="band" id="chronologie">
+      <div class="band__inner">
+        <div class="eyebrow rv"><span class="ix">05</span>Chronologie</div>
+        <h2 class="h-sec rv">Deux affaires, une même commune, un même mois</h2>
+        <p class="lede rv">Le dossier M.A. Solution ne se comprend pas seul : il se superpose, presque jour pour jour, au scandale du Foyer anderlechtois. Filtrez les pistes pour voir comment les deux récits s'enchevêtrent.</p>
+
+        <div class="filters rv" role="group" aria-label="Filtrer la chronologie">
+          <button class="chip all" data-f="all" aria-pressed="true"><span class="d"></span>Tout</button>
+          <button class="chip mas" data-f="mas" aria-pressed="true"><span class="d"></span>M.A. Solution</button>
+          <button class="chip foy" data-f="foy" aria-pressed="true"><span class="d"></span>Foyer anderlechtois</button>
+          <button class="chip nat" data-f="nat" aria-pressed="true"><span class="d"></span>Cadre national</button>
+        </div>
+
+        <ul class="timeline" id="timeline">
+          <li class="tl mas rv" data-track="mas"><div class="tl__date">2 déc. 2021 <span class="tl__track">M.A. Solution</span></div><div class="tl__t">Naissance de M.A. Solution SRL</div><div class="tl__d">Constitution par acte notarié, capital de 500 €, détenue à parité par Marcela Gori et Achille Vandyck.</div></li>
+          <li class="tl mas rv" data-track="mas"><div class="tl__date">13 mars 2023 <span class="tl__track">M.A. Solution</span></div><div class="tl__t">VAVI s'installe dans le même immeuble</div><div class="tl__d">La société d'assurances de Vandyck est fondée au Bergensesteenweg 24, boîte 8 — sans employé déclaré.</div></li>
+          <li class="tl nat rv" data-track="nat"><div class="tl__date">mars 2023 <span class="tl__track">Cadre national</span></div><div class="tl__d" style="margin-top:0"></div><div class="tl__t">Ouverture de la fenêtre d'observation</div><div class="tl__d">Début de la période sur laquelle L'Echo recensera, jusqu'en mai 2026, les 108 radiations d'office.</div></li>
+          <li class="tl foy rv" data-track="foy"><div class="tl__date">2021 – début 2025 <span class="tl__track">Foyer</span></div><div class="tl__t">Le « comité de dérogation clandestin »</div><div class="tl__d">Période que Marcela Gori dénoncera plus tard comme celle d'un gel de dossiers et d'un climat « quasi mafieux » au Foyer. <span class="tag tag--def">Défense / alerte</span></div></li>
+          <li class="tl mas rv" data-track="mas"><div class="tl__date">août 2025 <span class="tl__track">M.A. Solution</span></div><div class="tl__t">Gori quitte le mandat d'administratrice</div><div class="tl__d">Elle reste actionnaire à 50 %. Vandyck devient administrateur unique de la structure historique.</div></li>
+          <li class="tl mas rv" data-track="mas"><div class="tl__date">sept. 2025 <span class="tl__track">M.A. Solution</span></div><div class="tl__t">Expansion — et envol des liquidations</div><div class="tl__d">Création de House of Work SRL et House of Network ASBL pour bâtir un réseau national. C'est à ce moment, note BRUZZ, que les liquidations à l'adresse historique s'accélèrent. <span class="tag tag--interp">Corrélation</span></div></li>
+          <li class="tl nat rv" data-track="nat"><div class="tl__date">6 févr. 2026 <span class="tl__track">Cadre national</span></div><div class="tl__t">Le Parlement chiffre l'épidémie des coquilles</div><div class="tl__d">En commission Économie de la Chambre : près de 400 000 sociétés « fantômes », et des radiations de sièges passées de 3 795 (2021) à 5 418 (2025).</div></li>
+          <li class="tl mas rv" data-track="mas"><div class="tl__date">févr. 2026 <span class="tl__track">M.A. Solution</span></div><div class="tl__t">L'épisode des déchets de construction</div><div class="tl__d">Un dépôt sauvage lié à M.A. Solution vaut à Vandyck une demande de démission du PTB (Patricia Polanco), évoquant un « passe-droit » (SAC de 500 €, taxe pouvant atteindre 10 000 €).</div></li>
+          <li class="tl foy rv" data-track="foy"><div class="tl__date">15 mai 2026 <span class="tl__track">Foyer</span></div><div class="tl__t">Pano (VRT) fait éclater le scandale du Foyer</div><div class="tl__d">Une enquête de 18 mois accuse Lotfi Mostefa (PS) d'ingérence et de clientélisme dans l'attribution de logements sociaux.</div></li>
+          <li class="tl foy rv" data-track="foy"><div class="tl__date">21 mai 2026 <span class="tl__track">Foyer</span></div><div class="tl__t">L'ampleur de l'institution</div><div class="tl__d">VRT NWS rappelle que le Foyer est le 2ᵉ bailleur social de Bruxelles : 4 100 logements, plus de 8 000 habitants, 142 travailleurs.</div></li>
+          <li class="tl foy rv" data-track="foy"><div class="tl__date">28 mai 2026 <span class="tl__track">Foyer</span></div><div class="tl__t">Perquisitions</div><div class="tl__d">Au Foyer, au domicile de Mostefa, à la commune et chez Safouane Akremi (ex-SLRB). Le procureur de Bruxelles Julien Moinil aurait été présent en personne. Quatre enquêtes au total.</div></li>
+          <li class="tl foy rv" data-track="foy"><div class="tl__date">1ᵉʳ juin 2026 <span class="tl__track">Foyer</span></div><div class="tl__t">Une commission d'enquête bruxelloise</div><div class="tl__d">La deuxième de l'histoire du Parlement bruxellois après le Samusocial (2017). Délai très court — jusqu'au 21 juillet — vite dénoncé comme un « enterrement estival ».</div></li>
+          <li class="tl mas rv" data-track="mas"><div class="tl__date">9 juin 2026 <span class="tl__track">M.A. Solution</span></div><div class="tl__t">Dernière faillite recensée</div><div class="tl__d">À l'adresse du 24 Bergensesteenweg, la plus récente ouverture de procédure d'insolvabilité du décompte.</div></li>
+          <li class="tl foy rv" data-track="foy"><div class="tl__date">15 juin 2026 <span class="tl__track">Foyer</span></div><div class="tl__t">Gori prend la présidence par intérim</div><div class="tl__d">Profitant de démissions au conseil d'administration, un CA extraordinaire vote le retrait temporaire de Mostefa. Le PS et l'avocate du Foyer en contestent la validité. <span class="tag tag--fact">Fait</span></div></li>
+          <li class="tl mas rv" data-track="mas"><div class="tl__date">25 juin 2026 <span class="tl__track">M.A. Solution</span></div><div class="tl__t">L'Echo publie — et la riposte commence</div><div class="tl__d">560 sociétés, 108 radiations, 45 coquilles. Gori reconnaît l'absence de signalement à la CTIF. L'opposition s'en empare aussitôt. <span class="tag tag--fact">Fait</span></div></li>
+          <li class="tl mas rv" data-track="mas"><div class="tl__date">26 juin 2026 <span class="tl__track">M.A. Solution</span></div><div class="tl__t">Les parquets : « aucune enquête »</div><div class="tl__d">Bruxelles et Hal-Vilvorde confirment qu'aucune procédure judiciaire ne vise M.A. Solution. <span class="tag tag--fact">Fait</span></div></li>
+          <li class="tl foy future rv" data-track="foy"><div class="tl__date">21 juil. 2026 <span class="tl__track">Foyer · à venir</span></div><div class="tl__t">Échéance de la commission</div><div class="tl__d">Date de clôture prévue des travaux — avec une prolongation possible après les vacances.</div></li>
+        </ul>
+
+        <div class="note rv">Lu d'un bloc, l'enchaînement est éloquent : Gori prend l'intérim du Foyer le 15 juin ; dix jours plus tard, son propre business fait la une. Que ce voisinage temporel soit une coïncidence d'agenda médiatique ou une contre-attaque orchestrée par ses adversaires, la chronologie ne le dit pas — elle le rend seulement <em>pensable</em>. <span class="tag tag--hypo">Hypothèse</span></div>
+      </div>
+    </section>
+
+    <!-- ===== 06 — LE CŒUR JURIDIQUE ===== -->
+    <section class="band band--dark" id="droit">
+      <div class="band__inner">
+        <div class="eyebrow rv"><span class="ix">06</span>Le cœur juridique</div>
+        <h2 class="h-sec rv">Le silence qui vaut plus que les chiffres</h2>
+        <p class="lede rv">Si ce dossier devait un jour produire des conséquences, ce ne serait pas par le nombre de sociétés radiées. Ce serait par une obligation précise, non remplie, et reconnue.</p>
+
+        <h3 class="h-sub rv">Un centre d'affaires est un assujetti anti-blanchiment</h3>
+        <p class="prose rv">Le point de départ juridique est sans ambiguïté. Les centres d'affaires qui domicilient le siège social d'autres sociétés sont des <strong>« prestataires de services aux sociétés »</strong> au sens de l'article 5, §1ᵉʳ, 29° à 31° de la loi du 18 septembre 2017<span class="cite">SPF Éco.</span> — la loi qui transpose en droit belge la directive européenne 2015/849. Ils doivent s'enregistrer auprès du SPF Économie. Et, surtout, ils sont soumis aux mêmes obligations de vigilance que les banques ou les notaires : identifier et vérifier l'identité de leurs clients, de leurs mandataires et de leurs <em>bénéficiaires effectifs</em> (registre UBO) ; évaluer les risques avant d'entrer en relation ; exercer une vigilance <em>continue</em> ; consigner par écrit tout fait atypique ; désigner un responsable anti-blanchiment ; et — le pivot de l'affaire — adresser une <strong>déclaration de soupçon</strong> à la CTIF dès qu'un soupçon de blanchiment apparaît. <span class="tag tag--fact">Fait</span></p>
+
+        <div class="fiche rv">
+          <div class="fiche__k">Le maillon central <span class="tag tag--fact">Fait</span></div>
+          <div class="fiche__t">La CTIF, et au bout de la chaîne, l'article 505</div>
+          <p>La Cellule de traitement des informations financières est une cellule administrative de renseignement financier. Elle reçoit les déclarations de soupçon, les analyse, peut s'opposer cinq jours à une opération, et transmet le cas échéant au procureur du Roi ou au procureur fédéral. Le volet répressif, lui, relève de l'<span class="mono">article 505</span> du Code pénal — le blanchiment, passible de confiscation, d'amendes et d'emprisonnement. La déclaration manquée n'est pas, à elle seule, un crime ; mais elle est la porte par laquelle le dispositif tout entier était censé s'enclencher.</p>
+        </div>
+
+        <h3 class="h-sub rv">Le double tranchant de la défense</h3>
+        <p class="prose rv">C'est ici que l'argumentaire de Marcela Gori se retourne contre lui-même — et c'est l'observation décisive de tout le dossier. Pour répondre aux accusations, elle affirme que <em>toutes les radiations ont été demandées par le prestataire lui-même</em>, dans le cadre de ses obligations légales ou contractuelles. <span class="tag tag--def">Défense</span> Présenté ainsi, l'argument veut prouver la diligence : un opérateur sérieux purge ses registres des clients défaillants.</p>
+
+        <div class="pull pull--dark rv">Mais pour <em>demander</em> la radiation d'une société, encore faut-il avoir <em>détecté</em> qu'elle posait problème.</div>
+
+        <p class="prose rv">Et c'est précisément la détection d'une anomalie qui, en droit, peut déclencher l'obligation de signalement à la CTIF. La défense, en voulant démontrer la vigilance, démontre surtout que les anomalies <strong>avaient été repérées</strong> — par dizaines. Reconnaître qu'on a sollicité l'administration pour radier des clients suspects, tout en reconnaissant n'avoir jamais rien signalé à la cellule anti-blanchiment, c'est décrire exactement la situation que la loi entend interdire : <em>voir, agir sur le plan administratif, et taire</em>. <span class="tag tag--interp">Interpr.</span> Le faisceau de 108 radiations et 45 procédures collectives n'accuse personne par lui-même ; mais conjugué à cet aveu, il interroge frontalement la qualité de la vigilance continue exigée par la loi.</p>
+
+        <h3 class="h-sub rv">Trois plans qu'il ne faut jamais confondre</h3>
+        <p class="prose rv">La gravité de l'affaire change radicalement selon le terrain où on la place. Les confondre — comme le fait le débat public — produit autant de faux acquittements que de fausses condamnations.</p>
+
+        <div class="planes rv">
+          <div class="plane">
+            <div class="plane__tag">Plan 1 · Administratif</div>
+            <h3>Anti-blanchiment</h3>
+            <div class="plane__role">SPF Économie (Inspection éco., service Sanctions &amp; Litiges) · CTIF</div>
+            <p>Le terrain le plus exposé. L'absence de signalement, reconnue, constitue une faute administrative caractérisée. Le défaut éventuel d'enregistrement comme prestataire aggraverait le tableau.</p>
+            <p>Amende : <span class="mono">250 € → 1 250 000 €</span> (art. 132), recouvrée par le SPF Finances, publiable sur le site du SPF Économie (art. 135, §3).</p>
+            <div class="plane__status"><b>Exposition actuelle</b><span class="heat-mid">● Réelle — mais aucune procédure connue à ce jour</span></div>
+          </div>
+          <div class="plane">
+            <div class="plane__tag">Plan 2 · Pénal</div>
+            <h3>Blanchiment</h3>
+            <div class="plane__role">Parquet (de Bruxelles / de Hal-Vilvorde) · art. 505 du Code pénal</div>
+            <p>Suppose de démontrer la complicité active ou une négligence grave dans un schéma de blanchiment avéré. Rien de tel n'est documenté ici.</p>
+            <p>Hébergez une société qui se révèle frauduleuse <em>après coup</em>, sans manquement propre, et vous n'êtes pas coupable. La frontière est l'intention et la faute personnelle.</p>
+            <div class="plane__status"><b>Exposition actuelle</b><span class="heat-low">● Nulle — aucune enquête ouverte</span></div>
+          </div>
+          <div class="plane">
+            <div class="plane__tag">Plan 3 · Politique</div>
+            <h3>Conflit d'intérêts &amp; cumul</h3>
+            <div class="plane__role">Conseil communal · codes de déontologie · opinion publique</div>
+            <p>Indépendant des deux autres. Des élus exécutifs exploitant à titre privé une activité de domiciliation à haut risque : le problème existe même sans la moindre infraction.</p>
+            <p>C'est sur ce plan que la pression est la plus forte — PS et PTB en tête — et que se joue la crédibilité, plus que la légalité.</p>
+            <div class="plane__status"><b>Exposition actuelle</b><span class="heat-high">● Forte — pression politique, mandats maintenus</span></div>
+          </div>
+        </div>
+
+        <div class="note rv">Une dernière pièce du décor légal éclaire le risque sectoriel. Depuis 2017, les paiements en espèces entre professionnels ou avec des consommateurs sont plafonnés à <span class="mono">3 000 €</span> (art. 67), et totalement interdits dans l'immobilier. Privés du liquide, les flux illicites se déplacent vers l'<em>ingénierie sociétaire</em> : structures écrans, IBAN virtuels — qui ont tous besoin d'une adresse de domiciliation stable pour exister. <span class="tag tag--interp">Interpr.</span> Le centre d'affaires devient ainsi, par effet de déplacement, une infrastructure critique : raison de plus pour que sa vigilance soit irréprochable.</div>
+      </div>
+    </section>
+
+    <!-- ============ 07 · CONTEXTE STRUCTUREL ============ -->
+    <section class="band" id="structure">
+      <div class="band__inner">
+        <div class="eyebrow rv"><span class="ix">07</span>Contexte structurel</div>
+        <h2 class="h-sec rv">Le dossier n'est pas une exception. C'est un symptôme.</h2>
+        <p class="lede rv">Avant de juger M.A. Solution sur ses chiffres, il faut savoir à quoi les comparer. Sortis de leur arrière-plan, ils impressionnent. Replacés dedans, ils racontent une autre histoire — celle d'un pays qui sait que ses centres d'affaires sont un angle mort, et qui n'a pas les moyens de le surveiller.</p>
+
+        <h3 class="h-sub rv">La question des taux de base</h3>
+        <p class="prose rv">Un portefeuille où 19 % des sociétés finissent radiées d'office : le chiffre paraît accablant. Il l'est moins qu'il n'y paraît. En commission de l'Économie de la Chambre, on évoquait début 2026 le chiffre de <strong>près de 400 000 entreprises « fantômes »</strong> en Belgique — soit, selon ces analyses, plus d'une société sur cinq<span class="cite">Chambre, févr. 2026</span>. Le non-respect des seules obligations liées au registre UBO a conduit à radier 57 000 entreprises depuis 2024. <span class="tag tag--fact">Fait</span> Rapporté à cette base, un taux de radiation autour de 19 % cesse d'être une anomalie statistique : il flotte dans l'ordre de grandeur national.</p>
+
+        <div class="pull rv">Ce n'est donc pas le <em>pourcentage</em> qui accuse. Ce sont les traits qualitatifs qu'aucune moyenne ne capture.</div>
+
+        <p class="prose rv">La vitesse — des radiations parfois deux mois à peine après la domiciliation. La concentration — des dizaines de défaillances à une seule boîte aux lettres. Les secteurs — construction, nettoyage, horeca, précisément ceux que la lutte anti-fraude sociale surveille en priorité. Et la synchronie — l'envol des liquidations au moment même de l'expansion du réseau, à l'automne 2025. <span class="tag tag--interp">Interpr.</span> Un fait statistiquement banal pris isolément peut devenir significatif par la manière dont ses composantes se présentent. C'est là, et non dans le taux brut, que se loge le soupçon défendable.</p>
+
+        <h3 class="h-sub rv">Ce que le GAFI a écrit sur la Belgique — un mois avant l'affaire</h3>
+        <p class="prose rv">Le 16 décembre 2025, au terme d'une visite sur place début 2025, le Groupe d'action financière (GAFI/FATF) a publié son évaluation mutuelle de la Belgique. Le verdict, sur le fond, est sévère sans être disqualifiant : le dispositif belge est <em>techniquement</em> aligné sur les recommandations, mais son <strong>efficacité réelle</strong> reste en retard. La Belgique a été placée en <strong>suivi renforcé</strong>, avec une feuille de route sur trois ans<span class="cite">GAFI, déc. 2025</span>. <span class="tag tag--fact">Fait</span></p>
+
+        <p class="prose rv">Le tableau d'efficacité ne comporte aucune note « élevée ». Deux domaines seulement atteignent le niveau « significatif » — le renseignement financier et la lutte contre le financement du terrorisme. Tout le reste plafonne au niveau « modéré », dont, exactement, les trois résultats qui concernent ce dossier : la supervision, les mesures préventives, et la transparence des personnes morales.</p>
+
+        <div class="matrix rv">
+          <div class="cell"><div class="cell__io">IO.1</div><div class="cell__n">Risque &amp; coordination</div><div class="cell__lv lv-me">Modéré</div></div>
+          <div class="cell"><div class="cell__io">IO.2</div><div class="cell__n">Coopération int.</div><div class="cell__lv lv-me">Modéré</div></div>
+          <div class="cell flag"><div class="cell__io">IO.3</div><div class="cell__n">Supervision</div><div class="cell__lv lv-me">Modéré</div></div>
+          <div class="cell flag"><div class="cell__io">IO.4</div><div class="cell__n">Mesures préventives</div><div class="cell__lv lv-me">Modéré</div></div>
+          <div class="cell flag"><div class="cell__io">IO.5</div><div class="cell__n">Personnes morales / UBO</div><div class="cell__lv lv-me">Modéré</div></div>
+          <div class="cell"><div class="cell__io">IO.6</div><div class="cell__n">Renseignement financier</div><div class="cell__lv lv-se">Significatif</div></div>
+          <div class="cell"><div class="cell__io">IO.7</div><div class="cell__n">Enquêtes blanchiment</div><div class="cell__lv lv-me">Modéré</div></div>
+          <div class="cell"><div class="cell__io">IO.8</div><div class="cell__n">Confiscation</div><div class="cell__lv lv-me">Modéré</div></div>
+          <div class="cell"><div class="cell__io">IO.9</div><div class="cell__n">Financement terrorisme</div><div class="cell__lv lv-se">Significatif</div></div>
+          <div class="cell"><div class="cell__io">IO.10</div><div class="cell__n">Sanctions financières FT</div><div class="cell__lv lv-me">Modéré</div></div>
+          <div class="cell"><div class="cell__io">IO.11</div><div class="cell__n">Sanctions financières FP</div><div class="cell__lv lv-me">Modéré</div></div>
+        </div>
+        <p class="note rv">Les trois cellules encadrées de rouge — supervision (IO.3), mesures préventives (IO.4), transparence des bénéficiaires effectifs (IO.5) — sont celles qui gouvernent directement le risque incarné par un centre de domiciliation. Toutes trois au niveau le plus bas attribué à la Belgique.</p>
+
+        <p class="prose rv">Sur le plan de la conformité <em>technique</em>, le bilan est plus flatteur, mais une faille saute aux yeux : la recommandation R.24, qui porte sur la transparence et le bénéficiaire effectif des personnes morales, n'est jugée que « partiellement conforme ». Le registre UBO belge affiche pourtant un taux d'enregistrement proche de 98 % — mais il souffre d'informations inexactes ou périmées, faute de vérification suffisante. Le formulaire est rempli ; sa véracité n'est pas garantie.</p>
+
+        <div class="tcsummary rv">
+          <div class="tcpill"><b class="c">13</b> Conformes (C)</div>
+          <div class="tcpill"><b class="lc">20</b> Largement conformes (LC)</div>
+          <div class="tcpill"><b class="pc">6</b> Partiellement conformes (PC)</div>
+          <div class="tcpill"><b class="nc">1</b> Non conforme (NC)</div>
+        </div>
+
+        <h3 class="h-sub rv">Le maillon faible a un nom : le SPF Économie</h3>
+        <p class="prose rv">C'est le passage du rapport qui transforme le dossier M.A. Solution en cas d'école. Le GAFI juge le contrôle des secteurs non financiers « fragmenté et inégal », et pointe un manque de ressources humaines qui se traduit par un nombre restreint de contrôles « malgré des taux de non-conformité élevés »<span class="cite">GAFI, déc. 2025</span>. Or l'autorité de tutelle des centres d'affaires — au même titre que les agents immobiliers ou les diamantaires — c'est précisément le SPF Économie. Sous-doté, il inspecte peu, sanctionne rarement, et publie ses sanctions de façon anonyme ou pas du tout. <span class="tag tag--fact">Fait</span> Résultat : l'effet dissuasif s'évapore.</p>
+
+        <div class="pull rv">Quand le coût attendu de la non-conformité reste inférieur aux gains de l'activité non régulée, le calcul économique penche, structurellement, du mauvais côté.</div>
+
+        <p class="prose rv">Le nettoyage administratif progresse pourtant. Les radiations de sièges prononcées chaque année par la BCE ont fluctué nettement à la hausse depuis le début de la décennie, signe d'une administration qui purge ses registres plus activement qu'avant.</p>
+
+        <div class="trend rv">
+          <div class="tb"><div class="tb__bar" style="height:61%"></div><div class="tb__v">3 795</div><div class="tb__y">2021</div></div>
+          <div class="tb"><div class="tb__bar" style="height:100%"></div><div class="tb__v">6 223</div><div class="tb__y">2023</div></div>
+          <div class="tb"><div class="tb__bar" style="height:87%"></div><div class="tb__v">5 418</div><div class="tb__y">2025</div></div>
+        </div>
+        <p class="note rv">Radiations d'office de sièges prononcées par la BCE, par année (chiffres cités par le ministre David Clarinval). La purge s'intensifie — mais elle intervient <em>après</em> la défaillance, jamais en prévention du risque.</p>
+
+        <p class="prose rv">Voilà le cadre interprétatif que le GAFI fournit sans jamais nommer M.A. Solution : un secteur identifié comme à risque, structurellement sous-contrôlé, où la sous-déclaration est patente. <span class="tag tag--interp">Interpr.</span> Sur ce terrain, l'affaire cesse d'être l'histoire de deux élus pour devenir l'illustration locale d'une faille nationale. Ce qui ne disculpe personne — un système défaillant n'autorise pas à s'y engouffrer — mais déplace la question : combien d'autres « 24 Bergensesteenweg » existent, que nul registre ouvert n'a encore croisés&nbsp;?</p>
+      </div>
+    </section>
+
+    <!-- ============ 08 · DIMENSION POLITIQUE ============ -->
+    <section class="band band--dark" id="politique">
+      <div class="band__inner">
+        <div class="eyebrow rv"><span class="ix">08</span>Dimension politique</div>
+        <h2 class="h-sec rv">L'accusatrice et l'accusée</h2>
+        <p class="lede rv">Pour comprendre pourquoi cette affaire a explosé un 25 juin, il faut remonter d'un mois — et changer de scandale. Marcela Gori n'est pas seulement la cogérante d'un centre d'affaires sous le feu des projecteurs. Elle est aussi, dans une autre histoire, l'héroïne qui a fait tomber un président socialiste.</p>
+
+        <h3 class="h-sub rv">Le scandale d'à côté : le Foyer anderlechtois</h3>
+        <p class="prose rv">Le 15 mai 2026, l'émission d'investigation <em>Pano</em> (VRT) diffuse le résultat de dix-huit mois d'enquête sur le Foyer anderlechtois, deuxième bailleur social de Bruxelles — plus de 4 000 logements à loyer modéré, au-delà de 8 000 habitants. Au centre des accusations : <strong>Lotfi Mostefa</strong> (PS), président du Foyer et échevin du Logement, soupçonné d'ingérence et de clientélisme dans l'attribution des logements — messages, témoignages d'une vingtaine de collaborateurs, et un fichier des bénéficiaires soupçonné d'avoir servi au démarchage électoral<span class="cite">Pano, VRT</span>. <span class="tag tag--fact">Fait</span></p>
+
+        <p class="prose rv">La machine judiciaire et politique s'emballe. Le parquet de Bruxelles totalise quatre enquêtes ; des perquisitions ont lieu le 28 mai au Foyer, au domicile de Mostefa, à la commune et chez un ancien président de la SLRB — le procureur Julien Moinil aurait été personnellement présent. Le 1er juin, le Parlement bruxellois crée une commission d'enquête — la deuxième de son histoire après celle du Samusocial — dont le calendrier serré, jusqu'au 21 juillet, fait crier à l'« enterrement estival ». <span class="tag tag--fact">Fait</span></p>
+
+        <h3 class="h-sub rv">Gori, lanceuse d'alerte</h3>
+        <p class="prose rv">Dans cette tempête, Marcela Gori occupe le rôle le plus exposé et le plus flatteur : celui de la lanceuse d'alerte. Vice-présidente du Foyer, elle dénonce depuis des mois un « comité de dérogation clandestin », un climat « quasi mafieux » d'intimidations, des irrégularités dans les marchés publics ; elle a porté plainte. Le MR la met en avant sur son site officiel comme l'une de ses principales lanceuses d'alerte<span class="cite">MR</span>. Le 15 juin, profitant de démissions au conseil d'administration, elle convoque une séance extraordinaire qui vote le retrait temporaire de Mostefa — et lui confie, à elle, la présidence par intérim. <span class="tag tag--def">Récit d'alerte</span></p>
+
+        <p class="prose rv">La manœuvre est aussitôt contestée : les administrateurs PS la boycottent, la direction du Foyer la déclare d'abord nulle pour défaut de quorum, avant que des démissions successives ne rebattent le calcul. <span class="tag tag--hypo">Validité disputée</span> On retiendra surtout ceci : dix jours avant que ses propres affaires ne deviennent publiques, Marcela Gori venait de prendre, par un coup de force procédural, la tête de l'institution dont elle dénonçait la gestion.</p>
+
+        <div class="callbox rv">
+          <h3 style="margin-top:0">Le paradoxe au cœur du dossier</h3>
+          <p>La même personne est, dans une affaire, l'<strong>accusatrice saluée</strong> — celle qui dénonce le clientélisme d'un adversaire politique au nom de l'intégrité publique. Et dans l'autre, l'<strong>accusée</strong> — celle dont l'entreprise privée hébergeait des centaines de sociétés défaillantes sans jamais alerter la cellule anti-blanchiment. Aucune de ces deux vérités n'annule l'autre. Mais leur coexistence est le ressort dramatique — et le piège analytique — de toute l'affaire.</p>
+        </div>
+
+        <h3 class="h-sub rv">Le timing : riposte ou coïncidence&nbsp;?</h3>
+        <p class="prose rv">La révélation sur M.A. Solution tombe le 25 juin — un mois jour pour jour après que Gori s'est posée en justicière du Foyer, dix jours après qu'elle en a pris la présidence. La tentation est grande d'y lire une riposte : le PS et l'entourage de Mostefa, mis en cause, auraient sorti — ou laissé sortir — le dossier qui neutralise l'avantage moral du MR. <span class="tag tag--hypo">Hypothèse</span></p>
+
+        <div class="pull pull--dark rv">L'hypothèse de l'instrumentalisation croisée est <em>plausible</em>. Elle n'est pas <em>démontrée</em>. Et la traiter comme un fait serait commettre, en miroir, l'erreur que l'on reproche au camp d'en face.</div>
+
+        <p class="prose rv">Ce qui est établi, en revanche, c'est l'usage politique qui a été fait des chiffres. Dès leur publication, l'opposition — le PS localement, le PTB de Raoul Hedebouw à l'échelle nationale — a renvoyé les deux camps dos à dos : au PS ses soupçons de clientélisme social, au MR ses allégations de facilitation de montages financiers douteux<span class="cite">BX1 / BRUZZ</span>. <span class="tag tag--interp">Interpr.</span> L'avantage moral acquis par le MR dans le dossier du logement s'est trouvé, en vingt-quatre heures, neutralisé. Que ce soit là l'effet recherché ou un simple concours de calendrier, le résultat politique, lui, est parfaitement réel.</p>
+
+        <p class="prose rv">Reste une asymétrie qu'il faut nommer pour rester juste. Le dossier Mostefa est un dossier <em>pénal</em> : quatre enquêtes, des perquisitions, un procureur sur le terrain. Le dossier M.A. Solution est, à ce jour, un dossier <em>administratif et politique</em> : aucune enquête judiciaire ouverte. <span class="tag tag--fact">Fait</span> Les renvoyer dos à dos satisfait la symétrie rhétorique ; cela ne reflète pas l'état exact des procédures. Le lecteur honnête tient les deux à la fois : la coïncidence troublante du calendrier, et l'inégalité réelle de ce que chaque camp a, juridiquement, à affronter.</p>
+      </div>
+    </section>
+
+    <!-- ============ 09 · PRÉCÉDENTS & EUROPE ============ -->
+    <section class="band" id="precedents">
+      <div class="band__inner">
+        <div class="eyebrow rv"><span class="ix">09</span>Précédents &amp; cadre européen</div>
+        <h2 class="h-sec rv">Rien de nouveau — sauf l'échelle</h2>
+        <p class="lede rv">La domiciliation fictive n'est pas une découverte de juin 2026. Elle est documentée depuis plus de quinze ans, elle a déjà ruiné la tranquillité de gérants honnêtes, et l'Europe a tenté — sans y parvenir — de la corseter. Replacer l'affaire dans cette histoire longue, c'est se garder de deux excès : l'indignation naïve et la banalisation cynique.</p>
+
+        <h3 class="h-sub rv">Le précédent Camerman</h3>
+        <p class="prose rv">La RTBF a documenté le cas de Dan Camerman, gérant d'un petit centre d'affaires bruxellois, confronté dès 2009 à de fausses domiciliations : courriers d'huissiers, sociétés impliquées dans des carrousels TVA. <span class="tag tag--fact">Fait</span> Son histoire éclaire une faille technique restée béante : lors du dépôt d'un changement de siège, le greffe du tribunal de l'entreprise <strong>n'a pas les moyens de vérifier la réalité d'un bail</strong>. L'adresse se déclare ; elle ne se prouve pas. Une société peut donc s'installer, sur le papier, à une adresse dont elle n'est jamais devenue cliente.</p>
+
+        <p class="prose rv">L'ampleur a changé d'ordre de grandeur. En 2018, le ministre de la Justice chiffrait à plus de 140 000 les sociétés n'ayant pas déposé de comptes, beaucoup « dormantes » ou « fantômes »<span class="cite">rép. parlementaire, 2018</span>. Le chiffre approche aujourd'hui les 400 000. La fraude au siège fictif est punissable — pour le bailleur comme pour le locataire — et constitue une priorité de politique pénale ; mais entre la règle et son application, l'écart reste celui que le GAFI a mesuré.</p>
+
+        <h3 class="h-sub rv">L'Europe a essayé — et renoncé</h3>
+        <p class="prose rv">Il serait tentant de brandir la directive « Unshell » (ATAD 3) comme l'arme qui aurait dû s'appliquer. Ce serait une erreur de droit. Proposée par la Commission le 22 décembre 2021 pour cibler les sociétés-écrans sans substance — selon trois critères cumulatifs, avec des sanctions envisagées jusqu'à 5 % du chiffre d'affaires —, cette directive <strong>n'a jamais été adoptée</strong>. <span class="tag tag--fact">Fait</span></p>
+
+        <div class="callbox rv">
+          <h3 style="margin-top:0">Mise en garde : ATAD 3 n'est pas un cadre en vigueur</h3>
+          <p>Le Conseil ECOFIN s'est prononcé pour l'arrêt des travaux, au profit d'une révision de DAC 6. Présenter « Unshell » comme une obligation opposable serait factuellement faux. De surcroît, le texte visait l'évasion fiscale <em>transfrontalière</em>, et non la domiciliation de PME locales — il n'aurait, en tout état de cause, pas été l'instrument de ce dossier.</p>
+        </div>
+
+        <p class="prose rv">Le cadre réellement opposable est ailleurs : c'est le « paquet AML » européen — qui institue l'autorité AMLA à Francfort — transposé en droit belge par la loi du 18 septembre 2017 et ses mises à jour. Modeste, technique, déjà en vigueur. C'est lui, et non une directive avortée, qui fixe les obligations que M.A. Solution devait respecter.</p>
+
+        <h3 class="h-sub rv">Ce que le secteur dit de lui-même</h3>
+        <p class="prose rv">La profession n'est ni dupe ni unanime. Au sein de la Belgian Workspace Association, Fabrice Moerman (Beci) juge « interpellant » un tel volume de radiations sur une période si courte, tout en rappelant que des radiations régulières sont parfaitement « normales » au regard des obligations légales<span class="cite">Beci / BWA</span>. <span class="tag tag--interp">Nuance sectorielle</span> Patrick Tondreau, lui, défend la légitimité de fond du métier : « C'est un vrai service »<span class="cite">BWA</span>. <span class="tag tag--def">Défense du secteur</span></p>
+
+        <p class="prose rv">Et c'est le secteur lui-même qui dénonce le plus précisément la faille : des domiciliations validées par actes notariés <em>sans contrat</em> avec le centre d'affaires, certains notaires ne vérifiant pas l'autorisation d'usage de l'adresse. <span class="tag tag--interp">Interpr.</span> Cette autocritique est précieuse, car elle désigne le point exact où une société-écran peut usurper une adresse à l'insu même de l'hébergeur — l'angle mort qui sert, selon les cas, d'excuse légitime ou de paravent commode. Aucune jurisprudence de condamnation d'un centre d'affaires pour manquement anti-blanchiment n'est ressortie publiquement de cette recherche : reflet, exactement, de la faiblesse d'application que le GAFI pointe.</p>
+      </div>
+    </section>
+
+    <style>
+      .watch{margin:28px 0 6px;border-top:1px solid var(--line-dark-2)}
+      .watch__row{display:grid;grid-template-columns:172px 1fr;gap:20px;padding:22px 4px;
+        border-bottom:1px solid var(--line-dark-2);align-items:start}
+      .watch__lvl{font-family:var(--font-mono);font-size:11px;letter-spacing:.09em;
+        text-transform:uppercase;font-weight:600;padding-top:3px}
+      .watch__t{font-family:var(--font-display);font-weight:600;font-size:18.5px;
+        color:var(--bone);margin-bottom:7px;letter-spacing:-.012em;line-height:1.2}
+      .watch__d{font-size:15.5px;color:#D7DAD4;line-height:1.56}
+      .watch__proof{margin-top:9px;font-family:var(--font-mono);font-size:12px;
+        color:var(--bone-faint);line-height:1.5}
+      .watch__proof b{color:var(--bone-soft);font-weight:600}
+      @media(max-width:720px){.watch__row{grid-template-columns:1fr;gap:8px}
+        .watch__lvl{padding-top:0}}
+    </style>
+
+    <!-- ============ 10 · POINTS DE BASCULE ============ -->
+    <section class="band band--dark" id="bascule">
+      <div class="band__inner">
+        <div class="eyebrow rv"><span class="ix">10</span>Points de bascule</div>
+        <h2 class="h-sec rv">Ce qui ferait changer cette analyse</h2>
+        <p class="lede rv">Un dossier de soupçons se juge aussi à ce qui pourrait le faire basculer. Voici les cinq signaux qui transformeraient l'affaire — chacun déplaçant le curseur d'un plan vers un autre. Tant qu'aucun ne survient, le présent document reste ce qu'il annonce : une lecture, pas un verdict.</p>
+
+        <div class="watch rv">
+          <div class="watch__row">
+            <div class="watch__lvl" style="color:#E2776A">Bascule pénale</div>
+            <div>
+              <div class="watch__t">Ouverture d'une information judiciaire</div>
+              <div class="watch__d">À ce jour, les parquets de Bruxelles et de Hal-Vilvorde confirment qu'aucune enquête ne vise M.A. Solution. La saisine d'un juge d'instruction ferait franchir au dossier la frontière qui sépare la rumeur médiatique de la procédure.</div>
+              <div class="watch__proof"><b>Ce que cela prouverait :</b> que des autorités jugent les indices suffisants pour instruire. Pas encore une faute — mais la fin du seul registre du soupçon.</div>
+            </div>
+          </div>
+          <div class="watch__row">
+            <div class="watch__lvl" style="color:#9FB8D2">Matérialisation du risque</div>
+            <div>
+              <div class="watch__t">Une société hébergée reliée à un blanchiment avéré</div>
+              <div class="watch__d">La pièce manquante : la documentation d'au moins une société domiciliée ayant effectivement servi à un blanchiment ou un carrousel TVA, <em>conjuguée</em> à un manquement de vigilance imputable à M.A. Solution.</div>
+              <div class="watch__proof"><b>Ce que cela prouverait :</b> que l'indice statistique recouvrait une faute concrète. C'est le seul scénario qui relierait le portefeuille à un préjudice réel.</div>
+            </div>
+          </div>
+          <div class="watch__row">
+            <div class="watch__lvl" style="color:#E0A653">Voie administrative</div>
+            <div>
+              <div class="watch__t">Saisine du SPF Économie, ou amende publiée</div>
+              <div class="watch__d">L'issue la plus probable et la plus rapide, car elle ne suppose pas le pénal. Un contrôle anti-blanchiment ciblé, ou la publication d'une sanction sur le site du SPF Économie, signalerait l'escalade.</div>
+              <div class="watch__proof"><b>Ce que cela prouverait :</b> que l'autorité de tutelle — celle-là même que le GAFI juge sous-dotée — s'est effectivement saisie. Le test grandeur nature de l'« enforcement » belge.</div>
+            </div>
+          </div>
+          <div class="watch__row">
+            <div class="watch__lvl" style="color:#BFA3C6">Bascule parlementaire</div>
+            <div>
+              <div class="watch__t">Élargissement de la commission d'enquête bruxelloise</div>
+              <div class="watch__d">La commission sur le Foyer ferme, en principe, le 21 juillet 2026, avec possibilité de prolongation. Le MR a déjà demandé d'en élargir le périmètre. Une bascule de M.A. Solution dans ce débat changerait la nature du dossier.</div>
+              <div class="watch__proof"><b>Ce que cela prouverait :</b> que l'affaire est entrée dans le champ institutionnel — non plus traitée par voie de presse, mais sous serment et avec pouvoir d'enquête.</div>
+            </div>
+          </div>
+          <div class="watch__row">
+            <div class="watch__lvl" style="color:#AEB7B4">Reconnaissance politique</div>
+            <div>
+              <div class="watch__t">Démission ou retrait d'un mandat</div>
+              <div class="watch__d">L'abandon de l'échevinat, ou de la présidence intérimaire du Foyer, vaudrait aveu de gravité — indépendamment de toute issue juridique. À l'inverse, le maintien des mandats est, en soi, une position politique.</div>
+              <div class="watch__proof"><b>Ce que cela prouverait :</b> que les intéressés eux-mêmes estiment la situation intenable. Le seul signal qui ne dépend ni d'un parquet, ni d'une administration.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 11 · LIMITES ============ -->
+    <section class="band" id="limites">
+      <div class="band__inner">
+        <div class="eyebrow rv"><span class="ix">11</span>Limites &amp; présomption d'innocence</div>
+        <h2 class="h-sec rv">Ce que ce dossier ne peut pas affirmer</h2>
+        <p class="lede rv">Un document honnête nomme ses propres fragilités avant qu'un contradicteur ne le fasse. Voici les six réserves qui bordent tout ce qui précède — et sans lesquelles cette page basculerait du commentaire vers l'accusation.</p>
+
+        <h3 class="h-sub rv">Une source primaire unique</h3>
+        <p class="prose rv">Tous les chiffres reposent sur une seule enquête, celle de <em>L'Echo</em> (payante), reprise de façon convergente mais non indépendante par d'autres rédactions. L'article original n'a pas été consulté directement dans la documentation à l'origine de cette page. Les données de registre sont vérifiables ; leur agrégation et leur qualification, elles, procèdent d'un seul regard. <span class="tag tag--fact">Caveat de sourçage</span></p>
+
+        <h3 class="h-sub rv">« Indice de fraude » : des voix anonymes</h3>
+        <p class="prose rv">Les qualificatifs les plus accusateurs — l'expression d'un « vrai indice de fraude » — émanent d'experts cités <strong>anonymement</strong> par L'Echo. Ils traduisent une lecture experte, non un constat d'autorité. À pondérer comme tels. <span class="tag tag--hypo">Source non identifiée</span></p>
+
+        <h3 class="h-sub rv">Aucune infraction judiciairement établie</h3>
+        <p class="prose rv">Il faut l'écrire sans détour : à ce jour, aucune infraction n'est établie par un tribunal contre Achille Vandyck ou Marcela Gori. <span class="tag tag--fact">Fait</span> Les radiations d'office et les faillites des sociétés hébergées <strong>ne sont pas, en elles-mêmes, imputables au domiciliataire</strong>. Un prestataire peut héberger de bonne foi des sociétés qui se révèlent ensuite frauduleuses, sans être lui-même en faute, dès lors qu'il a respecté ses obligations. La présomption d'innocence n'est pas une formule de politesse : c'est la règle qui gouverne la lecture de chaque ligne de ce dossier.</p>
+
+        <h3 class="h-sub rv">L'hypothèse politique reste une hypothèse</h3>
+        <p class="prose rv">La thèse d'une révélation orchestrée en riposte à l'activisme de Gori dans le dossier du Foyer est plausible, et le calendrier la nourrit. Elle n'est pas démontrée. <span class="tag tag--hypo">Hypothèse non confirmée</span> Elle figure ici comme grille de lecture du contexte, jamais comme fait acquis.</p>
+
+        <h3 class="h-sub rv">Le GAFI ne cite pas M.A. Solution</h3>
+        <p class="prose rv">Le rapport d'évaluation mutuelle décrit un <em>risque sectoriel</em> général ; il ne vise nullement cette société. <span class="tag tag--fact">Fait</span> Il fournit le cadre, pas l'accusation. Lui faire dire le contraire serait un abus.</p>
+
+        <h3 class="h-sub rv">Une distinction à vérifier au registre</h3>
+        <p class="prose rv">Le cœur de la défense de Marcela Gori — l'activité de domiciliation portée désormais par M.A. Solution Business, entité distincte dont les responsabilités se sépareraient de la structure historique — mérite une vérification documentaire précise au registre : qui détient quoi, depuis quand, et qui était administrateur à la date des faits reprochés. <span class="tag tag--hypo">À documenter</span> Tant que ce point n'est pas tranché pièces en main, il reste un argument, non une réfutation.</p>
+
+        <div class="note rv">Une dernière transparence, sur la méthode de cette page. Certaines données personnelles relatives aux gérants — origine, nationalité — ont été délibérément écartées : sans pertinence juridique pour l'analyse d'un dossier de conformité, elles n'auraient servi qu'un cadrage que rien, ici, ne justifie. Ce dossier juge des actes et des obligations, pas des personnes.</div>
+      </div>
+    </section>
+
+    <!-- ============ 12 · SOURCES ============ -->
+    <section class="band" id="sources">
+      <div class="band__inner">
+        <div class="eyebrow rv"><span class="ix">12</span>Sources</div>
+        <h2 class="h-sec rv">Appareil documentaire</h2>
+        <p class="lede rv">Toute la chaîne de vérification, ouverte. À retenir : l'essentiel des chiffres remonte à une seule enquête originale (n° 1) ; les registres d'entreprise et les rapports d'autorité sont, eux, consultables directement. Sources arrêtées au 26 juin 2026.</p>
+
+        <h3 class="h-sub rv">Enquête &amp; reprises médiatiques</h3>
+        <ul class="src rv">
+          <li><span class="sn">1</span><b>L'Echo</b> — Enquête sur les sociétés domiciliées au 24 Bergensesteenweg (25 juin 2026). <span class="u">Source primaire de l'affaire — lecho.be, article payant, non consulté directement.</span></li>
+          <li><span class="sn">2</span><b>BX1</b> — « Des centaines de sociétés à une seule adresse : que cache réellement le business des centres d'affaires ? » <a href="https://bx1.be/categories/news/des-centaines-de-societes-a-une-seule-adresse-que-cache-reellement-le-business-des-centres-daffaires/" target="_blank" rel="noopener">bx1.be</a></li>
+          <li><span class="sn">3</span><b>BX1</b> — « Anderlecht : la société des élus MR Achille Vandyck et Marcela Gori a hébergé nombre de sociétés radiées et fantômes » <a href="https://bx1.be/categories/news/anderlecht-la-societe-des-elus-mr-achille-vandyck-et-marcela-gori-a-heberge-nombre-de-societes-radiees-et-fantomes/" target="_blank" rel="noopener">bx1.be</a></li>
+          <li><span class="sn">4</span><b>BRUZZ</b> — « Vennootschap MR-politici 'bood onderdak aan geschrapte bedrijven en spookbedrijven' » <a href="https://www.bruzz.be/actua/samenleving/zakenkrant-lecho-brengt-mr-koppel-uit-anderlecht-opspraak-2026-06-25" target="_blank" rel="noopener">bruzz.be</a></li>
+        </ul>
+
+        <h3 class="h-sub rv">Registres &amp; données d'entreprise</h3>
+        <ul class="src rv">
+          <li><span class="sn">5</span><b>Companyweb</b> — M.A. Solution SRL, BE 0777.963.952. <a href="https://www.companyweb.be/fr/0777963952/m-a-solution" target="_blank" rel="noopener">companyweb.be</a></li>
+          <li><span class="sn">6</span><b>Companyweb</b> — Ma Solution Business SRL, BE 1000.395.543. <a href="https://www.companyweb.be/en/1000395543/ma-solution-business" target="_blank" rel="noopener">companyweb.be</a></li>
+          <li><span class="sn">7</span><b>Cumuleo</b> — Achille Vandyck (MR) : mandats, fonctions et historique de conformité. <a href="https://www.cumuleo.be/mandataire/13594-achille-vandyck.php" target="_blank" rel="noopener">cumuleo.be</a></li>
+          <li><span class="sn">8</span><b>Pappers Belgique</b> — Bruma S.D., BE 0791.577.309 (cas d'espèce). <a href="https://www.pappers.be/fr/company/bruma-sd-0791577309" target="_blank" rel="noopener">pappers.be</a></li>
+        </ul>
+
+        <h3 class="h-sub rv">Cadre légal &amp; autorités</h3>
+        <ul class="src rv">
+          <li><span class="sn">9</span><b>SPF Économie</b> — Radiations d'office dans la BCE (art. III.42 CDE). <a href="https://economie.fgov.be/fr/themes/entreprises/banque-carrefour-des/contenu-de-la-bce/radiations-doffice-dans-la-bce" target="_blank" rel="noopener">economie.fgov.be</a></li>
+          <li><span class="sn">10</span><b>GAFI / FATF</b> — Évaluation mutuelle de la Belgique, rapport complet (déc. 2025). <a href="https://www.fatf-gafi.org/content/dam/fatf-gafi/mer/Evaluation-mutuelle-Belgique-2025.pdf" target="_blank" rel="noopener">fatf-gafi.org</a></li>
+          <li><span class="sn">11</span><b>GAFI / FATF</b> — Synthèse des mesures de la Belgique (LBC/FT/FP). <a href="https://www.fatf-gafi.org/fr/publications/Evaluationsmutuelles/mer-belgium-2025.html" target="_blank" rel="noopener">fatf-gafi.org</a></li>
+          <li><span class="sn">12</span><b>CTIF-CFI</b> — Synthèse de l'évaluation nationale des risques de blanchiment (09/2023). <a href="https://ctif-cfi.be/images/documents/French/NRA_2023_Synth%C3%A8se_ML.pdf" target="_blank" rel="noopener">ctif-cfi.be</a></li>
+          <li><span class="sn">13</span><b>Banque nationale de Belgique</b> — Limitation de l'utilisation des espèces (art. 67). <a href="https://www.nbb.be/fr/supervision-financiere-et-resolution/prevention-du-blanchiment-de-capitaux-et-du-90" target="_blank" rel="noopener">nbb.be</a></li>
+          <li><span class="sn">14</span><b>Avocadhoc</b> — Constats du GAFI relatifs aux avocats et experts-comptables. <a href="https://avocadhoc.be/" target="_blank" rel="noopener">avocadhoc.be</a></li>
+        </ul>
+
+        <h3 class="h-sub rv">Volet politique — Foyer anderlechtois</h3>
+        <ul class="src rv">
+          <li><span class="sn">15</span><b>BX1</b> — « Le CA suspend le président Lotfi Mostefa, le PS dénonce des irrégularités ». <a href="https://bx1.be/communes/anderlecht/foyer-anderlechtois-sans-ses-administrateurs-socialistes-le-ca-suspend-le-president-lotfi-mostefa/" target="_blank" rel="noopener">bx1.be</a></li>
+          <li><span class="sn">16</span><b>BX1</b> — « Que se passe-t-il à la commission d'enquête ? On est dans le chaos organisé ». <a href="https://bx1.be/categories/news/que-se-passe-t-il-a-la-commission-denquete-sur-le-foyer-anderlechtois-on-est-dans-le-chaos-organise/" target="_blank" rel="noopener">bx1.be</a></li>
+          <li><span class="sn">17</span><b>BX1</b> — « Une commission d'enquête limitée à sept semaines ». <a href="https://bx1.be/categories/societe/foyer-anderlechtois-une-comission-denquete-limitee-a-sept-semaines/" target="_blank" rel="noopener">bx1.be</a></li>
+          <li><span class="sn">18</span><b>MR</b> — « Foyer anderlechtois : le MR obtient une commission d'enquête » (communication de parti). <a href="https://www.mr.be/argumentaires/foyer-anderlechtois-le-mr-obtient-une-commission-denquete/" target="_blank" rel="noopener">mr.be</a></li>
+        </ul>
+        <p class="note rv">Les communications de parti (n° 18) et certains forums cités dans la documentation source sont, par nature, des prises de position, non des constats neutres : ils sont conservés ici pour traçabilité, et pondérés en conséquence dans le corps du dossier.</p>
+      </div>
+    </section>
+
+  </main>
+  </div><!-- /shell -->
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="foot">
+    <div class="foot__inner">
+      <h4>Sur la nature de ce document</h4>
+      <p>Cette page est une synthèse analytique à vocation de référence, construite à partir de sources ouvertes arrêtées au 26 juin 2026. Elle n'est ni un acte d'accusation, ni un avis juridique, ni une enquête originale : elle agrège, met en perspective et qualifie le degré de certitude de ce qui était public à cette date. Chaque affirmation y porte un marqueur de statut — fait, interprétation, hypothèse, ou élément de défense — précisément pour que le lecteur ne confonde jamais ce qui est établi avec ce qui est plausible.</p>
+      <p>Aucune infraction n'est judiciairement établie contre les personnes citées. La présomption d'innocence s'applique pleinement et sans réserve. Les défaillances des sociétés hébergées ne sont pas, en elles-mêmes, imputables au domiciliataire. Là où ce dossier interroge, il interroge des obligations de conformité et un cumul de fonctions — pas la culpabilité de quiconque.</p>
+      <div class="foot__meta">Dossier M.A. Solution · état des connaissances au 26 juin 2026 · sources ouvertes · document analytique, sans valeur juridique</div>
+    </div>
+  </footer>
+
+  <noscript><style>.rv{opacity:1 !important;transform:none !important}</style></noscript>
+
+  <script>
+  (function(){
+    "use strict";
+    var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    /* ---- 1. Reveal on scroll ---- */
+    var revs = [].slice.call(document.querySelectorAll(".rv"));
+    if (reduced || !("IntersectionObserver" in window)) {
+      revs.forEach(function(el){ el.classList.add("in"); });
+    } else {
+      var ro = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if (e.isIntersecting){ e.target.classList.add("in"); ro.unobserve(e.target); }
+        });
+      }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+      revs.forEach(function(el){ ro.observe(el); });
+    }
+
+    /* ---- 2. Scroll-spy on the table of contents ---- */
+    var navLinks = [].slice.call(document.querySelectorAll(".toc a"));
+    var byId = {};
+    navLinks.forEach(function(a){
+      var id = (a.getAttribute("href") || "").slice(1);
+      if (!id) return;
+      (byId[id] = byId[id] || []).push(a);
+    });
+    var sections = [].slice.call(document.querySelectorAll("main section[id]"));
+    if ("IntersectionObserver" in window) {
+      var spy = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if (e.isIntersecting){
+            navLinks.forEach(function(a){ a.classList.remove("active"); });
+            (byId[e.target.id] || []).forEach(function(a){ a.classList.add("active"); });
+          }
+        });
+      }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+      sections.forEach(function(s){ spy.observe(s); });
+    }
+
+    /* ---- 3. Entity cards: expand / collapse ---- */
+    [].slice.call(document.querySelectorAll(".entcard__h")).forEach(function(btn){
+      btn.addEventListener("click", function(){
+        var card = btn.closest(".entcard");
+        var body = card ? card.querySelector(".entcard__body") : null;
+        var open = btn.getAttribute("aria-expanded") === "true";
+        var next = (!open).toString();
+        btn.setAttribute("aria-expanded", next);
+        if (card) card.setAttribute("aria-expanded", next); /* drives chevron CSS */
+        if (body) body.style.maxHeight = open ? "0px" : (body.scrollHeight + "px");
+      });
+    });
+
+    /* ---- 4. Timeline filters ---- */
+    var chips = [].slice.call(document.querySelectorAll(".filters .chip"));
+    if (chips.length){
+      var items = [].slice.call(document.querySelectorAll("#timeline .tl"));
+      var trackChips = chips.filter(function(c){ return c.dataset.f !== "all"; });
+      var allChip = chips.filter(function(c){ return c.dataset.f === "all"; })[0];
+      function apply(){
+        var active = {};
+        trackChips.forEach(function(c){
+          if (c.getAttribute("aria-pressed") === "true") active[c.dataset.f] = true;
+        });
+        var nOn = Object.keys(active).length;
+        items.forEach(function(li){
+          li.classList.toggle("dim", !active[li.dataset.track]);
+        });
+        if (allChip) allChip.setAttribute("aria-pressed", (nOn === trackChips.length).toString());
+      }
+      chips.forEach(function(chip){
+        chip.addEventListener("click", function(){
+          if (chip.dataset.f === "all"){
+            trackChips.forEach(function(c){ c.setAttribute("aria-pressed", "true"); });
+          } else {
+            var cur = chip.getAttribute("aria-pressed") === "true";
+            chip.setAttribute("aria-pressed", (!cur).toString());
+            var anyOn = trackChips.some(function(c){ return c.getAttribute("aria-pressed") === "true"; });
+            if (!anyOn) trackChips.forEach(function(c){ c.setAttribute("aria-pressed", "true"); });
+          }
+          apply();
+        });
+      });
+      apply();
+    }
+
+    /* ---- 5. Mobile drawer ---- */
+    var menubtn = document.getElementById("menubtn");
+    var drawer = document.getElementById("drawer");
+    var drawerclose = document.getElementById("drawerclose");
+    function setDrawer(open){
+      if (!drawer) return;
+      drawer.classList.toggle("open", open);
+      drawer.setAttribute("aria-hidden", (!open).toString());
+      if (menubtn) menubtn.setAttribute("aria-expanded", open.toString());
+    }
+    if (menubtn) menubtn.addEventListener("click", function(){ setDrawer(!drawer.classList.contains("open")); });
+    if (drawerclose) drawerclose.addEventListener("click", function(){ setDrawer(false); });
+    if (drawer) [].slice.call(drawer.querySelectorAll(".toc a")).forEach(function(a){
+      a.addEventListener("click", function(){ setDrawer(false); });
+    });
+    document.addEventListener("keydown", function(e){
+      if (e.key === "Escape") setDrawer(false);
+    });
+  })();
+  </script>
+</body>
+</html>
